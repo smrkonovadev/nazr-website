@@ -3,7 +3,7 @@ You are an expert Frontend Engineer specializing in Next.js (App Router), TypeSc
 I need you to build a premium, highly animated website based on a Figma design and specific motion reference websites. 
 
 ### 1. References & Resources
-* Figma Design Link: [PASTE YOUR FIGMA LINK HERE]
+* Figma Design Link: [https://www.figma.com/design/5xeE2fMheg94NM2IfkNvpO/Final-Final-Copy?node-id=0-1&p=f&t=9Pt860LVWSOQiLK4-0]
 * Animation Reference Website: [PASTE THE REFERENCE WEBSITE LINK HERE]
 * Specific Animation Style to Replicate: [Describe the motion, e.g., smooth scroll-driven text reveals, morphing SVG backgrounds, sleek page transitions, magnetic hover effects]
 
