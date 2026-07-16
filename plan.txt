@@ -1,0 +1,41 @@
+You are an expert Frontend Engineer specializing in Next.js (App Router), TypeScript, Tailwind CSS, and high-performance web animations. 
+
+I need you to build a premium, highly animated website based on a Figma design and specific motion reference websites. 
+
+### 1. References & Resources
+* Figma Design Link: [PASTE YOUR FIGMA LINK HERE]
+* Animation Reference Website: [PASTE THE REFERENCE WEBSITE LINK HERE]
+* Specific Animation Style to Replicate: [Describe the motion, e.g., smooth scroll-driven text reveals, morphing SVG backgrounds, sleek page transitions, magnetic hover effects]
+
+### 2. Technical Stack Constraints
+* Framework: Next.js (Latest App Router structure)
+* Language: TypeScript (Strict type safety, no 'any')
+* Styling: Tailwind CSS (Clean, responsive layout matching the Figma grid)
+* Animation Library: Use Framer Motion for UI/layout transitions and GSAP for complex scroll-driven timelines or sequential multi-step animations (whichever fits the reference style best).
+* Component Architecture: Keep components highly modular. Isolate interactive/animated code into client components ("use client") while maximizing the use of React Server Components (RSC) for layout and static data to maintain optimal performance.
+
+### 3. Step-by-Step Execution Plan
+
+Please generate the codebase systematically using the following steps:
+
+#### Step 1: Layout & Core Configuration
+* Set up a highly organized project structure.
+* Configure the Tailwind theme (colors, typography, spacing) to match the global styles defined in the Figma file.
+* Implement a global template (`template.tsx`) to handle smooth, seamless page-to-page entrance and exit transitions.
+
+#### Step 2: Static Layout Component Generation
+* Before adding motion, build out the semantic HTML and responsive Tailwind layout for the primary sections (Hero, Features, Showcase/Gallery, Contact). 
+* Ensure the layout is perfectly responsive (mobile-first approach) and mirrors the exact alignment of the designer's Figma specs.
+
+#### Step 3: Layering the Animations
+* Based on the provided reference link, layer on the high-end animations.
+* **Hero Section:** Implement a striking entrance animation (e.g., text splitting/reveals, stagger effects).
+* **Scroll Interactions:** Add scroll-triggered animations (e.g., elements fading and sliding into place as they enter the viewport, parallax effects, or smooth pinning).
+* **Micro-interactions:** Add polished hover and active states for buttons, navigation links, and cards (e.g., magnetic cursor effects, smooth scale morphing).
+
+#### Step 4: Optimization & Code Quality
+* Ensure all animations are hardware-accelerated (`will-change`, transform, opacity).
+* Optimize for Core Web Vitals to prevent layout shifts (CLS) or main-thread blocking during heavy animations.
+* Provide clean, self-documenting code with clear inline explanations for any complex animation math or timelines.
+
+Let's begin by generating the code for Step 1 and the Hero Section component. Show me the folder structure and the complete, production-ready code files.
