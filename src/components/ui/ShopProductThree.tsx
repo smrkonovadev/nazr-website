@@ -40,7 +40,7 @@ export function ShopProductThree() {
             transition={{ type: "spring", bounce: 0.4, duration: 0.5, delay: 0.05 }}
             className="relative z-20 flex flex-col items-center justify-end md:mt-32 w-full mt-4 -mb-2 md:mb-0"
           >
-            <div className="relative w-[360px] h-[330px] md:w-[580px] md:h-[500px] z-20 pointer-events-none md:transform md:translate-x-24 md:translate-y-16">
+            <div className="relative w-[450px] h-[410px] md:w-[750px] md:h-[640px] z-20 pointer-events-none md:transform md:translate-x-16 md:translate-y-8">
               <Image
                 src="/images/SHOPPRO3.svg"
                 alt="Podium"
