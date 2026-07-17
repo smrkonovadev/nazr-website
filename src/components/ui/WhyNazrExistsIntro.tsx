@@ -1,90 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-
 export function WhyNazrExistsIntro() {
-  const [containerHeight, setContainerHeight] = useState<string>("80vh");
-
-  useEffect(() => {
-    const updateHeight = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const isMobile = width < 768;
-      // Matching DesktopScaler scale calculation:
-      const scale = isMobile ? (width / 390) : (width / 1280);
-      const zoomedViewportHeight = height / scale;
-      const headerOffset = isMobile ? 64 : 104;
-      setContainerHeight(`${zoomedViewportHeight - headerOffset}px`);
-    };
-
-    updateHeight();
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
-  }, []);
-
   return (
-    <div
-      className="w-full relative flex flex-col items-center overflow-hidden"
-      style={{ height: containerHeight }}
-    >
-      {/* Text area — compact typography to maximize eye/hands vertical space */}
-      <div className="w-full flex flex-col items-center text-center pt-[16px] px-4 relative z-10 flex-shrink-0">
-        <h1
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[clamp(40px,6vw,84px)] leading-[88%] tracking-[-0.02em]"
-        >
-          WHY NAZR EXISTS
-        </h1>
+    <div className="w-full flex flex-col items-center justify-center px-4 md:px-16 lg:px-20 max-md:pt-[30px] md:pt-[120px] pb-16 z-10 relative text-center">
+      <h1
+        className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase max-md:text-[45px] md:text-[220px] max-md:leading-[90%] md:leading-[90%] tracking-[-0.03em] whitespace-nowrap"
+      >
+        WHY NAZR EXISTS
+      </h1>
 
-        <p
-          className="mt-[8px] text-[#161616] uppercase font-bold leading-[128%] text-[clamp(11px,1vw,15px)] max-w-[460px]"
+      <div className="mt-[7px] md:mt-[23px] flex flex-col items-center max-md:gap-3 md:gap-5 max-w-[600px]">
+        <h4
+          className="text-[#161616] font-bold uppercase max-md:text-[16px] md:text-[24px]"
           style={{
             fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
-            letterSpacing: "-0.01em"
+            letterSpacing: "0.02em"
           }}
         >
-          WE BELIEVE PREPAREDNESS SHOULD BE PART OF EVERYDAY LIFE, NOT AN AFTERTHOUGHT. THAT&apos;S WHY WE&apos;RE BUILDING AN INTEGRATED ECOSYSTEM DESIGNED AROUND THE WAY WOMEN ALREADY MOVE THROUGH THE WORLD.
-        </p>
-      </div>
+          THE PROBLEM WE SAW
+        </h4>
 
-      {/* Hands + Eye — flex-1 fills all remaining vertical space */}
-      <div className="relative w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden">
-
-        {/* Left Hand — wrapper ends 80px before center, hand aligns right (close to center) */}
-        <div className="absolute left-0 right-[calc(50%+80px)] top-0 bottom-0 pointer-events-none z-0">
-          <Image
-            src="/images/lefthand.png"
-            alt="Left Hand"
-            fill
-            className="object-contain object-right"
-            priority
-          />
-        </div>
-
-        {/* Right Hand — wrapper starts 50px after center, hand aligns left (close to center) */}
-        <div className="absolute right-0 left-[calc(50%+50px)] top-0 bottom-0 pointer-events-none z-0">
-          <Image
-            src="/images/righthand.png"
-            alt="Right Hand"
-            fill
-            className="object-contain object-left"
-            priority
-          />
-        </div>
-
-        {/* Center rotating eye globe — sized to fill 88% of container height, max-width 564px */}
-        <div
-          className="absolute z-20 animate-[spin_20s_linear_infinite] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{ height: "88%", aspectRatio: "1/1", maxWidth: "564px" }}
+        <p
+          className="text-[#161616] uppercase font-bold leading-[130%] max-md:text-[18px] md:text-[26px]"
+          style={{
+            fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
+            letterSpacing: "-0.02em"
+          }}
         >
-          <Image
-            src="/images/new46.png"
-            alt="Nazr Ecosystem"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
+          Women had already built their own safety systems through habits, instincts and workarounds.  What was missing was a thoughtfully designed ecosystem that could support, strengthen and simplify it every day.        </p>
       </div>
     </div>
   );

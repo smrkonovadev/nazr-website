@@ -1,6 +1,7 @@
 import { Header } from "@/components/ui/Header";
 
 import { WhyNazrExistsIntro } from "@/components/ui/WhyNazrExistsIntro";
+import { WhyNazrCreation } from "@/components/ui/WhyNazrCreation";
 import { WhyNazrStatement } from "@/components/ui/WhyNazrStatement";
 import { HorizontalScrollStory } from "@/components/ui/HorizontalScrollStory";
 import { OurValuesSection } from "@/components/ui/OurValuesSection";
@@ -19,9 +20,13 @@ export default function WhyNazrExistsPage() {
           {/* The Beige Canvas Section */}
           <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70]">
             <div
-              className="w-full bg-[#FFF1EB] relative max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px] overflow-hidden"
+              className="w-full bg-[#FFF1EB] relative max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px]"
+              style={{
+                minHeight: '800px',
+              }}
             >
               <WhyNazrExistsIntro />
+              <WhyNazrCreation />
             </div>
           </section>
 
