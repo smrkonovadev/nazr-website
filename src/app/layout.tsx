@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${signPainter.variable} antialiased bg-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${signPainter.variable} antialiased bg-white`} suppressHydrationWarning>
         <GlobalZoom />
         <NavigationProvider>
           <NavigationMenu />
