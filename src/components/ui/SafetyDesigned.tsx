@@ -14,8 +14,8 @@ export const carouselData = [
   {
     id: "pepper-spray",
     image: "/images/center.png",
-    title: "ON ME SPRAY",
-    subtitle: "A compact personal safety spray designed to be there when every second counts. Doubles as a bag charm and glows in the dark for quick access in low light."
+    title: "ON ME PEPPER SPRAY",
+    subtitle: "Compact, accessible, and designed to help you create the time and distance needed to get to safety. Doubles as a bag charm and glows in the dark for easy access when visibility is low."
   },
   {
     id: "nazr-360",
@@ -144,10 +144,7 @@ export function SafetyDesigned() {
             </p>
           </div>
 
-          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors" style={{ width: "229.27px", height: "46.66px", borderRadius: "3.92px", gap: "7.83px", border: "0.98px solid #FF0E97", marginTop: "8px" }}>
-            <div style={{ width: "34.27px", height: "23.5px", position: "relative" }}>
-              <Image src="/images/logosvg.svg" fill className="object-contain" alt="logo" />
-            </div>
+          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors" style={{ width: "229.27px", height: "46.66px", borderRadius: "3.92px", border: "0.98px solid #FF0E97", marginTop: "8px" }}>
             <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "20.83px", lineHeight: "1.5" }}>Get Yours</span>
           </button>
         </div>
@@ -180,10 +177,7 @@ export function SafetyDesigned() {
             {carouselData[currentIndex].subtitle}
           </p>
 
-          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] w-full max-w-[280px] h-[50px] rounded-[4px] gap-2">
-            <div className="relative w-[30px] h-[20px]">
-              <Image src="/images/logosvg.svg" fill className="object-contain" alt="logo" />
-            </div>
+          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] w-full max-w-[280px] h-[50px] rounded-[4px]">
             <span className="font-['Roboto',_sans-serif] text-[18px]">Get Yours</span>
           </button>
 
