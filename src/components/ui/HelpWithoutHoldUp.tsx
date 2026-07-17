@@ -50,8 +50,8 @@ export function HelpWithoutHoldUp() {
             <Image src="/images/phone.png" alt="NAZR SOS App Interface" fill className="object-contain" />
           </div>
 
-          <div className="mt-8 text-center text-[#161616] max-w-[408px] px-4 font-[family-name:var(--font-switzer)] text-[12px] leading-[1.4] tracking-[-0.03em]">
-            It is a long established fact that a reader will be distracted by the.
+          <div className="mt-8 text-center text-[#161616]/80 max-w-[350px] px-6 font-[family-name:var(--font-switzer)] text-[14px] leading-[140%] tracking-[-0.03em]">
+            Three ways to activate SOS. Because every second spent searching is a second too many.
           </div>
         </div>
 
@@ -127,9 +127,9 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Footer Text */}
-          <div className="absolute pointer-events-auto" style={{ width: "331.52px", height: "43px", top: "769px", left: "474px" }}>
-            <p className="font-[family-name:var(--font-switzer)] font-normal text-[20px] text-[#161616] leading-[1.4] tracking-[-0.03em] text-center m-0">
-              It is a long established fact that a reader will be distracted by the.
+          <div className="absolute pointer-events-auto" style={{ width: "415px", height: "43px", top: "768px", left: "433px" }}>
+            <p className="font-[family-name:var(--font-switzer)] font-normal text-[20px] text-[#161616] leading-[140%] tracking-[-0.03em] text-center m-0">
+              Three ways to activate SOS. Because every second spent searching is a second too many.
             </p>
           </div>
 
