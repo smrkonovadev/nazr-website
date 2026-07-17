@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Header } from "@/components/ui/Header";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
@@ -86,7 +87,7 @@ export default function TermsPage() {
                   These Terms of Use (&ldquo;Terms&rdquo;) govern the user&rsquo;s access to and use of www.nazrco.in (&ldquo;Website&rdquo;) and the NAZR mobile application (&ldquo;App&rdquo;), owned and operated by Lumina Hospitality Private Limited, operating under the brand NAZR&trade; (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;).
                 </p>
                 <p>
-                  By accessing, browsing, purchasing from, or using this Website or App, the user agrees to be bound by these Terms, our Privacy Policy, Shipping Policy, and Product Liability &amp; Risk Framework, and any additional policies referenced in these Terms, all of which are incorporated by reference. If the user does not agree to these Terms, the user must discontinue use of the Services.
+                  By accessing, browsing, purchasing from, or using this Website or App, the user agrees to be bound by these Terms, our <Link href="/privacy" className="underline hover:text-[#FF0E97] transition-colors">Privacy Policy</Link>, <Link href="/shipping" className="underline hover:text-[#FF0E97] transition-colors">Shipping Policy</Link>, and <Link href="/product-liability" className="underline hover:text-[#FF0E97] transition-colors">Product Liability &amp; Risk Framework</Link>, and any additional policies referenced in these Terms, all of which are incorporated by reference. If the user does not agree to these Terms, the user must discontinue use of the Services.
                 </p>
               </div>
 
