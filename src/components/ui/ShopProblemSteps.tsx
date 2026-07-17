@@ -20,10 +20,10 @@ export function ShopProblemSteps() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   return (
-    <section ref={sectionRef} className="w-full relative z-[999] bg-[#161616] pt-[30px] md:pt-[80px] pb-[25px] border-b border-white/20 overflow-hidden">
+    <section ref={sectionRef} className="w-full relative z-[999] bg-[#161616] pt-[30px] md:pt-[80px] pb-[30px] md:pb-[80px] border-b border-white/20 overflow-hidden">
 
       {/* Top Paragraph */}
-      <div className="w-full max-w-[800px] mx-auto max-md:px-[6.15vw] md:px-8 mb-[15px] flex items-center justify-center">
+      <div className="w-full max-w-[800px] mx-auto max-md:px-[6.15vw] md:px-8 mb-[30px] md:mb-[80px] flex items-center justify-center">
         <p className="font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] max-md:text-[7.0vw] md:text-[30px] leading-[120%] tracking-[-0.01em] uppercase">
           The most thoughtful gifts aren't always the biggest.  Sometimes they're the ones that quietly say, "I want you to get home safe."  Discover why thousands are choosing NAZR for the women they care about.        </p>
       </div>

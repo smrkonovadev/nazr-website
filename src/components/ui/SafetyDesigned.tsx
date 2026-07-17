@@ -14,8 +14,8 @@ export const carouselData = [
   {
     id: "pepper-spray",
     image: "/images/center.png",
-    title: "On Me pepper spray",
-    subtitle: "Compact, accessible, and designed to help you create the time and distance needed to get to safety. Doubles as a bag charm and glows in the dark for easy access when visibility is low."
+    title: "ON ME SPRAY",
+    subtitle: "A compact personal safety spray designed to be there when every second counts. Doubles as a bag charm and glows in the dark for quick access in low light."
   },
   {
     id: "nazr-360",
@@ -102,7 +102,7 @@ export function SafetyDesigned() {
         {/* Floating Icons (Visible only for pepper-spray, index 1) */}
         <FloatingIcon src="/images/new9.svg" visible={currentIndex === 1} width="191.41px" height="169.84px" top="276px" left="317.02px" delay={0.0} />
         <FloatingIcon src="/images/new10.svg" visible={currentIndex === 1} width="70.26px" height="48.17px" top="304.4px" left="665.82px" rotate={-30} delay={0.05} />
-        <FloatingIcon src="/images/new11.svg" visible={currentIndex === 1} width="82.46px" height="59.13px" top="498.29px" left="436.67px" rotate={36.59} delay={0.1} />
+        <FloatingIcon src="/images/new11.svg" visible={currentIndex === 1} width="170px" height="186px" top="460px" left="390px" rotate={36.59} delay={0.1} />
         <FloatingIcon src="/images/new12.svg" visible={currentIndex === 1} width="91.95px" height="90.19px" top="466.96px" left="678.55px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for sip-check, index 0) */}
@@ -118,15 +118,15 @@ export function SafetyDesigned() {
         <FloatingIcon src="/images/new20.svg" visible={currentIndex === 2} width="130.95px" height="110.19px" top="610px" left="758.55px" rotate={0} delay={0.15} />
 
         {/* Arrows */}
-        <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "868.8px", left: "257.13px" }}>
+        <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "750px", left: "257.13px" }}>
           <Image src="/images/arl.svg" fill className="object-contain" alt="prev" />
         </button>
-        <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "868.46px", left: "868.08px" }}>
+        <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "750px", left: "868.08px" }}>
           <Image src="/images/arr.svg" fill className="object-contain" alt="next" />
         </button>
 
         {/* Text & Button Block */}
-        <div className="absolute flex flex-col items-center justify-start" style={{ width: "464.85px", height: "auto", top: "775.42px", left: "378.22px", paddingTop: "15.67px", paddingBottom: "15.67px", gap: "24px" }}>
+        <div className="absolute flex flex-col items-center justify-start" style={{ width: "464.85px", height: "auto", top: "710px", left: "378.22px", paddingTop: "15.67px", paddingBottom: "15.67px", gap: "24px" }}>
           <div className="flex flex-col items-center w-full" style={{ gap: "12px" }}>
             <h3 className="text-[#FFF9EB] m-0 text-center uppercase" style={{ fontFamily: "var(--font-bebas)", fontSize: "41.67px", lineHeight: "1.5", width: "100%" }}>
               {carouselData[currentIndex].title}
@@ -140,7 +140,7 @@ export function SafetyDesigned() {
             <div style={{ width: "34.27px", height: "23.5px", position: "relative" }}>
               <Image src="/images/logosvg.svg" fill className="object-contain" alt="logo" />
             </div>
-            <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "20.83px", lineHeight: "1.5" }}>Join Ecosystem</span>
+            <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "20.83px", lineHeight: "1.5" }}>Get Yours</span>
           </button>
         </div>
 
@@ -176,7 +176,7 @@ export function SafetyDesigned() {
             <div className="relative w-[30px] h-[20px]">
               <Image src="/images/logosvg.svg" fill className="object-contain" alt="logo" />
             </div>
-            <span className="font-['Roboto',_sans-serif] text-[18px]">Join Ecosystem</span>
+            <span className="font-['Roboto',_sans-serif] text-[18px]">Get Yours</span>
           </button>
 
           <div className="flex items-center gap-8 mt-4">

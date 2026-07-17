@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Star, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ShopProductPepperSpray() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
@@ -32,7 +33,13 @@ export function ShopProductPepperSpray() {
           </div>
 
           {/* Product Image on Podium */}
-          <div className="relative z-20 flex flex-col items-center justify-end md:mt-32 w-full mt-4 -mb-2 md:mb-0">
+          <motion.div
+            initial={{ scale: 0, y: 150 }}
+            whileInView={{ scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ type: "spring", bounce: 0.4, duration: 0.5, delay: 0.05 }}
+            className="relative z-20 flex flex-col items-center justify-end md:mt-32 w-full mt-4 -mb-2 md:mb-0"
+          >
             <div className="relative w-[360px] h-[330px] md:w-[580px] md:h-[500px] z-20 pointer-events-none md:transform md:rotate-[20deg] md:translate-x-24 md:translate-y-16">
               <Image
                 src="/images/center.png"
@@ -41,11 +48,11 @@ export function ShopProductPepperSpray() {
                 className="object-contain"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Right Column (Product Details) */}
-        <div className="w-full md:w-[40%] px-4 md:px-6 pb-12 pt-0 md:p-12 lg:px-16 lg:py-12 flex flex-col justify-center overflow-x-hidden">
+        <div className="w-full md:w-[40%] px-4 pb-12 pt-0 md:pl-6 md:pr-12 md:py-12 lg:pl-6 lg:pr-16 lg:py-12 flex flex-col justify-center overflow-x-hidden">
 
           {/* Description Text */}
           <p className="font-['Inter',_sans-serif] text-[#161616] text-[22px] md:text-[23px] font-bold leading-[1.3] max-w-[408px] mb-6 tracking-[-0.02em]">
@@ -82,7 +89,7 @@ export function ShopProductPepperSpray() {
               {/* Option 1: Pink */}
               <button
                 onClick={() => setSelectedVariant("pink")}
-                className={`w-[105px] h-[120px] rounded-[6px] border-[2px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "pink" ? "border-black bg-transparent" : "border-black/30 bg-transparent"}`}
+                className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "pink" ? "border-black bg-transparent" : "border-black/30 bg-transparent"}`}
               >
                 <div className="relative w-full h-[85px]">
                   <Image src="/images/spray-pink.png" alt="Pink Variant" fill className="object-contain" />
@@ -93,7 +100,7 @@ export function ShopProductPepperSpray() {
               {/* Option 2: White */}
               <button
                 onClick={() => setSelectedVariant("white")}
-                className={`w-[105px] h-[120px] rounded-[6px] border-[2px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "white" ? "border-black bg-transparent" : "border-black/30 bg-transparent"}`}
+                className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "white" ? "border-black bg-transparent" : "border-black/30 bg-transparent"}`}
               >
                 <div className="relative w-full h-[85px]">
                   <Image src="/images/spray-white.png" alt="White Variant" fill className="object-contain" />

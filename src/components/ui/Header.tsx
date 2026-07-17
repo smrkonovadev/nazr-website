@@ -44,10 +44,10 @@ export function Header({ variant = "dark" }: HeaderProps) {
             >
               Menu
             </span>
-            <svg 
-              viewBox="0 0 24 12" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg" 
+            <svg
+              viewBox="0 0 24 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               style={{ color: menuTextColor }}
               className="max-md:w-[22px] max-md:h-[9px] md:w-[24px] md:h-[12px]"
             >

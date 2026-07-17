@@ -5,8 +5,8 @@ export function AboutTeamIntro() {
         <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] max-[380px]:text-[32px] max-md:text-[40px] md:text-[120px] max-md:leading-[90%] md:leading-[85%] max-md:tracking-[-0.03em] md:tracking-[-0.02em] m-0 mb-6">
           MEET THE TEAM
         </h2>
-        <p className="text-[#161616]/80 max-md:text-[16px] md:text-[17.5px] max-md:leading-[140%] md:leading-relaxed max-md:tracking-[-0.03em] max-w-[360px] font-medium">
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+        <p className="text-[#161616]/80 max-md:text-[16px] md:text-[17.5px] max-md:leading-[140%] md:leading-relaxed max-md:tracking-[-0.03em] max-w-[841px] font-medium">
+          Behind NAZR is a team rethinking preparedness through design, culture, technology and the everyday negotiations women make with the world. The result is an ecosystem that belongs in everyday life and a movement that goes beyond them.
         </p>
       </div>
     </section>

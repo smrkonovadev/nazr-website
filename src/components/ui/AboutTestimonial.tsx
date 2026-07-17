@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion";
 
 export function AboutTestimonial() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { margin: "-20% 0px" });
+  const isInView = useInView(containerRef, { margin: "-80% 0px" });
 
   return (
     <section className="w-full bg-[#FFF1EB] max-md:py-2 md:py-16 max-md:px-0 md:px-8 max-md:pb-8 md:pb-32 relative max-md:-mt-[12px] md:-mt-[2px] border-none outline-none z-10">

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Star, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ShopProductTwo() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
@@ -30,34 +31,27 @@ export function ShopProductTwo() {
             </h3>
           </div>
 
-          {/* Product Image Collage */}
-          <div className="relative z-20 flex items-center justify-center -mt-4 md:mt-32 -mb-22 md:mb-0 w-full max-w-[500px] aspect-square">
-
-            {/* Back Blue Box */}
-            <div className="absolute left-[5%] top-0 w-[80%] aspect-square z-20 transform -rotate-[15deg]">
+          {/* Product Image on Podium */}
+          <motion.div
+            initial={{ scale: 0, y: 150 }}
+            whileInView={{ scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ type: "spring", bounce: 0.4, duration: 0.5, delay: 0.05 }}
+            className="relative z-20 flex flex-col items-center justify-end md:mt-32 w-full mt-4 -mb-2 md:mb-0"
+          >
+            <div className="relative w-[360px] h-[330px] md:w-[580px] md:h-[500px] z-20 pointer-events-none md:transform md:translate-x-24 md:translate-y-16">
               <Image
-                src="/images/nazreye.png"
-                alt="Blue Box"
+                src="/images/SHOPPRO2.svg"
+                alt="Sip Check Product"
                 fill
-                className="object-contain drop-shadow-2xl"
+                className="object-contain"
               />
             </div>
-
-            {/* Front Pink Box */}
-            <div className="absolute left-[15%] top-[10%] w-[80%] aspect-square z-30 transform rotate-[10deg]">
-              <Image
-                src="/images/nazreye1.png"
-                alt="Pink Box"
-                fill
-                className="object-contain drop-shadow-2xl"
-              />
-            </div>
-
-          </div>
+          </motion.div>
         </div>
 
         {/* Right Column (Product Details) */}
-        <div className="w-full md:w-[40%] px-4 md:px-6 pb-12 pt-0 md:p-12 lg:px-16 lg:py-12 flex flex-col justify-center overflow-x-hidden">
+        <div className="w-full md:w-[40%] px-4 pb-12 pt-0 md:pl-6 md:pr-12 md:py-12 lg:pl-6 lg:pr-16 lg:py-12 flex flex-col justify-center overflow-x-hidden">
 
           {/* Description Text */}
           <p className="font-['Inter',_sans-serif] text-[#161616] text-[22px] md:text-[23px] font-bold leading-[1.3] max-w-[408px] mb-6 tracking-[-0.02em]">
@@ -84,7 +78,7 @@ export function ShopProductTwo() {
           </div>
 
           {/* Variant Selector */}
-          ?
+
 
           {/* Action Buttons */}
           <div className="flex flex-row gap-[8px] w-full max-w-[500px]">

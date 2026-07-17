@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useTransform, MotionValue, useMotionTemplate } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useTransform, MotionValue, useMotionTemplate, useMotionValue } from "framer-motion";
 
 function FillLetter({ char, progress, range, fillColor, emptyColor }: { char: string, progress: MotionValue<number>, range: [number, number], fillColor: string, emptyColor: string }) {
   const percent = useTransform(progress, range, [0, 100]);
@@ -33,7 +34,7 @@ export function ScrollRevealText({
   text, 
   className, 
   style, 
-  scrollYProgress, 
+  scrollYProgress: externalScrollYProgress, 
   progressRange,
   fillColor = "#FFF9EB",
   emptyColor = "#444444"
@@ -41,11 +42,45 @@ export function ScrollRevealText({
   text: string, 
   className?: string, 
   style?: React.CSSProperties,
-  scrollYProgress: MotionValue<number>,
+  scrollYProgress?: MotionValue<number>,
   progressRange: [number, number],
   fillColor?: string,
   emptyColor?: string
 }) {
+  const containerRef = useRef<HTMLParagraphElement>(null);
+  const localScrollYProgress = useMotionValue(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Start revealing when the text enters 85% of viewport height
+      // Fully revealed when it reaches 25% of viewport height
+      const startY = windowHeight * 0.85;
+      const endY = windowHeight * 0.25;
+
+      const currentY = rect.top;
+
+      const totalDist = startY - endY;
+      const currentDist = startY - currentY;
+      
+      const rawProgress = currentDist / totalDist;
+      const clampedProgress = Math.max(0, Math.min(1, rawProgress));
+      
+      localScrollYProgress.set(clampedProgress);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [localScrollYProgress]);
+
   // Split into words and whitespace blocks
   const words = text.match(/\S+|\s+/g) || [];
   
@@ -79,7 +114,7 @@ export function ScrollRevealText({
   const globalDelta = globalEnd - globalStart;
 
   return (
-    <p className={className} style={style}>
+    <p ref={containerRef} className={className} style={style}>
       {ranges.map((r, i) => {
         const localStart = r.start / maxTime;
         const localEnd = r.end / maxTime;
@@ -91,7 +126,7 @@ export function ScrollRevealText({
           <FillLetter 
             key={i} 
             char={r.char} 
-            progress={scrollYProgress} 
+            progress={localScrollYProgress} 
             range={[rGlobalStart, rGlobalEnd]}
             fillColor={fillColor}
             emptyColor={emptyColor}

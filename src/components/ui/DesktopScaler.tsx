@@ -22,7 +22,7 @@ export function DesktopScaler({ children, desktopWidth = 1440, bgColor = "#16161
       if (windowWidth < 768) {
         setScale(windowWidth / 390);
       } else {
-        setScale(windowWidth < desktopWidth ? windowWidth / desktopWidth : 1);
+        setScale(windowWidth / desktopWidth);
       }
     };
 

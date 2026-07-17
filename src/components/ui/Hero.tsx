@@ -96,7 +96,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative w-full max-w-[1440px] mx-auto overflow-hidden md:overflow-visible"
+      className="relative w-full overflow-hidden md:overflow-visible"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -279,7 +279,7 @@ export function Hero() {
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.3 }}
           >
             <Image
-              src="/images/nazreye.png"
+              src="/images/nazreyeback.svg"
               alt="Left Box"
               fill
               className="object-contain drop-shadow-xl"
@@ -294,7 +294,7 @@ export function Hero() {
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.4 }}
           >
             <Image
-              src="/images/nazreye1.png"
+              src="/images/nazreyefront.svg"
               alt="Right Box"
               fill
               className="object-contain drop-shadow-2xl"

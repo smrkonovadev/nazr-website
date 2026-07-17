@@ -9,7 +9,7 @@ export function OurProductsHeader() {
           OUR PRODUCTS
         </h2>
 
-        <p className="m-0 text-[#F0E2DD] font-sans font-normal text-[19px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-center max-w-[400px] max-[380px]:w-full max-md:w-[346px] mx-auto mt-4 md:mt-0" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
+        <p className="m-0 text-[#F0E2DD] font-sans font-normal text-[19px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-center max-w-[841px] max-[380px]:w-full max-md:w-[346px] mx-auto mt-4 md:mt-0" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
           Everything in the Nazr ecosystem is built with the one idea that protection fits into your life, not the other way around. Thoughtfully designed. Quietly powerful. Always within reach.
         </p>
 

@@ -7,7 +7,7 @@ import { InteractiveCards } from "./InteractiveCards";
 
 export function ProblemCardsStickyWrapper() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Track scroll progress of the outer 300vh container
   const { scrollYProgress } = useScroll({
     target: containerRef,

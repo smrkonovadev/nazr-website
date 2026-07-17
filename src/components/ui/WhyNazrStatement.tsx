@@ -5,7 +5,7 @@ import Image from "next/image";
 const PinkBadge = () => (
   <div className="relative w-[1em] h-[1em] flex-shrink-0">
     <Image
-      src="/images/pinkround.svg"
+      src="/images/WHY3.svg"
       alt="Pink Badge"
       fill
       className="object-contain animate-spin-slow"
@@ -27,7 +27,7 @@ export function WhyNazrStatement() {
         {/* Line 1 */}
         <div className="flex items-center gap-x-3 md:gap-x-6">
           <div className="relative w-[1.4em] h-[1em] flex-shrink-0">
-            <Image src="/images/new47.svg" alt="Globe" fill className="object-contain" />
+            <Image src="/images/WHYOW.svg" alt="Owl" fill className="object-contain" />
           </div>
           <span>FOR YEARS, INDIAN WOMEN</span>
         </div>
@@ -35,31 +35,31 @@ export function WhyNazrStatement() {
         {/* Line 2 */}
         <div className="flex items-center gap-x-3 md:gap-x-6">
           <span>BUILT THEIR OWN</span>
-          <div className="relative w-[1.4em] h-[1em] flex-shrink-0 rotate-[-15deg] scale-[1.6]">
-            <Image src="/images/greenlens.png" alt="Binoculars" fill className="object-contain" />
+          <div className="relative w-[1.4em] h-[1em] flex-shrink-0 rotate-0 scale-[0.8]">
+            <Image src="/images/WHY2.svg" alt="Camera" fill className="object-contain" />
           </div>
           <span>SAFETY SYSTEMS</span>
         </div>
 
         {/* Line 3 */}
         <div className="flex items-center gap-x-3 md:gap-x-6">
-          <span>Athrough instinct, routines & trust.</span>
+          <span>AT ITS LAYOUT.</span>
           <PinkBadge />
         </div>
 
         {/* Line 4 */}
         <div className="flex items-center gap-x-3 md:gap-x-6">
           <div className="relative w-[1.4em] h-[1em] flex-shrink-0">
-            <Image src="/images/globe.png" alt="Globe" fill className="object-contain" />
+            <Image src="/images/WHY1.svg" alt="Globe" fill className="object-contain" />
           </div>
-          <span>the habits existed</span>
+          <span>USING LOREM IPSUM</span>
         </div>
 
         {/* Line 5 */}
         <div className="flex items-center gap-x-3 md:gap-x-6">
-          <span>the ecosystem didn’t.</span>
-          <div className="relative w-[1.4em] h-[1em] flex-shrink-0 rotate-[-15deg] scale-[1.6]">
-            <Image src="/images/greenlens.png" alt="Binoculars" fill className="object-contain" />
+          <span>READABLE CONTENT</span>
+          <div className="relative w-[1.4em] h-[1em] flex-shrink-0 rotate-0 scale-[0.8]">
+            <Image src="/images/WHY2.svg" alt="Camera" fill className="object-contain" />
           </div>
         </div>
 

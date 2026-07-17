@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, useSpring } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -16,77 +16,94 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "1",
     name: "ATUL CHOPRA",
-    roles: ["COFOUNDER", "COFOUNDER"],
-    image: "/images/image2.png"
+    roles: ["CO-FOUNDER", "CEO"],
+    image: "/images/ATUL.svg"
   },
   {
     id: "2",
     name: "JIA MUKHARJEE",
-    roles: ["COFOUNDER", "COFOUNDER"],
-    image: "/images/image3.png"
-  },
-  {
-    id: "3",
-    name: "ATUL CHOPRA",
-    roles: ["COFOUNDER", "COFOUNDER"],
-    image: "/images/image4.png"
+    roles: ["CO-FOUNDER", "CREATIVE DIRECTOR"],
+    image: "/images/AISHANI.svg"
   }
 ];
 
+// Logo width (px) + right margin (mr-4 = 16px)
+const OWL_WIDTH = 116;
+
 export function AboutTeamList() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  
-  // Spring animations for smooth mouse following
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Spring for smooth mouse following
   const mouseX = useSpring(0, { stiffness: 150, damping: 25 });
   const mouseY = useSpring(0, { stiffness: 150, damping: 25 });
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const scale = typeof window !== 'undefined' 
-      ? (window.innerWidth < 768 ? window.innerWidth / 390 : (window.innerWidth < 1440 ? window.innerWidth / 1440 : 1))
-      : 1;
+  // Per-row mouse handler: dynamically reads name and arrow positions on each move
+  // so the image never covers the name text and never goes past the arrow button
+  const handleRowMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const row = e.currentTarget;
+    const rowRect = row.getBoundingClientRect();
+    const containerRect = containerRef.current?.getBoundingClientRect();
+    if (!containerRect) return;
 
-    const rect = e.currentTarget.getBoundingClientRect();
-    // We want the center of the image to follow the cursor.
-    // Image width 300px, height 400px. Offset by half to center it.
-    // Calculate x and y relative to the section's top-left corner
-    mouseX.set((e.clientX - rect.left) / scale - 150);
-    mouseY.set((e.clientY - rect.top) / scale - 200);
+    const imageWidth = 300;
+    const imageHeight = 400;
+    const gap = 24; // breathing room from name edge and arrow edge
+
+    // Read actual rendered positions of name block and arrow button
+    const leftEl = row.querySelector('[data-left]') as HTMLElement | null;
+    const arrowEl = row.querySelector('[data-arrow]') as HTMLElement | null;
+
+    const xMin = leftEl
+      ? leftEl.getBoundingClientRect().right - rowRect.left + gap
+      : rowRect.width * 0.4;
+
+    const xMax = arrowEl
+      ? arrowEl.getBoundingClientRect().left - rowRect.left - imageWidth - gap
+      : rowRect.width - 120 - imageWidth;
+
+    const rawX = e.clientX - rowRect.left - imageWidth / 2;
+    const clampedX = Math.max(xMin, Math.min(rawX, Math.max(xMin, xMax)));
+
+    mouseX.set(clampedX);
+    // Y relative to container so all rows share the same coordinate space
+    mouseY.set(e.clientY - containerRect.top - imageHeight / 2);
   };
 
   return (
-    <section 
-      className="w-full bg-[#FFF1EB] max-md:pb-6 md:pb-32 px-4 md:px-12 relative -mt-[2px] border-none outline-none"
-      onMouseMove={handleMouseMove}
-    >
+    <section className="w-full bg-[#FFF1EB] max-md:pb-6 md:pb-32 px-4 md:px-12 relative -mt-[2px] border-none outline-none">
+
       {/* Desktop Layout: Vertical List with Hover Effects */}
-      <div className="hidden w-full max-w-[1400px] mx-auto border-t-[3px] border-[#161616] md:block">
-        {TEAM_MEMBERS.map((member, index) => {
+      <div ref={containerRef} className="hidden w-full max-w-[1400px] mx-auto border-t-[3px] border-[#161616] md:block relative">
+
+        {TEAM_MEMBERS.map((member) => {
           const isHovered = hoveredId === member.id;
-          
+
           return (
-            <div 
+            <div
               key={member.id}
               className="w-full py-6 md:py-10 border-b-[3px] border-[#161616] flex flex-col md:flex-row justify-between items-start md:items-center gap-6 cursor-pointer group"
               onMouseEnter={() => setHoveredId(member.id)}
               onMouseLeave={() => setHoveredId(null)}
+              onMouseMove={handleRowMouseMove}
             >
-              
+
               {/* Left Side: Name and Tags */}
-              <div className="flex flex-col">
+              <div data-left className="flex flex-col">
                 <div className="flex items-center gap-4 mb-2 relative">
-                  
-                  {/* Owl Logo - only visible on hover */}
-                  <motion.div 
+
+                  {/* Owl Logo - fixed pixel width so Framer Motion interpolates smoothly */}
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.5, width: 0 }}
-                    animate={{ 
-                      opacity: isHovered ? 1 : 0, 
+                    animate={{
+                      opacity: isHovered ? 1 : 0,
                       scale: isHovered ? 1 : 0.5,
-                      width: isHovered ? "auto" : 0
+                      width: isHovered ? OWL_WIDTH : 0,
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="overflow-hidden shrink-0 flex items-center justify-center"
                   >
-                    <Image 
+                    <Image
                       src="/images/logosvg.svg"
                       alt="Owl Logo"
                       width={100}
@@ -103,8 +120,8 @@ export function AboutTeamList() {
                 {/* Pill Tags */}
                 <div className="flex gap-3">
                   {member.roles.map((role, i) => (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       className="border border-[#161616] rounded-full px-4 py-1 flex items-center justify-center"
                     >
                       <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[14px] md:text-[16px] tracking-wide leading-none mt-1">
@@ -115,51 +132,45 @@ export function AboutTeamList() {
                 </div>
               </div>
 
-              {/* Right Side: Circular Button */}
-              <div className="w-[45px] h-[45px] md:w-[60px] md:h-[60px] bg-[#161616] rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
+              {/* Right Side: Circular Button — only rotates, no scale */}
+              <div data-arrow className="w-[45px] h-[45px] md:w-[60px] md:h-[60px] bg-[#161616] rounded-full flex items-center justify-center shrink-0">
                 <ArrowUpRight className="text-[#FFF1EB] w-6 h-6 md:w-8 md:h-8 transition-transform duration-300 group-hover:rotate-45" />
               </div>
 
             </div>
           );
         })}
+
+        {/* Floating Hover Image — positioned relative to the list container */}
+        <motion.div
+          className="absolute top-0 left-0 pointer-events-none z-[100] overflow-hidden rounded-[20px] shadow-2xl w-[300px] h-[400px]"
+          style={{ x: mouseX, y: mouseY }}
+          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+          animate={{
+            opacity: hoveredId ? 1 : 0,
+            scale: hoveredId ? 1 : 0.8,
+            rotate: hoveredId ? 8 : -5,
+          }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        >
+          {TEAM_MEMBERS.map((member) => (
+            <Image
+              key={member.id}
+              src={member.image}
+              alt={member.name}
+              fill
+              className="object-cover transition-opacity duration-300"
+              style={{ opacity: hoveredId === member.id ? 1 : 0 }}
+            />
+          ))}
+        </motion.div>
+
       </div>
 
-      {/* Floating Hover Image */}
-      <motion.div
-        className="absolute top-0 left-0 pointer-events-none z-[100] overflow-hidden rounded-[20px] shadow-2xl w-[300px] h-[400px]"
-        style={{
-          x: mouseX,
-          y: mouseY,
-        }}
-        initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-        animate={{
-          opacity: hoveredId ? 1 : 0,
-          scale: hoveredId ? 1 : 0.8,
-          rotate: hoveredId ? 8 : -5,
-        }}
-        transition={{ 
-          type: "spring",
-          stiffness: 200,
-          damping: 20
-        }}
-      >
-        {TEAM_MEMBERS.map((member) => (
-          <Image 
-            key={member.id}
-            src={member.image} 
-            alt={member.name} 
-            fill 
-            className="object-cover transition-opacity duration-300"
-            style={{ opacity: hoveredId === member.id ? 1 : 0 }}
-          />
-        ))}
-      </motion.div>
-
       {/* Mobile Layout: Horizontal Scrolling Cards */}
-      <div 
-        className="md:hidden flex overflow-x-auto gap-4 snap-x snap-mandatory pb-8 pt-4 -mx-4 px-4 [&::-webkit-scrollbar]:hidden outline-none border-none" 
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      <div
+        className="md:hidden flex overflow-x-auto gap-4 snap-x snap-mandatory pb-8 pt-4 -mx-4 px-4 [&::-webkit-scrollbar]:hidden outline-none border-none"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {TEAM_MEMBERS.map((member) => (
           <div key={`mobile-${member.id}`} className="w-[85vw] max-w-[320px] shrink-0 snap-center flex flex-col">
