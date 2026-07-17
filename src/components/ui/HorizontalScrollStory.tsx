@@ -23,9 +23,10 @@ export function HorizontalScrollStory() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["start start", "end end"]
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
+  const x = useTransform(scrollYProgress, [0.25, 0.95], [0, -scrollRange]);
 
   return (
     <section ref={containerRef} className="relative h-[300vh] bg-[#F1E4DE] w-full">
@@ -40,7 +41,7 @@ export function HorizontalScrollStory() {
           <div className="w-[100vw] flex flex-row items-center justify-between flex-shrink-0 pl-[5vw]">
             {/* Block 1: Title */}
             <div className="flex flex-col justify-center -translate-y-[-50px]">
-              <h2 className="font-[family-name:var(--font-bebas)] max-md:text-[60px] md:text-[150px] leading-[90%] tracking-[-0.02em] text-[#161616] m-0 mb-16 uppercase max-w-[320px] md:max-w-[650px] lg:max-w-[900px] xl:max-w-[900px]">
+              <h2 className="font-[family-name:var(--font-bebas)] max-md:text-[60px] md:text-[120px] leading-[90%] tracking-[-0.03em] text-[#161616] m-0 mb-16 uppercase max-w-[320px] md:max-w-[650px] lg:max-w-[900px] xl:max-w-[900px]">
                 They Tell you to lower your gaze, we tell you to sharpen it.              </h2>
               {/* <p className="text-[#161616] font-bold max-md:text-[16px] md:text-[36px] uppercase max-w-[800px] leading-[110%]">
                 IT IS A LONG ESTABLISHED FACT THAT<br />
@@ -63,7 +64,7 @@ export function HorizontalScrollStory() {
           <div className="flex flex-row items-center gap-x-[10vw] max-md:ml-[calc(180px+10vw)] md:ml-[calc(300px+10vw)] lg:ml-[calc(360px+10vw)] pr-[10vw]">
             {/* Block 3: Text */}
             <div className="flex flex-col justify-center w-[280px] md:w-[450px] lg:w-[680px] flex-shrink-0">
-              <p className="text-[#161616] font-semibold max-md:text-[18px] md:text-[32px] lg:text-[40.8px] uppercase leading-[110%] tracking-[-0.03em]">
+              <p className="text-[#161616] font-semibold max-md:text-[18px] md:text-[32px] uppercase leading-[110%] tracking-[-0.03em]">
 
                 To Equip with Confidence<br /><br />
 
@@ -83,7 +84,7 @@ export function HorizontalScrollStory() {
 
             {/* Block 5: Text */}
             <div className="flex flex-col justify-center w-[280px] md:w-[450px] lg:w-[680px] flex-shrink-0">
-              <p className="text-[#161616] font-semibold max-md:text-[18px] md:text-[32px] lg:text-[40.8px] uppercase leading-[110%] tracking-[-0.03em]">
+              <p className="text-[#161616] font-medium max-md:text-[18px] md:text-[30px] uppercase leading-[110%] tracking-[-0.03em] font-sans">
 
                 A Culture of Unblinking Presence<br /><br />
 

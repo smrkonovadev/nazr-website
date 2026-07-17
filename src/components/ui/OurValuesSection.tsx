@@ -4,37 +4,37 @@ import Image from "next/image";
 import { useState } from "react";
 
 export function OurValuesSection() {
-  const [hoveredIndex, setHoveredIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const values = [
     {
       title: "Anticipatory design",
       desc: "The micro-moments of a woman’s journey is where support is needed most. From low-light visibility to crisis guidance, our system is designed for every possible scenario.",
-      image: "/images/new48.svg"
+      image: "/images/OUR1.svg"
     },
     {
       title: "SEAMLESS INTEGRATION",
       desc: "Traditional gear can be scary and inconvenient which is something we reject. Nazr is crafted to be a natural, accessible and high-performance integration into your daily carry.",
-      image: "/images/new49.svg"
+      image: "/images/OUR2.svg"
     },
     {
       title: "MODERN HERITAGE",
       desc: "By reclaiming the “Nazar”, we aim to transform the traditional Evil Eye into a symbol of autonomy that enables a cultural statement of identity. ",
-      image: "/images/new50.svg"
+      image: "/images/OUR3.svg"
     },
     {
       title: "QUIET EMPOWERMENT",
       desc: "Our goal is to equip our users with the confidence to take up space knowing they’re prepared. Carrying Nazr is a declaration of rightful independence.",
-      image: "/images/new51.svg"
+      image: "/images/OUR4.svg"
     },
   ];
 
   return (
     <section className="w-full bg-[#161616] min-h-screen flex items-center py-16 overflow-hidden">
-      <div className="w-full max-w-[1200px] mx-auto px-[20px] grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="w-full max-w-[1200px] mx-auto px-[40px] flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-8">
 
         {/* Left Content Column */}
-        <div className="lg:col-span-7 flex flex-col justify-center max-md:translate-x-0 lg:-translate-x-[70px]">
+        <div className="w-full lg:w-[664px] flex flex-col justify-center" onMouseLeave={() => setHoveredIndex(null)}>
 
           {/* Main Typography */}
           <div className="mb-[72px]">
@@ -66,22 +66,71 @@ export function OurValuesSection() {
 
         </div>
 
-        {/* Right Image Column */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
-          <div className="relative w-[280px] h-[350px] md:w-[350px] md:h-[450px] lg:w-[400px] lg:h-[500px] max-md:translate-y-0 md:translate-y-6 lg:-translate-x-[50px] max-md:mt-12 transition-all duration-500 overflow-hidden">
-            {values.map((val, idx) => (
+        {/* Right Image Column: Phone Mockup */}
+        <div className="w-full lg:w-[404px] h-[644px] flex justify-center items-center relative flex-shrink-0">
+          <div 
+            className="relative flex-shrink-0"
+            style={{
+              width: '404px',
+              height: '644px'
+            }}
+          >
+            {/* Hovered screen overlay inside the phone screen */}
+            <div 
+              className="absolute z-10"
+              style={{
+                width: '295.6px',
+                height: '598.7px',
+                left: '113.047px',
+                top: '0px',
+                transform: 'rotate(10.8845deg)',
+                transformOrigin: 'top left',
+                overflow: 'hidden'
+              }}
+            >
               <div 
-                key={idx}
-                className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${hoveredIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                className="absolute"
+                style={{
+                  top: '14px',
+                  left: '14px',
+                  right: '14px',
+                  bottom: '14px',
+                  borderRadius: '36px',
+                  overflow: 'hidden',
+                  backgroundColor: '#000000'
+                }}
               >
-                <Image
-                  src={val.image}
-                  alt={val.title}
-                  fill
-                  className="object-cover"
-                />
+                {values.map((val, idx) => (
+                  <div 
+                    key={idx}
+                    className="absolute inset-0 w-full h-full transition-opacity duration-500"
+                    style={{
+                      opacity: hoveredIndex === idx ? 1 : 0,
+                      zIndex: hoveredIndex === idx ? 10 : 0,
+                      pointerEvents: 'none'
+                    }}
+                  >
+                    <Image
+                      src={val.image}
+                      alt={val.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Phone Mockup Frame (On top, pointer-events-none) */}
+            <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+              <Image 
+                src="/images/PHONEOURVALUES.svg" 
+                alt="Phone Mockup"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
         </div>
 

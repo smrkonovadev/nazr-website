@@ -35,7 +35,7 @@ export function AboutStatement() {
     if (distance > 30) {
       lastPos.current = { x: clientX, y: clientY };
 
-      const scale = typeof window !== 'undefined' 
+      const scale = typeof window !== 'undefined'
         ? (window.innerWidth < 768 ? window.innerWidth / 390 : (window.innerWidth < 1440 ? window.innerWidth / 1440 : 1))
         : 1;
 
@@ -113,45 +113,96 @@ export function AboutStatement() {
 
       {/* Top Tag */}
       <div className="bg-[#FFF1EB] text-black text-[20px] md:text-[24px] px-4 py-1 mb-10 tracking-wide relative z-10 font-[family-name:var(--font-bebas)] leading-[100%] uppercase mt-8 md:mt-0">
-        JOIN ECOSYSTEM
+        A NEW STANDARD BEGINS HERE
       </div>
 
       {/* Main Typography Container */}
       <div className="relative max-w-[1000px] text-center z-10 pointer-events-none">
 
-        <h2 className="font-[family-name:var(--font-bebas)] text-[#FFF1EB] max-[380px]:text-[38px] max-md:text-[45px] md:text-[130px] leading-[100%] tracking-[-0.03em] m-0 relative z-10 pointer-events-auto">
-          IT IS A LONG <br />
-          ESTABLISHED FACT <br />
-          THAT A <span className="relative inline-block">
-            READER
+        <h2 className="font-[family-name:var(--font-bebas)] text-[#FFF1EB] max-[380px]:text-[38px] max-md:text-[45px] md:text-[100px] leading-[90%] tracking-[-0.03em] m-0 relative z-10 pointer-events-auto">
+          EVERY WOMAN <br />
+          DESERVES <br />
+          <span className="relative inline-block px-1 mb-2 md:mb-4">
+            BETTER SAFETY
 
-            {/* The Blue Strike-through Line */}
-            <motion.div
-              className="absolute left-[-5%] top-[50%] h-[6px] md:h-[10px] bg-[#0E8DFF] z-20 pointer-events-none rounded-full"
-              style={{ transformOrigin: 'left center' }}
-              initial={{ width: "0%", rotate: -2 }}
-              whileInView={{ width: "110%", rotate: -2 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-            />
-
-            {/* The cursive NAZR text */}
-            <motion.div
-              className="absolute left-[45%] max-md:top-[calc(10%+40px)] md:top-[20%] z-30 text-[#0E8DFF] pointer-events-none whitespace-nowrap"
-              style={{
-                fontFamily: 'SignPainter, cursive',
-                fontSize: 'clamp(45px, 11vw, 150px)',
-                fontWeight: 800,
-                lineHeight: '90%',
-                letterSpacing: '-0.03em',
-              }}
-              initial={{ clipPath: "inset(-50% 150% -50% -50%)", rotate: -8 }}
-              whileInView={{ clipPath: "inset(-50% -50% -50% -50%)", rotate: -8 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 1.2, delay: 0.3, ease: "linear" }}
+            {/* The First Blue Strike-through Line */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+              viewBox="0 0 100 20"
+              preserveAspectRatio="none"
             >
-              NAZR
-            </motion.div>
+              <defs>
+                <filter id="marker-texture-1" x="-10%" y="-30%" width="120%" height="160%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+              </defs>
+              <motion.path
+                d="M 2 13 Q 50 10 98 7"
+                stroke="#0E8DFF"
+                strokeWidth={2.2}
+                strokeLinecap="round"
+                fill="none"
+                filter="url(#marker-texture-1)"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              />
+            </svg>
+          </span> <br />
+
+          <span className="relative inline-block px-1">
+            STANDARDS
+
+            {/* The Second Blue Strike-through Line */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+              viewBox="0 0 100 20"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <filter id="marker-texture-2" x="-10%" y="-30%" width="120%" height="160%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+              </defs>
+              <motion.path
+                d="M 2 13 Q 50 10 98 7"
+                stroke="#0E8DFF"
+                strokeWidth={2.2}
+                strokeLinecap="round"
+                fill="none"
+                filter="url(#marker-texture-2)"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.35, delay: 0.15, ease: "easeOut" }}
+              />
+            </svg>
+
+            {/* The cursive NAZR text, absolute overlay on the right */}
+            <span className="absolute left-[100%] top-[-30%] md:top-[-35%] z-30">
+              <motion.span
+                className="inline-block text-[#0E8DFF] pointer-events-none"
+                style={{
+                  fontFamily: 'SignPainter, cursive',
+                  fontSize: 'clamp(45px, 9vw, 130.92px)',
+                  fontWeight: 400,
+                  lineHeight: '90%',
+                  letterSpacing: '-0.03em',
+                  textAlign: 'center',
+                  // @ts-ignore
+                  leadingTrim: 'cap-height',
+                }}
+                initial={{ clipPath: "inset(-50% 150% -50% -50%)", rotate: -6.85 }}
+                whileInView={{ clipPath: "inset(-50% -50% -50% -50%)", rotate: -6.85 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 1.2, delay: 0.4, ease: "linear" }}
+              >
+                NAZR
+              </motion.span>
+            </span>
           </span>
         </h2>
 
@@ -166,7 +217,7 @@ export function AboutStatement() {
           height={24}
           className="max-md:w-[35px] max-md:h-[24px] md:w-9 md:h-9 object-contain invert brightness-0 shrink-0"
         />
-        <span className="font-['Roboto',_sans-serif] max-md:w-[113px] max-md:h-[24px] text-[16px] md:text-[18px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Join Ecosystem</span>
+        <span className="font-['Roboto',_sans-serif] max-md:w-[113px] max-md:h-[24px] text-[16px] md:text-[18px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Explore the Ecosystem</span>
       </button>
 
     </section>

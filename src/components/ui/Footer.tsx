@@ -67,16 +67,16 @@ export function Footer() {
       </div>
 
       {/* Spacer matching Figma height exactly */}
-      <div className="h-[143px] w-full" />
+      <div className="h-[50px] md:h-[116px] w-full" />
 
       {/* Bottom section: Brand & Logo */}
-      <div className="w-full max-w-[1205px] mx-auto flex flex-col h-[382px] justify-between">
+      <div className="w-full max-w-[1205px] mx-auto flex flex-col h-[180px] md:h-[382px] justify-between">
         <span className="text-[12px] md:text-[14px] font-['Switzer',_sans-serif] font-normal text-[#FFF1EB]/60 tracking-wider uppercase leading-none">
           NOT YOUR TYPICAL PLATFORM
         </span>
         
         {/* Large Logo */}
-        <div className="relative w-full h-[342px] mt-4">
+        <div className="relative w-full h-[140px] md:h-[342px] mt-4">
           <Image
             src="/images/footer.svg"
             alt="NAZR"

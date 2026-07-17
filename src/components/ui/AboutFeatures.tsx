@@ -7,27 +7,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const cards = [
   {
     id: 1,
-    title: "1) PEPPER SPRAY",
-    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-    image: "/images/image1.png",
+    title: "1) ON ME",
+    description: "Designed to stay within reach when seconds matter. Glow-in-the-dark for visibility. Built to be carried, not forgotten.",
+    image: "/images/STACK1.svg",
   },
   {
     id: 2,
-    title: "2) EMERGENCY ALARM",
-    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-    image: "/images/image2.png",
-  },
-  {
-    id: 3,
-    title: "3) LOCATION TRACKING",
-    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-    image: "/images/image3.png",
-  },
-  {
-    id: 4,
-    title: "4) 24/7 SUPPORT",
-    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-    image: "/images/image4.png",
+    title: "2) SIP CHECK",
+    description: "Designed to protect what you're drinking.Creates a barrier over your drink when it matters. Built for nights out, travel, and everything in between.",
+    image: "/images/STACK2.svg",
   },
 ];
 
@@ -67,18 +55,18 @@ export function AboutFeatures() {
       </div>
 
       {/* Interactive Stacked List Container */}
-      <div ref={containerRef} className="w-full max-w-[1200px] mx-auto px-4 md:px-8 max-md:pb-0 md:pb-[20vh] relative">
-        
+      <div ref={containerRef} className="w-full max-w-[1200px] mx-auto px-4 md:px-8 max-md:pb-0 md:pb-[12vh] relative">
+
         {/* Visual Layer */}
         <div className="flex flex-col items-center w-full gap-[30vh] md:gap-[40vh]">
 
           {cards.map((card, index) => (
-            <CardItem 
-              key={card.id} 
-              card={card} 
-              index={index} 
-              cardsLength={cards.length} 
-              progress={scrollYProgress} 
+            <CardItem
+              key={card.id}
+              card={card}
+              index={index}
+              cardsLength={cards.length}
+              progress={scrollYProgress}
             />
           ))}
 
@@ -90,13 +78,13 @@ export function AboutFeatures() {
 }
 
 function CardItem({ card, index, cardsLength, progress }: { card: any, index: number, cardsLength: number, progress: any }) {
-  
+
   // Calculate the scroll range for this specific card based on its index
   // We use mathematical mapping to ensure the card stays sharp until the next card arrives
   const step = 1 / (cardsLength - 0.5); // ~0.285 for 4 cards
-  
+
   // Card i stays sharp (0px blur) until progress hits startProgress
-  const startProgress = index * step + 0.12; 
+  const startProgress = index * step + 0.12;
   // Card i reaches full blur (16px) when progress hits endProgress
   const endProgress = index * step + step;
 
@@ -108,7 +96,7 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
 
   return (
     <motion.div
-      className="sticky w-full max-md:aspect-square md:aspect-[16/10] lg:aspect-[21/9] rounded-[24px] overflow-hidden shadow-[0_-10px_40px_rgba(0,0,0,0.4)] bg-[#161616] top-[calc(5vh+var(--index-offset))] md:top-[calc(10vh+var(--index-offset))]"
+      className="sticky w-full max-md:aspect-square md:aspect-[16/10] lg:aspect-[21/9] rounded-[24px] overflow-hidden shadow-[0_-10px_40px_rgba(0,0,0,0.4)] bg-[#161616] top-[calc(4vh+var(--index-offset))] md:top-[calc(6vh+var(--index-offset))]"
       style={{
         "--index-offset": `${index * 40}px`,
         filter: isLast ? "blur(0px)" : blurFilter,
@@ -116,42 +104,42 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
         transformOrigin: "top center",
       } as React.CSSProperties | any}
     >
-        {/* Background Image */}
-        <Image
-          src={card.image}
-          alt={card.title}
-          fill
-          className="object-cover"
-        />
+      {/* Background Image */}
+      <Image
+        src={card.image}
+        alt={card.title}
+        fill
+        className="object-cover"
+      />
 
-        {/* Gradient Overlay for Text */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+      {/* Gradient Overlay for Text */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
 
-        {/* Text Content */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20 pointer-events-auto">
-          <h3 className="font-[family-name:var(--font-bebas)] text-white max-[380px]:text-[36px] text-[45px] md:text-[70px] lg:text-[90px] leading-[90%] mb-4">
-            {card.title}
-          </h3>
+      {/* Text Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20 pointer-events-auto">
+        <h3 className="font-[family-name:var(--font-bebas)] text-white max-[380px]:text-[36px] text-[45px] md:text-[70px] lg:text-[90px] leading-[90%] mb-4">
+          {card.title}
+        </h3>
 
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-            <p className="text-white/90 text-[14px] md:text-[18px] max-w-[450px] leading-relaxed font-medium">
-              {card.description}
-            </p>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <p className="text-white/90 text-[14px] md:text-[18px] max-w-[450px] leading-relaxed font-medium">
+            {card.description}
+          </p>
 
-            {/* Pink Button */}
-            <button className="shrink-0 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center max-md:gap-[8px] md:gap-3 hover:bg-[#FF0E97]/90 transition-colors shadow-lg flex-nowrap">
-              <Image
-                src="/images/logosvg.svg"
-                alt="Nazr Logo"
-                width={35}
-                height={24}
-                className="max-md:w-[35px] max-md:h-[24px] md:w-9 md:h-9 object-contain invert brightness-0 shrink-0"
-              />
-              <span className="font-['Roboto',_sans-serif] max-md:w-[113px] max-md:h-[24px] text-[16px] md:text-[18px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Join Ecosystem</span>
-            </button>
-          </div>
+          {/* Pink Button */}
+          <button className="shrink-0 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center max-md:gap-[8px] md:gap-3 hover:bg-[#FF0E97]/90 transition-colors shadow-lg flex-nowrap">
+            <Image
+              src="/images/logosvg.svg"
+              alt="Nazr Logo"
+              width={35}
+              height={24}
+              className="max-md:w-[35px] max-md:h-[24px] md:w-9 md:h-9 object-contain invert brightness-0 shrink-0"
+            />
+            <span className="font-['Roboto',_sans-serif] max-md:w-[113px] max-md:h-[24px] text-[16px] md:text-[18px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Join Ecosystem</span>
+          </button>
         </div>
+      </div>
 
-      </motion.div>
+    </motion.div>
   );
 }

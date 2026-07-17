@@ -27,7 +27,7 @@ const bottomRow = [...bottomHalf, ...bottomHalf];
 
 export function AutoMovingCarousel({ className }: { className?: string }) {
   return (
-    <section className={`w-full overflow-hidden pt-0 pb-24 md:pb-32 flex flex-col gap-3 md:gap-6 relative z-20 ${className || "bg-[#FFF1EB]"}`}>
+    <section className={`w-full overflow-hidden pt-0 pb-8 md:pb-12 flex flex-col gap-3 md:gap-6 relative z-20 ${className || "bg-[#FFF1EB]"}`}>
 
       {/* Top Row - Moves Left to Right */}
       <div className="flex w-max animate-marquee-reverse gap-3 md:gap-6">

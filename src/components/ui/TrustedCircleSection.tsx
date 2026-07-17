@@ -152,7 +152,7 @@ export function TrustedCircleSection() {
         {/* ======================== */}
         <div className="hidden md:grid grid-cols-12 gap-20 items-center">
           {/* Left Column: Timeline */}
-          <div className="col-span-6 relative flex flex-col gap-8 w-full text-left pt-4 -translate-y-[50px] -translate-x-[70px]">
+          <div className="col-span-6 relative flex flex-col gap-8 w-full text-left pt-4 -translate-y-[50px]">
             {/* Vertical connecting line */}
             <div className="absolute left-[19px] top-4 bottom-24 w-[2px] bg-[#F80090] z-0"></div>
 

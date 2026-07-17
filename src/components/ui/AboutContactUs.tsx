@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function AboutContactUs() {
   return (
-    <section className="w-full bg-[#FFF1EB] max-md:pt-4 max-md:pb-[58px] md:py-32 flex flex-col items-center justify-center text-center px-4 relative -mt-[2px] border-none outline-none z-20">
+    <section className="w-full bg-[#FFF1EB] max-md:pt-4 max-md:pb-[58px] md:pt-10 md:pb-32 flex flex-col items-center justify-center text-center px-4 relative -mt-[2px] border-none outline-none z-20">
       <div className="flex flex-col items-center max-w-[800px] mx-auto">
         <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] max-[380px]:text-[34px] max-md:text-[42px] md:text-[120px] leading-[90%] tracking-[-0.03em] md:tracking-[-0.02em] m-0 max-md:mb-3 md:mb-6 uppercase">
           JOIN THE CONVERSATION.

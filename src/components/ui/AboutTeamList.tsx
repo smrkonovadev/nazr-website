@@ -43,35 +43,44 @@ export function AboutTeamList() {
   const handleRowMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const row = e.currentTarget;
     const rowRect = row.getBoundingClientRect();
-    const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return;
+    const container = containerRef.current;
+    if (!container) return;
+    const containerRect = container.getBoundingClientRect();
 
     const imageWidth = 300;
     const imageHeight = 400;
-    const gap = 24; // breathing room from name edge and arrow edge
+    const gap = 40; // breathing room from name edge and arrow edge
 
-    // Read actual rendered positions of name block and arrow button
+    // Calculate mouse position ratio (zoom-independent)
+    const relativeX = (e.clientX - rowRect.left) / rowRect.width;
+    const relativeY = (e.clientY - containerRect.top) / containerRect.height;
+
+    // Convert to unzoomed CSS pixels
+    const cssMouseX = relativeX * row.offsetWidth;
+    const cssMouseY = relativeY * container.offsetHeight;
+
+    // Read actual CSS layout positions of name block and arrow button
     const leftEl = row.querySelector('[data-left]') as HTMLElement | null;
     const arrowEl = row.querySelector('[data-arrow]') as HTMLElement | null;
 
     const xMin = leftEl
-      ? leftEl.getBoundingClientRect().right - rowRect.left + gap
-      : rowRect.width * 0.4;
+      ? leftEl.offsetLeft + leftEl.offsetWidth + gap
+      : row.offsetWidth * 0.4;
 
     const xMax = arrowEl
-      ? arrowEl.getBoundingClientRect().left - rowRect.left - imageWidth - gap
-      : rowRect.width - 120 - imageWidth;
+      ? arrowEl.offsetLeft - imageWidth - gap
+      : row.offsetWidth - 120 - imageWidth;
 
-    const rawX = e.clientX - rowRect.left - imageWidth / 2;
+    const rawX = cssMouseX - imageWidth / 2;
     const clampedX = Math.max(xMin, Math.min(rawX, Math.max(xMin, xMax)));
 
     mouseX.set(clampedX);
     // Y relative to container so all rows share the same coordinate space
-    mouseY.set(e.clientY - containerRect.top - imageHeight / 2);
+    mouseY.set(cssMouseY - imageHeight / 2);
   };
 
   return (
-    <section className="w-full bg-[#FFF1EB] max-md:pb-6 md:pb-32 px-4 md:px-12 relative -mt-[2px] border-none outline-none">
+    <section className="w-full bg-[#FFF1EB] max-md:pb-6 md:pb-8 px-4 md:px-12 relative -mt-[2px] border-none outline-none">
 
       {/* Desktop Layout: Vertical List with Hover Effects */}
       <div ref={containerRef} className="hidden w-full max-w-[1400px] mx-auto border-t-[3px] border-[#161616] md:block relative">
@@ -133,7 +142,7 @@ export function AboutTeamList() {
               </div>
 
               {/* Right Side: Circular Button — only rotates, no scale */}
-              <div data-arrow className="w-[45px] h-[45px] md:w-[60px] md:h-[60px] bg-[#161616] rounded-full flex items-center justify-center shrink-0">
+              <div data-arrow className="w-[45px] h-[45px] md:w-[60px] md:h-[60px] bg-[#161616] rounded-full flex items-center justify-center shrink-0 relative z-[110]">
                 <ArrowUpRight className="text-[#FFF1EB] w-6 h-6 md:w-8 md:h-8 transition-transform duration-300 group-hover:rotate-45" />
               </div>
 

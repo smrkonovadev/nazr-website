@@ -7,13 +7,13 @@ import { motion, useInView } from "framer-motion";
 
 export function AboutTestimonial() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { margin: "-80% 0px" });
+  const isInView = useInView(containerRef, { amount: 0.5 });
 
   return (
-    <section className="w-full bg-[#FFF1EB] max-md:py-2 md:py-16 max-md:px-0 md:px-8 max-md:pb-8 md:pb-32 relative max-md:-mt-[12px] md:-mt-[2px] border-none outline-none z-10">
+    <section className="w-full bg-[#FFF1EB] max-md:py-2 md:pt-4 md:pb-12 max-md:px-0 md:px-8 relative max-md:-mt-[12px] md:-mt-[2px] border-none outline-none z-10">
       <div
         ref={containerRef}
-        className="w-full max-w-[1400px] mx-auto bg-[#161616] rounded-[24px] md:rounded-[40px] max-md:aspect-square relative overflow-hidden flex flex-col items-center justify-center text-center px-4 md:px-12 max-md:py-4 md:py-[184px] cursor-default"
+        className="w-full max-w-[1400px] mx-auto bg-[#161616] rounded-[24px] md:rounded-[40px] max-md:aspect-square relative overflow-clip flex flex-col items-center justify-center text-center px-4 md:px-12 max-md:py-4 md:py-[184px] cursor-default"
       >
 
         {/* Decorative Side Images that slide out on scroll */}

@@ -92,11 +92,12 @@ export function ScalableShopCollage() {
               className="absolute left-1/2 -translate-x-1/2 max-md:top-[50%] md:top-[52%] z-[60] text-[#0E8DFF] pointer-events-none whitespace-nowrap"
               style={{
                 fontFamily: 'SignPainter, cursive',
-                fontSize: 'clamp(50px, 37.5vw, 152px)',
-                fontWeight: 800,
-                lineHeight: '0.8',
-                letterSpacing: '-0.02em',
-                transform: 'rotate(-5deg)'
+                fontSize: 'clamp(50px, 37.5vw, 130.92px)',
+                fontWeight: 400,
+                lineHeight: '90%',
+                letterSpacing: '-0.03em',
+                transform: 'rotate(-5deg)',
+                textAlign: 'center'
               }}
             >
               NAZR
