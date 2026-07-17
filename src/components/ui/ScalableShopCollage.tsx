@@ -91,7 +91,7 @@ export function ScalableShopCollage() {
             <div
               className="absolute left-1/2 -translate-x-1/2 max-md:top-[50%] md:top-[52%] z-[60] text-[#0E8DFF] pointer-events-none whitespace-nowrap"
               style={{
-                fontFamily: 'SignPainter, cursive',
+                fontFamily: 'var(--font-signpainter), SignPainter, cursive',
                 fontSize: 'clamp(50px, 37.5vw, 130.92px)',
                 fontWeight: 400,
                 lineHeight: '90%',
