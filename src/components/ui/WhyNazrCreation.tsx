@@ -4,9 +4,16 @@ import Image from "next/image";
 
 export function WhyNazrCreation() {
   return (
-    <div className="w-full relative flex items-center justify-center py-4 md:py-8 -mt-[48px] md:-mt-[40px] z-10 overflow-visible min-h-[300px] md:min-h-[500px]">
-      {/* Left Hand Image */}
-      <div className="absolute left-0 right-[calc(50%+70px)] md:right-[calc(50%+100px)] lg:right-[calc(50%+120px)] top-1/2 -translate-y-1/2 -mt-[250px] h-[100%] md:h-[120%] pointer-events-none z-0">
+    <div
+      className="w-full relative flex items-center justify-center mt-0 z-10 overflow-visible"
+      style={{
+        paddingLeft: "126px",
+        paddingRight: "132px",
+        minHeight: "500px",
+      }}
+    >
+      {/* Left Hand Image — starts from left edge (no padding) */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[48%] h-[110%] pointer-events-none z-0">
         <Image
           src="/images/lefthand.png"
           alt="Left Hand"
@@ -16,8 +23,8 @@ export function WhyNazrCreation() {
         />
       </div>
 
-      {/* Right Hand Image */}
-      <div className="absolute right-0 left-[calc(50%+40px)] md:left-[calc(50%+70px)] lg:left-[calc(50%+90px)] top-1/2 -translate-y-1/2 -mt-[250px] h-[100%] md:h-[120%] pointer-events-none z-0">
+      {/* Right Hand Image — starts from right edge (no padding) */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[48%] h-[110%] pointer-events-none z-0">
         <Image
           src="/images/righthand.png"
           alt="Right Hand"
@@ -27,8 +34,8 @@ export function WhyNazrCreation() {
         />
       </div>
 
-      {/* Center Image */}
-      <div className="relative z-20 w-[360px] md:w-[640px] lg:w-[820px] aspect-square animate-[spin_20s_linear_infinite] left-[25px]">
+      {/* Center rotating image — Figma: 564px wide */}
+      <div className="relative z-20 w-[280px] md:w-[420px] lg:w-[564px] aspect-square animate-[spin_20s_linear_infinite]">
         <Image
           src="/images/new46.png"
           alt="Nazr Ecosystem"
