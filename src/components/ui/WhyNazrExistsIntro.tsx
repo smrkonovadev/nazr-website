@@ -1,22 +1,43 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export function WhyNazrExistsIntro() {
+  const [containerHeight, setContainerHeight] = useState<string>("auto");
+
+  useEffect(() => {
+    const updateHeight = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const isMobile = width < 768;
+      // Matching DesktopScaler scale calculation:
+      const scale = isMobile ? (width / 390) : (width / 1280);
+      const zoomedViewportHeight = height / scale;
+      const headerOffset = isMobile ? 64 : 104;
+      setContainerHeight(`${zoomedViewportHeight - headerOffset}px`);
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
+
   return (
-    // Single combined section: title + body text + hands + eye — all in one viewport, 100vh
-    <div className="w-full relative flex flex-col items-center overflow-hidden" style={{ height: "calc(100vh - 80px)" }}>
-      
-      {/* Text area — centered at top, tight padding */}
-      <div className="w-full flex flex-col items-center text-center pt-[20px] max-md:pt-[16px] px-4 relative z-10">
+    <div
+      className="w-full relative flex flex-col items-center overflow-hidden"
+      style={{ height: containerHeight }}
+    >
+      {/* Text area */}
+      <div className="w-full flex flex-col items-center text-center pt-[20px] px-4 relative z-10 flex-shrink-0">
         <h1
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase max-md:text-[52px] md:text-[86px] lg:text-[96px] leading-[88%] tracking-[-0.02em]"
+          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[clamp(48px,8vw,96px)] leading-[88%] tracking-[-0.02em]"
         >
           WHY NAZR EXISTS
         </h1>
 
         <p
-          className="mt-[8px] md:mt-[10px] text-[#161616] uppercase font-bold leading-[130%] max-md:text-[12px] md:text-[15px] lg:text-[17px] max-w-[500px]"
+          className="mt-[8px] text-[#161616] uppercase font-bold leading-[128%] text-[clamp(11px,1.2vw,17px)] max-w-[460px]"
           style={{
             fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
             letterSpacing: "-0.01em"
@@ -26,11 +47,11 @@ export function WhyNazrExistsIntro() {
         </p>
       </div>
 
-      {/* Hands + Eye — flex-1 so it fills remaining height with no gap */}
-      <div className="relative w-full flex-1 flex items-center justify-center mt-0">
-        
-        {/* Left Hand — absolute, spans full height of this container */}
-        <div className="absolute left-0 top-0 bottom-0 w-[52%] pointer-events-none z-0">
+      {/* Hands + Eye — takes ALL remaining space */}
+      <div className="relative w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden">
+
+        {/* Left Hand */}
+        <div className="absolute left-0 top-0 bottom-0 w-[54%] pointer-events-none z-0">
           <Image
             src="/images/lefthand.png"
             alt="Left Hand"
@@ -40,8 +61,8 @@ export function WhyNazrExistsIntro() {
           />
         </div>
 
-        {/* Right Hand — absolute, spans full height of this container */}
-        <div className="absolute right-0 top-0 bottom-0 w-[52%] pointer-events-none z-0">
+        {/* Right Hand */}
+        <div className="absolute right-0 top-0 bottom-0 w-[54%] pointer-events-none z-0">
           <Image
             src="/images/righthand.png"
             alt="Right Hand"
@@ -51,8 +72,11 @@ export function WhyNazrExistsIntro() {
           />
         </div>
 
-        {/* Center rotating eye globe — sized to fill the remaining space */}
-        <div className="relative z-20 w-[55vh] max-w-[520px] min-w-[200px] aspect-square animate-[spin_20s_linear_infinite]">
+        {/* Eye globe — use CSS to size relative to remaining container height */}
+        <div
+          className="relative z-20 animate-[spin_20s_linear_infinite]"
+          style={{ height: "85%", aspectRatio: "1/1", maxWidth: "480px" }}
+        >
           <Image
             src="/images/new46.png"
             alt="Nazr Ecosystem"
@@ -62,7 +86,6 @@ export function WhyNazrExistsIntro() {
           />
         </div>
       </div>
-
     </div>
   );
 }
