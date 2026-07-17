@@ -1,7 +1,6 @@
 import { Header } from "@/components/ui/Header";
 
 import { WhyNazrExistsIntro } from "@/components/ui/WhyNazrExistsIntro";
-import { WhyNazrCreation } from "@/components/ui/WhyNazrCreation";
 import { WhyNazrStatement } from "@/components/ui/WhyNazrStatement";
 import { HorizontalScrollStory } from "@/components/ui/HorizontalScrollStory";
 import { OurValuesSection } from "@/components/ui/OurValuesSection";
@@ -26,7 +25,6 @@ export default function WhyNazrExistsPage() {
               }}
             >
               <WhyNazrExistsIntro />
-              <WhyNazrCreation />
             </div>
           </section>
 
