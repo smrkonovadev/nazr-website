@@ -51,6 +51,7 @@ export function ScrollRevealText({
   const localScrollYProgress = useMotionValue(0);
 
   useEffect(() => {
+    if (externalScrollYProgress) return; // Skip local scroll monitoring if external progress is provided
     const handleScroll = () => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
@@ -79,7 +80,7 @@ export function ScrollRevealText({
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [localScrollYProgress]);
+  }, [localScrollYProgress, externalScrollYProgress]);
 
   // Split into words and whitespace blocks
   const words = text.match(/\S+|\s+/g) || [];
@@ -113,6 +114,8 @@ export function ScrollRevealText({
   const [globalStart, globalEnd] = progressRange;
   const globalDelta = globalEnd - globalStart;
 
+  const activeProgress = externalScrollYProgress || localScrollYProgress;
+
   return (
     <p ref={containerRef} className={className} style={style}>
       {ranges.map((r, i) => {
@@ -126,7 +129,7 @@ export function ScrollRevealText({
           <FillLetter 
             key={i} 
             char={r.char} 
-            progress={localScrollYProgress} 
+            progress={activeProgress} 
             range={[rGlobalStart, rGlobalEnd]}
             fillColor={fillColor}
             emptyColor={emptyColor}

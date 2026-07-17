@@ -14,10 +14,10 @@ export function ProblemStatement() {
 
   return (
     <section className="w-full bg-[#161616] flex justify-center pt-[8.2vw] pb-[24.6vw] md:pt-0 md:pb-0 overflow-visible z-[60] relative md:h-[352px]">
-      <div className="w-full px-[4.1vw] md:px-0 flex flex-col md:flex-row items-start relative md:w-[1280px] md:h-full">
+      <div className="w-full px-[4.1vw] md:px-0 flex flex-col md:flex-row items-start relative md:w-full md:h-full">
 
         {/* Left Side: Text */}
-        <div ref={textContainerRef} className="w-[95%] mx-auto md:mx-0 flex flex-col gap-[10.2vw] md:gap-[40px] z-10 pt-0 md:pt-0 md:absolute md:top-[63px] md:left-[30px] md:w-[599px] md:h-[316px]">
+        <div ref={textContainerRef} className="w-[95%] mx-auto md:mx-0 flex flex-col gap-[10.2vw] md:gap-[40px] z-10 pt-0 md:pt-0 md:absolute md:top-[63px] md:left-[30px] md:w-[599px] md:min-h-[316px] md:h-auto">
 
           {/* Mobile Text (Natural Wrapping) */}
           <div className="md:hidden flex flex-col gap-[10.2vw]">
@@ -26,14 +26,14 @@ export function ProblemStatement() {
               className="m-0 font-[family-name:var(--font-bebas)] text-[7.17vw] text-center"
               style={{ lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
               scrollYProgress={scrollYProgress}
-              progressRange={[0, 0.5]}
+              progressRange={[0, 0.4]}
             />
             <ScrollRevealText
               text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
               className="m-0 font-[family-name:var(--font-bebas)] text-[7.17vw] text-center"
               style={{ lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
               scrollYProgress={scrollYProgress}
-              progressRange={[0.5, 1]}
+              progressRange={[0.4, 0.8]}
             />
           </div>
 
@@ -44,14 +44,14 @@ export function ProblemStatement() {
               className="m-0 font-[family-name:var(--font-bebas)] md:text-[40px] md:text-left text-[#FFF9EB]"
               style={{ lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
               scrollYProgress={scrollYProgress}
-              progressRange={[0, 0.5]}
+              progressRange={[0, 0.4]}
             />
             <ScrollRevealText
               text={"When something feels wrong, help should be immediate. Not dependent on finding a phone, unlocking it, and asking for it."}
               className="m-0 font-[family-name:var(--font-bebas)] md:text-[40px] md:text-left text-[#FFF9EB]"
               style={{ lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
               scrollYProgress={scrollYProgress}
-              progressRange={[0.5, 1]}
+              progressRange={[0.4, 0.8]}
             />
           </div>
         </div>
@@ -60,10 +60,10 @@ export function ProblemStatement() {
         <div
           className="hidden md:block md:absolute pointer-events-none z-10"
           style={{
-            width: '437.05px',
-            height: '332.70px',
-            top: '10.53px',
-            left: '851.45px',
+            width: '401.24px',
+            height: '301.84px',
+            top: '36px',
+            right: '63.62px',
             transform: 'rotate(10.14deg)'
           }}
         >

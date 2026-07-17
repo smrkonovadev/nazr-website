@@ -73,54 +73,54 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Box 1 */}
-          <div className="absolute pointer-events-auto z-10" style={{ width: "300px", height: "160px", top: "375px", left: "172px" }}>
+          <div className="absolute pointer-events-auto z-10" style={{ width: "217px", height: "165px", top: "364px", left: "228.25px" }}>
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="150" cy="80" rx="149" ry="79" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
+              <rect x="1" y="1" width="215" height="163" rx="16" ry="16" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
             </svg>
-            <div className="absolute w-[42px] h-[42px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-14px", left: "60px" }}>
+            <div className="absolute w-[42px] h-[42px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-21px", left: "24px" }}>
               <span className="font-[family-name:var(--font-bebas)] text-[22px] text-white leading-[1.2] tracking-[-0.03em] mt-1">1</span>
             </div>
-            <div className="absolute flex flex-col justify-center items-center text-center px-[22px] pointer-events-none" style={{ inset: 0 }}>
-              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1 whitespace-nowrap">
+            <div className="absolute flex flex-col justify-center items-center text-center px-[20px] pointer-events-none" style={{ inset: 0 }}>
+              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1">
                 Volume Button SOS
               </h3>
-              <p className="font-['Inter',_sans-serif] text-[16px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 max-w-[240px]">
+              <p className="font-['Inter',_sans-serif] text-[15px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 w-full">
                 Press your volume button three times to instantly trigger SOS.
               </p>
             </div>
           </div>
 
           {/* Box 2 */}
-          <div className="absolute pointer-events-auto z-10" style={{ width: "300px", height: "160px", top: "295px", left: "808px" }}>
+          <div className="absolute pointer-events-auto z-10" style={{ width: "217px", height: "165px", top: "284px", left: "834.75px" }}>
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="150" cy="80" rx="149" ry="79" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
+              <rect x="1" y="1" width="215" height="163" rx="12" ry="12" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
             </svg>
-            <div className="absolute w-[42px] h-[42px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-14px", left: "60px" }}>
+            <div className="absolute w-[42px] h-[42px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-21px", left: "24px" }}>
               <span className="font-[family-name:var(--font-bebas)] text-[22px] text-white leading-[1.2] tracking-[-0.03em] mt-1">2</span>
             </div>
-            <div className="absolute flex flex-col justify-center items-center text-center px-[22px] pointer-events-none" style={{ inset: 0 }}>
-              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1 whitespace-nowrap">
+            <div className="absolute flex flex-col justify-center items-center text-center px-[20px] pointer-events-none" style={{ inset: 0 }}>
+              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1">
                 In-App SOS Button
               </h3>
-              <p className="font-['Inter',_sans-serif] text-[16px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 max-w-[240px]">
+              <p className="font-['Inter',_sans-serif] text-[15px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 w-full">
                 Tap the SOS button in the NAZR app to alert your support network.
               </p>
             </div>
           </div>
 
           {/* Box 3 */}
-          <div className="absolute pointer-events-auto z-10" style={{ width: "300px", height: "160px", top: "525px", left: "768px" }}>
+          <div className="absolute pointer-events-auto z-10" style={{ width: "276px", height: "165px", top: "514px", left: "805px" }}>
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="150" cy="80" rx="149" ry="79" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
+              <rect x="1" y="1" width="274" height="163" rx="16" ry="16" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
             </svg>
-            <div className="absolute w-[42px] h-[42px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-14px", left: "60px" }}>
+            <div className="absolute w-[42px] h-[42px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-21px", left: "24px" }}>
               <span className="font-[family-name:var(--font-bebas)] text-[22px] text-white leading-[1.2] tracking-[-0.03em] mt-1">3</span>
             </div>
             <div className="absolute flex flex-col justify-center items-center text-center px-[22px] pointer-events-none" style={{ inset: 0 }}>
-              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1 whitespace-nowrap">
+              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1">
                 Home Screen SOS Widget
               </h3>
-              <p className="font-['Inter',_sans-serif] text-[16px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 max-w-[240px]">
+              <p className="font-['Inter',_sans-serif] text-[15px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 w-full">
                 Trigger SOS directly from your home screen without opening the app.
               </p>
             </div>

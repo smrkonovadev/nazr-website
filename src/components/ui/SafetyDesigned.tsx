@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export const carouselData = [
   {
     id: "sip-check",
-    image: "/images/new13.svg",
+    image: "/images/SPICHECKPRO.svg",
     title: "sip check",
     subtitle: "An anti drink spike sticker designed to protect your drink while you stay in the moment. Seals securely to your glass, peels away with ease, and helps deter unwanted tampering."
   },
@@ -75,10 +75,18 @@ export function SafetyDesigned() {
               className="absolute rounded-[23.5px] flex items-center justify-center"
               initial={false}
               animate={{
-                width: isCenter ? 363.30 : (isLeft ? 250.69 : 249.71),
-                height: isCenter ? 499.42 : 344.69,
-                top: isCenter ? 276 : 381.76,
-                left: isCenter ? 429.81 : (isLeft ? 104.7 : 865.59),
+                width: isCenter
+                  ? (item.id === "sip-check" ? 278.75 : 363.30)
+                  : (isLeft ? 250.69 : 249.71),
+                height: isCenter
+                  ? (item.id === "sip-check" ? 326.53 : 499.42)
+                  : 344.69,
+                top: isCenter
+                  ? (item.id === "sip-check" ? 362.45 : 276)
+                  : 381.76,
+                left: isCenter
+                  ? (item.id === "sip-check" ? 472.09 : 429.81)
+                  : (isLeft ? 104.7 : 865.59),
                 opacity: isCenter ? 1 : 0.6,
                 zIndex: isCenter ? 20 : 10
               }}

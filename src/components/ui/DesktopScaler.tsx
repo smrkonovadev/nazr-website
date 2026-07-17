@@ -9,7 +9,7 @@ interface DesktopScalerProps {
   className?: string;
 }
 
-export function DesktopScaler({ children, desktopWidth = 1440, bgColor = "#161616", className = "" }: DesktopScalerProps) {
+export function DesktopScaler({ children, desktopWidth = 1280, bgColor = "#161616", className = "" }: DesktopScalerProps) {
   const [scale, setScale] = useState(1);
   const [contentHeight, setContentHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(true); // default to true to avoid huge layout shifts, or handle via CSS

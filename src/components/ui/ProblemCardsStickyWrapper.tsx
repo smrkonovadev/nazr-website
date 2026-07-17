@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useScroll } from "framer-motion";
 import { ProblemStatement } from "./ProblemStatement";
 import { InteractiveCards } from "./InteractiveCards";
 
 export function ProblemCardsStickyWrapper() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
 
   // Track scroll progress of the outer 300vh container
   const { scrollYProgress } = useScroll({
@@ -14,12 +15,42 @@ export function ProblemCardsStickyWrapper() {
     offset: ["start start", "end end"]
   });
 
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      // Calculate widthScale matching DesktopScaler logic
+      let widthScale = 1;
+      if (windowWidth < 768) {
+        widthScale = windowWidth / 390;
+      } else {
+        widthScale = windowWidth / 1280;
+      }
+
+      const effectiveViewportHeight = windowHeight / widthScale;
+      // We scale down only if effective height is less than 832px
+      const newScale = Math.min(1, effectiveViewportHeight / 832);
+      setScale(newScale);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div ref={containerRef} className="relative w-full h-[300vh] bg-[#161616]">
       {/* Sticky container pins to the top of the viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center items-center">
         {/* The combined 832px tall block */}
-        <div className="w-full flex flex-col items-center">
+        <div
+          className="flex flex-col items-center origin-center"
+          style={{
+            width: `${1280 / scale}px`,
+            transform: `scale(${scale})`
+          }}
+        >
           <ProblemStatement />
           <InteractiveCards scrollProgress={scrollYProgress} />
         </div>
