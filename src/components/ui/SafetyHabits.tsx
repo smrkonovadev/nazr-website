@@ -35,10 +35,11 @@ export function SafetyHabits() {
             >
               <div className="absolute" style={{ width: "211.36px", height: "458.23px", top: "40px", left: "84px" }}>
                 <video
-                  src="/images/vid1.mp4"
                   autoPlay loop muted playsInline
                   className="w-full h-full object-cover rounded-[16px]"
-                />
+                >
+                  <source src="/images/vid1.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
             {/* Text */}
@@ -59,10 +60,11 @@ export function SafetyHabits() {
               <div className="absolute inset-0 opacity-20" style={{ background: "linear-gradient(0deg, #FFF9EB 0%, rgba(139, 105, 25, 0.7) 100%)" }}></div>
               <div className="absolute" style={{ width: "211px", height: "386px", top: "28px", left: "84px" }}>
                 <video
-                  src="/images/vid2.mp4"
                   autoPlay loop muted playsInline
                   className="w-full h-full object-cover rounded-[16px]"
-                />
+                >
+                  <source src="/images/vid2.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
             {/* Text */}
@@ -85,10 +87,11 @@ export function SafetyHabits() {
             >
               <div className="absolute" style={{ width: "211px", height: "457.44px", top: "-79px", left: "84px" }}>
                 <video
-                  src="/images/vid3.mp4"
                   autoPlay loop muted playsInline
                   className="w-full h-full object-cover rounded-[16px]"
-                />
+                >
+                  <source src="/images/vid3.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
             {/* Text */}

@@ -1,18 +1,41 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 
 const categories = [
   "View all",
-  "Category one",
-  "Category two",
-  "Category three",
-  "Category four"
+  "Psychology",
+  "Safety",
+  "Culture",
+  "Product",
+  "Community"
 ];
 
 export function BlogContent() {
+  const [activeCategory, setActiveCategory] = useState("View all");
+
+  const handleCategoryClick = (categoryName: string) => {
+    setActiveCategory(categoryName);
+    if (categoryName === "View all") {
+      const element = document.getElementById("blog-content-top");
+      if (element) {
+        const yOffset = -100;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    } else {
+      const element = document.getElementById(`blog-${categoryName.toLowerCase()}`);
+      if (element) {
+        const yOffset = -120;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  };
+
   return (
-    <div className="w-full px-4 md:px-16 lg:px-20 max-md:pt-0 md:pt-[20px] max-md:pb-8 md:pb-32 relative z-10 flex flex-col md:flex-row max-md:gap-[28px] md:gap-12 lg:gap-24">
+    <div id="blog-content-top" className="w-full px-6 md:px-16 max-md:pt-0 md:pt-0 max-md:pb-8 md:pb-16 relative z-10 flex flex-col md:flex-row max-md:gap-[28px] md:gap-12 lg:gap-24">
 
       <div className="w-full md:w-[260px] lg:w-[280px] shrink-0 flex flex-col max-md:gap-2 md:gap-6">
         <h2
@@ -25,13 +48,14 @@ export function BlogContent() {
           {categories.map((category, index) => (
             <button
               key={index}
-              className={`max-md:shrink-0 max-md:whitespace-nowrap md:w-full text-left max-md:px-4 max-md:py-2 md:px-5 md:py-4 transition-colors ${index === 0
+              onClick={() => handleCategoryClick(category)}
+              className={`max-md:shrink-0 max-md:whitespace-nowrap md:w-full text-left max-md:px-4 max-md:py-2 md:px-5 md:py-4 transition-colors ${activeCategory === category
                 ? "bg-[#161616] text-white rounded-[4px]"
                 : "bg-transparent text-[#161616] hover:bg-[#161616]/5 rounded-[4px]"
                 }`}
               style={{
                 fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
-                fontWeight: index === 0 ? 600 : 400
+                fontWeight: activeCategory === category ? 600 : 400
               }}
             >
               <span className="text-[16px] leading-[150%] tracking-normal">{category}</span>
@@ -44,7 +68,7 @@ export function BlogContent() {
       <div className="flex-1 w-full flex flex-col gap-6">
 
         {/* Featured Blog Post */}
-        <div className="flex flex-col gap-3 md:gap-6 cursor-pointer group">
+        <div id="blog-psychology" className="flex flex-col gap-3 md:gap-6 cursor-pointer group scroll-mt-24">
           <div className="w-full relative aspect-[1.8] md:aspect-[16/9] bg-[#161616]/10 rounded-[16px] overflow-hidden">
             <Image
               src="/images/new52.svg"
@@ -60,7 +84,7 @@ export function BlogContent() {
                 className="bg-[#FF007A] text-white px-3 py-1 rounded-[100px] text-[14px] font-semibold leading-[150%] tracking-normal"
                 style={{ fontFamily: "Roboto, sans-serif" }}
               >
-                Category
+                Psychology
               </span>
               <span
                 className="text-[#161616] font-semibold text-[14px] leading-[150%] tracking-normal ml-1"
@@ -128,7 +152,7 @@ export function BlogContent() {
               excerpt: "Preparedness rarely begins in an emergency. It is built through small, repeated safety habits that become instinct over time. Understand the behavioural psychology behind automatic preparedness.",
             },
           ].map((card, i) => (
-            <div key={i} className="flex flex-col max-md:gap-3 md:gap-6">
+            <div key={i} id={`blog-${card.category.toLowerCase()}`} className="flex flex-col max-md:gap-3 md:gap-6 scroll-mt-24">
               <div className="w-full relative aspect-[4/3] rounded-[12px] md:rounded-[20px] overflow-hidden">
                 <Image
                   src={card.image}

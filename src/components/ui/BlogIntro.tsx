@@ -2,7 +2,7 @@
 
 export function BlogIntro() {
   return (
-    <div className="w-full flex flex-col max-md:items-center md:items-start max-md:text-center md:text-left justify-center px-4 md:px-16 lg:px-20 max-md:pt-[50px] md:pt-[200px] max-md:pb-[30px] md:pb-16 z-10 relative">
+    <div className="w-full flex flex-col max-md:items-center md:items-start max-md:text-center md:text-left justify-center px-6 md:px-16 max-md:pt-[40px] md:pt-[40px] max-md:pb-[24px] md:pb-8 z-10 relative">
       <h1
         className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase max-[380px]:text-[60px] max-md:text-[60px] md:text-[220px] max-md:leading-[90%] md:leading-[90%] tracking-[-0.04em] whitespace-nowrap"
       >

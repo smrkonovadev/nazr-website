@@ -113,16 +113,25 @@ export function TriggerSection() {
 
         {/* Top Phone Mockup */}
         <motion.div className="absolute left-[-110px] top-[-150px] w-[220px] h-[480px] z-10" style={{ opacity: section1Opacity }}>
-          <video ref={vid1Ref} src="/images/vid1.mp4" loop muted playsInline className="object-contain drop-shadow-2xl w-full h-full"  style={{
-            WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-            WebkitMaskSize: 'contain',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'top center',
-            maskImage: 'url(/images/nazrapp4img.png)',
-            maskSize: 'contain',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'top center',
-          }} />
+          <video
+            ref={vid1Ref}
+            loop
+            muted
+            playsInline
+            className="object-contain drop-shadow-2xl w-full h-full"
+            style={{
+              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'top center',
+              maskImage: 'url(/images/nazrapp4img.png)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'top center',
+            }}
+          >
+            <source src="/images/vid1.mp4" type="video/mp4" />
+          </video>
         </motion.div>
 
         {/* TRIGGER Text */}
@@ -178,16 +187,25 @@ export function TriggerSection() {
 
         {/* Second Phone Mockup */}
         <motion.div className="absolute left-[670px] top-[300px] w-[220px] h-[480px] z-10" style={{ opacity: section2Opacity }}>
-          <video ref={vid2Ref} src="/images/vid4.mp4" loop muted playsInline className="object-contain drop-shadow-2xl w-full h-full"  style={{
-            WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-            WebkitMaskSize: 'contain',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'top center',
-            maskImage: 'url(/images/nazrapp4img.png)',
-            maskSize: 'contain',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'top center',
-          }} />
+          <video
+            ref={vid2Ref}
+            loop
+            muted
+            playsInline
+            className="object-contain drop-shadow-2xl w-full h-full"
+            style={{
+              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'top center',
+              maskImage: 'url(/images/nazrapp4img.png)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'top center',
+            }}
+          >
+            <source src="/images/vid4.mp4" type="video/mp4" />
+          </video>
         </motion.div>
 
         {/* CANCEL WINDOW Text */}
@@ -200,16 +218,25 @@ export function TriggerSection() {
 
         {/* Third Phone Mockup (Left Side) */}
         <motion.div className="absolute left-[40px] top-[800px] w-[220px] h-[480px] z-10" style={{ opacity: section3Opacity }}>
-          <video ref={vid3Ref} src="/images/vid5.mp4" loop muted playsInline className="object-contain drop-shadow-2xl w-full h-full"  style={{
-            WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-            WebkitMaskSize: 'contain',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'top center',
-            maskImage: 'url(/images/nazrapp4img.png)',
-            maskSize: 'contain',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'top center',
-          }} />
+          <video
+            ref={vid3Ref}
+            loop
+            muted
+            playsInline
+            className="object-contain drop-shadow-2xl w-full h-full"
+            style={{
+              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'top center',
+              maskImage: 'url(/images/nazrapp4img.png)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'top center',
+            }}
+          >
+            <source src="/images/vid5.mp4" type="video/mp4" />
+          </video>
         </motion.div>
 
         {/* BROADCAST FIRES Text */}
@@ -264,16 +291,25 @@ export function TriggerSection() {
 
         {/* Fourth Phone Mockup */}
         <motion.div className="absolute left-[550px] top-[1200px] w-[220px] h-[480px] z-10" style={{ opacity: section4Opacity }}>
-          <video ref={vid4Ref} src="/images/vid6.mp4" loop muted playsInline className="object-contain drop-shadow-2xl w-full h-full"  style={{
-            WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-            WebkitMaskSize: 'contain',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'top center',
-            maskImage: 'url(/images/nazrapp4img.png)',
-            maskSize: 'contain',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'top center',
-          }} />
+          <video
+            ref={vid4Ref}
+            loop
+            muted
+            playsInline
+            className="object-contain drop-shadow-2xl w-full h-full"
+            style={{
+              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'top center',
+              maskImage: 'url(/images/nazrapp4img.png)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'top center',
+            }}
+          >
+            <source src="/images/vid6.mp4" type="video/mp4" />
+          </video>
         </motion.div>
 
         {/* GUARDIANS ALERTED Text */}
@@ -287,16 +323,25 @@ export function TriggerSection() {
 
         {/* Fifth Phone Mockup (Take Action) */}
         <motion.div className="absolute left-[5px] top-[1680px] w-[220px] h-[480px] z-10" style={{ opacity: section5Opacity }}>
-          <video ref={vid5Ref} src="/images/vid7.mp4" loop muted playsInline className="object-contain drop-shadow-2xl w-full h-full"  style={{
-            WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-            WebkitMaskSize: 'contain',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'top center',
-            maskImage: 'url(/images/nazrapp4img.png)',
-            maskSize: 'contain',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'top center',
-          }} />
+          <video
+            ref={vid5Ref}
+            loop
+            muted
+            playsInline
+            className="object-contain drop-shadow-2xl w-full h-full"
+            style={{
+              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'top center',
+              maskImage: 'url(/images/nazrapp4img.png)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'top center',
+            }}
+          >
+            <source src="/images/vid7.mp4" type="video/mp4" />
+          </video>
         </motion.div>
 
         {/* TAKE ACTION Text */}
@@ -422,16 +467,25 @@ function MobileTriggerStep({ step, idx, isLast }: { step: any, idx: number, isLa
         </div>
 
         <div className="relative w-full max-w-[200px] h-[360px] shrink-0 mt-2 overflow-visible">
-          <video ref={videoRef} src={step.vid} loop muted playsInline className="object-contain drop-shadow-2xl object-top w-full h-full"  style={{
-            WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-            WebkitMaskSize: 'contain',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'top center',
-            maskImage: 'url(/images/nazrapp4img.png)',
-            maskSize: 'contain',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'top center',
-          }} />
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            className="object-contain drop-shadow-2xl object-top w-full h-full"
+            style={{
+              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'top center',
+              maskImage: 'url(/images/nazrapp4img.png)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'top center',
+            }}
+          >
+            <source src={step.vid} type="video/mp4" />
+          </video>
         </div>
       </motion.div>
     </div>

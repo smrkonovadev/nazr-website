@@ -74,7 +74,7 @@ export function Footer() {
         <span className="text-[12px] md:text-[14px] font-['Switzer',_sans-serif] font-normal text-[#FFF1EB]/60 tracking-wider uppercase leading-none">
           NOT YOUR TYPICAL PLATFORM
         </span>
-        
+
         {/* Large Logo */}
         <div className="relative w-full h-[140px] md:h-[342px] mt-4">
           <Image

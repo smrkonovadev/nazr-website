@@ -5,6 +5,9 @@ import { useState, useRef, useEffect } from "react";
 
 export function TrustedCircleSection() {
   const [activeStep, setActiveStep] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
   const videos = ["/images/vid3.mp4", "/images/vid6.mp4", "/images/vid7.mp4"];
   const vidRefs = [
     useRef<HTMLVideoElement>(null),
@@ -27,6 +30,35 @@ export function TrustedCircleSection() {
     });
   }, [activeStep]);
 
+  useEffect(() => {
+    if (isHovered) return;
+
+    const duration = 5000; // 5 seconds per step
+    const intervalTime = 30; // 30ms interval
+    const stepValue = (intervalTime / duration) * 100;
+
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          return 100;
+        }
+        return prev + stepValue;
+      });
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, [isHovered]);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      const timer = setTimeout(() => {
+        setActiveStep((current) => (current + 1) % 3);
+        setProgress(0);
+      }, 100); // Let the line touch the circle briefly before transition
+      return () => clearTimeout(timer);
+    }
+  }, [progress]);
+
   const steps = [
     {
       number: 1,
@@ -48,6 +80,16 @@ export function TrustedCircleSection() {
     }
   ];
 
+  // Calculate progress height mapping
+  let lineProgressHeight = 0;
+  if (activeStep === 0) {
+    lineProgressHeight = (progress / 100) * 50;
+  } else if (activeStep === 1) {
+    lineProgressHeight = 50 + (progress / 100) * 50;
+  } else {
+    lineProgressHeight = 100;
+  }
+
   return (
     <section className="w-full bg-[#F1E4DE] pt-24 md:pt-32 pb-8 md:pb-20 flex flex-col items-center justify-center px-4 relative z-50">
       <div className="max-w-[1200px] w-full flex flex-col items-center text-center gap-0 mb-10 md:mb-20">
@@ -56,7 +98,7 @@ export function TrustedCircleSection() {
           TRUSTED CIRCLE
         </h2>
 
-        <p className="m-0 text-[#161616] font-sans font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-center max-w-[900px] max-[380px]:w-full max-md:w-[346px] mx-auto opacity-100 md:opacity-90 mt-4 md:mt-0" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
+        <p className="m-0 text-[#161616] font-sans font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-center max-w-[841px] max-[380px]:w-full max-md:w-[346px] mx-auto opacity-100 md:opacity-90 mt-4 md:mt-0" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
           Safety isn't just about technology. It's about the people who show up when you need them most. Trusted Circle keeps your chosen contacts informed, connected, and ready to act the moment something feels wrong.
         </p>
 
@@ -90,7 +132,7 @@ export function TrustedCircleSection() {
                 >
                   {/* Globe */}
                   <div className="absolute top-[10px] left-[68px] w-[75px] h-[75px] z-40 -rotate-[42deg]">
-                    <Image src="/images/globe.png" alt="Globe" fill className="object-contain drop-shadow-xl" />
+                     <Image src="/images/globe.png" alt="Globe" fill className="object-contain drop-shadow-xl" />
                   </div>
 
                   {/* Blue Sticker */}
@@ -101,7 +143,6 @@ export function TrustedCircleSection() {
                   {/* Phone Mockup */}
                   <div className="relative w-[180px] h-[360px] z-10">
                     <video
-                      src={videos[index]}
                       autoPlay
                       loop
                       muted
@@ -117,7 +158,9 @@ export function TrustedCircleSection() {
                         maskRepeat: 'no-repeat',
                         maskPosition: 'top center',
                       }}
-                    />
+                    >
+                      <source src={videos[index]} type="video/mp4" />
+                    </video>
                   </div>
 
                   {/* Green Lens */}
@@ -129,7 +172,7 @@ export function TrustedCircleSection() {
                 {/* Text Content */}
                 <div className="flex flex-col gap-2 w-full px-1">
                   <div className="flex items-center gap-4">
-                    <div className="w-8 h-8 shrink-0 rounded-full bg-[#161616] border-[3px] border-[#F80090] flex items-center justify-center text-white font-sans text-[14px] font-bold">
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-white border-[3px] border-[#F80090] flex items-center justify-center text-[#161616] font-sans text-[14px] font-bold">
                       {step.number}
                     </div>
                     <h3 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[32px] leading-[100%] tracking-normal uppercase whitespace-nowrap pt-1">
@@ -153,32 +196,49 @@ export function TrustedCircleSection() {
         <div className="hidden md:grid grid-cols-12 gap-20 items-center">
           {/* Left Column: Timeline */}
           <div className="col-span-6 relative flex flex-col gap-8 w-full text-left pt-4 -translate-y-[50px]">
-            {/* Vertical connecting line */}
-            <div className="absolute left-[19px] top-4 bottom-24 w-[2px] bg-[#F80090] z-0"></div>
-
             {steps.map((step, index) => (
               <div 
                 key={index} 
-                className="relative z-10 flex gap-6 items-start cursor-pointer"
-                onMouseEnter={() => setActiveStep(index)}
+                className="relative z-10 flex gap-6 items-start cursor-pointer animate-duration-300"
               >
+                {/* Connecting line to next step */}
+                <div className="absolute left-[19px] top-10 w-[2px] z-0" style={{ bottom: index < 2 ? "-32px" : "-44px" }}>
+                  {/* Track */}
+                  <div className="w-full h-full bg-[#161616]/10 rounded-full"></div>
+                  {/* Active Fill */}
+                  <div 
+                    className="absolute top-0 left-0 w-full bg-[#F80090] rounded-full transition-[height] duration-75"
+                    style={{ 
+                      height: activeStep > index 
+                        ? "100%" 
+                        : activeStep === index 
+                          ? `${progress}%` 
+                          : "0%" 
+                    }}
+                  ></div>
+                </div>
+
                 <div 
-                  className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-sans text-[16px] font-bold transition-all duration-300" 
-                  style={{ 
-                    backgroundColor: '#161616',
-                    borderWidth: '3px',
-                    borderStyle: 'solid',
-                    borderColor: activeStep === index ? step.color : 'rgba(248, 0, 144, 0.5)',
-                    color: activeStep === index ? '#FFFFFF' : 'rgba(255, 255, 255, 0.5)'
+                  className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-sans text-[16px] font-bold border-[3px] bg-white text-[#161616] transition-colors duration-300 relative z-10" 
+                  style={{
+                    borderColor: activeStep >= index ? "#F80090" : "rgba(22, 22, 22, 0.15)"
+                  }}
+                  onMouseEnter={() => {
+                    setIsHovered(true);
+                    setActiveStep(index);
+                    setProgress(0); // Start progress at 0 for selected step when resuming
+                  }}
+                  onMouseLeave={() => {
+                    setIsHovered(false);
                   }}
                 >
                   {step.number}
                 </div>
                 <div 
                   className="flex flex-col gap-1 pt-1 transition-opacity duration-300"
-                  style={{ opacity: activeStep === index ? 1 : 0.5 }}
+                  style={{ opacity: activeStep === index ? 1 : 0.4 }}
                 >
-                  <h3 className="m-0 font-[family-name:var(--font-bebas)] text-[28px] leading-[100%] tracking-normal uppercase transition-colors duration-300" style={{ color: activeStep === index ? step.color : '#161616' }}>
+                  <h3 className="m-0 font-[family-name:var(--font-bebas)] text-[28px] leading-[100%] tracking-normal uppercase text-[#161616]">
                     {step.title}
                   </h3>
                   <p className="m-0 text-[#161616] font-sans font-normal text-[17px] leading-[150%] tracking-[0.05em] opacity-80 w-full max-w-[520px]" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
@@ -218,7 +278,6 @@ export function TrustedCircleSection() {
                 <video
                   key={vid}
                   ref={vidRefs[index]}
-                  src={vid}
                   loop
                   muted
                   playsInline
@@ -233,7 +292,9 @@ export function TrustedCircleSection() {
                     maskRepeat: 'no-repeat',
                     maskPosition: 'top center',
                   }}
-                />
+                >
+                  <source src={vid} type="video/mp4" />
+                </video>
               ))}
             </div>
 
