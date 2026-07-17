@@ -182,11 +182,11 @@ export function AboutStatement() {
             </svg>
 
             {/* The cursive NAZR text, absolute overlay on the right */}
-            <span className="absolute left-[100%] top-[-30%] md:top-[-35%] z-30">
+            <span className="absolute left-[100%] top-[-30%] md:top-[-10%] z-30">
               <motion.span
                 className="inline-block text-[#0E8DFF] pointer-events-none"
                 style={{
-                  fontFamily: 'SignPainter, cursive',
+                  fontFamily: 'var(--font-signpainter), SignPainter, cursive',
                   fontSize: 'clamp(45px, 9vw, 130.92px)',
                   fontWeight: 400,
                   lineHeight: '90%',
@@ -195,8 +195,8 @@ export function AboutStatement() {
                   // @ts-ignore
                   leadingTrim: 'cap-height',
                 }}
-                initial={{ clipPath: "inset(-50% 150% -50% -50%)", rotate: -6.85 }}
-                whileInView={{ clipPath: "inset(-50% -50% -50% -50%)", rotate: -6.85 }}
+                initial={{ clipPath: "inset(-50% 150% -50% -50%)", rotate: -11 }}
+                whileInView={{ clipPath: "inset(-50% -50% -50% -50%)", rotate: -11 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 1.2, delay: 0.4, ease: "linear" }}
               >
