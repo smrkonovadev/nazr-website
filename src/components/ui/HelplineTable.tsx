@@ -8,7 +8,7 @@ const dummyData = Array.from({ length: 10 }).map((_, i) => ({
 
 export function HelplineTable() {
   return (
-    <div className="w-full flex justify-center px-4 md:px-16 lg:px-10 pb-0 relative z-10">
+    <div className="w-full flex justify-center px-4 md:px-[40px] pb-0 relative z-10">
       <table className="w-full max-md:max-w-[346px] mx-auto md:mx-0 border-collapse border border-[#161616]/30">
         <thead>
           <tr className="bg-[#161616] text-white text-left">
