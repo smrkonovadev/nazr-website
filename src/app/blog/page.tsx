@@ -30,8 +30,8 @@ export default function BlogPage() {
         </section>
 
         {/* Contact Us Section & Footer */}
-        <DesktopScaler bgColor="#FFF1EB">
-          <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full">
+        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[32px] md:rounded-b-[26px]">
+          <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full max-md:rounded-b-[32px] md:rounded-b-[26px]">
             <ContactUsSection />
             <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
           </div>

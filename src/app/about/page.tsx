@@ -23,8 +23,8 @@ export default function AboutPage() {
         </DesktopScaler>
 
         {/* Cream Sections */}
-        <DesktopScaler bgColor="#FFF1EB">
-          <div className="w-full bg-[#FFF1EB] relative z-20">
+        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[32px] overflow-hidden">
+          <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[32px] relative z-20 pb-20">
             <AboutFeatures />
             <AboutBanners />
             <AboutTeamIntro />

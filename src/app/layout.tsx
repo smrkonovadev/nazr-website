@@ -5,6 +5,8 @@ import { NavigationProvider } from "@/context/NavigationContext";
 import { NavigationMenu } from "@/components/ui/NavigationMenu";
 import { ScaleWrapper } from "@/components/ui/ScaleWrapper";
 import { GlobalZoom } from "@/components/ui/GlobalZoom";
+import { DesktopScaler } from "@/components/ui/DesktopScaler";
+import { Footer } from "@/components/ui/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +43,9 @@ export default function RootLayout({
           <NavigationMenu />
           <ScaleWrapper>
             {children}
+            <DesktopScaler bgColor="#161616">
+              <Footer />
+            </DesktopScaler>
           </ScaleWrapper>
         </NavigationProvider>
       </body>

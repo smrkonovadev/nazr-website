@@ -79,10 +79,10 @@ const cards: any[] = [
 
 const testimonialCards: any[] = [
   { id: 1, type: "testimonial", bgColor: "#0A84FF", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: 8 },
-  { id: 3, type: "testimonial", bgColor: "#FF0E97", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: -4 },
+  { id: 2, type: "image", src: "/home why (1).svg", rotation: -4 },
+  { id: 3, type: "testimonial", bgColor: "#FF0E97", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: 8 },
+  { id: 4, type: "image", src: "/home why (2).svg", rotation: -4 },
   { id: 5, type: "testimonial", bgColor: "#0A84FF", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: 8 },
-  { id: 7, type: "testimonial", bgColor: "#FF0E97", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: -4 },
-  { id: 9, type: "testimonial", bgColor: "#0A84FF", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: 8 },
 ];
 
 interface InteractiveCardsProps {
