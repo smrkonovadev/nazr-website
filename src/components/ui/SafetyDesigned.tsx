@@ -15,7 +15,7 @@ export const carouselData = [
     id: "pepper-spray",
     image: "/images/center.png",
     title: "ON ME PEPPER SPRAY",
-    subtitle: "Compact, accessible, and designed to help you create the time and distance needed to get to safety. Doubles as a bag charm and glows in the dark for easy access when visibility is low."
+    subtitle: "A compact personal safety spray designed to be there when every second counts. Doubles as a bag charm and glows in the dark for quick access in low light."
   },
   {
     id: "nazr-360",
@@ -126,10 +126,10 @@ export function SafetyDesigned() {
         <FloatingIcon src="/images/new20.svg" visible={currentIndex === 2} width="130.95px" height="110.19px" top="610px" left="758.55px" rotate={0} delay={0.15} />
 
         {/* Arrows */}
-        <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "750px", left: "257.13px" }}>
+        <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "257.13px" }}>
           <Image src="/images/arl.svg" fill className="object-contain" alt="prev" />
         </button>
-        <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "750px", left: "868.08px" }}>
+        <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "868.08px" }}>
           <Image src="/images/arr.svg" fill className="object-contain" alt="next" />
         </button>
 
@@ -144,8 +144,8 @@ export function SafetyDesigned() {
             </p>
           </div>
 
-          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors" style={{ width: "229.27px", height: "46.66px", borderRadius: "3.92px", border: "0.98px solid #FF0E97", marginTop: "8px" }}>
-            <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "20.83px", lineHeight: "1.5" }}>Get Yours</span>
+          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors" style={{ width: "156px", height: "44px", borderRadius: "3.92px", border: "0.98px solid #FF0E97", marginTop: "8px" }}>
+            <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "16px", lineHeight: "1.5" }}>Get Yours</span>
           </button>
         </div>
 
@@ -177,8 +177,8 @@ export function SafetyDesigned() {
             {carouselData[currentIndex].subtitle}
           </p>
 
-          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] w-full max-w-[280px] h-[50px] rounded-[4px]">
-            <span className="font-['Roboto',_sans-serif] text-[18px]">Get Yours</span>
+          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] w-full max-w-[180px] h-[44px] rounded-[4px]">
+            <span className="font-['Roboto',_sans-serif] text-[16px]">Get Yours</span>
           </button>
 
           <div className="flex items-center gap-8 mt-4">
