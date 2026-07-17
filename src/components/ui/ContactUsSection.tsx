@@ -4,14 +4,14 @@ import Image from "next/image";
 
 export function ContactUsSection() {
   return (
-    <section className="w-full bg-[#FFF1EB] pt-8 md:pt-[120px] pb-16 md:pb-15 px-4 flex flex-col items-center justify-center relative z-10">
+    <section className="w-full bg-[#FFF1EB] pt-8 md:pt-[80px] pb-16 md:pb-[80px] px-4 flex flex-col items-center justify-center relative z-10">
 
       {/* ======================= */}
       {/* MOBILE LAYOUT           */}
       {/* ======================= */}
       <div className="flex md:hidden flex-col items-center text-center w-full max-w-[400px] px-2 mx-auto">
         <h2
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase max-[380px]:text-[38px] text-[48px] leading-[90%] tracking-[-0.03em]"
+          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase max-min-[380px]:text-[38px] text-[48px] leading-[90%] tracking-[-0.03em]"
         >
           JOIN THE CONVERSATION.
         </h2>
@@ -34,31 +34,25 @@ export function ContactUsSection() {
       {/* ======================= */}
       {/* DESKTOP LAYOUT          */}
       {/* ======================= */}
-      <div className="hidden md:flex flex-col items-center text-center">
+      <div className="hidden md:flex flex-col items-center text-center max-w-[621px]">
         <h2
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[100px] leading-[90%] tracking-[-0.03em]"
+          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[100px] leading-[86%] tracking-[-0.03em]"
         >
-          CONTACT US
+          JOIN THE <br /> CONVERSATION.
         </h2>
 
         <p
-          className="mt-2 text-[#161616] max-w-[620px] text-[23px] leading-[140%] tracking-[-0.03em]"
-          style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}
+          className="mt-[4px] text-[#161616] max-w-[460px] text-[20px] font-normal leading-[140%] tracking-[-0.03em]"
+          style={{ fontFamily: "Inter, sans-serif" }}
         >
-          NAZR is built through conversations with the people we build for. We'd love to hear yours.        </p>
+          NAZR is built through conversations with the people we build for. We&apos;d love to hear yours.
+        </p>
 
         <button
-          className="mt-6 bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white flex items-center justify-center gap-3 px-8 py-3 rounded-[5px]"
+          className="mt-[8px] bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white px-[24px] py-[10px] rounded-[5px]"
           style={{ fontFamily: "Roboto, sans-serif", fontSize: "16px", lineHeight: "150%" }}
         >
-          <Image
-            src="/images/logosvg.svg"
-            alt="Nazr Logo"
-            width={36}
-            height={36}
-            className="object-contain"
-          />
-          Join Ecosystem
+          Tell us More
         </button>
       </div>
 

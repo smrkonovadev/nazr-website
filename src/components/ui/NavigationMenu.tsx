@@ -123,6 +123,9 @@ export function NavigationMenu() {
               <Link href="/shipping" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px] flex items-center gap-1">
                 Shipping Policy <span className="text-[12px]">↗</span>
               </Link>
+              <Link href="/product-liability" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px] flex items-center gap-1">
+                Product Liability <span className="text-[12px]">↗</span>
+              </Link>
             </div>
 
           </div>
