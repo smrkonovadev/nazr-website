@@ -38,27 +38,21 @@ export function ContactUsSection() {
         <h2
           className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[100px] leading-[90%] tracking-[-0.03em]"
         >
-          CONTACT US
+          JOIN THE <br /> CONVERSATION.
         </h2>
 
         <p
-          className="mt-2 text-[#161616] max-w-[620px] text-[23px] leading-[140%] tracking-[-0.03em]"
+          className="mt-[16px] text-[#161616] max-w-[620px] text-[23px] leading-[140%] tracking-[-0.03em]"
           style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}
         >
-          NAZR is built through conversations with the people we build for. We'd love to hear yours.        </p>
+          NAZR is built through conversations with the people we build for. We&apos;d love to hear yours.
+        </p>
 
         <button
-          className="mt-6 bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white flex items-center justify-center gap-3 px-8 py-3 rounded-[5px]"
+          className="mt-6 bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white px-8 py-3 rounded-[5px]"
           style={{ fontFamily: "Roboto, sans-serif", fontSize: "16px", lineHeight: "150%" }}
         >
-          <Image
-            src="/images/logosvg.svg"
-            alt="Nazr Logo"
-            width={36}
-            height={36}
-            className="object-contain"
-          />
-          Join Ecosystem
+          Tell us More
         </button>
       </div>
 
