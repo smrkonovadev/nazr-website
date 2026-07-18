@@ -25,8 +25,7 @@ export function DesktopScaler({ children, desktopWidth = 1280, bgColor = "#16161
       const isWindowMobile = window.innerWidth < 768;
       setIsMobile(isWindowMobile);
       
-      // Use outerWidth on desktop to remain independent of browser zoom (Ctrl+/Ctrl-)
-      const windowWidth = isWindowMobile ? window.innerWidth : (window.outerWidth || window.innerWidth);
+      const windowWidth = window.innerWidth;
       
       if (isWindowMobile) {
         setScale(windowWidth / 390);

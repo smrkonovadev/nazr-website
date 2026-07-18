@@ -35,8 +35,8 @@ export function ScalableShopCollage() {
 
           {/* Floating Icons Background Layer */}
           {/* Left Owl Sticker - z-20 (in front of text) */}
-          <div 
-            className="absolute max-md:left-[8%] max-md:top-[6%] max-md:w-[45vw] z-20 pointer-events-none"
+          <div
+            className="absolute max-md:left-[4%] max-md:top-[6%] max-md:w-[45vw] z-20 pointer-events-none"
             style={{
               width: 'clamp(180px, 22.9vw, 330px)',
               left: '17%',
@@ -53,7 +53,7 @@ export function ScalableShopCollage() {
           </div>
 
           {/* Right Pink Eye Sticker - z-20 (in front of text) */}
-          <div 
+          <div
             className="absolute max-md:right-[8%] max-md:top-[18%] max-md:w-[25vw] z-20 pointer-events-none"
             style={{
               width: 'clamp(110px, 12.8vw, 185px)',
@@ -71,7 +71,7 @@ export function ScalableShopCollage() {
           </div>
 
           {/* Center Product Collage */}
-          <div 
+          <div
             className="absolute left-1/2 -translate-x-1/2 max-md:top-[32%] max-md:w-[120vw] max-md:h-[77.5vw] z-20"
             style={{
               width: 'clamp(400px, 48.6vw, 700px)',
