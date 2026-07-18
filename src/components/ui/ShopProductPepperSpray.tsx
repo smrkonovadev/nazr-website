@@ -9,17 +9,17 @@ export function ShopProductPepperSpray() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
 
   return (
-    <section className="w-full relative z-30">
+    <section className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 10 }}>
 
       {/* Top Blue Bar */}
-      <div className="w-full bg-[#0E8DFF] py-3 px-6 md:px-12 flex items-center border-t border-b border-black">
-        <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[32px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
-          1) PEPPER SPRAY
+      <div className="w-full bg-[#0E8DFF] py-3 px-6 md:px-12 flex items-center border-b border-black shrink-0">
+        <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[28px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
+          1) PERSONAL SAFETY SPRAY
         </h2>
       </div>
 
       {/* Main Container */}
-      <div className="w-full bg-[#DDEFFF] flex flex-col md:flex-row border-b border-black">
+      <div className="w-full flex-1 bg-[#DDEFFF] flex flex-col md:flex-row min-h-0">
 
         {/* Left Column (Image Area) */}
         <div className="w-full md:w-[60%] md:border-r border-black relative flex flex-col justify-start md:justify-end items-center overflow-hidden pt-8 pb-4 md:py-20">
@@ -32,15 +32,9 @@ export function ShopProductPepperSpray() {
             </h3>
           </div>
 
-          {/* Product Image on Podium */}
-          <motion.div
-            initial={{ scale: 0, y: 150 }}
-            whileInView={{ scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ type: "spring", bounce: 0.4, duration: 0.5, delay: 0.05 }}
-            className="relative z-20 flex flex-col items-center justify-end md:mt-32 w-full mt-4 -mb-2 md:mb-0"
-          >
-            <div className="relative w-[360px] h-[330px] md:w-[580px] md:h-[500px] z-20 pointer-events-none md:transform md:rotate-[20deg] md:translate-x-24 md:translate-y-16">
+          {/* Product Image — static */}
+          <div className="relative z-20 flex flex-col items-center justify-end w-full">
+            <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:rotate-[20deg] md:translate-x-20 md:translate-y-10">
               <Image
                 src="/images/center.png"
                 alt="Podium and Spray"
@@ -48,14 +42,14 @@ export function ShopProductPepperSpray() {
                 className="object-contain"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Right Column (Product Details) */}
-        <div className="w-full md:w-[40%] px-4 pb-12 pt-0 md:pl-6 md:pr-12 md:py-12 lg:pl-6 lg:pr-16 lg:py-12 flex flex-col justify-center overflow-x-hidden">
+        {/* Right Column */}
+        <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 flex flex-col justify-center overflow-y-auto">
 
           {/* Description Text */}
-          <p className="font-['Inter',_sans-serif] text-[#161616] text-[22px] md:text-[23px] font-bold leading-[1.3] max-w-[408px] mb-6 tracking-[-0.02em]">
+          <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em]">
             Convenient to locate, powerful enough to protect. Nazr’s On Me Personal Safety Spray is designed to be within reach when you need it the most. With a compact design that can be clipped to your keys or bag and a silicon glow-in-the-dark cap for easy visibility, On Me is ready when you are.          </p>
 
           {/* Price and Rating */}

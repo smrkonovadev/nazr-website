@@ -2,9 +2,7 @@ import { Header } from "@/components/ui/Header";
 import { ContactUsSection } from "@/components/ui/ContactUsSection";
 import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { ShopHero } from "@/components/ui/ShopHero";
-import { ShopProductPepperSpray } from "@/components/ui/ShopProductPepperSpray";
-import { ShopProductTwo } from "@/components/ui/ShopProductTwo";
-import { ShopProductThree } from "@/components/ui/ShopProductThree";
+import { ProductScrollStack } from "@/components/shop/ProductScrollStack";
 import { ShopProblemSteps } from "@/components/ui/ShopProblemSteps";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
@@ -26,9 +24,17 @@ export default function ShopPage() {
               }}
             >
               <ShopHero />
-              <ShopProductPepperSpray />
-              <ShopProductTwo />
-              <ShopProductThree />
+            </div>
+          </DesktopScaler>
+        </section>
+
+        {/* Sticky Scroll Stack — outside clipped canvas so sticky works against window */}
+        <ProductScrollStack />
+
+        {/* Problem Steps Section */}
+        <section className="w-full flex justify-center bg-[#161616]">
+          <DesktopScaler bgColor="#FFF1EB" className="w-full">
+            <div className="w-full bg-[#FFF1EB]">
               <ShopProblemSteps />
             </div>
           </DesktopScaler>
