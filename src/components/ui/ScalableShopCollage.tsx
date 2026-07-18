@@ -15,16 +15,16 @@ export function ScalableShopCollage() {
       className="w-full relative mx-auto overflow-hidden flex justify-center max-md:h-[150vw] md:h-[850px] max-w-[1440px]"
     >
       <div
-        className="absolute left-1/2 w-full max-md:max-w-full md:w-[1440px] h-full max-md:top-0 md:top-0"
+        className="absolute left-1/2 w-full h-full max-md:top-0 md:top-0 max-w-[1440px]"
         style={{
           transform: 'translateX(-50%)'
         }}
       >
-        {/* We use a sub-container that is centered and exactly 1440x850 */}
+        {/* We use a sub-container that is centered and responsive */}
         <div className="relative w-full h-full">
 
-          {/* Huge Background Text */}
-          <div className="absolute max-md:top-[12%] md:top-[8%] w-full flex flex-col items-center justify-center pointer-events-none z-0">
+          {/* Huge Background Text - z-10 */}
+          <div className="absolute max-md:top-[12%] md:top-[8%] w-full flex flex-col items-center justify-center pointer-events-none z-10">
             <h1
               className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[31.5vw] md:text-[240px] max-md:leading-[0.9] md:leading-[0.8] tracking-[-0.03em] m-0 text-center"
             >
@@ -34,51 +34,74 @@ export function ScalableShopCollage() {
           </div>
 
           {/* Floating Icons Background Layer */}
-          <div className="absolute max-md:left-[11%] max-md:top-[7%] max-md:w-[21.25vw] md:left-[23%] md:top-[25%] md:w-[120px] z-10 pointer-events-none">
+          {/* Left Owl Sticker - z-20 (in front of text) */}
+          <div 
+            className="absolute max-md:left-[8%] max-md:top-[6%] max-md:w-[45vw] z-20 pointer-events-none"
+            style={{
+              width: 'clamp(180px, 22.9vw, 330px)',
+              left: '17%',
+              top: '11%'
+            }}
+          >
             <Image
-              src="/images/globe.png"
-              alt="Globe"
-              width={120}
-              height={120}
-              className="w-full h-auto object-contain transform -rotate-45"
+              src="/images/shopow.svg"
+              alt="Owl Sticker"
+              width={330}
+              height={252}
+              className="w-full h-auto object-contain"
             />
           </div>
 
-          <div className="absolute max-md:right-[10%] max-md:top-[19%] max-md:w-[21.25vw] md:right-[20%] md:top-[26%] md:w-[140px] z-10 pointer-events-none">
+          {/* Right Pink Eye Sticker - z-20 (in front of text) */}
+          <div 
+            className="absolute max-md:right-[8%] max-md:top-[18%] max-md:w-[25vw] z-20 pointer-events-none"
+            style={{
+              width: 'clamp(110px, 12.8vw, 185px)',
+              right: '17.5%',
+              top: '19.5%'
+            }}
+          >
             <Image
-              src="/images/greenlens.png"
-              alt="Green Lens"
-              width={140}
-              height={140}
-              className="w-full h-auto object-contain transform rotate-355"
+              src="/images/shop.svg"
+              alt="Pink Eye Sticker"
+              width={185}
+              height={170}
+              className="w-full h-auto object-contain"
             />
           </div>
 
           {/* Center Product Collage */}
-          <div className="absolute left-1/2 -translate-x-1/2 max-md:top-[32%] max-md:w-[120vw] max-md:h-[77.5vw] md:top-[35%] md:w-[700px] md:h-[450px] z-20">
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 max-md:top-[32%] max-md:w-[120vw] max-md:h-[77.5vw] z-20"
+            style={{
+              width: 'clamp(400px, 48.6vw, 700px)',
+              height: 'clamp(260px, 31.25vw, 450px)',
+              top: '35%'
+            }}
+          >
 
-            {/* Left Pink Box */}
-            <div className="absolute left-[5%] top-[5%] w-[50%] aspect-square z-20">
+            {/* Left Purple Coaster/Sticker */}
+            <div className="absolute left-[6%] top-[10%] w-[44%] aspect-square z-10">
               <Image
-                src="/images/nazreye1.png"
-                alt="Pink Box"
+                src="/images/shop2.svg"
+                alt="Purple Coaster"
                 fill
-                className="object-contain drop-shadow-2xl transform -rotate-6"
+                className="object-contain drop-shadow-2xl"
               />
             </div>
 
-            {/* Right Blue Box */}
-            <div className="absolute right-[4%] top-[0%] w-[50%] aspect-square z-50">
+            {/* Right Pink Coaster/Sticker */}
+            <div className="absolute right-[5%] top-[6%] w-[46%] aspect-square z-20">
               <Image
-                src="/images/nazreye.png"
-                alt="Blue Box"
+                src="/images/shop1.svg"
+                alt="Pink Coaster"
                 fill
-                className="object-contain drop-shadow-2xl transform rotate-12"
+                className="object-contain drop-shadow-2xl"
               />
             </div>
 
             {/* Center Spray Bottle */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[-45%] w-[55%] aspect-[1/2] z-30">
+            <div className="absolute left-1/2 -translate-x-1/2 top-[-42%] w-[55%] aspect-[1/2] z-30">
               <Image
                 src="/images/spray-pink.png"
                 alt="Pink Spray"
@@ -89,15 +112,15 @@ export function ScalableShopCollage() {
 
             {/* Cursive Blue NAZR Overlap */}
             <div
-              className="absolute left-1/2 -translate-x-1/2 max-md:top-[50%] md:top-[52%] z-[60] text-[#0E8DFF] pointer-events-none whitespace-nowrap"
+              className="absolute left-1/2 max-md:top-[54%] md:top-[56%] z-[60] text-[#0E8DFF] pointer-events-none whitespace-nowrap"
               style={{
-                fontFamily: 'var(--font-signpainter), SignPainter, cursive',
-                fontSize: 'clamp(50px, 37.5vw, 130.92px)',
+                fontFamily: 'var(--font-signpainter), SignPainter, "HouseScript Semibold", cursive',
+                fontSize: 'clamp(80px, 13.8vw, 198.95px)',
                 fontWeight: 400,
                 lineHeight: '90%',
                 letterSpacing: '-0.03em',
-                transform: 'rotate(-5deg)',
-                textAlign: 'center'
+                textAlign: 'center',
+                transform: 'translateX(-50%) rotate(-5deg)'
               }}
             >
               NAZR
