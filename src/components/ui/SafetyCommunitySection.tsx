@@ -71,29 +71,29 @@ export function SafetyCommunitySection() {
               />
             </div>
 
-            {/* 4 Stickers Container */}
-            <div className="absolute pointer-events-none z-0" style={{ width: '515.89px', height: '466.28px', top: '0', left: '704.11px' }}>
-              {/* Note: I'll position them relative to the main 1220 container since left: 704.11 was given relative to the main container */}
-            </div>
+            {/* Sticker Group — shifted 15px left for tighter dancer-text overlap */}
+            <div className="absolute z-10" style={{ width: "619.07px", height: "559.54px", top: "0px", left: "690px", overflow: "visible" }}>
 
-            {/* 1st Sticker */}
-            <div className="absolute z-10" style={{ width: "206px", height: "206px", top: "53px", left: "704.11px" }}>
-              <Image src="/images/new22.svg" alt="Pink circular sticker" fill className="object-contain" />
-            </div>
+              {/* Image 1 — Dancer: W=429.26 H=283.99 top=-18.93 left=-143 */}
+              <div className="absolute" style={{ width: "429.26px", height: "400.99px", top: "-55.93px", left: "-143px", transform: "rotate(-3.2deg)", transformOrigin: "center center" }}>
+                <Image src="/images/new22.svg" alt="Dancer sticker" fill className="object-contain" />
+              </div>
 
-            {/* 2nd Sticker */}
-            <div className="absolute z-10" style={{ width: "371.86px", height: "255.01px", top: "0px", left: "926.11px", transform: "rotate(-9.59deg)" }}>
-              <Image src="/images/new23.svg" alt="Blue bubble" fill className="object-contain" />
-            </div>
+              {/* Image 2 — Disco Ball: scaled 1.2x → W=286.12 H=205.18 */}
+              <div className="absolute" style={{ width: "300.12px", height: "300.18px", top: "210px", left: "-30px", transform: "rotate(5.59deg)", transformOrigin: "center center" }}>
+                <Image src="/images/new25.svg" alt="Disco ball sticker" fill className="object-contain" />
+              </div>
 
-            {/* 3rd Sticker */}
-            <div className="absolute z-10" style={{ width: "252.48px", height: "195.20px", top: "229px", left: "721.11px", transform: "rotate(36.59deg)" }}>
-              <Image src="/images/new24.svg" alt="Pink globe" fill className="object-contain" />
-            </div>
+              {/* Image 3 — Headphones: W=329.56 H=187.91 — pulled 50px left, 10px up */}
+              <div className="absolute" style={{ width: "300.56px", height: "300.91px", top: "-35px", left: "175px", transform: "rotate(-5.59deg)", transformOrigin: "center center" }}>
+                <Image src="/images/new23.svg" alt="Headphones sticker" fill className="object-contain" />
+              </div>
 
-            {/* 4th Sticker */}
-            <div className="absolute z-10" style={{ width: "254.97px", height: "252.00px", top: "209px", left: "980.11px", transform: "rotate(-60deg)" }}>
-              <Image src="/images/new25.svg" alt="Green face" fill className="object-contain" />
+              {/* Image 4 — Lips: W=277.94 H=315.98 — pulled 60px left, 40px up */}
+              <div className="absolute" style={{ width: "350.94px", height: "350.98px", top: "140px", left: "170px", transform: "rotate(-1.35deg)", transformOrigin: "center center" }}>
+                <Image src="/images/new24.svg" alt="Lips star sticker" fill className="object-contain" />
+              </div>
+
             </div>
 
           </div>

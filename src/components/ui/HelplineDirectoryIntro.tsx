@@ -2,7 +2,7 @@
 
 export function HelplineDirectoryIntro() {
   return (
-    <div className="w-full flex flex-col items-center md:items-start text-center md:text-left justify-center px-4 md:px-16 lg:px-10 pt-[46px] md:pt-[78px] pb-6 md:pb-16 z-10 relative">
+    <div className="w-full flex flex-col items-center md:items-start text-center md:text-left justify-center px-4 md:px-[40px] pt-[26px] pb-[40px] z-10 relative">
       <h1
         className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[64px] md:text-[177px] leading-[90%] tracking-[-0.03em] max-md:w-[346px]"
       >
