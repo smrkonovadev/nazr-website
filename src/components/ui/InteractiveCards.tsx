@@ -17,7 +17,7 @@ const cards: any[] = [
     id: 2,
     type: "image",
     src: "/images/new3.svg",
-    rotation: 12.18
+    rotation: -5
   },
   {
     id: 3,
@@ -25,13 +25,13 @@ const cards: any[] = [
     bgColor: "#FF0E97",
     topText: "0:06S",
     bottomText: "CONVINCE IT\nYOU'RE YOU",
-    rotation: -12.18
+    rotation: -7
   },
   {
     id: 4,
     type: "image",
     src: "/images/new4.svg",
-    rotation: 12.18
+    rotation: 4
   },
   {
     id: 5,
@@ -39,13 +39,13 @@ const cards: any[] = [
     bgColor: "#0A84FF",
     topText: "0:09S",
     bottomText: "FIND THE\nRIGHT APP",
-    rotation: -12.18
+    rotation: -3
   },
   {
     id: 6,
     type: "image",
     src: "/images/new5.svg",
-    rotation: 12.18
+    rotation: -2
   },
   {
     id: 7,
@@ -138,7 +138,7 @@ export function InteractiveCards({ theme = "dark", scrollProgress }: Interactive
 
   const dummyScroll = useMotionValue(0);
   const activeScroll = scrollProgress || dummyScroll;
-  const xTransform = useTransform(activeScroll, [0, 1], [0, -maxScroll]);
+  const xTransform = useTransform(activeScroll, [0.15, 0.95], [0, -maxScroll]);
 
   // Map vertical mouse wheel to horizontal scrolling AND handle scroll-based hover updates
   useEffect(() => {
@@ -269,7 +269,7 @@ export function InteractiveCards({ theme = "dark", scrollProgress }: Interactive
               >
                 <motion.div
                   data-card-index={i}
-                  className={`relative ${theme === 'cream' ? 'w-[184px] h-[277px] rounded-[21.12px] md:w-[279px] md:h-[400px] md:rounded-[32px]' : 'w-[220px] h-[300px] rounded-[24px] md:w-[215px] md:h-[308px] md:rounded-[24.67px]'} cursor-pointer origin-bottom overflow-hidden`}
+                  className={`relative ${theme === 'cream' ? 'w-[184px] h-[277px] rounded-[21.12px] md:w-[279px] md:h-[400px] md:rounded-[32px]' : 'w-[220px] h-[300px] rounded-[24px] md:w-[240px] md:h-[327px] md:rounded-[24.67px]'} cursor-pointer origin-bottom overflow-hidden`}
                   onMouseEnter={() => {
                     if (!window.matchMedia('(pointer: coarse)').matches) {
                       setHoveredIndex(i);

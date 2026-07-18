@@ -35,7 +35,7 @@ export function ScrollRevealText({
   className, 
   style, 
   scrollYProgress: externalScrollYProgress, 
-  progressRange,
+  progressRange = [0, 1],
   fillColor = "#FFF9EB",
   emptyColor = "#444444"
 }: { 
@@ -43,7 +43,7 @@ export function ScrollRevealText({
   className?: string, 
   style?: React.CSSProperties,
   scrollYProgress?: MotionValue<number>,
-  progressRange: [number, number],
+  progressRange?: [number, number],
   fillColor?: string,
   emptyColor?: string
 }) {

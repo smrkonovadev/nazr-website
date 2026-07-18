@@ -35,10 +35,10 @@ export function SafetyDesigned() {
   const rightIndex = (currentIndex + 1) % carouselData.length;
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center py-10 md:pt-[60px] md:pb-[60px] md:px-[30px] overflow-hidden relative z-20 md:h-[1166.92px]">
+    <section className="w-full bg-[#161616] flex justify-center py-10 md:pt-[60px] md:pb-[10px] md:px-[30px] overflow-hidden relative z-20 md:h-[1070px]">
 
       {/* Desktop Master Wrapper */}
-      <div className="hidden md:block w-full max-w-[1220px] relative h-[1046.92px]">
+      <div className="hidden md:block w-full max-w-[1220px] relative h-[1000px]">
 
         {/* Title Block */}
         <div className="absolute flex flex-col items-center gap-[32px]" style={{ width: "610px", height: "236px", top: 0, left: "305px" }}>
@@ -125,11 +125,11 @@ export function SafetyDesigned() {
         <FloatingIcon src="/images/new21.svg" visible={currentIndex === 2} width="292.46px" height="210.13px" top="600.29px" left="266.67px" rotate={10.59} delay={0.1} />
         <FloatingIcon src="/images/new20.svg" visible={currentIndex === 2} width="130.95px" height="110.19px" top="610px" left="758.55px" rotate={0} delay={0.15} />
 
-        {/* Arrows */}
-        <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "750px", left: "257.13px" }}>
+        {/* Arrows — vertically centered with paragraph text */}
+        <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "257.13px" }}>
           <Image src="/images/arl.svg" fill className="object-contain" alt="prev" />
         </button>
-        <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "750px", left: "868.08px" }}>
+        <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "868.08px" }}>
           <Image src="/images/arr.svg" fill className="object-contain" alt="next" />
         </button>
 

@@ -13,7 +13,7 @@ export function SafetyCommunitySection() {
   });
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#161616] flex justify-center overflow-visible z-20 relative pt-[8.2vw] pb-[24.6vw] md:pt-[60px] md:pb-[60px] md:h-[1327.43px]">
+    <section ref={sectionRef} className="w-full bg-[#161616] flex justify-center overflow-visible z-20 relative pt-[8.2vw] pb-[24.6vw] md:pt-[10px] md:pb-[60px] md:h-[1327.43px]">
       <div className="w-full px-[4.1vw] md:px-0 flex flex-col items-center relative max-w-[1280px] mx-auto md:w-[1220px] md:h-full">
 
         {/* Mobile Layout (Natural Wrapping) */}
@@ -22,8 +22,6 @@ export function SafetyCommunitySection() {
             text={"WOMEN HAVE ALWAYS BUILT SAFETY THROUGH SHARED INSTINCTS, TRUSTED CIRCLES, AND LOOKING OUT FOR ONE ANOTHER. NAZR BUILDS ON THAT FOUNDATION, COMBINING TECHNOLOGY, PRODUCTS, AND COMMUNITY TO CREATE A MORE CONNECTED APPROACH TO SAFETY."}
             className="m-0 font-[family-name:var(--font-bebas)] text-[7.17vw] text-center"
             style={{ lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
-            scrollYProgress={scrollYProgress}
-            progressRange={[0, 1]}
             emptyColor="#333333"
           />
 
@@ -69,8 +67,6 @@ export function SafetyCommunitySection() {
                 text={"Women have always built safety through shared instincts, trusted circles, and looking out for one another. NAZR builds on that foundation through thoughtful technology, everyday essentials, and a community that believes peace of mind is something we create together."}
                 className="m-0 font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-left"
                 style={{ fontSize: '40px', lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
-                scrollYProgress={scrollYProgress}
-                progressRange={[0, 1]}
                 emptyColor="#333333"
               />
             </div>
