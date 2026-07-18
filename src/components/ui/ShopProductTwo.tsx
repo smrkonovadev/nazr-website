@@ -1,25 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Star, ShoppingBag } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 
 export function ShopProductTwo() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start start"]
+  });
+  const clipBottom = useTransform(scrollYProgress, [0, 0.7], ["100%", "0%"]);
+  const clipPath = useMotionTemplate`inset(0 0 ${clipBottom} 0)`;
 
   return (
-    <section className="w-full relative z-30">
+    <section ref={sectionRef} className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 20 }}>
 
       {/* Top Pink Bar */}
-      <div className="w-full bg-[#E5007D] py-3 px-6 md:px-12 flex items-center border-t border-b border-black">
-        <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[32px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
-          2) EYE PATCHES
+      <div className="w-full bg-[#E5007D] py-3 px-6 md:px-12 flex items-center border-b border-black shrink-0">
+        <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[28px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
+          2) SIP CHECK STICKERS
         </h2>
       </div>
 
-      {/* Main Container */}
-      <div className="w-full bg-[#FCE4EC] flex flex-col md:flex-row border-b border-black">
+      {/* Content area — scroll-driven clip reveal */}
+      <motion.div
+        className="w-full flex-1 bg-[#FCE4EC] flex flex-col md:flex-row min-h-0"
+        style={{ clipPath }}
+      >
 
         {/* Left Column (Image Area) */}
         <div className="w-full md:w-[60%] md:border-r border-black relative flex flex-col justify-start md:justify-end items-center overflow-hidden pt-8 pb-4 md:py-20">
@@ -32,14 +42,8 @@ export function ShopProductTwo() {
           </div>
 
           {/* Product Image on Podium */}
-          <motion.div
-            initial={{ scale: 0, y: 150 }}
-            whileInView={{ scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ type: "spring", bounce: 0.4, duration: 0.5, delay: 0.05 }}
-            className="relative z-20 flex flex-col items-center justify-end md:mt-32 w-full mt-4 -mb-2 md:mb-0"
-          >
-            <div className="relative w-[360px] h-[330px] md:w-[580px] md:h-[500px] z-20 pointer-events-none md:transform md:translate-x-24 md:translate-y-16">
+          <div className="relative z-20 flex flex-col items-center justify-end w-full">
+            <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:translate-x-20 md:translate-y-10">
               <Image
                 src="/images/SHOPPRO2.svg"
                 alt="Sip Check Product"
@@ -47,14 +51,13 @@ export function ShopProductTwo() {
                 className="object-contain"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Right Column (Product Details) */}
-        <div className="w-full md:w-[40%] px-4 pb-12 pt-0 md:pl-6 md:pr-12 md:py-12 lg:pl-6 lg:pr-16 lg:py-12 flex flex-col justify-center overflow-x-hidden">
+        <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 flex flex-col justify-center overflow-y-auto">
 
-          {/* Description Text */}
-          <p className="font-['Inter',_sans-serif] text-[#161616] text-[22px] md:text-[23px] font-bold leading-[1.3] max-w-[408px] mb-6 tracking-[-0.02em]">
+          <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em]">
             The Sip Check is a discreet drink cover designed to help you be in the moment without worry. An adhesive layer that can be securely attached to your cup and removed once you’re done, this is a seal that ensures nothing unwanted finds its way to your peace of mind.          </p>
 
           {/* Price and Rating */}
@@ -93,7 +96,7 @@ export function ShopProductTwo() {
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

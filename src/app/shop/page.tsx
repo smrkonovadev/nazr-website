@@ -3,15 +3,13 @@ import { Header } from "@/components/ui/Header";
 import { ContactUsSection } from "@/components/ui/ContactUsSection";
 import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { ShopHero } from "@/components/ui/ShopHero";
-import { ShopProductPepperSpray } from "@/components/ui/ShopProductPepperSpray";
-import { ShopProductTwo } from "@/components/ui/ShopProductTwo";
-import { ShopProductThree } from "@/components/ui/ShopProductThree";
+import { ProductScrollStack } from "@/components/shop/ProductScrollStack";
 import { ShopProblemSteps } from "@/components/ui/ShopProblemSteps";
 
 export default function ShopPage() {
   return (
     <>
-      <main className="flex flex-col min-h-screen bg-[#161616] w-full overflow-x-hidden">
+      <main className="flex flex-col min-h-screen bg-[#161616] w-full">
         <Header />
 
         {/* The Beige Canvas Section */}
@@ -23,9 +21,14 @@ export default function ShopPage() {
             }}
           >
             <ShopHero />
-            <ShopProductPepperSpray />
-            <ShopProductTwo />
-            <ShopProductThree />
+          </div>
+        </section>
+
+        {/* Sticky Scroll Stack — outside clipped canvas so sticky works against window */}
+        <ProductScrollStack />
+
+        <section className="w-full flex justify-center bg-[#161616]">
+          <div className="w-full max-w-[1536px] mx-auto bg-[#FFF1EB]">
             <ShopProblemSteps />
           </div>
         </section>
