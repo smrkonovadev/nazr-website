@@ -1,0 +1,46 @@
+.root {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.clipped {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Peel from the bottom: top/right/left stay 0, bottom grows with scroll */
+  clip-path: inset(0 0 var(--clip-bottom, 0%) 0);
+  will-change: clip-path;
+  contain: paint;
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Content never moves — only the mask edge changes */
+  transform: none;
+}
+
+.divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Sibling of the clipped layer — rides the peel edge without being clipped */
+  bottom: var(--clip-bottom, 0%);
+  height: 14px;
+  background: var(--accent, #ff6d4d);
+  pointer-events: none;
+  z-index: 5;
+  /* Driven by RevealStack — hidden once the panel is fully peeled */
+  opacity: var(--divider-opacity, 1);
+}
+
+@media (max-width: 768px) {
+  .divider {
+    height: 10px;
+  }
+}
