@@ -9,7 +9,7 @@ import { DesktopScaler } from "@/components/ui/DesktopScaler";
 export default function ShopPage() {
   return (
     <>
-      <main className="flex flex-col min-h-screen bg-[#161616] w-full overflow-x-hidden">
+      <main className="flex flex-col min-h-screen bg-[#161616] w-full">
         <DesktopScaler>
           <Header />
         </DesktopScaler>
