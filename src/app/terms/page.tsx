@@ -46,13 +46,13 @@ export default function TermsPage() {
       <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px]">
         <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[32px] md:rounded-b-[26px]">
           <div className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[32px] md:rounded-b-[26px] min-h-[900px] px-6 md:px-16 py-12 md:py-20 flex flex-col md:flex-row gap-12 md:gap-20">
-            
+
             {/* Left Column: Table of Contents */}
             <div className="w-full md:w-[260px] shrink-0 md:sticky md:top-[120px] md:self-start flex flex-col gap-4 select-none max-md:border-b max-md:pb-6 border-black/10 max-h-[calc(100vh-180px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               <h2 className="font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] font-normal tracking-wide text-[#161616] uppercase leading-none">
                 Table of Contents
               </h2>
-              
+
               <div className="flex flex-col gap-1 items-start w-full">
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -75,7 +75,7 @@ export default function TermsPage() {
 
             {/* Right Column: Terms Content */}
             <div className="flex-1 flex flex-col gap-12 font-['Switzer',_sans-serif] text-[#161616] max-w-[800px]">
-              
+
               {/* Page Title */}
               <h1 className="font-[family-name:var(--font-bebas)] text-[56px] md:text-[96px] leading-[100%] tracking-tight text-[#161616]">
                 TERMS OF USE
@@ -307,7 +307,7 @@ export default function TermsPage() {
 
               {/* Updated Date */}
               <div className="pt-8 border-t border-black/10 text-[16px] md:text-[18px] font-medium text-[#161616] pb-12">
-                Updated On: 1 July, 2026
+                Updated On: 15 July, 2026
               </div>
 
             </div>
