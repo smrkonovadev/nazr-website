@@ -10,11 +10,12 @@ import styles from "./ProductSection.module.css";
 
 interface ProductSectionProps {
   product: ProductData;
+  nextProduct?: ProductData;
   zIndex: number;
   isLast?: boolean;
 }
 
-export function ProductSection({ product, zIndex, isLast = false }: ProductSectionProps) {
+export function ProductSection({ product, nextProduct, zIndex, isLast = false }: ProductSectionProps) {
   const [selectedVariant, setSelectedVariant] = useState<string>(
     product.variants?.[0]?.id || "pink"
   );
@@ -26,9 +27,17 @@ export function ProductSection({ product, zIndex, isLast = false }: ProductSecti
       data-product={product.id}
       data-reveal-panel=""
     >
-      <RevealMask accent={product.headerBg} showDivider={!isLast}>
+      <RevealMask 
+        accent={nextProduct ? nextProduct.headerBg : product.headerBg}
+        textColor={nextProduct ? nextProduct.headerTextColor : product.headerTextColor}
+        text={nextProduct ? nextProduct.indexText : ""}
+        showDivider={!isLast}
+      >
         <div className={styles.page}>
-          <section className="w-full h-full flex flex-col">
+          <section 
+            className="w-full h-full flex flex-col"
+            style={{ backgroundColor: product.contentBg }}
+          >
             {/* Header bar */}
             <HeaderBar
               indexText={product.indexText}

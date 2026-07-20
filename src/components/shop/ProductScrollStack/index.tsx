@@ -33,6 +33,7 @@ export function ProductScrollStack({ scrollPerPanel = 1.2 }: ProductScrollStackP
     const segment = () => window.innerHeight * scrollPerPanel;
 
     peelable.forEach((mask, index) => {
+      const nextMask = masks[index + 1];
       const trigger = ScrollTrigger.create({
         trigger: track,
         start: () => `top+=${index * segment()} top`,
@@ -46,9 +47,20 @@ export function ProductScrollStack({ scrollPerPanel = 1.2 }: ProductScrollStackP
             `${self.progress * 100}%`
           );
           mask.style.setProperty(
+            "--peel-progress",
+            `${self.progress}`
+          );
+          mask.style.setProperty(
             "--divider-opacity",
             self.progress >= 0.999 ? "0" : "1"
           );
+
+          if (nextMask) {
+            nextMask.style.setProperty(
+              "--header-opacity",
+              self.progress >= 0.999 ? "1" : "0"
+            );
+          }
         },
       });
 
@@ -105,6 +117,7 @@ export function ProductScrollStack({ scrollPerPanel = 1.2 }: ProductScrollStackP
           <ProductSection
             key={product.id}
             product={product}
+            nextProduct={productsData[index + 1]}
             zIndex={productsData.length - index}
             isLast={index === productsData.length - 1}
           />

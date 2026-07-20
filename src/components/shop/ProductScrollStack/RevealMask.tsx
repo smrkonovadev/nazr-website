@@ -6,6 +6,8 @@ import styles from "./RevealMask.module.css";
 type RevealMaskProps = {
   children: ReactNode;
   accent: string;
+  textColor?: string;
+  text?: string;
   /** Bottom-most panel has no peel edge */
   showDivider?: boolean;
 };
@@ -19,6 +21,8 @@ type RevealMaskProps = {
 export function RevealMask({
   children,
   accent,
+  textColor,
+  text,
   showDivider = true,
 }: RevealMaskProps) {
   const maskStyle = {
@@ -35,7 +39,22 @@ export function RevealMask({
       <div className={styles.clipped}>
         <div className={styles.content}>{children}</div>
       </div>
-      {showDivider && <div className={styles.divider} aria-hidden="true" />}
+      {showDivider && (
+        <div 
+          className={`${styles.divider} w-full flex items-center border-t border-b border-black shrink-0 px-6 md:px-12 py-3`}
+          style={{
+            backgroundColor: accent,
+            color: textColor
+          }}
+          aria-hidden="true"
+        >
+          <div className={styles.dividerText}>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[28px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
+              {text}
+            </h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
