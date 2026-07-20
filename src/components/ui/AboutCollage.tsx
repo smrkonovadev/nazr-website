@@ -20,9 +20,13 @@ export function AboutCollage() {
     offset: ["start end", "end start"]
   });
 
-  // Moves the entire collage block slightly at a different speed than scrolling
-  const parallaxY = useScroll().scrollY;
-  const parallaxYTransform = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  // Each sticker gets its own parallax depth — staggered by 5px steps
+  const parallax2 = useTransform(scrollYProgress, [0, 1], [30, -30]);  // TOPDIE
+  const parallax3 = useTransform(scrollYProgress, [0, 1], [35, -35]);  // TOPLEFT
+  const parallax4 = useTransform(scrollYProgress, [0, 1], [40, -40]);  // DOWNLEFT
+  const parallax5 = useTransform(scrollYProgress, [0, 1], [45, -45]);  // TOPRIGHT
+  const parallax6 = useTransform(scrollYProgress, [0, 1], [50, -50]);  // RIGHTNEXT
+  const parallax7 = useTransform(scrollYProgress, [0, 1], [25, -25]);  // DOWNLIP
 
   return (
     <section
@@ -58,11 +62,11 @@ export function AboutCollage() {
           />
         </motion.div>
 
-        {/* 2. Top-Left Pink Die Sticker (TOPDIE.svg) - Pops in & floats */}
+        {/* 2. Top-Left Pink Die Sticker (TOPDIE.svg) */}
         <motion.div
           className="absolute max-md:left-[15%] max-md:top-[6%] max-md:w-[24%] max-md:aspect-[218/187] z-30"
           style={{
-            y: parallaxYTransform,
+            y: parallax2,
             ...(!isMobile && {
               width: "200px",
               height: "200px",
@@ -75,33 +79,21 @@ export function AboutCollage() {
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
         >
-          <motion.div
-            className="relative w-full h-full"
-            animate={{
-              y: [0, -8, 0],
-              rotate: [11.13, 13.13, 11.13],
-            }}
-            // @ts-ignore
-            style={{ originX: 0.5, originY: 0.5 }}
-            transition={{
-              y: { repeat: Infinity, duration: 4, ease: "easeInOut" },
-              rotate: { repeat: Infinity, duration: 4, ease: "easeInOut" }
-            }}
-          >
+          <div className="relative w-full h-full" style={{ rotate: "11.13deg" } as React.CSSProperties}>
             <Image
               src="/images/TOPDIE.svg"
               alt="Pink Star Die"
               fill
               className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)]"
             />
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* 3. Mid-Left Eye Girl (TOPLEFT.svg) */}
         <motion.div
-          className="absolute max-md:left-[2%] max-md:top-[28%] max-md:w-[32%] max-md:aspect-[280/340] z-20 cursor-pointer overflow-hidden"
+          className="absolute max-md:left-[2%] max-md:top-[28%] max-md:w-[32%] max-md:aspect-[280/340] z-20 overflow-hidden"
           style={{
-            y: parallaxYTransform,
+            y: parallax3,
             ...(!isMobile && {
               width: "280px",
               height: "326px",
@@ -114,21 +106,20 @@ export function AboutCollage() {
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.3 }}
-          whileHover={{ scale: 1.03, zIndex: 40 }}
         >
           <Image
             src="/images/TOPLEFT.svg"
             alt="Sip Check Eye Cover"
             fill
-            className="object-cover shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            className="object-cover shadow-xl"
           />
         </motion.div>
 
         {/* 4. Bottom-Left Legs & Socks (DOWNLEFT.svg) */}
         <motion.div
-          className="absolute max-md:left-[6%] max-md:bottom-[4%] max-md:w-[28%] max-md:aspect-[250/330] z-20 cursor-pointer overflow-hidden"
+          className="absolute max-md:left-[6%] max-md:bottom-[4%] max-md:w-[28%] max-md:aspect-[250/330] z-20 overflow-hidden"
           style={{
-            y: parallaxYTransform,
+            y: parallax4,
             ...(!isMobile && {
               width: "213px",
               height: "260px",
@@ -141,21 +132,20 @@ export function AboutCollage() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.4 }}
-          whileHover={{ scale: 1.03, zIndex: 40 }}
         >
           <Image
             src="/images/DOWNLEFT.svg"
             alt="Sneakers and On Me Spray"
             fill
-            className="object-cover shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            className="object-cover shadow-xl"
           />
         </motion.div>
 
         {/* 5. Top-Right Popcorn Table (TOPRIGHT.svg) */}
         <motion.div
-          className="absolute max-md:right-[2%] max-md:top-[18%] max-md:w-[36%] max-md:aspect-[320/220] z-20 cursor-pointer overflow-hidden"
+          className="absolute max-md:right-[2%] max-md:top-[18%] max-md:w-[36%] max-md:aspect-[320/220] z-20 overflow-hidden"
           style={{
-            y: parallaxYTransform,
+            y: parallax5,
             ...(!isMobile && {
               width: "369px",
               height: "213px",
@@ -168,21 +158,20 @@ export function AboutCollage() {
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.3 }}
-          whileHover={{ scale: 1.03, zIndex: 40 }}
         >
           <Image
             src="/images/TOPRIGHT.svg"
             alt="Popcorn and Safety Spray"
             fill
-            className="object-cover shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            className="object-cover shadow-xl"
           />
         </motion.div>
 
         {/* 6. Bottom-Right Stickers in Ice (RIGHTNEXT.svg) */}
         <motion.div
-          className="absolute max-md:right-[4%] max-md:bottom-[10%] max-md:w-[32%] max-md:aspect-[280/240] z-20 cursor-pointer overflow-hidden"
+          className="absolute max-md:right-[4%] max-md:bottom-[10%] max-md:w-[32%] max-md:aspect-[280/240] z-20 overflow-hidden"
           style={{
-            y: parallaxYTransform,
+            y: parallax6,
             ...(!isMobile && {
               width: "282px",
               height: "231px",
@@ -195,21 +184,20 @@ export function AboutCollage() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.4 }}
-          whileHover={{ scale: 1.03, zIndex: 40 }}
         >
           <Image
             src="/images/RIGHTNEXT.svg"
             alt="Sip Check Ice Bucket"
             fill
-            className="object-cover shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            className="object-cover shadow-xl"
           />
         </motion.div>
 
-        {/* 7. Bottom Lip Sticker (DOWNLIP.svg) - Pops in & floats */}
+        {/* 7. Bottom Lip Sticker (DOWNLIP.svg) */}
         <motion.div
           className="absolute max-md:left-[52%] max-md:bottom-[8%] max-md:w-[18%] max-md:aspect-[140/100] z-30"
           style={{
-            y: parallaxYTransform,
+            y: parallax7,
             ...(!isMobile && {
               width: "194.7px",
               height: "201.29px",
@@ -222,26 +210,14 @@ export function AboutCollage() {
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.5, delay: 0.5 }}
         >
-          <motion.div
-            className="relative w-full h-full"
-            animate={{
-              y: [0, -6, 0],
-              rotate: [0.1, 2.0, 0.1],
-            }}
-            // @ts-ignore
-            style={{ originX: 0.5, originY: 0.5 }}
-            transition={{
-              y: { repeat: Infinity, duration: 3.5, ease: "easeInOut" },
-              rotate: { repeat: Infinity, duration: 3.5, ease: "easeInOut" }
-            }}
-          >
+          <div className="relative w-full h-full">
             <Image
               src="/images/DOWNLIP.svg"
               alt="Pink Lip Sticker"
               fill
               className="object-contain drop-shadow-[0_8px_12px_rgba(0,0,0,0.3)]"
             />
-          </motion.div>
+          </div>
         </motion.div>
 
       </motion.div>

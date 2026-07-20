@@ -1,11 +1,29 @@
 export function AboutTeamIntro() {
   return (
-    <section className="w-full bg-[#FFF1EB] pt-[45px] max-md:pb-6 md:pb-20 md:pt-5 flex flex-col items-center justify-center text-center px-4 border-none outline-none">
+    <section className="w-full bg-[#FFF1EB] pt-[40px] max-md:pb-6 md:pb-[60px] flex flex-col items-center justify-center text-center px-4 border-none outline-none">
       <div className="w-full max-w-[800px] flex flex-col items-center">
-        <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] max-[380px]:text-[32px] max-md:text-[40px] md:text-[120px] max-md:leading-[90%] md:leading-[85%] max-md:tracking-[-0.03em] md:tracking-[-0.02em] m-0 mb-6">
+        <h2
+          className="font-[family-name:var(--font-bebas)] text-[#161616] text-center"
+          style={{
+            fontWeight: 400,
+            fontSize: "clamp(40px, 8vw, 120px)",
+            lineHeight: "90%",
+            letterSpacing: "-0.03em",
+            margin: 0,
+            marginBottom: "32px",
+          }}
+        >
           MEET THE TEAM
         </h2>
-        <p className="text-[#161616]/80 max-md:text-[16px] md:text-[17.5px] max-md:leading-[140%] md:leading-relaxed max-md:tracking-[-0.03em] max-w-[841px] font-medium">
+        <p
+          className="text-[#161616]/80 text-center font-[family-name:var(--font-inter)] max-w-[841px] m-0"
+          style={{
+            fontWeight: 400,
+            fontSize: "clamp(16px, 2vw, 20px)",
+            lineHeight: "140%",
+            letterSpacing: "-0.03em",
+          }}
+        >
           Behind NAZR is a team rethinking preparedness through design, culture, technology and the everyday negotiations women make with the world. The result is an ecosystem that belongs in everyday life and a movement that goes beyond them.
         </p>
       </div>

@@ -69,6 +69,7 @@ export function AboutStatement() {
 
   return (
     <section
+      id="every-woman-section"
       className="w-full bg-[#161616] pt-6 pb-14 md:pt-32 md:pb-[88px] flex flex-col items-center justify-center relative z-[100] px-4"
       onMouseMove={handleMouseMove}
     >
@@ -112,7 +113,7 @@ export function AboutStatement() {
       </div>
 
       {/* Top Tag */}
-      <div className="bg-[#FFF1EB] text-black text-[20px] md:text-[24px] px-4 py-1 mb-10 tracking-wide relative z-10 font-[family-name:var(--font-bebas)] leading-[100%] uppercase mt-8 md:mt-0">
+      <div className="bg-[#FFF1EB] text-black text-[20px] md:text-[24px] px-4 py-1 mb-10 tracking-wide relative z-10 font-[family-name:var(--font-bebas)] leading-[100%] uppercase mt-8 md:mt-0 rounded-[4px]">
         A NEW STANDARD BEGINS HERE
       </div>
 
@@ -209,7 +210,13 @@ export function AboutStatement() {
       </div>
 
       {/* Bottom Pink Button */}
-      <button className="max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center max-md:gap-[8px] md:gap-3 hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap">
+      <button
+        onClick={() => {
+          const el = document.getElementById("product-features-section");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }}
+        className="max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center max-md:gap-[8px] md:gap-3 hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
+      >
         <Image
           src="/images/logosvg.svg"
           alt="Nazr Logo"

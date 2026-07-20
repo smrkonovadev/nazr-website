@@ -58,8 +58,39 @@ export function ProductScrollStack({ scrollPerPanel = 1.2 }: ProductScrollStackP
     const onResize = () => ScrollTrigger.refresh();
     window.addEventListener("resize", onResize);
 
+    // Smoothly scroll to the matched product panel if hash exists
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+
+      const productId = hash.substring(1);
+      const productIndex = productsData.findIndex((p) => p.id === productId);
+      if (productIndex === -1) return;
+
+      // Small delay to ensure that scroll triggers and layout have computed their bounds
+      setTimeout(() => {
+        const trackRect = track.getBoundingClientRect();
+        const trackTop = trackRect.top + window.pageYOffset;
+        const panelSegment = window.innerHeight * scrollPerPanel;
+        
+        // Scroll target lands on the start trigger for the correct card's peel state
+        const targetY = trackTop + productIndex * panelSegment;
+        
+        window.scrollTo({
+          top: targetY + 2, // minor offset buffer
+          behavior: "smooth",
+        });
+      }, 300);
+    };
+
+    // Run on initial load/mount
+    handleHashScroll();
+
+    window.addEventListener("hashchange", handleHashScroll);
+
     return () => {
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("hashchange", handleHashScroll);
       triggers.forEach((t) => t.kill());
     };
   }, [scrollPerPanel]);

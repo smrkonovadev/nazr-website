@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const cards = [
@@ -29,15 +30,23 @@ export function AboutFeatures() {
   });
 
   return (
-    <section className="w-full bg-[#FFF1EB] py-20 relative">
+    <section id="product-features-section" className="w-full bg-[#FFF1EB] py-20 relative">
 
       {/* Top Heading Marquee */}
       <div className="w-full mb-8 md:mb-16 overflow-hidden relative flex flex-col justify-center bg-[#FFF1EB] py-4">
         <div className="flex w-max animate-marquee-reverse">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex items-center gap-4 md:gap-8 px-2 md:px-4 shrink-0">
-              <h2 className="font-[family-name:var(--font-bebas)] text-black text-[80px] md:text-[140px] lg:text-[180px] leading-[80%] m-0 whitespace-nowrap">
-                BURI NAZR
+              <h2
+                className="font-[family-name:var(--font-bebas)] text-black m-0 whitespace-nowrap"
+                style={{
+                  fontWeight: 400,
+                  fontSize: "clamp(72px, 10vw, 160px)",
+                  lineHeight: "90%",
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                Main Character Security
               </h2>
 
               <div className="w-[60px] md:w-[100px] lg:w-[150px] shrink-0">
@@ -80,15 +89,12 @@ export function AboutFeatures() {
 function CardItem({ card, index, cardsLength, progress }: { card: any, index: number, cardsLength: number, progress: any }) {
 
   // Calculate the scroll range for this specific card based on its index
-  // We use mathematical mapping to ensure the card stays sharp until the next card arrives
   const step = 1 / (cardsLength - 0.5); // ~0.285 for 4 cards
+  // The first card stays sharp until the second card is 50% visible (around 0.5 progress)
+  const startProgress = index === 0 ? 0.5 : index * step + 0.12;
+  const endProgress = index === 0 ? 0.85 : index * step + step;
 
-  // Card i stays sharp (0px blur) until progress hits startProgress
-  const startProgress = index * step + 0.12;
-  // Card i reaches full blur (16px) when progress hits endProgress
-  const endProgress = index * step + step;
-
-  const blurValue = useTransform(progress, [startProgress, endProgress], ["0px", "16px"]);
+  const blurValue = useTransform(progress, [startProgress, endProgress], ["0px", "22.332666397094727px"]);
   const blurFilter = useTransform(blurValue, (v) => `blur(${v})`);
   const scale = useTransform(progress, [startProgress, endProgress], [1, 0.92]);
 
@@ -100,6 +106,7 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
       style={{
         "--index-offset": `${index * 40}px`,
         filter: isLast ? "blur(0px)" : blurFilter,
+        backdropFilter: isLast ? "blur(0px)" : blurFilter,
         scale: isLast ? 1 : scale,
         transformOrigin: "top center",
       } as React.CSSProperties | any}
@@ -126,17 +133,35 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
             {card.description}
           </p>
 
-          {/* Pink Button */}
-          <button className="shrink-0 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center max-md:gap-[8px] md:gap-3 hover:bg-[#FF0E97]/90 transition-colors shadow-lg flex-nowrap">
+          {/* Pink Link/Button */}
+          <Link
+            href={card.id === 1 ? "/shop#pepper-spray" : "/shop#sip-check"}
+            style={{
+              width: "196px",
+              height: "40px",
+              borderRadius: "4px",
+              border: "1px solid #FF0E97",
+              padding: "8px 20px",
+              gap: "8px",
+              opacity: 1,
+              backgroundColor: "#FF0E97",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+              flexWrap: "nowrap",
+            }}
+            className="text-[#FFF1EB] hover:bg-[#FF0E97]/90 transition-colors shadow-lg"
+          >
             <Image
               src="/images/logosvg.svg"
               alt="Nazr Logo"
               width={35}
               height={24}
-              className="max-md:w-[35px] max-md:h-[24px] md:w-9 md:h-9 object-contain invert brightness-0 shrink-0"
+              className="w-[35px] h-[24px] object-contain invert brightness-0 shrink-0"
             />
-            <span className="font-['Roboto',_sans-serif] max-md:w-[113px] max-md:h-[24px] text-[16px] md:text-[18px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Join Ecosystem</span>
-          </button>
+            <span className="font-['Roboto',_sans-serif] text-[16px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Shop Now</span>
+          </Link>
         </div>
       </div>
 
