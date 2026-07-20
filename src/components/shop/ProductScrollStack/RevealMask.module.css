@@ -30,17 +30,25 @@
   left: 0;
   right: 0;
   /* Sibling of the clipped layer — rides the peel edge without being clipped */
-  bottom: var(--clip-bottom, 0%);
-  height: 14px;
+  bottom: min(var(--clip-bottom, 0%), calc(100% - 56px));
+  height: calc(14px + (56px - 14px) * var(--peel-progress, 0));
   background: var(--accent, #ff6d4d);
   pointer-events: none;
   z-index: 5;
   /* Driven by RevealStack — hidden once the panel is fully peeled */
   opacity: var(--divider-opacity, 1);
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .divider {
-    height: 10px;
+    height: calc(10px + (56px - 10px) * var(--peel-progress, 0));
   }
+}
+
+.dividerText {
+  opacity: var(--peel-progress, 0);
+  transform: scale(calc(0.85 + 0.15 * var(--peel-progress, 0)));
+  transform-origin: left center;
+  will-change: opacity, transform;
 }
