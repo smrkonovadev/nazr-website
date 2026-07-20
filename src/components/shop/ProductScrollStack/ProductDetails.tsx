@@ -25,7 +25,7 @@ export function ProductDetails({
   setSelectedVariant,
 }: ProductDetailsProps) {
   return (
-    <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 flex flex-col justify-center overflow-y-auto">
+    <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 pb-8 flex flex-col justify-end overflow-y-auto">
       {/* Description Text */}
       <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em]">
         {description}
@@ -82,12 +82,8 @@ export function ProductDetails({
       )}
 
       {/* Action Buttons */}
-      <div className="flex flex-row gap-[8px] w-full max-w-[440px]">
-        <button className="group flex-1 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] h-[50px] rounded-[8px] font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase">
-          Add To Cart
-          <ShoppingBag className="w-0 opacity-0 group-hover:w-4 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300 ease-in-out" />
-        </button>
-        <button className="flex-1 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] h-[50px] rounded-[8px] font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.05em] flex items-center justify-center gap-2 hover:bg-black transition-colors uppercase">
+      <div className="w-full max-w-[440px] flex justify-start">
+        <button className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase">
           View More
         </button>
       </div>
