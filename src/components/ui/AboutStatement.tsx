@@ -215,14 +215,14 @@ export function AboutStatement() {
           const el = document.getElementById("product-features-section");
           if (el) el.scrollIntoView({ behavior: "smooth" });
         }}
-        className="max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center max-md:gap-[8px] md:gap-3 hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
+        className="group max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
       >
         <Image
           src="/images/logosvg.svg"
           alt="Nazr Logo"
           width={35}
           height={24}
-          className="max-md:w-[35px] max-md:h-[24px] md:w-9 md:h-9 object-contain invert brightness-0 shrink-0"
+          className="w-0 opacity-0 group-hover:w-9 group-hover:opacity-100 group-hover:mr-3 max-md:group-hover:w-[35px] max-md:group-hover:mr-[8px] transition-all duration-300 ease-in-out object-contain invert brightness-0 shrink-0"
         />
         <span className="font-['Roboto',_sans-serif] max-md:w-[113px] max-md:h-[24px] text-[16px] md:text-[18px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Explore the Ecosystem</span>
       </button>

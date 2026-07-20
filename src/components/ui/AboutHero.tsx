@@ -44,14 +44,14 @@ export function AboutHero() {
                 const el = document.getElementById("every-woman-section");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className="flex items-center gap-2 bg-white text-black px-4 py-1 rounded-[3px] font-semibold hover:bg-white/90 transition-colors"
+              className="group flex items-center bg-white text-black px-4 py-1 rounded-[3px] font-semibold hover:bg-white/90 transition-colors"
             >
               <Image
                 src="/images/logosvg.svg"
                 alt="Nazr Logo"
                 width={32}
                 height={32}
-                className="w-8 h-8 object-contain brightness-0"
+                className="w-0 opacity-0 group-hover:w-8 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out object-contain brightness-0"
               />
               <span className="text-[16px] tracking-tight">Discover NAZR</span>
             </button>

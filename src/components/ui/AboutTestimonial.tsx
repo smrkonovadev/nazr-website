@@ -58,13 +58,13 @@ export function AboutTestimonial() {
         </h2>
 
         {/* Pink Button */}
-        <button className="bg-[#F80090] text-white max-md:px-6 max-md:py-1 md:px-8 md:py-2 rounded-[8px] font-regular flex items-center max-md:gap-3 md:gap-3 hover:bg-[#F80090]/90 transition-colors shadow-lg z-10 relative">
+        <button className="group bg-[#F80090] text-white max-md:px-6 max-md:py-1 md:px-8 md:py-2 rounded-[8px] font-regular flex items-center hover:bg-[#F80090]/90 transition-colors shadow-lg z-10 relative">
           <Image
             src="/images/logosvg.svg"
             alt="Nazr Logo"
             width={24}
             height={24}
-            className="max-md:w-11 max-md:h-11 md:w-8 md:h-8 object-contain invert brightness-0"
+            className="w-0 opacity-0 group-hover:w-8 group-hover:opacity-100 group-hover:mr-2 max-md:group-hover:w-11 max-md:group-hover:mr-3 transition-all duration-300 ease-in-out object-contain invert brightness-0"
           />
           <span className="max-md:text-[20px] md:text-[18px]">Join Ecosystem</span>
         </button>

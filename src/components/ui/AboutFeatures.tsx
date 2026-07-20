@@ -142,7 +142,6 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
               borderRadius: "4px",
               border: "1px solid #FF0E97",
               padding: "8px 20px",
-              gap: "8px",
               opacity: 1,
               backgroundColor: "#FF0E97",
               display: "flex",
@@ -151,14 +150,14 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
               flexShrink: 0,
               flexWrap: "nowrap",
             }}
-            className="text-[#FFF1EB] hover:bg-[#FF0E97]/90 transition-colors shadow-lg"
+            className="group text-[#FFF1EB] hover:bg-[#FF0E97]/90 transition-colors shadow-lg"
           >
             <Image
               src="/images/logosvg.svg"
               alt="Nazr Logo"
               width={35}
               height={24}
-              className="w-[35px] h-[24px] object-contain invert brightness-0 shrink-0"
+              className="w-0 opacity-0 group-hover:w-9 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out object-contain invert brightness-0 shrink-0"
             />
             <span className="font-['Roboto',_sans-serif] text-[16px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Shop Now</span>
           </Link>

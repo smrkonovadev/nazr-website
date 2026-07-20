@@ -86,9 +86,9 @@ export function ShopProductThree() {
 
           {/* Action Buttons */}
           <div className="flex flex-row gap-[8px] w-full max-w-[500px]">
-            <button className="flex-1 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] h-[54px] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center gap-2 hover:bg-black transition-colors uppercase">
+            <button className="group flex-1 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] h-[54px] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase">
               Add To Cart
-              <ShoppingBag className="w-4 h-4" />
+              <ShoppingBag className="w-0 opacity-0 group-hover:w-4 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300 ease-in-out" />
             </button>
             <button className="flex-1 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] h-[54px] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center gap-2 hover:bg-black transition-colors uppercase">
               View More

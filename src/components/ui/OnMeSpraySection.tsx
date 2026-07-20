@@ -72,8 +72,8 @@ export function OnMeSpraySection({ title, subtitle, onNext, onPrev }: OnMeSprayS
         </div>
 
         {/* Join Button */}
-        <button className="flex justify-center items-center gap-[8px] bg-[#FF007F] hover:bg-[#FF007F]/90 text-[#FFF9EB] font-['Roboto',_sans-serif] font-normal text-[15px] md:text-[16px] leading-[1.5] tracking-normal px-[24px] py-[8px] w-auto h-[44px] md:h-[48px] rounded-[6px] border border-transparent transition-all duration-300 shadow-lg mt-2 md:-mt-[10px] ml-0.5 z-50 relative outline-none focus:outline-none">
-          <Image src="/images/logosvg.svg" alt="Owl Logo" width={32} height={32} className="brightness-0 invert" />
+        <button className="group flex justify-center items-center bg-[#FF007F] hover:bg-[#FF007F]/90 text-[#FFF9EB] font-['Roboto',_sans-serif] font-normal text-[15px] md:text-[16px] leading-[1.5] tracking-normal px-[24px] py-[8px] w-auto h-[44px] md:h-[48px] rounded-[6px] border border-transparent transition-all duration-300 shadow-lg mt-2 md:-mt-[10px] ml-0.5 z-50 relative outline-none focus:outline-none">
+          <Image src="/images/logosvg.svg" alt="Owl Logo" width={32} height={32} className="w-0 opacity-0 group-hover:w-8 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out brightness-0 invert" />
           <span className="whitespace-nowrap">Join Ecosystem</span>
         </button>
 

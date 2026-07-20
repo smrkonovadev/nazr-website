@@ -115,8 +115,8 @@ export function TrustedCircleSection() {
         >
           {/* Centered Button */}
           <div className="flex justify-center mb-2">
-            <button className="bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white rounded-[5px] px-6 py-2.5 flex items-center gap-3 font-normal text-[16px] leading-[150%] tracking-normal shadow-lg" style={{ fontFamily: "Roboto, sans-serif" }}>
-              <Image src="/images/logosvg.svg" alt="Nazr Logo" width={35} height={35} className="object-contain" />
+            <button className="group bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white rounded-[5px] px-6 py-2.5 flex items-center font-normal text-[16px] leading-[150%] tracking-normal shadow-lg" style={{ fontFamily: "Roboto, sans-serif" }}>
+              <Image src="/images/logosvg.svg" alt="Nazr Logo" width={35} height={35} className="w-0 opacity-0 group-hover:w-[35px] group-hover:opacity-100 group-hover:mr-3 transition-all duration-300 ease-in-out object-contain" />
               Join Ecosystem
             </button>
           </div>
@@ -250,8 +250,8 @@ export function TrustedCircleSection() {
 
             {/* Join Ecosystem Button */}
             <div className="pt-4 relative z-10">
-              <button className="bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white rounded-[5px] px-6 py-2.5 flex items-center gap-3 font-normal text-[16px] leading-[150%] tracking-normal shadow-lg" style={{ fontFamily: "Roboto, sans-serif" }}>
-                <Image src="/images/logosvg.svg" alt="Nazr Logo" width={35} height={35} className="object-contain" />
+              <button className="group bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white rounded-[5px] px-6 py-2.5 flex items-center font-normal text-[16px] leading-[150%] tracking-normal shadow-lg" style={{ fontFamily: "Roboto, sans-serif" }}>
+                <Image src="/images/logosvg.svg" alt="Nazr Logo" width={35} height={35} className="w-0 opacity-0 group-hover:w-[35px] group-hover:opacity-100 group-hover:mr-3 transition-all duration-300 ease-in-out object-contain" />
                 Join Ecosystem
               </button>
             </div>
