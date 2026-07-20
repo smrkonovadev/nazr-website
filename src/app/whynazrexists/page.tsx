@@ -39,11 +39,11 @@ export default function WhyNazrExistsPage() {
           {/* Our Values Section */}
           <OurValuesSection />
 
-          {/* Contact Us Section */}
-          <ContactUsSection />
-
-          {/* Animated Infinite Carousel */}
-          <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
+          {/* Contact Us Section & Carousel */}
+          <div className="w-full bg-[#FFF1EB] max-md:rounded-b-[32px] md:rounded-b-[26px] overflow-hidden relative z-20">
+            <ContactUsSection />
+            <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
+          </div>
         </DesktopScaler>
       </main>
     </>

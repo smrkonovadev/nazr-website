@@ -20,7 +20,7 @@ export default function ShopPage() {
             <div
               className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[32px] md:rounded-t-[26px]"
               style={{
-                minHeight: '800px',
+                minHeight: '680px',
               }}
             >
               <ShopHero />
@@ -41,8 +41,8 @@ export default function ShopPage() {
         </section>
 
         {/* Contact Us Section & Carousel */}
-        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[32px] md:rounded-b-[26px]">
-          <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full max-md:rounded-b-[32px] md:rounded-b-[26px]">
+        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[32px] md:rounded-b-[26px] overflow-hidden">
+          <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full max-md:rounded-b-[32px] md:rounded-b-[26px] overflow-hidden">
             <ContactUsSection />
             <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
           </div>

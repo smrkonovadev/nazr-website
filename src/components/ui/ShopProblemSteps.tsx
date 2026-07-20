@@ -20,19 +20,24 @@ export function ShopProblemSteps() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   return (
-    <section ref={sectionRef} className="w-full relative z-[999] bg-[#161616] pt-[30px] md:pt-[80px] pb-[30px] md:pb-[80px] border-b border-white/20 overflow-hidden">
+    <section ref={sectionRef} className="w-full relative z-[999] bg-[#161616] pt-[30px] md:pt-[60px] pb-[30px] md:pb-[80px] border-b border-white/20 overflow-hidden">
 
       {/* Top Paragraph */}
-      <div className="w-full max-w-[800px] mx-auto max-md:px-[6.15vw] md:px-8 mb-[30px] md:mb-[80px] flex items-center justify-center">
-        <p className="font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] max-md:text-[7.0vw] md:text-[30px] leading-[120%] tracking-[-0.01em] uppercase">
-          The most thoughtful gifts aren't always the biggest.  Sometimes they're the ones that quietly say, "I want you to get home safe."  Discover why thousands are choosing NAZR for the women they care about.        </p>
+      <div className="w-full max-w-[948px] mx-auto max-md:px-[6.15vw] md:px-0 mb-[30px] md:mb-[90px] flex items-center justify-center">
+        <p className="font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] max-md:text-[28px] md:text-[52px] leading-[1.2] tracking-[-0.01em] uppercase">
+          THE MOST THOUGHTFUL GIFTS AREN&apos;T ALWAYS THE BIGGEST.<br className="max-md:hidden" />
+          SOMETIMES THEY&apos;RE THE ONES THAT QUIETLY SAY, &quot;I WANT<br className="max-md:hidden" />
+          YOU TO GET HOME SAFE.&quot;<br className="max-md:hidden" />
+          DISCOVER WHY THOUSANDS ARE CHOOSING NAZR FOR THE<br className="max-md:hidden" />
+          WOMEN THEY CARE ABOUT.
+        </p>
       </div>
 
       {/* Marquee Cards Container */}
-      <div className="w-full relative z-20 flex items-center h-[380px] md:h-[440px]">
+      <div className="w-full relative z-20 flex items-center h-[372px]">
         {isInView && (
           <motion.div
-            className="flex items-center gap-4 md:gap-8 min-w-max px-4 md:px-8"
+            className="flex items-center gap-4 min-w-max px-4 md:px-8"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
               repeat: Infinity,
@@ -44,13 +49,13 @@ export function ShopProblemSteps() {
             {duplicatedSteps.map((step, i) => (
               <div
                 key={i}
-                className="relative flex-shrink-0 w-[280px] md:w-[350px] lg:w-[340px] h-[350px] md:h-[400px] lg:h-[460px] rounded-[16px] md:rounded-[24px] p-6 flex flex-col justify-between shadow-2xl"
+                className="relative flex-shrink-0 w-[279px] h-[372px] rounded-[32px] p-6 flex flex-col justify-between shadow-2xl"
                 style={{ backgroundColor: step.color }}
               >
-                <div className="font-[family-name:var(--font-bebas)] text-[#161616] text-[24px] md:text-[32px] lg:text-[42px] leading-none">
+                <div className="font-[family-name:var(--font-bebas)] text-[#161616] text-[28px] leading-none">
                   {step.time}
                 </div>
-                <div className="font-[family-name:var(--font-bebas)] text-[#161616] text-[32px] md:text-[40px] lg:text-[56px] leading-[0.9] tracking-[-0.02em] whitespace-pre-wrap">
+                <div className="font-[family-name:var(--font-bebas)] text-[#161616] text-[38px] leading-[0.9] tracking-[-0.02em] whitespace-pre-wrap">
                   {step.text}
                 </div>
               </div>

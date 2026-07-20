@@ -30,8 +30,10 @@ export default function AboutPage() {
             <AboutTeamIntro />
             <AboutTeamList />
             <AboutTestimonial />
-            <AboutContactUs />
-            <AutoMovingCarousel />
+            <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[32px] overflow-hidden">
+              <AboutContactUs />
+              <AutoMovingCarousel />
+            </div>
           </div>
         </DesktopScaler>
 

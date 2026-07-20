@@ -12,7 +12,7 @@ export function ScalableShopCollage() {
 
   return (
     <div
-      className="w-full relative mx-auto overflow-hidden flex justify-center max-md:h-[150vw] md:h-[850px] max-w-[1440px]"
+      className="w-full relative mx-auto overflow-hidden flex justify-center max-md:h-[125vw] md:h-[720px] max-w-[1440px]"
     >
       <div
         className="absolute left-1/2 w-full h-full max-md:top-0 md:top-0 max-w-[1440px]"
@@ -24,7 +24,7 @@ export function ScalableShopCollage() {
         <div className="relative w-full h-full">
 
           {/* Huge Background Text - z-10 */}
-          <div className="absolute max-md:top-[12%] md:top-[8%] w-full flex flex-col items-center justify-center pointer-events-none z-10">
+          <div className="absolute max-md:top-[5%] md:top-[2%] w-full flex flex-col items-center justify-center pointer-events-none z-10">
             <h1
               className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[31.5vw] md:text-[240px] max-md:leading-[0.9] md:leading-[0.8] tracking-[-0.03em] m-0 text-center"
             >
@@ -36,11 +36,11 @@ export function ScalableShopCollage() {
           {/* Floating Icons Background Layer */}
           {/* Left Owl Sticker - z-20 (in front of text) */}
           <div
-            className="absolute max-md:left-[4%] max-md:top-[6%] max-md:w-[45vw] z-20 pointer-events-none"
+            className="absolute max-md:left-[4%] max-md:top-[1%] max-md:w-[45vw] z-20 pointer-events-none"
             style={{
               width: 'clamp(180px, 22.9vw, 330px)',
               left: '17%',
-              top: '11%'
+              top: '4%'
             }}
           >
             <Image
@@ -54,11 +54,11 @@ export function ScalableShopCollage() {
 
           {/* Right Pink Eye Sticker - z-20 (in front of text) */}
           <div
-            className="absolute max-md:right-[8%] max-md:top-[18%] max-md:w-[25vw] z-20 pointer-events-none"
+            className="absolute max-md:right-[8%] max-md:top-[11%] max-md:w-[25vw] z-20 pointer-events-none"
             style={{
               width: 'clamp(110px, 12.8vw, 185px)',
               right: '17.5%',
-              top: '19.5%'
+              top: '12.5%'
             }}
           >
             <Image
@@ -72,11 +72,11 @@ export function ScalableShopCollage() {
 
           {/* Center Product Collage */}
           <div
-            className="absolute left-1/2 -translate-x-1/2 max-md:top-[32%] max-md:w-[120vw] max-md:h-[77.5vw] z-20"
+            className="absolute left-1/2 -translate-x-1/2 max-md:top-[24%] max-md:w-[120vw] max-md:h-[77.5vw] z-20"
             style={{
               width: 'clamp(400px, 48.6vw, 700px)',
               height: 'clamp(260px, 31.25vw, 450px)',
-              top: '35%'
+              top: '27%'
             }}
           >
 

@@ -18,19 +18,15 @@ const row2Images = [
   "/images/new42.svg",
 ];
 
-// Duplicate enough times so half the width covers the largest screens
-const topHalf = [...row1Images, ...row1Images];
-const topRow = [...topHalf, ...topHalf];
-
-const bottomHalf = [...row2Images, ...row2Images, ...row2Images];
-const bottomRow = [...bottomHalf, ...bottomHalf];
+const topRow = [...row1Images, ...row1Images, ...row1Images, ...row1Images];
+const bottomRow = [...row2Images, ...row2Images, ...row2Images, ...row2Images];
 
 export function AutoMovingCarousel({ className }: { className?: string }) {
   return (
     <section className={`w-full overflow-hidden pt-0 pb-8 md:pb-12 flex flex-col gap-3 md:gap-6 relative z-20 ${className || "bg-[#FFF1EB]"}`}>
 
       {/* Top Row - Moves Left to Right */}
-      <div className="flex w-max animate-marquee-reverse gap-3 md:gap-6">
+      <div className="flex w-max animate-marquee-reverse gap-3 md:gap-6" style={{ animationDuration: '60s' }}>
         {topRow.map((src, idx) => (
           <div
             key={`top-${idx}`}
@@ -47,7 +43,7 @@ export function AutoMovingCarousel({ className }: { className?: string }) {
       </div>
 
       {/* Bottom Row - Moves Right to Left */}
-      <div className="flex w-max animate-marquee gap-3 md:gap-6">
+      <div className="flex w-max animate-marquee gap-3 md:gap-6" style={{ animationDuration: '60s' }}>
         {bottomRow.map((src, idx) => (
           <div
             key={`bottom-${idx}`}
