@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Header } from "./Header";
 
@@ -37,7 +39,13 @@ export function AboutHero() {
               Redefining what preparedness looks and feels like.
             </p>
 
-            <button className="flex items-center gap-2 bg-white text-black px-4 py-1 rounded-[3px] font-semibold hover:bg-white/90 transition-colors">
+            <button
+              onClick={() => {
+                const el = document.getElementById("every-woman-section");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="flex items-center gap-2 bg-white text-black px-4 py-1 rounded-[3px] font-semibold hover:bg-white/90 transition-colors"
+            >
               <Image
                 src="/images/logosvg.svg"
                 alt="Nazr Logo"
@@ -45,7 +53,7 @@ export function AboutHero() {
                 height={32}
                 className="w-8 h-8 object-contain brightness-0"
               />
-              <span className="text-[16px] tracking-tight">Discover NAZR →</span>
+              <span className="text-[16px] tracking-tight">Discover NAZR</span>
             </button>
           </div>
         </div>

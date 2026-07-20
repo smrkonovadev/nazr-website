@@ -16,13 +16,13 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "1",
     name: "ATUL CHOPRA",
-    roles: ["CO-FOUNDER", "CEO"],
+    roles: ["COFOUNDER", "CHIEF EXECUTIVE OFFICER"],
     image: "/images/ATUL.svg"
   },
   {
     id: "2",
-    name: "JIA MUKHARJEE",
-    roles: ["CO-FOUNDER", "CREATIVE DIRECTOR"],
+    name: "AISHANI MUKHERJEE",
+    roles: ["COFOUNDER", "CHIEF BRAND OFFICER"],
     image: "/images/AISHANI.svg"
   }
 ];
@@ -99,7 +99,7 @@ export function AboutTeamList() {
 
               {/* Left Side: Name and Tags */}
               <div data-left className="flex flex-col">
-                <div className="flex items-center gap-4 mb-2 relative">
+                <div className="flex items-center relative" style={{ gap: "8px" }}>
 
                   {/* Owl Logo - fixed pixel width so Framer Motion interpolates smoothly */}
                   <motion.div
@@ -117,27 +117,45 @@ export function AboutTeamList() {
                       alt="Owl Logo"
                       width={100}
                       height={100}
-                      className="w-[60px] md:w-[100px] h-auto object-contain brightness-0 mr-4"
+                      className="w-[60px] md:w-[100px] h-auto object-contain brightness-0"
                     />
                   </motion.div>
 
-                  <h3 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[40px] md:text-[80px] leading-[85%] tracking-[-0.02em] m-0 transition-transform duration-300 group-hover:translate-x-2">
-                    {member.name}
-                  </h3>
-                </div>
-
-                {/* Pill Tags */}
-                <div className="flex gap-3">
-                  {member.roles.map((role, i) => (
-                    <div
-                      key={i}
-                      className="border border-[#161616] rounded-full px-4 py-1 flex items-center justify-center"
+                  <div className="flex flex-col">
+                    <h3
+                      className="font-[family-name:var(--font-bebas)] text-[#161616] m-0 transition-transform duration-300 group-hover:translate-x-2"
+                      style={{
+                        fontWeight: 400,
+                        fontSize: "clamp(40px, 6vw, 80px)",
+                        lineHeight: "90%",
+                        letterSpacing: "-0.03em",
+                      }}
                     >
-                      <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[14px] md:text-[16px] tracking-wide leading-none mt-1">
-                        {role}
-                      </span>
+                      {member.name}
+                    </h3>
+
+                    {/* Pill Tags — flush under name, no gap */}
+                    <div className="flex" style={{ gap: "0", marginTop: 0 }}>
+                      {member.roles.map((role, i) => (
+                        <div
+                          key={i}
+                          style={{
+                            border: "1px solid #161616",
+                            borderRadius: "10000px",
+                            padding: "0 16px",
+                            height: "46px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[14px] md:text-[16px] tracking-wide leading-none mt-1">
+                            {role}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
 
