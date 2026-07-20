@@ -1,10 +1,14 @@
 "use client";
 
-const dummyData = Array.from({ length: 10 }).map((_, i) => ({
-  id: i,
-  number: "Help Line Number",
-  description: "Description"
-}));
+const helplineData = [
+  { id: 1, number: "7827170170", description: "National Commission for Women Helpline" },
+  { id: 2, number: "10920", description: "Shakti Shalini Helpline" },
+  { id: 3, number: "011-24619821", description: "Sakhi Women's Helpline" },
+  { id: 4, number: "181", description: "Domestic Violence Helpline" },
+  { id: 5, number: "1800-2000-737", description: "Rape Crisis Helpline" },
+  { id: 6, number: "181", description: "Women Helpline Number" },
+  { id: 7, number: "14678", description: "SUBHADRA Yojana" }
+];
 
 export function HelplineTable() {
   return (
@@ -31,15 +35,17 @@ export function HelplineTable() {
           </tr>
         </thead>
         <tbody>
-          {dummyData.map((row) => (
+          {helplineData.map((row) => (
             <tr key={row.id} className="text-[#161616]">
               <td 
-                className="p-3 md:px-6 md:py-5 border border-[#161616]/30 text-[14px] md:text-[16px]"
+                className="p-3 md:px-6 md:py-5 border border-[#161616]/30 text-[14px] md:text-[16px] font-bold"
                 style={{
                   fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
                 }}
               >
-                {row.number}
+                <a href={`tel:${row.number.replace(/\s+/g, '')}`} className="hover:underline text-black">
+                  {row.number}
+                </a>
               </td>
               <td 
                 className="p-3 md:px-6 md:py-5 border border-[#161616]/30 text-[14px] md:text-[16px]"
