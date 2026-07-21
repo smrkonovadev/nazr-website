@@ -22,7 +22,8 @@ function FillLetter({ char, progress, range, fillColor, emptyColor }: { char: st
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
-        color: "transparent"
+        color: "transparent",
+        display: "inline"
       }}
     >
       {char}

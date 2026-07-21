@@ -47,7 +47,7 @@ export function ProblemCardsStickyWrapper() {
   return (
     <div ref={containerRef} className="relative w-full h-[300vh] bg-[#161616]">
       {/* Sticky container pins to the top of the viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center items-center">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-start md:justify-center items-center pt-6 md:pt-0">
         {/* The combined 832px tall block */}
         <div
           className="flex flex-col items-center origin-center"
