@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 
 const cards = [
   {
@@ -56,23 +56,58 @@ export function ProductCardsCarousel() {
     };
 
     calculateTranslation();
+    
+    // Polling calculations to handle dynamic rendering of media and scaling adjustments
+    const timer = setTimeout(calculateTranslation, 150);
+    const interval = setInterval(calculateTranslation, 500);
+
     window.addEventListener("resize", calculateTranslation);
-    return () => window.removeEventListener("resize", calculateTranslation);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+      window.removeEventListener("resize", calculateTranslation);
+    };
   }, []);
 
-  // Track the vertical scroll progress of this section's track
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  const scrollYProgress = useMotionValue(0);
 
-  // Map vertical scroll progress to negative horizontal translation
-  const x = useTransform(scrollYProgress, [0, 1], [0, -xTranslation]);
+  // Track scroll progress within this section dynamically (zoom-safe for scaling)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        
+        // Calculate progress from top of container entering top of viewport to bottom of container leaving bottom of viewport
+        const startScroll = rect.top;
+        const scrollRange = rect.height - window.innerHeight;
+        
+        if (scrollRange > 0) {
+          const progress = -startScroll / scrollRange;
+          scrollYProgress.set(Math.max(0, Math.min(1, progress)));
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
+    
+    const timer = setTimeout(handleScroll, 200);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [scrollYProgress]);
+
+  // Map vertical scroll progress to negative horizontal translation, completing at 90% scroll to prevent unpinning lag
+  const x = useTransform(scrollYProgress, [0, 0.90], [0, -xTranslation], { clamp: true });
 
   return (
     <section ref={containerRef} className="w-full bg-[#161616] relative z-50 h-[200vh] max-md:h-[250vh]">
       {/* Sticky container that keeps items pinned while we scroll through the track */}
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center w-full">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-start pt-[120px] md:pt-[60px] w-full">
         {/* Horizontal scroll container */}
         <div className="w-full px-4 md:px-[40px]">
           <motion.div
@@ -87,7 +122,7 @@ export function ProductCardsCarousel() {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className={`shrink-0 w-[85vw] md:w-[542px] h-[361px] md:h-[556px] rounded-[16px] overflow-hidden relative group ${card.bgColor}`}
+                className={`shrink-0 w-[85vw] md:w-[calc(min(556px,72vh)*0.97)] h-[361px] md:h-[min(556px,72vh)] rounded-[16px] overflow-hidden relative group ${card.bgColor}`}
               >
                 {/* Card Header Overlay */}
                 <div className="absolute top-0 left-0 right-0 p-6 md:p-8 flex justify-between items-start z-20 pointer-events-none">
@@ -112,6 +147,8 @@ export function ProductCardsCarousel() {
           </motion.div>
         </div>
       </div>
+      {/* 90px beige transition bar at the bottom of the scroll track */}
+      <div className="absolute bottom-0 left-0 w-full h-[90px] bg-[#FFF1EB]" />
     </section>
   );
 }

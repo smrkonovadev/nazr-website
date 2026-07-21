@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent, useMotionValue } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 export function TriggerSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -12,12 +12,42 @@ export function TriggerSection() {
   const vid4Ref = useRef<HTMLVideoElement>(null);
   const vid5Ref = useRef<HTMLVideoElement>(null);
 
-  
-  // Track scroll progress within this section (for desktop)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start center", "end center"]
-  });
+  const scrollYProgress = useMotionValue(0);
+
+  // Track scroll progress within this section dynamically (zoom-safe for scaling)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        
+        // Calculate progress based on start position: top of section is at center of viewport
+        // and end position: bottom of section is at center of viewport.
+        const viewportCenter = window.innerHeight * 0.5;
+        const startScroll = rect.top - viewportCenter;
+        
+        // Since offset is ["start center", "end center"], scroll range is exactly the visual height of the section
+        const scrollRange = rect.height;
+        
+        if (scrollRange > 0) {
+          const progress = -startScroll / scrollRange;
+          scrollYProgress.set(Math.max(0, Math.min(1, progress)));
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
+    
+    // Safety timeout for initial render and scale stability
+    const timer = setTimeout(handleScroll, 200);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [scrollYProgress]);
 
   
   useMotionValueEvent(scrollYProgress, "change", (latest) => {

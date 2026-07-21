@@ -46,7 +46,7 @@ export function HorizontalScrollStory() {
             </div>
 
             {/* Block 2: First Image (Only 2/5 visible initially) */}
-            <div className="relative max-md:w-[280px] md:w-[480px] lg:w-[540px] xl:w-[580px] h-[58vh] md:h-[72vh] flex-shrink-0 rounded-[16px] overflow-hidden shadow-xl max-md:-mr-[180px] md:-mr-[260px] lg:-mr-[320px] translate-y-0">
+            <div className="relative max-md:w-[280px] md:w-[640px] h-[58vh] md:h-[80vh] flex-shrink-0 rounded-[16px] overflow-hidden shadow-xl max-md:-mr-[180px] md:-mr-[380px] translate-y-0">
               <Image
                 src="/images/image3.png"
                 alt="Woman walking with coffee"
@@ -69,7 +69,7 @@ export function HorizontalScrollStory() {
             </div>
 
             {/* Block 4: Second Image */}
-            <div className="relative max-md:w-[280px] md:w-[480px] lg:w-[540px] xl:w-[580px] h-[58vh] md:h-[72vh] flex-shrink-0 rounded-[16px] overflow-hidden shadow-xl translate-y-0">
+            <div className="relative max-md:w-[280px] md:w-[640px] h-[58vh] md:h-[80vh] flex-shrink-0 rounded-[16px] overflow-hidden shadow-xl translate-y-0">
               <Image
                 src="/images/image3.png"
                 alt="Woman walking with coffee"

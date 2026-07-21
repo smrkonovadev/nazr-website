@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -23,11 +23,50 @@ const cards = [
 export function AboutFeatures() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [blurStart, setBlurStart] = useState(0.8);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  // Calculate dynamic threshold based on viewport & container measurements
+  useEffect(() => {
+    const calculateThresholds = () => {
+      if (containerRef.current) {
+        const container = containerRef.current;
+        const cardsElements = container.querySelectorAll("[data-card-item]");
+        if (cardsElements.length >= 2) {
+          const card2 = cardsElements[1] as HTMLElement;
+          const containerHeight = container.offsetHeight;
+          
+          // Get the dynamic zoom scale factor from DesktopScaler logic
+          const isWindowMobile = window.innerWidth < 768;
+          const scale = isWindowMobile ? (window.innerWidth / 390) : (window.innerWidth / 1280);
+          
+          // Calculate scaled viewport height in container coordinate space
+          const scaledViewportHeight = window.innerHeight / scale;
+          
+          const card2Top = card2.offsetTop;
+          // Sticky position for Card 2 is top-offset: 6vh + 40px in zoomed space
+          const card2StickyTop = scaledViewportHeight * 0.06 + 40;
+          
+          const totalScrollDistance = containerHeight - scaledViewportHeight;
+          if (totalScrollDistance > 0) {
+            const visibleProgress = (card2Top - card2StickyTop) / totalScrollDistance;
+            const finalStart = Math.max(0.5, Math.min(0.98, visibleProgress));
+            setBlurStart(finalStart);
+          }
+        }
+      }
+    };
+
+    calculateThresholds();
+    // Add a slight delay to ensure offset calculations are stable
+    setTimeout(calculateThresholds, 100);
+    window.addEventListener("resize", calculateThresholds);
+    return () => window.removeEventListener("resize", calculateThresholds);
+  }, []);
 
   return (
     <section id="product-features-section" className="w-full bg-[#FFF1EB] pt-6 pb-12 md:pt-10 md:pb-16 relative">
@@ -64,7 +103,7 @@ export function AboutFeatures() {
       </div>
 
       {/* Interactive Stacked List Container */}
-      <div ref={containerRef} className="w-full max-w-[1200px] mx-auto px-4 md:px-8 max-md:pb-0 md:pb-[12vh] relative">
+      <div ref={containerRef} className="w-full max-w-[1200px] mx-auto px-4 md:px-8 pb-[35vh] md:pb-[45vh] relative">
 
         {/* Visual Layer */}
         <div className="flex flex-col items-center w-full gap-[30vh] md:gap-[40vh]">
@@ -76,6 +115,7 @@ export function AboutFeatures() {
               index={index}
               cardsLength={cards.length}
               progress={scrollYProgress}
+              blurStart={blurStart}
             />
           ))}
 
@@ -86,13 +126,25 @@ export function AboutFeatures() {
   );
 }
 
-function CardItem({ card, index, cardsLength, progress }: { card: any, index: number, cardsLength: number, progress: any }) {
+function CardItem({ 
+  card, 
+  index, 
+  cardsLength, 
+  progress, 
+  blurStart 
+}: { 
+  card: any, 
+  index: number, 
+  cardsLength: number, 
+  progress: any, 
+  blurStart: number 
+}) {
 
   // Calculate the scroll range for this specific card based on its index
   const step = 1 / (cardsLength - 0.5);
-  // The first card stays sharp until the second card is 100% visible (around 0.8 progress)
-  const startProgress = index === 0 ? 0.8 : index * step + 0.12;
-  const endProgress = index === 0 ? 0.95 : index * step + step;
+  // The first card stays sharp until the second card is 100% visible (dynamic trigger)
+  const startProgress = index === 0 ? blurStart : index * step + 0.12;
+  const endProgress = index === 0 ? 0.98 : index * step + step;
 
   const blurValue = useTransform(progress, [startProgress, endProgress], ["0px", "22.332666397094727px"]);
   const blurFilter = useTransform(blurValue, (v) => `blur(${v})`);
@@ -102,6 +154,7 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
 
   return (
     <motion.div
+      data-card-item=""
       className="sticky w-full max-md:aspect-square md:aspect-[16/10] lg:aspect-[21/9] rounded-[24px] overflow-hidden shadow-[0_-10px_40px_rgba(0,0,0,0.4)] bg-[#161616] top-[calc(4vh+var(--index-offset))] md:top-[calc(6vh+var(--index-offset))]"
       style={{
         "--index-offset": `${index * 40}px`,

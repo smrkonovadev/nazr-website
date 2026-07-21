@@ -2,6 +2,7 @@ import { Header } from "@/components/ui/Header";
 
 import { BlogIntro } from "@/components/ui/BlogIntro";
 import { BlogContent } from "@/components/ui/BlogContent";
+import { BlogNewsletter } from "@/components/ui/BlogNewsletter";
 import { ContactUsSection } from "@/components/ui/ContactUsSection";
 import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
@@ -28,6 +29,11 @@ export default function BlogPage() {
             </div>
           </DesktopScaler>
         </section>
+
+        {/* Newsletter Section */}
+        <DesktopScaler bgColor="#FFF1EB">
+          <BlogNewsletter />
+        </DesktopScaler>
 
         {/* Contact Us Section & Footer */}
         <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[32px] md:rounded-b-[26px] overflow-hidden">

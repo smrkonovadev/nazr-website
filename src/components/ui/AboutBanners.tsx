@@ -39,7 +39,7 @@ export function AboutBanners() {
 
   return (
     <section
-      className="w-full bg-[#FFF1EB] overflow-hidden relative flex flex-col items-center justify-center max-md:h-[305px] md:h-[570px] -mt-[2px]"
+      className="w-full bg-[#FFF1EB] overflow-hidden relative flex flex-col items-center justify-center max-md:h-[305px] md:h-[570px] max-md:-mt-[35vh] md:-mt-[45vh]"
     >
       <div
         className="relative md:absolute top-1/2 left-1/2 w-full md:w-[1440px] h-full md:h-[570px]"

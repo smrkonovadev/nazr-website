@@ -46,15 +46,24 @@ export function ShieldModeFeatures() {
         const rowWidth = rowRef.current.scrollWidth;
         const viewportWidth = window.innerWidth;
         const paddingLeft = viewportWidth < 768 ? 20 : 40;
-        // Translate the row so that the right-padded edge of the row lands exactly at the viewport right edge
-        const translation = Math.max(0, rowWidth - viewportWidth + paddingLeft);
+        // Translate with a safety offset to guarantee full visibility at different zoom scales
+        const translation = Math.max(0, rowWidth - viewportWidth + paddingLeft + 40);
         setXTranslation(translation);
       }
     };
 
     calculateTranslation();
+    
+    // Polling calculations to handle dynamic rendering of media and scaling adjustments
+    const timer = setTimeout(calculateTranslation, 150);
+    const interval = setInterval(calculateTranslation, 500);
+    
     window.addEventListener("resize", calculateTranslation);
-    return () => window.removeEventListener("resize", calculateTranslation);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+      window.removeEventListener("resize", calculateTranslation);
+    };
   }, []);
 
   // Track the vertical scroll progress of this section's track
@@ -63,13 +72,13 @@ export function ShieldModeFeatures() {
     offset: ["start start", "end end"],
   });
 
-  // Map vertical scroll progress to negative horizontal translation
-  const x = useTransform(scrollYProgress, [0, 1], [0, -xTranslation]);
+  // Map vertical scroll progress to negative horizontal translation, completing at 90% scroll to prevent unpinning lag
+  const x = useTransform(scrollYProgress, [0, 0.90], [0, -xTranslation], { clamp: true });
 
   return (
-    <section ref={containerRef} className="w-full bg-[#161616] relative z-50 h-[250vh] max-md:h-[300vh]">
+    <section ref={containerRef} className="w-full bg-[#161616] relative z-50 h-[270vh] max-md:h-[320vh]">
       {/* Sticky container that keeps items pinned while we scroll through the track */}
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center w-full">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-start pt-[120px] md:pt-[60px] w-full">
         {/* Horizontal scroll container */}
         <div className="w-full px-[20px] md:px-[40px]">
           <motion.div
@@ -94,25 +103,17 @@ export function ShieldModeFeatures() {
 function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index: number }) {
   return (
     <div
-      className="flex flex-col shrink-0 rounded-[16px] overflow-hidden"
-      style={{
-        /* Show ~3 cards + partial 4th:
-           mobile: calc(90vw) → shows a bit of next
-           desktop: calc((min(1280px, 100vw) - 32px * 2 - 24px * 3) / 3.2) ≈ 378px */
-        width: "clamp(260px, 80vw, 379px)",
-      }}
+      className="flex flex-col shrink-0 rounded-[16px] overflow-hidden w-[85vw] h-[500px] md:w-[calc((100vw-80px-72px)/3.25)] md:h-auto md:aspect-[379/533]"
     >
-      {/* Top coloured image area — h 339px, pt 140px */}
+      {/* Top coloured image area */}
       <div
-        className="w-full relative overflow-hidden flex justify-center"
+        className="w-full relative overflow-hidden flex justify-center h-[320px] pt-[120px] md:h-auto md:aspect-[379/339] md:pt-[37%]"
         style={{
           backgroundColor: feature.bgColor,
-          height: "339px",
-          paddingTop: "140px",
         }}
       >
         <motion.div
-          className="relative w-[180px] h-[360px]"
+          className="relative w-[150px] h-[300px] md:w-[48%] md:h-auto md:aspect-[180/360]"
           initial={{ y: 80 }}
           whileInView={{ y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -140,24 +141,21 @@ function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index:
         </motion.div>
       </div>
 
-      {/* Bottom content area — h 194px, p 24px, gap 8px, bg #F1E4DF */}
+      {/* Bottom content area */}
       <div
-        className="w-full flex flex-col"
+        className="w-full flex flex-col p-5 gap-2 min-h-[180px] md:p-[6.3%] md:gap-[2%] flex-1"
         style={{
-          backgroundColor: "#F1E4DF",
-          padding: "24px",
-          gap: "8px",
-          minHeight: "194px",
+          backgroundColor: "#F1E4DE",
         }}
       >
         <h3
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[28px] leading-[110%] tracking-normal uppercase"
+          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[26px] md:text-[clamp(26px,2.2vw,36px)] leading-[110%] tracking-normal uppercase"
         >
           {feature.title}
         </h3>
 
         <p
-          className="m-0 text-[#161616]/80 font-normal text-[15px] leading-[150%] tracking-normal"
+          className="m-0 text-[#161616]/80 font-normal text-[14px] md:text-[clamp(14px,1.1vw,18px)] leading-[150%] tracking-normal"
           style={{ fontFamily: "Switzer, Inter, sans-serif" }}
         >
           {feature.description}
