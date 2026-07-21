@@ -88,14 +88,14 @@ export function BlogContent() {
           BLOG CATEGORIES
         </h2>
 
-        <div className="flex max-md:flex-row md:flex-col max-md:items-center w-full max-md:w-screen max-md:-ml-4 max-md:px-4 md:px-0 max-md:gap-1 md:gap-2 max-md:overflow-x-auto max-md:scrollbar-hide max-md:pb-2">
+        <div className="flex max-md:flex-row md:flex-col max-md:items-center w-full max-md:w-screen max-md:-ml-4 max-md:px-4 md:px-0 max-md:gap-2 md:gap-0 max-md:overflow-x-auto max-md:scrollbar-hide max-md:pb-2">
           {categories.map((category, index) => (
             <button
               key={index}
               onClick={() => handleCategoryClick(category)}
               className={`max-md:shrink-0 max-md:whitespace-nowrap md:w-full text-left max-md:px-4 max-md:py-2 md:px-5 md:py-4 transition-colors ${activeCategory === category
-                ? "bg-[#161616] text-white rounded-[4px]"
-                : "bg-transparent text-[#161616] hover:bg-[#161616]/5 rounded-[4px]"
+                ? "bg-[#161616] text-white rounded-[8px]"
+                : "bg-transparent text-[#161616] hover:bg-[#161616]/5 rounded-[8px]"
                 }`}
               style={{
                 fontFamily: "Switzer, var(--font-geist-sans), sans-serif",

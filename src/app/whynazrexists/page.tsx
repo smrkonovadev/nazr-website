@@ -32,10 +32,12 @@ export default function WhyNazrExistsPage() {
 
           {/* Typography Statement Section */}
           <WhyNazrStatement />
+        </DesktopScaler>
 
-          {/* Horizontal Scroll Story Section */}
-          <HorizontalScrollStory />
+        {/* Horizontal Scroll Story Section (Outside scaling container for viewport logic) */}
+        <HorizontalScrollStory />
 
+        <DesktopScaler bgColor="#FFF1EB">
           {/* Our Values Section */}
           <OurValuesSection />
 
