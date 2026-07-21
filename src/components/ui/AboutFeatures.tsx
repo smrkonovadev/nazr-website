@@ -54,7 +54,8 @@ export function AboutFeatures() {
           const totalScrollDistance = containerHeight - scaledViewportHeight;
           if (totalScrollDistance > 0) {
             const visibleProgress = (card2Top - card2StickyTop) / totalScrollDistance;
-            const finalStart = Math.max(0.5, Math.min(0.98, visibleProgress));
+            // Set blurStart to the exact point when Card 2 touches sticky position (starts overlapping Card 1)
+            const finalStart = Math.max(0.75, Math.min(0.92, visibleProgress));
             setBlurStart(finalStart);
           }
         }
@@ -62,10 +63,14 @@ export function AboutFeatures() {
     };
 
     calculateThresholds();
-    // Add a slight delay to ensure offset calculations are stable
-    setTimeout(calculateThresholds, 100);
+    const t1 = setTimeout(calculateThresholds, 100);
+    const t2 = setTimeout(calculateThresholds, 500);
     window.addEventListener("resize", calculateThresholds);
-    return () => window.removeEventListener("resize", calculateThresholds);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("resize", calculateThresholds);
+    };
   }, []);
 
   return (
@@ -142,13 +147,13 @@ function CardItem({
 
   // Calculate the scroll range for this specific card based on its index
   const step = 1 / (cardsLength - 0.5);
-  // The first card stays sharp until the second card is 100% visible (dynamic trigger)
+  // Card 1 stays sharp until Card 2 actually reaches and overlaps Card 1
   const startProgress = index === 0 ? blurStart : index * step + 0.12;
   const endProgress = index === 0 ? 0.98 : index * step + step;
 
-  const blurValue = useTransform(progress, [startProgress, endProgress], ["0px", "22.332666397094727px"]);
+  const blurValue = useTransform(progress, [startProgress, endProgress], ["0px", "20px"], { clamp: true });
   const blurFilter = useTransform(blurValue, (v) => `blur(${v})`);
-  const scale = useTransform(progress, [startProgress, endProgress], [1, 0.92]);
+  const scale = useTransform(progress, [startProgress, endProgress], [1, 0.92], { clamp: true });
 
   const isLast = index === cardsLength - 1;
 

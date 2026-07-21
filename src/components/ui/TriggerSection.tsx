@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValueEvent, useMotionValue } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
+import Lottie from "lottie-react";
 
 export function TriggerSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -11,6 +12,17 @@ export function TriggerSection() {
   const vid3Ref = useRef<HTMLVideoElement>(null);
   const vid4Ref = useRef<HTMLVideoElement>(null);
   const vid5Ref = useRef<HTMLVideoElement>(null);
+
+  const [animationData, setAnimationData] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    fetch("/images/jsoncheck.json")
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data))
+      .catch((err) => console.error("Error loading lottie file:", err));
+  }, []);
 
   const scrollYProgress = useMotionValue(0);
 
@@ -143,25 +155,15 @@ export function TriggerSection() {
 
         {/* Top Phone Mockup */}
         <motion.div className="absolute left-[-110px] top-[-150px] w-[220px] h-[480px] z-10" style={{ opacity: section1Opacity }}>
-          <video
-            ref={vid1Ref}
-            loop
-            muted
-            playsInline
-            className="object-contain drop-shadow-2xl w-full h-full"
-            style={{
-              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-              WebkitMaskSize: 'contain',
-              WebkitMaskRepeat: 'no-repeat',
-              WebkitMaskPosition: 'top center',
-              maskImage: 'url(/images/nazrapp4img.png)',
-              maskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              maskPosition: 'top center',
-            }}
-          >
-            <source src="/images/vid1.mp4" type="video/mp4" />
-          </video>
+          {mounted && animationData ? (
+            <Lottie
+              animationData={animationData}
+              loop={true}
+              className="w-full h-full object-contain drop-shadow-2xl"
+            />
+          ) : (
+            <div className="w-full h-full bg-transparent" />
+          )}
         </motion.div>
 
         {/* TRIGGER Text */}
@@ -423,7 +425,7 @@ export function TriggerSection() {
             { title: "GUARDIANS ALERTED", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid6.mp4" },
             { title: "TAKE ACTION", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid7.mp4" }
           ].map((step, idx, arr) => (
-            <MobileTriggerStep key={idx} step={step} idx={idx} isLast={idx === arr.length - 1} />
+            <MobileTriggerStep key={idx} step={step} idx={idx} isLast={idx === arr.length - 1} lottieAnimationData={idx === 0 ? animationData : null} />
           ))}
         </div>
       </div>
@@ -431,7 +433,7 @@ export function TriggerSection() {
   );
 }
 
-function MobileTriggerStep({ step, idx, isLast }: { step: any, idx: number, isLast: boolean }) {
+function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: any, idx: number, isLast: boolean, lottieAnimationData?: any }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   
   const circleRef = useRef<HTMLDivElement>(null);
@@ -497,25 +499,33 @@ function MobileTriggerStep({ step, idx, isLast }: { step: any, idx: number, isLa
         </div>
 
         <div className="relative w-full max-w-[200px] h-[360px] shrink-0 mt-2 overflow-visible">
-          <video
-            ref={videoRef}
-            loop
-            muted
-            playsInline
-            className="object-contain drop-shadow-2xl object-top w-full h-full"
-            style={{
-              WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-              WebkitMaskSize: 'contain',
-              WebkitMaskRepeat: 'no-repeat',
-              WebkitMaskPosition: 'top center',
-              maskImage: 'url(/images/nazrapp4img.png)',
-              maskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              maskPosition: 'top center',
-            }}
-          >
-            <source src={step.vid} type="video/mp4" />
-          </video>
+          {lottieAnimationData ? (
+            <Lottie
+              animationData={lottieAnimationData}
+              loop={true}
+              className="w-full h-full object-contain drop-shadow-2xl"
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              loop
+              muted
+              playsInline
+              className="object-contain drop-shadow-2xl object-top w-full h-full"
+              style={{
+                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'top center',
+                maskImage: 'url(/images/nazrapp4img.png)',
+                maskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                maskPosition: 'top center',
+              }}
+            >
+              <source src={step.vid} type="video/mp4" />
+            </video>
+          )}
         </div>
       </motion.div>
     </div>

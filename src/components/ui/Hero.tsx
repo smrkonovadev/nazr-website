@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import { ShaderBackground } from "@/components/ui/ShaderBackground";
 
 function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, globalMouseY }: any) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -101,12 +102,15 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="w-full bg-[#F1E4DE] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pb-[30.7vw] md:pb-0 pt-[23vw] md:pt-0 md:min-h-[630px]"
+        className="w-full bg-[#F6E9E3] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pb-[30.7vw] md:pb-0 pt-[23vw] md:pt-0 md:min-h-[630px]"
         style={{
           borderTopLeftRadius: '26px',
           borderTopRightRadius: '26px',
         }}
       >
+        {/* Shader Background Effect */}
+        <ShaderBackground className="rounded-t-[26px]" />
+
         {/* THE WORLD STARES Mobile Group / Desktop Split */}
         <div className="relative z-20 flex flex-row justify-center w-full md:static mt-[4.1vw] md:mt-0">
           <motion.h1
@@ -117,7 +121,7 @@ export function Hero() {
                 transition: { staggerChildren: 0.05 }
               }
             }}
-            className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[60px] md:left-[32px] text-[16.6vw] md:text-[130px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap"
+            className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[60px] md:left-[32px] text-[16.6vw] md:text-[130px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
           >
             {"THE ".split('').map((char, i) => (
               <TiltLetter
@@ -143,7 +147,7 @@ export function Hero() {
                 transition: { delayChildren: 0.2, staggerChildren: 0.05 }
               }
             }}
-            className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap"
+            className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
           >
             {"WORLD STARES".split('').map((char, i) => {
               const globalIdx = i + 4;

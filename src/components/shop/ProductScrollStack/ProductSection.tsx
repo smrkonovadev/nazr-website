@@ -16,9 +16,7 @@ interface ProductSectionProps {
 }
 
 export function ProductSection({ product, nextProduct, zIndex, isLast = false }: ProductSectionProps) {
-  const [selectedVariant, setSelectedVariant] = useState<string>(
-    product.variants?.[0]?.id || "pink"
-  );
+  const [selectedVariant, setSelectedVariant] = useState<string | null>(null);
 
   return (
     <article

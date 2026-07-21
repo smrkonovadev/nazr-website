@@ -1,4 +1,3 @@
-
 import { AboutHero } from "@/components/ui/AboutHero";
 import { AboutStatement } from "@/components/ui/AboutStatement";
 import { AboutCollage } from "@/components/ui/AboutCollage";

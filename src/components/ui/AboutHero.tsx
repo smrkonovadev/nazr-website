@@ -67,7 +67,14 @@ export function AboutHero() {
                 const el = document.getElementById("every-woman-section");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group flex items-center bg-white text-black px-4 py-1 rounded-[3px] font-semibold hover:bg-white/90 transition-colors"
+              className="group flex items-center bg-[#FFF9EB] text-[#161616] px-5 py-2.5 rounded-[6px] transition-colors duration-300 ease-in-out"
+              style={{
+                fontFamily: "Roboto, sans-serif",
+                fontWeight: 400,
+                fontSize: "16px",
+                lineHeight: "150%",
+                letterSpacing: "0px",
+              }}
             >
               <Image
                 src="/images/logosvg.svg"
@@ -76,7 +83,7 @@ export function AboutHero() {
                 height={32}
                 className="w-0 opacity-0 group-hover:w-8 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out object-contain brightness-0"
               />
-              <span className="text-[16px] tracking-tight">Discover NAZR</span>
+              <span>Discover NAZR</span>
             </button>
           </div>
         </div>

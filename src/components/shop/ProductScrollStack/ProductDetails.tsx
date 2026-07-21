@@ -10,7 +10,7 @@ interface ProductDetailsProps {
   reviews: string;
   hasVariants: boolean;
   variants?: ProductVariant[];
-  selectedVariant: string;
+  selectedVariant: string | null;
   setSelectedVariant: (id: string) => void;
 }
 
@@ -66,7 +66,7 @@ export function ProductDetails({
                 key={v.id}
                 onClick={() => setSelectedVariant(v.id)}
                 className={`w-[96px] h-[110px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 transition-all ${
-                  selectedVariant === v.id ? "border-black bg-transparent" : "border-black/30 bg-transparent"
+                  selectedVariant === v.id ? "border-[#FF0E97] bg-transparent" : "border-black bg-transparent"
                 }`}
               >
                 <div className="relative w-full h-[76px]">

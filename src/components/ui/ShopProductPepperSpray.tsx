@@ -6,7 +6,7 @@ import { Star, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function ShopProductPepperSpray() {
-  const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
+  const [selectedVariant, setSelectedVariant] = useState<"pink" | "white" | null>(null);
 
   return (
     <section className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 10 }}>
@@ -83,7 +83,7 @@ export function ShopProductPepperSpray() {
               {/* Option 1: Pink */}
               <button
                 onClick={() => setSelectedVariant("pink")}
-                className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "pink" ? "border-black bg-transparent" : "border-black/30 bg-transparent"}`}
+                className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "pink" ? "border-[#FF0E97] bg-transparent" : "border-black bg-transparent"}`}
               >
                 <div className="relative w-full h-[85px]">
                   <Image src="/images/spray-pink.png" alt="Pink Variant" fill className="object-contain" />
@@ -94,7 +94,7 @@ export function ShopProductPepperSpray() {
               {/* Option 2: White */}
               <button
                 onClick={() => setSelectedVariant("white")}
-                className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "white" ? "border-black bg-transparent" : "border-black/30 bg-transparent"}`}
+                className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "white" ? "border-[#FF0E97] bg-transparent" : "border-black bg-transparent"}`}
               >
                 <div className="relative w-full h-[85px]">
                   <Image src="/images/spray-white.png" alt="White Variant" fill className="object-contain" />
