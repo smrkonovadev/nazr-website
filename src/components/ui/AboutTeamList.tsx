@@ -217,9 +217,12 @@ export function AboutTeamList() {
             <h3 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[45px] leading-[90%] tracking-[-0.03em] m-0 mb-3">
               {member.name}
             </h3>
-            <div className="flex gap-2 flex-wrap">
-              {member.roles.slice(0, 1).map((role, i) => (
-                <div key={i} className="border-[1.5px] border-[#161616] rounded-full px-4 py-1.5 flex items-center justify-center">
+            <div className="flex gap-0 flex-wrap">
+              {member.roles.map((role, i) => (
+                <div 
+                  key={i} 
+                  className={`border-[1.5px] border-[#161616] rounded-full px-4 py-1.5 flex items-center justify-center relative z-10 ${i > 0 ? "-ml-[1.5px]" : ""}`}
+                >
                   <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[16px] tracking-wide leading-none mt-0.5">
                     {role}
                   </span>

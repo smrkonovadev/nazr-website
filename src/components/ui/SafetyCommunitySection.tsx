@@ -31,26 +31,55 @@ export function SafetyCommunitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, margin: "-10%" }}
-            className="w-full bg-white rounded-[24px] border-[4px] border-[#EDEDED] p-6 mt-12 flex flex-col gap-6"
+            className="mt-12 mx-auto bg-white border-[#EDEDED]"
+            style={{
+              width: "338px",
+              height: "212.42px",
+              borderRadius: "6.99px",
+              borderWidth: "2.04px",
+              position: "relative",
+              overflow: "hidden"
+            }}
           >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 relative rounded-full overflow-hidden shrink-0">
-                <Image src="/images/elipseface.png" fill className="object-cover" alt="avatar" />
+            {/* Grid Header */}
+            <div className="absolute flex items-center" style={{ top: "11.46px", left: "11.27px", gap: "4.5px" }}>
+              <div className="relative rounded-full overflow-hidden" style={{ width: "19.4px", height: "19.4px" }}>
+                <Image src="/images/elipseface.png" alt="Avatar" fill className="object-cover" />
               </div>
               <div className="flex flex-col">
-                <h4 className="font-[family-name:var(--font-bebas)] text-2xl m-0 leading-none">ON ME PEPPER SPRAY</h4>
-                <p className="text-sm m-0 leading-tight">It is a long established fact that a reader will be</p>
+                <h3 className="font-[family-name:var(--font-bebas)] text-black m-0 leading-none" style={{ fontSize: "10px" }}>ON ME PEPPER SPRAY</h3>
+                <p className="font-['Inter',_sans-serif] text-black m-0 whitespace-nowrap" style={{ fontSize: "4.5px", marginTop: "1px" }}>It is a long established fact that a reader will be</p>
               </div>
             </div>
 
-            <div className="w-full relative aspect-[233/263] rounded-[16px] overflow-hidden border-[0.5px] border-black">
-              <Image src="/images/image1.png" fill className="object-cover" alt="" />
+            {/* 1st Image */}
+            <div className="absolute border-[#000000]" style={{ width: "64.78px", height: "75.46px", top: "44.87px", left: "11.27px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
+              <Image src="/images/1stfromleft.svg" alt="" fill className="object-cover rounded-[4.5px]" />
             </div>
-            <div className="w-full relative aspect-[482/263] rounded-[16px] overflow-hidden border-[0.5px] border-black bg-[#D9D9D9]">
-              <Image src="/images/image2.png" fill className="object-cover" alt="" />
+
+            {/* 2nd Image */}
+            <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "133.79px", height: "75.46px", top: "44.87px", left: "80.28px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
+              <Image src="/images/new26.svg" alt="" fill className="object-cover rounded-[4.5px]" />
             </div>
-            <div className="w-full relative aspect-[375/541] rounded-[16px] overflow-hidden border-[0.5px] border-black">
-              <Image src="/images/image3.png" fill className="object-cover" alt="" />
+
+            {/* 3rd Image */}
+            <div className="absolute border-[#000000]" style={{ width: "103.93px", height: "155.30px", top: "44.87px", left: "218.29px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
+              <Image src="/images/bigright.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+            </div>
+
+            {/* 4th Image */}
+            <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "64.78px", height: "75.46px", top: "124.71px", left: "11.27px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
+              <Image src="/images/new27.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+            </div>
+
+            {/* 5th Image */}
+            <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "64.78px", height: "75.46px", top: "124.71px", left: "80.28px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
+              <Image src="/images/new28.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+            </div>
+
+            {/* 6th Image */}
+            <div className="absolute border-[#000000]" style={{ width: "64.78px", height: "75.46px", top: "124.71px", left: "149.30px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
+              <Image src="/images/bottomleft3.svg" alt="" fill className="object-cover rounded-[4.5px]" />
             </div>
           </motion.div>
         </div>

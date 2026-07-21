@@ -12,14 +12,13 @@ export function HelpWithoutHoldUp() {
         {/* Mobile Layout (Hidden on Desktop) */}
         <div className="md:hidden w-full flex flex-col items-center relative">
           <div
-            className="font-[family-name:var(--font-bebas)] text-[#161616] text-[clamp(28px,9vw,45px)] text-center w-full z-10 mt-0 whitespace-nowrap"
+            className="font-[family-name:var(--font-bebas)] text-[#161616] text-[clamp(28px,9vw,45px)] text-center w-full z-10 mt-0 whitespace-nowrap mb-[15px]"
             style={{ lineHeight: "0.9", letterSpacing: "-0.03em" }}
           >
-            HELP. WITHOUT <br />
-            THE HOLD UP.
+            HELP. WITHOUT THE HOLD UP.
           </div>
 
-          <div className="w-full grid grid-cols-2 gap-4 px-4 pb-4 mt-2">
+          <div className="w-full grid grid-cols-2 gap-4 px-4 pb-4 mt-0">
             <div
               onClick={() => setActiveCard(1)}
               className={`w-full h-full min-h-[140px] rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 ${activeCard === 1 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}

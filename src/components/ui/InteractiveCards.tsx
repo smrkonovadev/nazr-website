@@ -214,11 +214,11 @@ export function InteractiveCards({ theme = "dark", scrollProgress }: Interactive
   };
 
   return (
-    <section ref={sectionRef} className={`w-full ${theme === 'cream' ? 'bg-transparent max-md:-mt-[95px] md:pb-[60px]' : 'bg-[#161616] max-md:-mt-16 md:h-[480px]'} flex flex-col items-center pt-0 pb-0 relative z-50`}>
+    <section ref={sectionRef} className={`w-full ${theme === 'cream' ? 'bg-transparent max-md:mt-0 md:pb-[60px]' : 'bg-[#161616] max-md:-mt-16 md:h-[480px]'} flex flex-col items-center pt-0 pb-0 relative z-50`}>
 
       <div
         ref={scrollContainerRef}
-        className={`w-full ${scrollProgress ? 'overflow-hidden' : 'overflow-x-auto'} no-scrollbar flex items-center h-[600px] -mt-[75px] -mb-[600px] relative z-50 ${theme === 'cream' ? 'md:h-[608px] md:-mt-[50px] md:mb-0' : 'md:h-[480px] md:mt-0 md:mb-0'}`}
+        className={`w-full ${scrollProgress ? 'overflow-hidden' : 'overflow-x-auto'} no-scrollbar flex items-center relative z-50 ${theme === 'cream' ? 'h-[340px] mt-4 mb-4 md:h-[608px] md:-mt-[50px] md:mb-0' : 'h-[600px] -mt-[75px] -mb-[600px] md:h-[480px] md:mt-0 md:mb-0'}`}
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {/* We use inline flex so the cards don't wrap and can be scrolled */}

@@ -158,37 +158,121 @@ export function SafetyDesigned() {
           <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[46px] text-center m-0 leading-[0.9]">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[18px] text-center m-0 max-w-[340px] leading-[1.4]">
-            A growing range of smart safety products designed to work alongside the NAZR app, providing additional ways to stay prepared, connected, and supported.
+          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[18px] text-center m-0 max-w-[420px] leading-[1.4]">
+            A growing range of smart safety products<br />
+            designed to work alongside the NAZR app,<br />
+            providing additional ways to stay prepared,<br />
+            connected, and supported.
           </p>
         </div>
 
         {/* Carousel Display */}
-        <div className="w-full relative h-[400px] flex justify-center items-center">
-          <img src={carouselData[currentIndex].image} alt="Product" className="w-full h-[90%] object-contain" />
+        <div className="w-full relative h-[380px] flex justify-center items-center overflow-visible my-4">
+          {/* Left Card Preview */}
+          <div className="absolute left-0 -translate-x-[50%] w-[130px] h-[180px] opacity-40 z-10 flex items-center justify-center pointer-events-none">
+            <img src={carouselData[leftIndex].image} alt="Left Product" className="w-full h-full object-contain" />
+          </div>
+
+          {/* Center Card (Active) */}
+          <div className="relative w-[240px] h-[320px] z-20 flex items-center justify-center">
+            <img src={carouselData[currentIndex].image} alt="Center Product" className="w-full h-full object-contain" />
+
+            {/* Active Product Stickers */}
+            {currentIndex === 1 && (
+              <>
+                {/* Pepper Spray Stickers */}
+                <div className="absolute w-[100px] h-[100px] top-[-25px] left-[-45px] z-30 pointer-events-none">
+                  <Image src="/images/new9.svg" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
+                </div>
+                <div className="absolute w-[60px] h-[45px] top-[40px] right-[-40px] z-30 pointer-events-none">
+                  <Image src="/images/new10.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[85px] h-[90px] bottom-[15px] left-[-40px] z-30 pointer-events-none">
+                  <Image src="/images/new11.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[65px] h-[65px] bottom-[40px] right-[-45px] z-30 pointer-events-none">
+                  <Image src="/images/new12.svg" alt="sticker" fill className="object-contain" />
+                </div>
+              </>
+            )}
+
+            {currentIndex === 0 && (
+              <>
+                {/* Sip Check Stickers */}
+                <div className="absolute w-[100px] h-[100px] top-[-20px] left-[-45px] z-30 pointer-events-none">
+                  <Image src="/images/new14.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[65px] h-[60px] top-[50px] right-[-45px] z-30 pointer-events-none">
+                  <Image src="/images/new15.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[80px] h-[80px] bottom-[15px] left-[-40px] z-30 pointer-events-none">
+                  <Image src="/images/new17.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[75px] h-[70px] bottom-[40px] right-[-45px] z-30 pointer-events-none">
+                  <Image src="/images/new16.svg" alt="sticker" fill className="object-contain" />
+                </div>
+              </>
+            )}
+
+            {currentIndex === 2 && (
+              <>
+                {/* Nazr 360 Stickers */}
+                <div className="absolute w-[110px] h-[115px] top-[-30px] left-[-50px] z-30 pointer-events-none">
+                  <Image src="/images/new18.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[100px] h-[100px] top-[15px] right-[-55px] z-30 pointer-events-none">
+                  <Image src="/images/new19.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[115px] h-[105px] bottom-[15px] left-[-50px] z-30 pointer-events-none">
+                  <Image src="/images/new21.svg" alt="sticker" fill className="object-contain" />
+                </div>
+                <div className="absolute w-[75px] h-[70px] bottom-[45px] right-[-45px] z-30 pointer-events-none">
+                  <Image src="/images/new20.svg" alt="sticker" fill className="object-contain" />
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Right Card Preview */}
+          <div className="absolute right-0 translate-x-[50%] w-[130px] h-[180px] opacity-40 z-10 flex items-center justify-center pointer-events-none">
+            <img src={carouselData[rightIndex].image} alt="Right Product" className="w-full h-full object-contain" />
+          </div>
         </div>
 
         {/* Text & Controls */}
-        <div className="flex flex-col items-center gap-6 w-full">
+        <div className="flex flex-col items-center gap-6 w-full px-2">
           <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[32px] m-0 text-center uppercase">
             {carouselData[currentIndex].title}
           </h3>
-          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[16px] text-center m-0 min-h-[100px]">
-            {carouselData[currentIndex].subtitle}
-          </p>
+
+          <div className="flex items-center justify-between w-full max-w-[380px] gap-2">
+            {/* Left Arrow Button */}
+            <button
+              onClick={handlePrev}
+              className="flex-shrink-0 w-[40px] h-[24px] relative hover:scale-105 active:scale-95 transition-transform outline-none"
+              aria-label="Previous product"
+            >
+              <Image src="/images/leftarrow.svg" alt="prev" fill className="object-contain" />
+            </button>
+
+            {/* Subtitle */}
+            <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] text-center m-0 leading-[1.4] min-h-[90px] flex-1">
+              {carouselData[currentIndex].subtitle}
+            </p>
+
+            {/* Right Arrow Button */}
+            <button
+              onClick={handleNext}
+              className="flex-shrink-0 w-[40px] h-[24px] relative hover:scale-105 active:scale-95 transition-transform outline-none"
+              aria-label="Next product"
+            >
+              <Image src="/images/rightarrow.svg" alt="next" fill className="object-contain" />
+            </button>
+          </div>
 
           <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] w-full max-w-[180px] h-[44px] rounded-[4px]">
             <span className="font-['Roboto',_sans-serif] text-[16px]">Get Yours</span>
           </button>
-
-          <div className="flex items-center gap-8 mt-4">
-            <button onClick={handlePrev} className="w-[60px] h-[40px] relative">
-              <Image src="/images/pinkleft.png" fill className="object-contain" alt="prev" />
-            </button>
-            <button onClick={handleNext} className="w-[60px] h-[40px] relative transform rotate-180">
-              <Image src="/images/pinkleft.png" fill className="object-contain" alt="next" />
-            </button>
-          </div>
         </div>
       </div>
 

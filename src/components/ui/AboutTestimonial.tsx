@@ -56,20 +56,18 @@ export function AboutTestimonial() {
           ))}
         </div>
 
-        {/* Massive Text */}
         <h2
-          className="font-[family-name:var(--font-bebas)] text-white text-center max-md:mb-10 md:mb-12 max-md:px-2 z-10 relative pointer-events-none uppercase"
+          className="font-[family-name:var(--font-bebas)] text-white text-center max-md:mb-8 md:mb-12 max-md:px-0.5 px-6 md:px-0 z-10 relative pointer-events-none uppercase w-full max-w-[733px] text-[24px] md:text-[40px] leading-[120%] tracking-[-0.05em] md:tracking-[-0.03em]"
           style={{
             fontWeight: 400,
-            fontSize: "40px",
-            letterSpacing: "-0.03em",
             textAlign: "center",
-            lineHeight: "120%",
-            width: "733px",
-            height: "172px"
           }}
         >
-          It is a long established fact that a readerIt is a long established fact that a readerIt is a long established fact that a readerIt is a long established fact that a readerIt is a long established fact that a reader
+          It is a long established fact that a readerIt is a<br className="block md:hidden" />
+          long established fact that a readerIt is a long<br className="block md:hidden" />
+          established fact that a readerIt is a long<br className="block md:hidden" />
+          established fact that a readerIt is a long<br className="block md:hidden" />
+          established fact that a reader
         </h2>
 
         {/* Pink Button */}
@@ -91,7 +89,7 @@ export function AboutTestimonial() {
             alt="Nazr Logo"
             width={24}
             height={24}
-            className="w-0 opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out object-contain invert brightness-0 shrink-0"
+            className="w-6 opacity-100 mr-2 md:w-0 md:opacity-0 md:group-hover:w-6 md:group-hover:opacity-100 md:group-hover:mr-2 transition-all duration-300 ease-in-out object-contain invert brightness-0 shrink-0"
           />
           <span className="text-[16px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Join Ecosystem</span>
         </button>

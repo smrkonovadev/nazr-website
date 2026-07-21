@@ -18,8 +18,9 @@ export function SafetyHabits() {
             className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] text-[16px] md:text-[20px] max-w-[601px] md:h-[43px] m-0 mt-4 md:mt-0"
             style={{ lineHeight: "1.4", letterSpacing: "-0.03em" }}
           >
-            Designed around the routines women already rely on, with smarter <br className="hidden md:block" />
-            tools to keep every journey connected, informed, and secure.
+            Designed around the routines women already<br className="block md:hidden" />{" "}
+            rely on, with smarter <br className="hidden md:block" />tools to keep every<br className="block md:hidden" />{" "}
+            journey connected, informed, and secure.
           </p>
         </div>
 

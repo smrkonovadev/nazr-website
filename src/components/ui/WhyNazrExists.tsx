@@ -10,9 +10,12 @@ export function WhyNazrExists() {
         </h2>
 
         <p
-          className="font-['Inter',_sans-serif] font-normal text-[#161616] text-center mt-6 md:mt-8 text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] max-md:max-w-[240px] md:w-[573px] mx-auto"
+          className="font-['Inter',_sans-serif] font-normal text-[#161616] text-center mt-6 md:mt-8 text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] max-md:max-w-[320px] md:w-[573px] mx-auto"
         >
-          Real experiences from women who believe safety should be<br className="hidden md:block" /> proactive, accessible, and shared.
+          Real experiences from women who<br className="block md:hidden" />{" "}
+          believe safety should be<br className="hidden md:block" />{" "}
+          proactive,<br className="block md:hidden" />{" "}
+          accessible, and shared.
         </p>
       </div>
     </section>
