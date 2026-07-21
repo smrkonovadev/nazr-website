@@ -30,10 +30,10 @@ export function AboutFeatures() {
   });
 
   return (
-    <section id="product-features-section" className="w-full bg-[#FFF1EB] py-20 relative">
+    <section id="product-features-section" className="w-full bg-[#FFF1EB] pt-6 pb-12 md:pt-10 md:pb-16 relative">
 
       {/* Top Heading Marquee */}
-      <div className="w-full mb-8 md:mb-16 overflow-hidden relative flex flex-col justify-center bg-[#FFF1EB] py-4">
+      <div className="w-full mb-2 md:mb-3 overflow-hidden relative flex flex-col justify-center bg-[#FFF1EB] py-1">
         <div className="flex w-max animate-marquee-reverse">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex items-center gap-4 md:gap-8 px-2 md:px-4 shrink-0">
@@ -89,10 +89,10 @@ export function AboutFeatures() {
 function CardItem({ card, index, cardsLength, progress }: { card: any, index: number, cardsLength: number, progress: any }) {
 
   // Calculate the scroll range for this specific card based on its index
-  const step = 1 / (cardsLength - 0.5); // ~0.285 for 4 cards
-  // The first card stays sharp until the second card is 50% visible (around 0.5 progress)
-  const startProgress = index === 0 ? 0.5 : index * step + 0.12;
-  const endProgress = index === 0 ? 0.85 : index * step + step;
+  const step = 1 / (cardsLength - 0.5);
+  // The first card stays sharp until the second card is 100% visible (around 0.8 progress)
+  const startProgress = index === 0 ? 0.8 : index * step + 0.12;
+  const endProgress = index === 0 ? 0.95 : index * step + step;
 
   const blurValue = useTransform(progress, [startProgress, endProgress], ["0px", "22.332666397094727px"]);
   const blurFilter = useTransform(blurValue, (v) => `blur(${v})`);
@@ -137,11 +137,11 @@ function CardItem({ card, index, cardsLength, progress }: { card: any, index: nu
           <Link
             href={card.id === 1 ? "/shop#pepper-spray" : "/shop#sip-check"}
             style={{
-              width: "196px",
+              width: "145px",
               height: "40px",
               borderRadius: "4px",
               border: "1px solid #FF0E97",
-              padding: "8px 20px",
+              padding: "8px 12px",
               opacity: 1,
               backgroundColor: "#FF0E97",
               display: "flex",

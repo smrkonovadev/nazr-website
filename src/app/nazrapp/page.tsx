@@ -39,8 +39,8 @@ export default function NazrAppPage() {
         {/* Shield Mode Dark Section */}
         <DesktopScaler>
           <ShieldModeSection />
-          <ShieldModeFeatures />
         </DesktopScaler>
+        <ShieldModeFeatures />
 
         {/* Trusted Circle Section */}
         <DesktopScaler bgColor="#F1E4DE">
@@ -50,8 +50,8 @@ export default function NazrAppPage() {
         {/* Our Products Section */}
         <DesktopScaler>
           <OurProductsHeader />
-          <ProductCardsCarousel />
         </DesktopScaler>
+        <ProductCardsCarousel />
 
         {/* Contact Us Section */}
         <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[32px] overflow-hidden">

@@ -41,7 +41,7 @@ export function RevealMask({
       </div>
       {showDivider && (
         <div 
-          className={`${styles.divider} w-full flex items-center border-t border-b border-black shrink-0 px-6 md:px-12 py-3`}
+          className={`${styles.divider} w-full flex items-center border-t border-b border-black shrink-0 px-6 md:px-12`}
           style={{
             backgroundColor: accent,
             color: textColor

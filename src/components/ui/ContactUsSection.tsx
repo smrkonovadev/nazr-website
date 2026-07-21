@@ -17,17 +17,45 @@ export function ContactUsSection() {
         </h2>
 
         <p
-          className="mt-[32px] text-[#161616] text-[19px] leading-[140%] tracking-[-0.03em] opacity-90"
+          className="mt-[12px] text-[#161616] text-[19px] leading-[140%] tracking-[-0.03em] opacity-90"
           style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}
         >
           NAZR is built through conversations with the people we build for. We'd love to hear yours.
         </p>
 
         <button
-          className="mt-[32px] bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white px-8 py-3 rounded-[5px] shadow-sm font-normal text-[16px] leading-[150%]"
-          style={{ fontFamily: "Roboto, sans-serif" }}
+          className="mt-[16px] bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white border border-[#F80090] shadow-sm font-normal text-[16px] leading-[150%]"
+          style={{
+            fontFamily: "Roboto, sans-serif",
+            width: "127px",
+            height: "40px",
+            padding: "8px 20px",
+            borderRadius: "4px",
+            borderWidth: "1px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            opacity: 1
+          }}
         >
-          Tell us More
+          <span
+            style={{
+              fontFamily: "Roboto, sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "150%",
+              width: "87px",
+              height: "24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: 1,
+              whiteSpace: "nowrap"
+            }}
+          >
+            Tell us More
+          </span>
         </button>
       </div>
 
@@ -58,7 +86,7 @@ export function ContactUsSection() {
             lineHeight: "140%",
             letterSpacing: "-0.03em",
             textAlign: "center",
-            marginTop: "32px",
+            marginTop: "12px",
             maxWidth: "460px"
           }}
         >
@@ -66,16 +94,41 @@ export function ContactUsSection() {
         </p>
 
         <button
-          className="bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white rounded-[5px]"
+          className="bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white border border-[#F80090]"
           style={{
             fontFamily: "Roboto, sans-serif",
             fontSize: "16px",
             lineHeight: "150%",
+            width: "127px",
+            height: "40px",
             padding: "8px 20px",
-            marginTop: "40px"
+            borderRadius: "4px",
+            borderWidth: "1px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            marginTop: "24px",
+            opacity: 1
           }}
         >
-          Tell us More
+          <span
+            style={{
+              fontFamily: "Roboto, sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "150%",
+              width: "87px",
+              height: "24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: 1,
+              whiteSpace: "nowrap"
+            }}
+          >
+            Tell us More
+          </span>
         </button>
       </div>
 

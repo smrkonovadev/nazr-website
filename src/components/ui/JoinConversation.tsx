@@ -10,15 +10,21 @@ export function JoinConversation() {
         </h2>
 
         <p
-          className="font-['Inter',_sans-serif] font-normal text-[#161616] text-center mt-4 max-md:max-w-[336px] max-md:mx-auto text-[16px] md:text-[24.5px] leading-[140%] tracking-[-0.03em]"
+          className="font-['Inter',_sans-serif] font-normal text-[#161616] text-center mt-[12px] max-md:max-w-[336px] max-md:mx-auto text-[16px] md:text-[24.5px] leading-[140%] tracking-[-0.03em]"
         >
           NAZR is built through conversations with the<br className="hidden md:block" /> people we build for. We'd love to hear yours.
         </p>
 
-        <button 
-          className="max-md:mt-4 md:mt-8 bg-[#FF0E97] text-white font-['Roboto',_sans-serif] font-normal text-[16px] leading-[150%] tracking-normal max-md:w-[127px] max-md:h-[40px] max-md:px-[20px] max-md:rounded-[4px] border border-[#FF0E97] md:font-['Inter',_sans-serif] md:font-medium md:py-3 md:px-8 md:rounded-lg flex items-center justify-center gap-2 mx-auto cursor-default whitespace-nowrap"
+        <button
+          className="max-md:mt-[16px] md:mt-[24px] bg-[#FF0E97] text-white font-['Roboto',_sans-serif] font-normal text-[16px] leading-[150%] tracking-normal w-[127px] h-[40px] px-[20px] py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center gap-[8px] mx-auto cursor-default whitespace-nowrap"
+          style={{ opacity: 1 }}
         >
-          Tell us More
+          <span
+            className="w-[87px] h-[24px] flex items-center justify-center font-['Roboto',_sans-serif] font-normal text-[16px] leading-[150%] tracking-normal whitespace-nowrap"
+            style={{ opacity: 1 }}
+          >
+            Tell us More
+          </span>
         </button>
       </div>
     </section>

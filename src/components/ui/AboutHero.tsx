@@ -1,21 +1,44 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Header } from "./Header";
 
 export function AboutHero() {
-  return (
-    <section className="w-full bg-[#161616] p-[20px]">
-      <div className="relative w-full rounded-[16px] overflow-hidden">
+  const [scaledViewportHeight, setScaledViewportHeight] = useState<number | string>("100vh");
 
-        {/* Background SVG — renders at its full natural height */}
+  useEffect(() => {
+    const handleResize = () => {
+      const isWindowMobile = window.innerWidth < 768;
+      const targetWidth = isWindowMobile ? 390 : 1280;
+      const windowWidth = window.innerWidth;
+      const scale = windowWidth / targetWidth;
+
+      const heightInScaler = window.innerHeight / scale;
+      setScaledViewportHeight(heightInScaler);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <section
+      className="w-full bg-[#161616] p-[20px]"
+      style={{
+        height: typeof scaledViewportHeight === "number" ? `${scaledViewportHeight}px` : scaledViewportHeight
+      }}
+    >
+      <div className="relative w-full h-full rounded-[16px] overflow-hidden">
+
+        {/* Background SVG — fills the container */}
         <Image
           src="/images/ABOUTHERO.svg"
           alt="About Us Hero"
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="w-full h-auto block"
+          width={1920}
+          height={1080}
+          className="object-cover"
           priority
         />
 

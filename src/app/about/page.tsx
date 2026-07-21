@@ -16,14 +16,14 @@ export default function AboutPage() {
     <>
       <main className="flex flex-col min-h-screen bg-[#161616] w-full">
         {/* Dark Sections */}
-        <DesktopScaler>
+        <DesktopScaler bgColor="transparent" className="relative z-30">
           <AboutHero />
           <AboutStatement />
           <AboutCollage />
         </DesktopScaler>
 
         {/* Cream Sections */}
-        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[32px]">
+        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[32px] md:-mt-[26px] max-md:-mt-[32px] relative z-20">
           <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[32px] relative z-20 pb-0">
             <AboutFeatures />
             <AboutBanners />

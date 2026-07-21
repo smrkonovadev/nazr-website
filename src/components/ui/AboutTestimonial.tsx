@@ -10,17 +10,21 @@ export function AboutTestimonial() {
   const isInView = useInView(containerRef, { amount: 0.5 });
 
   return (
-    <section className="w-full bg-[#FFF1EB] max-md:py-2 md:pt-4 md:pb-12 max-md:px-0 md:px-8 relative max-md:-mt-[12px] md:-mt-[2px] border-none outline-none z-10">
+    <section className="w-full bg-[#FFF1EB] max-md:py-2 md:pt-4 md:pb-8 max-md:px-0 md:px-8 relative max-md:-mt-[12px] md:-mt-[2px] border-none outline-none z-10">
       <div
         ref={containerRef}
-        className="w-full max-w-[1400px] mx-auto bg-[#161616] rounded-[24px] md:rounded-[40px] max-md:aspect-square relative overflow-clip flex flex-col items-center justify-center text-center px-4 md:px-12 max-md:py-4 md:py-[184px] cursor-default"
+        className="w-full max-w-[1400px] mx-auto bg-[#161616] rounded-[32px] max-md:aspect-square relative overflow-hidden flex flex-col items-center justify-center text-center px-4 md:px-12 max-md:py-4 md:py-[184px] cursor-default border-0 outline-none"
+        style={{
+          clipPath: "inset(0px round 32px)",
+          transform: "translateZ(0)",
+        }}
       >
 
         {/* Decorative Side Images that slide out on scroll */}
         <motion.div
-          className="hidden md:block absolute left-0 md:left-8 top-[10%] w-[40%] md:w-[28%] h-[80%] rounded-[24px] overflow-hidden shadow-2xl z-20 pointer-events-none"
-          initial={{ x: "100%", rotate: 5 }}
-          animate={{ x: isInView ? "-60%" : "100%", rotate: isInView ? -6 : 5 }}
+          className="hidden md:block absolute left-0 md:left-[18%] top-[10%] w-[40%] md:w-[28%] h-[80%] rounded-[24px] overflow-hidden z-20 pointer-events-none"
+          initial={{ x: "0%", rotate: 0 }}
+          animate={{ x: isInView ? "-120%" : "0%", rotate: isInView ? -6 : 0 }}
           transition={{ type: "spring", stiffness: 50, damping: 20 }}
         >
           <Image
@@ -32,9 +36,9 @@ export function AboutTestimonial() {
         </motion.div>
 
         <motion.div
-          className="hidden md:block absolute right-0 md:right-8 top-[10%] w-[40%] md:w-[28%] h-[80%] rounded-[24px] overflow-hidden shadow-2xl z-20 pointer-events-none"
-          initial={{ x: "-100%", rotate: -5 }}
-          animate={{ x: isInView ? "60%" : "-100%", rotate: isInView ? 12 : -5 }}
+          className="hidden md:block absolute right-0 md:right-[18%] top-[10%] w-[40%] md:w-[28%] h-[80%] rounded-[24px] overflow-hidden z-20 pointer-events-none"
+          initial={{ x: "0%", rotate: 0 }}
+          animate={{ x: isInView ? "120%" : "0%", rotate: isInView ? 12 : 0 }}
           transition={{ type: "spring", stiffness: 50, damping: 20 }}
         >
           <Image
@@ -53,20 +57,43 @@ export function AboutTestimonial() {
         </div>
 
         {/* Massive Text */}
-        <h2 className="font-[family-name:var(--font-bebas)] text-white max-md:text-[28px] md:text-[35px] max-md:leading-[110%] md:leading-[120%] max-md:tracking-[-0.03em] md:tracking-wide max-w-[700px] max-md:mb-10 md:mb-12 max-md:px-2 z-10 relative pointer-events-none transition-all duration-500">
-          IT IS A LONG ESTABLISHED FACT THAT A READERIT IS A LONG ESTABLISHED FACT THAT A READERIT IS A LONG ESTABLISHED FACT THAT A READERIT IS A LONG ESTABLISHED FACT THAT A READERIT IS A LONG ESTABLISHED FACT THAT A READER
+        <h2
+          className="font-[family-name:var(--font-bebas)] text-white text-center max-md:mb-10 md:mb-12 max-md:px-2 z-10 relative pointer-events-none uppercase"
+          style={{
+            fontWeight: 400,
+            fontSize: "40px",
+            letterSpacing: "-0.03em",
+            textAlign: "center",
+            lineHeight: "120%",
+            width: "733px",
+            height: "172px"
+          }}
+        >
+          It is a long established fact that a readerIt is a long established fact that a readerIt is a long established fact that a readerIt is a long established fact that a readerIt is a long established fact that a reader
         </h2>
 
         {/* Pink Button */}
-        <button className="group bg-[#F80090] text-white max-md:px-6 max-md:py-1 md:px-8 md:py-2 rounded-[8px] font-regular flex items-center hover:bg-[#F80090]/90 transition-colors shadow-lg z-10 relative">
+        <button
+          className="group bg-[#F80090] text-white font-regular flex items-center justify-center hover:bg-[#F80090]/90 transition-colors shadow-lg z-10 relative border border-[#F80090]"
+          style={{
+            width: "184px",
+            height: "40px",
+            borderRadius: "4px",
+            padding: "8px 12px",
+            opacity: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Image
             src="/images/logosvg.svg"
             alt="Nazr Logo"
             width={24}
             height={24}
-            className="w-0 opacity-0 group-hover:w-8 group-hover:opacity-100 group-hover:mr-2 max-md:group-hover:w-11 max-md:group-hover:mr-3 transition-all duration-300 ease-in-out object-contain invert brightness-0"
+            className="w-0 opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out object-contain invert brightness-0 shrink-0"
           />
-          <span className="max-md:text-[20px] md:text-[18px]">Join Ecosystem</span>
+          <span className="text-[16px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Join Ecosystem</span>
         </button>
 
       </div>

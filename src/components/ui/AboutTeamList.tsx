@@ -28,7 +28,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 ];
 
 // Logo width (px) + right margin (mr-4 = 16px)
-const OWL_WIDTH = 116;
+const OWL_WIDTH = 140;
 
 export function AboutTeamList() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -91,7 +91,7 @@ export function AboutTeamList() {
           return (
             <div
               key={member.id}
-              className="w-full py-6 md:py-10 border-b-[3px] border-[#161616] flex flex-col md:flex-row justify-between items-start md:items-center gap-6 cursor-pointer group"
+              className="w-full py-4 md:py-6 border-b-[3px] border-[#161616] flex flex-col md:flex-row justify-between items-start md:items-center gap-6 cursor-pointer group"
               onMouseEnter={() => setHoveredId(member.id)}
               onMouseLeave={() => setHoveredId(null)}
               onMouseMove={handleRowMouseMove}
@@ -115,9 +115,9 @@ export function AboutTeamList() {
                     <Image
                       src="/images/logosvg.svg"
                       alt="Owl Logo"
-                      width={100}
-                      height={100}
-                      className="w-[60px] md:w-[100px] h-auto object-contain brightness-0"
+                      width={130}
+                      height={130}
+                      className="w-[80px] md:w-[130px] h-auto object-contain brightness-0"
                     />
                   </motion.div>
 
@@ -160,7 +160,15 @@ export function AboutTeamList() {
               </div>
 
               {/* Right Side: Circular Button — only rotates, no scale */}
-              <div data-arrow className="w-[45px] h-[45px] md:w-[60px] md:h-[60px] bg-[#161616] rounded-full flex items-center justify-center shrink-0 relative z-[110]">
+              <div
+                data-arrow
+                className="bg-[#161616] flex items-center justify-center shrink-0 relative z-[110]"
+                style={{
+                  width: "57px",
+                  height: "57px",
+                  borderRadius: "1000px"
+                }}
+              >
                 <ArrowUpRight className="text-[#FFF1EB] w-6 h-6 md:w-8 md:h-8 transition-transform duration-300 group-hover:rotate-45" />
               </div>
 

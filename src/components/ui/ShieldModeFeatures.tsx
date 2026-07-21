@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const features = [
   {
@@ -36,54 +36,64 @@ const features = [
 
 export function ShieldModeFeatures() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [xTranslation, setXTranslation] = useState(0);
 
+  // Measure the total horizontal scrollable distance dynamically
+  useEffect(() => {
+    const calculateTranslation = () => {
+      if (rowRef.current) {
+        const rowWidth = rowRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const paddingLeft = viewportWidth < 768 ? 20 : 40;
+        // Translate the row so that the right-padded edge of the row lands exactly at the viewport right edge
+        const translation = Math.max(0, rowWidth - viewportWidth + paddingLeft);
+        setXTranslation(translation);
+      }
+    };
+
+    calculateTranslation();
+    window.addEventListener("resize", calculateTranslation);
+    return () => window.removeEventListener("resize", calculateTranslation);
+  }, []);
+
+  // Track the vertical scroll progress of this section's track
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"],
+    offset: ["start start", "end end"],
   });
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest > 0.25) {
-      setHasAnimatedIn(true);
-    } else if (latest < 0.05) {
-      setHasAnimatedIn(false);
-    }
-  });
+  // Map vertical scroll progress to negative horizontal translation
+  const x = useTransform(scrollYProgress, [0, 1], [0, -xTranslation]);
 
   return (
-    <section ref={containerRef} className="w-full bg-[#161616] pb-[40px] relative z-50">
-      {/* Horizontal scroll container — shows 3 full cards + peek of 4th */}
-      <div className="w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden px-[20px] md:px-[40px]">
-        <motion.div
-          className="flex gap-4 md:gap-6"
-          style={{ width: "max-content", paddingBottom: "1px" }}
-          initial={{ y: 80, opacity: 0 }}
-          animate={hasAnimatedIn ? { y: 0, opacity: 1 } : { y: 80, opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-        >
-          {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} index={index} />
-          ))}
-        </motion.div>
+    <section ref={containerRef} className="w-full bg-[#161616] relative z-50 h-[250vh] max-md:h-[300vh]">
+      {/* Sticky container that keeps items pinned while we scroll through the track */}
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center w-full">
+        {/* Horizontal scroll container */}
+        <div className="w-full px-[20px] md:px-[40px]">
+          <motion.div
+            ref={rowRef}
+            className="flex gap-4 md:gap-6 pr-[20px] md:pr-[40px]"
+            style={{ 
+              width: "max-content", 
+              paddingBottom: "1px",
+              x
+            }}
+          >
+            {features.map((feature, index) => (
+              <FeatureCard key={index} feature={feature} index={index} />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
 function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start 90%", "center center"],
-  });
-
-  const yTransform = useTransform(scrollYProgress, [0, 1], ["80px", "0px"]);
-
   return (
     <div
-      ref={cardRef}
       className="flex flex-col shrink-0 rounded-[16px] overflow-hidden"
       style={{
         /* Show ~3 cards + partial 4th:
@@ -103,7 +113,10 @@ function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index:
       >
         <motion.div
           className="relative w-[180px] h-[360px]"
-          style={{ y: yTransform }}
+          initial={{ y: 80 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <video
             autoPlay

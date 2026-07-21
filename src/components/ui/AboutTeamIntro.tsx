@@ -1,16 +1,16 @@
 export function AboutTeamIntro() {
   return (
-    <section className="w-full bg-[#FFF1EB] pt-[40px] max-md:pb-6 md:pb-[60px] flex flex-col items-center justify-center text-center px-4 border-none outline-none">
+    <section className="w-full bg-[#FFF1EB] pt-[36px] max-md:pb-6 md:pb-[60px] flex flex-col items-center justify-center text-center px-4 border-none outline-none">
       <div className="w-full max-w-[800px] flex flex-col items-center">
         <h2
           className="font-[family-name:var(--font-bebas)] text-[#161616] text-center"
           style={{
             fontWeight: 400,
             fontSize: "clamp(40px, 8vw, 120px)",
-            lineHeight: "90%",
+            lineHeight: "70%",
             letterSpacing: "-0.03em",
             margin: 0,
-            marginBottom: "32px",
+            marginBottom: "16px",
           }}
         >
           MEET THE TEAM

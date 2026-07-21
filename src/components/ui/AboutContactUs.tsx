@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function AboutContactUs() {
   return (
-    <section className="w-full bg-[#FFF1EB] pt-[60px] pb-[48px] px-4 flex flex-col items-center justify-center text-center relative -mt-[2px] border-none outline-none z-20">
+    <section className="w-full bg-[#FFF1EB] max-md:pt-[20px] md:pt-[40px] pb-[48px] px-4 flex flex-col items-center justify-center text-center relative -mt-[2px] border-none outline-none z-20">
       <div className="flex flex-col items-center max-w-[621px] mx-auto">
         <h2
           className="m-0 text-[#161616] uppercase"
@@ -27,7 +27,7 @@ export function AboutContactUs() {
             lineHeight: "140%",
             letterSpacing: "-0.03em",
             textAlign: "center",
-            marginTop: "32px",
+            marginTop: "12px",
             maxWidth: "460px"
           }}
         >
@@ -35,16 +35,41 @@ export function AboutContactUs() {
         </p>
 
         <button
-          className="bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white rounded-[5px]"
+          className="bg-[#F80090] hover:bg-[#d6007b] transition-colors text-white border border-[#F80090]"
           style={{
             fontFamily: "Roboto, sans-serif",
             fontSize: "16px",
             lineHeight: "150%",
+            width: "127px",
+            height: "40px",
             padding: "8px 20px",
-            marginTop: "40px"
+            borderRadius: "4px",
+            borderWidth: "1px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            marginTop: "24px",
+            opacity: 1
           }}
         >
-          Tell us More
+          <span
+            style={{
+              fontFamily: "Roboto, sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "150%",
+              width: "87px",
+              height: "24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: 1,
+              whiteSpace: "nowrap"
+            }}
+          >
+            Tell us More
+          </span>
         </button>
       </div>
     </section>

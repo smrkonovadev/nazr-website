@@ -39,10 +39,10 @@ export function AboutBanners() {
 
   return (
     <section
-      className="w-full bg-[#FFF1EB] overflow-hidden relative flex flex-col items-center justify-center max-md:h-[320px] md:h-[618px] -mt-[2px]"
+      className="w-full bg-[#FFF1EB] overflow-hidden relative flex flex-col items-center justify-center max-md:h-[305px] md:h-[570px] -mt-[2px]"
     >
       <div
-        className="relative md:absolute top-1/2 left-1/2 w-full md:w-[1440px] h-full md:h-[618px]"
+        className="relative md:absolute top-1/2 left-1/2 w-full md:w-[1440px] h-full md:h-[570px]"
         style={{
           transform: 'translate(-50%, -50%)',
           transformOrigin: 'center center'
@@ -50,7 +50,7 @@ export function AboutBanners() {
       >
         {/* Pink Band - Top: Unwanted Attention Blocked */}
         <div
-          className="absolute max-md:top-[20px] md:top-[40px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#F80090] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-10 shadow-lg max-md:-rotate-[5deg] md:-rotate-[2deg]"
+          className="absolute max-md:top-[18px] md:top-[35px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#F80090] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-10 shadow-lg max-md:-rotate-[5deg] md:-rotate-[2deg]"
         >
           <div className="flex w-max items-center h-full animate-marquee-reverse">
             {[...Array(12)].map((_, i) => (
@@ -61,7 +61,7 @@ export function AboutBanners() {
 
         {/* Blue Band - Middle: LUCK ISN'T A STRATEGY */}
         <div
-          className="absolute max-md:top-[100px] md:top-[180px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#0E8DFF] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-30 shadow-2xl rotate-[5deg]"
+          className="absolute max-md:top-[93px] md:top-[180px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#0E8DFF] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-30 shadow-2xl rotate-[5deg]"
         >
           <div className="flex w-max items-center h-full animate-marquee">
             {[...Array(12)].map((_, i) => (
@@ -72,7 +72,7 @@ export function AboutBanners() {
 
         {/* Green Band - Bottom: YOUR MOM WOULD APPROVE */}
         <div
-          className="absolute max-md:top-[180px] md:top-[330px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#03A781] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-20 shadow-lg max-md:-rotate-[5deg] md:-rotate-[2deg]"
+          className="absolute max-md:top-[168px] md:top-[325px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#03A781] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-20 shadow-lg max-md:-rotate-[5deg] md:-rotate-[2deg]"
         >
           <div className="flex w-max items-center h-full animate-marquee-reverse" style={{ animationDuration: '35s' }}>
             {[...Array(12)].map((_, i) => (

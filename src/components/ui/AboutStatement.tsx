@@ -31,8 +31,8 @@ export function AboutStatement() {
     const dy = clientY - lastPos.current.y;
     const distance = Math.hypot(dx, dy);
 
-    // Spawn when distance > 30 to make a smooth trailing line (tail) rather than jumping randomly
-    if (distance > 30) {
+    // Spawn when distance > 75 to make a smooth trailing line (tail) rather than jumping randomly
+    if (distance > 75) {
       lastPos.current = { x: clientX, y: clientY };
 
       const scale = typeof window !== 'undefined'
@@ -63,7 +63,7 @@ export function AboutStatement() {
       // Remove the image smoothly
       setTimeout(() => {
         setTrail((prev) => prev.filter((img) => img.id !== newImage.id));
-      }, 500);
+      }, 400);
     }
   };
 
@@ -80,25 +80,29 @@ export function AboutStatement() {
           {trail.map((img) => (
             <motion.div
               key={img.id}
-              initial={{ opacity: 0, scale: 0.5, x: 0, y: 0 }}
+              initial={{ opacity: 1, scale: 0.1, x: 0, y: 0 }}
               animate={{
                 opacity: 1,
                 scale: 1,
-                // Drift in the opposite direction of mouse movement (e.g. 100px away)
-                x: -img.dx * 100,
-                y: -img.dy * 100
+                // Drift in the opposite direction of mouse movement (e.g. 80px away)
+                x: -img.dx * 80,
+                y: -img.dy * 80
               }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              exit={{ opacity: 1, scale: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 450,
+                damping: 28
+              }}
               className="absolute"
               style={{
                 top: img.y,
                 left: img.x,
-                // Framer Motion overwrites 'transform', so we must use margins to center the 300x300 image exactly on the cursor
-                marginTop: -150,
-                marginLeft: -150,
-                width: 300,
-                height: 300,
+                // Framer Motion overwrites 'transform', so we must use margins to center the 220x220 image exactly on the cursor
+                marginTop: -110,
+                marginLeft: -110,
+                width: 220,
+                height: 220,
               }}
             >
               <Image
@@ -215,7 +219,7 @@ export function AboutStatement() {
           const el = document.getElementById("product-features-section");
           if (el) el.scrollIntoView({ behavior: "smooth" });
         }}
-        className="group max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:px-6 md:py-3 max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
+        className="group max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:w-[245px] md:px-6 md:h-[40px] max-md:w-[196px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
       >
         <Image
           src="/images/logosvg.svg"

@@ -31,11 +31,12 @@ export function AboutCollage() {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-[#161616] pt-12 pb-24 md:py-36 flex flex-col items-center justify-center relative overflow-hidden"
+      className="w-full bg-[#161616] pt-12 pb-1 md:pt-36 md:pb-1 flex flex-col items-center justify-center relative md:rounded-b-[26px] max-md:rounded-b-[32px] overflow-hidden"
     >
       {/* The Collage Container */}
       <motion.div
         className="relative w-full max-w-[1200px] aspect-[12/10] md:h-[820px] flex items-center justify-center mx-auto"
+        style={{ translateX: "-90px" }}
       >
 
         {/* 1. Center Image (MAINPHONE.svg) */}
