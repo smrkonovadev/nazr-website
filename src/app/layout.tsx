@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
+import { Geist, Geist_Mono, Bebas_Neue, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { NavigationProvider } from "@/context/NavigationContext";
@@ -8,6 +8,7 @@ import { ScaleWrapper } from "@/components/ui/ScaleWrapper";
 import { GlobalZoom } from "@/components/ui/GlobalZoom";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 import { Footer } from "@/components/ui/Footer";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,6 +23,12 @@ const geistMono = Geist_Mono({
 const bebas = Bebas_Neue({
   weight: "400",
   variable: "--font-bebas",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -43,8 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${signPainter.variable} antialiased bg-white`} suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${signPainter.variable} antialiased bg-white`} suppressHydrationWarning>
         <GlobalZoom />
+        <LoadingScreen duration={2500} autoHide={true} />
         <NavigationProvider>
           <NavigationMenu />
           <ScaleWrapper>

@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Lottie from "lottie-react";
 
 const features = [
   {
@@ -9,6 +10,7 @@ const features = [
     bgColor: "#0E8DFF",
     description:
       "Start your journey by enabling Nazr to run smoothly and silently in the background. All safety features will be equipped to launch the moment it's necessary.",
+    lottieJson: "/images/SM ARM-Turn On.json",
     vid: "/images/vid8.mp4",
   },
   {
@@ -16,6 +18,7 @@ const features = [
     bgColor: "#F80090",
     description:
       "At intervals you've set, Nazr sends a check-in reminder to make sure you're okay. One quick tap confirms you're safe and keeps your Trusted Circle informed.",
+    lottieJson: "/images/SM Check In Timer.json",
     vid: "/images/vid9.mp4",
   },
   {
@@ -23,6 +26,7 @@ const features = [
     bgColor: "#F5C518",
     description:
       "Five minutes before your destination, NAZR prompts you to confirm your arrival or extend your journey if your plans have changed.",
+    lottieJson: "/images/SM Check In Alert.json",
     vid: "/images/vid10.mp4",
   },
   {
@@ -30,6 +34,7 @@ const features = [
     bgColor: "#03A781",
     description:
       "Miss a check-in? Your Trusted Circle is notified. If you're unreachable, they can initiate SOS, or NAZR will in 5 minutes. Arrived safely? End your journey.",
+    lottieJson: "/images/SM Arrived SOS.json",
     vid: "/images/vid11.mp4",
   },
 ];
@@ -46,7 +51,6 @@ export function ShieldModeFeatures() {
         const rowWidth = rowRef.current.scrollWidth;
         const viewportWidth = window.innerWidth;
         const paddingLeft = viewportWidth < 768 ? 20 : 40;
-        // Translate with a safety offset to guarantee full visibility at different zoom scales
         const translation = Math.max(0, rowWidth - viewportWidth + paddingLeft + 40);
         setXTranslation(translation);
       }
@@ -54,7 +58,6 @@ export function ShieldModeFeatures() {
 
     calculateTranslation();
     
-    // Polling calculations to handle dynamic rendering of media and scaling adjustments
     const timer = setTimeout(calculateTranslation, 150);
     const interval = setInterval(calculateTranslation, 500);
     
@@ -66,20 +69,16 @@ export function ShieldModeFeatures() {
     };
   }, []);
 
-  // Track the vertical scroll progress of this section's track
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Map vertical scroll progress to negative horizontal translation, completing at 90% scroll to prevent unpinning lag
   const x = useTransform(scrollYProgress, [0, 0.90], [0, -xTranslation], { clamp: true });
 
   return (
     <section ref={containerRef} className="w-full bg-[#161616] relative z-50 h-[270vh] max-md:h-[320vh]">
-      {/* Sticky container that keeps items pinned while we scroll through the track */}
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-start pt-[120px] md:pt-[60px] w-full">
-        {/* Horizontal scroll container */}
         <div className="w-full px-[20px] md:px-[40px]">
           <motion.div
             ref={rowRef}
@@ -101,43 +100,67 @@ export function ShieldModeFeatures() {
 }
 
 function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index: number }) {
+  const [animationData, setAnimationData] = useState<any>(null);
+
+  useEffect(() => {
+    if (feature.lottieJson) {
+      fetch(feature.lottieJson)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.layers) {
+            data.layers = data.layers.filter((l: any) => l.ty !== 1);
+          }
+          setAnimationData(data);
+        })
+        .catch((err) => console.error("Error loading Lottie JSON:", err));
+    }
+  }, [feature.lottieJson]);
+
   return (
     <div
-      className="flex flex-col shrink-0 rounded-[16px] overflow-hidden w-[85vw] h-[500px] md:w-[calc((100vw-80px-72px)/3.25)] md:h-auto md:aspect-[379/533]"
+      className="flex flex-col shrink-0 rounded-[24px] overflow-hidden w-[85vw] h-[500px] md:w-[calc((100vw-80px-72px)/3.25)] md:h-auto md:aspect-[379/533]"
     >
       {/* Top coloured image area */}
       <div
-        className="w-full relative overflow-hidden flex justify-center h-[320px] pt-[120px] md:h-auto md:aspect-[379/339] md:pt-[37%]"
+        className="w-full relative overflow-hidden flex justify-center h-[320px] pt-[40px] md:h-auto md:aspect-[379/339] md:pt-[12%]"
         style={{
           backgroundColor: feature.bgColor,
         }}
       >
         <motion.div
-          className="relative w-[150px] h-[300px] md:w-[48%] md:h-auto md:aspect-[180/360]"
+          className="relative w-[210px] h-[360px] md:w-[70%] md:h-auto md:aspect-[180/360]"
           initial={{ y: 80 }}
           whileInView={{ y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 object-contain object-top drop-shadow-2xl w-full h-full"
-            style={{
-              WebkitMaskImage: "url(/images/nazrapp4img.png)",
-              WebkitMaskSize: "contain",
-              WebkitMaskRepeat: "no-repeat",
-              WebkitMaskPosition: "top center",
-              maskImage: "url(/images/nazrapp4img.png)",
-              maskSize: "contain",
-              maskRepeat: "no-repeat",
-              maskPosition: "top center",
-            }}
-          >
-            <source src={feature.vid} type="video/mp4" />
-          </video>
+          {animationData ? (
+            <Lottie
+              animationData={animationData}
+              loop={true}
+              className="w-full h-full object-contain drop-shadow-2xl"
+            />
+          ) : (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 object-contain object-top drop-shadow-2xl w-full h-full"
+              style={{
+                WebkitMaskImage: "url(/images/nazrapp4img.png)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.png)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
+              }}
+            >
+              <source src={feature.vid} type="video/mp4" />
+            </video>
+          )}
         </motion.div>
       </div>
 

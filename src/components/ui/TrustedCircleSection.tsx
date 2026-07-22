@@ -2,33 +2,22 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export function TrustedCircleSection() {
   const [activeStep, setActiveStep] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-
-  const videos = ["/images/vid3.mp4", "/images/vid6.mp4", "/images/vid7.mp4"];
-  const vidRefs = [
-    useRef<HTMLVideoElement>(null),
-    useRef<HTMLVideoElement>(null),
-    useRef<HTMLVideoElement>(null)
-  ];
+  const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    vidRefs.forEach((ref, index) => {
-      if (index === activeStep) {
-        if (ref.current) {
-          ref.current.currentTime = 0;
-          ref.current.play().catch(() => {});
-        }
-      } else {
-        if (ref.current) {
-          ref.current.pause();
-        }
-      }
-    });
-  }, [activeStep]);
+    fetch("/images/Trusted Circle.json")
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data))
+      .catch((err) => console.error("Error loading Trusted Circle Lottie:", err));
+  }, []);
 
   useEffect(() => {
     if (isHovered) return;
@@ -54,7 +43,7 @@ export function TrustedCircleSection() {
       const timer = setTimeout(() => {
         setActiveStep((current) => (current + 1) % 3);
         setProgress(0);
-      }, 100); // Let the line touch the circle briefly before transition
+      }, 100);
       return () => clearTimeout(timer);
     }
   }, [progress]);
@@ -80,20 +69,9 @@ export function TrustedCircleSection() {
     }
   ];
 
-  // Calculate progress height mapping
-  let lineProgressHeight = 0;
-  if (activeStep === 0) {
-    lineProgressHeight = (progress / 100) * 50;
-  } else if (activeStep === 1) {
-    lineProgressHeight = 50 + (progress / 100) * 50;
-  } else {
-    lineProgressHeight = 100;
-  }
-
   return (
     <section className="w-full bg-[#F1E4DE] pt-12 md:pt-16 pb-8 md:pb-20 flex flex-col items-center justify-center px-4 relative z-50">
       <div className="max-w-[1200px] w-full flex flex-col items-center text-center gap-0 mb-10 md:mb-20">
-
         <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal max-[380px]:text-[52px] text-[64px] md:text-[160px] leading-[90%] tracking-[-0.03em] max-[380px]:w-full max-md:w-[346px] mx-auto uppercase">
           TRUSTED CIRCLE
         </h2>
@@ -101,11 +79,9 @@ export function TrustedCircleSection() {
         <p className="m-0 text-[#161616] font-sans font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-center max-w-[841px] max-[380px]:w-full max-md:w-[346px] mx-auto opacity-100 md:opacity-90 mt-4 md:mt-0" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
           Safety isn't just about technology. It's about the people who show up when you need them most. Trusted Circle keeps your chosen contacts informed, connected, and ready to act the moment something feels wrong.
         </p>
-
       </div>
 
       <div className="max-w-[1200px] w-full">
-
         {/* ======================= */}
         {/* MOBILE LAYOUT (Stacked) */}
         {/* ======================= */}
@@ -127,45 +103,17 @@ export function TrustedCircleSection() {
               <div key={index} className="flex flex-col w-full max-w-[346px] gap-6">
                 {/* Image Block */}
                 <div
-                  className="w-full h-[311px] rounded-[16px] relative overflow-hidden flex justify-center items-start pt-[30px] shadow-md transition-colors duration-500"
+                  className="w-full h-[311px] rounded-[16px] relative overflow-hidden flex justify-center items-center p-4 shadow-md transition-colors duration-500"
                   style={{ backgroundColor: step.color }}
                 >
-                  {/* Globe */}
-                  <div className="absolute top-[10px] left-[68px] w-[75px] h-[75px] z-40 -rotate-[42deg]">
-                     <Image src="/images/globe.png" alt="Globe" fill className="object-contain drop-shadow-xl" />
-                  </div>
-
-                  {/* Blue Sticker */}
-                  <div className="absolute top-[44%] left-[10%] w-[90px] h-[90px] z-40 -rotate-[15deg]">
-                    <Image src="/images/Vector.svg" alt="Blue Sticker" fill className="object-contain drop-shadow-xl" />
-                  </div>
-
-                  {/* Phone Mockup */}
-                  <div className="relative w-[180px] h-[360px] z-10">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="object-contain object-top drop-shadow-2xl w-full h-full"
-                      style={{
-                        WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-                        WebkitMaskSize: 'contain',
-                        WebkitMaskRepeat: 'no-repeat',
-                        WebkitMaskPosition: 'top center',
-                        maskImage: 'url(/images/nazrapp4img.png)',
-                        maskSize: 'contain',
-                        maskRepeat: 'no-repeat',
-                        maskPosition: 'top center',
-                      }}
-                    >
-                      <source src={videos[index]} type="video/mp4" />
-                    </video>
-                  </div>
-
-                  {/* Green Lens */}
-                  <div className="absolute top-[4%] right-[12%] w-[90px] h-[90px] z-20 rotate-[-0deg]">
-                    <Image src="/images/greenlens.png" alt="Green Lens" fill className="object-contain drop-shadow-xl" />
+                  <div className="w-full h-full relative flex justify-center items-center">
+                    {animationData && (
+                      <Lottie
+                        animationData={animationData}
+                        loop={true}
+                        className="w-full h-full object-contain drop-shadow-2xl"
+                      />
+                    )}
                   </div>
                 </div>
 
@@ -226,7 +174,7 @@ export function TrustedCircleSection() {
                   onMouseEnter={() => {
                     setIsHovered(true);
                     setActiveStep(index);
-                    setProgress(0); // Start progress at 0 for selected step when resuming
+                    setProgress(0);
                   }}
                   onMouseLeave={() => {
                     setIsHovered(false);
@@ -259,52 +207,18 @@ export function TrustedCircleSection() {
 
           {/* Right Column: Visuals */}
           <div 
-            className="col-span-6 col-start-7 w-full h-[550px] rounded-[40px] relative overflow-hidden flex justify-center items-end shadow-2xl transition-colors duration-500"
+            className="col-span-6 col-start-7 w-full h-[550px] rounded-[40px] relative overflow-hidden flex justify-center items-center p-6 shadow-2xl transition-colors duration-500"
             style={{ backgroundColor: steps[activeStep].color }}
           >
-            {/* Globe */}
-            <div className="absolute top-[14%] left-[23%] w-[110px] h-[110px] z-40 -rotate-[42deg]">
-              <Image src="/images/globe.png" alt="Globe" fill className="object-contain drop-shadow-xl" />
-            </div>
-
-            {/* Blue Sticker */}
-            <div className="absolute top-[46%] left-[14%] w-[120px] h-[120px] z-40 -rotate-[15deg]">
-              <Image src="/images/Vector.svg" alt="Blue Sticker" fill className="object-contain drop-shadow-xl" />
-            </div>
-
-            {/* Phone Mockup */}
-            <div className="relative w-[280px] h-[480px] z-10 translate-y-[50px]">
-              {videos.map((vid, index) => (
-                <video
-                  key={vid}
-                  ref={vidRefs[index]}
-                  loop
-                  muted
-                  playsInline
-                  className={`absolute inset-0 object-contain object-top drop-shadow-2xl w-full h-full transition-opacity duration-300 ${activeStep === index ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                  style={{
-                    WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'top center',
-                    maskImage: 'url(/images/nazrapp4img.png)',
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'top center',
-                  }}
-                >
-                  <source src={vid} type="video/mp4" />
-                </video>
-              ))}
-            </div>
-
-            {/* Green Lens */}
-            <div className="absolute top-[8%] right-[15%] w-[170px] h-[170px] z-20 rotate-[-0deg]">
-              <Image src="/images/greenlens.png" alt="Green Lens" fill className="object-contain drop-shadow-xl" />
-            </div>
+            {animationData && (
+              <Lottie
+                animationData={animationData}
+                loop={true}
+                className="w-full h-full object-contain drop-shadow-2xl"
+              />
+            )}
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const categories = [
   "View all",
@@ -14,6 +15,7 @@ const categories = [
 
 const posts = [
   {
+    slug: "women-pretend-phone",
     image: "/images/new52.svg",
     category: "Psychology",
     readTime: "5 min read",
@@ -22,6 +24,7 @@ const posts = [
     featured: true,
   },
   {
+    slug: "drink-spiking",
     image: "/images/new53.svg",
     category: "Safety",
     readTime: "4 min read",
@@ -30,6 +33,7 @@ const posts = [
     featured: false,
   },
   {
+    slug: "soft-girl-sharp-instincts",
     image: "/images/new54.svg",
     category: "Culture",
     readTime: "6 min read",
@@ -38,6 +42,7 @@ const posts = [
     featured: false,
   },
   {
+    slug: "share-your-location",
     image: "/images/new55.svg",
     category: "Product",
     readTime: "5 min read",
@@ -46,6 +51,7 @@ const posts = [
     featured: false,
   },
   {
+    slug: "preparedness-becomes-instinct",
     image: "/images/new56.svg",
     category: "Community",
     readTime: "5 min read",
@@ -149,7 +155,7 @@ export function BlogContent() {
                 {featuredPost.excerpt}
               </p>
 
-              <button className="flex items-center gap-1.5 mt-1 md:mt-2 group w-fit">
+              <Link href={`/blog/${featuredPost.slug}`} className="flex items-center gap-1.5 mt-1 md:mt-2 group w-fit no-underline">
                 <span
                   className="text-[#FF007A] font-normal text-[16px] leading-[150%] tracking-normal group-hover:opacity-70 transition-opacity"
                   style={{ fontFamily: "Roboto, sans-serif" }}
@@ -159,7 +165,7 @@ export function BlogContent() {
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M6 12L10 8L6 4" stroke="#FF007A" strokeWidth="1.5" strokeLinecap="square" />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         )}
@@ -207,12 +213,12 @@ export function BlogContent() {
                     {card.excerpt}
                   </p>
 
-                  <button className="text-[#F80090] flex items-center gap-1 md:gap-2 md:mt-2 font-medium text-[13px] md:text-[16px] w-fit hover:opacity-80 transition-opacity" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
+                  <Link href={`/blog/${card.slug}`} className="text-[#F80090] flex items-center gap-1 md:gap-2 md:mt-2 font-medium text-[13px] md:text-[16px] w-fit hover:opacity-80 transition-opacity no-underline" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
                     Read the full article
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="max-md:w-3 max-md:h-3">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
