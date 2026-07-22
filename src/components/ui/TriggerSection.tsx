@@ -22,10 +22,10 @@ export function TriggerSection() {
 
   useEffect(() => {
     setMounted(true);
-    fetch("/images/SM ARM-Turn On.json")
+    fetch("/images/Trigger.json")
       .then((res) => res.json())
       .then((data) => setArmAnimData(data))
-      .catch((err) => console.error("Error loading SM ARM-Turn On Lottie:", err));
+      .catch((err) => console.error("Error loading Trigger Lottie:", err));
 
     fetch("/images/User Journey.json")
       .then((res) => res.json())
@@ -60,7 +60,7 @@ export function TriggerSection() {
         const viewportCenter = window.innerHeight * 0.5;
         // Calculate distance from top of section to viewport center relative to total line length (1820px)
         const relativeY = viewportCenter - rect.top;
-        const progress = Math.max(0, Math.min(1, relativeY / 1820));
+        const progress = Math.max(0, Math.min(1, relativeY / 1900));
         rawScrollYProgress.set(progress);
       }
       animationFrameId = requestAnimationFrame(updateScrollProgress);
@@ -138,14 +138,14 @@ export function TriggerSection() {
           >
             {/* Base Dotted Black Line */}
             <path
-              d="M 500 0 L 500 300 L 550 450 L 600 600 L 600 950 L 400 1290 L 400 1620 L 600 1820"
+              d="M 500 0 L 500 300 L 550 450 L 600 600 L 600 950 L 400 1290 L 400 1620 L 600 1900"
               stroke="#161616"
               strokeWidth="1.5"
               strokeDasharray="3 4"
             />
             {/* Animated Solid Pink Line */}
             <motion.path
-              d="M 500 0 L 500 300 L 550 450 L 600 600 L 600 950 L 400 1290 L 400 1620 L 600 1820"
+              d="M 500 0 L 500 300 L 550 450 L 600 600 L 600 950 L 400 1290 L 400 1620 L 600 1900"
               stroke="#FF0E97"
               strokeWidth="1.5"
               style={{ pathLength: rawScrollYProgress }}
@@ -160,7 +160,7 @@ export function TriggerSection() {
               key="arm-lottie"
               animationData={armAnimData}
               loop={true}
-              className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0 scale-[1.25] transform-gpu"
+              className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
                 WebkitMaskImage: 'url(/images/nazrapp4img.png)',
                 WebkitMaskSize: 'contain',
@@ -276,23 +276,13 @@ export function TriggerSection() {
         </motion.div>
 
         {/* Third Phone Mockup (Working in the background / Broadcast Fires) */}
-        <motion.div className="absolute left-[40px] top-[800px] w-[198px] h-[401px] z-10" style={{ opacity: section3Opacity }}>
+        <motion.div className="absolute left-[-170px] top-[800px] w-[425px] h-[401px] z-10" style={{ opacity: section3Opacity }}>
           {mounted && broadcastAnimData ? (
             <Lottie
               key="broadcast-lottie"
               animationData={broadcastAnimData}
               loop={true}
-              className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0 scale-[1.25] transform-gpu"
-              style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
-              }}
+              className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
             />
           ) : (
             <video
@@ -464,7 +454,7 @@ export function TriggerSection() {
         </motion.div>
 
         {/* Fifth Black SOS Circle */}
-        <div className="absolute left-[600px] top-[1820px] transform -translate-x-1/2 -translate-y-1/2 z-20">
+        <div className="absolute left-[600px] top-[1900px] transform -translate-x-1/2 -translate-y-1/2 z-20">
           <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fifthRingsOpacity1, animationDuration: '2s' }}></motion.div>
           <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fifthRingsOpacity2, animationDuration: '2.5s' }}></motion.div>
           <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '3s', opacity: 0.2 }}></motion.div>

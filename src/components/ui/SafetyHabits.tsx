@@ -1,6 +1,32 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Lottie from "lottie-react";
+
 export function SafetyHabits() {
+  const [triggerAnimData, setTriggerAnimData] = useState<any>(null);
+  const [armAnimData, setArmAnimData] = useState<any>(null);
+  const [trustedAnimData, setTrustedAnimData] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    fetch("/images/Trigger.json")
+      .then((res) => res.json())
+      .then((data) => setTriggerAnimData(data))
+      .catch((err) => console.error("Error loading Trigger Lottie:", err));
+
+    fetch("/images/SM ARM-Turn On.json")
+      .then((res) => res.json())
+      .then((data) => setArmAnimData(data))
+      .catch((err) => console.error("Error loading SM ARM-Turn On Lottie:", err));
+
+    fetch("/images/Trusted Circle.json")
+      .then((res) => res.json())
+      .then((data) => setTrustedAnimData(data))
+      .catch((err) => console.error("Error loading Trusted Circle Lottie:", err));
+  }, []);
+
   return (
     <section className="w-full bg-[#161616] flex justify-center py-10 md:pt-[60px] md:pb-[60px] md:px-[30px] overflow-visible relative z-20 md:h-[987px]">
       <div className="w-full max-w-[1220px] px-4 md:px-0 flex flex-col items-center gap-[40px] relative md:h-[867px]">
@@ -27,21 +53,23 @@ export function SafetyHabits() {
         {/* Cards Container */}
         <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-0 md:h-[593px] md:w-[1220px]">
 
-          {/* Card 1 */}
+          {/* Card 1: EMERGENCY SOS */}
           <div className="w-full max-w-[379px] md:w-[378.66px] md:h-[593px] flex flex-col gap-[32px] md:py-[2px]">
             {/* Image Box */}
             <div
-              className="relative w-full h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg"
+              className="relative w-full h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2"
               style={{ background: "linear-gradient(152.75deg, #FFF9EB 3.64%, rgba(211, 176, 94, 0.5) 302.87%)" }}
             >
-              <div className="absolute" style={{ width: "211.36px", height: "458.23px", top: "40px", left: "84px" }}>
-                <video
-                  autoPlay loop muted playsInline
-                  className="w-full h-full object-cover rounded-[16px]"
-                >
-                  <source src="/images/vid1.mp4" type="video/mp4" />
-                </video>
-              </div>
+              {mounted && triggerAnimData ? (
+                <Lottie
+                  key="trigger-lottie-habit"
+                  animationData={triggerAnimData}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[0.88] transform-gpu"
+                />
+              ) : (
+                <div className="w-full h-full bg-transparent" />
+              )}
             </div>
             {/* Text */}
             <div className="flex flex-col gap-[16px] px-[16px]">
@@ -54,19 +82,21 @@ export function SafetyHabits() {
             </div>
           </div>
 
-          {/* Card 2 */}
+          {/* Card 2: SHIELD MODE */}
           <div className="w-full max-w-[379px] md:w-[378.66px] md:h-[593px] flex flex-col gap-[32px] md:py-[2px]">
             {/* Image Box */}
-            <div className="relative w-full h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg bg-[#111111]">
-              <div className="absolute inset-0 opacity-20" style={{ background: "linear-gradient(0deg, #FFF9EB 0%, rgba(139, 105, 25, 0.7) 100%)" }}></div>
-              <div className="absolute" style={{ width: "211px", height: "386px", top: "28px", left: "84px" }}>
-                <video
-                  autoPlay loop muted playsInline
-                  className="w-full h-full object-cover rounded-[16px]"
-                >
-                  <source src="/images/vid2.mp4" type="video/mp4" />
-                </video>
-              </div>
+            <div className="relative w-full h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg bg-[#111111] flex items-center justify-center p-2">
+              <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ background: "linear-gradient(0deg, #FFF9EB 0%, rgba(139, 105, 25, 0.7) 100%)" }}></div>
+              {mounted && armAnimData ? (
+                <Lottie
+                  key="arm-lottie-habit"
+                  animationData={armAnimData}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[1.25] transform-gpu z-10"
+                />
+              ) : (
+                <div className="w-full h-full bg-transparent" />
+              )}
             </div>
             {/* Text */}
             <div className="flex flex-col gap-[16px] px-[16px]">
@@ -79,21 +109,23 @@ export function SafetyHabits() {
             </div>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 3: TRUSTED CIRCLE */}
           <div className="w-full max-w-[379px] md:w-[378.66px] md:h-[593px] flex flex-col gap-[32px] md:py-[2px]">
             {/* Image Box */}
             <div
-              className="relative w-full h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg"
+              className="relative w-full h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2"
               style={{ background: "linear-gradient(152.75deg, #FFF9EB 3.64%, rgba(211, 176, 94, 0.5) 302.87%)" }}
             >
-              <div className="absolute" style={{ width: "211px", height: "457.44px", top: "-79px", left: "84px" }}>
-                <video
-                  autoPlay loop muted playsInline
-                  className="w-full h-full object-cover rounded-[16px]"
-                >
-                  <source src="/images/vid3.mp4" type="video/mp4" />
-                </video>
-              </div>
+              {mounted && trustedAnimData ? (
+                <Lottie
+                  key="trusted-lottie-habit"
+                  animationData={trustedAnimData}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[1.25] transform-gpu"
+                />
+              ) : (
+                <div className="w-full h-full bg-transparent" />
+              )}
             </div>
             {/* Text */}
             <div className="flex flex-col gap-[16px] px-[16px]">
