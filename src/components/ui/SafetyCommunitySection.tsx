@@ -52,9 +52,9 @@ export function SafetyCommunitySection() {
               </div>
             </div>
 
-            {/* 1st Image */}
+            {/* 1st Image (Top Left) */}
             <div className="absolute border-[#000000]" style={{ width: "64.78px", height: "75.46px", top: "44.87px", left: "11.27px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/1stfromleft.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+              <Image src="/images/community.svg" alt="Community 1" fill className="object-cover rounded-[4.5px]" />
             </div>
 
             {/* 2nd Image */}
@@ -77,9 +77,9 @@ export function SafetyCommunitySection() {
               <Image src="/images/new28.svg" alt="" fill className="object-cover rounded-[4.5px]" />
             </div>
 
-            {/* 6th Image */}
+            {/* 6th Image (Bottom Right) */}
             <div className="absolute border-[#000000]" style={{ width: "64.78px", height: "75.46px", top: "124.71px", left: "149.30px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/bottomleft3.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+              <Image src="/images/community2.svg" alt="Community 2" fill className="object-cover rounded-[4.5px]" />
             </div>
           </motion.div>
         </div>
@@ -148,9 +148,9 @@ export function SafetyCommunitySection() {
               </div>
             </div>
 
-            {/* 1st Image */}
+            {/* 1st Image (Top Left) */}
             <div className="absolute border-[#000000]" style={{ width: "233.83px", height: "263.32px", top: "156.57px", left: "40.67px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/1stfromleft.svg" alt="" fill className="object-cover rounded-[16.27px]" />
+              <Image src="/images/community2.svg" alt="Community 1" fill className="object-cover rounded-[16.27px]" />
             </div>
 
             {/* 2nd Image */}
@@ -173,9 +173,9 @@ export function SafetyCommunitySection() {
               <Image src="/images/new28.svg" alt="" fill className="object-cover rounded-[16.27px]" />
             </div>
 
-            {/* 6th Image */}
+            {/* 6th Image (Bottom Right of Left 2x2 Grid) */}
             <div className="absolute border-[#000000]" style={{ width: "233.83px", height: "263.32px", top: "435.13px", left: "538.83px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/bottomleft3.svg" alt="" fill className="object-cover rounded-[16.27px]" />
+              <Image src="/images/community.svg" alt="Community 2" fill className="object-cover rounded-[16.27px]" />
             </div>
           </motion.div>
         </div>
