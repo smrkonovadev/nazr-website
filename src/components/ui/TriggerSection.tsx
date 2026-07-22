@@ -550,8 +550,8 @@ function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: a
       {/* Right side: Text and Phone */}
       <motion.div className="flex flex-col gap-4 flex-1 pl-4 z-10" style={{ opacity: isFirst ? 1 : contentOpacity }}>
         <div className="flex flex-col gap-1 pr-4">
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] max-[380px]:text-[26px] text-[34px] leading-[90%] tracking-[-0.03em]">{step.title}</h2>
-          <p className="m-0 text-[#161616] font-sans text-[15px] leading-[140%] tracking-[-0.03em]">{step.text}</p>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[32px] font-normal leading-[90%] tracking-[-0.03em]">{step.title}</h2>
+          <p className="m-0 text-[#161616] font-sans text-[14px] font-normal leading-[140%] tracking-[-0.03em]">{step.text}</p>
         </div>
 
         <div className="relative w-full max-w-[198px] h-[401px] shrink-0 mt-2 overflow-visible">
