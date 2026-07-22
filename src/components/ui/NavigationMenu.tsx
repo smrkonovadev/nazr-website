@@ -81,12 +81,12 @@ export function NavigationMenu() {
               return (
                 <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
                   <div
-                    className={`w-full max-md:px-4 md:px-6 max-md:py-0.5 md:py-1 transition-all border rounded-[4px] ${isActive
+                    className={`w-full max-md:px-4 md:px-6 max-md:py-1 md:py-1.5 transition-all border rounded-[4px] ${isActive
                         ? "bg-[#FF0E97] border-[#FF0E97] text-white"
                         : "border-transparent text-[#161616] hover:border-[#FF0E97]"
                       }`}
                   >
-                    <span className="font-['Switzer',_sans-serif] max-md:text-[28px] md:text-[36px] leading-tight tracking-[-0.02em] font-normal">
+                    <span className="font-[family-name:var(--font-bebas)] max-md:text-[34px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">
                       {link.name}
                     </span>
                   </div>
@@ -125,6 +125,9 @@ export function NavigationMenu() {
               </Link>
               <Link href="/product-liability" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px] flex items-center gap-1">
                 Product Liability <span className="text-[12px]">↗</span>
+              </Link>
+              <Link href="/faq" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px]">
+                FAQ
               </Link>
             </div>
 
