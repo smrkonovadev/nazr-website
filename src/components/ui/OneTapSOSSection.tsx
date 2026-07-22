@@ -4,9 +4,8 @@ export function OneTapSOSSection() {
   return (
     <div className="w-full flex flex-col items-center justify-center px-4 md:px-16 pb-32 pt-16 md:pt-24">
 
-      {/* Heading */}
       <h2
-        className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] max-[380px]:text-[32px] text-[40px] md:text-[160px] max-[380px]:w-full max-md:w-[346px] max-md:mx-auto"
+        className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] md:text-[160px] max-[380px]:w-full max-md:w-[346px] max-md:mx-auto"
         style={{
           fontWeight: 400,
           fontStyle: 'normal',
@@ -18,9 +17,8 @@ export function OneTapSOSSection() {
         ONE TAP SOS
       </h2>
 
-      {/* Paragraph */}
       <p
-        className="mt-4 md:mt-[2px] text-[#161616] max-w-4xl text-[12px] md:text-[20px] max-[380px]:w-full max-md:w-[346px] max-md:mx-auto"
+        className="mt-4 md:mt-[2px] text-[#161616] max-w-4xl text-[16px] md:text-[20px] max-[380px]:w-full max-md:w-[346px] max-md:mx-auto"
         style={{
           fontFamily: 'Switzer, var(--font-geist-sans), sans-serif',
           fontWeight: 400,
