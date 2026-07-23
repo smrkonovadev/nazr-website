@@ -10,12 +10,11 @@ export function AboutTestimonial() {
   const isInView = useInView(containerRef, { amount: 0.5 });
 
   return (
-    <section className="w-full bg-[#FFF1EB] max-md:py-2 md:pt-4 md:pb-8 max-md:px-0 md:px-8 relative max-md:-mt-[12px] md:-mt-[2px] border-none outline-none z-10">
+    <section className="w-full bg-[#FFF1EB] max-md:pt-4 max-md:pb-10 md:pt-4 md:pb-8 max-md:px-0 md:px-8 relative max-md:-mt-[12px] md:-mt-[2px] border-none outline-none z-10">
       <div
         ref={containerRef}
-        className="w-full max-w-[1400px] mx-auto bg-[#161616] rounded-[32px] max-md:aspect-square relative overflow-hidden flex flex-col items-center justify-center text-center px-4 md:px-12 max-md:py-4 md:py-[184px] cursor-default border-0 outline-none"
+        className="w-full max-w-[1400px] mx-auto bg-[#161616] max-md:rounded-[16px] md:rounded-[32px] max-md:aspect-square relative overflow-hidden flex flex-col items-center justify-center text-center px-4 md:px-12 max-md:py-4 md:py-[184px] cursor-default border-0 outline-none"
         style={{
-          clipPath: "inset(0px round 32px)",
           transform: "translateZ(0)",
         }}
       >
@@ -50,9 +49,9 @@ export function AboutTestimonial() {
         </motion.div>
 
         {/* 5-Star Box */}
-        <div className="bg-[#FFF1EB] max-md:px-8 max-md:py-2.5 md:px-6 md:py-2 flex items-center justify-center max-md:gap-3 md:gap-2 max-md:mb-8 md:mb-10 z-10 relative">
+        <div className="bg-[#FFF1EB] max-md:w-[192px] max-md:h-[40px] max-md:px-[20px] max-md:py-[8px] max-md:gap-[8px] md:px-6 md:py-2 flex items-center justify-center md:gap-2 max-md:mb-8 md:mb-10 z-10 relative">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} className="max-md:w-6 max-md:h-6 md:w-5 md:h-5 text-[#161616]" fill="currentColor" />
+            <Star key={i} className="max-md:w-[18px] max-md:h-[18px] md:w-5 md:h-5 text-[#161616]" fill="currentColor" />
           ))}
         </div>
 

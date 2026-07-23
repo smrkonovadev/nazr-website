@@ -6,10 +6,13 @@ import { WhyNazrCreation } from "./WhyNazrCreation";
 export function WhyNazrExistsIntro() {
   return (
     <>
-      {/* Mobile Layout (md:hidden) - Exact Figma Match without text overlap */}
-      <div className="md:hidden w-full flex flex-col items-center justify-center px-6 pt-8 pb-8 z-10 relative text-center overflow-hidden">
+      {/* Mobile Layout (md:hidden) - Exact Match for Reference Image 2 alignment & spacing */}
+      <div className="md:hidden w-full flex flex-col items-center justify-center px-6 pt-10 pb-16 z-10 relative text-center overflow-hidden">
         {/* Mobile Top-Left Hand */}
-        <div className="absolute left-0 top-[20px] w-[130px] h-[130px] pointer-events-none z-0">
+        <div
+          className="absolute top-[75px] w-[130px] h-[130px] pointer-events-none z-0"
+          style={{ left: "-30px", rotate: "30deg" } as React.CSSProperties}
+        >
           <Image
             src="/images/lefthand.png"
             alt="Left Hand"
@@ -20,7 +23,10 @@ export function WhyNazrExistsIntro() {
         </div>
 
         {/* Mobile Bottom-Right Hand */}
-        <div className="absolute right-0 bottom-[95px] w-[130px] h-[130px] pointer-events-none z-0">
+        <div
+          className="absolute right-[-22] bottom-[210px] w-[130px] h-[130px] pointer-events-none z-0"
+          style={{ rotate: "42.31deg" } as React.CSSProperties}
+        >
           <Image
             src="/images/righthand.png"
             alt="Right Hand"
@@ -31,19 +37,19 @@ export function WhyNazrExistsIntro() {
         </div>
 
         {/* Title */}
-        <h1 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[52px] leading-[88%] tracking-[-0.02em] text-center font-normal relative z-10">
+        <h1 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase text-[56px] leading-[88%] tracking-[-0.02em] text-center font-normal relative z-10">
           WHY NAZR<br />EXISTS
         </h1>
 
         {/* Center Hands + Coin Animation Graphic */}
-        <div className="relative z-10 my-2">
+        <div className="relative z-10 my-4">
           <WhyNazrCreation />
         </div>
 
         {/* Paragraph Text Below Graphic */}
-        <div className="mt-2 flex flex-col items-center max-w-[320px] w-full relative z-10">
+        <div className="mt-20 pt-2 pb-8 flex flex-col items-center max-w-[340px] w-full relative z-10">
           <p
-            className="text-[#161616] uppercase font-semibold leading-[125%] text-[14px] m-0 text-center tracking-[-0.02em]"
+            className="text-[#161616] uppercase font-semibold leading-[135%] text-[14px] m-0 text-center tracking-[-0.02em]"
             style={{
               fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
             }}

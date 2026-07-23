@@ -23,12 +23,24 @@ export function ShopProblemSteps() {
     <section ref={sectionRef} className="w-full relative z-[999] bg-[#161616] pt-[30px] md:pt-[60px] pb-[30px] md:pb-[80px] border-b border-white/20 overflow-hidden">
 
       {/* Top Paragraph */}
-      <div className="w-full max-w-[948px] mx-auto max-md:px-[6.15vw] md:px-0 mb-[30px] md:mb-[90px] flex items-center justify-center">
-        <p className="font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] max-md:text-[28px] md:text-[52px] leading-[1.2] tracking-[-0.01em] uppercase">
-          THE MOST THOUGHTFUL GIFTS AREN&apos;T ALWAYS THE BIGGEST.<br className="max-md:hidden" />
-          SOMETIMES THEY&apos;RE THE ONES THAT QUIETLY SAY, &quot;I WANT<br className="max-md:hidden" />
-          YOU TO GET HOME SAFE.&quot;<br className="max-md:hidden" />
-          DISCOVER WHY THOUSANDS ARE CHOOSING NAZR FOR THE<br className="max-md:hidden" />
+      <div className="w-full max-w-[948px] mx-auto max-md:px-4 md:px-0 mb-[30px] md:mb-[90px] flex items-center justify-center">
+        {/* Mobile Layout (md:hidden) - Exact Match for Reference Image 2 line breakdown */}
+        <p className="md:hidden font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] text-[28px] leading-[110%] tracking-[-0.01em] uppercase">
+          THE MOST THOUGHTFUL GIFTS AREN&apos;T<br />
+          ALWAYS THE BIGGEST.<br />
+          SOMETIMES THEY&apos;RE THE ONES THAT<br />
+          QUIETLY SAY, &quot;I WANT YOU TO GET HOME<br />
+          SAFE.&quot;<br />
+          DISCOVER WHY THOUSANDS ARE CHOOSING<br />
+          NAZR FOR THE WOMEN THEY CARE ABOUT.
+        </p>
+
+        {/* Desktop Layout (hidden md:block) */}
+        <p className="hidden md:block font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] text-[52px] leading-[1.2] tracking-[-0.01em] uppercase">
+          THE MOST THOUGHTFUL GIFTS AREN&apos;T ALWAYS THE BIGGEST.<br />
+          SOMETIMES THEY&apos;RE THE ONES THAT QUIETLY SAY, &quot;I WANT<br />
+          YOU TO GET HOME SAFE.&quot;<br />
+          DISCOVER WHY THOUSANDS ARE CHOOSING NAZR FOR THE<br />
           WOMEN THEY CARE ABOUT.
         </p>
       </div>
@@ -49,7 +61,7 @@ export function ShopProblemSteps() {
             {duplicatedSteps.map((step, i) => (
               <div
                 key={i}
-                className="relative flex-shrink-0 w-[279px] h-[372px] rounded-[32px] p-6 flex flex-col justify-between shadow-2xl"
+                className="relative flex-shrink-0 w-[279px] h-[372px] max-md:rounded-[16px] md:rounded-[32px] p-6 flex flex-col justify-between shadow-2xl"
                 style={{ backgroundColor: step.color }}
               >
                 <div className="font-[family-name:var(--font-bebas)] text-[#161616] text-[28px] leading-none">

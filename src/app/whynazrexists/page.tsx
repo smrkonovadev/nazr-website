@@ -37,7 +37,7 @@ export default function WhyNazrExistsPage() {
           <OurValuesSection />
 
           {/* Contact Us Section & Carousel */}
-          <div className="w-full bg-[#FFF1EB] max-md:rounded-b-[32px] md:rounded-b-[26px] overflow-hidden relative z-20">
+          <div className="w-full bg-[#FFF1EB] max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden relative z-20">
             <ContactUsSection />
             <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
           </div>

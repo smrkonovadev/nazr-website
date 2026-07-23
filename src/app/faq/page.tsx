@@ -11,8 +11,8 @@ export default function FaqPage() {
 
       {/* FAQ Section */}
       <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px]">
-        <DesktopScaler bgColor="#F3EBE6" className="max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[32px] md:rounded-b-[26px] overflow-hidden w-full">
-          <div className="w-full bg-[#F3EBE6] relative max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[32px] md:rounded-b-[26px] overflow-hidden pb-12">
+        <DesktopScaler bgColor="#F3EBE6" className="max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden w-full">
+          <div className="w-full bg-[#F3EBE6] relative max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden pb-12">
             <FaqSection />
           </div>
         </DesktopScaler>

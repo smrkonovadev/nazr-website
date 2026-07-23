@@ -16,6 +16,14 @@ export function ProductImage({
   imageTransformClass,
   imageWidthHeightClass,
 }: ProductImageProps) {
+  const isEnlargedMobile =
+    imageSrc.includes("SHOPPRO2") ||
+    imageSrc.includes("SHOPPRO3") ||
+    imageAlt.toLowerCase().includes("bundle") ||
+    imageAlt.toLowerCase().includes("sip") ||
+    titleLines.join("").includes("360") ||
+    titleLines.join("").includes("SIP");
+
   return (
     <div className="w-full md:w-[60%] md:border-r border-black relative flex flex-col justify-start md:justify-end items-center overflow-hidden pt-6 pb-2 md:py-20">
       {/* Huge Typography Background */}
@@ -31,7 +39,13 @@ export function ProductImage({
 
       {/* Product Image — static, no animation */}
       <div className="relative z-20 flex flex-col items-center justify-end w-full">
-        <div className={`relative ${imageWidthHeightClass} z-20 pointer-events-none ${imageTransformClass} max-md:!transform-none max-md:!translate-x-0 max-md:!translate-y-0 max-md:!w-[200px] max-md:!h-[180px] max-md:mx-auto max-md:relative`}>
+        <div
+          className={`relative ${imageWidthHeightClass} z-20 pointer-events-none ${imageTransformClass} max-md:!transform-none max-md:!translate-x-0 max-md:!translate-y-0 ${
+            isEnlargedMobile
+              ? "max-md:!w-[270px] max-md:!h-[200px] max-md:scale-[1.65] max-md:origin-center"
+              : "max-md:!w-[200px] max-md:!h-[160px]"
+          } max-md:mx-auto max-md:relative`}
+        >
           <Image
             src={imageSrc}
             alt={imageAlt}
