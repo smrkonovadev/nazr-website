@@ -54,8 +54,8 @@ export default function NazrAppPage() {
         </DesktopScaler>
 
         {/* Contact Us Section */}
-        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[32px] overflow-hidden">
-          <div className="w-full relative z-[60] bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[32px] overflow-hidden pb-0">
+        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden">
+          <div className="w-full relative z-[60] bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden pb-0">
             <ContactUsSection />
             {/* Animated Infinite Carousel */}
             <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />

@@ -16,7 +16,7 @@ export function AboutTeamIntro() {
           MEET THE TEAM
         </h2>
         <p
-          className="text-[#161616]/80 text-center font-[family-name:var(--font-inter)] max-w-[841px] m-0"
+          className="text-[#161616]/80 text-center max-md:font-['Switzer',_sans-serif] max-md:text-[16px] max-md:font-normal max-md:leading-[140%] max-md:tracking-[-0.03em] max-md:text-center md:font-[family-name:var(--font-inter)] max-w-[841px] max-md:max-w-[370px] max-md:w-full mx-auto m-0"
           style={{
             fontWeight: 400,
             fontSize: "clamp(16px, 2vw, 20px)",
@@ -24,7 +24,11 @@ export function AboutTeamIntro() {
             letterSpacing: "-0.03em",
           }}
         >
-          Behind NAZR is a team rethinking preparedness through design, culture, technology and the everyday negotiations women make with the world. The result is an ecosystem that belongs in everyday life and a movement that goes beyond them.
+          Behind NAZR is a team rethinking preparedness<br className="max-md:block hidden" />{" "}
+          through design, culture, technology and the<br className="max-md:block hidden" />{" "}
+          everyday negotiations women make with the world.<br className="max-md:block hidden" />{" "}
+          The result is an ecosystem that belongs in everyday<br className="max-md:block hidden" />{" "}
+          life and a movement that goes beyond them.
         </p>
       </div>
     </section>

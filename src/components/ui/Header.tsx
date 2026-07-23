@@ -4,16 +4,39 @@ import { useNavigation } from "@/context/NavigationContext";
 
 interface HeaderProps {
   variant?: "dark" | "transparent";
+  mobileVariant?: "dark" | "transparent";
 }
 
-export function Header({ variant = "dark" }: HeaderProps) {
+export function Header({ variant = "dark", mobileVariant }: HeaderProps) {
   const { setIsMenuOpen } = useNavigation();
   const isTransparent = variant === "transparent";
+  const effectiveMobileVariant = mobileVariant || variant;
+  const isMobileDark = effectiveMobileVariant === "dark";
 
-  const headerBgClass = isTransparent ? "bg-transparent" : "bg-[#161616]";
-  const logoTextColor = isTransparent ? "text-white" : "text-[#FF0E97]";
+  const headerBgClass = isTransparent
+    ? isMobileDark
+      ? "max-md:bg-[#161616] md:bg-transparent"
+      : "bg-transparent"
+    : "bg-[#161616]";
+  
+  const logoTextColor = isTransparent
+    ? isMobileDark
+      ? "max-md:text-[#FF0E97] md:text-white"
+      : "text-white"
+    : "text-[#FF0E97]";
 
-  const menuBtnBg = isTransparent ? "bg-white hover:bg-white/90" : "bg-[#FF0E97] hover:bg-[#FF0E97]/90";
+  const menuBtnBg = isTransparent
+    ? isMobileDark
+      ? "max-md:bg-[#FF0E97] max-md:hover:bg-[#FF0E97]/90 md:bg-white md:hover:bg-white/90"
+      : "bg-white hover:bg-white/90"
+    : "bg-[#FF0E97] hover:bg-[#FF0E97]/90";
+
+  const menuIconColorClass = isTransparent
+    ? isMobileDark
+      ? "max-md:text-[#FFF1EB] md:text-[#161616]"
+      : "text-[#161616]"
+    : "text-[#FFF1EB]";
+
   const menuTextColor = isTransparent ? "#161616" : "#FFF1EB";
 
   return (
@@ -48,8 +71,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
               viewBox="0 0 24 12"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ color: menuTextColor }}
-              className="max-md:w-[22px] max-md:h-[9px] md:w-[24px] md:h-[12px]"
+              className={`max-md:w-[22px] max-md:h-[9px] md:w-[24px] md:h-[12px] ${menuIconColorClass}`}
             >
               <path d="M0 1H24M0 11H24" stroke="currentColor" strokeWidth="3" />
             </svg>

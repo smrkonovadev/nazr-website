@@ -22,14 +22,14 @@ export default function AboutPage() {
         </DesktopScaler>
 
         {/* Cream Sections */}
-        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[32px] md:-mt-[26px] max-md:-mt-[32px] relative z-20">
-          <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[32px] relative z-20 pb-0">
+        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] md:-mt-[26px] max-md:-mt-[32px] relative z-20">
+          <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[9.71px] relative z-20 pb-0">
             <AboutFeatures />
             <AboutBanners />
             <AboutTeamIntro />
             <AboutTeamList />
             <AboutTestimonial />
-            <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[32px] overflow-hidden">
+            <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden">
               <AboutContactUs />
               <AutoMovingCarousel />
             </div>
