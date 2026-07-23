@@ -104,7 +104,7 @@ export function ShieldModeFeatures() {
 
       {/* Mobile view only: vertical list */}
       <div className="block md:hidden w-full px-4 pt-4 pb-8 bg-[#161616]">
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col items-center gap-6 w-full">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} isMobile={true} />
           ))}
@@ -134,7 +134,7 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
 
   return (
     <div
-      className="flex flex-col shrink-0 w-[343px] min-w-[343px] h-[436.6px] rounded-[12px] overflow-hidden"
+      className="flex flex-col shrink-0 w-[343px] max-w-full h-[436.6px] rounded-[12px] overflow-hidden mx-auto"
     >
       {/* Top coloured image area */}
       <div
