@@ -1,7 +1,6 @@
 import { Header } from "@/components/ui/Header";
 
 import { WhyNazrExistsIntro } from "@/components/ui/WhyNazrExistsIntro";
-import { WhyNazrCreation } from "@/components/ui/WhyNazrCreation";
 import { WhyNazrStatement } from "@/components/ui/WhyNazrStatement";
 import { HorizontalScrollStory } from "@/components/ui/HorizontalScrollStory";
 import { OurValuesSection } from "@/components/ui/OurValuesSection";
@@ -23,7 +22,6 @@ export default function WhyNazrExistsPage() {
               className="w-full bg-[#FFF1EB] relative max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px] min-h-[450px] md:min-h-[800px]"
             >
               <WhyNazrExistsIntro />
-              <WhyNazrCreation />
             </div>
           </section>
 
