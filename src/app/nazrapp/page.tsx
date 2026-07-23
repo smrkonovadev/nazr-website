@@ -21,10 +21,10 @@ export default function NazrAppPage() {
         </DesktopScaler>
 
         {/* The World Stares Rectangle Section (Empty Canvas) */}
-        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px]">
-          <DesktopScaler bgColor="#F3E5E0" className="max-md:rounded-t-[32px] md:rounded-t-[26px]">
+        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] rounded-t-[9.71px]">
+          <DesktopScaler bgColor="#F3E5E0" className="rounded-t-[9.71px]">
             <div
-              className="w-full bg-[#F3E5E0] relative max-md:rounded-t-[32px] md:rounded-t-[26px]"
+              className="w-full bg-[#F3E5E0] relative rounded-t-[9.71px]"
               style={{
                 minHeight: '800px', // Large canvas area
               }}

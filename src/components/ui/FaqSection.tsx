@@ -56,18 +56,18 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="w-full bg-[#F3EBE6] pt-6 md:pt-10 pb-12 md:pb-16 px-6 md:px-14 flex justify-center">
+    <section id="faq" className="w-full bg-[#F1E4DE] max-md:pt-7 max-md:pb-10 md:pt-10 md:pb-16 max-md:px-5 md:px-14 flex justify-center">
       <div className="w-full max-w-[1240px] flex flex-col">
         
         {/* Header Block */}
-        <div className="flex flex-col gap-1.5 mb-6 md:mb-8">
+        <div className="flex flex-col gap-1 mb-[48px]">
           <h2
-            className="font-[family-name:var(--font-bebas)] text-[#161616] text-[70px] md:text-[115px] leading-[0.85] tracking-[-0.03em] uppercase m-0"
+            className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[40px] max-md:leading-[120%] max-md:tracking-normal md:text-[115px] md:leading-[0.85] md:tracking-[-0.03em] uppercase m-0 font-normal"
           >
             FAQS
           </h2>
           <p
-            className="font-['Inter',_sans-serif] text-[#161616] text-[15px] md:text-[17px] tracking-[-0.02em] m-0 font-normal"
+            className="font-['Inter',_sans-serif] text-[#161616] max-md:text-[16px] max-md:leading-[150%] max-md:tracking-normal md:text-[17px] m-0 font-normal"
           >
             have questions? ask away!
           </p>
@@ -87,10 +87,10 @@ export function FaqSection() {
                 {/* Accordion Trigger Header */}
                 <button
                   onClick={() => toggleItem(item.id)}
-                  className="w-full py-4 md:py-5 flex justify-between items-center text-left focus:outline-none group cursor-pointer"
+                  className="w-full max-md:py-3.5 md:py-5 flex justify-between items-center text-left focus:outline-none group cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <h3 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[24px] md:text-[32px] font-normal leading-[90%] tracking-normal uppercase m-0 pr-4">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[24px] max-md:leading-[90%] max-md:tracking-normal md:text-[32px] font-normal uppercase m-0 pr-4">
                     {item.question}
                   </h3>
                   <div className="shrink-0 ml-4">
@@ -113,7 +113,7 @@ export function FaqSection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="font-['Inter',_sans-serif] text-[#161616] text-[16px] font-normal leading-[150%] tracking-normal max-w-[760px] pb-4 md:pb-6 m-0">
+                      <p className="font-['Inter',_sans-serif] text-[#161616] max-md:text-[16px] max-md:leading-[150%] max-md:tracking-normal md:text-[16px] font-normal max-w-[760px] max-md:pt-1 max-md:pb-4 md:pb-6 m-0">
                         {item.answer}
                       </p>
                     </motion.div>

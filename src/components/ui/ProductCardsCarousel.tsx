@@ -126,7 +126,7 @@ export function ProductCardsCarousel() {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className={`shrink-0 w-[calc(min(556px,72vh)*0.97)] h-[min(556px,72vh)] rounded-[16px] overflow-hidden relative group ${card.bgColor}`}
+                className={`shrink-0 w-[352px] min-w-[351.91px] h-[361px] rounded-[10.39px] overflow-hidden relative group ${card.bgColor}`}
               >
                 {/* Card Header Overlay */}
                 <div className="absolute top-0 left-0 right-0 p-8 flex justify-between items-start z-20 pointer-events-none">
@@ -134,7 +134,18 @@ export function ProductCardsCarousel() {
                     {renderTitle(card.title)}
                   </h3>
 
-                  <button className="bg-[#FFF9EB] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] px-5 py-2 rounded-[3px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Roboto, sans-serif" }}>
+                  <button 
+                    className="bg-[#FFF9EB] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] flex items-center justify-center shadow-md whitespace-nowrap pointer-events-auto shrink-0 border-none outline-none" 
+                    style={{ 
+                      width: "99.97px",
+                      height: "34.39px",
+                      padding: "5.19px 12.99px",
+                      gap: "5.19px",
+                      borderRadius: "2.6px",
+                      border: "none",
+                      fontFamily: "Roboto, sans-serif" 
+                    }}
+                  >
                     Show now
                   </button>
                 </div>
@@ -152,13 +163,13 @@ export function ProductCardsCarousel() {
         </div>
       </div>
 
-      {/* Mobile view only: vertical list */}
-      <div className="block md:hidden w-full px-4 pt-4 pb-8">
-        <div className="flex flex-col gap-6 w-full">
+      {/* Mobile view only: horizontal swipe carousel */}
+      <div className="block md:hidden w-full overflow-x-auto snap-x snap-mandatory px-4 pt-4 pb-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-4 w-max">
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`w-full h-[480px] rounded-[16px] overflow-hidden relative group ${card.bgColor}`}
+              className={`snap-center shrink-0 w-[352px] min-w-[351.91px] h-[361px] rounded-[10.39px] overflow-hidden relative group ${card.bgColor}`}
             >
               {/* Card Header Overlay */}
               <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start z-20 pointer-events-none">
@@ -166,7 +177,18 @@ export function ProductCardsCarousel() {
                   {renderTitle(card.title)}
                 </h3>
 
-                <button className="bg-[#FFF9EB] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] px-4 py-2 rounded-[3px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Roboto, sans-serif" }}>
+                <button 
+                  className="bg-[#FFF9EB] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] flex items-center justify-center shadow-md whitespace-nowrap pointer-events-auto shrink-0 border-none outline-none" 
+                  style={{ 
+                    width: "99.97px",
+                    height: "34.39px",
+                    padding: "5.19px 12.99px",
+                    gap: "5.19px",
+                    borderRadius: "2.6px",
+                    border: "none",
+                    fontFamily: "Roboto, sans-serif" 
+                  }}
+                >
                   Show now
                 </button>
               </div>
@@ -176,7 +198,7 @@ export function ProductCardsCarousel() {
                 alt={card.title}
                 fill
                 className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-cover group-hover:scale-105' : 'object-contain scale-[0.8] group-hover:scale-[0.85]'}`}
-                sizes="100vw"
+                sizes="340px"
               />
             </div>
           ))}
