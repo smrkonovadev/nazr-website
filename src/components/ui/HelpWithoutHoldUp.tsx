@@ -1,10 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Lottie from "lottie-react";
 
 export function HelpWithoutHoldUp() {
-  const [activeCard, setActiveCard] = useState(1);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  const [animData1, setAnimData1] = useState<any>(null);
+  const [animData2, setAnimData2] = useState<any>(null);
+  const [animData3, setAnimData3] = useState<any>(null);
+
+  useEffect(() => {
+    Promise.all([
+      fetch("/images/SOS 1.json").then((res) => res.json()),
+      fetch("/images/SOS 2.json").then((res) => res.json()),
+      fetch("/images/SOS 3.json").then((res) => res.json()),
+    ])
+      .then(([d1, d2, d3]) => {
+        setAnimData1(d1);
+        setAnimData2(d2);
+        setAnimData3(d3);
+      })
+      .catch((err) => console.error("Error loading SOS Lottie files:", err));
+  }, []);
+
+  const effectiveCard = hoveredCard || activeCard;
+
+  const getAnimData = (cardNum: number | null) => {
+    if (cardNum === 1) return animData1;
+    if (cardNum === 2) return animData2;
+    if (cardNum === 3) return animData3;
+    return null;
+  };
+
+  const activeAnimData = getAnimData(effectiveCard);
+
   return (
     <section className="w-full bg-[#FFF1EB] flex justify-center pt-10 pb-10 md:py-0 md:h-[872px] overflow-hidden relative z-[70]">
       <div className="w-full max-w-[1280px] h-full flex flex-col items-center relative">
@@ -23,13 +55,13 @@ export function HelpWithoutHoldUp() {
             {/* Card 1 */}
             <div
               onClick={() => setActiveCard(1)}
-              className={`ml-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 snap-start ${activeCard === 1 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
+              className={`ml-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-all duration-300 snap-start ${effectiveCard === 1 ? 'bg-[#FF0E97] shadow-lg scale-[1.02]' : 'bg-transparent border-dashed border border-[#242424]'}`}
             >
-              <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${activeCard === 1 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
+              <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 1 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 1
               </div>
-              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${activeCard === 1 ? 'text-white' : 'text-[#161616]'}`}>Volume Button SOS</h3>
-              <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${activeCard === 1 ? 'text-white/90' : 'text-[#161616]'}`}>
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${effectiveCard === 1 ? 'text-white' : 'text-[#161616]'}`}>Volume Button SOS</h3>
+              <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 1 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Press your volume button three times to instantly trigger SOS.
               </p>
             </div>
@@ -37,13 +69,13 @@ export function HelpWithoutHoldUp() {
             {/* Card 2 */}
             <div
               onClick={() => setActiveCard(2)}
-              className={`min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 snap-start ${activeCard === 2 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
+              className={`min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-all duration-300 snap-start ${effectiveCard === 2 ? 'bg-[#FF0E97] shadow-lg scale-[1.02]' : 'bg-transparent border-dashed border border-[#242424]'}`}
             >
-              <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${activeCard === 2 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
+              <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 2 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 2
               </div>
-              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${activeCard === 2 ? 'text-white' : 'text-[#161616]'}`}>In-App SOS Button</h3>
-              <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${activeCard === 2 ? 'text-white/90' : 'text-[#161616]'}`}>
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${effectiveCard === 2 ? 'text-white' : 'text-[#161616]'}`}>In-App SOS Button</h3>
+              <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 2 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Tap the SOS button in the NAZR app to alert your support network.
               </p>
             </div>
@@ -51,20 +83,30 @@ export function HelpWithoutHoldUp() {
             {/* Card 3 */}
             <div
               onClick={() => setActiveCard(3)}
-              className={`mr-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 snap-start ${activeCard === 3 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
+              className={`mr-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-all duration-300 snap-start ${effectiveCard === 3 ? 'bg-[#FF0E97] shadow-lg scale-[1.02]' : 'bg-transparent border-dashed border border-[#242424]'}`}
             >
-              <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${activeCard === 3 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
+              <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 3 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 3
               </div>
-              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${activeCard === 3 ? 'text-white' : 'text-[#161616]'}`}>Home Screen SOS Widget</h3>
-              <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${activeCard === 3 ? 'text-white/90' : 'text-[#161616]'}`}>
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${effectiveCard === 3 ? 'text-white' : 'text-[#161616]'}`}>Home Screen SOS Widget</h3>
+              <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 3 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Trigger SOS directly from your home screen without opening the app.
               </p>
             </div>
           </div>
 
-          <div className="relative w-[55vw] max-w-[200px] aspect-[200/419] z-20 mt-[30px] mx-auto">
-            <Image src="/images/phone.png" alt="NAZR SOS App Interface" fill className="object-contain" />
+          {/* Mobile Phone Mockup / Animation Display */}
+          <div className={`relative z-20 mt-[20px] mx-auto flex items-center justify-center transition-all duration-300 ${effectiveCard && activeAnimData ? 'w-[85vw] max-w-[320px] h-[360px] overflow-visible' : 'w-[55vw] max-w-[200px] aspect-[200/419] rounded-[24px] overflow-hidden'}`}>
+            {effectiveCard && activeAnimData ? (
+              <Lottie
+                key={`mobile-${effectiveCard}`}
+                animationData={activeAnimData}
+                loop={true}
+                className="w-full h-full object-contain drop-shadow-xl"
+              />
+            ) : (
+              <Image src="/images/phone.png" alt="NAZR SOS App Interface" fill className="object-contain" />
+            )}
           </div>
 
           <div className="mt-8 text-center text-[#161616] max-w-[408px] px-4 font-[family-name:var(--font-switzer)] text-[12px] leading-[1.4] tracking-[-0.03em]">
@@ -83,61 +125,88 @@ export function HelpWithoutHoldUp() {
             </h2>
           </div>
 
-          {/* Phone */}
-          <div className="absolute pointer-events-auto z-20"
+          {/* Phone Display with Lottie Animation Trigger */}
+          <div className="absolute pointer-events-auto z-20 flex items-center justify-center overflow-visible"
             style={{ width: "249.74px", height: "523.51px", top: "214px", left: "519.25px" }}>
-            <Image src="/images/new8.svg" alt="NAZR SOS App Interface" fill className="object-contain" />
+            {effectiveCard && activeAnimData ? (
+              <Lottie
+                key={`desktop-${effectiveCard}`}
+                animationData={activeAnimData}
+                loop={true}
+                className={`w-full h-full object-contain drop-shadow-2xl ${effectiveCard === 1 ? 'scale-[1.4]' : ''}`}
+              />
+            ) : (
+              <Image src="/images/new8.svg" alt="NAZR SOS App Interface" fill className="object-contain" />
+            )}
           </div>
 
           {/* Box 1 */}
-          <div className="absolute pointer-events-auto z-10" style={{ width: "217px", height: "130px", top: "364px", left: "228.25px" }}>
+          <div
+            onMouseEnter={() => setHoveredCard(1)}
+            onMouseLeave={() => setHoveredCard(null)}
+            onClick={() => setActiveCard(1)}
+            className="absolute pointer-events-auto z-10 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
+            style={{ width: "217px", height: "130px", top: "364px", left: "228.25px" }}
+          >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="215" height="128" rx="16" ry="16" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
+              <rect x="1" y="1" width="215" height="128" rx="16" ry="16" fill={effectiveCard === 1 ? "#FF0E97" : "none"} stroke={effectiveCard === 1 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 1 ? "2" : "1"} strokeDasharray={effectiveCard === 1 ? "none" : "9 5"} />
             </svg>
-            <div className="absolute w-[32px] h-[32px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-16px", left: "24px" }}>
-              <span className="font-[family-name:var(--font-bebas)] text-[18px] text-white leading-[1] tracking-[-0.03em] mt-0.5">1</span>
+            <div className={`absolute w-[32px] h-[32px] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-colors ${effectiveCard === 1 ? 'bg-white' : 'bg-[#FF0E97]'}`} style={{ top: "-16px", left: "24px" }}>
+              <span className={`font-[family-name:var(--font-bebas)] text-[18px] leading-[1] tracking-[-0.03em] mt-0.5 ${effectiveCard === 1 ? 'text-[#FF0E97]' : 'text-white'}`}>1</span>
             </div>
             <div className="absolute flex flex-col justify-center items-start text-left px-[24px] pointer-events-none" style={{ inset: 0 }}>
-              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1">
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[20px] leading-[1.3] tracking-[-0.03em] m-0 mb-1 transition-colors ${effectiveCard === 1 ? 'text-white' : 'text-[#161616]'}`}>
                 Volume Button SOS
               </h3>
-              <p className="font-['Inter',_sans-serif] text-[15px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 w-full">
+              <p className={`font-['Inter',_sans-serif] text-[15px] leading-[1.4] tracking-[-0.03em] m-0 w-full transition-colors ${effectiveCard === 1 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Press your volume button three times to instantly trigger SOS.
               </p>
             </div>
           </div>
 
           {/* Box 2 */}
-          <div className="absolute pointer-events-auto z-10" style={{ width: "217px", height: "130px", top: "314px", left: "834.75px" }}>
+          <div
+            onMouseEnter={() => setHoveredCard(2)}
+            onMouseLeave={() => setHoveredCard(null)}
+            onClick={() => setActiveCard(2)}
+            className="absolute pointer-events-auto z-10 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
+            style={{ width: "217px", height: "130px", top: "314px", left: "834.75px" }}
+          >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="215" height="128" rx="12" ry="12" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
+              <rect x="1" y="1" width="215" height="128" rx="12" ry="12" fill={effectiveCard === 2 ? "#FF0E97" : "none"} stroke={effectiveCard === 2 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 2 ? "2" : "1"} strokeDasharray={effectiveCard === 2 ? "none" : "9 5"} />
             </svg>
-            <div className="absolute w-[32px] h-[32px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-16px", left: "24px" }}>
-              <span className="font-[family-name:var(--font-bebas)] text-[18px] text-white leading-[1] tracking-[-0.03em] mt-0.5">2</span>
+            <div className={`absolute w-[32px] h-[32px] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-colors ${effectiveCard === 2 ? 'bg-white' : 'bg-[#FF0E97]'}`} style={{ top: "-16px", left: "24px" }}>
+              <span className={`font-[family-name:var(--font-bebas)] text-[18px] leading-[1] tracking-[-0.03em] mt-0.5 ${effectiveCard === 2 ? 'text-[#FF0E97]' : 'text-white'}`}>2</span>
             </div>
             <div className="absolute flex flex-col justify-center items-start text-left px-[24px] pointer-events-none" style={{ inset: 0 }}>
-              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1">
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[20px] leading-[1.3] tracking-[-0.03em] m-0 mb-1 transition-colors ${effectiveCard === 2 ? 'text-white' : 'text-[#161616]'}`}>
                 In-App SOS Button
               </h3>
-              <p className="font-['Inter',_sans-serif] text-[15px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 w-full">
+              <p className={`font-['Inter',_sans-serif] text-[15px] leading-[1.4] tracking-[-0.03em] m-0 w-full transition-colors ${effectiveCard === 2 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Tap the SOS button in the NAZR app to alert your support network.
               </p>
             </div>
           </div>
 
           {/* Box 3 */}
-          <div className="absolute pointer-events-auto z-10" style={{ width: "276px", height: "130px", top: "544px", left: "805px" }}>
+          <div
+            onMouseEnter={() => setHoveredCard(3)}
+            onMouseLeave={() => setHoveredCard(null)}
+            onClick={() => setActiveCard(3)}
+            className="absolute pointer-events-auto z-10 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
+            style={{ width: "276px", height: "130px", top: "544px", left: "805px" }}
+          >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="274" height="128" rx="16" ry="16" fill="none" stroke="#242424" strokeWidth="1" strokeDasharray="9 5" />
+              <rect x="1" y="1" width="274" height="128" rx="16" ry="16" fill={effectiveCard === 3 ? "#FF0E97" : "none"} stroke={effectiveCard === 3 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 3 ? "2" : "1"} strokeDasharray={effectiveCard === 3 ? "none" : "9 5"} />
             </svg>
-            <div className="absolute w-[32px] h-[32px] bg-[#FF0E97] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]" style={{ top: "-16px", left: "24px" }}>
-              <span className="font-[family-name:var(--font-bebas)] text-[18px] text-white leading-[1] tracking-[-0.03em] mt-0.5">3</span>
+            <div className={`absolute w-[32px] h-[32px] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-colors ${effectiveCard === 3 ? 'bg-white' : 'bg-[#FF0E97]'}`} style={{ top: "-16px", left: "24px" }}>
+              <span className={`font-[family-name:var(--font-bebas)] text-[18px] leading-[1] tracking-[-0.03em] mt-0.5 ${effectiveCard === 3 ? 'text-[#FF0E97]' : 'text-white'}`}>3</span>
             </div>
             <div className="absolute flex flex-col justify-center items-start text-left px-[24px] pointer-events-none" style={{ inset: 0 }}>
-              <h3 className="font-[family-name:var(--font-switzer)] font-semibold text-[20px] text-[#161616] leading-[1.3] tracking-[-0.03em] m-0 mb-1">
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[20px] leading-[1.3] tracking-[-0.03em] m-0 mb-1 transition-colors ${effectiveCard === 3 ? 'text-white' : 'text-[#161616]'}`}>
                 Home Screen SOS Widget
               </h3>
-              <p className="font-['Inter',_sans-serif] text-[15px] text-[#161616] leading-[1.4] tracking-[-0.03em] m-0 w-full">
+              <p className={`font-['Inter',_sans-serif] text-[15px] leading-[1.4] tracking-[-0.03em] m-0 w-full transition-colors ${effectiveCard === 3 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Trigger SOS directly from your home screen without opening the app.
               </p>
             </div>
@@ -155,3 +224,5 @@ export function HelpWithoutHoldUp() {
     </section>
   );
 }
+
+

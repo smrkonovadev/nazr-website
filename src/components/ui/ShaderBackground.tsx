@@ -106,7 +106,7 @@ export function ShaderBackground({
           visible={false}
         />
         <Dither
-          colorA="#f2eab3"
+          colorA="#F6E9E3"
           colorB="#d324d4"
           pattern="blueNoise"
           pixelSize={3}
