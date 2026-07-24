@@ -78,11 +78,11 @@ const cards: any[] = [
 ];
 
 const testimonialCards: any[] = [
-  { id: 1, type: "testimonial", bgColor: "#0A84FF", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: 8 },
-  { id: 2, type: "image", src: "/home why (1).svg", rotation: -4 },
-  { id: 3, type: "testimonial", bgColor: "#FF0E97", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: 8 },
-  { id: 4, type: "image", src: "/home why (2).svg", rotation: -4 },
-  { id: 5, type: "testimonial", bgColor: "#0A84FF", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Company name", rotation: 8 },
+  { id: 1, type: "testimonial", bgColor: "#0A84FF", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Position, Company name", rotation: -2 },
+  { id: 2, type: "image", src: "/home why (1).svg", rotation: 3 },
+  { id: 3, type: "testimonial", bgColor: "#FF0E97", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Position, Company name", rotation: -2 },
+  { id: 4, type: "image", src: "/home why (2).svg", rotation: 3 },
+  { id: 5, type: "testimonial", bgColor: "#0A84FF", quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."', name: "NAME SURNAME", role: "Position, Company name", rotation: -2 },
 ];
 
 interface InteractiveCardsProps {
@@ -218,11 +218,11 @@ export function InteractiveCards({ theme = "dark", scrollProgress }: Interactive
 
       <div
         ref={scrollContainerRef}
-        className={`w-full ${scrollProgress ? 'overflow-hidden' : 'overflow-x-auto'} no-scrollbar flex items-center relative z-50 ${theme === 'cream' ? 'h-[340px] mt-4 mb-4 md:h-[608px] md:-mt-[50px] md:mb-0' : 'h-[600px] -mt-[75px] -mb-[600px] md:h-[480px] md:mt-0 md:mb-0'}`}
+        className={`w-full ${scrollProgress ? 'overflow-hidden' : 'overflow-x-auto'} no-scrollbar flex items-center relative z-50 ${theme === 'cream' ? 'h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0' : 'h-[600px] -mt-[75px] -mb-[600px] md:h-[480px] md:mt-0 md:mb-0'}`}
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {/* We use inline flex so the cards don't wrap and can be scrolled */}
-        <motion.div style={{ x: xTransform }} ref={cardsWrapperRef} className={`flex items-center min-w-max pl-16 pr-8 md:pl-24 md:pr-4 ${theme === 'cream' ? 'md:pt-0' : 'md:pt-[64px]'}`}>
+        <motion.div style={{ x: xTransform }} ref={cardsWrapperRef} className={`flex items-center min-w-max ${theme === 'cream' ? 'pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0' : 'pl-16 pr-8 md:pl-24 md:pr-4 md:pt-[64px]'}`}>
           {displayCards.map((card, i) => {
             const isHovered = hoveredIndex === i;
             const baseRotation = dynamicRotations ? dynamicRotations[i] : card.rotation;
@@ -269,24 +269,15 @@ export function InteractiveCards({ theme = "dark", scrollProgress }: Interactive
               >
                 <motion.div
                   data-card-index={i}
-                  className={`relative ${theme === 'cream' ? 'w-[184px] h-[277px] rounded-[21.12px] md:w-[279px] md:h-[400px] md:rounded-[32px]' : 'w-[220px] h-[300px] rounded-[24px] md:w-[240px] md:h-[327px] md:rounded-[24.67px]'} cursor-pointer origin-bottom overflow-hidden`}
+                  className={`relative ${theme === 'cream' ? 'w-[154px] h-[240px] rounded-[18px] md:w-[279px] md:h-[400px] md:rounded-[32px]' : 'w-[200px] h-[287px] rounded-[24px] md:w-[240px] md:h-[327px] md:rounded-[24.67px]'} cursor-pointer origin-bottom overflow-hidden`}
                   onMouseEnter={() => {
-                    if (!window.matchMedia('(pointer: coarse)').matches) {
+                    if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
                       setHoveredIndex(i);
                     }
                   }}
                   onMouseLeave={() => {
-                    if (!window.matchMedia('(pointer: coarse)').matches) {
+                    if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
                       handleMouseLeave();
-                    }
-                  }}
-                  onClick={() => {
-                    if (window.matchMedia('(pointer: coarse)').matches) {
-                      if (hoveredIndex === i) {
-                        handleMouseLeave();
-                      } else {
-                        setHoveredIndex(i);
-                      }
                     }
                   }}
                   animate={{
@@ -322,22 +313,22 @@ export function InteractiveCards({ theme = "dark", scrollProgress }: Interactive
                     </div>
                   ) : card.type === "testimonial" ? (
                     <div
-                      className="w-full h-full flex flex-col p-8"
+                      className="w-full h-full flex flex-col p-4 md:p-8 justify-between"
                       style={{ backgroundColor: card.bgColor }}
                     >
-                      <div className="w-16 h-16 rounded-full bg-[#D9D9D9] flex items-center justify-center mb-6 shrink-0">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#D9D9D9] flex items-center justify-center mb-2 md:mb-6 shrink-0">
+                        <svg className="w-4 h-4 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="#9CA3AF" />
                         </svg>
                       </div>
-                      <div className="font-['Inter',_sans-serif] text-[15.5px] text-[#FFF9EB] leading-[1.4] mb-auto">
+                      <div className="font-['Inter',_sans-serif] text-[10.5px] md:text-[15.5px] text-[#FFF9EB] leading-[1.35] mb-auto">
                         {(card as any).quote}
                       </div>
-                      <div className="flex flex-col mt-4">
-                        <div className="font-[family-name:var(--font-bebas)] text-[16px] text-[#FFF9EB] leading-[1.5] tracking-normal uppercase">
+                      <div className="flex flex-col mt-2 md:mt-4">
+                        <div className="font-[family-name:var(--font-bebas)] text-[12px] md:text-[16px] text-[#FFF9EB] leading-[1.3] tracking-normal uppercase">
                           {(card as any).name}
                         </div>
-                        <div className="font-['Inter',_sans-serif] text-[16px] text-[#FFF9EB] opacity-90 -mt-1">
+                        <div className="font-['Inter',_sans-serif] text-[10px] md:text-[16px] text-[#FFF9EB] opacity-90">
                           {card.role}
                         </div>
                       </div>

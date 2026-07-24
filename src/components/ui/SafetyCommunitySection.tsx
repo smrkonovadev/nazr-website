@@ -13,15 +13,15 @@ export function SafetyCommunitySection() {
   });
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#161616] flex justify-center overflow-visible z-20 relative pt-[8.2vw] pb-[24.6vw] md:pt-[10px] md:pb-[60px] md:h-[1327.43px]">
-      <div className="w-full px-[4.1vw] md:px-0 flex flex-col items-center relative max-w-[1280px] mx-auto md:w-[1220px] md:h-full">
+    <section ref={sectionRef} className="w-full bg-[#161616] flex justify-center overflow-visible z-20 relative pt-4 pb-6 md:pt-[10px] md:pb-[60px] md:h-[1327.43px]">
+      <div className="w-full px-4 md:px-0 flex flex-col items-center relative max-w-[1280px] mx-auto md:w-[1220px] md:h-full">
 
         {/* Mobile Layout (Natural Wrapping) */}
-        <div className="md:hidden w-full mx-auto flex flex-col gap-[10.2vw] z-10 pt-0">
+        <div className="md:hidden w-full mx-auto flex flex-col gap-6 z-10 pt-0">
           <ScrollRevealText
-            text={"WOMEN HAVE ALWAYS BUILT SAFETY THROUGH SHARED INSTINCTS, TRUSTED CIRCLES, AND LOOKING OUT FOR ONE ANOTHER. NAZR BUILDS ON THAT FOUNDATION, COMBINING TECHNOLOGY, PRODUCTS, AND COMMUNITY TO CREATE A MORE CONNECTED APPROACH TO SAFETY."}
-            className="m-0 font-[family-name:var(--font-bebas)] text-[7.17vw] text-center"
-            style={{ lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
+            text={"WOMEN HAVE ALWAYS BUILT SAFETY THROUGH SHARED INSTINCTS, TRUSTED CIRCLES, AND LOOKING OUT FOR ONE ANOTHER. NAZR BUILDS ON THAT FOUNDATION THROUGH THOUGHTFUL TECHNOLOGY, EVERYDAY ESSENTIALS, AND A COMMUNITY THAT BELIEVES PEACE OF MIND IS SOMETHING WE CREATE TOGETHER."}
+            className="m-0 font-[family-name:var(--font-bebas)] text-[28px] sm:text-[32px] text-center max-w-[340px] sm:max-w-[380px] mx-auto uppercase"
+            style={{ lineHeight: '115%', letterSpacing: '-0.01em', fontWeight: 400 }}
             emptyColor="#333333"
           />
 
@@ -31,7 +31,7 @@ export function SafetyCommunitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, margin: "-10%" }}
-            className="mt-12 mx-auto bg-white border-[#EDEDED]"
+            className="mt-4 mx-auto bg-white border-[#EDEDED]"
             style={{
               width: "338px",
               height: "212.42px",
