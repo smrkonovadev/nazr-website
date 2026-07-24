@@ -10,13 +10,41 @@ export function TrustedCircleSection() {
   const [activeStep, setActiveStep] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [animationData, setAnimationData] = useState<any>(null);
+  const [animationsData, setAnimationsData] = useState<Record<number, any>>({});
+
+  const steps = [
+    {
+      number: 1,
+      title: "Build Your Trusted Circle.",
+      description: "Invite the people you trust most to be part of your safety network. Guardians receive an SMS and WhatsApp invitation to securely join your Trusted Circle.",
+      color: "#F80090",
+      lottiePath: "/images/Trusted Circle.json"
+    },
+    {
+      number: 2,
+      title: "Connected The Moment It Matters.",
+      description: "If an SOS is triggered or a Shield Mode check-in is missed, your Trusted Circle is alerted immediately with thhe possible courses of action that can be taken, all visible in one place to ensure everyone is on the same page.",
+      color: "#0A84FF",
+      lottiePath: "/images/Gaurdian Alert.json"
+    },
+    {
+      number: 3,
+      title: "Support That Moves With You.",
+      description: "During an emergency, the live location and audio recordings from your phone are sent to your Trusted Circle along with the nearest police station/hospital to ensure maximum safety as quickly as possible.",
+      color: "#03A781",
+      lottiePath: "/images/Take Action.json"
+    }
+  ];
 
   useEffect(() => {
-    fetch("/images/Trusted Circle.json")
-      .then((res) => res.json())
-      .then((data) => setAnimationData(data))
-      .catch((err) => console.error("Error loading Trusted Circle Lottie:", err));
+    steps.forEach((step, idx) => {
+      fetch(step.lottiePath)
+        .then((res) => res.json())
+        .then((data) => {
+          setAnimationsData((prev) => ({ ...prev, [idx]: data }));
+        })
+        .catch((err) => console.error(`Error loading Lottie for step ${idx + 1}:`, err));
+    });
   }, []);
 
   useEffect(() => {
@@ -47,27 +75,6 @@ export function TrustedCircleSection() {
       return () => clearTimeout(timer);
     }
   }, [progress]);
-
-  const steps = [
-    {
-      number: 1,
-      title: "Build Your Trusted Circle.",
-      description: "Invite the people you trust most to be part of your safety network. Guardians receive an SMS and WhatsApp invitation to securely join your Trusted Circle.",
-      color: "#F80090"
-    },
-    {
-      number: 2,
-      title: "Connected The Moment It Matters.",
-      description: "If an SOS is triggered or a Shield Mode check-in is missed, your Trusted Circle is alerted immediately with thhe possible courses of action that can be taken, all visible in one place to ensure everyone is on the same page.",
-      color: "#0A84FF"
-    },
-    {
-      number: 3,
-      title: "Support That Moves With You.",
-      description: "During an emergency, the live location and audio recordings from your phone are sent to your Trusted Circle along with the nearest police station/hospital to ensure maximum safety as quickly as possible.",
-      color: "#03A781"
-    }
-  ];
 
   return (
     <section className="w-full bg-[#F1E4DE] pt-12 md:pt-16 pb-8 md:pb-20 flex flex-col items-center justify-center px-4 relative z-50">
@@ -103,13 +110,13 @@ export function TrustedCircleSection() {
               <div key={index} className="flex flex-col w-full max-w-[346px] gap-6">
                 {/* Image Block */}
                 <div
-                  className="w-full h-[311px] rounded-[16px] relative overflow-hidden flex justify-center items-center p-4 shadow-md transition-colors duration-500"
+                  className="w-[346px] max-w-full h-[310.56px] rounded-[9.61px] relative overflow-hidden flex justify-center items-center p-4 shadow-md transition-colors duration-500"
                   style={{ backgroundColor: step.color }}
                 >
                   <div className="w-full h-full relative flex justify-center items-center">
-                    {animationData && (
+                    {animationsData[index] && (
                       <Lottie
-                        animationData={animationData}
+                        animationData={animationsData[index]}
                         loop={true}
                         className="w-full h-full object-contain drop-shadow-2xl"
                       />
@@ -143,7 +150,7 @@ export function TrustedCircleSection() {
         {/* ======================== */}
         <div className="hidden md:grid grid-cols-12 gap-20 items-center">
           {/* Left Column: Timeline */}
-          <div className="col-span-6 relative flex flex-col gap-8 w-full text-left pt-4 -translate-y-[50px]">
+          <div className="col-span-6 relative flex flex-col gap-8 w-full text-left pt-4">
             {steps.map((step, index) => (
               <div 
                 key={index} 
@@ -207,12 +214,13 @@ export function TrustedCircleSection() {
 
           {/* Right Column: Visuals */}
           <div 
-            className="col-span-6 col-start-7 w-full h-[550px] rounded-[40px] relative overflow-hidden flex justify-center items-center p-6 shadow-2xl transition-colors duration-500"
+            className="col-span-6 col-start-7 w-full h-[550px] rounded-[9.71px] relative overflow-hidden flex justify-center items-center p-6 shadow-2xl transition-colors duration-500"
             style={{ backgroundColor: steps[activeStep].color }}
           >
-            {animationData && (
+            {animationsData[activeStep] && (
               <Lottie
-                animationData={animationData}
+                key={activeStep}
+                animationData={animationsData[activeStep]}
                 loop={true}
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
