@@ -114,7 +114,7 @@ export function NavigationMenu() {
               <span className="text-[#161616]/50 font-['Switzer',_sans-serif] text-[14px] uppercase tracking-widest mb-1">
                 Quick Links
               </span>
-              <Link href="/privacy" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px] flex items-center gap-1">
+              <Link href="/privacy-policy" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px] flex items-center gap-1">
                 Privacy Policy <span className="text-[12px]">↗</span>
               </Link>
               <Link href="/terms" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px] flex items-center gap-1">
