@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function ContactUsSection() {
   return (
-    <section className="w-full bg-[#FFF1EB] pt-[16px] md:pt-[24px] pb-[48px] px-4 flex flex-col items-center justify-center relative z-10">
+    <section className="w-full bg-[#FFF1EB] pt-[16px] md:pt-[24px] pb-[48px] px-4 flex flex-col items-center justify-center relative z-10 -mt-[1px]">
 
       {/* ======================= */}
       {/* MOBILE LAYOUT           */}

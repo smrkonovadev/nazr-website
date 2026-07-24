@@ -26,8 +26,8 @@ export default function Home() {
           <SafetyCommunitySection />
         </DesktopScaler>
 
-        <DesktopScaler bgColor="#FFF1EB" className="overflow-hidden">
-          <div className="w-full bg-[#FFF1EB] relative z-20 pb-0">
+        <DesktopScaler bgColor="#FFF1EB" className="overflow-hidden rounded-t-[9.71px] md:rounded-t-[26px] rounded-b-[9.71px] md:rounded-b-[26px]">
+          <div className="w-full bg-[#FFF1EB] relative z-20 pb-0 rounded-t-[9.71px] md:rounded-t-[26px] rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
             <WhyNazrExists />
             <InteractiveCards theme="cream" />
             <JoinConversation />
