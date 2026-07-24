@@ -104,7 +104,7 @@ export function ShieldModeFeatures() {
 
       {/* Mobile view only: vertical list */}
       <div className="block md:hidden w-full px-4 pt-4 pb-8 bg-[#161616]">
-        <div className="flex flex-col items-center gap-6 w-full">
+        <div className="flex flex-col gap-6 w-full">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} isMobile={true} />
           ))}
@@ -134,18 +134,20 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
 
   return (
     <div
-      className="flex flex-col shrink-0 w-[343px] max-w-full h-[436.6px] rounded-[12px] overflow-hidden mx-auto"
+      className={`flex flex-col shrink-0 rounded-[24px] overflow-hidden ${
+        isMobile ? "w-full h-auto" : "w-[85vw] md:w-[calc((100vw-80px-72px)/3.25)] md:h-auto md:aspect-[379/533]"
+      }`}
     >
       {/* Top coloured image area */}
       <div
-        className="w-full relative overflow-hidden flex justify-center items-center h-[270px] pt-4 pb-2 shrink-0"
+        className="w-full relative overflow-hidden flex justify-center h-[320px] pt-[30px] md:h-auto md:aspect-[379/339] md:pt-[12%]"
         style={{
           backgroundColor: feature.bgColor,
         }}
       >
         <motion.div
-          className="relative max-md:w-[200px] max-md:h-[300px] max-md:scale-[1.18] md:w-[80%] md:h-auto md:aspect-[180/360] flex items-center justify-center md:scale-[1.12]"
-          initial={{ y: 20 }}
+          className="relative w-[140px] h-[280px] md:w-[70%] md:h-auto md:aspect-[180/360]"
+          initial={{ y: 80 }}
           whileInView={{ y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -155,16 +157,6 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
               animationData={animationData}
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl"
-              style={{
-                WebkitMaskImage: "url(/images/nazrapp4img.png)",
-                WebkitMaskSize: "contain",
-                WebkitMaskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                maskImage: "url(/images/nazrapp4img.png)",
-                maskSize: "contain",
-                maskRepeat: "no-repeat",
-                maskPosition: "center",
-              }}
             />
           ) : (
             <video
@@ -198,14 +190,14 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
         }}
       >
         <h3
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[32px] leading-[130%] tracking-normal uppercase"
+          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[26px] md:text-[clamp(26px,2.2vw,36px)] leading-[110%] tracking-normal uppercase"
         >
           {feature.title}
         </h3>
 
         <p
-          className="m-0 text-[#161616]/80 font-normal text-[14px] leading-[150%] tracking-normal"
-          style={{ fontFamily: "Inter, sans-serif" }}
+          className="m-0 text-[#161616]/80 font-normal text-[14px] md:text-[clamp(14px,1.1vw,18px)] leading-[150%] tracking-normal"
+          style={{ fontFamily: "Switzer, Inter, sans-serif" }}
         >
           {feature.description}
         </p>

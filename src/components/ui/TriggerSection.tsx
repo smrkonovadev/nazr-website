@@ -178,11 +178,11 @@ export function TriggerSection() {
         </motion.div>
 
         {/* TRIGGER Text */}
-        <motion.div className="absolute left-[115px] top-[-50px] w-[340px] flex flex-col gap-1 z-10" style={{ opacity: section1Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] font-normal leading-[90%] tracking-[-0.03em] uppercase">
+        <motion.div className="absolute left-[115px] top-[-50px] w-[240px] flex flex-col gap-1 z-10" style={{ opacity: section1Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
             One Tap. Immediate Response.
           </h2>
-          <p className="m-0 text-[#161616] font-normal text-[16px] leading-[140%] tracking-[-0.03em]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
             Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.
           </p>
         </motion.div>
@@ -266,11 +266,11 @@ export function TriggerSection() {
         </motion.div>
 
         {/* CANCEL WINDOW Text */}
-        <motion.div className="absolute left-[895px] top-[403px] w-[340px] flex flex-col gap-1 z-10" style={{ opacity: section2Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] font-normal leading-[90%] tracking-[-0.03em] uppercase">
+        <motion.div className="absolute left-[895px] top-[403px] w-[240px] flex flex-col gap-1 z-10" style={{ opacity: section2Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
             SOS JOURNEY
           </h2>
-          <p className="m-0 text-[#161616] font-normal text-[16px] leading-[140%] tracking-[-0.03em]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
             After activation, NAZR guides you through every stage, from alerting your Trusted Circle to giving you quick access to emergency services.
           </p>
         </motion.div>
@@ -308,11 +308,11 @@ export function TriggerSection() {
         </motion.div>
 
         {/* BROADCAST FIRES Text */}
-        <motion.div className="absolute left-[260px] top-[900px] w-[340px] flex flex-col gap-1 z-10" style={{ opacity: section3Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] font-normal leading-[90%] tracking-[-0.03em] uppercase">
-            WORKING IN THE BACKGROUND
+        <motion.div className="absolute left-[260px] top-[900px] w-[250px] flex flex-col gap-1 z-10" style={{ opacity: section3Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
+            Working in the bACKGROUND
           </h2>
-          <p className="m-0 text-[#161616] font-normal text-[16px] leading-[140%] tracking-[-0.03em]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
             The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.
           </p>
         </motion.div>
@@ -392,11 +392,11 @@ export function TriggerSection() {
         </motion.div>
 
         {/* GUARDIANS ALERTED Text */}
-        <motion.div className="absolute left-[775px] top-[1300px] w-[340px] flex flex-col gap-1 z-10" style={{ opacity: section4Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] font-normal leading-[90%] tracking-[-0.03em] uppercase">
+        <motion.div className="absolute left-[775px] top-[1300px] w-[250px] flex flex-col gap-1 z-10" style={{ opacity: section4Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
             GUARDIANS ALERTED
           </h2>
-          <p className="m-0 text-[#161616] font-normal text-[16px] leading-[140%] tracking-[-0.03em]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
             Your guardians receive an SMS and WhatsApp alert with your live location, giving them immediate visibility and the ability to act.
           </p>
         </motion.div>
@@ -444,11 +444,11 @@ export function TriggerSection() {
         </motion.div>
 
         {/* TAKE ACTION Text */}
-        <motion.div className="absolute left-[225px] top-[1740px] w-[340px] flex flex-col gap-1 z-10" style={{ opacity: section5Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] font-normal leading-[90%] tracking-[-0.03em] uppercase">
+        <motion.div className="absolute left-[225px] top-[1740px] w-[250px] flex flex-col gap-1 z-10" style={{ opacity: section5Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
             TAKE ACTION
           </h2>
-          <p className="m-0 text-[#161616] font-normal text-[16px] leading-[140%] tracking-[-0.03em]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
             Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.
           </p>
         </motion.div>
@@ -482,11 +482,11 @@ export function TriggerSection() {
           ></motion.div>
 
           {[
-            { title: "One Tap. Immediate Response.", text: "Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.", vid: "/images/vid1.mp4" },
-            { title: "SOS JOURNEY", text: "After activation, NAZR guides you through every stage, from alerting your Trusted Circle to giving you quick access to emergency services.", vid: "/images/vid4.mp4" },
-            { title: "WORKING IN THE BACKGROUND", text: "The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.", vid: "/images/vid5.mp4" },
-            { title: "GUARDIANS ALERTED", text: "Your guardians receive an SMS and WhatsApp alert with your live location, giving them immediate visibility and the ability to act.", vid: "/images/vid6.mp4" },
-            { title: "TAKE ACTION", text: "Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.", vid: "/images/vid7.mp4" }
+            { title: "TRIGGER", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid1.mp4" },
+            { title: "CANCEL WINDOW", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid4.mp4" },
+            { title: "BROADCAST FIRES", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid5.mp4" },
+            { title: "GUARDIANS ALERTED", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid6.mp4" },
+            { title: "TAKE ACTION", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid7.mp4" }
           ].map((step, idx, arr) => (
             <MobileTriggerStep key={idx} step={step} idx={idx} isLast={idx === arr.length - 1} lottieAnimationData={idx === 0 ? armAnimData : idx === 1 ? journeyAnimData : idx === 2 ? broadcastAnimData : idx === 3 ? guardianAnimData : idx === 4 ? actionAnimData : null} />
           ))}
@@ -549,12 +549,12 @@ function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: a
 
       {/* Right side: Text and Phone */}
       <motion.div className="flex flex-col gap-4 flex-1 pl-4 z-10" style={{ opacity: isFirst ? 1 : contentOpacity }}>
-        <div className="flex flex-col gap-1 w-full max-w-[310px]">
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[32px] font-normal leading-[90%] tracking-[-0.03em] uppercase">{step.title}</h2>
-          <p className="m-0 text-[#161616] font-normal text-[14px] leading-[140%] tracking-[-0.03em]" style={{ fontFamily: "Inter, sans-serif" }}>{step.text}</p>
+        <div className="flex flex-col gap-1 pr-4">
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[32px] font-normal leading-[90%] tracking-[-0.03em]">{step.title}</h2>
+          <p className="m-0 text-[#161616] font-sans text-[14px] font-normal leading-[140%] tracking-[-0.03em]">{step.text}</p>
         </div>
 
-        <div className={`relative w-full shrink-0 mt-2 overflow-visible ${idx === 2 ? 'max-w-[280px] h-[401px] -ml-[70px] scale-[1.25] origin-left' : 'max-w-[198px] h-[401px]'}`}>
+        <div className="relative w-full max-w-[198px] h-[401px] shrink-0 mt-2 overflow-visible">
           {lottieAnimationData ? (
             <Lottie
               animationData={lottieAnimationData}
