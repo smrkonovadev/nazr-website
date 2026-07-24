@@ -37,13 +37,13 @@ export default function ProductLiabilityPage() {
       </DesktopScaler>
 
       {/* Content Canvas Section */}
-      <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px]">
-        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px]">
-          <div className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[32px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] min-h-[900px] px-6 md:px-16 py-12 md:py-20 flex flex-col md:flex-row gap-12 md:gap-20">
+      <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
+        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px]">
+          <div className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] min-h-[900px] px-6 md:px-16 py-12 md:py-20 flex flex-col md:flex-row gap-12 md:gap-20">
 
-            {/* Left Column: Table of Contents */}
-            <div className="w-full md:w-[260px] shrink-0 md:sticky md:top-[120px] md:self-start flex flex-col gap-4 select-none max-md:border-b max-md:pb-6 border-black/10 max-h-[calc(100vh-180px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-              <h2 className="font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] font-normal tracking-wide text-[#161616] uppercase leading-none">
+            {/* Left Column: Table of Contents (Desktop Only) */}
+            <div className="hidden md:flex md:w-[260px] shrink-0 md:sticky md:top-[120px] md:self-start flex-col gap-4 select-none max-h-[calc(100vh-180px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <h2 className="font-[family-name:var(--font-bebas)] text-[32px] font-normal tracking-wide text-[#161616] uppercase leading-none">
                 Table of Contents
               </h2>
 
@@ -59,7 +59,7 @@ export default function ProductLiabilityPage() {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-left text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[15px] md:text-[16px] leading-tight tracking-tight transition-colors py-2 focus:outline-none w-full"
+                    className="text-left text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[16px] leading-tight tracking-tight transition-colors py-2 focus:outline-none w-full"
                   >
                     {item.name}
                   </button>
@@ -68,12 +68,36 @@ export default function ProductLiabilityPage() {
             </div>
 
             {/* Right Column: Content */}
-            <div className="flex-1 flex flex-col gap-12 font-['Switzer',_sans-serif] text-[#161616] max-w-[800px]">
+            <div className="flex-1 flex flex-col gap-8 md:gap-12 font-['Switzer',_sans-serif] text-[#161616] max-w-[800px]">
 
               {/* Page Title */}
               <h1 className="font-[family-name:var(--font-bebas)] text-[56px] md:text-[80px] leading-[100%] tracking-tight text-[#161616] uppercase">
                 PRODUCT LIABILITY &amp; RISK FRAMEWORK
               </h1>
+
+              {/* Mobile Table of Contents: Horizontal Scrollable Tabs */}
+              <div className="flex md:hidden flex-col gap-3 py-2 select-none">
+                <h2 className="font-[family-name:var(--font-bebas)] text-[28px] font-normal tracking-wide text-[#161616] uppercase leading-none">
+                  Table of Contents
+                </h2>
+                <div className="flex items-center gap-3 overflow-x-auto w-full pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                  <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="bg-[#161616] text-[#FFF1EB] rounded-[4px] px-4 py-2 text-[14px] font-semibold uppercase tracking-tight shrink-0 hover:opacity-90 transition-opacity"
+                  >
+                    View all
+                  </button>
+                  {tableOfContents.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="shrink-0 whitespace-nowrap text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[15px] font-medium transition-colors py-2 px-1 focus:outline-none"
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
               {/* Section 1 */}
               <div id="purpose" className="flex flex-col gap-4 pt-4 border-t border-black/10">

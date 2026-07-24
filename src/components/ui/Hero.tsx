@@ -102,30 +102,269 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="w-full bg-[#F6E9E3] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pb-[30.7vw] md:pb-0 pt-[23vw] md:pt-0 md:min-h-[630px]"
-        style={{
-          borderTopLeftRadius: '26px',
-          borderTopRightRadius: '26px',
-        }}
+        className="w-full bg-[#F6E9E3] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[630px] rounded-t-[9.71px] md:rounded-t-[26px]"
       >
-        {/* Shader Background Effect */}
-        <ShaderBackground className="rounded-t-[26px]" />
+        {/* Shader Background Effect (Preserved) */}
+        <ShaderBackground className="rounded-t-[9.71px] md:rounded-t-[26px]" />
 
-        {/* THE WORLD STARES Mobile Group / Desktop Split */}
-        <div className="relative z-20 flex flex-row justify-center w-full md:static mt-[4.1vw] md:mt-0">
+        {/* ================= MOBILE HERO LAYOUT (100% Screen Height Fit) ================= */}
+        <div className="w-full flex flex-col justify-between min-h-[calc(100dvh-80px)] px-4 sm:px-6 py-4 relative z-20 md:hidden">
+          {/* Top Section: Left Headline + Right Eye Discs */}
+          <div className="flex flex-row justify-between items-start w-full relative">
+            {/* Left-Aligned Stacked Headline */}
+            <div className="flex flex-col items-start z-20">
+              {/* Line 1: THE WORLD */}
+              <motion.h1
+                initial="hidden"
+                animate="visible"
+                variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
+                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[18.5vw] sm:text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap text-[#FFFDF7]"
+                style={{ fontWeight: 400 }}
+              >
+                {"THE WORLD".split('').map((char, i) => (
+                  <TiltLetter
+                    key={`m-tw-${i}`}
+                    char={char}
+                    index={i}
+                    className="text-image-mask"
+                    globalMouseX={globalMouseX}
+                    globalMouseY={globalMouseY}
+                    bgStyle={{
+                      backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
+                      animation: `pinkToBlackWave 0.01s linear ${1.66 + (i * 0.09)}s backwards`
+                    }}
+                  />
+                ))}
+              </motion.h1>
+
+              {/* Line 2: STARES STARE */}
+              <motion.h1
+                initial="hidden"
+                animate="visible"
+                variants={{ visible: { transition: { delayChildren: 0.15, staggerChildren: 0.04 } } }}
+                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[18.5vw] sm:text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
+                style={{ fontWeight: 400 }}
+              >
+                {"STARES STARE".split('').map((char, i) => {
+                  const idx = i + 9;
+                  return (
+                    <TiltLetter
+                      key={`m-ss-${i}`}
+                      char={char}
+                      index={idx}
+                      className="text-image-mask"
+                      globalMouseX={globalMouseX}
+                      globalMouseY={globalMouseY}
+                      bgStyle={{
+                        backgroundImage: `url('/images/image${(idx % 8) + 1}.png')`,
+                        animation: `pinkToBlackWave 0.01s linear ${1.66 + (idx * 0.09)}s backwards`
+                      }}
+                    />
+                  );
+                })}
+              </motion.h1>
+
+              {/* Line 3: BACK */}
+              <motion.h1
+                initial="hidden"
+                animate="visible"
+                variants={{ visible: { transition: { delayChildren: 0.3, staggerChildren: 0.04 } } }}
+                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[18.5vw] sm:text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
+                style={{ fontWeight: 400 }}
+              >
+                {"BACK".split('').map((char, i) => {
+                  const idx = i + 21;
+                  return (
+                    <TiltLetter
+                      key={`m-bk-${i}`}
+                      char={char}
+                      index={idx}
+                      className="text-image-mask"
+                      globalMouseX={globalMouseX}
+                      globalMouseY={globalMouseY}
+                      bgStyle={{
+                        backgroundImage: `url('/images/image${(idx % 8) + 1}.png')`,
+                        animation: `pinkToBlackWave 0.01s linear ${1.66 + (idx * 0.09)}s backwards`
+                      }}
+                    />
+                  );
+                })}
+              </motion.h1>
+            </div>
+
+            {/* Top Right Floating Circular Eye Discs */}
+            <div className="absolute top-[25vw] sm:top-10 right-[-4vw] w-[54vw] max-w-[210px] h-[54vw] max-h-[210px] z-30 pointer-events-none">
+              {/* Left/Purple Disc */}
+              <motion.div
+                className="absolute w-[36vw] max-w-[145px] h-[36vw] max-h-[145px] top-[15%] left-[20px]"
+                initial={{ scale: 0, rotate: -20 }}
+                animate={{ scale: 1, rotate: -10 }}
+                transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.2 }}
+              >
+                <Image
+                  src="/images/nazreyeback.svg"
+                  alt="Eye Sticker Purple"
+                  fill
+                  className="object-contain drop-shadow-md"
+                />
+              </motion.div>
+              {/* Right/Pink Disc */}
+              <motion.div
+                className="absolute w-[36vw] max-w-[165px] h-[46vw] max-h-[165px] top-[-2] right-0"
+                initial={{ scale: 0, rotate: 10 }}
+                animate={{ scale: 1, rotate: 2 }}
+                transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.3 }}
+              >
+                <Image
+                  src="/images/nazreyefront.svg"
+                  alt="Eye Sticker Pink"
+                  fill
+                  className="object-contain drop-shadow-lg"
+                />
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Mid-Right Pink Pepper Spray Bottle (Increased Size) */}
+          <motion.div
+            className="absolute pointer-events-none z-30 w-[72vw] max-w-[420px] h-[98vw] max-h-[430px] right-[-25vw] bottom-1"
+            initial={{ scale: 0.6, opacity: 0, y: 50 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            transition={{ type: "spring", bounce: 0.4, duration: 0.8, delay: 0.2 }}
+          >
+            <div className="relative w-full h-full" style={{ transform: 'rotate(-20.94deg)' }}>
+              <Image
+                src="/images/spray-pink.png"
+                alt="Pink Pepper Spray"
+                fill
+                className="object-contain drop-shadow-xl"
+              />
+            </div>
+          </motion.div>
+
+          {/* Bottom Left Portion: Paragraph + Buttons */}
+          <div className="flex flex-col items-start w-full max-w-[292px] z-30 mt-auto pt-4">
+            {/* Left-Aligned Subtext */}
+            <p
+              className="text-[#161616] font-['Inter',_sans-serif] text-[20px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
+              style={{
+                fontWeight: 400,
+                width: '292px',
+                minHeight: '99px',
+                transform: 'rotate(0deg)',
+                opacity: 1
+              }}
+            >
+              India's first women's safety<br />
+              ecosystem combining personal<br />
+              defense, emergency technology,<br />
+              and trusted support.
+            </p>
+
+            {/* Left-Aligned Buttons */}
+            <div className="flex flex-row items-center gap-2 sm:gap-3 flex-wrap">
+              <button
+                className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] gap-1.5 whitespace-nowrap shadow-sm"
+                style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
+              >
+                <div className="relative w-4 h-4">
+                  <Image
+                    src="/images/logo.png"
+                    alt="NAZR Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                Join Ecosystem
+              </button>
+
+              <button
+                className="flex items-center justify-center text-[#161616] bg-transparent hover:bg-black/5 transition-colors border border-[#161616]/40 rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] whitespace-nowrap"
+                style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
+              >
+                Buy now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ================= DESKTOP HERO LAYOUT (Unchanged) ================= */}
+        <div className="hidden md:block">
+          {/* THE WORLD STARES Desktop Split */}
+          <div className="relative z-20 flex flex-row justify-center w-full md:static mt-[4.1vw] md:mt-0">
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: {
+                  transition: { staggerChildren: 0.05 }
+                }
+              }}
+              className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[60px] md:left-[32px] text-[16.6vw] md:text-[130px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
+            >
+              {"THE ".split('').map((char, i) => (
+                <TiltLetter
+                  key={`the-${i}`}
+                  char={char}
+                  index={i}
+                  className="text-image-mask"
+                  globalMouseX={globalMouseX}
+                  globalMouseY={globalMouseY}
+                  bgStyle={{
+                    backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
+                    animation: `pinkToBlackWave 0.01s linear ${1.66 + (i * 0.09)}s backwards`
+                  }}
+                />
+              ))}
+            </motion.h1>
+
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: {
+                  transition: { delayChildren: 0.2, staggerChildren: 0.05 }
+                }
+              }}
+              className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
+            >
+              {"WORLD STARES".split('').map((char, i) => {
+                const globalIdx = i + 4;
+                return (
+                  <TiltLetter
+                    key={`ws-${i}`}
+                    char={char}
+                    index={globalIdx}
+                    className="text-image-mask"
+                    globalMouseX={globalMouseX}
+                    globalMouseY={globalMouseY}
+                    bgStyle={{
+                      backgroundImage: `url('/images/image${(globalIdx % 8) + 1}.png')`,
+                      animation: `pinkToBlackWave 0.01s linear ${1.66 + (globalIdx * 0.09)}s backwards`
+                    }}
+                  />
+                );
+              })}
+            </motion.h1>
+          </div>
+
+          {/* STARE BACK */}
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={{
               visible: {
-                transition: { staggerChildren: 0.05 }
+                transition: {
+                  delayChildren: 0.6,
+                  staggerChildren: 0.05
+                }
               }
             }}
-            className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[60px] md:left-[32px] text-[16.6vw] md:text-[130px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
+            className="relative md:absolute font-[family-name:var(--font-bebas)] uppercase m-0 p-0 z-20 flex justify-center w-full md:w-auto mt-0 md:mt-0 md:top-[363px] md:left-[465px] text-[20vw] md:text-[230px] leading-[90%] tracking-[-0.03em] whitespace-nowrap text-center"
           >
-            {"THE ".split('').map((char, i) => (
+            {"Stare Back".split('').map((char, i) => (
               <TiltLetter
-                key={`the-${i}`}
+                key={`w2-${i}`}
                 char={char}
                 index={i}
                 className="text-image-mask"
@@ -133,176 +372,84 @@ export function Hero() {
                 globalMouseY={globalMouseY}
                 bgStyle={{
                   backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
-                  animation: `pinkToBlackWave 0.01s linear ${1.66 + (i * 0.09)}s backwards`
+                  animation: `pinkToBlackWave 0.01s linear ${2.66 + (i * 0.09)}s backwards`
                 }}
               />
             ))}
           </motion.h1>
 
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: {
-                transition: { delayChildren: 0.2, staggerChildren: 0.05 }
-              }
-            }}
-            className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
+          {/* Subtext Paragraph */}
+          <p
+            className="relative md:absolute text-[#161616] m-0 p-0 font-['Inter',_sans-serif] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
           >
-            {"WORLD STARES".split('').map((char, i) => {
-              const globalIdx = i + 4;
-              return (
-                <TiltLetter
-                  key={`ws-${i}`}
-                  char={char}
-                  index={globalIdx}
-                  className="text-image-mask"
-                  globalMouseX={globalMouseX}
-                  globalMouseY={globalMouseY}
-                  bgStyle={{
-                    backgroundImage: `url('/images/image${(globalIdx % 8) + 1}.png')`,
-                    animation: `pinkToBlackWave 0.01s linear ${1.66 + (globalIdx * 0.09)}s backwards`
-                  }}
-                />
-              );
-            })}
-          </motion.h1>
-        </div>
+            India's first women's safety ecosystem combining personal defense, emergency technology, and trusted support.
+          </p>
 
-        {/* STARE BACK */}
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: {
-                delayChildren: 0.6,
-                staggerChildren: 0.05
-              }
-            }
-          }}
-          className="relative md:absolute font-[family-name:var(--font-bebas)] uppercase m-0 p-0 z-20 flex justify-center w-full md:w-auto mt-0 md:mt-0 md:top-[363px] md:left-[465px] text-[20vw] md:text-[230px] leading-[90%] tracking-[-0.03em] whitespace-nowrap text-center"
-        >
-          {"Stare Back".split('').map((char, i) => (
-            <TiltLetter
-              key={`w2-${i}`}
-              char={char}
-              index={i}
-              className="text-image-mask"
-              globalMouseX={globalMouseX}
-              globalMouseY={globalMouseY}
-              bgStyle={{
-                backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
-                animation: `pinkToBlackWave 0.01s linear ${2.66 + (i * 0.09)}s backwards`
+          {/* Buttons */}
+          <div
+            className="relative md:absolute flex justify-center items-center gap-[4vw] md:gap-[16px] z-20 mt-[8.2vw] md:mt-0 md:top-[484px] md:left-[40px]"
+          >
+            <button
+              className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[196px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] gap-[1vw] md:gap-[8px]"
+              style={{
+                fontWeight: 400,
+                fontFamily: 'Roboto, sans-serif',
               }}
-            />
-          ))}
-        </motion.h1>
+            >
+              <div className="relative w-[5.1vw] h-[5.1vw] md:w-[35px] md:h-[24px]">
+                <Image
+                  src="/images/logo.png"
+                  alt="NAZR Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              Join Ecosystem
+            </button>
 
-        {/* Subtext Paragraph */}
-        <p
-          className="relative md:absolute text-[#161616] m-0 p-0 font-['Inter',_sans-serif] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
-        >
-          India's first women's safety ecosystem combining personal defense, emergency technology, and trusted support.
-        </p>
+            <button
+              className="flex items-center justify-center text-[#FF0E97] bg-transparent hover:opacity-80 transition-opacity border border-[#F80090] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[101px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] max-md:ml-[3.8vw]"
+              style={{
+                fontWeight: 400,
+                fontFamily: 'Roboto, sans-serif',
+              }}
+            >
+              Buy now
+            </button>
+          </div>
 
-        {/* Buttons */}
-        <div
-          className="relative md:absolute flex justify-center items-center gap-[4vw] md:gap-[16px] z-20 mt-[8.2vw] md:mt-0 md:top-[484px] md:left-[40px]"
-        >
-          <button
-            className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[196px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] gap-[1vw] md:gap-[8px]"
-            style={{
-              fontWeight: 400,
-              fontFamily: 'Roboto, sans-serif',
-            }}
+          {/* Pink Bottle Image */}
+          <motion.div
+            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[35px] left-[1015px]"
+            initial={{ scale: 0, y: 150 }}
+            animate={{ scale: 3, y: 0 }}
+            transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.1 }}
           >
-            <div className="relative w-[5.1vw] h-[5.1vw] md:w-[35px] md:h-[24px]">
+            <div className="relative w-full h-full -rotate-[-15deg]">
               <Image
-                src="/images/logo.png"
-                alt="NAZR Logo"
+                src="/images/spray-pink.png"
+                alt="Pink Pepper Spray"
                 fill
                 className="object-contain"
               />
             </div>
-            Join Ecosystem
-          </button>
-
-          <button
-            className="flex items-center justify-center text-[#FF0E97] bg-transparent hover:opacity-80 transition-opacity border border-[#F80090] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[101px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] max-md:ml-[3.8vw]"
-            style={{
-              fontWeight: 400,
-              fontFamily: 'Roboto, sans-serif',
-            }}
-          >
-            Buy now
-          </button>
-        </div>
-
-        {/* Pink Bottle Image */}
-        <motion.div
-          className="absolute pointer-events-none z-30 w-[62.8vw] h-[69.2vw] md:w-[165px] md:h-[369px] top-[33.3vw] left-[-25.6vw] md:top-[35px] md:left-[1015px]"
-          initial={{ scale: 0, y: 150 }}
-          animate={{ scale: 3, y: 0 }}
-          transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.1 }}
-        >
-          <div className="relative w-full h-full -rotate-[-15deg]">
-            <Image
-              src="/images/spray-pink.png"
-              alt="Pink Pepper Spray"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </motion.div>
-
-        {/* White Bottle Image */}
-        <motion.div
-          className="absolute pointer-events-none z-30 w-[51.2vw] h-[69.2vw] md:w-[165px] md:h-[369px] top-[-17.9vw] right-[-15.8vw] md:top-[306px] md:left-[797px]"
-          initial={{ scale: 0, y: 150 }}
-          animate={{ scale: 3, y: 0 }}
-          transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.2 }}
-        >
-          <div className="relative w-full h-full rotate-[15deg] md:rotate-[-15deg]">
-            <Image
-              src="/images/spray-white.png"
-              alt="White Pepper Spray"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </motion.div>
-
-        {/* Two Floating Boxes for Mobile (Bottom Right) */}
-        <div className="absolute md:hidden bottom-0 right-0 w-[46.1vw] h-[41vw] z-30">
-          {/* Left/Bottom Blue Box */}
-          <motion.div
-            className="absolute pointer-events-none w-[38.4vw] h-[38.4vw] md:w-[130px] md:h-[130px] bottom-[0vw] right-[-1.2vw] md:bottom-[15px] md:right-[35px]"
-            initial={{ scale: 0, rotate: -20, y: 150 }}
-            animate={{ scale: 1, rotate: -15, y: 0 }}
-            transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.3 }}
-          >
-            <Image
-              src="/images/nazreyeback.svg"
-              alt="Left Box"
-              fill
-              className="object-contain drop-shadow-xl"
-            />
           </motion.div>
 
-          {/* Right/Top Pink Box */}
+          {/* White Bottle Image */}
           <motion.div
-            className="absolute pointer-events-none w-[38.4vw] h-[38.4vw] md:w-[130px] md:h-[130px] bottom-[1.2vw] right-[-7.6vw] md:bottom-[-10px] md:right-[-15px]"
-            initial={{ scale: 0, rotate: 0, y: 150 }}
-            animate={{ scale: 1, rotate: -30, y: 0 }}
-            transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.4 }}
+            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[306px] left-[797px]"
+            initial={{ scale: 0, y: 150 }}
+            animate={{ scale: 3, y: 0 }}
+            transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.2 }}
           >
-            <Image
-              src="/images/nazreyefront.svg"
-              alt="Right Box"
-              fill
-              className="object-contain drop-shadow-2xl"
-            />
+            <div className="relative w-full h-full rotate-[-15deg]">
+              <Image
+                src="/images/spray-white.png"
+                alt="White Pepper Spray"
+                fill
+                className="object-contain"
+              />
+            </div>
           </motion.div>
         </div>
 
