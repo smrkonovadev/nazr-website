@@ -40,11 +40,10 @@ export function ProductImage({
       {/* Product Image — static, no animation */}
       <div className="relative z-20 flex flex-col items-center justify-end w-full">
         <div
-          className={`relative ${imageWidthHeightClass} z-20 pointer-events-none ${imageTransformClass} max-md:!transform-none max-md:!translate-x-0 max-md:!translate-y-0 ${
-            isEnlargedMobile
+          className={`relative ${imageWidthHeightClass} z-20 pointer-events-none ${imageTransformClass} max-md:!transform-none max-md:!translate-x-0 max-md:!translate-y-0 ${isEnlargedMobile
               ? "max-md:!w-[270px] max-md:!h-[200px] max-md:scale-[1.65] max-md:origin-center"
               : "max-md:!w-[200px] max-md:!h-[160px]"
-          } max-md:mx-auto max-md:relative`}
+            } max-md:mx-auto max-md:relative`}
         >
           <Image
             src={imageSrc}
