@@ -102,9 +102,9 @@ export function ShieldModeFeatures() {
         </div>
       </div>
 
-      {/* Mobile view only: vertical list */}
-      <div className="block md:hidden w-full px-4 pt-4 pb-8 bg-[#161616]">
-        <div className="flex flex-col gap-6 w-full">
+      {/* Mobile view only: horizontal scroll track */}
+      <div className="block md:hidden w-full pt-4 pb-8 bg-[#161616] overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <div className="flex flex-row gap-[12px] pl-[12px] pr-[16px] w-max">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} isMobile={true} />
           ))}
@@ -134,23 +134,24 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
 
   return (
     <div
-      className={`flex flex-col shrink-0 rounded-[24px] overflow-hidden ${
-        isMobile ? "w-full h-auto" : "w-[85vw] md:w-[calc((100vw-80px-72px)/3.25)] md:h-auto md:aspect-[379/533]"
+      className={`flex flex-col shrink-0 overflow-hidden ${
+        isMobile ? "w-[343px] min-w-[343px] h-[436.6px] shrink-0 rounded-[16px]" : "w-[85vw] md:w-[calc((100vw-80px-72px)/3.25)] md:h-auto md:aspect-[379/533] rounded-[24px]"
       }`}
+      style={isMobile ? { opacity: 1, transform: "rotate(0deg)" } : undefined}
     >
       {/* Top coloured image area */}
       <div
-        className="w-full relative overflow-hidden flex justify-center h-[320px] pt-[30px] md:h-auto md:aspect-[379/339] md:pt-[12%]"
+        className={`w-full relative overflow-hidden flex justify-center ${isMobile ? "h-[270px] items-center p-3" : "h-[320px] pt-[15px] md:h-auto md:aspect-[379/339] md:pt-[12%]"}`}
         style={{
           backgroundColor: feature.bgColor,
         }}
       >
         <motion.div
-          className="relative w-[140px] h-[280px] md:w-[70%] md:h-auto md:aspect-[180/360]"
-          initial={{ y: 80 }}
+          className={`relative ${isMobile ? "w-full h-full max-w-[200px] max-h-[250px] flex items-center justify-center" : "w-[140px] h-[280px] md:w-[70%] md:h-auto md:aspect-[180/360]"}`}
+          initial={isMobile ? { y: 0 } : { y: 80 }}
           whileInView={{ y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: isMobile ? 0 : 0.6, ease: "easeOut" }}
         >
           {animationData ? (
             <Lottie
@@ -184,7 +185,7 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
 
       {/* Bottom content area */}
       <div
-        className="w-full flex flex-col p-5 gap-2 min-h-[180px] md:p-[6.3%] md:gap-[2%] flex-1"
+        className={`w-full flex flex-col p-5 gap-2 ${isMobile ? "h-[166.6px] justify-center" : "min-h-[180px] md:p-[6.3%] md:gap-[2%] flex-1"}`}
         style={{
           backgroundColor: "#F1E4DE",
         }}

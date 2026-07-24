@@ -180,7 +180,7 @@ export function TriggerSection() {
         {/* TRIGGER Text */}
         <motion.div className="absolute left-[115px] top-[-50px] w-[240px] flex flex-col gap-1 z-10" style={{ opacity: section1Opacity }}>
           <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
-            One Tap. Immediate Response.
+            ONE TAP. IMMEDIATE RESPONSE.
           </h2>
           <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
             Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.
@@ -310,7 +310,7 @@ export function TriggerSection() {
         {/* BROADCAST FIRES Text */}
         <motion.div className="absolute left-[260px] top-[900px] w-[250px] flex flex-col gap-1 z-10" style={{ opacity: section3Opacity }}>
           <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
-            Working in the bACKGROUND
+            WORKING IN THE BACKGROUND
           </h2>
           <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
             The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.
@@ -482,11 +482,11 @@ export function TriggerSection() {
           ></motion.div>
 
           {[
-            { title: "TRIGGER", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid1.mp4" },
-            { title: "CANCEL WINDOW", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid4.mp4" },
-            { title: "BROADCAST FIRES", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid5.mp4" },
-            { title: "GUARDIANS ALERTED", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid6.mp4" },
-            { title: "TAKE ACTION", text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", vid: "/images/vid7.mp4" }
+            { title: "ONE TAP. IMMEDIATE RESPONSE.", text: "Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.", vid: "/images/vid1.mp4" },
+            { title: "SOS JOURNEY", text: "After activation, NAZR guides you through every stage, from alerting your Trusted Circle to giving you quick access to emergency services.", vid: "/images/vid4.mp4" },
+            { title: "WORKING IN THE BACKGROUND", text: "The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.", vid: "/images/vid5.mp4" },
+            { title: "GUARDIANS ALERTED", text: "Your guardians receive an SMS and WhatsApp alert with your live location, giving them immediate visibility and the ability to act.", vid: "/images/vid6.mp4" },
+            { title: "TAKE ACTION", text: "Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.", vid: "/images/vid7.mp4" }
           ].map((step, idx, arr) => (
             <MobileTriggerStep key={idx} step={step} idx={idx} isLast={idx === arr.length - 1} lottieAnimationData={idx === 0 ? armAnimData : idx === 1 ? journeyAnimData : idx === 2 ? broadcastAnimData : idx === 3 ? guardianAnimData : idx === 4 ? actionAnimData : null} />
           ))}
@@ -554,7 +554,7 @@ function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: a
           <p className="m-0 text-[#161616] font-sans text-[14px] font-normal leading-[140%] tracking-[-0.03em]">{step.text}</p>
         </div>
 
-        <div className="relative w-full max-w-[198px] h-[401px] shrink-0 mt-2 overflow-visible">
+        <div className={`relative w-full ${idx === 2 ? 'max-w-[280px] h-[440px] -ml-2' : 'max-w-[230px] h-[440px]'} shrink-0 mt-2 overflow-visible`}>
           {lottieAnimationData ? (
             <Lottie
               animationData={lottieAnimationData}
