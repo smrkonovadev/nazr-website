@@ -62,10 +62,14 @@ export function DesktopScaler({ children, desktopWidth = 1280, bgColor = "#16161
     backgroundColor: bgColor,
     width: "100%",
     position: "relative" as const,
+    ...(useTransformFallback || className.includes("overflow-hidden")
+      ? {
+          overflow: "hidden" as const,
+        }
+      : {}),
     ...(useTransformFallback
       ? {
           height: `${contentHeight * scale}px`,
-          overflow: "hidden" as const,
         }
       : {}),
   };

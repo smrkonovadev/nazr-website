@@ -19,7 +19,7 @@ export default function WhyNazrExistsPage() {
           {/* The Beige Canvas Section */}
           <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70]">
             <div
-              className="w-full bg-[#FFF1EB] relative max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[32px] md:rounded-t-[26px] min-h-[450px] md:min-h-[800px]"
+              className="w-full bg-[#FFF1EB] relative max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px] min-h-[450px] md:min-h-[800px]"
             >
               <WhyNazrExistsIntro />
             </div>
@@ -32,7 +32,7 @@ export default function WhyNazrExistsPage() {
         {/* Horizontal Scroll Story Section (Outside scaling container for viewport logic) */}
         <HorizontalScrollStory />
 
-        <DesktopScaler bgColor="#FFF1EB">
+        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden">
           {/* Our Values Section */}
           <OurValuesSection />
 

@@ -15,7 +15,7 @@ export default function HelplinePage() {
           <Header />
 
           {/* The Beige Canvas Section */}
-          <div className="w-full flex-1 bg-[#FFF1EB] rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden relative z-[70] max-md:mt-0 md:-mt-[48px] flex flex-col">
+          <div className="w-full flex-1 bg-[#FFF1EB] md:rounded-t-[26px] max-md:rounded-t-[9.71px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden relative z-[70] max-md:mt-0 md:-mt-[48px] flex flex-col">
             <HelplineDirectoryIntro />
             <HelplineTable />
 

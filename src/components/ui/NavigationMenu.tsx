@@ -75,7 +75,7 @@ export function NavigationMenu() {
 
         {/* Single right-aligned flex container that holds both links and footer to prevent overlapping */}
         <div className="absolute top-0 bottom-0 right-6 md:right-10 flex flex-col max-md:justify-start max-md:gap-4 md:justify-between pt-14 pb-6 md:pt-20 md:pb-6 max-md:w-[220px] md:w-[450px] z-10 min-h-0 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          
+
           {/* Main Navigation Links */}
           <div className="flex flex-col items-start w-full max-md:my-0 md:my-auto max-md:gap-0 md:gap-1">
 
@@ -86,8 +86,8 @@ export function NavigationMenu() {
                 <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
                   <div
                     className={`w-full max-md:px-3 md:px-6 max-md:py-0.5 md:py-1.5 transition-all border rounded-[4px] ${isActive
-                        ? "bg-[#FF0E97] border-[#FF0E97] text-white"
-                        : "border-transparent text-[#161616] hover:border-[#FF0E97]"
+                      ? "bg-[#FF0E97] border-[#FF0E97] text-white"
+                      : "border-transparent text-[#161616] hover:border-[#FF0E97]"
                       }`}
                   >
                     <span className="font-[family-name:var(--font-bebas)] max-md:text-[28px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">

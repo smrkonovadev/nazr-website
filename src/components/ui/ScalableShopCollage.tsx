@@ -123,7 +123,7 @@ export function ScalableShopCollage() {
             </div>
 
             {/* Center Spray Bottle */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[-22%] w-[55%] aspect-[1/2] z-30">
+            <div className="absolute left-1/2 -translate-x-1/2 max-md:top-[-22%] md:top-[-40%] w-[55%] aspect-[1/2] z-30">
               <Image
                 src="/images/spray-pink.png"
                 alt="Pink Spray"

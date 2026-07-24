@@ -18,10 +18,12 @@ export function HelpWithoutHoldUp() {
             HELP. WITHOUT THE HOLD UP.
           </div>
 
-          <div className="w-full grid grid-cols-2 gap-4 px-4 pb-4 mt-0">
+          {/* Horizontally Scrollable 3 Cards Container for Mobile */}
+          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-1 mt-0 scrollbar-none snap-x snap-mandatory">
+            {/* Card 1 */}
             <div
               onClick={() => setActiveCard(1)}
-              className={`w-full h-full min-h-[140px] rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 ${activeCard === 1 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
+              className={`ml-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 snap-start ${activeCard === 1 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
             >
               <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${activeCard === 1 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 1
@@ -31,9 +33,11 @@ export function HelpWithoutHoldUp() {
                 Press your volume button three times to instantly trigger SOS.
               </p>
             </div>
+
+            {/* Card 2 */}
             <div
               onClick={() => setActiveCard(2)}
-              className={`w-full h-full min-h-[140px] rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 ${activeCard === 2 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
+              className={`min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 snap-start ${activeCard === 2 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
             >
               <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${activeCard === 2 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 2
@@ -41,6 +45,20 @@ export function HelpWithoutHoldUp() {
               <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${activeCard === 2 ? 'text-white' : 'text-[#161616]'}`}>In-App SOS Button</h3>
               <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${activeCard === 2 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Tap the SOS button in the NAZR app to alert your support network.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div
+              onClick={() => setActiveCard(3)}
+              className={`mr-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-colors duration-300 snap-start ${activeCard === 3 ? 'bg-[#FF0E97] shadow-lg' : 'bg-transparent border-dashed border border-[#242424]'}`}
+            >
+              <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${activeCard === 3 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
+                3
+              </div>
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[16px] mb-1 leading-tight transition-colors duration-300 ${activeCard === 3 ? 'text-white' : 'text-[#161616]'}`}>Home Screen SOS Widget</h3>
+              <p className={`font-['Inter',_sans-serif] text-[13px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${activeCard === 3 ? 'text-white/90' : 'text-[#161616]'}`}>
+                Trigger SOS directly from your home screen without opening the app.
               </p>
             </div>
           </div>

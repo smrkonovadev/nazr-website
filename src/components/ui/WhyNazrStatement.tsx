@@ -6,14 +6,13 @@ import Image from "next/image";
 
 export function WhyNazrStatement() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.8 });
+  const isInView = useInView(containerRef, { once: false, amount: 0.4 });
 
   return (
-    <section className="w-full bg-[#161616] flex flex-col items-center justify-center max-md:py-8 md:py-40 px-4 z-40 relative">
+    <section ref={containerRef} className="w-full bg-[#161616] flex flex-col items-center justify-center max-md:py-8 md:py-40 px-4 z-40 relative">
 
       {/* Mobile Layout (md:hidden) - Exact Match for Reference Image 2 */}
       <div
-        ref={containerRef}
         className="md:hidden flex flex-col items-center justify-center text-[#FFF1EB] font-[family-name:var(--font-bebas)] uppercase leading-[92%] tracking-[-0.03em] text-center w-full max-w-[390px] max-w-full mx-auto text-[52px]"
       >
         {/* Line 1: FOR YEARS, [Planet] INDIAN */}
