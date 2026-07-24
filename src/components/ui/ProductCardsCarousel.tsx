@@ -152,13 +152,14 @@ export function ProductCardsCarousel() {
         </div>
       </div>
 
-      {/* Mobile view only: vertical list */}
-      <div className="block md:hidden w-full px-4 pt-4 pb-8">
-        <div className="flex flex-col gap-6 w-full">
+      {/* Mobile view only: horizontal scroll track */}
+      <div className="block md:hidden w-full pt-4 pb-8 overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <div className="flex flex-row gap-4 px-4 w-max">
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`w-full h-[480px] rounded-[16px] overflow-hidden relative group ${card.bgColor}`}
+              className={`shrink-0 w-[352px] min-w-[351.91px] h-[361px] rounded-[10.39px] overflow-hidden relative group ${card.bgColor}`}
+              style={{ opacity: 1, transform: "rotate(0deg)" }}
             >
               {/* Card Header Overlay */}
               <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start z-20 pointer-events-none">
@@ -176,7 +177,7 @@ export function ProductCardsCarousel() {
                 alt={card.title}
                 fill
                 className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-cover group-hover:scale-105' : 'object-contain scale-[0.8] group-hover:scale-[0.85]'}`}
-                sizes="100vw"
+                sizes="352px"
               />
             </div>
           ))}
