@@ -64,9 +64,8 @@ export function NavigationMenu() {
       </div>
 
       <div
-        className="absolute top-1/2 right-0 origin-right"
+        className="absolute top-1/2 right-0 origin-right w-[1440px] max-md:w-[390px]"
         style={{
-          width: typeof window !== 'undefined' && window.innerWidth < 768 ? '390px' : '1440px',
           height: '100%',
           transform: mounted ? `translateY(-50%) scale(${scale})` : 'translateY(-50%)'
         }}

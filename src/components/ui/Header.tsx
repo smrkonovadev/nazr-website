@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useNavigation } from "@/context/NavigationContext";
 
 interface HeaderProps {
@@ -46,11 +47,12 @@ export function Header({ variant = "dark", mobileVariant }: HeaderProps) {
         <div className="flex justify-between items-center w-full h-[52px]">
 
           {/* Logo */}
-          <div
-            className={`flex items-center justify-center font-[family-name:var(--font-bebas)] font-normal ${logoTextColor} max-md:text-[30px] md:text-[60px] w-auto h-auto md:w-[110px] md:h-[25px] leading-[90%] tracking-[-0.03em] text-center`}
+          <Link
+            href="/"
+            className={`flex items-center justify-center font-[family-name:var(--font-bebas)] font-normal ${logoTextColor} max-md:text-[30px] md:text-[60px] w-auto h-auto md:w-[110px] md:h-[25px] leading-[90%] tracking-[-0.03em] text-center hover:opacity-80 transition-opacity`}
           >
             NAZR
-          </div>
+          </Link>
 
           {/* Menu Button */}
           <button

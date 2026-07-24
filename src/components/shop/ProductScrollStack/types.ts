@@ -21,5 +21,6 @@ export interface ProductData {
   reviews: string;
   hasVariants: boolean;
   variants?: ProductVariant[];
+  url: string;
   zIndex: number;
 }

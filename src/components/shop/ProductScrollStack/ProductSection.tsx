@@ -62,6 +62,7 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
                 reviews={product.reviews}
                 hasVariants={product.hasVariants}
                 variants={product.variants}
+                url={product.url}
                 selectedVariant={selectedVariant}
                 setSelectedVariant={setSelectedVariant}
               />

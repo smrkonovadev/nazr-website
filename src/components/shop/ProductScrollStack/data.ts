@@ -8,7 +8,7 @@ export const productsData: ProductData[] = [
     headerTextColor: "#161616",
     contentBg: "#DDEFFF",
     titleLines: ["ON ME", "SPRAY"],
-    imageSrc: "/images/center.png",
+    imageSrc: "/images/shop/shop-1.png",
     imageAlt: "Podium and Spray",
     imageTransformClass: "md:transform md:rotate-[20deg] md:translate-x-28 md:translate-y-8 translate-x-10 translate-y-4",
     imageWidthHeightClass: "w-[400px] h-[360px] md:w-[580px] md:h-[500px]",
@@ -17,6 +17,7 @@ export const productsData: ProductData[] = [
     rating: 4,
     reviews: "(3.5 stars) • 10 reviews",
     hasVariants: true,
+    url: "https://shop.nazrco.in/products/on-me-pepper-spray",
     variants: [
       { id: "pink", name: "Pink", imageSrc: "/images/spray-pink.png" },
       { id: "white", name: "White", imageSrc: "/images/spray-white.png" }
@@ -30,7 +31,7 @@ export const productsData: ProductData[] = [
     headerTextColor: "#161616",
     contentBg: "#FCE4EC",
     titleLines: ["SIP CHECK"],
-    imageSrc: "/images/SHOPPRO2.svg",
+    imageSrc: "/images/shop/shop-3.png",
     imageAlt: "Sip Check Product",
     imageTransformClass: "md:transform md:translate-x-28 md:translate-y-30 translate-x-10 translate-y-16",
     imageWidthHeightClass: "w-[400px] h-[360px] md:w-[580px] md:h-[500px]",
@@ -39,6 +40,7 @@ export const productsData: ProductData[] = [
     rating: 4,
     reviews: "(3.5 stars) • 10 reviews",
     hasVariants: false,
+    url: "https://shop.nazrco.in/products/sip-check",
     zIndex: 20
   },
   {
@@ -48,15 +50,16 @@ export const productsData: ProductData[] = [
     headerTextColor: "black",
     contentBg: "#DDEFFF",
     titleLines: ["NAZR", "360°"],
-    imageSrc: "/images/SHOPPRO3.svg",
+    imageSrc: "/images/shop/shop-2.png",
     imageAlt: "Nazr 360 Bundle",
     imageTransformClass: "md:transform md:translate-x-28 md:translate-y-48 translate-x-10 translate-y-20",
-    imageWidthHeightClass: "w-[580px] h-[520px] md:w-[920px] md:h-[750px]",
+    imageWidthHeightClass: "w-[580px] h-[520px] md:w-[580px] md:h-[500px]",
     description: "Nazr 360° pairs two essentials for everyday peace of mind. The compact On Me designed for quick access, and a pack of Sip Checks to keep your beverage protected. Different tools with one goal: feeling secure and present wherever you go.",
     price: "₹1111",
     rating: 4,
     reviews: "(3.5 stars) • 10 reviews",
     hasVariants: false,
+    url: "#",
     zIndex: 30
   }
 ];
