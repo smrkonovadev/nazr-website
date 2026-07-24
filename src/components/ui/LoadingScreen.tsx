@@ -15,11 +15,17 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
+    // Prevent scrolling robustly on all devices
+    document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.touchAction = "none";
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+
     const startTime = Date.now();
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
       const currentProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
-      
+
       setProgress(currentProgress);
 
       if (currentProgress >= 100) {
@@ -29,25 +35,38 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
             setIsFadingOut(true);
             setTimeout(() => {
               setIsHidden(true);
+              document.documentElement.style.overflow = "";
+              document.documentElement.style.touchAction = "";
+              document.body.style.overflow = "";
+              document.body.style.touchAction = "";
               if (onComplete) onComplete();
             }, 600);
           }, 300);
         } else {
+          document.documentElement.style.overflow = "";
+          document.documentElement.style.touchAction = "";
+          document.body.style.overflow = "";
+          document.body.style.touchAction = "";
           if (onComplete) onComplete();
         }
       }
     }, 30);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      document.documentElement.style.overflow = "";
+      document.documentElement.style.touchAction = "";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
   }, [duration, autoHide, onComplete]);
 
   if (isHidden) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-600 ${
-        isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
+      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-600 ${isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
     >
       {/* Background Image — high visibility like the Figma design */}
       <div className="absolute inset-0 z-0">
@@ -71,8 +90,8 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
       </div>
 
       {/* Full-bleed content layer */}
-      <div className="relative z-10 w-full h-screen flex flex-col justify-between px-[20px] py-[24px] sm:px-[32px] sm:py-[28px] md:px-[52px] md:py-[40px] lg:px-[64px] lg:py-[48px]">
-        
+      <div className="relative z-10 w-full h-[100dvh] flex flex-col justify-between px-[20px] py-[24px] sm:px-[32px] sm:py-[28px] md:px-[52px] md:py-[40px] lg:px-[64px] lg:py-[48px]">
+
         {/* ---- TOP ROW ---- */}
         <div className="w-full flex justify-between items-start gap-2">
           {/* Top Left: SOS instruction — Bebas Neue (Exactly 2 lines on mobile) */}
@@ -136,7 +155,7 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
 
         {/* ---- BOTTOM ROW ---- */}
         <div className="w-full flex items-end justify-between relative pb-1">
-          
+
           {/* Bottom Left: Owl Logo */}
           <div className="shrink-0">
             <svg
