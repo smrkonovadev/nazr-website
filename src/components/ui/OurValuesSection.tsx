@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import shelfAnimData from "../../../public/images/Shelf.json";
@@ -15,25 +14,21 @@ const values = [
     title: "ANTICIPATORY DESIGN",
     desc: "The micro-moments of a woman’s journey is where support is needed most. From low-light visibility to crisis guidance, our system is designed for every possible scenario.",
     lottie: shelfAnimData,
-    image: "/images/OUR1.svg"
   },
   {
     title: "SEAMLESS INTEGRATION",
     desc: "Traditional gear can be scary and inconvenient which is something we reject. Nazr is crafted to be a natural, accessible and high-performance integration into your daily carry.",
     lottie: bagAnimData,
-    image: "/images/OUR2.svg"
   },
   {
     title: "MODERN HERITAGE",
     desc: "By reclaiming the “Nazar”, we aim to transform the traditional Evil Eye into a symbol of autonomy that enables a cultural statement of identity.",
     lottie: singingBowlAnimData,
-    image: "/images/OUR3.svg"
   },
   {
     title: "QUIET EMPOWERMENT",
     desc: "Our goal is to equip our users with the confidence to take up space knowing they’re prepared. Carrying Nazr is a declaration of rightful independence.",
     lottie: newspaperAnimData,
-    image: "/images/OUR4.svg"
   },
 ];
 
@@ -73,7 +68,7 @@ export function OurValuesSection() {
               key={idx}
               className="snap-center min-w-[280px] w-[280px] flex flex-col rounded-[24px] overflow-hidden bg-[#F1E4DE] shadow-xl flex-shrink-0"
             >
-              {/* Media Section */}
+              {/* Lottie Animation Section */}
               <div className="w-full h-[280px] relative overflow-hidden bg-[#F1E4DE] flex items-center justify-center p-3">
                 <Lottie
                   animationData={val.lottie}
@@ -103,7 +98,7 @@ export function OurValuesSection() {
 
         {/* Left Content Column */}
         <div 
-          className="w-full lg:w-[664px] flex flex-col justify-center"
+          className="w-full lg:w-[640px] flex flex-col justify-center"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -143,80 +138,33 @@ export function OurValuesSection() {
 
         </div>
 
-        {/* Right Image Column: Phone Mockup Frame & Tilted Lottie Screen Display */}
+        {/* Right Column: Lottie Animation Display */}
         <div 
-          className="w-full lg:w-[360px] h-[574px] flex justify-center items-center relative flex-shrink-0"
+          className="w-full lg:w-[480px] lg:h-[500px] md:w-[420px] md:h-[440px] h-[360px] flex justify-center items-center relative flex-shrink-0"
+          style={{ transform: "rotate(10.88deg)" }}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div 
-            className="relative flex-shrink-0"
-            style={{
-              width: '360px',
-              height: '574px'
-            }}
-          >
-            {/* Inner Tilted Screen Container (Rotated 10.8845deg to match phone frame) */}
-            <div 
-              className="absolute z-10"
+          {values.map((val, idx) => (
+            <div
+              key={idx}
+              className="absolute inset-0 w-full h-full flex items-center justify-center p-2 transition-opacity duration-700 ease-in-out"
               style={{
-                width: '263.6px',
-                height: '533.6px',
-                left: '100.7px',
-                top: '0px',
-                transform: 'rotate(10.8845deg)',
-                transformOrigin: 'top left',
-                overflow: 'hidden'
+                opacity: activeIndex === idx ? 1 : 0,
+                zIndex: activeIndex === idx ? 10 : 0,
+                pointerEvents: activeIndex === idx ? "auto" : "none"
               }}
             >
-              <div 
-                className="absolute"
-                style={{
-                  top: '12px',
-                  left: '12px',
-                  right: '12px',
-                  bottom: '12px',
-                  borderRadius: '32px',
-                  overflow: 'hidden',
-                  backgroundColor: '#F1E4DE',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                {values.map((val, idx) => (
-                  <div
-                    key={idx}
-                    className="absolute inset-0 w-full h-full flex items-center justify-center p-3 transition-opacity duration-700 ease-in-out"
-                    style={{
-                      opacity: activeIndex === idx ? 1 : 0,
-                      zIndex: activeIndex === idx ? 10 : 0,
-                      pointerEvents: activeIndex === idx ? "auto" : "none"
-                    }}
-                  >
-                    <Lottie
-                      animationData={val.lottie}
-                      loop
-                      autoplay
-                      style={{ width: "100%", height: "100%" }}
-                      rendererSettings={{ preserveAspectRatio: "xMidYMid contain" }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Phone Mockup Frame Overlay */}
-            <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
-              <Image 
-                src="/images/PHONEOURVALUES.svg" 
-                alt="Phone Mockup Frame"
-                fill
-                className="object-contain"
-                priority
+              <Lottie
+                animationData={val.lottie}
+                loop
+                autoplay
+                className="w-full h-full object-contain scale-[1.1] md:scale-[1.15]"
+                style={{ width: "100%", height: "100%" }}
+                rendererSettings={{ preserveAspectRatio: "xMidYMid contain" }}
               />
             </div>
-          </div>
+          ))}
         </div>
 
       </div>
