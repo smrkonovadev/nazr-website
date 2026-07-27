@@ -100,10 +100,15 @@ export function Footer() {
           </div>
 
           {/* Ownership & Copyright Bar */}
-          <div className="w-full flex flex-col sm:flex-row items-center justify-between mt-4 gap-2 text-[11px] md:text-[13px] font-['Switzer',_sans-serif] text-[#FFF1EB]/60">
-            <p className="m-0 text-center sm:text-left">
-              NAZR™ <a href="https://www.nazrco.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#FFF1EB] transition-colors">www.nazrco.in</a> is owned and operated by Lumina Hospitality Private Limited
-            </p>
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between mt-4 gap-3 text-[11px] md:text-[13px] font-['Switzer',_sans-serif] text-[#FFF1EB]/60 border-t border-[#FFF1EB]/10 pt-4">
+            <div className="flex flex-col items-center sm:items-start gap-1">
+              <p className="m-0 text-center sm:text-left">
+                NAZR™ <a href="https://www.nazrco.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#FFF1EB] transition-colors">www.nazrco.in</a> is owned and operated by Lumina Hospitality Private Limited
+              </p>
+              <p className="m-0 text-center sm:text-left text-[#FFF1EB]/50 text-[10px] md:text-[12px]">
+                Developed by <a href="https://www.smrkonova.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFF1EB] underline transition-colors">Smrkonova</a> • Designed by <a href="https://www.momm.in" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFF1EB] underline transition-colors">MOMM</a>
+              </p>
+            </div>
             <p className="m-0 text-center sm:text-right">
               © {new Date().getFullYear()} NAZR. All rights reserved.
             </p>
