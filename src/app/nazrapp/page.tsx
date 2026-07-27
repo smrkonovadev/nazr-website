@@ -25,9 +25,6 @@ export default function NazrAppPage() {
           <DesktopScaler bgColor="#F3E5E0" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
             <div
               className="w-full bg-[#F3E5E0] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px]"
-              style={{
-                minHeight: '800px', // Large canvas area
-              }}
             >
               <NazrAppIntro />
               <OneTapSOSSection />

@@ -33,19 +33,19 @@ export function BlogNewsletter() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
           </p>
 
-          <form onSubmit={handleSubmit} className="mt-6 flex flex-row gap-3 w-full max-w-[480px]">
+          <form onSubmit={handleSubmit} className="mt-6 flex flex-col sm:flex-row gap-3 w-full max-w-[480px]">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="bg-transparent border border-[#F0E2DD]/30 text-white rounded-[4px] px-4 py-2.5 flex-1 outline-none text-[15px] placeholder:text-[#F0E2DD]/40 focus:border-[#F80090] transition-colors"
+              className="bg-transparent border border-[#F0E2DD]/30 text-white rounded-[4px] px-4 py-2.5 w-full flex-1 outline-none text-[15px] placeholder:text-[#F0E2DD]/40 focus:border-[#F80090] transition-colors"
               style={{ fontFamily: "Inter, sans-serif" }}
             />
             <button
               type="submit"
-              className="bg-[#F80090] hover:bg-[#d6007b] text-white font-normal text-[15px] px-6 py-2.5 rounded-[4px] transition-colors whitespace-nowrap"
+              className="bg-[#F80090] hover:bg-[#d6007b] text-white font-normal text-[15px] px-6 py-2.5 rounded-[4px] transition-colors whitespace-nowrap w-full sm:w-auto text-center justify-center flex items-center"
               style={{ fontFamily: "Roboto, sans-serif" }}
             >
               Sign up

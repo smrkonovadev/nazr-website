@@ -51,11 +51,14 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Horizontally Scrollable 3 Cards Container for Mobile */}
-          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-1 mt-0 scrollbar-none snap-x snap-mandatory">
+          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-2 mt-0 scrollbar-none snap-x snap-mandatory px-4">
+            {/* Left Spacer to guarantee spacing on Card 1 by default */}
+            <div className="w-3 shrink-0" />
+
             {/* Card 1 */}
             <div
               onClick={() => setActiveCard(1)}
-              className={`ml-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-all duration-300 snap-start ${effectiveCard === 1 ? 'bg-[#FF0E97] shadow-lg scale-[1.02]' : 'bg-transparent border-dashed border border-[#242424]'}`}
+              className={`min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-all duration-300 snap-start ${effectiveCard === 1 ? 'bg-[#FF0E97] shadow-lg scale-[1.02]' : 'bg-transparent border-dashed border border-[#242424]'}`}
             >
               <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 1 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 1
@@ -83,7 +86,7 @@ export function HelpWithoutHoldUp() {
             {/* Card 3 */}
             <div
               onClick={() => setActiveCard(3)}
-              className={`mr-5 min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-all duration-300 snap-start ${effectiveCard === 3 ? 'bg-[#FF0E97] shadow-lg scale-[1.02]' : 'bg-transparent border-dashed border border-[#242424]'}`}
+              className={`min-w-[220px] max-w-[240px] flex-shrink-0 h-auto rounded-[12px] p-4 flex flex-col justify-start relative cursor-pointer transition-all duration-300 snap-start ${effectiveCard === 3 ? 'bg-[#FF0E97] shadow-lg scale-[1.02]' : 'bg-transparent border-dashed border border-[#242424]'}`}
             >
               <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 3 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 3
@@ -93,6 +96,9 @@ export function HelpWithoutHoldUp() {
                 Trigger SOS directly from your home screen without opening the app.
               </p>
             </div>
+
+            {/* Right Spacer */}
+            <div className="w-3 shrink-0" />
           </div>
 
           {/* Mobile Phone Mockup / Animation Display */}

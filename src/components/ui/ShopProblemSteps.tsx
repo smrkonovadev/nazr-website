@@ -9,9 +9,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."',
-    name: "NAME SURNAME",
-    role: "Position, Company name",
+      '"Finally, a safety product I actually carry. I\'ve bought multiple safety tools before, but they always ended up forgotten at the bottom of my bag. This one is designed so well that it stays within reach, which makes all the difference."',
+    name: "Priyanshi Mehta",
+    stars: "⭐⭐⭐⭐",
     rotation: -8,
   },
   {
@@ -26,9 +26,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#E5007D",
     quote:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."',
-    name: "NAME SURNAME",
-    role: "Position, Company name",
+      '"I love that it doesn\'t look like a typical safety product. It blends into my everyday essentials while still being easy to access when needed. People have even said it\'s soo cute."',
+    name: "Kavya Kapoor",
+    stars: "⭐⭐⭐⭐⭐",
     rotation: 6,
   },
   {
@@ -43,9 +43,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."',
-    name: "NAME SURNAME",
-    role: "Position, Company name",
+      '"I wanted to gift her something thoughtful, and this felt much more meaningful than flowers or chocolates. She absolutely loved it."',
+    name: "Akshat Kanungo",
+    stars: "⭐⭐⭐⭐⭐",
     rotation: -6,
   },
 ];
@@ -225,13 +225,13 @@ export function ShopProblemSteps() {
                         {card.quote}
                       </p>
 
-                      {/* Name & Position */}
+                      {/* Name & Stars */}
                       <div className="flex flex-col opacity-100">
                         <span className="font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.02em] text-[#FFF9EB] uppercase opacity-100">
                           {card.name}
                         </span>
-                        <span className="font-sans text-[13px] text-[#FFF9EB]/80 opacity-100">
-                          {card.role}
+                        <span className="text-[13px] text-[#FFF9EB] opacity-90 mt-0.5">
+                          {(card as any).stars || (card as any).role}
                         </span>
                       </div>
                     </div>

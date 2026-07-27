@@ -50,9 +50,8 @@ export function ShieldModeFeatures() {
       if (rowRef.current && rowRef.current.parentElement) {
         const rowWidth = rowRef.current.scrollWidth;
         const parentWidth = rowRef.current.parentElement.offsetWidth;
-        const paddingLeft = window.innerWidth < 768 ? 20 : 40;
-        // Add 120px extra scroll padding to ensure the final card is fully visible under scaling/zoom
-        const translation = Math.max(0, rowWidth - parentWidth + paddingLeft + 120);
+        // Add 24px right padding so the last card doesn't touch the screen edge
+        const translation = Math.max(0, rowWidth - parentWidth + 24);
         setXTranslation(translation);
       }
     };

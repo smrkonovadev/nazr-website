@@ -8,20 +8,20 @@ const cards = [
   {
     id: 1,
     title: "1) ON ME SPRAY",
-    image: "/images/pinkimg.png",
-    bgColor: "bg-[#F80090]"
+    image: "/images/my-new-spray.svg",
+    borderColor: "border-[#EC008C]",
   },
   {
     id: 2,
     title: "2) SIP CHECK STICKERS",
     image: "/images/productsip.svg",
-    bgColor: "bg-[#403890]"
+    borderColor: "border-[#4338CA]",
   },
   {
     id: 3,
     title: "3) NAZR 360°",
     image: "/images/product365.svg",
-    bgColor: "bg-[#F80090]"
+    borderColor: "border-[#EC008C]",
   }
 ];
 
@@ -49,9 +49,8 @@ export function ProductCardsCarousel() {
       if (rowRef.current && rowRef.current.parentElement) {
         const rowWidth = rowRef.current.scrollWidth;
         const parentWidth = rowRef.current.parentElement.offsetWidth;
-        const paddingLeft = window.innerWidth < 768 ? 16 : 40;
-        // Add 40px extra scroll padding to ensure the final card is fully visible under scaling/zoom
-        const translation = Math.max(0, rowWidth - parentWidth + paddingLeft);
+        // Add 24px right padding so the last card doesn't touch the screen edge
+        const translation = Math.max(0, rowWidth - parentWidth + 24);
         setXTranslation(translation);
       }
     };
@@ -126,7 +125,7 @@ export function ProductCardsCarousel() {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className={`shrink-0 w-[calc(min(556px,72vh)*0.97)] h-[min(556px,72vh)] rounded-[16px] overflow-hidden relative group ${card.bgColor}`}
+                className={`shrink-0 w-[calc(min(556px,72vh)*0.97)] h-[min(556px,72vh)] rounded-[24px] overflow-hidden relative group bg-[#111111] border-[3.5px] ${card.borderColor}`}
               >
                 {/* Card Header Overlay */}
                 <div className="absolute top-0 left-0 right-0 p-8 flex justify-between items-start z-20 pointer-events-none">
@@ -134,8 +133,8 @@ export function ProductCardsCarousel() {
                     {renderTitle(card.title)}
                   </h3>
 
-                  <button className="bg-[#FFF9EB] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] px-5 py-2 rounded-[3px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Roboto, sans-serif" }}>
-                    Show now
+                  <button className="bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[14px] leading-[150%] px-5 py-2 rounded-[4px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+                    Shop now
                   </button>
                 </div>
 
@@ -143,7 +142,7 @@ export function ProductCardsCarousel() {
                   src={card.image}
                   alt={card.title}
                   fill
-                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-cover group-hover:scale-105' : 'object-contain scale-[0.8] group-hover:scale-[0.85]'}`}
+                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.82] group-hover:scale-[0.87]'}`}
                   sizes="650px"
                 />
               </div>
@@ -158,7 +157,7 @@ export function ProductCardsCarousel() {
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`shrink-0 w-[352px] min-w-[351.91px] h-[361px] rounded-[10.39px] overflow-hidden relative group ${card.bgColor}`}
+              className={`shrink-0 w-[330px] min-w-[330px] h-[350px] rounded-[18px] overflow-hidden relative group bg-[#111111] border-[3px] ${card.borderColor}`}
               style={{ opacity: 1, transform: "rotate(0deg)" }}
             >
               {/* Card Header Overlay */}
@@ -167,8 +166,8 @@ export function ProductCardsCarousel() {
                   {renderTitle(card.title)}
                 </h3>
 
-                <button className="bg-[#FFF9EB] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] px-4 py-2 rounded-[3px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Roboto, sans-serif" }}>
-                  Show now
+                <button className="bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] px-4 py-2 rounded-[4px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Shop now
                 </button>
               </div>
 
@@ -176,8 +175,8 @@ export function ProductCardsCarousel() {
                 src={card.image}
                 alt={card.title}
                 fill
-                className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-cover group-hover:scale-105' : 'object-contain scale-[0.8] group-hover:scale-[0.85]'}`}
-                sizes="352px"
+                className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.82] group-hover:scale-[0.87]'}`}
+                sizes="330px"
               />
             </div>
           ))}

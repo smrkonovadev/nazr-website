@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -11,68 +11,34 @@ const cards = [
     title: "1) ON ME",
     description: "Designed to stay within reach when seconds matter. Glow-in-the-dark for visibility. Built to be carried, not forgotten.",
     image: "/images/STACK1.svg",
+    buttonText: "Shop Now",
+    link: "/shop#pepper-spray"
   },
   {
     id: 2,
     title: "2) SIP CHECK",
     description: "Designed to protect what you're drinking.Creates a barrier over your drink when it matters. Built for nights out, travel, and everything in between.",
     image: "/images/STACK2.svg",
+    buttonText: "Shop Now",
+    link: "/shop#sip-check"
   },
+  {
+    id: 3,
+    title: "3) NAZR APP",
+    description: "Designed to be ready before you need it. Connects your Trusted Circle when it matters most.Built to move with you, every day.",
+    image: "/images/3rdimage.svg",
+    buttonText: "Join The Ecosystem",
+    link: "/nazrapp"
+  }
 ];
 
 export function AboutFeatures() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [blurStart, setBlurStart] = useState(0.8);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
-
-  // Calculate dynamic threshold based on viewport & container measurements
-  useEffect(() => {
-    const calculateThresholds = () => {
-      if (containerRef.current) {
-        const container = containerRef.current;
-        const cardsElements = container.querySelectorAll("[data-card-item]");
-        if (cardsElements.length >= 2) {
-          const card2 = cardsElements[1] as HTMLElement;
-          const containerHeight = container.offsetHeight;
-
-          // Get the dynamic zoom scale factor from DesktopScaler logic
-          const isWindowMobile = window.innerWidth < 768;
-          const scale = isWindowMobile ? (window.innerWidth / 390) : (window.innerWidth / 1280);
-
-          // Calculate scaled viewport height in container coordinate space
-          const scaledViewportHeight = window.innerHeight / scale;
-
-          const card2Top = card2.offsetTop;
-          // Sticky position for Card 2 is top-offset: 4vh/6vh + 40px in zoomed space
-          const card2StickyTop = scaledViewportHeight * (isWindowMobile ? 0.04 : 0.06) + 40;
-
-          const totalScrollDistance = containerHeight - scaledViewportHeight;
-          if (totalScrollDistance > 0) {
-            const visibleProgress = (card2Top - card2StickyTop) / totalScrollDistance;
-            // On mobile, start blur when Card 2 is ~90% in view
-            const mobileStart = Math.max(0.35, visibleProgress * 0.85);
-            const desktopStart = Math.max(0.75, Math.min(0.92, visibleProgress));
-            setBlurStart(isWindowMobile ? mobileStart : desktopStart);
-          }
-        }
-      }
-    };
-
-    calculateThresholds();
-    const t1 = setTimeout(calculateThresholds, 100);
-    const t2 = setTimeout(calculateThresholds, 500);
-    window.addEventListener("resize", calculateThresholds);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      window.removeEventListener("resize", calculateThresholds);
-    };
-  }, []);
 
   return (
     <section id="product-features-section" className="w-full bg-[#FFF1EB] max-md:pt-[50px] pt-6 pb-12 md:pt-10 md:pb-16 relative">
@@ -121,7 +87,6 @@ export function AboutFeatures() {
               index={index}
               cardsLength={cards.length}
               progress={scrollYProgress}
-              blurStart={blurStart}
             />
           ))}
 
@@ -137,27 +102,22 @@ function CardItem({
   index,
   cardsLength,
   progress,
-  blurStart
 }: {
   card: any,
   index: number,
   cardsLength: number,
   progress: any,
-  blurStart: number
 }) {
+  const isLast = index === cardsLength - 1;
 
-  // Calculate the scroll range for this specific card based on its index
-  const step = 1 / (cardsLength - 0.5);
-  // Card 1 stays sharp until Card 2 actually reaches and overlaps Card 1
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const startProgress = index === 0 ? blurStart : index * step + 0.12;
-  const endProgress = index === 0 ? (isMobile ? 0.85 : 0.98) : index * step + step;
+  // Card stays 100% sharp until the next card (index + 1) is 100% in view
+  const divisor = Math.max(1, cardsLength - 1);
+  const startProgress = (index + 0.85) / divisor;
+  const endProgress = Math.min(1, (index + 1.0) / divisor);
 
   const blurValue = useTransform(progress, [startProgress, endProgress], ["0px", "20px"], { clamp: true });
   const blurFilter = useTransform(blurValue, (v) => `blur(${v})`);
   const scale = useTransform(progress, [startProgress, endProgress], [1, 0.92], { clamp: true });
-
-  const isLast = index === cardsLength - 1;
 
   return (
     <motion.div
@@ -179,6 +139,7 @@ function CardItem({
         alt={card.title}
         fill
         className="object-cover"
+        priority={index === 0}
       />
 
       {/* Gradient Overlay for Text */}
@@ -197,11 +158,11 @@ function CardItem({
 
           {/* Pink Link/Button */}
           <Link
-            href={card.id === 1 ? "/shop#pepper-spray" : "/shop#sip-check"}
+            href={card.link || "/shop"}
             style={{
               borderRadius: "4px",
               border: "1px solid #FF0E97",
-              padding: "8px 12px",
+              padding: "8px 16px",
               opacity: 1,
               backgroundColor: "#FF0E97",
               display: "flex",
@@ -210,7 +171,7 @@ function CardItem({
               flexShrink: 0,
               flexWrap: "nowrap",
             }}
-            className="group text-[#FFF1EB] hover:bg-[#FF0E97]/90 transition-colors shadow-lg max-md:w-auto md:w-[145px] h-[40px]"
+            className="group text-[#FFF1EB] hover:bg-[#FF0E97]/90 transition-colors shadow-lg max-md:w-auto md:w-auto px-4 h-[40px]"
           >
             <Image
               src="/images/logosvg.svg"
@@ -219,7 +180,7 @@ function CardItem({
               height={24}
               className="max-md:w-7 max-md:opacity-100 max-md:mr-2 md:w-0 md:opacity-0 md:group-hover:w-9 md:group-hover:opacity-100 md:group-hover:mr-2 transition-all duration-300 ease-in-out object-contain invert brightness-0 shrink-0"
             />
-            <span className="font-['Roboto',_sans-serif] text-[16px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">Shop Now</span>
+            <span className="font-['Roboto',_sans-serif] text-[16px] leading-[150%] tracking-normal whitespace-nowrap flex-shrink-0">{card.buttonText || "Shop Now"}</span>
           </Link>
         </div>
       </div>

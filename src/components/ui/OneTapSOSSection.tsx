@@ -2,7 +2,7 @@
 
 export function OneTapSOSSection() {
   return (
-    <div className="w-full flex flex-col items-center justify-center px-4 md:px-16 pb-32 pt-16 md:pt-24">
+    <div className="w-full flex flex-col items-center justify-center px-4 md:px-16 pb-2 md:pb-24 pt-6 md:pt-10">
 
       <h2
         className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] md:text-[160px] max-[380px]:w-full max-md:w-[346px] max-md:mx-auto"

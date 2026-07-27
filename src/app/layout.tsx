@@ -41,6 +41,11 @@ const signPainter = localFont({
 export const metadata: Metadata = {
   title: "NAZR – India's First Women's Safety Ecosystem | SOS App, Smart Safety & Personal Protection",
   description: "NAZR is India's first connected women's safety ecosystem combining smart SOS technology, trusted guardians, live location sharing, personal safety products, and emergency support to help women stay safe every day.",
+  icons: {
+    icon: "/images/Favicon-round.png",
+    shortcut: "/images/Favicon-round.png",
+    apple: "/images/Favicon-round.png",
+  },
 };
 
 export default function RootLayout({

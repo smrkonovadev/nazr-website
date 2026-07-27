@@ -472,12 +472,12 @@ export function TriggerSection() {
       </div>
 
       {/* Mobile Fallback Layout (Simplified) */}
-      <div className="w-full flex flex-col items-center md:hidden px-2 relative z-10 pt-10 pb-12 -mt-[200px]">
+      <div className="w-full flex flex-col items-center md:hidden px-2 relative z-10 pt-0 pb-12 mt-0">
         <div className="w-full max-w-[360px] relative">
           {/* Mobile Vertical Timeline Line (Animated on Scroll) */}
-          <div ref={mobileLineRef} className="absolute left-[55px] top-[45px] bottom-[460px] w-[1px] bg-[#161616] z-0 opacity-10"></div>
+          <div ref={mobileLineRef} className="absolute left-[55px] top-[45px] bottom-[505px] w-[1px] bg-[#161616] z-0 opacity-10"></div>
           <motion.div
-            className="absolute left-[55px] top-[45px] bottom-[460px] w-[1px] bg-[#FF0E97] z-0 origin-top"
+            className="absolute left-[55px] top-[45px] bottom-[505px] w-[1px] bg-[#FF0E97] z-0 origin-top"
             style={{ scaleY: mobileLineProgress }}
           ></motion.div>
 
