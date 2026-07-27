@@ -44,11 +44,11 @@ export function SafetyCommunitySection() {
             {/* Grid Header */}
             <div className="absolute flex items-center" style={{ top: "11.46px", left: "11.27px", gap: "4.5px" }}>
               <div className="relative rounded-full overflow-hidden" style={{ width: "19.4px", height: "19.4px" }}>
-                <Image src="/images/elipseface.png" alt="Avatar" fill className="object-cover" />
+                <Image src="/images/Favicon-03 (1).png" alt="Avatar" fill className="object-cover" />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-[family-name:var(--font-bebas)] text-black m-0 leading-none" style={{ fontSize: "10px" }}>ON ME PEPPER SPRAY</h3>
-                <p className="font-['Inter',_sans-serif] text-black m-0 whitespace-nowrap" style={{ fontSize: "4.5px", marginTop: "1px" }}>It is a long established fact that a reader will be</p>
+                <h3 className="font-[family-name:var(--font-bebas)] text-black m-0 leading-none" style={{ fontSize: "10px" }}>@NAZR.360</h3>
+                <p className="font-['Inter',_sans-serif] text-black m-0 whitespace-nowrap" style={{ fontSize: "4.5px", marginTop: "1px" }}>Building India&apos;s first women&apos;s safety ecosystem</p>
               </div>
             </div>
 
@@ -140,11 +140,11 @@ export function SafetyCommunitySection() {
             {/* Grid Header */}
             <div className="absolute flex items-center" style={{ top: "40px", left: "40.67px", gap: "16px" }}>
               <div className="relative rounded-full overflow-hidden" style={{ width: "70px", height: "70px" }}>
-                <Image src="/images/elipseface.png" alt="Avatar" fill className="object-cover" />
+                <Image src="/images/Favicon-03 (1).png" alt="Avatar" fill className="object-cover" />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-[family-name:var(--font-bebas)] text-black m-0 leading-none" style={{ fontSize: "36px" }}>ON ME PEPPER SPRAY</h3>
-                <p className="font-['Inter',_sans-serif] text-black m-0" style={{ fontSize: "16px", marginTop: "4px" }}>It is a long established fact that a reader will be</p>
+                <h3 className="font-[family-name:var(--font-bebas)] text-black m-0 leading-none" style={{ fontSize: "36px" }}>@NAZR.360</h3>
+                <p className="font-['Inter',_sans-serif] text-black m-0" style={{ fontSize: "16px", marginTop: "4px" }}>Building India&apos;s first women&apos;s safety ecosystem</p>
               </div>
             </div>
 

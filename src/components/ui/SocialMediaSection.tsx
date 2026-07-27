@@ -18,13 +18,13 @@ export function SocialMediaSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 1.5 }}
-            className="relative w-[88px] h-[88px] shrink-0"
+            className="relative w-[88px] h-[88px] shrink-0 rounded-full overflow-hidden"
           >
             <Image
-              src="/images/elipseface.png"
+              src="/images/Favicon-03 (1).png"
               alt="Profile"
               fill
-              className="object-contain"
+              className="object-cover"
             />
           </motion.div>
 
@@ -37,10 +37,10 @@ export function SocialMediaSection() {
             className="flex flex-col justify-center"
           >
             <h3 className="m-0 font-[family-name:var(--font-bebas)] text-black max-[380px]:text-[32px] text-[38px] leading-[90%] tracking-tight">
-              ON ME PEPPER SPRAY
+              @NAZR.360
             </h3>
             <p className="m-0 text-[#161616] text-[17px] font-sans mt-0 tracking-tight">
-              It is a long established fact that a reader will be
+              Building India&apos;s first women&apos;s safety ecosystem
             </p>
           </motion.div>
         </div>

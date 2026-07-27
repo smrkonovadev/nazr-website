@@ -14,7 +14,7 @@ export const carouselData = [
   {
     id: "pepper-spray",
     image: "/images/center.png",
-    title: "ON ME PEPPER SPRAY",
+    title: "ON ME SPRAY",
     subtitle: "A compact personal safety spray designed to be there when every second counts. Doubles as a bag charm and glows in the dark for quick access in low light."
   },
   {
