@@ -98,6 +98,16 @@ export function Footer() {
               priority
             />
           </div>
+
+          {/* Ownership & Copyright Bar */}
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between mt-4 gap-2 text-[11px] md:text-[13px] font-['Switzer',_sans-serif] text-[#FFF1EB]/60">
+            <p className="m-0 text-center sm:text-left">
+              NAZR™ <a href="https://www.nazrco.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#FFF1EB] transition-colors">www.nazrco.in</a> is owned and operated by Lumina Hospitality Private Limited
+            </p>
+            <p className="m-0 text-center sm:text-right">
+              © {new Date().getFullYear()} NAZR. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
