@@ -23,14 +23,14 @@ const bottomRow = [...row2Images, ...row2Images, ...row2Images, ...row2Images];
 
 export function AutoMovingCarousel({ className }: { className?: string }) {
   return (
-    <section className={`w-full overflow-hidden pt-0 pb-8 md:pb-12 flex flex-col gap-3 md:gap-6 relative z-20 ${className || "bg-[#FFF1EB]"}`}>
+    <section className={`w-full overflow-hidden pt-0 pb-6 md:pb-10 -mt-2 md:-mt-4 flex flex-col gap-[10px] relative z-20 ${className || "bg-[#FFF1EB]"}`}>
 
       {/* Top Row - Moves Left to Right */}
-      <div className="flex w-max animate-marquee-reverse gap-3 md:gap-6" style={{ animationDuration: '60s' }}>
+      <div className="flex w-max animate-marquee-reverse gap-[10px]" style={{ animationDuration: '60s' }}>
         {topRow.map((src, idx) => (
           <div
             key={`top-${idx}`}
-            className="w-[188px] h-[154px] rounded-[7.25px] md:w-[420px] md:h-[350px] shrink-0 relative md:rounded-[32px] overflow-hidden"
+            className="w-[228.36px] h-[186.64px] rounded-[8.78px] shrink-0 relative overflow-hidden"
           >
             <Image
               src={src}
@@ -43,11 +43,11 @@ export function AutoMovingCarousel({ className }: { className?: string }) {
       </div>
 
       {/* Bottom Row - Moves Right to Left */}
-      <div className="flex w-max animate-marquee gap-3 md:gap-6" style={{ animationDuration: '60s' }}>
+      <div className="flex w-max animate-marquee gap-[10px]" style={{ animationDuration: '60s' }}>
         {bottomRow.map((src, idx) => (
           <div
             key={`bottom-${idx}`}
-            className="w-[188px] h-[154px] rounded-[7.25px] md:w-[420px] md:h-[350px] shrink-0 relative md:rounded-[32px] overflow-hidden"
+            className="w-[228.36px] h-[186.64px] rounded-[8.78px] shrink-0 relative overflow-hidden"
           >
             <Image
               src={src}

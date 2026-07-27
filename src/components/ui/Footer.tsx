@@ -51,12 +51,12 @@ export function Footer() {
               [ Socials ]
             </span>
             <div className="flex flex-col gap-1 md:gap-2">
-              <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
+              <a href="https://www.linkedin.com/company/nazrco/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
                 LINKEDIN
-              </Link>
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
+              </a>
+              <a href="https://www.instagram.com/nazr.360/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
                 INSTAGRAM
-              </Link>
+              </a>
               <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
                 X/TWITTER
               </Link>

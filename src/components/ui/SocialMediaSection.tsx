@@ -11,7 +11,13 @@ export function SocialMediaSection() {
       >
         <div className="w-[1220px] md:contents origin-top-left flex flex-col scale-[0.27705]" style={{ padding: '45px 50px 0 50px' }}>
         {/* Profile Header */}
-        <div className="flex items-center gap-6 mb-8 md:mb-8 shrink-0 relative -top-[20px]" style={{ perspective: "1000px" }}>
+        <a
+          href="https://www.instagram.com/nazr.360/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-6 mb-8 md:mb-8 shrink-0 relative -top-[20px] hover:opacity-80 transition-opacity"
+          style={{ perspective: "1000px" }}
+        >
           {/* Profile Icon */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -43,7 +49,7 @@ export function SocialMediaSection() {
               Building India&apos;s first women&apos;s safety ecosystem
             </p>
           </motion.div>
-        </div>
+        </a>
 
         </div>
 
