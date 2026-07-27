@@ -1,44 +1,45 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import shelfAnimData from "../../../public/images/Shelf.json";
-import bagAnimData from "../../../public/images/Bag.json";
-import singingBowlAnimData from "../../../public/images/Singing Bowl.json";
-import newspaperAnimData from "../../../public/images/Newspaper.json";
+import { useState, useEffect } from "react";
 
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+const values = [
+  {
+    title: "ANTICIPATORY DESIGN",
+    desc: "The micro-moments of a woman’s journey is where support is needed most. From low-light visibility to crisis guidance, our system is designed for every possible scenario.",
+    image: "/images/OUR1.svg"
+  },
+  {
+    title: "SEAMLESS INTEGRATION",
+    desc: "Traditional gear can be scary and inconvenient which is something we reject. Nazr is crafted to be a natural, accessible and high-performance integration into your daily carry.",
+    image: "/images/OUR2.svg"
+  },
+  {
+    title: "MODERN HERITAGE",
+    desc: "By reclaiming the “Nazar”, we aim to transform the traditional Evil Eye into a symbol of autonomy that enables a cultural statement of identity.",
+    image: "/images/OUR3.svg"
+  },
+  {
+    title: "QUIET EMPOWERMENT",
+    desc: "Our goal is to equip our users with the confidence to take up space knowing they’re prepared. Carrying Nazr is a declaration of rightful independence.",
+    image: "/images/OUR4.svg"
+  },
+];
 
 export function OurValuesSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const values = [
-    {
-      title: "Anticipatory design",
-      desc: "The micro-moments of a woman’s journey is where support is needed most. From low-light visibility to crisis guidance, our system is designed for every possible scenario.",
-      lottie: shelfAnimData,
-      image: "/images/OUR1.svg"
-    },
-    {
-      title: "SEAMLESS INTEGRATION",
-      desc: "Traditional gear can be scary and inconvenient which is something we reject. Nazr is crafted to be a natural, accessible and high-performance integration into your daily carry.",
-      lottie: bagAnimData,
-      image: "/images/OUR2.svg"
-    },
-    {
-      title: "MODERN HERITAGE",
-      desc: "By reclaiming the “Nazar”, we aim to transform the traditional Evil Eye into a symbol of autonomy that enables a cultural statement of identity. ",
-      lottie: singingBowlAnimData,
-      image: "/images/OUR3.svg"
-    },
-    {
-      title: "QUIET EMPOWERMENT",
-      desc: "Our goal is to equip our users with the confidence to take up space knowing they’re prepared. Carrying Nazr is a declaration of rightful independence.",
-      lottie: newspaperAnimData,
-      image: "/images/OUR4.svg"
-    },
-  ];
+  // Auto-cycle through the 4 values every 3.5 seconds when not hovering
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % values.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section className="w-full bg-[#161616] min-h-screen flex items-center py-12 md:py-16 overflow-hidden">
@@ -61,14 +62,13 @@ export function OurValuesSection() {
               key={idx}
               className="snap-center min-w-[280px] w-[280px] flex flex-col rounded-[24px] overflow-hidden bg-[#F1E4DE] shadow-xl flex-shrink-0"
             >
-              {/* Unified Media Section (Clean cream bg to match card border-radius) */}
-              <div className="w-full h-[280px] relative overflow-hidden bg-[#F1E4DE] flex items-center justify-center p-3">
-                <Lottie
-                  animationData={val.lottie}
-                  loop
-                  autoplay
-                  style={{ width: "100%", height: "100%" }}
-                  rendererSettings={{ preserveAspectRatio: "xMidYMid contain" }}
+              {/* Media Section */}
+              <div className="w-full h-[280px] relative overflow-hidden bg-[#161616] flex items-center justify-center p-2">
+                <Image
+                  src={val.image}
+                  alt={val.title}
+                  fill
+                  className="object-contain p-2"
                 />
               </div>
 
@@ -90,7 +90,11 @@ export function OurValuesSection() {
       <div className="hidden md:flex w-full max-w-[1200px] mx-auto px-[40px] flex-row justify-between items-center gap-8">
 
         {/* Left Content Column */}
-        <div className="w-full lg:w-[664px] flex flex-col justify-center" onMouseLeave={() => setHoveredIndex(null)}>
+        <div 
+          className="w-full lg:w-[664px] flex flex-col justify-center"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
 
           {/* Main Typography */}
           <div className="mb-[72px]">
@@ -104,105 +108,99 @@ export function OurValuesSection() {
 
           {/* 2x2 Values Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-            {values.map((val, idx) => (
-              <div 
-                key={idx} 
-                className="flex flex-col cursor-pointer transition-opacity duration-300 group"
-                onMouseEnter={() => setHoveredIndex(idx)}
-              >
-                <h3 className={`font-[family-name:var(--font-bebas)] text-[24px] md:text-[30px] leading-[100%] uppercase mb-3 tracking-wider transition-colors duration-300 ${hoveredIndex === idx ? 'text-[#FFF9EB]' : 'text-[#FFF9EB]/50 group-hover:text-[#FFF9EB]/80'}`}>
-                  {val.title}
-                </h3>
-                <p className={`text-[14px] md:text-[15px] leading-[150%] max-w-[350px] transition-colors duration-300 ${hoveredIndex === idx ? 'text-white/80' : 'text-white/40 group-hover:text-white/60'}`}>
-                  {val.desc}
-                </p>
-              </div>
-            ))}
+            {values.map((val, idx) => {
+              const isActive = activeIndex === idx;
+
+              return (
+                <div 
+                  key={idx} 
+                  className="flex flex-col cursor-pointer transition-all duration-300 group"
+                  onMouseEnter={() => setActiveIndex(idx)}
+                  onClick={() => setActiveIndex(idx)}
+                >
+                  <h3 className={`font-[family-name:var(--font-bebas)] text-[24px] md:text-[30px] leading-[100%] uppercase mb-3 tracking-wider transition-colors duration-300 ${isActive ? 'text-[#FFF9EB]' : 'text-[#FFF9EB]/40 group-hover:text-[#FFF9EB]/80'}`}>
+                    {val.title}
+                  </h3>
+                  <p className={`text-[14px] md:text-[15px] leading-[150%] max-w-[350px] transition-colors duration-300 ${isActive ? 'text-[#FFF9EB]/90' : 'text-white/30 group-hover:text-white/60'}`}>
+                    {val.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
         </div>
 
-        {/* Right Image Column: Phone Mockup & GIF Display */}
-        <div className="w-full lg:w-[360px] h-[574px] flex justify-center items-center relative flex-shrink-0">
-          {hoveredIndex === null ? (
-            /* Default Static View: PHONEOURVALUES.svg + OUR1.svg screen */
+        {/* Right Image Column: Phone Mockup Frame & Tilted Screen Display */}
+        <div 
+          className="w-full lg:w-[360px] h-[574px] flex justify-center items-center relative flex-shrink-0"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div 
+            className="relative flex-shrink-0"
+            style={{
+              width: '360px',
+              height: '574px'
+            }}
+          >
+            {/* Inner Tilted Screen Container (Rotated 10.8845deg to match phone frame) */}
             <div 
-              className="relative flex-shrink-0"
+              className="absolute z-10"
               style={{
-                width: '360px',
-                height: '574px'
+                width: '263.6px',
+                height: '533.6px',
+                left: '100.7px',
+                top: '0px',
+                transform: 'rotate(10.8845deg)',
+                transformOrigin: 'top left',
+                overflow: 'hidden'
               }}
             >
               <div 
-                className="absolute z-10"
+                className="absolute"
                 style={{
-                  width: '263.6px',
-                  height: '533.6px',
-                  left: '100.7px',
-                  top: '0px',
-                  transform: 'rotate(10.8845deg)',
-                  transformOrigin: 'top left',
-                  overflow: 'hidden'
+                  top: '12px',
+                  left: '12px',
+                  right: '12px',
+                  bottom: '12px',
+                  borderRadius: '32px',
+                  overflow: 'hidden',
+                  backgroundColor: '#000000'
                 }}
               >
-                <div 
-                  className="absolute"
-                  style={{
-                    top: '12px',
-                    left: '12px',
-                    right: '12px',
-                    bottom: '12px',
-                    borderRadius: '32px',
-                    overflow: 'hidden',
-                    backgroundColor: '#000000'
-                  }}
-                >
-                  <Image
-                    src="/images/OUR1.svg"
-                    alt="Default Values Mockup"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
+                {values.map((val, idx) => (
+                  <div
+                    key={idx}
+                    className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out"
+                    style={{
+                      opacity: activeIndex === idx ? 1 : 0,
+                      zIndex: activeIndex === idx ? 10 : 0
+                    }}
+                  >
+                    <Image
+                      src={val.image}
+                      alt={val.title}
+                      fill
+                      className="object-cover"
+                      priority={idx === 0}
+                    />
+                  </div>
+                ))}
               </div>
+            </div>
 
-              {/* Phone Mockup Frame (On top, pointer-events-none) */}
-              <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
-                <Image 
-                  src="/images/PHONEOURVALUES.svg" 
-                  alt="Phone Mockup Frame"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
+            {/* Phone Mockup Frame Overlay */}
+            <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+              <Image 
+                src="/images/PHONEOURVALUES.svg" 
+                alt="Phone Mockup Frame"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-          ) : (
-            /* Hover View: Standalone Decreased Lottie Animations */
-            <div className="relative w-[360px] h-[574px] flex items-center justify-center">
-              {values.map((val, idx) => (
-                <div
-                  key={idx}
-                  className="absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500"
-                  style={{
-                    opacity: hoveredIndex === idx ? 1 : 0,
-                    zIndex: hoveredIndex === idx ? 10 : 0,
-                    pointerEvents: hoveredIndex === idx ? "auto" : "none"
-                  }}
-                >
-                  <Lottie
-                    key={`lottie-${idx}-${hoveredIndex === idx}`}
-                    animationData={val.lottie}
-                    loop
-                    autoplay
-                    style={{ width: "100%", height: "100%" }}
-                    rendererSettings={{ preserveAspectRatio: "xMidYMid contain" }}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          </div>
         </div>
 
       </div>
