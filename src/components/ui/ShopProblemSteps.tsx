@@ -1,81 +1,255 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
+const cards = [
+  {
+    id: 1,
+    type: "testimonial",
+    bgColor: "#0E8DFF",
+    quote:
+      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."',
+    name: "NAME SURNAME",
+    role: "Position, Company name",
+    rotation: -8,
+  },
+  {
+    id: 2,
+    type: "image",
+    src: "/images/shopt2.svg",
+    alt: "Woman Reaction 1",
+    rotation: -4,
+  },
+  {
+    id: 3,
+    type: "testimonial",
+    bgColor: "#E5007D",
+    quote:
+      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."',
+    name: "NAME SURNAME",
+    role: "Position, Company name",
+    rotation: 6,
+  },
+  {
+    id: 4,
+    type: "image",
+    src: "/images/shopt4.svg",
+    alt: "Woman Reaction 2",
+    rotation: 3,
+  },
+  {
+    id: 5,
+    type: "testimonial",
+    bgColor: "#0E8DFF",
+    quote:
+      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."',
+    name: "NAME SURNAME",
+    role: "Position, Company name",
+    rotation: -6,
+  },
+];
+
 export function ShopProblemSteps() {
-  const steps = [
-    { time: "0:03S", text: "TAKE YOUR\nPHONE", color: "#0E8DFF" },
-    { time: "0:06S", text: "CONVINCE IT\nYOU'RE YOU", color: "#E5007D" },
-    { time: "0:09S", text: "FIND THE\nRIGHT APP", color: "#0E8DFF" },
-    { time: "0:12S", text: "FIND THE\nRIGHT BUTTON", color: "#E5007D" },
-    { time: "0:15S -", text: "...STILL\nWAITING", color: "#0E8DFF" },
-  ];
-
-  // Duplicate the steps to create a seamless loop. 
-  // We duplicate it 4 times so it fills large screens easily.
-  const duplicatedSteps = [...steps, ...steps, ...steps, ...steps];
-
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const cardsWrapperRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Map vertical wheel scroll to horizontal scroll track (Same as home page InteractiveCards)
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const wrapper = cardsWrapperRef.current;
+    if (!container || !wrapper) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        const isAtLeft = container.scrollLeft === 0;
+        const isAtRight =
+          Math.ceil(container.scrollLeft + container.clientWidth) >=
+          container.scrollWidth;
+
+        if ((e.deltaY > 0 && !isAtRight) || (e.deltaY < 0 && !isAtLeft)) {
+          e.preventDefault();
+          container.scrollLeft += e.deltaY;
+        }
+      }
+    };
+
+    wrapper.addEventListener("wheel", handleWheel, { passive: false });
+    return () => wrapper.removeEventListener("wheel", handleWheel);
+  }, []);
+
   return (
-    <section ref={sectionRef} className="w-full relative z-[999] bg-[#161616] pt-[30px] md:pt-[60px] pb-[30px] md:pb-[80px] border-b border-white/20 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="w-full relative z-[60] bg-[#161616] py-6 md:py-8 overflow-hidden flex flex-col justify-center h-auto min-h-[580px] md:h-[calc(100vh-60px)] md:max-h-[750px]"
+    >
+      {/* Top Header Section */}
+      <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-8 md:px-12 mb-4 md:mb-6 shrink-0">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-12">
+          {/* Left Title */}
+          <div className="w-full md:w-[68%] lg:w-[65%]">
+            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-left text-[#FFF9EB] text-[32px] md:text-[40px] leading-[120%] tracking-[-0.01em] uppercase opacity-100">
+              {/* Mobile Line Breakdown */}
+              <span className="md:hidden">
+                THE MOST THOUGHTFUL GIFTS AREN&apos;T<br />
+                ALWAYS THE BIGGEST. SOMETIMES<br />
+                THEY&apos;RE THE ONES THAT QUIETLY SAY,<br />
+                &quot;I WANT YOU TO GET HOME SAFE.&quot;
+              </span>
+              {/* Desktop Line Breakdown */}
+              <span className="hidden md:inline">
+                THE MOST THOUGHTFUL GIFTS AREN&apos;T ALWAYS THE<br />
+                BIGGEST. SOMETIMES THEY&apos;RE THE ONES THAT<br />
+                QUIETLY SAY, &quot;I WANT YOU TO GET HOME SAFE.&quot;
+              </span>
+            </h2>
+          </div>
 
-      {/* Top Paragraph */}
-      <div className="w-full max-w-[948px] mx-auto max-md:px-4 md:px-0 mb-[30px] md:mb-[90px] flex items-center justify-center">
-        {/* Mobile Layout (md:hidden) - Exact Match for Reference Image 2 line breakdown */}
-        <p className="md:hidden font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] text-[28px] leading-[110%] tracking-[-0.01em] uppercase">
-          THE MOST THOUGHTFUL GIFTS AREN&apos;T<br />
-          ALWAYS THE BIGGEST.<br />
-          SOMETIMES THEY&apos;RE THE ONES THAT<br />
-          QUIETLY SAY, &quot;I WANT YOU TO GET HOME<br />
-          SAFE.&quot;<br />
-          DISCOVER WHY THOUSANDS ARE CHOOSING<br />
-          NAZR FOR THE WOMEN THEY CARE ABOUT.
-        </p>
-
-        {/* Desktop Layout (hidden md:block) */}
-        <p className="hidden md:block font-[family-name:var(--font-bebas)] font-normal text-center text-[#FFF9EB] text-[52px] leading-[1.2] tracking-[-0.01em] uppercase">
-          THE MOST THOUGHTFUL GIFTS AREN&apos;T ALWAYS THE BIGGEST.<br />
-          SOMETIMES THEY&apos;RE THE ONES THAT QUIETLY SAY, &quot;I WANT<br />
-          YOU TO GET HOME SAFE.&quot;<br />
-          DISCOVER WHY THOUSANDS ARE CHOOSING NAZR FOR THE<br />
-          WOMEN THEY CARE ABOUT.
-        </p>
+          {/* Right Description */}
+          <div className="w-full md:w-[32%] lg:w-[30%]">
+            <p className="font-sans font-normal text-left text-[#FFF9EB] text-[20px] leading-[140%] tracking-[-0.01em] opacity-100">
+              Discover why thousands are choosing NAZR for the women they care about.
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* Marquee Cards Container */}
-      <div className="w-full relative z-20 flex items-center h-[372px]">
-        {isInView && (
-          <motion.div
-            className="flex items-center gap-4 min-w-max px-4 md:px-8"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "linear",
-              duration: 40,
-            }}
-          >
-            {duplicatedSteps.map((step, i) => (
-              <div
-                key={i}
-                className="relative flex-shrink-0 w-[279px] h-[372px] max-md:rounded-[16px] md:rounded-[32px] p-6 flex flex-col justify-between shadow-2xl"
-                style={{ backgroundColor: step.color }}
+      {/* Cards Scroll Track */}
+      <div
+        ref={scrollContainerRef}
+        className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 py-2 h-[440px] md:h-[460px] shrink-0"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        <div
+          ref={cardsWrapperRef}
+          className="flex items-center min-w-max px-5 md:px-16 gap-4 md:space-x-4 pt-4 pb-4"
+        >
+          {cards.map((card, i) => {
+            const isHovered = hoveredIndex === i;
+            const baseRotation = isMobile ? 0 : card.rotation;
+
+            let xOffset = 0;
+            let targetRotation = baseRotation;
+
+            if (!isMobile && hoveredIndex !== null) {
+              if (isHovered) {
+                targetRotation = 0;
+              } else {
+                const distance = Math.abs(i - hoveredIndex);
+                const direction = i < hoveredIndex ? -1 : 1;
+
+                if (distance === 1) {
+                  xOffset = direction * 45;
+                  targetRotation = baseRotation + direction * 5;
+                } else if (distance === 2) {
+                  xOffset = direction * 20;
+                  targetRotation = baseRotation + direction * 2;
+                }
+              }
+            }
+
+            return (
+              <motion.div
+                key={card.id}
+                className="relative flex-shrink-0 max-md:mx-0 md:-mx-2 opacity-100"
+                initial={{ x: "20vw", opacity: 1 }}
+                animate={{
+                  x: isInView ? 0 : "20vw",
+                  opacity: 1,
+                  zIndex: isHovered ? 50 : i + 1,
+                }}
+                transition={{
+                  x: { duration: 1.0, delay: i * 0.08, type: "spring", bounce: 0.2 },
+                }}
               >
-                <div className="font-[family-name:var(--font-bebas)] text-[#161616] text-[28px] leading-none">
-                  {step.time}
-                </div>
-                <div className="font-[family-name:var(--font-bebas)] text-[#161616] text-[38px] leading-[0.9] tracking-[-0.02em] whitespace-pre-wrap">
-                  {step.text}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </div>
+                <motion.div
+                  data-card-index={i}
+                  className="relative w-[279px] h-[400px] max-md:rounded-[16px] md:rounded-[32px] cursor-pointer origin-center overflow-hidden shadow-2xl opacity-100 flex-shrink-0"
+                  onMouseEnter={() => {
+                    if (!isMobile) {
+                      setHoveredIndex(i);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (!isMobile) {
+                      setHoveredIndex(null);
+                    }
+                  }}
+                  animate={{
+                    rotate: targetRotation,
+                    scale: isHovered ? 1.08 : 1,
+                    x: xOffset,
+                    y: isHovered ? -10 : 0,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 170,
+                    damping: 22,
+                  }}
+                >
+                  {card.type === "testimonial" ? (
+                    <div
+                      className="w-full h-full flex flex-col justify-between p-6 md:p-7 text-[#FFF9EB] opacity-100 max-md:rounded-[16px] md:rounded-[32px]"
+                      style={{ backgroundColor: card.bgColor }}
+                    >
+                      {/* Avatar Circle */}
+                      <div className="w-14 h-14 md:w-14 md:h-14 rounded-full bg-[#EAEAEA]/80 flex items-center justify-center shrink-0 opacity-100">
+                        <svg
+                          className="w-6 h-6 text-[#8E8E8E]"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <rect x="3" y="3" width="18" height="18" rx="2" />
+                          <circle cx="8.5" cy="8.5" r="1.5" />
+                          <path d="M21 15l-5-5L5 21" />
+                        </svg>
+                      </div>
 
+                      {/* Quote Text */}
+                      <p className="font-sans text-[14px] md:text-[15px] leading-[1.45] text-[#FFF9EB] font-normal opacity-100 my-2">
+                        {card.quote}
+                      </p>
+
+                      {/* Name & Position */}
+                      <div className="flex flex-col opacity-100">
+                        <span className="font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.02em] text-[#FFF9EB] uppercase opacity-100">
+                          {card.name}
+                        </span>
+                        <span className="font-sans text-[13px] text-[#FFF9EB]/80 opacity-100">
+                          {card.role}
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="w-full h-full bg-[#161616] relative overflow-hidden max-md:rounded-[16px] md:rounded-[32px] opacity-100">
+                      <img
+                        src={card.src}
+                        alt={card.alt}
+                        className="w-full h-full object-cover scale-[1.18] pointer-events-none max-md:rounded-[16px] md:rounded-[32px] opacity-100"
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }

@@ -10,7 +10,7 @@ export const productsData: ProductData[] = [
     titleLines: ["ON ME", "SPRAY"],
     imageSrc: "/images/shop/shop-1.png",
     imageAlt: "Podium and Spray",
-    imageTransformClass: "md:transform md:rotate-[20deg] md:translate-x-28 md:translate-y-8 translate-x-10 translate-y-4",
+    imageTransformClass: "md:transform md:translate-x-28 md:translate-y-8 translate-x-10 translate-y-4",
     imageWidthHeightClass: "w-[400px] h-[360px] md:w-[580px] md:h-[500px]",
     description: "Convenient to locate, powerful enough to protect. Nazr’s On Me Personal Safety Spray is designed to be within reach when you need it the most. With a compact design that can be clipped to your keys or bag and a silicon glow-in-the-dark cap for easy visibility, On Me is ready when you are.",
     price: "₹777",

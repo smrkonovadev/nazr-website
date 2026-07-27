@@ -33,8 +33,8 @@ export default function ShopPage() {
 
         {/* Problem Steps Section */}
         <section className="w-full flex justify-center bg-[#161616]">
-          <DesktopScaler bgColor="#FFF1EB" className="w-full">
-            <div className="w-full bg-[#FFF1EB]">
+          <DesktopScaler bgColor="#161616" className="w-full">
+            <div className="w-full bg-[#161616]">
               <ShopProblemSteps />
             </div>
           </DesktopScaler>

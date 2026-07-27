@@ -129,6 +129,9 @@ export function NavigationMenu() {
               <Link href="/product-liability" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
                 Product Liability <span className="text-[11px] md:text-[12px]">↗</span>
               </Link>
+              <Link href="/delete-your-account" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
+                Delete Account <span className="text-[11px] md:text-[12px]">↗</span>
+              </Link>
               <Link href="/faq" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">
                 FAQ
               </Link>
