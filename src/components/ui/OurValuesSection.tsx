@@ -2,26 +2,37 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import shelfAnimData from "../../../public/images/Shelf.json";
+import bagAnimData from "../../../public/images/Bag.json";
+import singingBowlAnimData from "../../../public/images/Singing Bowl.json";
+import newspaperAnimData from "../../../public/images/Newspaper.json";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const values = [
   {
     title: "ANTICIPATORY DESIGN",
     desc: "The micro-moments of a woman’s journey is where support is needed most. From low-light visibility to crisis guidance, our system is designed for every possible scenario.",
+    lottie: shelfAnimData,
     image: "/images/OUR1.svg"
   },
   {
     title: "SEAMLESS INTEGRATION",
     desc: "Traditional gear can be scary and inconvenient which is something we reject. Nazr is crafted to be a natural, accessible and high-performance integration into your daily carry.",
+    lottie: bagAnimData,
     image: "/images/OUR2.svg"
   },
   {
     title: "MODERN HERITAGE",
     desc: "By reclaiming the “Nazar”, we aim to transform the traditional Evil Eye into a symbol of autonomy that enables a cultural statement of identity.",
+    lottie: singingBowlAnimData,
     image: "/images/OUR3.svg"
   },
   {
     title: "QUIET EMPOWERMENT",
     desc: "Our goal is to equip our users with the confidence to take up space knowing they’re prepared. Carrying Nazr is a declaration of rightful independence.",
+    lottie: newspaperAnimData,
     image: "/images/OUR4.svg"
   },
 ];
@@ -63,12 +74,13 @@ export function OurValuesSection() {
               className="snap-center min-w-[280px] w-[280px] flex flex-col rounded-[24px] overflow-hidden bg-[#F1E4DE] shadow-xl flex-shrink-0"
             >
               {/* Media Section */}
-              <div className="w-full h-[280px] relative overflow-hidden bg-[#161616] flex items-center justify-center p-2">
-                <Image
-                  src={val.image}
-                  alt={val.title}
-                  fill
-                  className="object-contain p-2"
+              <div className="w-full h-[280px] relative overflow-hidden bg-[#F1E4DE] flex items-center justify-center p-3">
+                <Lottie
+                  animationData={val.lottie}
+                  loop
+                  autoplay
+                  style={{ width: "100%", height: "100%" }}
+                  rendererSettings={{ preserveAspectRatio: "xMidYMid contain" }}
                 />
               </div>
 
@@ -131,7 +143,7 @@ export function OurValuesSection() {
 
         </div>
 
-        {/* Right Image Column: Phone Mockup Frame & Tilted Screen Display */}
+        {/* Right Image Column: Phone Mockup Frame & Tilted Lottie Screen Display */}
         <div 
           className="w-full lg:w-[360px] h-[574px] flex justify-center items-center relative flex-shrink-0"
           onMouseEnter={() => setIsPaused(true)}
@@ -166,24 +178,28 @@ export function OurValuesSection() {
                   bottom: '12px',
                   borderRadius: '32px',
                   overflow: 'hidden',
-                  backgroundColor: '#000000'
+                  backgroundColor: '#F1E4DE',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 {values.map((val, idx) => (
                   <div
                     key={idx}
-                    className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out"
+                    className="absolute inset-0 w-full h-full flex items-center justify-center p-3 transition-opacity duration-700 ease-in-out"
                     style={{
                       opacity: activeIndex === idx ? 1 : 0,
-                      zIndex: activeIndex === idx ? 10 : 0
+                      zIndex: activeIndex === idx ? 10 : 0,
+                      pointerEvents: activeIndex === idx ? "auto" : "none"
                     }}
                   >
-                    <Image
-                      src={val.image}
-                      alt={val.title}
-                      fill
-                      className="object-cover"
-                      priority={idx === 0}
+                    <Lottie
+                      animationData={val.lottie}
+                      loop
+                      autoplay
+                      style={{ width: "100%", height: "100%" }}
+                      rendererSettings={{ preserveAspectRatio: "xMidYMid contain" }}
                     />
                   </div>
                 ))}
