@@ -53,7 +53,7 @@ export function OnMeSpraySection({ title, subtitle, onNext, onPrev }: OnMeSprayS
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="text-[#FFF9EB] font-[Inter] font-normal text-center absolute w-full max-md:text-[14px] md:text-[18px]"
+                className="text-[#FFF9EB] font-[Inter] font-normal text-center absolute w-full max-md:text-[14px] md:text-[16px]"
                 style={{ lineHeight: "1.5", letterSpacing: "-0.01em" }}
                 dangerouslySetInnerHTML={{ __html: subtitle }}
               />

@@ -139,7 +139,7 @@ export function SafetyDesigned() {
             <h3 className="text-[#FFF9EB] m-0 text-center uppercase" style={{ fontFamily: "var(--font-bebas)", fontSize: "41.67px", lineHeight: "1.5", width: "100%" }}>
               {carouselData[currentIndex].title}
             </h3>
-            <p className="text-[#FFF9EB] m-0 text-center" style={{ fontFamily: "Inter, sans-serif", fontSize: "20.83px", lineHeight: "1.4", letterSpacing: "-0.03em" }}>
+            <p className="text-[#FFF9EB] m-0 text-center" style={{ fontFamily: "Inter, sans-serif", fontSize: "16px", lineHeight: "1.4", letterSpacing: "-0.03em" }}>
               {carouselData[currentIndex].subtitle}
             </p>
           </div>

@@ -102,16 +102,43 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Mobile Phone Mockup / Animation Display */}
-          <div className={`relative z-20 mt-[20px] mx-auto flex items-center justify-center transition-all duration-300 ${effectiveCard && activeAnimData ? 'w-[85vw] max-w-[320px] h-[360px] overflow-visible' : 'w-[55vw] max-w-[200px] aspect-[200/419] rounded-[24px] overflow-hidden'}`}>
-            {effectiveCard && activeAnimData ? (
-              <Lottie
-                key={`mobile-${effectiveCard}`}
-                animationData={activeAnimData}
-                loop={true}
-                className="w-full h-full object-contain drop-shadow-xl"
-              />
-            ) : (
+          <div className={`relative z-20 mt-[20px] mx-auto flex items-center justify-center transition-all duration-500 ease-in-out ${effectiveCard ? 'w-[85vw] max-w-[320px] h-[360px] overflow-visible' : 'w-[55vw] max-w-[200px] aspect-[200/419] rounded-[24px] overflow-hidden'}`}>
+            {/* Default Mobile Image */}
+            <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
               <Image src="/images/phone.png" alt="NAZR SOS App Interface" fill className="object-contain" />
+            </div>
+
+            {/* Mobile Card 1 Lottie */}
+            {animData1 && (
+              <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${effectiveCard === 1 ? 'opacity-100 z-20' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <Lottie
+                  animationData={animData1}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-xl scale-100"
+                />
+              </div>
+            )}
+
+            {/* Mobile Card 2 Lottie */}
+            {animData2 && (
+              <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${effectiveCard === 2 ? 'opacity-100 z-20' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <Lottie
+                  animationData={animData2}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-xl scale-100"
+                />
+              </div>
+            )}
+
+            {/* Mobile Card 3 Lottie */}
+            {animData3 && (
+              <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${effectiveCard === 3 ? 'opacity-100 z-20' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <Lottie
+                  animationData={animData3}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-xl scale-100"
+                />
+              </div>
             )}
           </div>
 
@@ -131,18 +158,47 @@ export function HelpWithoutHoldUp() {
             </h2>
           </div>
 
-          {/* Phone Display with Lottie Animation Trigger */}
-          <div className="absolute pointer-events-auto z-20 flex items-center justify-center overflow-visible"
-            style={{ width: "249.74px", height: "523.51px", top: "214px", left: "519.25px" }}>
-            {effectiveCard && activeAnimData ? (
-              <Lottie
-                key={`desktop-${effectiveCard}`}
-                animationData={activeAnimData}
-                loop={true}
-                className={`w-full h-full object-contain drop-shadow-2xl ${effectiveCard === 1 ? 'scale-[1.4]' : ''}`}
-              />
-            ) : (
+          {/* Phone Display with Smooth Cross-Fade Lottie Animation Triggers */}
+          <div
+            className={`absolute pointer-events-none z-20 flex items-center justify-center overflow-visible transition-all duration-500 ease-in-out ${effectiveCard === 1 ? '-translate-x-8 md:-translate-x-12' : ''}`}
+            style={{ width: "249.74px", height: "523.51px", top: "214px", left: "519.25px" }}
+          >
+            {/* Default Static Phone */}
+            <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
               <Image src="/images/new8.svg" alt="NAZR SOS App Interface" fill className="object-contain" />
+            </div>
+
+            {/* Card 1 Lottie (Volume SOS) */}
+            {animData1 && (
+              <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${effectiveCard === 1 ? 'opacity-100 z-20' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <Lottie
+                  animationData={animData1}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[1.85] transform-gpu"
+                />
+              </div>
+            )}
+
+            {/* Card 2 Lottie (In-App SOS) */}
+            {animData2 && (
+              <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${effectiveCard === 2 ? 'opacity-100 z-20' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <Lottie
+                  animationData={animData2}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-2xl scale-100 transform-gpu"
+                />
+              </div>
+            )}
+
+            {/* Card 3 Lottie (Widget SOS) */}
+            {animData3 && (
+              <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${effectiveCard === 3 ? 'opacity-100 z-20' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <Lottie
+                  animationData={animData3}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-2xl scale-100 transform-gpu"
+                />
+              </div>
             )}
           </div>
 
@@ -151,20 +207,20 @@ export function HelpWithoutHoldUp() {
             onMouseEnter={() => setHoveredCard(1)}
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => setActiveCard(1)}
-            className="absolute pointer-events-auto z-10 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
-            style={{ width: "217px", height: "130px", top: "364px", left: "228.25px" }}
+            className="absolute pointer-events-auto z-30 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
+            style={{ width: "225px", height: "130px", top: "364px", left: "220px" }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="215" height="128" rx="16" ry="16" fill={effectiveCard === 1 ? "#FF0E97" : "none"} stroke={effectiveCard === 1 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 1 ? "2" : "1"} strokeDasharray={effectiveCard === 1 ? "none" : "9 5"} />
+              <rect x="1" y="1" width="223" height="128" rx="16" ry="16" fill={effectiveCard === 1 ? "#FF0E97" : "none"} stroke={effectiveCard === 1 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 1 ? "2" : "1"} strokeDasharray={effectiveCard === 1 ? "none" : "9 5"} />
             </svg>
-            <div className={`absolute w-[32px] h-[32px] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-colors ${effectiveCard === 1 ? 'bg-white' : 'bg-[#FF0E97]'}`} style={{ top: "-16px", left: "24px" }}>
+            <div className={`absolute w-[32px] h-[32px] rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-colors z-20 ${effectiveCard === 1 ? 'bg-white' : 'bg-[#FF0E97]'}`} style={{ top: "-16px", left: "24px" }}>
               <span className={`font-[family-name:var(--font-bebas)] text-[18px] leading-[1] tracking-[-0.03em] mt-0.5 ${effectiveCard === 1 ? 'text-[#FF0E97]' : 'text-white'}`}>1</span>
             </div>
-            <div className="absolute flex flex-col justify-center items-start text-left px-[24px] pointer-events-none" style={{ inset: 0 }}>
-              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[20px] leading-[1.3] tracking-[-0.03em] m-0 mb-1 transition-colors ${effectiveCard === 1 ? 'text-white' : 'text-[#161616]'}`}>
+            <div className="absolute flex flex-col justify-center items-start text-left px-[20px] pt-[12px] pb-[4px] pointer-events-none" style={{ inset: 0 }}>
+              <h3 className={`font-[family-name:var(--font-switzer)] font-semibold text-[19px] leading-[1.15] tracking-[-0.03em] m-0 mb-1 transition-colors ${effectiveCard === 1 ? 'text-white' : 'text-[#161616]'}`}>
                 Volume Button SOS
               </h3>
-              <p className={`font-['Inter',_sans-serif] text-[15px] leading-[1.4] tracking-[-0.03em] m-0 w-full transition-colors ${effectiveCard === 1 ? 'text-white/90' : 'text-[#161616]'}`}>
+              <p className={`font-['Inter',_sans-serif] text-[13.5px] leading-[1.35] tracking-[-0.03em] m-0 w-full transition-colors ${effectiveCard === 1 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Press your volume button three times to instantly trigger SOS.
               </p>
             </div>
@@ -175,7 +231,7 @@ export function HelpWithoutHoldUp() {
             onMouseEnter={() => setHoveredCard(2)}
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => setActiveCard(2)}
-            className="absolute pointer-events-auto z-10 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
+            className="absolute pointer-events-auto z-30 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
             style={{ width: "217px", height: "130px", top: "314px", left: "834.75px" }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
@@ -199,7 +255,7 @@ export function HelpWithoutHoldUp() {
             onMouseEnter={() => setHoveredCard(3)}
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => setActiveCard(3)}
-            className="absolute pointer-events-auto z-10 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
+            className="absolute pointer-events-auto z-30 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
             style={{ width: "276px", height: "130px", top: "544px", left: "805px" }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
