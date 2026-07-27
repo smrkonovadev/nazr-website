@@ -28,8 +28,8 @@ export function SafetyHabits() {
   }, []);
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-6 md:py-[60px] md:px-[30px] overflow-visible relative z-20">
-      <div className="w-full max-w-[1220px] px-4 md:px-0 flex flex-col items-center gap-[24px] md:gap-[40px] relative">
+    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-6 md:py-[60px] md:px-[20px] lg:px-[30px] overflow-hidden relative z-20">
+      <div className="w-full max-w-[1280px] px-4 md:px-0 flex flex-col items-center gap-[24px] md:gap-[40px] relative">
 
         {/* Title Block */}
         <div className="w-full flex flex-col items-center md:gap-[32px] md:w-[746px] md:h-[234px]">
@@ -50,14 +50,14 @@ export function SafetyHabits() {
           </p>
         </div>
 
-        {/* Cards Container — Horizontal swipe on mobile, 3-column row on desktop */}
-        <div className="w-full flex flex-row max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:pb-6 max-md:pt-2 max-md:px-2 max-md:gap-5 md:justify-between md:items-start md:gap-0 md:h-[593px] md:w-[1220px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {/* Cards Container — Guaranteed 40px spacing between 379px wide cards */}
+        <div className="w-full flex flex-row overflow-x-auto snap-x snap-mandatory pb-6 pt-2 px-4 md:px-2 gap-5 md:gap-[40px] justify-start md:justify-center items-start w-full max-w-[1280px] mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
 
           {/* Card 1: EMERGENCY SOS */}
-          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[378.66px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
-            {/* Image Box */}
+          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
+            {/* Background Box (Width: 379px, Height: 441px, Border Radius: 24px) */}
             <div
-              className="relative w-full h-[380px] sm:h-[420px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2"
+              className="relative w-full h-[380px] sm:h-[420px] md:w-[379px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2 opacity-100 rotate-0"
               style={{ background: "linear-gradient(152.75deg, #FFF9EB 3.64%, rgba(211, 176, 94, 0.5) 302.87%)" }}
             >
               {mounted && triggerAnimData ? (
@@ -71,21 +71,21 @@ export function SafetyHabits() {
                 <div className="w-full h-full bg-transparent" />
               )}
             </div>
-            {/* Text */}
-            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[16px]">
-              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[346.66px] md:h-[22px]">
+            {/* Text Content */}
+            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[0px]">
+              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[22px]">
                 EMERGENCY SOS
               </h3>
-              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[346.66px] md:h-[78px]">
+              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[78px]">
                 Connects you to your support network with real-time location sharing, emergency alerts, and quick access to critical support services when you need them most.
               </p>
             </div>
           </div>
 
           {/* Card 2: SHIELD MODE */}
-          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[378.66px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
-            {/* Image Box */}
-            <div className="relative w-full h-[380px] sm:h-[420px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg bg-[#111111] flex items-center justify-center p-2">
+          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
+            {/* Background Box (Width: 379px, Height: 441px, Border Radius: 24px) */}
+            <div className="relative w-full h-[380px] sm:h-[420px] md:w-[379px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg bg-[#111111] flex items-center justify-center p-2 opacity-100 rotate-0">
               <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ background: "linear-gradient(0deg, #FFF9EB 0%, rgba(139, 105, 25, 0.7) 100%)" }}></div>
               {mounted && armAnimData ? (
                 <Lottie
@@ -98,22 +98,22 @@ export function SafetyHabits() {
                 <div className="w-full h-full bg-transparent" />
               )}
             </div>
-            {/* Text */}
-            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[16px]">
-              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[346.66px] md:h-[22px]">
+            {/* Text Content */}
+            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[0px]">
+              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[22px]">
                 SHIELD MODE
               </h3>
-              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[346.66px] md:h-[78px]">
+              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[78px]">
                 Designed for the ride home, the late-night cab, and every journey in between. Shield Mode keeps you supported, so you never have to navigate a journey alone.
               </p>
             </div>
           </div>
 
           {/* Card 3: TRUSTED CIRCLE */}
-          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[378.66px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
-            {/* Image Box */}
+          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
+            {/* Background Box (Width: 379px, Height: 441px, Border Radius: 24px) */}
             <div
-              className="relative w-full h-[380px] sm:h-[420px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2"
+              className="relative w-full h-[380px] sm:h-[420px] md:w-[379px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2 opacity-100 rotate-0"
               style={{ background: "linear-gradient(152.75deg, #FFF9EB 3.64%, rgba(211, 176, 94, 0.5) 302.87%)" }}
             >
               {mounted && trustedAnimData ? (
@@ -127,12 +127,12 @@ export function SafetyHabits() {
                 <div className="w-full h-full bg-transparent" />
               )}
             </div>
-            {/* Text */}
-            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[16px]">
-              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[346.66px] md:h-[22px]">
+            {/* Text Content */}
+            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[0px]">
+              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[22px]">
                 TRUSTED CIRCLE
               </h3>
-              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[346.66px] md:h-[78px]">
+              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[78px]">
                 Your safety network, built around the people you trust most. Receive support through SOS alerts, journey updates, and automated check-ins.
               </p>
             </div>

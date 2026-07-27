@@ -17,7 +17,7 @@ const cards = [
   {
     id: 2,
     type: "image",
-    src: "/images/shopt2.svg",
+    src: "/home why (1).svg",
     alt: "Woman Reaction 1",
     rotation: -4,
   },
@@ -34,7 +34,7 @@ const cards = [
   {
     id: 4,
     type: "image",
-    src: "/images/shopt4.svg",
+    src: "/home why (2).svg",
     alt: "Woman Reaction 2",
     rotation: 3,
   },
@@ -47,6 +47,74 @@ const cards = [
     name: "Akshat Kanungo",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -6,
+  },
+  {
+    id: 6,
+    type: "image",
+    src: "/home why (1).svg",
+    alt: "Woman Reaction 1",
+    rotation: 4,
+  },
+  {
+    id: 7,
+    type: "testimonial",
+    bgColor: "#E5007D",
+    quote:
+      '"NAZR feels like it understands what women actually need. It just makes you feel more prepared."',
+    name: "Aina K",
+    stars: "⭐⭐⭐⭐",
+    rotation: -5,
+  },
+  {
+    id: 8,
+    type: "image",
+    src: "/home why (2).svg",
+    alt: "Woman Reaction 2",
+    rotation: 5,
+  },
+  {
+    id: 9,
+    type: "testimonial",
+    bgColor: "#0E8DFF",
+    quote:
+      '"The glow-in-the-dark feature sounded minor at first, but it\'s surprisingly useful. I had kept it on my bag the whole day and then in the evening when I got home I realised that it was glowing as it was pitch dark, great detailing!"',
+    name: "Shikha Verma",
+    stars: "⭐⭐⭐⭐⭐",
+    rotation: -4,
+  },
+  {
+    id: 10,
+    type: "image",
+    src: "/home why (1).svg",
+    alt: "Woman Reaction 1",
+    rotation: 6,
+  },
+  {
+    id: 11,
+    type: "testimonial",
+    bgColor: "#E5007D",
+    quote:
+      '"Every woman should know about NAZR. I came across the brand on Instagram and ended up ordering. The mission, the design, and the products all feel very well thought of :)"',
+    name: "",
+    stars: "⭐⭐⭐⭐⭐",
+    rotation: -7,
+  },
+  {
+    id: 12,
+    type: "image",
+    src: "/home why (2).svg",
+    alt: "Woman Reaction 2",
+    rotation: 4,
+  },
+  {
+    id: 13,
+    type: "testimonial",
+    bgColor: "#0E8DFF",
+    quote:
+      '"It\'s one of those products you hope you never need, but you\'re glad to have. So when I came across this, I got one for my sister too!"',
+    name: "",
+    stars: "⭐⭐⭐⭐⭐",
+    rotation: -5,
   },
 ];
 
@@ -139,7 +207,7 @@ export function ShopProblemSteps() {
         >
           {cards.map((card, i) => {
             const isHovered = hoveredIndex === i;
-            const baseRotation = isMobile ? 0 : card.rotation;
+            const baseRotation = isMobile ? 0 : (card.rotation || 0);
 
             let xOffset = 0;
             let targetRotation = baseRotation;
@@ -227,9 +295,11 @@ export function ShopProblemSteps() {
 
                       {/* Name & Stars */}
                       <div className="flex flex-col opacity-100">
-                        <span className="font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.02em] text-[#FFF9EB] uppercase opacity-100">
-                          {card.name}
-                        </span>
+                        {card.name ? (
+                          <span className="font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.02em] text-[#FFF9EB] uppercase opacity-100">
+                            {card.name}
+                          </span>
+                        ) : null}
                         <span className="text-[13px] text-[#FFF9EB] opacity-90 mt-0.5">
                           {(card as any).stars || (card as any).role}
                         </span>
@@ -240,7 +310,7 @@ export function ShopProblemSteps() {
                       <img
                         src={card.src}
                         alt={card.alt}
-                        className="w-full h-full object-cover scale-[1.18] pointer-events-none max-md:rounded-[16px] md:rounded-[32px] opacity-100"
+                        className="w-full h-full object-cover scale-[1.05] pointer-events-none max-md:rounded-[16px] md:rounded-[32px] opacity-100"
                       />
                     </div>
                   )}

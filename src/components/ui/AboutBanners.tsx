@@ -48,33 +48,33 @@ export function AboutBanners() {
           transformOrigin: 'center center'
         }}
       >
-        {/* Pink Band - Top: Unwanted Attention Blocked */}
+        {/* Pink Band - Top: Unwanted Attention Blocked (Moves LEFT) */}
         <div
           className="absolute max-md:top-[18px] md:top-[35px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#F80090] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-10 shadow-lg max-md:-rotate-[5deg] md:-rotate-[2deg]"
         >
-          <div className="flex w-max items-center h-full animate-marquee-reverse">
+          <div className="flex w-max items-center h-full animate-marquee">
             {[...Array(12)].map((_, i) => (
               <MarqueeItem key={i} label="Unwanted Attention Blocked" />
             ))}
           </div>
         </div>
 
-        {/* Blue Band - Middle: LUCK ISN'T A STRATEGY */}
+        {/* Blue Band - Middle: LUCK ISN'T A STRATEGY (Moves RIGHT) */}
         <div
           className="absolute max-md:top-[93px] md:top-[180px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#0E8DFF] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-30 shadow-2xl rotate-[5deg]"
         >
-          <div className="flex w-max items-center h-full animate-marquee">
+          <div className="flex w-max items-center h-full animate-marquee-reverse">
             {[...Array(12)].map((_, i) => (
               <MarqueeItem key={i} label="LUCK ISN'T A STRATEGY" />
             ))}
           </div>
         </div>
 
-        {/* Green Band - Bottom: YOUR MOM WOULD APPROVE */}
+        {/* Green Band - Bottom: YOUR MOM WOULD APPROVE (Moves LEFT) */}
         <div
           className="absolute max-md:top-[168px] md:top-[325px] max-md:w-[300%] md:w-[150%] max-md:left-[-100%] md:left-[-25%] bg-[#03A781] max-md:p-[16px] max-md:h-[110px] md:py-6 flex z-20 shadow-lg max-md:-rotate-[5deg] md:-rotate-[2deg]"
         >
-          <div className="flex w-max items-center h-full animate-marquee-reverse" style={{ animationDuration: '35s' }}>
+          <div className="flex w-max items-center h-full animate-marquee" style={{ animationDuration: '35s' }}>
             {[...Array(12)].map((_, i) => (
               <MarqueeItem key={i} label="YOUR MOM WOULD APPROVE" />
             ))}

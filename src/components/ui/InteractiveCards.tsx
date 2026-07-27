@@ -77,6 +77,46 @@ const testimonialCards: any[] = [
     stars: "⭐⭐⭐⭐⭐",
     rotation: -2
   },
+  { id: 6, type: "image", src: "/home why (1).svg", rotation: 3 },
+  {
+    id: 7,
+    type: "testimonial",
+    bgColor: "#FF0E97",
+    quote: '"NAZR feels like it understands what women actually need. It just makes you feel more prepared."',
+    name: "Aina K",
+    stars: "⭐⭐⭐⭐",
+    rotation: -2
+  },
+  { id: 8, type: "image", src: "/home why (2).svg", rotation: 3 },
+  {
+    id: 9,
+    type: "testimonial",
+    bgColor: "#0A84FF",
+    quote: '"The glow-in-the-dark feature sounded minor at first, but it\'s surprisingly useful. I had kept it on my bag the whole day and then in the evening when I got home I realised that it was glowing as it was pitch dark, great detailing!"',
+    name: "Shikha Verma",
+    stars: "⭐⭐⭐⭐⭐",
+    rotation: -2
+  },
+  { id: 10, type: "image", src: "/home why (1).svg", rotation: 3 },
+  {
+    id: 11,
+    type: "testimonial",
+    bgColor: "#FF0E97",
+    quote: '"Every woman should know about NAZR. I came across the brand on Instagram and ended up ordering. The mission, the design, and the products all feel very well thought of :)"',
+    name: "",
+    stars: "⭐⭐⭐⭐⭐",
+    rotation: -2
+  },
+  { id: 12, type: "image", src: "/home why (2).svg", rotation: 3 },
+  {
+    id: 13,
+    type: "testimonial",
+    bgColor: "#0A84FF",
+    quote: '"It\'s one of those products you hope you never need, but you\'re glad to have. So when I came across this, I got one for my sister too!"',
+    name: "",
+    stars: "⭐⭐⭐⭐⭐",
+    rotation: -2
+  },
 ];
 
 interface InteractiveCardsProps {
@@ -92,7 +132,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
 
   const handleMouseLeave = () => {
     setHoveredIndex(null);
-    setDynamicRotations(testimonialCards.map(() => (Math.random() * 24) - 12));
+    setDynamicRotations(testimonialCards.map(() => (Math.random() * 12) - 6));
   };
 
   return (
@@ -166,7 +206,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
           <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0">
             {testimonialCards.map((card, i) => {
               const isHovered = hoveredIndex === i;
-              const baseRotation = dynamicRotations ? dynamicRotations[i] : card.rotation;
+              const baseRotation = (dynamicRotations && typeof dynamicRotations[i] === 'number') ? dynamicRotations[i] : (card.rotation || 0);
 
               let xOffset = 0;
               let targetRotation = baseRotation;
@@ -208,7 +248,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                 >
                   <motion.div
                     data-card-index={i}
-                    className="relative w-[154px] h-[240px] rounded-[18px] md:w-[279px] md:h-[400px] md:rounded-[32px] cursor-pointer origin-bottom overflow-hidden"
+                    className="relative w-[154px] h-[240px] rounded-[18px] md:w-[279px] md:h-[400px] md:rounded-[32px] cursor-pointer origin-bottom overflow-hidden shadow-lg"
                     onMouseEnter={() => {
                       if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
                         setHoveredIndex(i);
@@ -246,9 +286,11 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                           {(card as any).quote}
                         </div>
                         <div className="flex flex-col mt-2 md:mt-4">
-                          <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#FFF9EB] leading-[1.3] tracking-normal uppercase">
-                            {(card as any).name}
-                          </div>
+                          {(card as any).name ? (
+                            <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#FFF9EB] leading-[1.3] tracking-normal uppercase">
+                              {(card as any).name}
+                            </div>
+                          ) : null}
                           <div className="text-[10px] md:text-[14px] text-[#FFF9EB] opacity-90 mt-0.5">
                             {(card as any).stars || card.role}
                           </div>
@@ -259,7 +301,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                         src={card.src!}
                         alt={`Interactive Card ${card.id}`}
                         fill
-                        className="object-contain scale-[1.3]"
+                        className="object-cover scale-[1.02]"
                       />
                     )}
                   </motion.div>
