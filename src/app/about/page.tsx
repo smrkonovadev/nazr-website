@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AboutHero } from "@/components/ui/AboutHero";
 import { AboutStatement } from "@/components/ui/AboutStatement";
 import { AboutCollage } from "@/components/ui/AboutCollage";
@@ -9,6 +10,36 @@ import { AboutTestimonial } from "@/components/ui/AboutTestimonial";
 import { AboutContactUs } from "@/components/ui/AboutContactUs";
 import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
+
+export const metadata: Metadata = {
+  title: "About NAZR - Our Story, Mission & Founding Team in India",
+  description: "Meet the team building NAZR, India's women's safety ecosystem, and our mission to shift the narrative from fear-reaction to everyday readiness.",
+  keywords: [
+    "NAZR founders",
+    "women's safety brand India",
+    "NAZR mission",
+    "Aishani Mukherjee",
+    "Atul Chopra NAZR",
+    "about NAZR",
+    "safety ecosystem India",
+  ],
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About NAZR - Our Story, Mission & Founding Team in India",
+    description: "Meet the team building NAZR, India's women's safety ecosystem, and our mission to shift the narrative from fear-reaction to everyday readiness.",
+    url: "https://www.nazrco.in/about",
+    siteName: "NAZR",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About NAZR - Our Story, Mission & Founding Team in India",
+    description: "Meet the team building NAZR, India's women's safety ecosystem, and our mission to shift the narrative from fear-reaction to everyday readiness.",
+  },
+};
 
 export default function AboutPage() {
   return (

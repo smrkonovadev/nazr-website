@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
 
 import { WhyNazrExistsIntro } from "@/components/ui/WhyNazrExistsIntro";
@@ -8,6 +9,35 @@ import { ContactUsSection } from "@/components/ui/ContactUsSection";
 import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
+
+export const metadata: Metadata = {
+  title: "Why NAZR Exists – The Case for Everyday Readiness",
+  description: "Indian women have always built their own safety systems through instinct and routine. NAZR exists to give those habits an ecosystem, not an afterthought.",
+  keywords: [
+    "why NAZR exists",
+    "NAZR brand values",
+    "women's safety philosophy India",
+    "anticipatory design",
+    "NAZR owl symbolism",
+    "Nazar evil eye autonomy",
+  ],
+  alternates: {
+    canonical: "/whynazrexists",
+  },
+  openGraph: {
+    title: "Why NAZR Exists – The Case for Everyday Readiness",
+    description: "Indian women have always built their own safety systems through instinct and routine. NAZR exists to give those habits an ecosystem, not an afterthought.",
+    url: "https://www.nazrco.in/whynazrexists",
+    siteName: "NAZR",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why NAZR Exists – The Case for Everyday Readiness",
+    description: "Indian women have always built their own safety systems through instinct and routine. NAZR exists to give those habits an ecosystem, not an afterthought.",
+  },
+};
 
 export default function WhyNazrExistsPage() {
   return (

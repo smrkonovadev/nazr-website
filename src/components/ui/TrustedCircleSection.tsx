@@ -152,8 +152,8 @@ export function TrustedCircleSection() {
           {/* Left Column: Timeline */}
           <div className="col-span-6 relative flex flex-col gap-8 w-full text-left pt-4">
             {steps.map((step, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="relative z-10 flex gap-6 items-start cursor-pointer animate-duration-300"
               >
                 {/* Connecting line to next step */}
@@ -161,20 +161,20 @@ export function TrustedCircleSection() {
                   {/* Track */}
                   <div className="w-full h-full bg-[#161616]/10 rounded-full"></div>
                   {/* Active Fill */}
-                  <div 
+                  <div
                     className="absolute top-0 left-0 w-full bg-[#F80090] rounded-full transition-[height] duration-75"
-                    style={{ 
-                      height: activeStep > index 
-                        ? "100%" 
-                        : activeStep === index 
-                          ? `${progress}%` 
-                          : "0%" 
+                    style={{
+                      height: activeStep > index
+                        ? "100%"
+                        : activeStep === index
+                          ? `${progress}%`
+                          : "0%"
                     }}
                   ></div>
                 </div>
 
-                <div 
-                  className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-sans text-[16px] font-bold border-[3px] bg-white text-[#161616] transition-colors duration-300 relative z-10" 
+                <div
+                  className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-sans text-[16px] font-bold border-[3px] bg-white text-[#161616] transition-colors duration-300 relative z-10"
                   style={{
                     borderColor: activeStep >= index ? "#F80090" : "rgba(22, 22, 22, 0.15)"
                   }}
@@ -189,7 +189,7 @@ export function TrustedCircleSection() {
                 >
                   {step.number}
                 </div>
-                <div 
+                <div
                   className="flex flex-col gap-1 pt-1 transition-opacity duration-300"
                   style={{ opacity: activeStep === index ? 1 : 0.4 }}
                 >
@@ -213,7 +213,7 @@ export function TrustedCircleSection() {
           </div>
 
           {/* Right Column: Visuals */}
-          <div 
+          <div
             className="col-span-6 col-start-7 w-full h-[550px] rounded-[9.71px] relative overflow-hidden flex justify-center items-center p-6 shadow-2xl transition-colors duration-500"
             style={{ backgroundColor: steps[activeStep].color }}
           >

@@ -1,6 +1,35 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
 import { FaqSection } from "@/components/ui/FaqSection";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
+
+export const metadata: Metadata = {
+  title: "NAZR FAQs | Pepper Spray, Sip Check & App Questions ",
+  description: "Answers to common NAZR questions: is pepper spray legal in India, how Sip Check works, how SOS auto-escalation functions, and app location privacy.",
+  keywords: [
+    "is pepper spray legal in India",
+    "Sip Check FAQ",
+    "NAZR app FAQ",
+    "pepper spray on flights India",
+    "NAZR SOS questions",
+  ],
+  alternates: {
+    canonical: "/faq",
+  },
+  openGraph: {
+    title: "NAZR FAQs | Pepper Spray, Sip Check & App Questions ",
+    description: "Answers to common NAZR questions: is pepper spray legal in India, how Sip Check works, how SOS auto-escalation functions, and app location privacy.",
+    url: "https://www.nazrco.in/faq",
+    siteName: "NAZR",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NAZR FAQs | Pepper Spray, Sip Check & App Questions ",
+    description: "Answers to common NAZR questions: is pepper spray legal in India, how Sip Check works, how SOS auto-escalation functions, and app location privacy.",
+  },
+};
 
 export default function FaqPage() {
   return (
