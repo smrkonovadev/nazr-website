@@ -85,16 +85,16 @@ export function SocialMediaSection() {
             <Image src="/images/new26.svg" alt="Dog" fill className="object-cover md:object-fill" />
           </motion.div>
 
-          {/* Col 4: Discord (Right, Spans full height) */}
+          {/* Col 4: Community (Right, Spans full height) */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-            className="absolute md:relative pointer-events-auto max-md:top-[21.12%] max-md:left-[66.81%] max-md:w-[31.81%] max-md:h-[73.11%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden"
+            className="absolute md:relative pointer-events-auto max-md:top-[21.12%] max-md:left-[66.81%] max-md:w-[31.81%] max-md:h-[73.11%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden rounded-[16px] md:rounded-[24px] overflow-hidden"
             style={{ gridColumn: 'span 1', gridRow: 'span 2' }}
           >
-            <Image src="/images/bigright.svg" alt="Discord" fill className="object-cover md:object-fill" />
+            <Image src="/images/com.jpeg" alt="Community" fill className="object-cover md:object-fill" />
           </motion.div>
 
           {/* Col 1: Car (Bottom Left) */}

@@ -28,6 +28,12 @@ const floatingPositions: Record<string, any> = {
     skull: "top-[50%] right-[10%] md:right-[10%] rotate-[-50deg]",
     globe: "top-[60%] left-[5%] md:left-[28%] -rotate-[0deg] scale-170",
     bubble: "top-[12%] left-[0%] md:left-[-10%] rotate-6"
+  },
+  "/images/NAZR360.svg": {
+    owl: "top-[14%] right-[5%] md:right-[25%] -rotate-[30deg] scale-110",
+    skull: "top-[50%] right-[10%] md:right-[10%] rotate-[-50deg]",
+    globe: "top-[60%] left-[5%] md:left-[28%] -rotate-[0deg] scale-170",
+    bubble: "top-[12%] left-[0%] md:left-[-10%] rotate-6"
   }
 };
 
@@ -53,11 +59,10 @@ export function ProductsShowcase({ leftImage, centerImage, rightImage }: Product
         </div>
 
         {/* Center Product & Floating Elements */}
-        <div className={`w-full relative h-[500px] md:h-[800px] flex justify-center items-center z-20 transition-transform duration-500 ease-in-out ${
-          centerImage.includes('rightimg') ? 'translate-y-[80px] md:translate-y-0' : 
-          centerImage.includes('blueright') ? 'translate-y-[30px] md:translate-y-0' : 
-          'translate-y-[50px] md:translate-y-0'
-        }`}>
+        <div className={`w-full relative h-[500px] md:h-[800px] flex justify-center items-center z-20 transition-transform duration-500 ease-in-out ${(centerImage.includes('rightimg') || centerImage.includes('NAZR360')) ? 'translate-y-[80px] md:translate-y-0' :
+            centerImage.includes('blueright') ? 'translate-y-[30px] md:translate-y-0' :
+              'translate-y-[50px] md:translate-y-0'
+          }`}>
 
           {/* Main Center Image (Animated via layoutId) */}
           <motion.img
@@ -67,7 +72,7 @@ export function ProductsShowcase({ leftImage, centerImage, rightImage }: Product
             alt="Center Product"
             className={`object-contain absolute w-full h-full z-10 scale-[1.6] md:scale-100 origin-center ${centerImage.includes('blueright') ? 'p-6 md:p-16' : ''}`}
             style={{
-              top: centerImage.includes('rightimg') ? '-45px' : centerImage.includes('blueright') ? '84px' : '0px'
+              top: (centerImage.includes('rightimg') || centerImage.includes('NAZR360')) ? '-45px' : centerImage.includes('blueright') ? '84px' : '0px'
             }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
