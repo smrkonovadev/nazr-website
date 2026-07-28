@@ -19,7 +19,7 @@ export const carouselData = [
   },
   {
     id: "nazr-360",
-    image: "/images/rightimg.png",
+    image: "/images/NAZR360.svg",
     title: "NAZR 360°",
     subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you."
   }
@@ -76,16 +76,16 @@ export function SafetyDesigned() {
               initial={false}
               animate={{
                 width: isCenter
-                  ? (item.id === "sip-check" ? 278.75 : 363.30)
+                  ? (item.id === "sip-check" ? 278.75 : item.id === "nazr-360" ? 300 : 363.30)
                   : (isLeft ? 250.69 : 249.71),
                 height: isCenter
-                  ? (item.id === "sip-check" ? 326.53 : 499.42)
+                  ? (item.id === "sip-check" ? 326.53 : item.id === "nazr-360" ? 410 : 499.42)
                   : 344.69,
                 top: isCenter
-                  ? (item.id === "sip-check" ? 362.45 : 276)
+                  ? (item.id === "sip-check" ? 362.45 : item.id === "nazr-360" ? 320 : 276)
                   : 381.76,
                 left: isCenter
-                  ? (item.id === "sip-check" ? 472.09 : 429.81)
+                  ? (item.id === "sip-check" ? 472.09 : item.id === "nazr-360" ? 460 : 429.81)
                   : (isLeft ? 104.7 : 865.59),
                 opacity: isCenter ? 1 : 0.6,
                 zIndex: isCenter ? 20 : 10
@@ -98,7 +98,7 @@ export function SafetyDesigned() {
                 className="w-full h-full object-contain"
                 initial={false}
                 animate={{
-                  scale: isCenter ? 1 : 1.2,
+                  scale: isCenter ? 1 : (item.id === "nazr-360" ? 0.9 : 1.2),
                   originX: isLeft ? 1 : (isRight ? 0 : 0.5)
                 }}
                 transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
@@ -120,10 +120,10 @@ export function SafetyDesigned() {
         <FloatingIcon src="/images/new16.svg" visible={currentIndex === 0} width="130.95px" height="110.19px" top="610px" left="678.55px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for nazr-360, index 2) */}
-        <FloatingIcon src="/images/new18.svg" visible={currentIndex === 2} width="231.41px" height="269.84px" top="276px" left="387.02px" delay={0.0} />
-        <FloatingIcon src="/images/new19.svg" visible={currentIndex === 2} width="190.26px" height="200.17px" top="250.4px" left="685.82px" rotate={-15} delay={0.05} />
-        <FloatingIcon src="/images/new21.svg" visible={currentIndex === 2} width="292.46px" height="210.13px" top="600.29px" left="266.67px" rotate={10.59} delay={0.1} />
-        <FloatingIcon src="/images/new20.svg" visible={currentIndex === 2} width="130.95px" height="110.19px" top="610px" left="758.55px" rotate={0} delay={0.15} />
+        <FloatingIcon src="/images/new18.svg" visible={currentIndex === 2} width="220px" height="250px" top="250px" left="365px" delay={0.0} />
+        <FloatingIcon src="/images/new19.svg" visible={currentIndex === 2} width="180px" height="190px" top="270px" left="675px" rotate={-15} delay={0.05} />
+        <FloatingIcon src="/images/new21.svg" visible={currentIndex === 2} width="270px" height="195px" top="590px" left="285px" rotate={10.59} delay={0.1} />
+        <FloatingIcon src="/images/new20.svg" visible={currentIndex === 2} width="120px" height="100px" top="600px" left="745px" rotate={0} delay={0.15} />
 
         {/* Arrows — vertically centered with paragraph text */}
         <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "257.13px" }}>
@@ -174,7 +174,7 @@ export function SafetyDesigned() {
           </div>
 
           {/* Center Card (Active) */}
-          <div className="relative w-[230px] h-[240px] z-20 flex items-center justify-center">
+          <div className={`relative ${currentIndex === 2 ? 'w-[160px] h-[170px]' : 'w-[230px] h-[240px]'} z-20 flex items-center justify-center`}>
             <img src={carouselData[currentIndex].image} alt="Center Product" className="w-full h-full object-contain" />
 
             {/* Active Product Stickers */}
@@ -221,19 +221,21 @@ export function SafetyDesigned() {
 
             {currentIndex === 2 && (
               <>
-                {/* Nazr 360 Stickers */}
-                {/* Red Circle: Silver Saturn (closer to product) */}
-                <div className="absolute w-[95px] h-[95px] top-[0px] left-[-10px] z-30 pointer-events-none">
+                {/* Nazr 360 Stickers - Spaced out further from product */}
+                {/* Silver Saturn Planet (Top-Left) */}
+                <div className="absolute w-[85px] h-[85px] top-[-45px] left-[-58px] z-30 pointer-events-none">
                   <Image src="/images/new18.svg" alt="sticker" fill className="object-contain" />
                 </div>
-                <div className="absolute w-[100px] h-[100px] top-[10px] right-[-30px] z-30 pointer-events-none">
+                {/* Top-Right Glow Sticker */}
+                <div className="absolute w-[90px] h-[90px] top-[-25px] right-[-58px] z-30 pointer-events-none">
                   <Image src="/images/new19.svg" alt="sticker" fill className="object-contain" />
                 </div>
-                {/* Green Circle: Silver Shooting Star (moved to the left) */}
-                <div className="absolute w-[105px] h-[95px] bottom-[15px] left-[-55px] z-30 pointer-events-none">
+                {/* Silver Shooting Star (Bottom-Left) */}
+                <div className="absolute w-[95px] h-[85px] bottom-[-20px] left-[-75px] z-30 pointer-events-none">
                   <Image src="/images/new21.svg" alt="sticker" fill className="object-contain" />
                 </div>
-                <div className="absolute w-[75px] h-[70px] bottom-[20px] right-[-25px] z-30 pointer-events-none">
+                {/* 1111 Glow (Bottom-Right) */}
+                <div className="absolute w-[70px] h-[65px] bottom-[-20px] right-[-52px] z-30 pointer-events-none">
                   <Image src="/images/new20.svg" alt="sticker" fill className="object-contain" />
                 </div>
               </>

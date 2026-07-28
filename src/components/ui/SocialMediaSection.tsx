@@ -10,40 +10,40 @@ export function SocialMediaSection() {
         className="w-full max-w-[338px] aspect-[338/212.42] md:aspect-[1220/730] md:max-w-[1220px] md:h-auto bg-white relative flex flex-col overflow-hidden mx-auto border-[2.04px] border-[#EDEDED] md:border-0 rounded-[6.99px] md:rounded-[48px] md:p-[45px_50px_45px_50px]"
       >
         <div className="w-[1220px] md:contents origin-top-left flex flex-col scale-[0.27705]" style={{ padding: '45px 50px 0 50px' }}>
-        {/* Profile Header */}
-        <div className="flex items-center gap-6 mb-8 md:mb-8 shrink-0 relative -top-[20px]" style={{ perspective: "1000px" }}>
-          {/* Profile Icon */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1.5 }}
-            className="relative w-[88px] h-[88px] shrink-0 rounded-full overflow-hidden"
-          >
-            <Image
-              src="/images/Favicon-03 (1).png"
-              alt="Profile"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
+          {/* Profile Header */}
+          <div className="flex items-center gap-6 mb-8 md:mb-8 shrink-0 relative -top-[20px]" style={{ perspective: "1000px" }}>
+            {/* Profile Icon */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.5 }}
+              className="relative w-[88px] h-[88px] shrink-0 rounded-full overflow-hidden"
+            >
+              <Image
+                src="/images/Favicon-03 (1).png"
+                alt="Profile"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
 
-          {/* Text */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1.5, delay: 0.4 }}
-            className="flex flex-col justify-center"
-          >
-            <h3 className="m-0 font-[family-name:var(--font-bebas)] text-black max-[380px]:text-[32px] text-[38px] leading-[90%] tracking-tight">
-              @NAZR.360
-            </h3>
-            <p className="m-0 text-[#161616] text-[17px] font-sans mt-0 tracking-tight">
-              Building India&apos;s first women&apos;s safety ecosystem
-            </p>
-          </motion.div>
-        </div>
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.5, delay: 0.4 }}
+              className="flex flex-col justify-center"
+            >
+              <h3 className="m-0 font-[family-name:var(--font-bebas)] text-black max-[380px]:text-[32px] text-[38px] leading-[90%] tracking-tight">
+                @NAZR.360
+              </h3>
+              <p className="m-0 text-[#161616] text-[17px] font-sans mt-0 tracking-tight">
+                Building India&apos;s first women&apos;s safety ecosystem
+              </p>
+            </motion.div>
+          </div>
 
         </div>
 
@@ -79,16 +79,16 @@ export function SocialMediaSection() {
             <Image src="/images/new26.svg" alt="Dog" fill className="object-cover md:object-fill" />
           </motion.div>
 
-          {/* Col 4: Discord (Right, Spans full height) */}
+          {/* Col 4: Community (Right, Spans full height) */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-            className="absolute md:relative pointer-events-auto max-md:top-[21.12%] max-md:left-[66.81%] max-md:w-[31.81%] max-md:h-[73.11%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden"
+            className="absolute md:relative pointer-events-auto max-md:top-[21.12%] max-md:left-[66.81%] max-md:w-[31.81%] max-md:h-[73.11%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden rounded-[16px] md:rounded-[24px] overflow-hidden"
             style={{ gridColumn: 'span 1', gridRow: 'span 2' }}
           >
-            <Image src="/images/bigright.svg" alt="Discord" fill className="object-cover md:object-fill" />
+            <Image src="/images/com.jpeg" alt="Community" fill className="object-cover md:object-fill" />
           </motion.div>
 
           {/* Col 1: Car (Bottom Left) */}

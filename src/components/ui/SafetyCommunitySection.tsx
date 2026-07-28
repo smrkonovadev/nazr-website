@@ -64,7 +64,7 @@ export function SafetyCommunitySection() {
 
             {/* 3rd Image */}
             <div className="absolute border-[#000000]" style={{ width: "103.93px", height: "155.30px", top: "44.87px", left: "218.29px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/bigright.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+              <Image src="/images/com.jpeg" alt="Community" fill className="object-cover rounded-[4.5px]" />
             </div>
 
             {/* 4th Image */}
@@ -160,7 +160,7 @@ export function SafetyCommunitySection() {
 
             {/* 3rd Image */}
             <div className="absolute border-[#000000]" style={{ width: "375.15px", height: "541.88px", top: "156.57px", left: "787.92px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/bigright.svg" alt="" fill className="object-cover rounded-[16.27px]" />
+              <Image src="/images/com.jpeg" alt="Community" fill className="object-cover rounded-[16.27px]" />
             </div>
 
             {/* 4th Image */}

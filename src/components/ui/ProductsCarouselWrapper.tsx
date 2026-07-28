@@ -19,7 +19,7 @@ export const carouselData = [
   },
   {
     id: "nazr-360",
-    image: "/images/rightimg.png",
+    image: "/images/NAZR360.svg",
     title: "NAZR 360°",
     subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you."
   }
