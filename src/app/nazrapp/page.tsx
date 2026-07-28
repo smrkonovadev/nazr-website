@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
 
 import { NazrAppIntro } from "@/components/ui/NazrAppIntro";
@@ -11,6 +12,34 @@ import { ProductCardsCarousel } from "@/components/ui/ProductCardsCarousel";
 import { ContactUsSection } from "@/components/ui/ContactUsSection";
 import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
+
+export const metadata: Metadata = {
+  title: "NAZR App | One-Tap SOS, Shield Mode & Trusted Circle",
+  description: "The NAZR app moves with you: one-tap SOS with live location sharing, Shield Mode check-ins for solo journeys, and a Trusted Circle alerted the moment it matters.",
+  keywords: [
+    "NAZR app",
+    "SOS app for women India",
+    "Shield Mode safety app",
+    "Trusted Circle emergency contacts",
+    "women's safety app download",
+  ],
+  alternates: {
+    canonical: "/nazrapp",
+  },
+  openGraph: {
+    title: "NAZR App | One-Tap SOS, Shield Mode & Trusted Circle",
+    description: "The NAZR app moves with you: one-tap SOS with live location sharing, Shield Mode check-ins for solo journeys, and a Trusted Circle alerted the moment it matters.",
+    url: "https://www.nazrco.in/nazrapp",
+    siteName: "NAZR",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NAZR App | One-Tap SOS, Shield Mode & Trusted Circle",
+    description: "The NAZR app moves with you: one-tap SOS with live location sharing, Shield Mode check-ins for solo journeys, and a Trusted Circle alerted the moment it matters.",
+  },
+};
 
 export default function NazrAppPage() {
   return (

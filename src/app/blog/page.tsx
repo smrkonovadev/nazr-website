@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
 
 import { BlogIntro } from "@/components/ui/BlogIntro";
@@ -6,6 +7,33 @@ import { BlogNewsletter } from "@/components/ui/BlogNewsletter";
 import { ContactUsSection } from "@/components/ui/ContactUsSection";
 import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
+
+export const metadata: Metadata = {
+  title: "NAZR Blogs | Field Notes on Women's Safety in India",
+  description: "Read NAZR's Field Notes: editorial insight on personal safety, everyday readiness, and the culture shift from fear-reaction to ownership for Indian women.",
+  keywords: [
+    "women's safety blog India",
+    "NAZR field notes",
+    "personal safety tips India",
+    "readiness culture India",
+  ],
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "NAZR Blogs | Field Notes on Women's Safety in India",
+    description: "Read NAZR's Field Notes: editorial insight on personal safety, everyday readiness, and the culture shift from fear-reaction to ownership for Indian women.",
+    url: "https://www.nazrco.in/blog",
+    siteName: "NAZR",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NAZR Blogs | Field Notes on Women's Safety in India",
+    description: "Read NAZR's Field Notes: editorial insight on personal safety, everyday readiness, and the culture shift from fear-reaction to ownership for Indian women.",
+  },
+};
 
 export default function BlogPage() {
   return (
