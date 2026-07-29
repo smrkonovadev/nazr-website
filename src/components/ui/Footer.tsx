@@ -38,6 +38,9 @@ export function Footer() {
               <Link href="/whynazrexists" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
                 THE NAZR ECOSYSTEM
               </Link>
+              <Link href="/support" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
+                SUPPORT
+              </Link>
               <Link href="#" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
                 LOGIN
               </Link>
