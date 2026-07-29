@@ -105,7 +105,7 @@ export function HelpWithoutHoldUp() {
           <div className={`relative z-20 mt-[20px] mx-auto flex items-center justify-center transition-all duration-500 ease-in-out ${effectiveCard ? 'w-[85vw] max-w-[320px] h-[360px] overflow-visible' : 'w-[55vw] max-w-[200px] aspect-[200/419] rounded-[24px] overflow-hidden'}`}>
             {/* Default Mobile Image */}
             <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-              <Image src="/images/phone.png" alt="NAZR SOS App Interface" fill className="object-contain" />
+              <Image unoptimized quality={100} src="/images/phone.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
             </div>
 
             {/* Mobile Card 1 Lottie */}
@@ -165,7 +165,7 @@ export function HelpWithoutHoldUp() {
           >
             {/* Default Static Phone */}
             <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-              <Image src="/images/new8.svg" alt="NAZR SOS App Interface" fill className="object-contain" />
+              <Image unoptimized quality={100} src="/images/new8.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
             </div>
 
             {/* Card 1 Lottie (Volume SOS) */}

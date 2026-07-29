@@ -296,8 +296,7 @@ export function BlogDetailContent({ post }: BlogDetailContentProps) {
 
           {/* Right Column: Phone Image */}
           <div className="relative w-full md:w-[440px] h-[220px] md:h-[280px] rounded-[16px] overflow-hidden shrink-0 bg-[#222]">
-            <Image
-              src="/images/new55.svg"
+            <Image unoptimized quality={100} src="/images/new55.webp"
               alt="Phone preview"
               fill
               className="object-cover"

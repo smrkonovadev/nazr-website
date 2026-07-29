@@ -1,21 +1,21 @@
 import Image from "next/image";
 
 const row1Images = [
-  "/images/new31.svg",
-  "/images/new32.svg",
-  "/images/new33.svg",
-  "/images/new34.svg",
-  "/images/new35.svg",
-  "/images/new36.svg",
+  "/images/c31.webp",
+  "/images/c32.webp",
+  "/images/c33.webp",
+  "/images/c34.webp",
+  "/images/c35.webp",
+  "/images/c36.webp",
 ];
 
 const row2Images = [
-  "/images/new37.svg",
-  "/images/new38.svg",
-  "/images/new39.svg",
-  "/images/new40.svg",
-  "/images/new41.svg",
-  "/images/new42.svg",
+  "/images/c37.webp",
+  "/images/c38.webp",
+  "/images/c39.webp",
+  "/images/c40.webp",
+  "/images/c41.webp",
+  "/images/c42.webp",
 ];
 
 const topRow = [...row1Images, ...row1Images, ...row1Images, ...row1Images];

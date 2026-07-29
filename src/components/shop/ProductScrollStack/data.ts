@@ -8,7 +8,7 @@ export const productsData: ProductData[] = [
     headerTextColor: "#161616",
     contentBg: "#DDEFFF",
     titleLines: ["ON ME", "SPRAY"],
-    imageSrc: "/images/shop/shop-1.png",
+    imageSrc: "/images/shop/shop-1.webp",
     imageAlt: "Podium and Spray",
     imageTransformClass: "md:transform md:translate-x-28 md:translate-y-8 translate-x-10 translate-y-4",
     imageWidthHeightClass: "w-[400px] h-[360px] md:w-[580px] md:h-[500px]",
@@ -19,8 +19,8 @@ export const productsData: ProductData[] = [
     hasVariants: true,
     url: "https://shop.nazrco.in/products/on-me-pepper-spray",
     variants: [
-      { id: "pink", name: "Pink", imageSrc: "/images/spray-pink.png" },
-      { id: "white", name: "White", imageSrc: "/images/spray-white.png" }
+      { id: "pink", name: "Pink", imageSrc: "/images/spray-pink.webp" },
+      { id: "white", name: "White", imageSrc: "/images/spray-white.webp" }
     ],
     zIndex: 10
   },
@@ -31,7 +31,7 @@ export const productsData: ProductData[] = [
     headerTextColor: "#161616",
     contentBg: "#FCE4EC",
     titleLines: ["SIP CHECK"],
-    imageSrc: "/images/shop/shop-3.png",
+    imageSrc: "/images/shop/shop-3.webp",
     imageAlt: "Sip Check Product",
     imageTransformClass: "md:transform md:translate-x-28 md:translate-y-30 translate-x-10 translate-y-16",
     imageWidthHeightClass: "w-[400px] h-[360px] md:w-[580px] md:h-[500px]",
@@ -50,7 +50,7 @@ export const productsData: ProductData[] = [
     headerTextColor: "black",
     contentBg: "#DDEFFF",
     titleLines: ["NAZR", "360°"],
-    imageSrc: "/images/shop/shop-2.png",
+    imageSrc: "/images/shop/shop-2.webp",
     imageAlt: "Nazr 360 Bundle",
     imageTransformClass: "md:transform md:translate-x-28 md:translate-y-48 translate-x-10 translate-y-20",
     imageWidthHeightClass: "w-[580px] h-[520px] md:w-[580px] md:h-[500px]",

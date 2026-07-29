@@ -162,11 +162,11 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -232,11 +232,11 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -250,11 +250,11 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -292,11 +292,11 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -358,11 +358,11 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -376,11 +376,11 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -410,11 +410,11 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -428,11 +428,11 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',
@@ -569,11 +569,11 @@ function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: a
               playsInline
               className="object-contain drop-shadow-2xl object-top w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.png)',
+                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
                 WebkitMaskSize: 'contain',
                 WebkitMaskRepeat: 'no-repeat',
                 WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.png)',
+                maskImage: 'url(/images/nazrapp4img.webp)',
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 maskPosition: 'top center',

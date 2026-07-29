@@ -18,7 +18,7 @@ export function NazrAppIntro() {
           transition={{ duration: 0.5 }}
           className="md:hidden absolute top-2 left-2 w-[58px] h-[58px] sm:w-[68px] sm:h-[68px] z-20 pointer-events-none"
         >
-          <Image src="/images/new29.svg" alt="Pink Circle Eye" fill className="object-contain drop-shadow-sm" priority />
+          <Image unoptimized quality={100} src="/images/new29.webp" alt="Pink Circle Eye" fill className="object-contain drop-shadow-sm" priority />
         </motion.div>
 
         {/* Top-Right Blue Bag */}
@@ -29,7 +29,7 @@ export function NazrAppIntro() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="md:hidden absolute top-2 right-2 w-[72px] h-[72px] sm:w-[85px] sm:h-[85px] z-20 pointer-events-none"
         >
-          <Image src="/images/new43.svg" alt="Blue Bag" fill className="object-contain drop-shadow-sm" priority />
+          <Image unoptimized quality={100} src="/images/new43.webp" alt="Blue Bag" fill className="object-contain drop-shadow-sm" priority />
         </motion.div>
 
         {/* Bottom-Left Pink Star */}
@@ -40,7 +40,7 @@ export function NazrAppIntro() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="md:hidden absolute bottom-[-10px] left-1 w-[68px] h-[68px] sm:w-[78px] sm:h-[78px] z-20 pointer-events-none"
         >
-          <Image src="/images/new44.svg" alt="Pink Star" fill className="object-contain drop-shadow-sm" priority />
+          <Image unoptimized quality={100} src="/images/new44.webp" alt="Pink Star" fill className="object-contain drop-shadow-sm" priority />
         </motion.div>
 
         {/* Typography (Center-aligned on mobile, Left-aligned on desktop) */}
@@ -65,7 +65,7 @@ export function NazrAppIntro() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="absolute w-[260px] h-[260px] lg:w-[290px] lg:h-[290px] right-0 top-0 z-20"
           >
-            <Image src="/images/new43.svg" alt="Blue Bag" fill className="object-contain drop-shadow-md" priority />
+            <Image unoptimized quality={100} src="/images/new43.webp" alt="Blue Bag" fill className="object-contain drop-shadow-md" priority />
           </motion.div>
 
           {/* Pink Circle Eye */}
@@ -76,7 +76,7 @@ export function NazrAppIntro() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="absolute w-[180px] h-[180px] lg:w-[200px] lg:h-[200px] left-2 top-4 z-10"
           >
-            <Image src="/images/new29.svg" alt="Pink Circle Eye" fill className="object-contain drop-shadow-md" priority />
+            <Image unoptimized quality={100} src="/images/new29.webp" alt="Pink Circle Eye" fill className="object-contain drop-shadow-md" priority />
           </motion.div>
 
           {/* Pink Star */}
@@ -87,7 +87,7 @@ export function NazrAppIntro() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="absolute w-[150px] h-[150px] lg:w-[170px] lg:h-[170px] left-[80px] bottom-2 z-20"
           >
-            <Image src="/images/new44.svg" alt="Pink Star" fill className="object-contain drop-shadow-sm" priority />
+            <Image unoptimized quality={100} src="/images/new44.webp" alt="Pink Star" fill className="object-contain drop-shadow-sm" priority />
           </motion.div>
 
           {/* For Kalesh Free Nights Badge */}
@@ -98,7 +98,7 @@ export function NazrAppIntro() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="absolute w-[180px] h-[180px] lg:w-[200px] lg:h-[200px] right-4 bottom-4 z-30"
           >
-            <Image src="/images/new45.svg" alt="For Kalesh Free Nights Badge" fill className="object-contain drop-shadow-md" priority />
+            <Image unoptimized quality={100} src="/images/new45.webp" alt="For Kalesh Free Nights Badge" fill className="object-contain drop-shadow-md" priority />
           </motion.div>
         </div>
 

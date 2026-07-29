@@ -26,8 +26,7 @@ export function AboutTestimonial() {
           animate={{ x: isInView ? "-120%" : "0%", rotate: isInView ? -6 : 0 }}
           transition={{ type: "spring", stiffness: 50, damping: 20 }}
         >
-          <Image
-            src="/images/image2.png"
+          <Image unoptimized quality={100} src="/images/image2.webp"
             alt="Decorative left"
             fill
             className="object-cover"
@@ -40,8 +39,7 @@ export function AboutTestimonial() {
           animate={{ x: isInView ? "120%" : "0%", rotate: isInView ? 12 : 0 }}
           transition={{ type: "spring", stiffness: 50, damping: 20 }}
         >
-          <Image
-            src="/images/image4.png"
+          <Image unoptimized quality={100} src="/images/image4.webp"
             alt="Decorative right"
             fill
             className="object-cover"
@@ -83,8 +81,7 @@ export function AboutTestimonial() {
             justifyContent: "center",
           }}
         >
-          <Image
-            src="/images/logosvg.svg"
+          <Image unoptimized quality={100} src="/images/logosvg.svg"
             alt="Nazr Logo"
             width={24}
             height={24}

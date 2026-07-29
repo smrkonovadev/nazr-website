@@ -16,7 +16,7 @@ const categories = [
 const posts = [
   {
     slug: "women-pretend-phone",
-    image: "/images/new52.svg",
+    image: "/images/new52.webp",
     category: "Psychology",
     readTime: "5 min read",
     title: "Women Pretend to Be on the Phone When Walking Alone: The Psychology Behind the Habit",
@@ -25,7 +25,7 @@ const posts = [
   },
   {
     slug: "drink-spiking",
-    image: "/images/new53.svg",
+    image: "/images/new53.webp",
     category: "Safety",
     readTime: "4 min read",
     title: "India's Drink-Spiking Conversation Is Changing and Preparedness Is Changing With It",
@@ -34,7 +34,7 @@ const posts = [
   },
   {
     slug: "soft-girl-sharp-instincts",
-    image: "/images/new54.svg",
+    image: "/images/new54.webp",
     category: "Culture",
     readTime: "6 min read",
     title: "Soft Girl, Sharp Instincts: Feminine Aesthetics Meets Personal Preparedness",
@@ -43,7 +43,7 @@ const posts = [
   },
   {
     slug: "share-your-location",
-    image: "/images/new55.svg",
+    image: "/images/new55.webp",
     category: "Product",
     readTime: "5 min read",
     title: "\"SHARE YOUR LOCATION\" REPLACED \"TEXT ME WHEN YOU'RE HOME\": HOW DIGITAL CHECK-INS CHANGED PERSONAL SAFETY",
@@ -52,7 +52,7 @@ const posts = [
   },
   {
     slug: "preparedness-becomes-instinct",
-    image: "/images/new56.svg",
+    image: "/images/new56.webp",
     category: "Community",
     readTime: "5 min read",
     title: "Preparedness Becomes Instinct Long Before It Becomes an Action",

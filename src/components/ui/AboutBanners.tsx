@@ -19,8 +19,7 @@ const MarqueeItem = ({ label }: { label: string }) => (
       {label}
     </h2>
     <div className="max-md:w-[72px] md:w-[160px] shrink-0">
-      <Image
-        src="/images/logosvg.svg"
+      <Image unoptimized quality={100} src="/images/logosvg.svg"
         alt="Owl Logo"
         width={160}
         height={160}

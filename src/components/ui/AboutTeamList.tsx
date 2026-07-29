@@ -17,13 +17,13 @@ const TEAM_MEMBERS: TeamMember[] = [
     id: "1",
     name: "ATUL CHOPRA",
     roles: ["COFOUNDER", "CHIEF EXECUTIVE OFFICER"],
-    image: "/images/ATUL.svg"
+    image: "/images/ATUL.webp"
   },
   {
     id: "2",
     name: "AISHANI MUKHERJEE",
     roles: ["COFOUNDER", "CHIEF BRAND OFFICER"],
-    image: "/images/AISHANI.svg"
+    image: "/images/AISHANI.webp"
   }
 ];
 
@@ -112,8 +112,7 @@ export function AboutTeamList() {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="overflow-hidden shrink-0 flex items-center justify-center"
                   >
-                    <Image
-                      src="/images/logosvg.svg"
+                    <Image unoptimized quality={100} src="/images/logosvg.svg"
                       alt="Owl Logo"
                       width={130}
                       height={130}

@@ -87,8 +87,7 @@ export function ProblemStatement() {
             transition={{ type: "spring", stiffness: 120, damping: 18, delay: 0.2 }}
             className="absolute top-2 right-0 w-[190px] h-[190px] sm:w-[230px] sm:h-[230px] md:w-[260px] md:h-[260px] lg:w-[290px] lg:h-[290px]"
           >
-            <Image
-              src="/images/new1.svg"
+            <Image unoptimized quality={100} src="/images/new1.webp"
               alt="NAZR Badge Pink"
               fill
               className="object-contain drop-shadow-xl"
@@ -103,8 +102,7 @@ export function ProblemStatement() {
             transition={{ type: "spring", stiffness: 120, damping: 18, delay: 0.1 }}
             className="absolute top-6 left-0 w-[190px] h-[190px] sm:w-[230px] sm:h-[230px] md:w-[260px] md:h-[260px] lg:w-[290px] lg:h-[290px] z-20"
           >
-            <Image
-              src="/images/new2.svg"
+            <Image unoptimized quality={100} src="/images/new2.webp"
               alt="NAZR Badge Purple"
               fill
               className="object-contain drop-shadow-2xl"

@@ -26,8 +26,7 @@ export function SocialMediaSection() {
             transition={{ duration: 1.5 }}
             className="relative w-[88px] h-[88px] shrink-0 rounded-full overflow-hidden"
           >
-            <Image
-              src="/images/Favicon-03 (1).png"
+            <Image unoptimized quality={100} src="/images/Favicon-03 (1).png"
               alt="Profile"
               fill
               className="object-cover"
@@ -70,7 +69,7 @@ export function SocialMediaSection() {
             className="absolute md:relative pointer-events-auto max-md:top-[21.12%] max-md:left-[3.44%] max-md:w-[19.82%] max-md:h-[35.52%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden"
             style={{ gridColumn: 'span 1', gridRow: 'span 1' }}
           >
-            <Image src="/images/1stfromleft.svg" alt="Twitter Card" fill className="object-cover md:object-fill" />
+            <Image unoptimized quality={100} src="/images/1stfromleft.webp" alt="Twitter Card" fill className="object-cover md:object-fill" />
           </motion.div>
 
           {/* Col 2 & 3: Dog (Top Middle) */}
@@ -82,7 +81,7 @@ export function SocialMediaSection() {
             className="absolute md:relative pointer-events-auto max-md:top-[21.12%] max-md:left-[24.57%] max-md:w-[40.94%] max-md:h-[35.52%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden"
             style={{ gridColumn: 'span 2', gridRow: 'span 1' }}
           >
-            <Image src="/images/new26.svg" alt="Dog" fill className="object-cover md:object-fill" />
+            <Image unoptimized quality={100} src="/images/new26.webp" alt="Dog" fill className="object-cover md:object-fill" />
           </motion.div>
 
           {/* Col 4: Community (Right, Spans full height) */}
@@ -94,7 +93,7 @@ export function SocialMediaSection() {
             className="absolute md:relative pointer-events-auto max-md:top-[21.12%] max-md:left-[66.81%] max-md:w-[31.81%] max-md:h-[73.11%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden rounded-[16px] md:rounded-[24px] overflow-hidden"
             style={{ gridColumn: 'span 1', gridRow: 'span 2' }}
           >
-            <Image src="/images/com.jpeg" alt="Community" fill className="object-cover md:object-fill" />
+            <Image unoptimized quality={100} src="/images/com.webp" alt="Community" fill className="object-cover md:object-fill" />
           </motion.div>
 
           {/* Col 1: Car (Bottom Left) */}
@@ -106,7 +105,7 @@ export function SocialMediaSection() {
             className="absolute md:relative pointer-events-auto max-md:top-[58.7%] max-md:left-[3.44%] max-md:w-[19.82%] max-md:h-[35.52%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden"
             style={{ gridColumn: 'span 1', gridRow: 'span 1' }}
           >
-            <Image src="/images/new27.svg" alt="Car" fill className="object-cover md:object-fill" />
+            <Image unoptimized quality={100} src="/images/new27.webp" alt="Car" fill className="object-cover md:object-fill" />
           </motion.div>
 
           {/* Col 2: Pizza (Bottom Middle Left) */}
@@ -118,7 +117,7 @@ export function SocialMediaSection() {
             className="absolute md:relative pointer-events-auto max-md:top-[58.7%] max-md:left-[24.57%] max-md:w-[19.82%] max-md:h-[35.52%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden"
             style={{ gridColumn: 'span 1', gridRow: 'span 1' }}
           >
-            <Image src="/images/new28.svg" alt="Pizza" fill className="object-cover md:object-fill" />
+            <Image unoptimized quality={100} src="/images/new28.webp" alt="Pizza" fill className="object-cover md:object-fill" />
           </motion.div>
 
           {/* Col 3: Small Tweet (Bottom Middle Right) */}
@@ -130,7 +129,7 @@ export function SocialMediaSection() {
             className="absolute md:relative pointer-events-auto max-md:top-[58.7%] max-md:left-[45.69%] max-md:w-[19.82%] max-md:h-[35.52%] max-md:rounded-[4.66px] max-md:border-[0.15px] max-md:border-black max-md:overflow-hidden"
             style={{ gridColumn: 'span 1', gridRow: 'span 1' }}
           >
-            <Image src="/images/bottomleft3.svg" alt="Tweet" fill className="object-cover md:object-fill" />
+            <Image unoptimized quality={100} src="/images/bottomleft3.webp" alt="Tweet" fill className="object-cover md:object-fill" />
           </motion.div>
         </div>
       </div>

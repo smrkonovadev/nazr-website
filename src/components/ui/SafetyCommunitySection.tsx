@@ -44,7 +44,7 @@ export function SafetyCommunitySection() {
             {/* Grid Header */}
             <div className="absolute flex items-center" style={{ top: "11.46px", left: "11.27px", gap: "4.5px" }}>
               <div className="relative rounded-full overflow-hidden" style={{ width: "19.4px", height: "19.4px" }}>
-                <Image src="/images/Favicon-03 (1).png" alt="Avatar" fill className="object-cover" />
+                <Image unoptimized quality={100} src="/images/Favicon-03 (1).png" alt="Avatar" fill className="object-cover" />
               </div>
               <div className="flex flex-col">
                 <h3 className="font-[family-name:var(--font-bebas)] text-black m-0 leading-none" style={{ fontSize: "10px" }}>@NAZR.360</h3>
@@ -54,32 +54,32 @@ export function SafetyCommunitySection() {
 
             {/* 1st Image (Top Left) */}
             <div className="absolute border-[#000000]" style={{ width: "64.78px", height: "75.46px", top: "44.87px", left: "11.27px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/community.svg" alt="Community 1" fill className="object-cover rounded-[4.5px]" />
+              <Image unoptimized quality={100} src="/images/community.webp" alt="Community 1" fill className="object-cover rounded-[4.5px]" />
             </div>
 
             {/* 2nd Image */}
             <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "133.79px", height: "75.46px", top: "44.87px", left: "80.28px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/new26.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+              <Image unoptimized quality={100} src="/images/new26.webp" alt="" fill className="object-cover rounded-[4.5px]" />
             </div>
 
             {/* 3rd Image */}
             <div className="absolute border-[#000000]" style={{ width: "103.93px", height: "155.30px", top: "44.87px", left: "218.29px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/com.jpeg" alt="Community" fill className="object-cover rounded-[4.5px]" />
+              <Image unoptimized quality={100} src="/images/com.webp" alt="Community" fill className="object-cover rounded-[4.5px]" />
             </div>
 
             {/* 4th Image */}
             <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "64.78px", height: "75.46px", top: "124.71px", left: "11.27px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/new27.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+              <Image unoptimized quality={100} src="/images/new27.webp" alt="" fill className="object-cover rounded-[4.5px]" />
             </div>
 
             {/* 5th Image */}
             <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "64.78px", height: "75.46px", top: "124.71px", left: "80.28px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/new28.svg" alt="" fill className="object-cover rounded-[4.5px]" />
+              <Image unoptimized quality={100} src="/images/new28.webp" alt="" fill className="object-cover rounded-[4.5px]" />
             </div>
 
             {/* 6th Image (Bottom Right) */}
             <div className="absolute border-[#000000]" style={{ width: "64.78px", height: "75.46px", top: "124.71px", left: "149.30px", borderRadius: "4.5px", borderWidth: "0.15px" }}>
-              <Image src="/images/community2.svg" alt="Community 2" fill className="object-cover rounded-[4.5px]" />
+              <Image unoptimized quality={100} src="/images/community2.webp" alt="Community 2" fill className="object-cover rounded-[4.5px]" />
             </div>
           </motion.div>
         </div>
@@ -105,22 +105,22 @@ export function SafetyCommunitySection() {
 
               {/* Image 1 — Dancer: W=429.26 H=283.99 top=-18.93 left=-143 */}
               <div className="absolute" style={{ width: "429.26px", height: "400.99px", top: "-55.93px", left: "-143px", transform: "rotate(-3.2deg)", transformOrigin: "center center" }}>
-                <Image src="/images/new22.svg" alt="Dancer sticker" fill className="object-contain" />
+                <Image unoptimized quality={100} src="/images/new22.webp" alt="Dancer sticker" fill className="object-contain" />
               </div>
 
               {/* Image 2 — Disco Ball: scaled 1.2x → W=286.12 H=205.18 */}
               <div className="absolute" style={{ width: "300.12px", height: "300.18px", top: "210px", left: "-30px", transform: "rotate(5.59deg)", transformOrigin: "center center" }}>
-                <Image src="/images/new25.svg" alt="Disco ball sticker" fill className="object-contain" />
+                <Image unoptimized quality={100} src="/images/new25.webp" alt="Disco ball sticker" fill className="object-contain" />
               </div>
 
               {/* Image 3 — Headphones: W=329.56 H=187.91 — pulled 50px left, 10px up */}
               <div className="absolute" style={{ width: "300.56px", height: "300.91px", top: "-35px", left: "175px", transform: "rotate(-5.59deg)", transformOrigin: "center center" }}>
-                <Image src="/images/new23.svg" alt="Headphones sticker" fill className="object-contain" />
+                <Image unoptimized quality={100} src="/images/new23.webp" alt="Headphones sticker" fill className="object-contain" />
               </div>
 
               {/* Image 4 — Lips: W=277.94 H=315.98 — pulled 60px left, 40px up */}
               <div className="absolute" style={{ width: "350.94px", height: "350.98px", top: "140px", left: "170px", transform: "rotate(-1.35deg)", transformOrigin: "center center" }}>
-                <Image src="/images/new24.svg" alt="Lips star sticker" fill className="object-contain" />
+                <Image unoptimized quality={100} src="/images/new24.webp" alt="Lips star sticker" fill className="object-contain" />
               </div>
 
             </div>
@@ -140,7 +140,7 @@ export function SafetyCommunitySection() {
             {/* Grid Header */}
             <div className="absolute flex items-center" style={{ top: "40px", left: "40.67px", gap: "16px" }}>
               <div className="relative rounded-full overflow-hidden" style={{ width: "70px", height: "70px" }}>
-                <Image src="/images/Favicon-03 (1).png" alt="Avatar" fill className="object-cover" />
+                <Image unoptimized quality={100} src="/images/Favicon-03 (1).png" alt="Avatar" fill className="object-cover" />
               </div>
               <div className="flex flex-col">
                 <h3 className="font-[family-name:var(--font-bebas)] text-black m-0 leading-none" style={{ fontSize: "36px" }}>@NAZR.360</h3>
@@ -150,32 +150,32 @@ export function SafetyCommunitySection() {
 
             {/* 1st Image (Top Left) */}
             <div className="absolute border-[#000000]" style={{ width: "233.83px", height: "263.32px", top: "156.57px", left: "40.67px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/community2.svg" alt="Community 1" fill className="object-cover rounded-[16.27px]" />
+              <Image unoptimized quality={100} src="/images/community2.webp" alt="Community 1" fill className="object-cover rounded-[16.27px]" />
             </div>
 
             {/* 2nd Image */}
             <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "482.92px", height: "263.32px", top: "156.57px", left: "289.75px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/new26.svg" alt="" fill className="object-cover rounded-[16.27px]" />
+              <Image unoptimized quality={100} src="/images/new26.webp" alt="" fill className="object-cover rounded-[16.27px]" />
             </div>
 
             {/* 3rd Image */}
             <div className="absolute border-[#000000]" style={{ width: "375.15px", height: "541.88px", top: "156.57px", left: "787.92px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/com.jpeg" alt="Community" fill className="object-cover rounded-[16.27px]" />
+              <Image unoptimized quality={100} src="/images/com.webp" alt="Community" fill className="object-cover rounded-[16.27px]" />
             </div>
 
             {/* 4th Image */}
             <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "233.83px", height: "263.32px", top: "435.13px", left: "40.67px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/new27.svg" alt="" fill className="object-cover rounded-[16.27px]" />
+              <Image unoptimized quality={100} src="/images/new27.webp" alt="" fill className="object-cover rounded-[16.27px]" />
             </div>
 
             {/* 5th Image */}
             <div className="absolute border-[#000000] bg-[#D9D9D9]" style={{ width: "233.83px", height: "263.32px", top: "435.13px", left: "289.75px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/new28.svg" alt="" fill className="object-cover rounded-[16.27px]" />
+              <Image unoptimized quality={100} src="/images/new28.webp" alt="" fill className="object-cover rounded-[16.27px]" />
             </div>
 
             {/* 6th Image (Bottom Right of Left 2x2 Grid) */}
             <div className="absolute border-[#000000]" style={{ width: "233.83px", height: "263.32px", top: "435.13px", left: "538.83px", borderRadius: "16.27px", borderWidth: "0.51px" }}>
-              <Image src="/images/community.svg" alt="Community 2" fill className="object-cover rounded-[16.27px]" />
+              <Image unoptimized quality={100} src="/images/community.webp" alt="Community 2" fill className="object-cover rounded-[16.27px]" />
             </div>
           </motion.div>
         </div>

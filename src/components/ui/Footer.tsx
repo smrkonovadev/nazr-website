@@ -8,8 +8,7 @@ export function Footer() {
     <footer className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[30px] md:pb-[40px] px-6 md:px-10 flex flex-col relative z-20 overflow-hidden min-h-[360px]">
       {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/footer bg.png"
+        <Image unoptimized quality={100} src="/images/footer bg.webp"
           alt="Footer Background"
           fill
           className="object-cover object-center opacity-40 mix-blend-normal"
@@ -90,8 +89,7 @@ export function Footer() {
 
           {/* Large Logo */}
           <div className="relative w-full h-[90px] sm:h-[140px] md:h-[342px] mt-2">
-            <Image
-              src="/images/footer.svg"
+            <Image unoptimized quality={100} src="/images/footer.svg"
               alt="NAZR"
               fill
               className="object-contain object-bottom"

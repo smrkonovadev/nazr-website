@@ -35,8 +35,7 @@ export function ShopProductPepperSpray() {
           {/* Product Image — static */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
             <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:rotate-[20deg] md:translate-x-20 md:translate-y-10">
-              <Image
-                src="/images/center.png"
+              <Image unoptimized quality={100} src="/images/center.webp"
                 alt="Podium and Spray"
                 fill
                 className="object-contain"
@@ -86,7 +85,7 @@ export function ShopProductPepperSpray() {
                 className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "pink" ? "border-[#FF0E97] bg-transparent" : "border-black bg-transparent"}`}
               >
                 <div className="relative w-full h-[85px]">
-                  <Image src="/images/spray-pink.png" alt="Pink Variant" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/spray-pink.webp" alt="Pink Variant" fill className="object-contain" />
                 </div>
                 <span className="font-['Inter',_sans-serif] text-[15px] font-bold text-black">Pink</span>
               </button>
@@ -97,7 +96,7 @@ export function ShopProductPepperSpray() {
                 className={`w-[105px] h-[120px] rounded-[6px] border-[3px] flex flex-col items-center justify-between p-2 pb-2 transition-all ${selectedVariant === "white" ? "border-[#FF0E97] bg-transparent" : "border-black bg-transparent"}`}
               >
                 <div className="relative w-full h-[85px]">
-                  <Image src="/images/spray-white.png" alt="White Variant" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/spray-white.webp" alt="White Variant" fill className="object-contain" />
                 </div>
                 <span className="font-['Inter',_sans-serif] text-[15px] font-bold text-black">White</span>
               </button>

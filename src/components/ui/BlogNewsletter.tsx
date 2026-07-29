@@ -66,8 +66,7 @@ export function BlogNewsletter() {
 
         {/* Right Column (Image Block) */}
         <div className="relative w-full md:w-[480px] h-[240px] md:h-[326px] rounded-[12px] overflow-hidden flex-shrink-0">
-          <Image
-            src="/images/new46.png"
+          <Image unoptimized quality={100} src="/images/new46.webp"
             alt="Hand holding phone with map"
             fill
             className="object-cover"

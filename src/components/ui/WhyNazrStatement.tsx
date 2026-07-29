@@ -29,7 +29,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.2 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden inline-flex"
           >
-            <Image src="/images/whyyna1.svg" alt="Planet" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna1.webp" alt="Planet" fill className="object-contain" />
           </motion.div>
           <span> INDIAN</span>
         </div>
@@ -53,7 +53,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.35 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden inline-flex"
           >
-            <Image src="/images/whyyna2.svg" alt="Hands" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna2.webp" alt="Hands" fill className="object-contain" />
           </motion.div>
           <span> SAFETY</span>
         </div>
@@ -82,7 +82,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.5 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden inline-flex"
           >
-            <Image src="/images/whyyna3.svg" alt="Star" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna3.webp" alt="Star" fill className="object-contain" />
           </motion.div>
           <span> THE HABITS</span>
         </div>
@@ -100,7 +100,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.65 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden inline-flex"
           >
-            <Image src="/images/whyyna5.svg" alt="Moon" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna5.webp" alt="Moon" fill className="object-contain" />
           </motion.div>
         </div>
 
@@ -128,7 +128,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.3 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden"
           >
-            <Image src="/images/whyyna1.svg" alt="Planet" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna1.webp" alt="Planet" fill className="object-contain" />
           </motion.div>
           <span>FOR YEARS, INDIAN WOMEN</span>
         </div>
@@ -147,7 +147,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.45 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden"
           >
-            <Image src="/images/whyyna2.svg" alt="Hands" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna2.webp" alt="Hands" fill className="object-contain" />
           </motion.div>
           <span>SAFETY SYSTEMS</span>
         </div>
@@ -165,7 +165,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.6 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden"
           >
-            <Image src="/images/whyyna3.svg" alt="Star" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna3.webp" alt="Star" fill className="object-contain" />
           </motion.div>
         </div>
 
@@ -181,7 +181,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.75 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden"
           >
-            <Image src="/images/whyyna4.svg" alt="Heart" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna4.webp" alt="Heart" fill className="object-contain" />
           </motion.div>
           <span>THE HABITS EXISTED</span>
         </div>
@@ -199,7 +199,7 @@ export function WhyNazrStatement() {
             transition={{ type: "spring", stiffness: 150, damping: 18, delay: isInView ? 0.9 : 0 }}
             className="relative h-[1.1em] flex-shrink-0 origin-center overflow-hidden"
           >
-            <Image src="/images/whyyna5.svg" alt="Moon" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/whyyna5.webp" alt="Moon" fill className="object-contain" />
           </motion.div>
         </div>
 

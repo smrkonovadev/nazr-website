@@ -70,8 +70,7 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
     >
       {/* Background Image — high visibility like the Figma design */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/footer bg.png"
+        <Image unoptimized quality={100} src="/images/footer bg.webp"
           alt="NAZR Background"
           fill
           className="object-cover object-center"

@@ -44,8 +44,7 @@ export function ShopProductTwo() {
           {/* Product Image on Podium */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
             <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:translate-x-20 md:translate-y-10">
-              <Image
-                src="/images/SHOPPRO2.svg"
+              <Image unoptimized quality={100} src="/images/SHOPPRO2.webp"
                 alt="Sip Check Product"
                 fill
                 className="object-contain"

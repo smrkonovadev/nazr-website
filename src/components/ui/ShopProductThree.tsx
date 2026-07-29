@@ -45,8 +45,7 @@ export function ShopProductThree() {
           {/* Product Image on Podium */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
             <div className="relative w-[400px] h-[360px] md:w-[520px] md:h-[440px] z-20 pointer-events-none md:transform md:translate-x-12 md:translate-y-6">
-              <Image
-                src="/images/SHOPPRO3.svg"
+              <Image unoptimized quality={100} src="/images/SHOPPRO3.webp"
                 alt="Nazr 360 Bundle"
                 fill
                 className="object-contain"

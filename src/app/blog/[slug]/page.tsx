@@ -21,7 +21,7 @@ const blogData: Record<string, {
     title: "BLOG TITLE HEADING WILL GO HERE",
     category: "Psychology",
     readTime: "5 min read",
-    image: "/images/new52.svg",
+    image: "/images/new52.webp",
     date: "11 Jan 2022",
     author: "Full name",
     sections: [
@@ -51,7 +51,7 @@ const blogData: Record<string, {
     title: "BLOG TITLE HEADING WILL GO HERE",
     category: "Safety",
     readTime: "4 min read",
-    image: "/images/new53.svg",
+    image: "/images/new53.webp",
     date: "11 Jan 2022",
     author: "Full name",
     sections: [
@@ -68,7 +68,7 @@ const blogData: Record<string, {
     title: "BLOG TITLE HEADING WILL GO HERE",
     category: "Culture",
     readTime: "6 min read",
-    image: "/images/new54.svg",
+    image: "/images/new54.webp",
     date: "11 Jan 2022",
     author: "Full name",
     sections: [
@@ -85,7 +85,7 @@ const blogData: Record<string, {
     title: "BLOG TITLE HEADING WILL GO HERE",
     category: "Product",
     readTime: "5 min read",
-    image: "/images/new55.svg",
+    image: "/images/new55.webp",
     date: "11 Jan 2022",
     author: "Full name",
     sections: [
@@ -102,7 +102,7 @@ const blogData: Record<string, {
     title: "BLOG TITLE HEADING WILL GO HERE",
     category: "Community",
     readTime: "5 min read",
-    image: "/images/new56.svg",
+    image: "/images/new56.webp",
     date: "11 Jan 2022",
     author: "Full name",
     sections: [

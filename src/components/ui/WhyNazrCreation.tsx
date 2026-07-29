@@ -20,8 +20,7 @@ export function WhyNazrCreation() {
     <div className="w-full relative flex items-center justify-center py-2 md:py-6 z-10 overflow-visible min-h-[220px] md:min-h-[380px] lg:min-h-[440px]">
       {/* Desktop Left Hand Image (hidden md:block) - Extends to left edge */}
       <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[320px] lg:w-[420px] h-[85%] md:h-[95%] pointer-events-none z-0">
-        <Image
-          src="/images/lefthand.png"
+        <Image unoptimized quality={100} src="/images/lefthand.webp"
           alt="Left Hand"
           fill
           className="object-contain object-left"
@@ -31,8 +30,7 @@ export function WhyNazrCreation() {
 
       {/* Desktop Right Hand Image (hidden md:block) - Extends to right edge */}
       <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[320px] lg:w-[420px] h-[85%] md:h-[95%] pointer-events-none z-0">
-        <Image
-          src="/images/righthand.png"
+        <Image unoptimized quality={100} src="/images/righthand.webp"
           alt="Right Hand"
           fill
           className="object-contain object-right"

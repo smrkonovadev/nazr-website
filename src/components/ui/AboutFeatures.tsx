@@ -10,7 +10,7 @@ const cards = [
     id: 1,
     title: "1) ON ME",
     description: "Designed to stay within reach when seconds matter. Glow-in-the-dark for visibility. Built to be carried, not forgotten.",
-    image: "/images/STACK1.svg",
+    image: "/images/STACK1.webp",
     buttonText: "Shop Now",
     link: "/shop#pepper-spray"
   },
@@ -18,7 +18,7 @@ const cards = [
     id: 2,
     title: "2) SIP CHECK",
     description: "Designed to protect what you're drinking.Creates a barrier over your drink when it matters. Built for nights out, travel, and everything in between.",
-    image: "/images/STACK2.svg",
+    image: "/images/STACK2.webp",
     buttonText: "Shop Now",
     link: "/shop#sip-check"
   },
@@ -26,7 +26,7 @@ const cards = [
     id: 3,
     title: "3) NAZR APP",
     description: "Designed to be ready before you need it. Connects your Trusted Circle when it matters most.Built to move with you, every day.",
-    image: "/images/3rdimage.svg",
+    image: "/images/3rdimage.webp",
     buttonText: "Join The Ecosystem",
     link: "/nazrapp"
   }
@@ -61,8 +61,7 @@ export function AboutFeatures() {
               </h2>
 
               <div className="w-[60px] md:w-[100px] lg:w-[150px] shrink-0">
-                <Image
-                  src="/images/logosvg.svg"
+                <Image unoptimized quality={100} src="/images/logosvg.svg"
                   alt="Owl Logo"
                   width={150}
                   height={150}
@@ -173,8 +172,7 @@ function CardItem({
             }}
             className="group text-[#FFF1EB] hover:bg-[#FF0E97]/90 transition-colors shadow-lg max-md:w-auto md:w-auto px-4 h-[40px]"
           >
-            <Image
-              src="/images/logosvg.svg"
+            <Image unoptimized quality={100} src="/images/logosvg.svg"
               alt="Nazr Logo"
               width={35}
               height={24}

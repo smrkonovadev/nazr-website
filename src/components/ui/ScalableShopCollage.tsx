@@ -55,8 +55,7 @@ export function ScalableShopCollage() {
                 }
             }
           >
-            <Image
-              src="/images/shopow.svg"
+            <Image unoptimized quality={100} src="/images/shopow.svg"
               alt="Owl Sticker"
               width={330}
               height={252}
@@ -83,8 +82,7 @@ export function ScalableShopCollage() {
                 }
             }
           >
-            <Image
-              src="/images/shop.svg"
+            <Image unoptimized quality={100} src="/images/shop.webp"
               alt="Pink Eye Sticker"
               width={185}
               height={170}
@@ -104,8 +102,7 @@ export function ScalableShopCollage() {
 
             {/* Left Purple Coaster/Sticker */}
             <div className="absolute max-md:left-[8%] max-md:top-[40%] max-md:w-[38%] md:left-[6%] md:top-[10%] md:w-[44%] aspect-square z-10">
-              <Image
-                src="/images/shop2.svg"
+              <Image unoptimized quality={100} src="/images/shop2.webp"
                 alt="Purple Coaster"
                 fill
                 className="object-contain drop-shadow-2xl"
@@ -114,8 +111,7 @@ export function ScalableShopCollage() {
 
             {/* Right Pink Coaster/Sticker */}
             <div className="absolute max-md:right-[7%] max-md:top-[35%] max-md:w-[40%] md:right-[5%] md:top-[6%] md:w-[46%] aspect-square z-20">
-              <Image
-                src="/images/shop1.svg"
+              <Image unoptimized quality={100} src="/images/shop1.webp"
                 alt="Pink Coaster"
                 fill
                 className="object-contain drop-shadow-2xl"
@@ -124,8 +120,7 @@ export function ScalableShopCollage() {
 
             {/* Center Spray Bottle */}
             <div className="absolute left-1/2 -translate-x-1/2 max-md:top-[-22%] md:top-[-40%] w-[55%] aspect-[1/2] z-30">
-              <Image
-                src="/images/spray-pink.png"
+              <Image unoptimized quality={100} src="/images/spray-pink.webp"
                 alt="Pink Spray"
                 fill
                 className="object-contain drop-shadow-2xl transform rotate-6"

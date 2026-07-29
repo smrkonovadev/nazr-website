@@ -15,7 +15,7 @@ interface RelatedPost {
 const relatedPosts: RelatedPost[] = [
   {
     slug: "share-your-location",
-    image: "/images/new55.svg",
+    image: "/images/new55.webp",
     category: "Psychology",
     readTime: "5 min read",
     title: '"SHARE YOUR LOCATION" REPLACED "TEXT ME WHEN YOU\'RE HOME": HOW DIGITAL CHECK-INS CHANGED PERSONAL SAFETY',
@@ -23,7 +23,7 @@ const relatedPosts: RelatedPost[] = [
   },
   {
     slug: "share-your-location",
-    image: "/images/new55.svg",
+    image: "/images/new55.webp",
     category: "Psychology",
     readTime: "5 min read",
     title: '"SHARE YOUR LOCATION" REPLACED "TEXT ME WHEN YOU\'RE HOME": HOW DIGITAL CHECK-INS CHANGED PERSONAL SAFETY',
@@ -31,7 +31,7 @@ const relatedPosts: RelatedPost[] = [
   },
   {
     slug: "share-your-location",
-    image: "/images/new55.svg",
+    image: "/images/new55.webp",
     category: "Psychology",
     readTime: "5 min read",
     title: '"SHARE YOUR LOCATION" REPLACED "TEXT ME WHEN YOU\'RE HOME": HOW DIGITAL CHECK-INS CHANGED PERSONAL SAFETY',

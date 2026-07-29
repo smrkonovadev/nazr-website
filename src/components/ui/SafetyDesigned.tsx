@@ -7,19 +7,19 @@ import { motion } from "framer-motion";
 export const carouselData = [
   {
     id: "sip-check",
-    image: "/images/productsip.svg",
+    image: "/images/productsip.webp",
     title: "sip check",
     subtitle: "An anti drink spike sticker designed to protect your drink while you stay in the moment. Seals securely to your glass, peels away with ease, and helps deter unwanted tampering."
   },
   {
     id: "pepper-spray",
-    image: "/images/center.png",
+    image: "/images/center.webp",
     title: "ON ME SPRAY",
     subtitle: "A compact personal safety spray designed to be there when every second counts. Doubles as a bag charm and glows in the dark for quick access in low light."
   },
   {
     id: "nazr-360",
-    image: "/images/NAZR360.svg",
+    image: "/images/NAZR360.webp",
     title: "NAZR 360°",
     subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you."
   }
@@ -51,10 +51,10 @@ export function SafetyDesigned() {
 
           {/* Badges positioned relative to the title block for exactness */}
           <div className="absolute flex items-center justify-center z-10" style={{ width: "222px", height: "222px", top: "10px", left: "-190px" }}>
-            <Image src="/images/new29.svg" alt="Safety Sticker" fill className="object-contain relative z-10 hover:animate-[spin_4s_linear_infinite]" />
+            <Image unoptimized quality={100} src="/images/new29.webp" alt="Safety Sticker" fill className="object-contain relative z-10 hover:animate-[spin_4s_linear_infinite]" />
           </div>
           <div className="absolute z-10" style={{ width: "241.23px", height: "159.03px", top: "-70px", left: "550px", transform: "rotate(5.94deg)" }}>
-            <Image src="/images/new30.svg" alt="Fact Oval" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/new30.webp" alt="Fact Oval" fill className="object-contain" />
           </div>
         </div>
 
@@ -108,29 +108,29 @@ export function SafetyDesigned() {
         })}
 
         {/* Floating Icons (Visible only for pepper-spray, index 1) */}
-        <FloatingIcon src="/images/new9.svg" visible={currentIndex === 1} width="191.41px" height="169.84px" top="276px" left="317.02px" delay={0.0} />
-        <FloatingIcon src="/images/new10.svg" visible={currentIndex === 1} width="70.26px" height="48.17px" top="304.4px" left="665.82px" rotate={-30} delay={0.05} />
-        <FloatingIcon src="/images/new11.svg" visible={currentIndex === 1} width="170px" height="186px" top="460px" left="390px" rotate={36.59} delay={0.1} />
-        <FloatingIcon src="/images/new12.svg" visible={currentIndex === 1} width="91.95px" height="90.19px" top="466.96px" left="678.55px" rotate={-60} delay={0.15} />
+        <FloatingIcon src="/images/new9.webp" visible={currentIndex === 1} width="191.41px" height="169.84px" top="276px" left="317.02px" delay={0.0} />
+        <FloatingIcon src="/images/new10.webp" visible={currentIndex === 1} width="70.26px" height="48.17px" top="304.4px" left="665.82px" rotate={-30} delay={0.05} />
+        <FloatingIcon src="/images/new11.webp" visible={currentIndex === 1} width="170px" height="186px" top="460px" left="390px" rotate={36.59} delay={0.1} />
+        <FloatingIcon src="/images/new12.webp" visible={currentIndex === 1} width="91.95px" height="90.19px" top="466.96px" left="678.55px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for sip-check, index 0) */}
-        <FloatingIcon src="/images/new14.svg" visible={currentIndex === 0} width="191.41px" height="169.84px" top="276px" left="387.02px" delay={0.0} />
-        <FloatingIcon src="/images/new15.svg" visible={currentIndex === 0} width="80.26px" height="70.17px" top="444.4px" left="745.82px" rotate={-30} delay={0.05} />
-        <FloatingIcon src="/images/new17.svg" visible={currentIndex === 0} width="112.46px" height="110.13px" top="600.29px" left="436.67px" rotate={10.59} delay={0.1} />
-        <FloatingIcon src="/images/new16.svg" visible={currentIndex === 0} width="130.95px" height="110.19px" top="610px" left="678.55px" rotate={-60} delay={0.15} />
+        <FloatingIcon src="/images/new14.webp" visible={currentIndex === 0} width="191.41px" height="169.84px" top="276px" left="387.02px" delay={0.0} />
+        <FloatingIcon src="/images/new15.webp" visible={currentIndex === 0} width="80.26px" height="70.17px" top="444.4px" left="745.82px" rotate={-30} delay={0.05} />
+        <FloatingIcon src="/images/new17.webp" visible={currentIndex === 0} width="112.46px" height="110.13px" top="600.29px" left="436.67px" rotate={10.59} delay={0.1} />
+        <FloatingIcon src="/images/new16.webp" visible={currentIndex === 0} width="130.95px" height="110.19px" top="610px" left="678.55px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for nazr-360, index 2) */}
-        <FloatingIcon src="/images/new18.svg" visible={currentIndex === 2} width="220px" height="250px" top="250px" left="365px" delay={0.0} />
-        <FloatingIcon src="/images/new19.svg" visible={currentIndex === 2} width="180px" height="190px" top="270px" left="675px" rotate={-15} delay={0.05} />
-        <FloatingIcon src="/images/new21.svg" visible={currentIndex === 2} width="270px" height="195px" top="590px" left="285px" rotate={10.59} delay={0.1} />
-        <FloatingIcon src="/images/new20.svg" visible={currentIndex === 2} width="120px" height="100px" top="600px" left="745px" rotate={0} delay={0.15} />
+        <FloatingIcon src="/images/new18.webp" visible={currentIndex === 2} width="220px" height="250px" top="250px" left="365px" delay={0.0} />
+        <FloatingIcon src="/images/new19.webp" visible={currentIndex === 2} width="180px" height="190px" top="270px" left="675px" rotate={-15} delay={0.05} />
+        <FloatingIcon src="/images/new21.webp" visible={currentIndex === 2} width="270px" height="195px" top="590px" left="285px" rotate={10.59} delay={0.1} />
+        <FloatingIcon src="/images/new20.webp" visible={currentIndex === 2} width="120px" height="100px" top="600px" left="745px" rotate={0} delay={0.15} />
 
         {/* Arrows — vertically centered with paragraph text */}
         <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "257.13px" }}>
-          <Image src="/images/arl.svg" fill className="object-contain" alt="prev" />
+          <Image unoptimized quality={100} src="/images/arl.svg" fill className="object-contain" alt="prev" />
         </button>
         <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "868.08px" }}>
-          <Image src="/images/arr.svg" fill className="object-contain" alt="next" />
+          <Image unoptimized quality={100} src="/images/arr.svg" fill className="object-contain" alt="next" />
         </button>
 
         {/* Text & Button Block */}
@@ -183,19 +183,19 @@ export function SafetyDesigned() {
                 {/* Pepper Spray Stickers — Matched to Image 2 Figma Spec */}
                 {/* Top-Left: UNWANTED ATTENTION BLOCKED */}
                 <div className="absolute w-[95px] h-[90px] top-[-5px] left-[-30px] z-30 pointer-events-none">
-                  <Image src="/images/new9.svg" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
+                  <Image unoptimized quality={100} src="/images/new9.webp" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
                 </div>
                 {/* Top-Right: Silver Handbag with Star Glow */}
                 <div className="absolute w-[85px] h-[80px] top-[-10px] right-[-25px] z-30 pointer-events-none">
-                  <Image src="/images/new10.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new10.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 {/* Bottom-Left: 777 Glow */}
                 <div className="absolute w-[80px] h-[45px] bottom-[20px] left-[-30px] z-30 pointer-events-none">
-                  <Image src="/images/new11.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new11.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 {/* Bottom-Right: Star Glow */}
                 <div className="absolute w-[55px] h-[55px] bottom-[15px] right-[-25px] z-30 pointer-events-none opacity-80">
-                  <Image src="/images/new12.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new12.webp" alt="sticker" fill className="object-contain" />
                 </div>
               </>
             )}
@@ -204,17 +204,17 @@ export function SafetyDesigned() {
               <>
                 {/* Sip Check Stickers */}
                 <div className="absolute w-[100px] h-[100px] top-[-15px] left-[-25px] z-30 pointer-events-none">
-                  <Image src="/images/new14.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new14.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 <div className="absolute w-[70px] h-[65px] top-[30px] right-[-25px] z-30 pointer-events-none">
-                  <Image src="/images/new15.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new15.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 {/* Moved up as requested */}
                 <div className="absolute w-[80px] h-[80px] bottom-[55px] left-[-25px] z-30 pointer-events-none">
-                  <Image src="/images/new17.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new17.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 <div className="absolute w-[75px] h-[70px] bottom-[55px] right-[-25px] z-30 pointer-events-none">
-                  <Image src="/images/new16.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new16.webp" alt="sticker" fill className="object-contain" />
                 </div>
               </>
             )}
@@ -224,19 +224,19 @@ export function SafetyDesigned() {
                 {/* Nazr 360 Stickers - Spaced out further from product */}
                 {/* Silver Saturn Planet (Top-Left) */}
                 <div className="absolute w-[85px] h-[85px] top-[-45px] left-[-58px] z-30 pointer-events-none">
-                  <Image src="/images/new18.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new18.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 {/* Top-Right Glow Sticker */}
                 <div className="absolute w-[90px] h-[90px] top-[-25px] right-[-58px] z-30 pointer-events-none">
-                  <Image src="/images/new19.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new19.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 {/* Silver Shooting Star (Bottom-Left) */}
                 <div className="absolute w-[95px] h-[85px] bottom-[-20px] left-[-75px] z-30 pointer-events-none">
-                  <Image src="/images/new21.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new21.webp" alt="sticker" fill className="object-contain" />
                 </div>
                 {/* 1111 Glow (Bottom-Right) */}
                 <div className="absolute w-[70px] h-[65px] bottom-[-20px] right-[-52px] z-30 pointer-events-none">
-                  <Image src="/images/new20.svg" alt="sticker" fill className="object-contain" />
+                  <Image unoptimized quality={100} src="/images/new20.webp" alt="sticker" fill className="object-contain" />
                 </div>
               </>
             )}
@@ -263,7 +263,7 @@ export function SafetyDesigned() {
               className="absolute left-[-2px] top-1/2 -translate-y-1/2 w-[34px] h-[20px] hover:scale-105 active:scale-95 transition-transform outline-none z-10"
               aria-label="Previous product"
             >
-              <Image src="/images/leftarrow.svg" alt="prev" fill className="object-contain" />
+              <Image unoptimized quality={100} src="/images/leftarrow.svg" alt="prev" fill className="object-contain" />
             </button>
 
             {/* Subtitle */}
@@ -277,7 +277,7 @@ export function SafetyDesigned() {
               className="absolute right-[-2px] top-1/2 -translate-y-1/2 w-[34px] h-[20px] hover:scale-105 active:scale-95 transition-transform outline-none z-10"
               aria-label="Next product"
             >
-              <Image src="/images/rightarrow.svg" alt="next" fill className="object-contain" />
+              <Image unoptimized quality={100} src="/images/rightarrow.svg" alt="next" fill className="object-contain" />
             </button>
           </div>
 

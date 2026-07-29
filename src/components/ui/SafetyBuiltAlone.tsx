@@ -36,23 +36,23 @@ export function SafetyBuiltAlone() {
 
           {/* Blue Chat Box (Top Right) */}
           <div className="absolute top-[10%] right-[5%] w-[320px] h-[180px] rotate-[7deg]">
-            <Image src="/images/a1.png" alt="Blue Chat Box" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/a1.webp" alt="Blue Chat Box" fill className="object-contain" />
           </div>
 
           {/* Red Badge (Center Left) */}
           <div className="absolute top-[35%] left-[35%] w-[160px] h-[160px] -rotate-[15deg] flex items-center justify-center">
             <div className="absolute w-[95%] h-[95%] bg-white rounded-full z-0"></div>
-            <Image src="/images/a2.png" alt="Red Badge" fill className="object-contain z-10 relative" />
+            <Image unoptimized quality={100} src="/images/a2.webp" alt="Red Badge" fill className="object-contain z-10 relative" />
           </div>
 
           {/* Green Camera (Center Right) */}
           <div className="absolute top-[40%] right-[12%] w-[180px] h-[180px] rotate-[0deg]">
-            <Image src="/images/greenskullvector.svg" alt="Green Camera" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/greenskullvector.svg" alt="Green Camera" fill className="object-contain" />
           </div>
 
           {/* Sphere (Bottom Left) */}
           <div className="absolute bottom-[1%] left-[33%] w-[200px] h-[200px] -rotate-[40deg]">
-            <Image src="/images/globe.png" alt="Sphere" fill className="object-contain" />
+            <Image unoptimized quality={100} src="/images/globe.svg" alt="Sphere" fill className="object-contain" />
           </div>
 
         </div>

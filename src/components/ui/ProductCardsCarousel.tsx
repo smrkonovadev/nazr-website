@@ -8,19 +8,19 @@ const cards = [
   {
     id: 1,
     title: "1) ON ME SPRAY",
-    image: "/images/my-new-spray.svg",
+    image: "/images/my-new-spray.webp",
     borderColor: "border-[#EC008C]",
   },
   {
     id: 2,
     title: "2) SIP CHECK STICKERS",
-    image: "/images/productsip.svg",
+    image: "/images/productsip.webp",
     borderColor: "border-[#4338CA]",
   },
   {
     id: 3,
     title: "3) NAZR 360°",
-    image: "/images/product365.svg",
+    image: "/images/product365.webp",
     borderColor: "border-[#EC008C]",
   }
 ];

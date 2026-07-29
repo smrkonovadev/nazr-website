@@ -54,8 +54,7 @@ export function AboutCollage() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Image
-            src="/images/MAINPHONE.svg"
+          <Image unoptimized quality={100} src="/images/MAINPHONE.webp"
             alt="Nazr App Interface"
             fill
             className="object-contain drop-shadow-2xl"
@@ -80,8 +79,7 @@ export function AboutCollage() {
           transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
         >
           <div className="relative w-full h-full" style={{ rotate: "11.13deg" } as React.CSSProperties}>
-            <Image
-              src="/images/TOPDIE.svg"
+            <Image unoptimized quality={100} src="/images/TOPDIE.webp"
               alt="Pink Star Die"
               fill
               className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)]"
@@ -107,8 +105,7 @@ export function AboutCollage() {
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.3 }}
         >
-          <Image
-            src="/images/TOPRIGHT.svg"
+          <Image unoptimized quality={100} src="/images/TOPRIGHT.webp"
             alt="Popcorn and Safety Spray"
             fill
             className="object-cover shadow-xl"
@@ -133,8 +130,7 @@ export function AboutCollage() {
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.3 }}
         >
-          <Image
-            src="/images/TOPLEFT.svg"
+          <Image unoptimized quality={100} src="/images/TOPLEFT.webp"
             alt="Sip Check Eye Cover"
             fill
             className="object-cover shadow-xl"
@@ -159,8 +155,7 @@ export function AboutCollage() {
           transition={{ type: "spring", bounce: 0.5, delay: 0.5 }}
         >
           <div className="relative w-full h-full">
-            <Image
-              src="/images/DOWNLIP.svg"
+            <Image unoptimized quality={100} src="/images/DOWNLIP.webp"
               alt="Pink Lip Sticker"
               fill
               className="object-contain drop-shadow-[0_8px_12px_rgba(0,0,0,0.3)]"
@@ -186,8 +181,7 @@ export function AboutCollage() {
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.4 }}
         >
-          <Image
-            src="/images/DOWNLEFT.svg"
+          <Image unoptimized quality={100} src="/images/DOWNLEFT.webp"
             alt="Sneakers and On Me Spray"
             fill
             className="object-cover shadow-xl"
@@ -212,8 +206,7 @@ export function AboutCollage() {
           viewport={{ once: true }}
           transition={{ type: "spring", bounce: 0.3, delay: 0.4 }}
         >
-          <Image
-            src="/images/RIGHTNEXT.svg"
+          <Image unoptimized quality={100} src="/images/RIGHTNEXT.webp"
             alt="Sip Check Ice Bucket"
             fill
             className="object-cover shadow-xl"

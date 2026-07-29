@@ -10,7 +10,7 @@ const darkCards = [
     timeNumber: "0:03",
     timeUnit: "Seconds",
     title: "FIND THE\nDAMN PHONE",
-    src: "/images/new3.svg",
+    src: "/images/new3.webp",
     imgRotation: 4.44,
   },
   {
@@ -18,7 +18,7 @@ const darkCards = [
     timeNumber: "0:06",
     timeUnit: "Seconds",
     title: "CONVINCE IT\nYOU'RE YOU",
-    src: "/images/new4.svg",
+    src: "/images/new4.webp",
     imgRotation: -4.24,
   },
   {
@@ -26,7 +26,7 @@ const darkCards = [
     timeNumber: "0:09",
     timeUnit: "Seconds",
     title: "FIND THE\nRIGHT APP",
-    src: "/images/new5.svg",
+    src: "/images/new5.webp",
     imgRotation: 4.44,
   },
   {
@@ -34,15 +34,16 @@ const darkCards = [
     timeNumber: "0:12",
     timeUnit: "Seconds",
     title: "FIND THE\nRIGHT BUTTON",
-    src: "/images/new7.svg",
+    src: "/images/new7.webp",
     imgRotation: -4.24,
+    objectPosition: "80% center",
   },
   {
     id: 5,
     timeNumber: "0:15+",
     timeUnit: "Seconds",
     title: "...STILL\nWAITING",
-    src: "/images/new6.svg",
+    src: "/images/new6.webp",
     imgRotation: 4.44,
   },
 ];
@@ -169,7 +170,10 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                     alt={card.title.replace('\n', ' ')}
                     fill
                     className="object-cover transition-transform duration-300"
-                    style={{ transform: `rotate(${card.imgRotation}deg) scale(1.12)` }}
+                    style={{
+                      transform: `rotate(${card.imgRotation}deg) scale(1.12)`,
+                      objectPosition: (card as any).objectPosition || 'center center'
+                    }}
                     priority={i < 3}
                   />
 

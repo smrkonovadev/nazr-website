@@ -166,11 +166,11 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
               playsInline
               className="absolute inset-0 object-contain object-top drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: "url(/images/nazrapp4img.png)",
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
                 WebkitMaskSize: "contain",
                 WebkitMaskRepeat: "no-repeat",
                 WebkitMaskPosition: "top center",
-                maskImage: "url(/images/nazrapp4img.png)",
+                maskImage: "url(/images/nazrapp4img.webp)",
                 maskSize: "contain",
                 maskRepeat: "no-repeat",
                 maskPosition: "top center",

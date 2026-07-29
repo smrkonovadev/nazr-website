@@ -7,19 +7,19 @@ import { OnMeSpraySection } from "./OnMeSpraySection";
 export const carouselData = [
   {
     id: "sip-check",
-    image: "/images/blueright.png",
+    image: "/images/blueright.webp",
     title: "Sip Check Anti Drink Spike Stickers",
     subtitle: "Because your attention should be on the night, not your drink. Designed to add an extra layer of protection when you're out."
   },
   {
     id: "pepper-spray",
-    image: "/images/center.png",
+    image: "/images/center.webp",
     title: "ON ME SPRAY",
     subtitle: "A compact personal safety spray designed to be there when every second counts. Doubles as a bag charm and glows in the dark for quick access in low light."
   },
   {
     id: "nazr-360",
-    image: "/images/NAZR360.svg",
+    image: "/images/NAZR360.webp",
     title: "NAZR 360°",
     subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you."
   }

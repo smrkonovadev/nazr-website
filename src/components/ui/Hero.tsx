@@ -201,8 +201,7 @@ export function Hero() {
                 animate={{ scale: 1, rotate: -10 }}
                 transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.2 }}
               >
-                <Image
-                  src="/images/nazreyeback.svg"
+                <Image unoptimized quality={100} src="/images/nazreyeback.webp"
                   alt="Eye Sticker Purple"
                   fill
                   className="object-contain drop-shadow-md"
@@ -215,8 +214,7 @@ export function Hero() {
                 animate={{ scale: 1, rotate: 2 }}
                 transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.3 }}
               >
-                <Image
-                  src="/images/nazreyefront.svg"
+                <Image unoptimized quality={100} src="/images/nazreyefront.webp"
                   alt="Eye Sticker Pink"
                   fill
                   className="object-contain drop-shadow-lg"
@@ -233,8 +231,7 @@ export function Hero() {
             transition={{ type: "spring", bounce: 0.4, duration: 0.8, delay: 0.2 }}
           >
             <div className="relative w-full h-full" style={{ transform: 'rotate(-20.94deg)' }}>
-              <Image
-                src="/images/spray-pink.png"
+              <Image unoptimized quality={100} src="/images/spray-pink.webp"
                 alt="Pink Pepper Spray"
                 fill
                 className="object-contain drop-shadow-xl"
@@ -268,8 +265,7 @@ export function Hero() {
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
                 <div className="relative w-4 h-4">
-                  <Image
-                    src="/images/logo.png"
+                  <Image unoptimized quality={100} src="/images/logo.webp"
                     alt="NAZR Logo"
                     fill
                     className="object-contain"
@@ -397,8 +393,7 @@ export function Hero() {
               }}
             >
               <div className="relative w-[5.1vw] h-[5.1vw] md:w-[35px] md:h-[24px]">
-                <Image
-                  src="/images/logo.png"
+                <Image unoptimized quality={100} src="/images/logo.webp"
                   alt="NAZR Logo"
                   fill
                   className="object-contain"
@@ -426,8 +421,7 @@ export function Hero() {
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.1 }}
           >
             <div className="relative w-full h-full -rotate-[-15deg]">
-              <Image
-                src="/images/spray-pink.png"
+              <Image unoptimized quality={100} src="/images/spray-pink.webp"
                 alt="Pink Pepper Spray"
                 fill
                 className="object-contain"
@@ -443,8 +437,7 @@ export function Hero() {
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.2 }}
           >
             <div className="relative w-full h-full rotate-[-15deg]">
-              <Image
-                src="/images/spray-white.png"
+              <Image unoptimized quality={100} src="/images/spray-white.webp"
                 alt="White Pepper Spray"
                 fill
                 className="object-contain"

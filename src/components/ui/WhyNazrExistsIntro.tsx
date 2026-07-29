@@ -13,8 +13,7 @@ export function WhyNazrExistsIntro() {
           className="absolute top-[75px] w-[130px] h-[130px] pointer-events-none z-0"
           style={{ left: "-30px", rotate: "30deg" } as React.CSSProperties}
         >
-          <Image
-            src="/images/lefthand.png"
+          <Image unoptimized quality={100} src="/images/lefthand.webp"
             alt="Left Hand"
             fill
             className="object-contain object-top-left"
@@ -27,8 +26,7 @@ export function WhyNazrExistsIntro() {
           className="absolute right-[-22] bottom-[210px] w-[130px] h-[130px] pointer-events-none z-0"
           style={{ rotate: "42.31deg" } as React.CSSProperties}
         >
-          <Image
-            src="/images/righthand.png"
+          <Image unoptimized quality={100} src="/images/righthand.webp"
             alt="Right Hand"
             fill
             className="object-contain object-bottom-right"

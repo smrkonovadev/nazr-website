@@ -14,10 +14,10 @@ type TrailImage = {
 };
 
 const IMAGES = [
-  "/images/image1.png",
-  "/images/image2.png",
-  "/images/image3.png",
-  "/images/image4.png"
+  "/images/image1.webp",
+  "/images/image2.webp",
+  "/images/image3.webp",
+  "/images/image4.webp"
 ];
 
 export function AboutStatement() {
@@ -222,8 +222,7 @@ export function AboutStatement() {
         }}
         className="group max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:w-[245px] md:px-6 md:h-[40px] max-md:w-auto max-md:px-5 max-md:h-[40px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
       >
-        <Image
-          src="/images/logosvg.svg"
+        <Image unoptimized quality={100} src="/images/logosvg.svg"
           alt="Nazr Logo"
           width={35}
           height={24}
