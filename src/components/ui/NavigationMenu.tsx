@@ -43,6 +43,7 @@ export function NavigationMenu() {
     { name: "Shop", path: "/shop" },
     { name: "Nazr App", path: "/nazrapp" },
     { name: "Helpline", path: "/helpline" },
+    { name: "Support", path: "/support" },
     { name: "Blog", path: "/blog" },
   ];
 
