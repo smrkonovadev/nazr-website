@@ -60,11 +60,7 @@ export function AboutTestimonial() {
             textAlign: "center",
           }}
         >
-          It is a long established fact that a readerIt is a<br className="block md:hidden" />
-          long established fact that a readerIt is a long<br className="block md:hidden" />
-          established fact that a readerIt is a long<br className="block md:hidden" />
-          established fact that a readerIt is a long<br className="block md:hidden" />
-          established fact that a reader
+          &ldquo;Finally, a safety product I actually carry. I&apos;ve bought multiple safety tools before, but they always ended up forgotten at the bottom of my bag. This one is designed so well that it stays within reach, which makes all the difference.&rdquo;
         </h2>
 
         {/* Pink Button */}

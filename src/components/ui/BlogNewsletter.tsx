@@ -23,14 +23,14 @@ export function BlogNewsletter() {
         {/* Left Column (Content & Form) */}
         <div className="flex-1 flex flex-col justify-center w-full">
           <h2 className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[36px] md:text-[52px] leading-[95%] tracking-[-0.02em] uppercase">
-            MEDIUM LENGTH HEADING GOES HERE
+            BE A PART OF WHAT WE&apos;RE BUILDING.
           </h2>
           
           <p 
             className="mt-4 text-[#F0E2DD] text-[15px] md:text-[16px] leading-[140%] opacity-90 max-w-[480px]"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+            Receive exclusive updates, community stories, product launches, and behind-the-scenes moments from the NAZR ecosystem.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 flex flex-col sm:flex-row gap-3 w-full max-w-[480px]">
@@ -56,9 +56,13 @@ export function BlogNewsletter() {
             className="mt-3 text-[#F0E2DD]/60 text-[11px] md:text-[12px] leading-[140%] max-w-[480px]"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            By clicking Sign Up you're confirming that you agree with our{" "}
+            By subscribing, you agree to our{" "}
             <Link href="/terms" className="underline hover:text-white transition-colors">
-              Terms and Conditions
+              Terms &amp; Conditions
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy-policy" className="underline hover:text-white transition-colors">
+              Privacy Policy
             </Link>
             .
           </p>

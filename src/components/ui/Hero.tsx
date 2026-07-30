@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { ShaderBackground } from "@/components/ui/ShaderBackground";
@@ -274,12 +275,13 @@ export function Hero() {
                 Join Ecosystem
               </button>
 
-              <button
+              <Link
+                href="/shop"
                 className="flex items-center justify-center text-[#161616] bg-transparent hover:bg-black/5 transition-colors border border-[#161616]/40 rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] whitespace-nowrap"
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
                 Buy now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -402,7 +404,8 @@ export function Hero() {
               Join Ecosystem
             </button>
 
-            <button
+            <Link
+              href="/shop"
               className="flex items-center justify-center text-[#FF0E97] bg-transparent hover:opacity-80 transition-opacity border border-[#F80090] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[101px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] max-md:ml-[3.8vw]"
               style={{
                 fontWeight: 400,
@@ -410,7 +413,7 @@ export function Hero() {
               }}
             >
               Buy now
-            </button>
+            </Link>
           </div>
 
           {/* Pink Bottle Image */}

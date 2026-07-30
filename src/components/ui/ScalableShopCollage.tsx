@@ -82,7 +82,7 @@ export function ScalableShopCollage() {
                 }
             }
           >
-            <Image unoptimized quality={100} src="/images/shop.webp"
+            <Image unoptimized quality={100} src="/images/shop.svg"
               alt="Pink Eye Sticker"
               width={185}
               height={170}

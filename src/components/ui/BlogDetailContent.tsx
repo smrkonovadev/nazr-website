@@ -254,13 +254,13 @@ export function BlogDetailContent({ post }: BlogDetailContentProps) {
               className="m-0 text-[#FFF9EB] uppercase max-md:text-[32px] md:text-[48px] leading-[95%]"
               style={{ ...bebasFont, fontWeight: 400 }}
             >
-              MEDIUM LENGTH HEADING GOES HERE
+              BE A PART OF WHAT WE&apos;RE BUILDING.
             </h2>
             <p
               className="mt-3 text-[#F0E2DD]/80 text-[14px] md:text-[15px] leading-[140%] max-w-[440px]"
               style={interFont}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+              Receive exclusive updates, community stories, product launches, and behind-the-scenes moments from the NAZR ecosystem.
             </p>
 
             <form onSubmit={handleNewsletterSubmit} className="mt-6 flex flex-row gap-3 w-full max-w-[440px]">
@@ -286,9 +286,13 @@ export function BlogDetailContent({ post }: BlogDetailContentProps) {
               className="mt-3 text-[#F0E2DD]/50 text-[11px] md:text-[12px] leading-[140%] max-w-[440px]"
               style={interFont}
             >
-              By clicking Sign up you&apos;re confirming that you agree with our{" "}
+              By subscribing, you agree to our{" "}
               <Link href="/terms" className="underline hover:text-white transition-colors">
-                Terms and Conditions
+                Terms &amp; Conditions
+              </Link>{" "}
+              and{" "}
+              <Link href="/privacy-policy" className="underline hover:text-white transition-colors">
+                Privacy Policy
               </Link>
               .
             </p>

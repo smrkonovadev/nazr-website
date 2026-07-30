@@ -14,7 +14,9 @@ export function ShieldModeSection() {
           className="m-0 text-[#F1E4DE] font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-center max-w-[760px] mx-auto mb-[15px] md:mb-0"
           style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}
         >
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+          Some journeys don't need intervention. They just need someone paying attention. Shield<br className="hidden md:inline" />{" "}
+          Mode stays with you, quietly checking in along the way.<br className="hidden md:inline" />{" "}
+          If you stop responding, it doesn't wait. It acts.
         </p>
       </div>
     </section>
