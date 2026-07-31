@@ -58,11 +58,11 @@ export function NavigationMenu() {
           transform: mounted ? `translateY(-50%) scale(${scale})` : 'translateY(-50%)'
         }}
       >
-        {/* Single right-aligned flex container that holds close button, links, and footer */}
-        <div className="absolute top-0 bottom-0 right-6 md:right-10 flex flex-col max-md:justify-start max-md:gap-2 md:justify-between pb-6 max-md:w-[220px] md:w-[450px] z-10 min-h-0 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* Single right-aligned flex container */}
+        <div className="absolute top-0 bottom-0 right-6 md:right-10 flex flex-col max-md:w-[220px] md:w-[450px] z-10">
           
-          {/* Top right close button inside scroll container - moves up when scrolling */}
-          <div className="flex justify-end w-full flex-shrink-0 pt-[12px] md:pt-[32px] pb-2 md:pb-4">
+          {/* Top right close button - fixed header at top */}
+          <div className="flex justify-end w-full flex-shrink-0 pt-[12px] md:pt-[32px] pb-2 md:pb-4 z-20">
             <button
               onClick={() => setIsMenuOpen(false)}
               className="flex items-center justify-center md:justify-between transition-colors rounded-[4px] px-[10px] py-[10px] md:px-[16px] md:py-[16px] w-auto h-auto md:w-[118px] md:h-[52px] gap-[12px] text-[#161616] hover:opacity-70 font-['Switzer',_sans-serif] text-[20px] leading-[100%] tracking-[-0.04em]"
@@ -74,72 +74,76 @@ export function NavigationMenu() {
             </button>
           </div>
 
-          {/* Main Navigation Links */}
-          <div className="flex flex-col items-start w-full max-md:my-0 md:my-auto max-md:gap-0 md:gap-1">
+          {/* Scrollable Container for Links and Footer */}
+          <div className="flex-1 flex flex-col justify-between pb-6 min-h-0 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
-            {links.map((link) => {
-              const isActive = pathname === link.path;
+            {/* Main Navigation Links */}
+            <div className="flex flex-col items-start w-full max-md:my-0 md:my-auto max-md:gap-0 md:gap-1">
 
-              return (
-                <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
-                  <div
-                    className={`w-full max-md:px-3 md:px-6 max-md:py-0.5 md:py-1.5 transition-all border rounded-[4px] ${isActive
-                      ? "bg-[#FF0E97] border-[#FF0E97] text-white"
-                      : "border-transparent text-[#161616] hover:border-[#FF0E97]"
-                      }`}
-                  >
-                    <span className="font-[family-name:var(--font-bebas)] max-md:text-[28px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">
-                      {link.name}
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+              {links.map((link) => {
+                const isActive = pathname === link.path;
 
-          </div>
+                return (
+                  <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
+                    <div
+                      className={`w-full max-md:px-3 md:px-6 max-md:py-0.5 md:py-1.5 transition-all border rounded-[4px] ${isActive
+                        ? "bg-[#FF0E97] border-[#FF0E97] text-white"
+                        : "border-transparent text-[#161616] hover:border-[#FF0E97]"
+                        }`}
+                    >
+                      <span className="font-[family-name:var(--font-bebas)] max-md:text-[28px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">
+                        {link.name}
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
 
-          {/* Footer Section */}
-          <div className="w-full pt-3 md:pt-8 border-t border-black/10 flex flex-col gap-3 md:flex-row md:justify-between md:gap-0 flex-shrink-0">
-
-            {/* Socials */}
-            <div className="flex flex-col gap-1 md:gap-3">
-              <span className="text-[#161616]/50 font-['Switzer',_sans-serif] text-[13px] md:text-[14px] uppercase tracking-widest mb-0.5 md:mb-1">
-                Socials
-              </span>
-              <a href="https://www.instagram.com/nazr.360/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">Instagram</a>
-              <a href="https://www.linkedin.com/company/nazrco/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">LinkedIn</a>
-              <Link href="#" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">X/Twitter</Link>
             </div>
 
-            {/* Quick Links */}
-            <div className="flex flex-col gap-1 md:gap-3">
-              <span className="text-[#161616]/50 font-['Switzer',_sans-serif] text-[13px] md:text-[14px] uppercase tracking-widest mb-0.5 md:mb-1">
-                Quick Links
-              </span>
-              <Link href="/privacy-policy" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
-                Privacy Policy <span className="text-[11px] md:text-[12px]">↗</span>
-              </Link>
-              <Link href="/terms" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
-                Terms & Conditions <span className="text-[11px] md:text-[12px]">↗</span>
-              </Link>
-              <Link href="/shipping" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
-                Shipping Policy <span className="text-[11px] md:text-[12px]">↗</span>
-              </Link>
-              <Link href="/product-liability" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
-                Product Liability <span className="text-[11px] md:text-[12px]">↗</span>
-              </Link>
-              <Link href="/delete-your-account" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
-                Delete Account <span className="text-[11px] md:text-[12px]">↗</span>
-              </Link>
-              <Link href="/faq" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">
-                FAQ
-              </Link>
+            {/* Footer Section */}
+            <div className="w-full pt-3 md:pt-8 border-t border-black/10 flex flex-col gap-3 md:flex-row md:justify-between md:gap-0 flex-shrink-0">
+
+              {/* Socials */}
+              <div className="flex flex-col gap-1 md:gap-3">
+                <span className="text-[#161616]/50 font-['Switzer',_sans-serif] text-[13px] md:text-[14px] uppercase tracking-widest mb-0.5 md:mb-1">
+                  Socials
+                </span>
+                <a href="https://www.instagram.com/nazr.360/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">Instagram</a>
+                <a href="https://www.linkedin.com/company/nazrco/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">LinkedIn</a>
+                <Link href="#" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">X/Twitter</Link>
+              </div>
+
+              {/* Quick Links */}
+              <div className="flex flex-col gap-1 md:gap-3">
+                <span className="text-[#161616]/50 font-['Switzer',_sans-serif] text-[13px] md:text-[14px] uppercase tracking-widest mb-0.5 md:mb-1">
+                  Quick Links
+                </span>
+                <Link href="/privacy-policy" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
+                  Privacy Policy <span className="text-[11px] md:text-[12px]">↗</span>
+                </Link>
+                <Link href="/terms" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
+                  Terms & Conditions <span className="text-[11px] md:text-[12px]">↗</span>
+                </Link>
+                <Link href="/shipping" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
+                  Shipping Policy <span className="text-[11px] md:text-[12px]">↗</span>
+                </Link>
+                <Link href="/product-liability" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
+                  Product Liability <span className="text-[11px] md:text-[12px]">↗</span>
+                </Link>
+                <Link href="/delete-your-account" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px] flex items-center gap-1">
+                  Delete Account <span className="text-[11px] md:text-[12px]">↗</span>
+                </Link>
+                <Link href="/faq" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">
+                  FAQ
+                </Link>
+              </div>
+
             </div>
 
           </div>
         </div>
       </div>
-
     </div>
   );
 }
