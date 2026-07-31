@@ -51,19 +51,6 @@ export function NavigationMenu() {
     <div
       className={`fixed inset-0 w-full h-[100vh] bg-[#F1E4DE] z-0 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none transition-opacity duration-0 delay-700"}`}
     >
-      {/* Top right close button - Unscaled, perfectly matches Header Menu button position */}
-      <div className="absolute max-md:top-[12px] md:top-[32px] right-6 md:right-12 z-50">
-        <button
-          onClick={() => setIsMenuOpen(false)}
-          className="flex items-center justify-center md:justify-between transition-colors rounded-[4px] px-[10px] py-[10px] md:px-[16px] md:py-[16px] w-auto h-auto md:w-[118px] md:h-[52px] gap-[12px] text-[#161616] hover:opacity-70 font-['Switzer',_sans-serif] text-[20px] leading-[100%] tracking-[-0.04em]"
-        >
-          Close
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </div>
-
       <div
         className="absolute top-1/2 right-0 origin-right w-[1440px] max-md:w-[390px]"
         style={{
@@ -71,10 +58,21 @@ export function NavigationMenu() {
           transform: mounted ? `translateY(-50%) scale(${scale})` : 'translateY(-50%)'
         }}
       >
-
-
-        {/* Single right-aligned flex container that holds both links and footer to prevent overlapping */}
-        <div className="absolute top-0 bottom-0 right-6 md:right-10 flex flex-col max-md:justify-start max-md:gap-4 md:justify-between pt-14 pb-6 md:pt-20 md:pb-6 max-md:w-[220px] md:w-[450px] z-10 min-h-0 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* Single right-aligned flex container that holds close button, links, and footer */}
+        <div className="absolute top-0 bottom-0 right-6 md:right-10 flex flex-col max-md:justify-start max-md:gap-2 md:justify-between pb-6 max-md:w-[220px] md:w-[450px] z-10 min-h-0 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          
+          {/* Top right close button inside scroll container - moves up when scrolling */}
+          <div className="flex justify-end w-full flex-shrink-0 pt-[12px] md:pt-[32px] pb-2 md:pb-4">
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center justify-center md:justify-between transition-colors rounded-[4px] px-[10px] py-[10px] md:px-[16px] md:py-[16px] w-auto h-auto md:w-[118px] md:h-[52px] gap-[12px] text-[#161616] hover:opacity-70 font-['Switzer',_sans-serif] text-[20px] leading-[100%] tracking-[-0.04em]"
+            >
+              Close
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
 
           {/* Main Navigation Links */}
           <div className="flex flex-col items-start w-full max-md:my-0 md:my-auto max-md:gap-0 md:gap-1">
