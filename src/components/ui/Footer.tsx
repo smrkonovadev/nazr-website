@@ -2,52 +2,78 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+
+  const getLinkClass = (href: string) => {
+    const isActive = pathname === href;
+    return `font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] transition-colors ${
+      isActive ? "text-[#FFF1EB]" : "text-[#FFF1EB]/40 hover:text-[#FFF1EB]"
+    }`;
+  };
+
   return (
     <footer className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[30px] md:pb-[40px] px-6 md:px-10 flex flex-col relative z-20 overflow-hidden min-h-[360px]">
-      {/* Background Image with Dark Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image unoptimized quality={100} src="/images/footer bg.webp"
-          alt="Footer Background"
-          fill
-          className="object-cover object-center opacity-40 mix-blend-normal"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/35" />
+      {/* Background Video with Subtle Dark Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-center opacity-75 mix-blend-normal pointer-events-none"
+        >
+          <source src="/images/Footer.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>
 
       <div className="relative z-10 w-full flex flex-col">
-        {/* Top section: 2-Column Grid on Mobile, 3-Column Grid on Desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6 md:gap-8 w-full max-w-[1205px] mx-auto">
-          {/* Pages Column (Spans top row on Mobile) */}
-          <div className="flex flex-col col-span-2 md:col-span-1">
+        {/* Top section: 2-Column Grid on Mobile, 4-Column Grid on Desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-8 w-full max-w-[1205px] mx-auto">
+          {/* Pages Column */}
+          <div className="flex flex-col col-span-2 md:col-span-2">
             <span className="font-[family-name:var(--font-bebas)] font-normal text-[16px] md:text-[21px] leading-[120%] tracking-[-0.02em] text-[#FFF1EB] uppercase mb-2 md:mb-4">
               [ Pages ]
             </span>
-            <div className="flex flex-col gap-1 md:gap-2">
-              <Link href="/" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
-                HOME
-              </Link>
-              <Link href="/shop" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
-                SHOP
-              </Link>
-              <Link href="/nazrapp" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
-                THE NAZR APP
-              </Link>
-              <Link href="/whynazrexists" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
-                THE NAZR ECOSYSTEM
-              </Link>
-              <Link href="/support" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
-                SUPPORT
-              </Link>
-              <Link href="#" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
-                LOGIN
-              </Link>
+            <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 md:gap-x-8 gap-y-1 md:gap-y-2">
+              <div className="flex flex-col gap-1 md:gap-2">
+                <Link href="/" className={getLinkClass("/")}>
+                  HOME
+                </Link>
+                <Link href="/about" className={getLinkClass("/about")}>
+                  ABOUT
+                </Link>
+                <Link href="/whynazrexists" className={`${getLinkClass("/whynazrexists")} uppercase`}>
+                  WHY NAZR
+                </Link>
+                <Link href="/shop" className={getLinkClass("/shop")}>
+                  SHOP
+                </Link>
+                <Link href="/nazrapp" className={`${getLinkClass("/nazrapp")} uppercase`}>
+                  NAZR APP
+                </Link>
+              </div>
+              <div className="flex flex-col gap-1 md:gap-2">
+                <Link href="/helpline" className={getLinkClass("/helpline")}>
+                  HELPLINE
+                </Link>
+                <Link href="/support" className={getLinkClass("/support")}>
+                  SUPPORT
+                </Link>
+                <Link href="/blog" className={getLinkClass("/blog")}>
+                  BLOG
+                </Link>
+                <Link href="#" className={getLinkClass("#")}>
+                  LOGIN
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Socials Column (Bottom Left on Mobile) */}
+          {/* Socials Column */}
           <div className="flex flex-col col-span-1 md:order-2">
             <span className="font-[family-name:var(--font-bebas)] font-normal text-[16px] md:text-[21px] leading-[120%] tracking-[-0.02em] text-[#FFF1EB] uppercase mb-2 md:mb-4">
               [ Socials ]
@@ -65,7 +91,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Contact Column (Bottom Right on Mobile - Next to Socials) */}
+          {/* Contact Column */}
           <div className="flex flex-col col-span-1 md:order-3">
             <span className="font-[family-name:var(--font-bebas)] font-normal text-[16px] md:text-[21px] leading-[120%] tracking-[-0.02em] text-[#FFF1EB] uppercase mb-2 md:mb-4">
               [ Contact ]

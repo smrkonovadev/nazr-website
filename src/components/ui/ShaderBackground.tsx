@@ -13,11 +13,15 @@ import {
 interface ShaderBackgroundProps {
   className?: string;
   imageUrl?: string;
+  colorA?: string;
+  colorB?: string;
 }
 
 export function ShaderBackground({
   className = '',
-  imageUrl = 'https://data.shaders.com/storage/v1/object/public/user-uploaded-images/user_33nh0FG48zZa0rIUZuK7vgwPfZe/gZx9yjLKI7VJ.jpeg',
+  imageUrl = '/images/image 59.svg',
+  colorA = '#242424',
+  colorB = '#D46FB3',
 }: ShaderBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -95,29 +99,29 @@ export function ShaderBackground({
       <Shader style={{ width: '100%', height: '100%' }}>
         <ChromaFlow
           id="idmostv5d9xi2rmvn45"
-          baseColor="#ffffff"
-          downColor="#ffffff"
-          intensity={1.4}
-          leftColor="#ffffff"
+          baseColor="#242424"
+          downColor="#242424"
+          intensity={1.8}
+          leftColor="#242424"
           momentum={10}
-          radius={4}
-          rightColor="#ffffff"
-          upColor="#ffffff"
+          radius={5}
+          rightColor="#242424"
+          upColor="#242424"
           visible={false}
         />
         <Dither
-          colorA="#F6E9E3"
-          colorB="#d324d4"
+          colorA={colorA}
+          colorB={colorB}
           pattern="blueNoise"
-          pixelSize={3}
+          pixelSize={1.5}
           threshold={{
             type: "map",
             source: "idmostv5d9xi2rmvn45",
             channel: "alpha",
             inputMax: 1,
             inputMin: 0,
-            outputMax: 0.79,
-            outputMin: 0.1,
+            outputMax: 0.85,
+            outputMin: 0.35,
           }}
         >
           <ImageTexture objectFit="cover" url={imageUrl} />
@@ -127,8 +131,19 @@ export function ShaderBackground({
             colorB="#00000000"
           />
         </Dither>
-        <Paper displacement={0.2} grainScale={0.1} roughness={0.21} />
+        <Paper displacement={0.15} grainScale={0.08} roughness={0.15} />
       </Shader>
+
+      {/* Figma Dark Shadow & Smudge Overlay behind text for 100% visual match */}
+      <div 
+        className="absolute inset-0 w-full h-full pointer-events-none z-10"
+        style={{
+          background: `
+            radial-gradient(ellipse at 30% 45%, rgba(36, 36, 36, 0.85) 0%, rgba(36, 36, 36, 0.65) 45%, transparent 80%),
+            linear-gradient(to right, rgba(36, 36, 36, 0.75) 0%, rgba(36, 36, 36, 0.4) 40%, transparent 75%)
+          `,
+        }}
+      />
     </div>
   );
 }

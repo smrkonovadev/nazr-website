@@ -103,10 +103,10 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="w-full bg-[#F6E9E3] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[630px] rounded-t-[9.71px] md:rounded-t-[26px]"
+        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[630px]"
       >
-        {/* Shader Background Effect (Preserved) */}
-        <ShaderBackground className="rounded-t-[9.71px] md:rounded-t-[26px]" />
+        {/* Shader Background Effect */}
+        <ShaderBackground imageUrl="/images/image 59.svg" colorA="#242424" colorB="#D46FB3" className="rounded-none" />
 
         {/* ================= MOBILE HERO LAYOUT (100% Screen Height Fit) ================= */}
         <div className="w-full flex flex-col justify-between min-h-[calc(100dvh-80px)] px-4 sm:px-6 py-4 relative z-20 md:hidden">
@@ -244,7 +244,7 @@ export function Hero() {
           <div className="flex flex-col items-start w-full max-w-[292px] z-30 mt-auto pt-4">
             {/* Left-Aligned Subtext */}
             <p
-              className="text-[#161616] font-['Inter',_sans-serif] text-[20px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
+              className="text-[#FFF1EB] font-['Inter',_sans-serif] text-[20px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
               style={{
                 fontWeight: 400,
                 width: '292px',
@@ -277,16 +277,16 @@ export function Hero() {
 
               <Link
                 href="/shop#pepper-spray"
-                className="flex items-center justify-center text-[#161616] bg-transparent hover:bg-black/5 transition-colors border border-[#161616]/40 rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] whitespace-nowrap"
+                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] whitespace-nowrap"
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
-                Buy now
+                Explore NAZR
               </Link>
             </div>
           </div>
         </div>
 
-        {/* ================= DESKTOP HERO LAYOUT (Unchanged) ================= */}
+        {/* ================= DESKTOP HERO LAYOUT ================= */}
         <div className="hidden md:block">
           {/* THE WORLD STARES Desktop Split */}
           <div className="relative z-20 flex flex-row justify-center w-full md:static mt-[4.1vw] md:mt-0">
@@ -378,7 +378,7 @@ export function Hero() {
 
           {/* Subtext Paragraph */}
           <p
-            className="relative md:absolute text-[#161616] m-0 p-0 font-['Inter',_sans-serif] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
+            className="relative md:absolute text-[#FFF1EB] m-0 p-0 font-['Inter',_sans-serif] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
           >
             India's first women's safety ecosystem combining personal defense, emergency technology, and trusted support.
           </p>
@@ -406,13 +406,13 @@ export function Hero() {
 
             <Link
               href="/shop#pepper-spray"
-              className="flex items-center justify-center text-[#FF0E97] bg-transparent hover:opacity-80 transition-opacity border border-[#F80090] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[101px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] max-md:ml-[3.8vw]"
+              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[135px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] max-md:ml-[3.8vw]"
               style={{
                 fontWeight: 400,
                 fontFamily: 'Roboto, sans-serif',
               }}
             >
-              Buy now
+              Explore NAZR
             </Link>
           </div>
 
