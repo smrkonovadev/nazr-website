@@ -117,21 +117,20 @@ export function SafetyHabits() {
       <div className="w-full max-w-[1280px] px-4 md:px-0 flex flex-col items-center gap-[24px] md:gap-[40px] relative">
 
         {/* Title Block */}
-        <div className="w-full flex flex-col items-center gap-4 md:gap-[24px]">
+        <div className="w-full flex flex-col items-center gap-3 md:gap-4">
           <h2
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[clamp(40px,7vw,80px)] text-center w-full m-0"
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[clamp(36px,6vw,76px)] text-center w-full m-0"
             style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
           >
-            THE SAFETY HABITS YOU<br className="hidden md:block" />{" "}
+            THE SAFETY HABITS YOU<br />
             ALREADY HAVE. UPGRADED.
           </h2>
           <p
-            className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] font-normal text-[15px] md:text-[18px] max-w-[650px] m-0"
+            className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] font-normal text-[15px] md:text-[18px] max-w-[720px] m-0 opacity-90"
             style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
           >
-            Designed around the routines women already<br className="block md:hidden" />{" "}
-            rely on, with smarter tools to keep every<br className="hidden md:block" />{" "}
-            journey connected, informed, and secure.
+            Designed around the routines women already rely on, with smarter tools to<br className="hidden md:block" />{" "}
+            keep every journey connected, informed, and secure.
           </p>
         </div>
 
