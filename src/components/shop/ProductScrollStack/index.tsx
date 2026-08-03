@@ -11,7 +11,7 @@ interface ProductScrollStackProps {
   scrollPerPanel?: number;
 }
 
-export function ProductScrollStack({ scrollPerPanel = 1.2 }: ProductScrollStackProps) {
+export function ProductScrollStack({ scrollPerPanel = 0.5 }: ProductScrollStackProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 

@@ -135,28 +135,48 @@ export function ShopProblemSteps() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Map vertical wheel scroll to horizontal scroll track (Same as home page InteractiveCards)
+  // Enable smooth mouse click & drag horizontal scrolling without trapping vertical page scroll
   useEffect(() => {
     const container = scrollContainerRef.current;
-    const wrapper = cardsWrapperRef.current;
-    if (!container || !wrapper) return;
+    if (!container) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        const isAtLeft = container.scrollLeft === 0;
-        const isAtRight =
-          Math.ceil(container.scrollLeft + container.clientWidth) >=
-          container.scrollWidth;
+    let isDown = false;
+    let startX = 0;
+    let scrollLeftPos = 0;
 
-        if ((e.deltaY > 0 && !isAtRight) || (e.deltaY < 0 && !isAtLeft)) {
-          e.preventDefault();
-          container.scrollLeft += e.deltaY;
-        }
-      }
+    const onMouseDown = (e: MouseEvent) => {
+      isDown = true;
+      startX = e.pageX - container.offsetLeft;
+      scrollLeftPos = container.scrollLeft;
     };
 
-    wrapper.addEventListener("wheel", handleWheel, { passive: false });
-    return () => wrapper.removeEventListener("wheel", handleWheel);
+    const onMouseLeave = () => {
+      isDown = false;
+    };
+
+    const onMouseUp = () => {
+      isDown = false;
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      container.scrollLeft = scrollLeftPos - walk;
+    };
+
+    container.addEventListener("mousedown", onMouseDown);
+    container.addEventListener("mouseleave", onMouseLeave);
+    container.addEventListener("mouseup", onMouseUp);
+    container.addEventListener("mousemove", onMouseMove);
+
+    return () => {
+      container.removeEventListener("mousedown", onMouseDown);
+      container.removeEventListener("mouseleave", onMouseLeave);
+      container.removeEventListener("mouseup", onMouseUp);
+      container.removeEventListener("mousemove", onMouseMove);
+    };
   }, []);
 
   return (
@@ -198,8 +218,8 @@ export function ShopProblemSteps() {
       {/* Cards Scroll Track */}
       <div
         ref={scrollContainerRef}
-        className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 py-2 h-[440px] md:h-[460px] shrink-0"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 py-2 h-[440px] md:h-[460px] shrink-0 scroll-smooth cursor-grab active:cursor-grabbing"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", touchAction: "pan-y", overscrollBehaviorX: "contain" }}
       >
         <div
           ref={cardsWrapperRef}

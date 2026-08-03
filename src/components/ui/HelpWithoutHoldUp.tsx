@@ -49,9 +49,9 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Horizontally Scrollable 3 Cards Container for Mobile */}
-          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-2 mt-0 scrollbar-none snap-x snap-mandatory px-4">
+          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-2 mt-0 scrollbar-none snap-x snap-mandatory scroll-pl-[24px]">
             {/* Left Spacer to guarantee spacing on Card 1 by default */}
-            <div className="w-3 shrink-0" />
+            <div className="w-[24px] shrink-0" />
 
             {/* Card 1 */}
             <div
