@@ -281,10 +281,15 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                         className="w-full h-full flex flex-col p-4 md:p-8 justify-between"
                         style={{ backgroundColor: card.bgColor }}
                       >
-                        <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#D9D9D9] flex items-center justify-center mb-2 md:mb-6 shrink-0">
-                          <svg className="w-4 h-4 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="#9CA3AF" />
-                          </svg>
+                        <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#FFF9EB] flex items-center justify-center mb-2 md:mb-6 shrink-0">
+                          <span
+                            className="font-[family-name:var(--font-bebas)] text-[11px] md:text-[20px] leading-none tracking-wide"
+                            style={{ color: card.bgColor }}
+                          >
+                            {(card as any).name
+                              ? (card as any).name.split(' ').map((w: string) => w[0]).join('').toUpperCase()
+                              : '·'}
+                          </span>
                         </div>
                         <div className="font-['Inter',_sans-serif] text-[10.5px] md:text-[15.5px] text-[#FFF9EB] leading-[1.35] mb-auto">
                           {(card as any).quote}

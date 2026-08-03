@@ -23,24 +23,24 @@ export function ProblemStatement() {
           <div className="md:hidden flex flex-col gap-6 pt-2 pb-2 mx-auto w-full max-w-[345px] px-2 text-center">
             <ScrollRevealText
               text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A ROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-INS. CALLS ON THE WAY HOME."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[24px] text-center tracking-[0.01em] text-[#FFF9EB]"
+              className="m-0 font-[family-name:var(--font-bebas)] text-[24px] text-center text-[#FFF9EB]"
               style={{
                 fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
                 fontWeight: 400,
                 lineHeight: '120%',
-                letterSpacing: '0.01em',
+                letterSpacing: '-0.01em',
               }}
               scrollYProgress={scrollYProgress}
               progressRange={[0, 0.45]}
             />
             <ScrollRevealText
               text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[24px] text-center tracking-[0.01em] text-[#FFF9EB]"
+              className="m-0 font-[family-name:var(--font-bebas)] text-[24px] text-center text-[#FFF9EB]"
               style={{
                 fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
                 fontWeight: 400,
                 lineHeight: '120%',
-                letterSpacing: '0.01em',
+                letterSpacing: '-0.01em',
               }}
               scrollYProgress={scrollYProgress}
               progressRange={[0.45, 0.9]}
@@ -51,24 +51,24 @@ export function ProblemStatement() {
           <div className="hidden md:flex flex-col gap-6">
             <ScrollRevealText
               text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A ROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-INS. CALLS ON THE WAY HOME."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px] lg:text-[40px]"
+              className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px]"
               style={{
                 fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
                 fontWeight: 400,
                 lineHeight: '120%',
-                letterSpacing: '0.02em',
+                letterSpacing: '-0.01em',
               }}
               scrollYProgress={scrollYProgress}
               progressRange={[0.05, 0.50]}
             />
             <ScrollRevealText
               text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px] lg:text-[40px]"
+              className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px]"
               style={{
                 fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
                 fontWeight: 400,
                 lineHeight: '120%',
-                letterSpacing: '0.02em',
+                letterSpacing: '-0.01em',
               }}
               scrollYProgress={scrollYProgress}
               progressRange={[0.50, 0.95]}

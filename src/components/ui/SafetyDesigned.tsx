@@ -39,13 +39,12 @@ export function SafetyDesigned() {
 
       {/* Desktop Master Wrapper */}
       <div className="hidden md:block w-full max-w-[1220px] relative h-[1000px]">
-
-        {/* Title Block */}
+        {/* Title Block */}
         <div className="absolute flex flex-col items-center gap-[32px]" style={{ width: "610px", height: "236px", top: 0, left: "305px" }}>
-          <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-center m-0 w-full" style={{ fontSize: "100px", lineHeight: "0.9", letterSpacing: "-0.03em", height: "161px" }}>
+          <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[80px] leading-[0.9] tracking-[-0.03em] text-center m-0 w-full">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-center m-0 w-full" style={{ fontSize: "20px", lineHeight: "1.4", letterSpacing: "-0.03em", height: "43px", maxWidth: "608px" }}>
+          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[18px] leading-[1.4] tracking-[-0.03em] text-center m-0 w-full max-w-[608px]">
             A growing range of smart safety products designed to work alongside the NAZR app, providing additional ways to stay prepared, connected, and supported.
           </p>
 
@@ -76,16 +75,16 @@ export function SafetyDesigned() {
               initial={false}
               animate={{
                 width: isCenter
-                  ? (item.id === "sip-check" ? 278.75 : item.id === "nazr-360" ? 300 : 363.30)
+                  ? (item.id === "sip-check" ? 480 : item.id === "nazr-360" ? 300 : 363.30)
                   : (isLeft ? 250.69 : 249.71),
                 height: isCenter
-                  ? (item.id === "sip-check" ? 326.53 : item.id === "nazr-360" ? 410 : 499.42)
+                  ? (item.id === "sip-check" ? 560 : item.id === "nazr-360" ? 410 : 499.42)
                   : 344.69,
                 top: isCenter
-                  ? (item.id === "sip-check" ? 362.45 : item.id === "nazr-360" ? 320 : 276)
+                  ? (item.id === "sip-check" ? 240 : item.id === "nazr-360" ? 320 : 276)
                   : 381.76,
                 left: isCenter
-                  ? (item.id === "sip-check" ? 472.09 : item.id === "nazr-360" ? 460 : 429.81)
+                  ? (item.id === "sip-check" ? 370 : item.id === "nazr-360" ? 460 : 429.81)
                   : (isLeft ? 104.7 : 865.59),
                 opacity: isCenter ? 1 : 0.6,
                 zIndex: isCenter ? 20 : 10
@@ -108,44 +107,74 @@ export function SafetyDesigned() {
         })}
 
         {/* Floating Icons (Visible only for pepper-spray, index 1) */}
-        <FloatingIcon src="/images/new9.webp" visible={currentIndex === 1} width="191.41px" height="169.84px" top="276px" left="317.02px" delay={0.0} />
-        <FloatingIcon src="/images/new10.webp" visible={currentIndex === 1} width="70.26px" height="48.17px" top="304.4px" left="665.82px" rotate={-30} delay={0.05} />
-        <FloatingIcon src="/images/new11.webp" visible={currentIndex === 1} width="170px" height="186px" top="460px" left="390px" rotate={36.59} delay={0.1} />
-        <FloatingIcon src="/images/new12.webp" visible={currentIndex === 1} width="91.95px" height="90.19px" top="466.96px" left="678.55px" rotate={-60} delay={0.15} />
+        <FloatingIcon src="/images/new9.webp" visible={currentIndex === 1} width="191.41px" height="169.84px" top="260px" left="310px" delay={0.0} />
+        <FloatingIcon src="/images/new10.webp" visible={currentIndex === 1} width="70.26px" height="48.17px" top="290px" left="670px" rotate={-30} delay={0.05} />
+        <FloatingIcon src="/images/new11.webp" visible={currentIndex === 1} width="170px" height="186px" top="460px" left="385px" rotate={36.59} delay={0.1} />
+        <FloatingIcon src="/images/new12.webp" visible={currentIndex === 1} width="91.95px" height="90.19px" top="470px" left="680px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for sip-check, index 0) */}
-        <FloatingIcon src="/images/new14.webp" visible={currentIndex === 0} width="191.41px" height="169.84px" top="276px" left="387.02px" delay={0.0} />
-        <FloatingIcon src="/images/new15.webp" visible={currentIndex === 0} width="80.26px" height="70.17px" top="444.4px" left="745.82px" rotate={-30} delay={0.05} />
-        <FloatingIcon src="/images/new17.webp" visible={currentIndex === 0} width="112.46px" height="110.13px" top="600.29px" left="436.67px" rotate={10.59} delay={0.1} />
-        <FloatingIcon src="/images/new16.webp" visible={currentIndex === 0} width="130.95px" height="110.19px" top="610px" left="678.55px" rotate={-60} delay={0.15} />
+        <FloatingIcon src="/images/new14.webp" visible={currentIndex === 0} width="191.41px" height="169.84px" top="260px" left="380px" delay={0.0} />
+        <FloatingIcon src="/images/new15.webp" visible={currentIndex === 0} width="80.26px" height="70.17px" top="430px" left="750px" rotate={-30} delay={0.05} />
+        <FloatingIcon src="/images/new17.webp" visible={currentIndex === 0} width="112.46px" height="110.13px" top="590px" left="430px" rotate={10.59} delay={0.1} />
+        <FloatingIcon src="/images/new16.webp" visible={currentIndex === 0} width="130.95px" height="110.19px" top="600px" left="680px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for nazr-360, index 2) */}
-        <FloatingIcon src="/images/new18.webp" visible={currentIndex === 2} width="220px" height="250px" top="250px" left="365px" delay={0.0} />
-        <FloatingIcon src="/images/new19.webp" visible={currentIndex === 2} width="180px" height="190px" top="270px" left="675px" rotate={-15} delay={0.05} />
-        <FloatingIcon src="/images/new21.webp" visible={currentIndex === 2} width="270px" height="195px" top="590px" left="285px" rotate={10.59} delay={0.1} />
-        <FloatingIcon src="/images/new20.webp" visible={currentIndex === 2} width="120px" height="100px" top="600px" left="745px" rotate={0} delay={0.15} />
+        <FloatingIcon src="/images/new18.webp" visible={currentIndex === 2} width="220px" height="250px" top="240px" left="355px" delay={0.0} />
+        <FloatingIcon src="/images/new19.webp" visible={currentIndex === 2} width="180px" height="190px" top="260px" left="680px" rotate={-15} delay={0.05} />
+        <FloatingIcon src="/images/new21.webp" visible={currentIndex === 2} width="270px" height="195px" top="580px" left="275px" rotate={10.59} delay={0.1} />
+        <FloatingIcon src="/images/new20.webp" visible={currentIndex === 2} width="120px" height="100px" top="590px" left="750px" rotate={0} delay={0.15} />
 
-        {/* Arrows — vertically centered with paragraph text */}
-        <button onClick={handlePrev} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "257.13px" }}>
-          <Image unoptimized quality={100} src="/images/arl.svg" fill className="object-contain" alt="prev" />
-        </button>
-        <button onClick={handleNext} className="absolute z-40 hover:scale-105 transition-transform" style={{ width: "97.92px", height: "66.93px", top: "810px", left: "868.08px" }}>
-          <Image unoptimized quality={100} src="/images/arr.svg" fill className="object-contain" alt="next" />
-        </button>
+        {/* Text & Controls Block (Figma Spec) */}
+        <div
+          className="absolute flex flex-col items-center justify-start pointer-events-auto z-40"
+          style={{ width: "640px", top: "710px", left: "50%", transform: "translateX(-50%)", gap: "16px" }}
+        >
+          {/* Product Title */}
+          <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[36px] leading-[1.5] tracking-normal m-0 text-center uppercase">
+            {carouselData[currentIndex].title}
+          </h3>
 
-        {/* Text & Button Block */}
-        <div className="absolute flex flex-col items-center justify-start" style={{ width: "464.85px", height: "auto", top: "710px", left: "378.22px", paddingTop: "15.67px", paddingBottom: "15.67px", gap: "24px" }}>
-          <div className="flex flex-col items-center w-full" style={{ gap: "12px" }}>
-            <h3 className="text-[#FFF9EB] m-0 text-center uppercase" style={{ fontFamily: "var(--font-bebas)", fontSize: "41.67px", lineHeight: "1.5", width: "100%" }}>
-              {carouselData[currentIndex].title}
-            </h3>
-            <p className="text-[#FFF9EB] m-0 text-center" style={{ fontFamily: "Inter, sans-serif", fontSize: "16px", lineHeight: "1.4", letterSpacing: "-0.03em" }}>
+          {/* Description + Side Buttons Row (Matching Figma Screenshot) */}
+          <div className="w-full flex items-center justify-center gap-5">
+            {/* Left Button */}
+            <button
+              onClick={handlePrev}
+              className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none flex-shrink-0"
+              aria-label="Previous product"
+            >
+              <Image unoptimized src="/images/buttonl.svg" width={40} height={40} alt="Previous" className="w-[40px] h-[40px]" />
+            </button>
+
+            {/* Description Text */}
+            <p className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em] text-center m-0 max-w-[480px]">
               {carouselData[currentIndex].subtitle}
             </p>
+
+            {/* Right Button */}
+            <button
+              onClick={handleNext}
+              className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none flex-shrink-0"
+              aria-label="Next product"
+            >
+              <Image unoptimized src="/images/button r.svg" width={40} height={40} alt="Next" className="w-[40px] h-[40px]" />
+            </button>
           </div>
 
-          <button className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors" style={{ width: "156px", height: "44px", borderRadius: "3.92px", border: "0.98px solid #FF0E97", marginTop: "8px" }}>
-            <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "16px", lineHeight: "1.5" }}>Get Yours</span>
+          {/* Get Yours Button */}
+          <button
+            className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors whitespace-nowrap cursor-pointer mt-1"
+            style={{
+              width: "110px",
+              height: "36px",
+              borderRadius: "3.92px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              borderWidth: "0.98px",
+              borderColor: "#FF0E97",
+              gap: "7.83px",
+            }}
+          >
+            <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "14px", lineHeight: "1.5" }}>Get Yours</span>
           </button>
         </div>
 
@@ -155,10 +184,10 @@ export function SafetyDesigned() {
       <div className="md:hidden w-full flex flex-col items-center gap-1 relative px-4 pb-6">
         {/* Title Block */}
         <div className="flex flex-col items-center gap-2 w-full relative">
-          <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[44px] text-center m-0 leading-[0.9]">
+          <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[44px] sm:text-[80px] text-center m-0 leading-[0.9] tracking-[-0.03em]">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[16px] sm:text-[18px] text-center m-0 max-w-[340px] sm:max-w-[400px] leading-[1.45] tracking-[-0.02em]">
+          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[16px] sm:text-[18px] text-center m-0 max-w-[340px] sm:max-w-[400px] leading-[1.4] tracking-[-0.03em]">
             A growing range of smart safety products<br />
             designed to work alongside the NAZR app,<br />
             providing additional ways to stay prepared,<br />
@@ -251,7 +280,7 @@ export function SafetyDesigned() {
         {/* Text & Controls */}
         <div className="flex flex-col items-center gap-0.5 w-full px-2">
           {/* Title */}
-          <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[34px] leading-none m-0 text-center uppercase tracking-tight">
+          <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[36px] leading-[1.5] tracking-normal m-0 text-center uppercase">
             {carouselData[currentIndex].title}
           </h3>
 
@@ -260,24 +289,24 @@ export function SafetyDesigned() {
             {/* Left Arrow Button */}
             <button
               onClick={handlePrev}
-              className="absolute left-[-2px] top-1/2 -translate-y-1/2 w-[34px] h-[20px] hover:scale-105 active:scale-95 transition-transform outline-none z-10"
+              className="absolute left-[-6px] top-1/2 -translate-y-1/2 cursor-pointer hover:scale-105 active:scale-95 transition-transform outline-none z-10"
               aria-label="Previous product"
             >
-              <Image unoptimized quality={100} src="/images/leftarrow.svg" alt="prev" fill className="object-contain" />
+              <Image unoptimized src="/images/buttonl.svg" width={36} height={36} alt="prev" className="w-[36px] h-[36px]" />
             </button>
 
             {/* Subtitle */}
-            <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] text-center m-0 leading-[1.4] tracking-[-0.02em] max-w-[310px]">
+            <p className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[16px] text-center m-0 leading-[1.4] tracking-[-0.03em] max-w-[310px]">
               {carouselData[currentIndex].subtitle}
             </p>
 
             {/* Right Arrow Button */}
             <button
               onClick={handleNext}
-              className="absolute right-[-2px] top-1/2 -translate-y-1/2 w-[34px] h-[20px] hover:scale-105 active:scale-95 transition-transform outline-none z-10"
+              className="absolute right-[-6px] top-1/2 -translate-y-1/2 cursor-pointer hover:scale-105 active:scale-95 transition-transform outline-none z-10"
               aria-label="Next product"
             >
-              <Image unoptimized quality={100} src="/images/rightarrow.svg" alt="next" fill className="object-contain" />
+              <Image unoptimized src="/images/button r.svg" width={36} height={36} alt="next" className="w-[36px] h-[36px]" />
             </button>
           </div>
 
