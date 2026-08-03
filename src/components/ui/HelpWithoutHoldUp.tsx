@@ -8,17 +8,20 @@ export function HelpWithoutHoldUp() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
+  const [animData0, setAnimData0] = useState<any>(null);
   const [animData1, setAnimData1] = useState<any>(null);
   const [animData2, setAnimData2] = useState<any>(null);
   const [animData3, setAnimData3] = useState<any>(null);
 
   useEffect(() => {
     Promise.all([
-      fetch("/images/home_sos1.json").then((res) => res.json()),
-      fetch("/images/home_sos2.json").then((res) => res.json()),
-      fetch("/images/home_sos3.json").then((res) => res.json()),
+      fetch("/images/SOS Default.json").then((res) => res.json()),
+      fetch("/images/sos_hand.json").then((res) => res.json()),
+      fetch("/images/sos2.json").then((res) => res.json()),
+      fetch("/images/sos3.json").then((res) => res.json()),
     ])
-      .then(([d1, d2, d3]) => {
+      .then(([d0, d1, d2, d3]) => {
+        setAnimData0(d0);
         setAnimData1(d1);
         setAnimData2(d2);
         setAnimData3(d3);
@@ -32,7 +35,7 @@ export function HelpWithoutHoldUp() {
     if (cardNum === 1) return animData1;
     if (cardNum === 2) return animData2;
     if (cardNum === 3) return animData3;
-    return null;
+    return animData0;
   };
 
   return (
@@ -49,7 +52,7 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Horizontally Scrollable 3 Cards Container for Mobile */}
-          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-2 mt-0 scrollbar-none snap-x snap-mandatory scroll-pl-[24px]">
+          <div className="w-full relative z-30 pointer-events-auto flex flex-row overflow-x-auto gap-4 pb-4 pt-2 mt-0 scrollbar-none snap-x snap-mandatory scroll-pl-[24px]">
             {/* Left Spacer to guarantee spacing on Card 1 by default */}
             <div className="w-[24px] shrink-0" />
 
@@ -100,10 +103,18 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Mobile Phone Mockup / Animation Display */}
-          <div className={`relative z-20 my-4 mx-auto flex items-center justify-center transition-all duration-500 ease-in-out ${effectiveCard ? 'w-[215px] sm:w-[240px] h-[450px] sm:h-[500px]' : 'w-[200px] h-[419px] rounded-[24px] overflow-hidden'}`}>
-            {/* Default Mobile Image */}
-            <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-              <Image unoptimized quality={100} src="/images/phone.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
+          <div className="relative z-10 pointer-events-none my-4 mx-auto flex items-center justify-center w-[280px] sm:w-[320px] h-[480px] sm:h-[520px] overflow-visible">
+            {/* Default Mobile Image / Lottie */}
+            <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+              {animData0 ? (
+                <Lottie
+                  animationData={animData0}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
+                />
+              ) : (
+                <Image unoptimized quality={100} src="/images/phone.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
+              )}
             </div>
 
             {/* Mobile Card 1 Lottie */}
@@ -112,7 +123,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData1}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-100 transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
                 />
               </div>
             )}
@@ -123,7 +134,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData2}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-100 transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
                 />
               </div>
             )}
@@ -134,7 +145,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData3}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-100 transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
                 />
               </div>
             )}
@@ -149,8 +160,8 @@ export function HelpWithoutHoldUp() {
         <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[1280px] h-[872px] pointer-events-none">
 
           {/* Title */}
-          <div className="absolute flex justify-center items-center pointer-events-auto"
-            style={{ width: "574.48px", height: "209.64px", top: "60px", left: "357.51px" }}>
+          <div className="absolute flex justify-center items-center pointer-events-auto left-1/2 -translate-x-1/2"
+            style={{ width: "600px", height: "210px", top: "50px" }}>
             <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] text-[100px] leading-[0.9] tracking-[-0.03em] text-center m-0">
               HELP. WITHOUT<br />THE HOLD UP.
             </h2>
@@ -158,12 +169,20 @@ export function HelpWithoutHoldUp() {
 
           {/* Phone Display with Smooth Cross-Fade Lottie Animation Triggers */}
           <div
-            className="absolute pointer-events-none z-20 flex items-center justify-center overflow-visible transition-all duration-500 ease-in-out"
-            style={{ width: "249.74px", height: "523.51px", top: "214px", left: "519.25px" }}
+            className="absolute pointer-events-none z-20 flex items-center justify-center overflow-visible transition-all duration-500 ease-in-out left-1/2 -translate-x-1/2"
+            style={{ width: "270px", height: "550px", top: "205px" }}
           >
-            {/* Default Static Phone */}
-            <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-              <Image unoptimized quality={100} src="/images/new8.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
+            {/* Default Static Phone / Lottie */}
+            <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+              {animData0 ? (
+                <Lottie
+                  animationData={animData0}
+                  loop={true}
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
+                />
+              ) : (
+                <Image unoptimized quality={100} src="/images/new8.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
+              )}
             </div>
 
             {/* Card 1 Lottie (Volume SOS) */}
@@ -172,7 +191,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData1}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] -translate-x-3 -translate-y-10 transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
                 />
               </div>
             )}
@@ -183,7 +202,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData2}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[1.25] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
                 />
               </div>
             )}
@@ -194,7 +213,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData3}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-100 transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
                 />
               </div>
             )}
