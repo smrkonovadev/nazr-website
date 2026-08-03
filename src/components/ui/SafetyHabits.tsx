@@ -2,14 +2,20 @@
 
 import { useEffect, useState, useRef } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import { useInView } from "framer-motion";
 
 export function SafetyHabits() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.2 });
+
   const [triggerAnimData, setTriggerAnimData] = useState<any>(null);
   const [armAnimData, setArmAnimData] = useState<any>(null);
   const [trustedAnimData, setTrustedAnimData] = useState<any>(null);
   const [mounted, setMounted] = useState(false);
   const [activeCard, setActiveCard] = useState<number>(1);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [hasEnteredView, setHasEnteredView] = useState(false);
+
   const [durations, setDurations] = useState<{ [key: number]: number }>({
     1: 3.0,
     2: 3.5,
@@ -44,6 +50,14 @@ export function SafetyHabits() {
       })
       .catch((err) => console.error("Error loading Trusted Circle Lottie:", err));
   }, []);
+
+  // When section enters viewport for the first time, reset to Card 1
+  useEffect(() => {
+    if (isInView && !hasEnteredView) {
+      setHasEnteredView(true);
+      setActiveCard(1);
+    }
+  }, [isInView, hasEnteredView]);
 
   const currentActive = hoveredCard !== null ? hoveredCard : activeCard;
 
@@ -80,8 +94,9 @@ export function SafetyHabits() {
     },
   ];
 
-  // Auto-advance to next card ONLY when the current card's progress bar reaches 100% (unhovered state)
+  // Auto-advance to next card ONLY when section is in view and progress bar completes
   useEffect(() => {
+    if (!isInView) return;
     if (hoveredCard !== null) return;
 
     const currentDurationSec = durations[activeCard] || 3.5;
@@ -92,14 +107,49 @@ export function SafetyHabits() {
     }, durationMs);
 
     return () => clearTimeout(timer);
-  }, [activeCard, hoveredCard, durations, cards.length]);
+  }, [isInView, activeCard, hoveredCard, durations, cards.length]);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isUserScrollingRef = useRef<boolean>(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Smoothly auto-scroll ONLY the horizontal track on mobile (never jump vertical page scroll)
+  const handleScroll = () => {
+    if (typeof window === "undefined" || window.innerWidth >= 768) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    isUserScrollingRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      isUserScrollingRef.current = false;
+    }, 250);
+
+    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    let closestCardId = activeCard;
+    let minDistance = Infinity;
+
+    cards.forEach((card) => {
+      const el = cardRefs.current[card.id];
+      if (el) {
+        const cardCenter = el.offsetLeft + el.clientWidth / 2;
+        const dist = Math.abs(containerCenter - cardCenter);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestCardId = card.id;
+        }
+      }
+    });
+
+    if (closestCardId !== activeCard) {
+      setActiveCard(closestCardId);
+    }
+  };
+
+  // Smoothly auto-scroll ONLY the horizontal track on mobile when auto-advanced (never jump vertical page scroll)
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (window.innerWidth < 768 && scrollContainerRef.current) {
+      if (isUserScrollingRef.current) return;
       const activeEl = cardRefs.current[activeCard];
       const container = scrollContainerRef.current;
       if (activeEl && container) {
@@ -113,7 +163,7 @@ export function SafetyHabits() {
   }, [activeCard]);
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-6 md:py-[60px] md:px-[20px] lg:px-[30px] overflow-x-hidden relative z-20">
+    <section ref={sectionRef} className="w-full bg-[#161616] flex justify-center pt-8 pb-6 md:py-[60px] md:px-[20px] lg:px-[30px] overflow-x-hidden relative z-20">
       <div className="w-full max-w-[1280px] px-4 md:px-0 flex flex-col items-center gap-[24px] md:gap-[40px] relative">
 
         {/* Title Block */}
@@ -136,13 +186,18 @@ export function SafetyHabits() {
 
         {/* Cards Container */}
         <div className="w-full flex flex-col items-center">
-          <div ref={scrollContainerRef} className="w-full flex flex-row overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none pb-2 pt-2 px-4 md:px-2 gap-5 md:gap-[40px] justify-start md:justify-center items-stretch max-w-[1280px] mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="w-full flex flex-row overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none pb-2 pt-2 px-4 md:px-2 gap-5 md:gap-[40px] justify-start md:justify-center items-stretch max-w-[1280px] mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {cards.map((card) => (
               <HabitCardItem
                 key={card.id}
                 cardRef={(el) => { cardRefs.current[card.id] = el; }}
                 card={card}
                 isActive={currentActive === card.id}
+                isInView={isInView}
                 exactDuration={durations[card.id] || 3.5}
                 onDurationMeasured={(dur) => handleDurationMeasured(card.id, dur)}
                 onMouseEnter={() => setHoveredCard(card.id)}
@@ -153,8 +208,8 @@ export function SafetyHabits() {
             ))}
           </div>
 
-          {/* Mobile ONLY: 3 Pagination Dots (Figma Specs: 8px x 8px, #FF0E97, border 0.3px) */}
-          <div className="flex md:hidden items-center justify-center gap-[10px] mt-4 z-30">
+          {/* Mobile ONLY: 3 Pagination Dots (Tight spacing matching Image 1: 8px x 8px, #FF0E97, border 0.3px) */}
+          <div className="flex md:hidden items-center justify-center gap-[5px] mt-4 z-30">
             {cards.map((c) => {
               const isDotActive = currentActive === c.id;
               return (
@@ -162,7 +217,7 @@ export function SafetyHabits() {
                   key={c.id}
                   onClick={() => setActiveCard(c.id)}
                   aria-label={`Go to slide ${c.id}`}
-                  className="p-1 focus:outline-none cursor-pointer"
+                  className="p-0 focus:outline-none cursor-pointer"
                 >
                   <div
                     className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${
@@ -199,6 +254,7 @@ function HabitCardItem({
   card,
   cardRef,
   isActive,
+  isInView,
   exactDuration,
   onDurationMeasured,
   onMouseEnter,
@@ -209,6 +265,7 @@ function HabitCardItem({
   card: any;
   cardRef: (el: HTMLDivElement | null) => void;
   isActive: boolean;
+  isInView: boolean;
   exactDuration: number;
   onDurationMeasured: (dur: number) => void;
   onMouseEnter: () => void;
@@ -239,13 +296,15 @@ function HabitCardItem({
   useEffect(() => {
     if (!lottieRef.current) return;
 
-    if (isActive) {
+    if (isActive && isInView) {
       calculateDuration();
       lottieRef.current.goToAndPlay(0, true);
     } else {
       lottieRef.current.goToAndStop(0, true);
     }
-  }, [isActive]);
+  }, [isActive, isInView]);
+
+  const isCardPlaying = isActive && isInView;
 
   return (
     <div
@@ -260,10 +319,10 @@ function HabitCardItem({
         className="relative w-full rounded-[16px] overflow-hidden shrink-0 flex flex-col items-center justify-between p-5 sm:p-6 md:pt-8 md:pb-6 md:h-[443px] transition-all duration-300 backdrop-blur-[20.3px]"
         style={{
           backgroundColor: "rgba(248, 0, 144, 0.02)",
-          border: isActive
+          border: isCardPlaying
             ? "1px solid rgba(255, 14, 151, 0.8)"
             : "1px solid rgba(255, 14, 151, 0.10)",
-          boxShadow: isActive
+          boxShadow: isCardPlaying
             ? "2px 1px 8.5px 0px rgba(255, 14, 151, 0.25), -2px 0px 8.5px 0px rgba(255, 14, 151, 0.25)"
             : "2px 1px 8.5px 0px rgba(255, 14, 151, 0.02), -2px 0px 8.5px 0px rgba(255, 14, 151, 0.02)",
         }}
@@ -275,7 +334,7 @@ function HabitCardItem({
               lottieRef={lottieRef}
               animationData={card.animData}
               loop={true}
-              autoplay={isActive}
+              autoplay={isCardPlaying}
               onDOMLoaded={calculateDuration}
               className={`w-full h-full object-contain drop-shadow-2xl ${card.lottieScale} transform-gpu z-10`}
             />
@@ -287,8 +346,8 @@ function HabitCardItem({
         {/* Pink Progress Line Indicator at bottom of phone box */}
         <div className="w-[180px] sm:w-[220px] h-[4px] bg-[#FF0E97]/20 rounded-full overflow-hidden shrink-0 mt-3 md:mt-4 relative">
           <div
-            key={isActive ? `active-${card.id}-${exactDuration}` : `inactive-${card.id}`}
-            className={`h-full bg-[#FF0E97] rounded-full ${isActive ? 'animate-progress-line' : 'w-0'}`}
+            key={isCardPlaying ? `active-${card.id}-${exactDuration}` : `inactive-${card.id}`}
+            className={`h-full bg-[#FF0E97] rounded-full ${isCardPlaying ? 'animate-progress-line' : 'w-0'}`}
             style={{
               animationDuration: `${exactDuration}s`,
             }}

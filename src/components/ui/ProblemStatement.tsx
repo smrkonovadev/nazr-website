@@ -19,11 +19,11 @@ export function ProblemStatement() {
         {/* Left Side: Text Column */}
         <div ref={textContainerRef} className="w-full max-w-[640px] flex flex-col gap-4 md:gap-6 z-10">
 
-          {/* Mobile Text (Exact line break match: 24px font size, 345px container width) */}
-          <div className="md:hidden flex flex-col gap-6 pt-2 pb-2 mx-auto w-full max-w-[345px] px-2 text-center">
+          {/* Mobile Text (Exact specs match: 30px font size, Bebas Neue, 120% line-height, -1% letter-spacing) */}
+          <div className="md:hidden flex flex-col gap-6 pt-2 pb-2 mx-auto w-full max-w-[360px] px-2 text-center">
             <ScrollRevealText
               text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A ROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-INS. CALLS ON THE WAY HOME."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[24px] text-center text-[#FFF9EB]"
+              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] text-center text-[#FFF9EB]"
               style={{
                 fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
                 fontWeight: 400,
@@ -35,7 +35,7 @@ export function ProblemStatement() {
             />
             <ScrollRevealText
               text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[24px] text-center text-[#FFF9EB]"
+              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] text-center text-[#FFF9EB]"
               style={{
                 fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
                 fontWeight: 400,
