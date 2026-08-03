@@ -100,7 +100,7 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Mobile Phone Mockup / Animation Display */}
-          <div className={`relative z-20 mt-[20px] mx-auto flex items-center justify-center transition-all duration-500 ease-in-out ${effectiveCard ? 'w-[85vw] max-w-[320px] h-[360px] overflow-visible' : 'w-[55vw] max-w-[200px] aspect-[200/419] rounded-[24px] overflow-hidden'}`}>
+          <div className={`relative z-20 my-4 mx-auto flex items-center justify-center transition-all duration-500 ease-in-out ${effectiveCard ? 'w-[75vw] max-w-[280px] h-[360px] overflow-hidden' : 'w-[55vw] max-w-[200px] aspect-[200/419] rounded-[24px] overflow-hidden'}`}>
             {/* Default Mobile Image */}
             <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
               <Image unoptimized quality={100} src="/images/phone.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
@@ -112,7 +112,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData1}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[2.2] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.25] transform-gpu"
                 />
               </div>
             )}
@@ -123,7 +123,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData2}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[1.25] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.15] transform-gpu"
                 />
               </div>
             )}
