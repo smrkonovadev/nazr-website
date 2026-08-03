@@ -258,7 +258,7 @@ export function Hero() {
             {/* Left-Aligned Buttons */}
             <div className="flex flex-row items-center gap-2 sm:gap-3 flex-wrap">
               <button
-                className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] gap-1.5 whitespace-nowrap shadow-sm"
+                className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[0.75px] border-[#FF0E97] rounded-[3px] w-[161.25px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[12px] sm:text-[13px] whitespace-nowrap shadow-sm opacity-100"
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
                 <div className="relative w-4 h-4">
@@ -402,7 +402,7 @@ export function Hero() {
 
             <Link
               href="/shop#pepper-spray"
-              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[3px] w-[83px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100 max-md:ml-[3.8vw]"
+              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[3px] w-[83px] h-[33px] md:h-[40px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100 max-md:ml-[3.8vw]"
               style={{
                 fontWeight: 400,
                 fontFamily: 'Roboto, sans-serif',
