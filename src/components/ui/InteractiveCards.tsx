@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView, MotionValue } from "framer-motion";
 import Image from "next/image";
 
@@ -129,6 +129,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [dynamicRotations, setDynamicRotations] = useState<number[] | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   const handleMouseLeave = () => {
@@ -136,12 +137,73 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
     setDynamicRotations(testimonialCards.map(() => (Math.random() * 12) - 6));
   };
 
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeftPos = 0;
+
+    const onMouseDown = (e: MouseEvent) => {
+      isDown = true;
+      startX = e.clientX;
+      scrollLeftPos = container.scrollLeft;
+    };
+
+    const onMouseLeave = () => {
+      isDown = false;
+    };
+
+    const onMouseUp = () => {
+      isDown = false;
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDown) return;
+      const x = e.clientX;
+      const walk = (x - startX) * 1.5;
+      if (Math.abs(walk) > 4) {
+        e.preventDefault();
+        container.scrollLeft = scrollLeftPos - walk;
+      }
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (delta !== 0) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (
+          (delta > 0 && container.scrollLeft < maxScroll - 1) ||
+          (delta < 0 && container.scrollLeft > 1)
+        ) {
+          e.preventDefault();
+          container.scrollLeft += delta * 1.2;
+        }
+      }
+    };
+
+    container.addEventListener("mousedown", onMouseDown);
+    container.addEventListener("mouseleave", onMouseLeave);
+    container.addEventListener("mouseup", onMouseUp);
+    container.addEventListener("mousemove", onMouseMove);
+    container.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("mousedown", onMouseDown);
+      container.removeEventListener("mouseleave", onMouseLeave);
+      container.removeEventListener("mouseup", onMouseUp);
+      container.removeEventListener("mousemove", onMouseMove);
+      container.removeEventListener("wheel", onWheel);
+    };
+  }, []);
+
   return (
     <section ref={sectionRef} className={`w-full ${theme === 'cream' ? 'bg-transparent max-md:mt-0 md:pb-[60px]' : 'bg-[#161616] -mt-4 md:-mt-8 pt-0 pb-4 md:pb-6'} flex flex-col items-center relative z-50`}>
 
       {theme === "dark" ? (
         // Home Page Dark Cards (5 Centered Straight Unified Cards matching Figma Screenshot)
-        <div className="w-full max-w-[1240px] mx-auto px-4 overflow-x-auto no-scrollbar pt-8 pb-4 md:pt-16 md:pb-6 overflow-y-visible">
+        <div className="w-full max-w-[1240px] mx-auto px-4 overflow-x-auto no-scrollbar pt-8 pb-4 md:pt-16 md:pb-6 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
           <div className="flex flex-row justify-start md:justify-center items-center gap-3 sm:gap-4 md:gap-5 min-w-max md:min-w-0 mx-auto">
             {darkCards.map((card, i) => {
               const isHovered = hoveredIndex === i;
@@ -204,10 +266,11 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
       ) : (
         // Cream Theme Testimonial Cards (About page)
         <div
-          className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-y', overscrollBehaviorX: 'contain' }}
+          ref={scrollContainerRef}
+          className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0 select-none cursor-grab active:cursor-grabbing"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-x pan-y', overscrollBehaviorX: 'contain' }}
         >
-          <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0">
+          <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0 select-none">
             {testimonialCards.map((card, i) => {
               const isHovered = hoveredIndex === i;
               const baseRotation = (dynamicRotations && typeof dynamicRotations[i] === 'number') ? dynamicRotations[i] : (card.rotation || 0);
