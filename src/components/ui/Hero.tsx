@@ -273,10 +273,10 @@ export function Hero() {
 
               <Link
                 href="/shop#pepper-spray"
-                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] whitespace-nowrap"
+                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[3px] w-[83px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100"
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
-                Explore NAZR
+                Buy Now
               </Link>
             </div>
           </div>
@@ -402,13 +402,13 @@ export function Hero() {
 
             <Link
               href="/shop#pepper-spray"
-              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[135px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] max-md:ml-[3.8vw]"
+              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[3px] w-[83px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100 max-md:ml-[3.8vw]"
               style={{
                 fontWeight: 400,
                 fontFamily: 'Roboto, sans-serif',
               }}
             >
-              Explore NAZR
+              Buy Now
             </Link>
           </div>
 
