@@ -15,15 +15,21 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[30px] md:pb-[40px] px-6 md:px-10 flex flex-col relative z-20 overflow-hidden min-h-[360px]">
-      {/* Background Video with Subtle Dark Overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+    <footer className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[30px] md:pb-[40px] px-5 sm:px-6 md:px-10 flex flex-col relative z-20 overflow-hidden min-h-[360px] transform-gpu">
+      {/* Background Video with Hardware Acceleration for Mobile & Desktop */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-center opacity-75 mix-blend-normal pointer-events-none"
+          preload="auto"
+          className="w-full h-full object-cover object-center opacity-75 mix-blend-normal pointer-events-none transform-gpu"
+          style={{
+            transform: "translateZ(0)",
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+          }}
         >
           <source src="/images/Footer.mp4" type="video/mp4" />
         </video>
@@ -38,7 +44,7 @@ export function Footer() {
             <span className="font-[family-name:var(--font-bebas)] font-normal text-[16px] md:text-[21px] leading-[120%] tracking-[-0.02em] text-[#FFF1EB] uppercase mb-2 md:mb-4">
               [ Pages ]
             </span>
-            <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 md:gap-x-8 gap-y-1 md:gap-y-2">
+            <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 md:gap-x-8 gap-y-1.5 md:gap-y-2">
               <div className="flex flex-col gap-1 md:gap-2">
                 <Link href="/" className={getLinkClass("/")}>
                   HOME
@@ -97,10 +103,10 @@ export function Footer() {
               [ Contact ]
             </span>
             <div className="flex flex-col gap-1 md:gap-2">
-              <a href="mailto:support@nazrco.in" className="font-[family-name:var(--font-bebas)] text-[15px] sm:text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors break-all">
+              <a href="mailto:support@nazrco.in" className="font-[family-name:var(--font-bebas)] text-[13px] sm:text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors break-all">
                 SUPPORT@NAZRCO.IN
               </a>
-              <a href="tel:+917208940212" className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
+              <a href="tel:+917208940212" className="font-[family-name:var(--font-bebas)] text-[16px] sm:text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors">
                 +91-7208940212
               </a>
             </div>
@@ -108,16 +114,16 @@ export function Footer() {
         </div>
 
         {/* Spacer matching Figma height */}
-        <div className="h-[75px] md:h-[116px] w-full" />
+        <div className="h-[50px] sm:h-[75px] md:h-[116px] w-full" />
 
         {/* Bottom section: Brand & Logo */}
         <div className="w-full max-w-[1205px] mx-auto flex flex-col justify-between">
-          <span className="text-[6.1px] md:text-[14px] font-['Switzer',_sans-serif] font-normal text-[#FFF1EB]/80 tracking-wider uppercase leading-none mb-2">
+          <span className="text-[9px] sm:text-[11px] md:text-[14px] font-['Switzer',_sans-serif] font-normal text-[#FFF1EB]/80 tracking-wider uppercase leading-none mb-2">
             THE WORLD STARES, STARE BACK
           </span>
 
           {/* Large Logo */}
-          <div className="relative w-full h-[90px] sm:h-[140px] md:h-[342px] mt-2">
+          <div className="relative w-full h-[90px] sm:h-[140px] md:h-[342px] mt-2 shrink-0 pointer-events-none">
             <Image unoptimized quality={100} src="/images/footer.svg"
               alt="NAZR"
               fill
@@ -129,14 +135,14 @@ export function Footer() {
           {/* Ownership & Copyright Bar */}
           <div className="w-full flex flex-col sm:flex-row items-center justify-between mt-4 gap-3 text-[11px] md:text-[13px] font-['Switzer',_sans-serif] text-[#FFF1EB]/60 border-t border-[#FFF1EB]/10 pt-4">
             <div className="flex flex-col items-center sm:items-start gap-1">
-              <p className="m-0 text-center sm:text-left">
+              <p className="m-0 text-center sm:text-left leading-relaxed">
                 NAZR™ <a href="https://www.nazrco.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#FFF1EB] transition-colors">www.nazrco.in</a> is owned and operated by Lumina Hospitality Private Limited
               </p>
               <p className="m-0 text-center sm:text-left text-[#FFF1EB]/50 text-[10px] md:text-[12px]">
                 Developed by <a href="https://www.smrkonova.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFF1EB] underline transition-colors">Smrkonova</a> • Designed by <a href="https://www.momm.in" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFF1EB] underline transition-colors">MOMM</a>
               </p>
             </div>
-            <p className="m-0 text-center sm:text-right">
+            <p className="m-0 text-center sm:text-right shrink-0">
               © {new Date().getFullYear()} NAZR. All rights reserved.
             </p>
           </div>
