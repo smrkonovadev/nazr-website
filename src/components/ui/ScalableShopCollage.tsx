@@ -27,9 +27,9 @@ export function ScalableShopCollage() {
         <div className="relative w-full h-full">
 
           {/* Huge Background Text - z-10 */}
-          <div className="absolute max-md:top-[16%] md:top-[2%] w-full flex flex-col items-center justify-center pointer-events-none z-10">
+          <div className="absolute max-md:top-[14%] md:top-[2%] w-full flex flex-col items-center justify-center pointer-events-none z-10">
             <h1
-              className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[31.5vw] md:text-[240px] max-md:leading-[0.9] md:leading-[0.8] tracking-[-0.03em] m-0 text-center"
+              className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[24.5vw] md:text-[240px] max-md:leading-[0.9] md:leading-[0.8] tracking-[-0.03em] m-0 text-center"
             >
               NAZR <br />
               PRODUCTS
@@ -43,9 +43,9 @@ export function ScalableShopCollage() {
             style={
               isMobile
                 ? {
-                  width: '100px',
-                  left: '10%',
-                  top: '11%',
+                  width: '85px',
+                  left: '12%',
+                  top: '10%',
                   transform: 'rotate(-32deg)',
                 }
                 : {
@@ -69,10 +69,10 @@ export function ScalableShopCollage() {
             style={
               isMobile
                 ? {
-                  width: '56px',
-                  height: '52px',
+                  width: '50px',
+                  height: '46px',
                   right: '13%',
-                  top: '26%',
+                  top: '22%',
                   transform: 'rotate(12deg)',
                 }
                 : {
