@@ -273,7 +273,7 @@ export function Hero() {
 
               <Link
                 href="/shop#pepper-spray"
-                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[3px] w-[83px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100"
+                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB] rounded-[4px] w-[83px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100"
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
                 Buy Now
@@ -402,7 +402,7 @@ export function Hero() {
 
             <Link
               href="/shop#pepper-spray"
-              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[3px] w-[83px] h-[33px] md:h-[40px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100 max-md:ml-[3.8vw]"
+              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB] rounded-[4px] w-[83px] h-[33px] md:h-[40px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100 max-md:ml-[3.8vw]"
               style={{
                 fontWeight: 400,
                 fontFamily: 'Roboto, sans-serif',

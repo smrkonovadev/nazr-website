@@ -151,7 +151,7 @@ export function HelpWithoutHoldUp() {
             )}
           </div>
 
-          <div className="mt-8 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[18px] leading-[1.4] tracking-[-0.03em]">
+          <div className="relative z-30 mt-10 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[18px] leading-[1.4] tracking-[-0.03em]">
             Three ways to activate SOS. Because every second spent searching is a second too many.
           </div>
         </div>
@@ -292,7 +292,7 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Footer Text */}
-          <div className="absolute pointer-events-auto" style={{ width: "480px", height: "auto", top: "769px", left: "400px" }}>
+          <div className="absolute pointer-events-auto z-30" style={{ width: "480px", height: "auto", top: "769px", left: "400px" }}>
             <p className="font-['Inter',_sans-serif] font-normal text-[18px] text-[#161616] leading-[1.4] tracking-[-0.03em] text-center m-0">
               Three ways to activate SOS. Because every second spent searching is a second too many.
             </p>
