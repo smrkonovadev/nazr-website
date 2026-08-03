@@ -21,7 +21,7 @@ export function ShopProductTwo() {
       {/* Top Pink Bar */}
       <div className="w-full bg-[#E5007D] py-3 px-6 md:px-12 flex items-center border-b border-black shrink-0">
         <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[28px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
-          2) SIP CHECK STICKERS
+          2] ANTI DRINK SPIKE STICKERS
         </h2>
       </div>
 
@@ -37,14 +37,15 @@ export function ShopProductTwo() {
           {/* Huge Typography Background */}
           <div className="relative md:absolute md:top-8 md:left-12 pointer-events-none z-10 w-full px-6 md:mb-0 text-center md:text-left">
             <h3 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[70px] leading-[0.9] md:text-[140px] md:leading-[0.85] tracking-[-0.03em] m-0">
-              SIP CHECK <br className="hidden md:block" />
+              SIP <br className="hidden md:block" />
+              CHECK
             </h3>
           </div>
 
           {/* Product Image on Podium */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
             <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:translate-x-20 md:translate-y-10">
-              <Image unoptimized quality={100} src="/images/SHOPPRO2.webp"
+              <Image unoptimized quality={100} src="/images/productsip.webp"
                 alt="Sip Check Product"
                 fill
                 className="object-contain"

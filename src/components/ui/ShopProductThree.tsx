@@ -21,7 +21,7 @@ export function ShopProductThree() {
       {/* Top Blue Bar */}
       <div className="w-full bg-[#0E8DFF] py-3 px-6 md:px-12 flex items-center border-b border-black shrink-0">
         <h2 className="font-[family-name:var(--font-bebas)] text-black text-[24px] md:text-[28px] leading-none m-0">
-          3) NAZR 360° BUNDLE
+          3] BUNDLE PACK
         </h2>
       </div>
 

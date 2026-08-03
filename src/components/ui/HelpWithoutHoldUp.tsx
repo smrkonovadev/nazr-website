@@ -51,9 +51,9 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Horizontally Scrollable 3 Cards Container for Mobile */}
-          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-2 mt-0 scrollbar-none snap-x snap-mandatory px-4">
+          <div className="w-full flex flex-row overflow-x-auto gap-4 pb-4 pt-2 mt-0 scrollbar-none snap-x snap-mandatory scroll-pl-[24px]">
             {/* Left Spacer to guarantee spacing on Card 1 by default */}
-            <div className="w-3 shrink-0" />
+            <div className="w-[24px] shrink-0" />
 
             {/* Card 1 */}
             <div
@@ -152,8 +152,11 @@ export function HelpWithoutHoldUp() {
 
           {/* Title */}
           <div className="absolute flex justify-center items-center pointer-events-auto"
-            style={{ width: "574.48px", height: "209.64px", top: "60px", left: "357.51px" }}>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[120px] leading-[0.9] tracking-[-0.03em] text-center m-0">
+            style={{ width: "574.48px", height: "209.64px", top: "39px", left: "357.51px" }}>
+            <h2
+              className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] text-[100px] text-center m-0"
+              style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
+            >
               HELP. WITHOUT<br />THE HOLD UP.
             </h2>
           </div>

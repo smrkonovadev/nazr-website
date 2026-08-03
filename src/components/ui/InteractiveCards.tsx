@@ -205,7 +205,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
         // Cream Theme Testimonial Cards (About page)
         <div
           className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-y', overscrollBehaviorX: 'contain' }}
         >
           <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0">
             {testimonialCards.map((card, i) => {

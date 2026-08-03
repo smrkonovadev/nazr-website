@@ -26,11 +26,11 @@ export const productsData: ProductData[] = [
   },
   {
     id: "sip-check",
-    indexText: "2) SIP CHECK STICKERS",
+    indexText: "2] ANTI DRINK SPIKE STICKERS",
     headerBg: "#E5007D",
     headerTextColor: "#161616",
     contentBg: "#FCE4EC",
-    titleLines: ["SIP CHECK"],
+    titleLines: ["SIP", "CHECK"],
     imageSrc: "/images/shop/shop-3.webp",
     imageAlt: "Sip Check Product",
     imageTransformClass: "md:transform md:translate-x-28 md:translate-y-30 translate-x-10 translate-y-16",
@@ -45,7 +45,7 @@ export const productsData: ProductData[] = [
   },
   {
     id: "nazr-360",
-    indexText: "3) NAZR 360° BUNDLE",
+    indexText: "3] BUNDLE PACK",
     headerBg: "#0E8DFF",
     headerTextColor: "black",
     contentBg: "#DDEFFF",

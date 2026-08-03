@@ -13,13 +13,13 @@ const cards = [
   },
   {
     id: 2,
-    title: "2) SIP CHECK STICKERS",
+    title: "2] ANTI DRINK SPIKE STICKERS",
     image: "/images/productsip.webp",
     borderColor: "border-[#4338CA]",
   },
   {
     id: 3,
-    title: "3) NAZR 360°",
+    title: "3] BUNDLE PACK",
     image: "/images/product365.webp",
     borderColor: "border-[#EC008C]",
   }
@@ -31,11 +31,11 @@ export function ProductCardsCarousel() {
   const [xTranslation, setXTranslation] = useState(0);
 
   const renderTitle = (title: string) => {
-    const match = title.match(/^(\d+)\)(.*)$/);
+    const match = title.match(/^(\d+[)\]])(.*)$/);
     if (match) {
       return (
         <>
-          <span className="font-semibold mr-1" style={{ fontFamily: 'sans-serif' }}>{match[1]})</span>
+          <span className="font-semibold mr-1" style={{ fontFamily: 'sans-serif' }}>{match[1]}</span>
           {match[2]}
         </>
       );

@@ -1,145 +1,333 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Lottie from "lottie-react";
+import { useEffect, useState, useRef } from "react";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
 
 export function SafetyHabits() {
   const [triggerAnimData, setTriggerAnimData] = useState<any>(null);
   const [armAnimData, setArmAnimData] = useState<any>(null);
   const [trustedAnimData, setTrustedAnimData] = useState<any>(null);
   const [mounted, setMounted] = useState(false);
+  const [activeCard, setActiveCard] = useState<number>(1);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [durations, setDurations] = useState<{ [key: number]: number }>({
+    1: 3.0,
+    2: 3.5,
+    3: 3.5,
+  });
+
+  const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
   useEffect(() => {
     setMounted(true);
     fetch("/images/Trigger.json")
       .then((res) => res.json())
-      .then((data) => setTriggerAnimData(data))
+      .then((data) => {
+        setTriggerAnimData(data);
+        if (data.op && data.fr) setDurations((prev) => ({ ...prev, 1: (data.op - (data.ip || 0)) / data.fr }));
+      })
       .catch((err) => console.error("Error loading Trigger Lottie:", err));
 
     fetch("/images/SM ARM-Turn On.json")
       .then((res) => res.json())
-      .then((data) => setArmAnimData(data))
+      .then((data) => {
+        setArmAnimData(data);
+        if (data.op && data.fr) setDurations((prev) => ({ ...prev, 2: (data.op - (data.ip || 0)) / data.fr }));
+      })
       .catch((err) => console.error("Error loading SM ARM-Turn On Lottie:", err));
 
     fetch("/images/Trusted Circle.json")
       .then((res) => res.json())
-      .then((data) => setTrustedAnimData(data))
+      .then((data) => {
+        setTrustedAnimData(data);
+        if (data.op && data.fr) setDurations((prev) => ({ ...prev, 3: (data.op - (data.ip || 0)) / data.fr }));
+      })
       .catch((err) => console.error("Error loading Trusted Circle Lottie:", err));
   }, []);
 
+  const currentActive = hoveredCard !== null ? hoveredCard : activeCard;
+
+  const handleDurationMeasured = (id: number, dur: number) => {
+    if (dur > 0 && durations[id] !== dur) {
+      setDurations((prev) => ({ ...prev, [id]: dur }));
+    }
+  };
+
+  const cards = [
+    {
+      id: 1,
+      title: "EMERGENCY SOS",
+      description:
+        "Connects you to your support network with real-time location sharing, emergency alerts, and quick access to critical support services when you need them most.",
+      animData: triggerAnimData,
+      lottieScale: "max-md:scale-[0.98] md:scale-[0.98]",
+    },
+    {
+      id: 2,
+      title: "SHIELD MODE",
+      description:
+        "Designed for the ride home, the late-night cab, and every journey in between. Shield Mode keeps you supported, so you never have to navigate a journey alone.",
+      animData: armAnimData,
+      lottieScale: "max-md:scale-[0.98] md:scale-[1.25]",
+    },
+    {
+      id: 3,
+      title: "TRUSTED CIRCLE",
+      description:
+        "Your safety network, built around the people you trust most. Receive support through SOS alerts, journey updates, and automated check-ins.",
+      animData: trustedAnimData,
+      lottieScale: "max-md:scale-[0.98] md:scale-[1.18]",
+    },
+  ];
+
+  // Auto-advance to next card ONLY when the current card's progress bar reaches 100% (unhovered state)
+  useEffect(() => {
+    if (hoveredCard !== null) return;
+
+    const currentDurationSec = durations[activeCard] || 3.5;
+    const durationMs = currentDurationSec * 1000;
+
+    const timer = setTimeout(() => {
+      setActiveCard((prev) => (prev >= cards.length ? 1 : prev + 1));
+    }, durationMs);
+
+    return () => clearTimeout(timer);
+  }, [activeCard, hoveredCard, durations, cards.length]);
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Smoothly auto-scroll ONLY the horizontal track on mobile (never jump vertical page scroll)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.innerWidth < 768 && scrollContainerRef.current) {
+      const activeEl = cardRefs.current[activeCard];
+      const container = scrollContainerRef.current;
+      if (activeEl && container) {
+        const targetLeft = activeEl.offsetLeft - (container.clientWidth - activeEl.clientWidth) / 2;
+        container.scrollTo({
+          left: targetLeft,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [activeCard]);
+
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-6 md:py-[60px] md:px-[20px] lg:px-[30px] overflow-hidden relative z-20">
+    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-6 md:py-[60px] md:px-[20px] lg:px-[30px] overflow-x-hidden relative z-20">
       <div className="w-full max-w-[1280px] px-4 md:px-0 flex flex-col items-center gap-[24px] md:gap-[40px] relative">
 
         {/* Title Block */}
-        <div className="w-full flex flex-col items-center md:gap-[32px] md:w-[746px] md:h-[234px]">
+        <div className="w-full flex flex-col items-center gap-4 md:gap-[24px]">
           <h2
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[clamp(45px,10vw,100px)] text-center w-full md:h-[159px] m-0"
-            style={{ lineHeight: "0.9", letterSpacing: "-0.03em" }}
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[clamp(40px,7vw,80px)] text-center w-full m-0"
+            style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
           >
-            THE SAFETY HABITS YOU<br />
+            THE SAFETY HABITS YOU<br className="hidden md:block" />{" "}
             ALREADY HAVE. UPGRADED.
           </h2>
           <p
-            className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] text-[16px] md:text-[20px] max-w-[601px] md:h-[43px] m-0 mt-4 md:mt-0"
-            style={{ lineHeight: "1.4", letterSpacing: "-0.03em" }}
+            className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] font-normal text-[15px] md:text-[18px] max-w-[650px] m-0"
+            style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
           >
             Designed around the routines women already<br className="block md:hidden" />{" "}
-            rely on, with smarter <br className="hidden md:block" />tools to keep every<br className="block md:hidden" />{" "}
+            rely on, with smarter tools to keep every<br className="hidden md:block" />{" "}
             journey connected, informed, and secure.
           </p>
         </div>
 
-        {/* Cards Container — Guaranteed 40px spacing between 379px wide cards */}
-        <div className="w-full flex flex-row overflow-x-auto snap-x snap-mandatory pb-6 pt-2 px-4 md:px-2 gap-5 md:gap-[40px] justify-start md:justify-center items-start w-full max-w-[1280px] mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-
-          {/* Card 1: EMERGENCY SOS */}
-          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
-            {/* Background Box (Width: 379px, Height: 441px, Border Radius: 24px) */}
-            <div
-              className="relative w-full h-[380px] sm:h-[420px] md:w-[379px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2 opacity-100 rotate-0"
-              style={{ background: "linear-gradient(152.75deg, #FFF9EB 3.64%, rgba(211, 176, 94, 0.5) 302.87%)" }}
-            >
-              {mounted && triggerAnimData ? (
-                <Lottie
-                  key="trigger-lottie-habit"
-                  animationData={triggerAnimData}
-                  loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[0.88] transform-gpu"
-                />
-              ) : (
-                <div className="w-full h-full bg-transparent" />
-              )}
-            </div>
-            {/* Text Content */}
-            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[0px]">
-              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[22px]">
-                EMERGENCY SOS
-              </h3>
-              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[78px]">
-                Connects you to your support network with real-time location sharing, emergency alerts, and quick access to critical support services when you need them most.
-              </p>
-            </div>
+        {/* Cards Container */}
+        <div className="w-full flex flex-col items-center">
+          <div ref={scrollContainerRef} className="w-full flex flex-row overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none pb-2 pt-2 px-4 md:px-2 gap-5 md:gap-[40px] justify-start md:justify-center items-stretch max-w-[1280px] mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            {cards.map((card) => (
+              <HabitCardItem
+                key={card.id}
+                cardRef={(el) => { cardRefs.current[card.id] = el; }}
+                card={card}
+                isActive={currentActive === card.id}
+                exactDuration={durations[card.id] || 3.5}
+                onDurationMeasured={(dur) => handleDurationMeasured(card.id, dur)}
+                onMouseEnter={() => setHoveredCard(card.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                onClick={() => setActiveCard(card.id)}
+                mounted={mounted}
+              />
+            ))}
           </div>
 
-          {/* Card 2: SHIELD MODE */}
-          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
-            {/* Background Box (Width: 379px, Height: 441px, Border Radius: 24px) */}
-            <div className="relative w-full h-[380px] sm:h-[420px] md:w-[379px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg bg-[#111111] flex items-center justify-center p-2 opacity-100 rotate-0">
-              <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ background: "linear-gradient(0deg, #FFF9EB 0%, rgba(139, 105, 25, 0.7) 100%)" }}></div>
-              {mounted && armAnimData ? (
-                <Lottie
-                  key="arm-lottie-habit"
-                  animationData={armAnimData}
-                  loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[1.25] transform-gpu z-10"
-                />
-              ) : (
-                <div className="w-full h-full bg-transparent" />
-              )}
-            </div>
-            {/* Text Content */}
-            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[0px]">
-              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[22px]">
-                SHIELD MODE
-              </h3>
-              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[78px]">
-                Designed for the ride home, the late-night cab, and every journey in between. Shield Mode keeps you supported, so you never have to navigate a journey alone.
-              </p>
-            </div>
+          {/* Mobile ONLY: 3 Pagination Dots (Figma Specs: 8px x 8px, #FF0E97, border 0.3px) */}
+          <div className="flex md:hidden items-center justify-center gap-[10px] mt-4 z-30">
+            {cards.map((c) => {
+              const isDotActive = currentActive === c.id;
+              return (
+                <button
+                  key={c.id}
+                  onClick={() => setActiveCard(c.id)}
+                  aria-label={`Go to slide ${c.id}`}
+                  className="p-1 focus:outline-none cursor-pointer"
+                >
+                  <div
+                    className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${
+                      isDotActive
+                        ? "bg-[#FF0E97] border-[0.3px] border-[#FF0E97]"
+                        : "bg-transparent border-[0.3px] border-[#FF0E97]"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </div>
-
-          {/* Card 3: TRUSTED CIRCLE */}
-          <div className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] md:h-[593px] flex flex-col gap-[20px] md:gap-[32px] md:py-[2px]">
-            {/* Background Box (Width: 379px, Height: 441px, Border Radius: 24px) */}
-            <div
-              className="relative w-full h-[380px] sm:h-[420px] md:w-[379px] md:h-[441px] rounded-[24px] overflow-hidden shrink-0 shadow-lg flex items-center justify-center p-2 opacity-100 rotate-0"
-              style={{ background: "linear-gradient(152.75deg, #FFF9EB 3.64%, rgba(211, 176, 94, 0.5) 302.87%)" }}
-            >
-              {mounted && trustedAnimData ? (
-                <Lottie
-                  key="trusted-lottie-habit"
-                  animationData={trustedAnimData}
-                  loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[1.25] transform-gpu"
-                />
-              ) : (
-                <div className="w-full h-full bg-transparent" />
-              )}
-            </div>
-            {/* Text Content */}
-            <div className="flex flex-col gap-[12px] md:gap-[16px] px-[8px] md:px-[0px]">
-              <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] text-[28px] md:text-[32px] leading-[0.9] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[22px]">
-                TRUSTED CIRCLE
-              </h3>
-              <p className="text-[#FFF9EB] font-['Inter',_sans-serif] text-[15px] md:text-[16px] leading-[1.4] tracking-[-0.03em] m-0 w-full md:w-[379px] md:h-[78px]">
-                Your safety network, built around the people you trust most. Receive support through SOS alerts, journey updates, and automated check-ins.
-              </p>
-            </div>
-          </div>
-
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes progressFillKeyframes {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+        .animate-progress-line {
+          animation: progressFillKeyframes linear infinite;
+        }
+      `}</style>
     </section>
+  );
+}
+
+function HabitCardItem({
+  card,
+  cardRef,
+  isActive,
+  exactDuration,
+  onDurationMeasured,
+  onMouseEnter,
+  onMouseLeave,
+  onClick,
+  mounted,
+}: {
+  card: any;
+  cardRef: (el: HTMLDivElement | null) => void;
+  isActive: boolean;
+  exactDuration: number;
+  onDurationMeasured: (dur: number) => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  onClick: () => void;
+  mounted: boolean;
+}) {
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
+
+  const calculateDuration = () => {
+    if (lottieRef.current) {
+      const dur = lottieRef.current.getDuration(false);
+      if (dur && dur > 0) {
+        onDurationMeasured(dur);
+        return;
+      }
+    }
+    if (card.animData && typeof card.animData.op === "number" && typeof card.animData.fr === "number" && card.animData.fr > 0) {
+      const ip = typeof card.animData.ip === "number" ? card.animData.ip : 0;
+      onDurationMeasured((card.animData.op - ip) / card.animData.fr);
+    }
+  };
+
+  useEffect(() => {
+    calculateDuration();
+  }, [card.animData]);
+
+  useEffect(() => {
+    if (!lottieRef.current) return;
+
+    if (isActive) {
+      calculateDuration();
+      lottieRef.current.goToAndPlay(0, true);
+    } else {
+      lottieRef.current.goToAndStop(0, true);
+    }
+  }, [isActive]);
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onClick={onClick}
+      className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] flex flex-col gap-[20px] md:gap-[24px] cursor-pointer transition-all duration-300"
+    >
+      {/* Card Box Container (Mobile: wraps content + text inside border; Desktop: top box only) */}
+      <div
+        className="relative w-full rounded-[16px] overflow-hidden shrink-0 flex flex-col items-center justify-between p-5 sm:p-6 md:pt-8 md:pb-6 md:h-[443px] transition-all duration-300 backdrop-blur-[20.3px]"
+        style={{
+          backgroundColor: "rgba(248, 0, 144, 0.02)",
+          border: isActive
+            ? "1px solid rgba(255, 14, 151, 0.8)"
+            : "1px solid rgba(255, 14, 151, 0.10)",
+          boxShadow: isActive
+            ? "2px 1px 8.5px 0px rgba(255, 14, 151, 0.25), -2px 0px 8.5px 0px rgba(255, 14, 151, 0.25)"
+            : "2px 1px 8.5px 0px rgba(255, 14, 151, 0.02), -2px 0px 8.5px 0px rgba(255, 14, 151, 0.02)",
+        }}
+      >
+        {/* Phone Lottie Display */}
+        <div className="w-full h-[250px] sm:h-[290px] md:h-auto md:flex-1 flex items-center justify-center relative overflow-hidden">
+          {mounted && card.animData ? (
+            <Lottie
+              lottieRef={lottieRef}
+              animationData={card.animData}
+              loop={true}
+              autoplay={isActive}
+              onDOMLoaded={calculateDuration}
+              className={`w-full h-full object-contain drop-shadow-2xl ${card.lottieScale} transform-gpu z-10`}
+            />
+          ) : (
+            <div className="w-full h-full bg-transparent" />
+          )}
+        </div>
+
+        {/* Pink Progress Line Indicator at bottom of phone box */}
+        <div className="w-[180px] sm:w-[220px] h-[4px] bg-[#FF0E97]/20 rounded-full overflow-hidden shrink-0 mt-3 md:mt-4 relative">
+          <div
+            key={isActive ? `active-${card.id}-${exactDuration}` : `inactive-${card.id}`}
+            className={`h-full bg-[#FF0E97] rounded-full ${isActive ? 'animate-progress-line' : 'w-0'}`}
+            style={{
+              animationDuration: `${exactDuration}s`,
+            }}
+          />
+        </div>
+
+        {/* Mobile ONLY: Title & Description inside card box (Image 2 Figma design) */}
+        <div className="flex md:hidden flex-col items-center text-center gap-2 pt-4 pb-1 w-full">
+          <h3
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[24px] sm:text-[28px] m-0 w-full"
+            style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
+          >
+            {card.title}
+          </h3>
+          <p
+            className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[13px] sm:text-[14px] m-0 w-full opacity-90"
+            style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
+          >
+            {card.description}
+          </p>
+        </div>
+      </div>
+
+      {/* Desktop ONLY: Text Content Below Box */}
+      <div className="hidden md:flex flex-col gap-[12px] md:gap-[16px] px-[4px] md:px-[0px]">
+        <h3
+          className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[32px] m-0 w-full"
+          style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
+        >
+          {card.title}
+        </h3>
+        <p
+          className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[16px] m-0 w-full opacity-90"
+          style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
+        >
+          {card.description}
+        </p>
+      </div>
+    </div>
   );
 }
