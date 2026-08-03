@@ -244,19 +244,15 @@ export function Hero() {
           <div className="flex flex-col items-start w-full max-w-[292px] z-30 mt-auto pt-4">
             {/* Left-Aligned Subtext */}
             <p
-              className="text-[#FFF1EB] font-['Inter',_sans-serif] text-[20px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
+              className="text-[#FFF1EB] font-['Inter',_sans-serif] text-[16px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
               style={{
                 fontWeight: 400,
                 width: '292px',
-                minHeight: '99px',
                 transform: 'rotate(0deg)',
                 opacity: 1
               }}
             >
-              India's first women's safety<br />
-              ecosystem combining personal<br />
-              defense, emergency technology,<br />
-              and trusted support.
+              India's first women's safety ecosystem combining personal defense, emergency technology, and trusted support.
             </p>
 
             {/* Left-Aligned Buttons */}

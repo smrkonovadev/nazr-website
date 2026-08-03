@@ -45,8 +45,8 @@ export function HelpWithoutHoldUp() {
         {/* Mobile Layout (Hidden on Desktop) */}
         <div className="md:hidden w-full flex flex-col items-center relative">
           <div
-            className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] text-[clamp(28px,9vw,45px)] text-center w-full z-10 mt-0 whitespace-nowrap mb-[15px]"
-            style={{ lineHeight: "0.9", letterSpacing: "-0.03em" }}
+            className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] text-[46px] text-center w-full z-10 mt-0 mb-[15px]"
+            style={{ fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif', fontWeight: 400, lineHeight: "90%", letterSpacing: "-0.03em" }}
           >
             HELP. WITHOUT THE HOLD UP.
           </div>
