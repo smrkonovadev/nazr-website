@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { productsData } from "./data";
@@ -11,16 +11,20 @@ interface ProductScrollStackProps {
   scrollPerPanel?: number;
 }
 
-export function ProductScrollStack({ scrollPerPanel = 0.5 }: ProductScrollStackProps) {
+export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStackProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const [trackHeightPx, setTrackHeightPx] = useState<number>(0);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    if (!viewport || !track || productsData.length < 2) return;
+    const root = rootRef.current;
+    if (!viewport || !track || !root || productsData.length < 2) return;
 
     const masks = Array.from(
       viewport.querySelectorAll<HTMLElement>("[data-reveal-mask]")
@@ -30,14 +34,29 @@ export function ProductScrollStack({ scrollPerPanel = 0.5 }: ProductScrollStackP
     const peelable = masks.slice(0, -1);
     const triggers: ScrollTrigger[] = [];
 
-    const segment = () => window.innerHeight * scrollPerPanel;
+    const computeDimensions = () => {
+      const vh = window.innerHeight;
+      const panelSegment = vh * scrollPerPanel;
+      // Initial hold: let user view 1st product fully before any peel starts
+      const initialHold = vh * 1.0;
+      // Hold distance after revealing last panel so user can view it before sticky unpins
+      const holdDistance = vh * 0.75;
+      // Total = initialHold + (peels * segment) + holdDistance + 100vh
+      const totalTrackHeight = initialHold + peelable.length * panelSegment + holdDistance + vh;
+
+      setTrackHeightPx(totalTrackHeight);
+
+      return { panelSegment, initialHold, totalTrackHeight };
+    };
+
+    let { panelSegment, initialHold } = computeDimensions();
 
     peelable.forEach((mask, index) => {
       const nextMask = masks[index + 1];
       const trigger = ScrollTrigger.create({
         trigger: track,
-        start: () => `top+=${index * segment()} top`,
-        end: () => `top+=${(index + 1) * segment()} top`,
+        start: () => `top+=${initialHold + index * panelSegment} top`,
+        end: () => `top+=${initialHold + (index + 1) * panelSegment} top`,
         scrub: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -67,7 +86,13 @@ export function ProductScrollStack({ scrollPerPanel = 0.5 }: ProductScrollStackP
       triggers.push(trigger);
     });
 
-    const onResize = () => ScrollTrigger.refresh();
+    const onResize = () => {
+      const dims = computeDimensions();
+      panelSegment = dims.panelSegment;
+      initialHold = dims.initialHold;
+      ScrollTrigger.refresh();
+    };
+
     window.addEventListener("resize", onResize);
 
     // Smoothly scroll to the matched product panel if hash exists
@@ -79,23 +104,22 @@ export function ProductScrollStack({ scrollPerPanel = 0.5 }: ProductScrollStackP
       const productIndex = productsData.findIndex((p) => p.id === productId);
       if (productIndex === -1) return;
 
-      // Small delay to ensure that scroll triggers and layout have computed their bounds
       setTimeout(() => {
-        const trackRect = track.getBoundingClientRect();
-        const trackTop = trackRect.top + window.pageYOffset;
-        const panelSegment = window.innerHeight * scrollPerPanel;
+        const rootRect = root.getBoundingClientRect();
+        const rootTop = rootRect.top + window.pageYOffset;
+        const vh = window.innerHeight;
+        const seg = vh * scrollPerPanel;
+        const hold = vh * 1.0;
         
-        // Scroll target lands on the start trigger for the correct card's peel state
-        const targetY = trackTop + productIndex * panelSegment;
+        const targetY = rootTop + hold + productIndex * seg;
         
         window.scrollTo({
-          top: targetY + 2, // minor offset buffer
+          top: targetY + 2,
           behavior: "smooth",
         });
       }, 300);
     };
 
-    // Run on initial load/mount
     handleHashScroll();
 
     window.addEventListener("hashchange", handleHashScroll);
@@ -107,10 +131,12 @@ export function ProductScrollStack({ scrollPerPanel = 0.5 }: ProductScrollStackP
     };
   }, [scrollPerPanel]);
 
-  const trackHeight = `${productsData.length * scrollPerPanel * 100}vh`;
-
   return (
-    <div className={styles.root}>
+    <div 
+      ref={rootRef} 
+      className={styles.root}
+      style={{ height: trackHeightPx ? `${trackHeightPx}px` : undefined }}
+    >
       {/* Sticky viewport — pins inside the scroll flow */}
       <div ref={viewportRef} className={styles.viewport} aria-label="Product reveal">
         {productsData.map((product, index) => (
@@ -128,7 +154,7 @@ export function ProductScrollStack({ scrollPerPanel = 0.5 }: ProductScrollStackP
       <div
         ref={trackRef}
         className={styles.scrollTrack}
-        style={{ height: trackHeight }}
+        style={{ height: trackHeightPx ? `${trackHeightPx}px` : undefined }}
         aria-hidden="true"
       />
     </div>
