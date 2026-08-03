@@ -135,7 +135,7 @@ export function ShopProblemSteps() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Enable smooth mouse click & drag horizontal scrolling without trapping vertical page scroll
+  // Enable smooth mouse click & drag horizontal scrolling and wheel support without trapping vertical page scroll
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -146,7 +146,7 @@ export function ShopProblemSteps() {
 
     const onMouseDown = (e: MouseEvent) => {
       isDown = true;
-      startX = e.pageX - container.offsetLeft;
+      startX = e.clientX;
       scrollLeftPos = container.scrollLeft;
     };
 
@@ -160,22 +160,40 @@ export function ShopProblemSteps() {
 
     const onMouseMove = (e: MouseEvent) => {
       if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - container.offsetLeft;
+      const x = e.clientX;
       const walk = (x - startX) * 1.5;
-      container.scrollLeft = scrollLeftPos - walk;
+      if (Math.abs(walk) > 4) {
+        e.preventDefault();
+        container.scrollLeft = scrollLeftPos - walk;
+      }
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (delta !== 0) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (
+          (delta > 0 && container.scrollLeft < maxScroll - 1) ||
+          (delta < 0 && container.scrollLeft > 1)
+        ) {
+          e.preventDefault();
+          container.scrollLeft += delta * 1.2;
+        }
+      }
     };
 
     container.addEventListener("mousedown", onMouseDown);
     container.addEventListener("mouseleave", onMouseLeave);
     container.addEventListener("mouseup", onMouseUp);
     container.addEventListener("mousemove", onMouseMove);
+    container.addEventListener("wheel", onWheel, { passive: false });
 
     return () => {
       container.removeEventListener("mousedown", onMouseDown);
       container.removeEventListener("mouseleave", onMouseLeave);
       container.removeEventListener("mouseup", onMouseUp);
       container.removeEventListener("mousemove", onMouseMove);
+      container.removeEventListener("wheel", onWheel);
     };
   }, []);
 
@@ -218,12 +236,12 @@ export function ShopProblemSteps() {
       {/* Cards Scroll Track */}
       <div
         ref={scrollContainerRef}
-        className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 py-2 h-[440px] md:h-[460px] shrink-0 scroll-smooth cursor-grab active:cursor-grabbing"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none", touchAction: "pan-y", overscrollBehaviorX: "contain" }}
+        className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 py-2 h-[440px] md:h-[460px] shrink-0 select-none cursor-grab active:cursor-grabbing"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", touchAction: "pan-x pan-y", overscrollBehaviorX: "contain" }}
       >
         <div
           ref={cardsWrapperRef}
-          className="flex items-center min-w-max px-5 md:px-16 gap-4 md:space-x-4 pt-4 pb-4"
+          className="flex items-center min-w-max px-5 md:px-16 gap-4 md:space-x-4 pt-4 pb-4 select-none"
         >
           {cards.map((card, i) => {
             const isHovered = hoveredIndex === i;
