@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bebas_Neue, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { NavigationProvider } from "@/context/NavigationContext";
 import { NavigationMenu } from "@/components/ui/NavigationMenu";
 import { ScaleWrapper } from "@/components/ui/ScaleWrapper";
@@ -68,6 +69,7 @@ export default function RootLayout({
             </DesktopScaler>
           </ScaleWrapper>
         </NavigationProvider>
+        <Analytics />
       </body>
     </html>
   );
