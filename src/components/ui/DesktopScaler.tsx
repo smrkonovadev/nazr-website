@@ -9,37 +9,57 @@ interface DesktopScalerProps {
   className?: string;
 }
 
-export function DesktopScaler({ children, desktopWidth = 1280, bgColor = "#161616", className = "" }: DesktopScalerProps) {
+export function DesktopScaler({
+  children,
+  desktopWidth = 1280,
+  bgColor = "#161616",
+  className = "",
+}: DesktopScalerProps) {
   const [scale, setScale] = useState(1);
   const [contentHeight, setContentHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
   const [useTransformFallback, setUseTransformFallback] = useState(false);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Detect if browser lacks support for the non-standard CSS zoom property (e.g. Firefox)
-    const supportsZoom = typeof CSS !== "undefined" && CSS.supports && CSS.supports("zoom", "1");
+    const supportsZoom =
+      typeof CSS !== "undefined" &&
+      CSS.supports &&
+      CSS.supports("zoom", "1");
+
     setUseTransformFallback(!supportsZoom);
 
     const checkScale = () => {
-      const isWindowMobile = window.innerWidth < 768;
-      setIsMobile(isWindowMobile);
-      
-      const windowWidth = window.innerWidth;
-      
-      if (isWindowMobile) {
+      const windowWidth = document.documentElement.clientWidth || window.innerWidth;
+      const mobile = windowWidth < 768;
+
+      setIsMobile(mobile);
+
+      if (mobile) {
         setScale(windowWidth / 390);
-      } else {
-        setScale(windowWidth / desktopWidth);
+        return;
       }
+
+      /**
+       * Responsive desktop scaling:
+       * Exactly scales the 1280px base canvas to fit 100% of available viewport width
+       * (e.g. 1024px -> 0.8x, 1280px -> 1.0x, 1440px -> ~1.12x, 1920px -> 1.5x)
+       */
+      const calculatedScale = windowWidth / desktopWidth;
+      setScale(calculatedScale);
     };
 
     checkScale();
+
     window.addEventListener("resize", checkScale);
 
     const resizeObserver = new ResizeObserver((entries) => {
       if (entries[0]) {
-        setContentHeight(entries[0].target.clientHeight || entries[0].contentRect.height);
+        setContentHeight(
+          entries[0].target.clientHeight ||
+          entries[0].contentRect.height
+        );
       }
     });
 
@@ -50,34 +70,26 @@ export function DesktopScaler({ children, desktopWidth = 1280, bgColor = "#16161
 
     return () => {
       window.removeEventListener("resize", checkScale);
-      if (containerRef.current) {
-        resizeObserver.disconnect();
-      }
+      resizeObserver.disconnect();
     };
   }, [desktopWidth]);
 
   const targetWidth = isMobile ? 390 : desktopWidth;
 
-  const parentStyle = {
+  const parentStyle: React.CSSProperties = {
     backgroundColor: bgColor,
     width: "100%",
-    position: "relative" as const,
-    ...(useTransformFallback || className.includes("overflow-hidden")
-      ? {
-          overflow: "hidden" as const,
-        }
-      : {}),
-    ...(useTransformFallback
-      ? {
-          height: `${contentHeight * scale}px`,
-        }
-      : {}),
+    position: "relative",
+    overflowX: "hidden",
+    overflowY: useTransformFallback || className.includes("overflow-hidden") ? "hidden" : undefined,
+    height: useTransformFallback ? contentHeight * scale : undefined,
   };
 
-  const innerStyle = {
-    width: `${targetWidth}px`,
+  const innerStyle: React.CSSProperties & { zoom?: number | string } = {
+    width: targetWidth,
     margin: "0 auto",
     transformOrigin: "top center",
+
     ...(useTransformFallback
       ? {
           transform: `scale(${scale})`,
@@ -88,11 +100,14 @@ export function DesktopScaler({ children, desktopWidth = 1280, bgColor = "#16161
   };
 
   return (
-    <div className={`w-full flex justify-center ${className || ""}`} style={parentStyle}>
-      <div 
+    <div
+      className={`w-full flex justify-center ${className}`}
+      style={parentStyle}
+    >
+      <div
         ref={containerRef}
-        className="shrink-0 flex flex-col relative"
-        style={innerStyle as React.CSSProperties}
+        className="relative flex shrink-0 flex-col"
+        style={innerStyle}
       >
         {children}
       </div>

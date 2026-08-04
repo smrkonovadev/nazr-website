@@ -68,12 +68,12 @@ export function SafetyCommunitySection() {
           {/* ================= MOBILE LAYOUT (Matching Image 3) ================= */}
           <div className="md:hidden w-full flex flex-col items-center mb-4">
             {/* Heading — Centered */}
-            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] leading-[0.9] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
+            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[clamp(36px,6vw,48px)] leading-[0.9] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
               WHY NAZR EXISTS.<br />IN THEIR WORDS.
             </h2>
 
             {/* Subtitle — Centered */}
-            <p className="font-['Inter',_sans-serif] font-normal text-[16px] text-[#FFF9EB] max-w-[340px] leading-[1.4] tracking-[-0.03em] text-center m-0 mb-6">
+            <p className="font-['Inter',_sans-serif] font-normal text-[clamp(14px,1.5vw,16px)] text-[#FFF9EB] max-w-[340px] leading-[1.4] tracking-[-0.03em] text-center m-0 mb-6">
               Real experiences from women who believe safety should be proactive, accessible, and shared.
             </p>
 
