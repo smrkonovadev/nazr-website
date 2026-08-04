@@ -169,14 +169,14 @@ export function SafetyHabits() {
         {/* Title Block */}
         <div className="w-full flex flex-col items-center gap-3 md:gap-4">
           <h2
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[clamp(36px,6vw,76px)] text-center w-full m-0"
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[76px] text-center w-full m-0"
             style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
           >
             THE SAFETY HABITS YOU<br />
             ALREADY HAVE. UPGRADED.
           </h2>
           <p
-            className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] font-normal text-[15px] md:text-[18px] max-w-[720px] m-0 opacity-90"
+            className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] font-normal text-[16px] md:text-[18px] max-w-[720px] m-0 opacity-90"
             style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
           >
             Designed around the routines women already rely on, with smarter tools to<br className="hidden md:block" />{" "}
@@ -357,13 +357,13 @@ function HabitCardItem({
         {/* Mobile ONLY: Title & Description inside card box (Image 2 Figma design) */}
         <div className="flex md:hidden flex-col items-center text-center gap-2 pt-4 pb-1 w-full">
           <h3
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[24px] sm:text-[28px] m-0 w-full"
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[24px] uppercase text-center m-0 w-full"
             style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
           >
             {card.title}
           </h3>
           <p
-            className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[13px] sm:text-[14px] m-0 w-full opacity-90"
+            className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 w-full opacity-90"
             style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
           >
             {card.description}

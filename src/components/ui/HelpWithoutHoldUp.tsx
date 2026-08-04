@@ -64,8 +64,8 @@ export function HelpWithoutHoldUp() {
               <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 1 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 1
               </div>
-              <h3 className={`font-['Inter',_sans-serif] font-semibold text-[18px] leading-[1.4] tracking-[-0.03em] mb-1 transition-colors duration-300 ${effectiveCard === 1 ? 'text-white' : 'text-[#161616]'}`}>Volume Button SOS</h3>
-              <p className={`font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 1 ? 'text-white/90' : 'text-[#161616]'}`}>
+              <h3 className={`font-['Inter',_sans-serif] font-semibold text-[16px] leading-[1.4] tracking-[-0.03em] mb-1 transition-colors duration-300 ${effectiveCard === 1 ? 'text-white' : 'text-[#161616]'}`}>Volume Button SOS</h3>
+              <p className={`font-['Inter',_sans-serif] font-normal text-[14px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 1 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Press your volume button three times to instantly trigger SOS.
               </p>
             </div>
@@ -78,8 +78,8 @@ export function HelpWithoutHoldUp() {
               <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 2 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 2
               </div>
-              <h3 className={`font-['Inter',_sans-serif] font-semibold text-[18px] leading-[1.4] tracking-[-0.03em] mb-1 transition-colors duration-300 ${effectiveCard === 2 ? 'text-white' : 'text-[#161616]'}`}>In-App SOS Button</h3>
-              <p className={`font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 2 ? 'text-white/90' : 'text-[#161616]'}`}>
+              <h3 className={`font-['Inter',_sans-serif] font-semibold text-[16px] leading-[1.4] tracking-[-0.03em] mb-1 transition-colors duration-300 ${effectiveCard === 2 ? 'text-white' : 'text-[#161616]'}`}>In-App SOS Button</h3>
+              <p className={`font-['Inter',_sans-serif] font-normal text-[14px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 2 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Tap the SOS button in the NAZR app to alert your support network.
               </p>
             </div>
@@ -92,8 +92,8 @@ export function HelpWithoutHoldUp() {
               <div className={`w-[28px] h-[28px] rounded-full flex items-center justify-center font-[family-name:var(--font-bebas)] text-[16px] shadow-sm mb-3 transition-colors duration-300 ${effectiveCard === 3 ? 'bg-[#FFF1EB] text-[#161616]' : 'bg-[#FFF1EB] text-[#161616]'}`}>
                 3
               </div>
-              <h3 className={`font-['Inter',_sans-serif] font-semibold text-[18px] leading-[1.4] tracking-[-0.03em] mb-1 transition-colors duration-300 ${effectiveCard === 3 ? 'text-white' : 'text-[#161616]'}`}>Home Screen SOS Widget</h3>
-              <p className={`font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 3 ? 'text-white/90' : 'text-[#161616]'}`}>
+              <h3 className={`font-['Inter',_sans-serif] font-semibold text-[16px] leading-[1.4] tracking-[-0.03em] mb-1 transition-colors duration-300 ${effectiveCard === 3 ? 'text-white' : 'text-[#161616]'}`}>Home Screen SOS Widget</h3>
+              <p className={`font-['Inter',_sans-serif] font-normal text-[14px] leading-[1.4] tracking-[-0.03em] transition-colors duration-300 ${effectiveCard === 3 ? 'text-white/90' : 'text-[#161616]'}`}>
                 Trigger SOS directly from your home screen without opening the app.
               </p>
             </div>
@@ -151,7 +151,7 @@ export function HelpWithoutHoldUp() {
             )}
           </div>
 
-          <div className="relative z-30 mt-10 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[18px] leading-[1.4] tracking-[-0.03em]">
+          <div className="relative z-30 mt-10 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em]">
             Three ways to activate SOS. Because every second spent searching is a second too many.
           </div>
         </div>

@@ -61,68 +61,19 @@ export function SafetyCommunitySection() {
 
   return (
     <div className="w-full bg-[#161616] text-white flex flex-col items-center relative z-20 overflow-hidden">
-      {/* 1. TOP BLOCK: Text + Stickers Section */}
-      <section className="w-full flex justify-center items-center pt-4 md:pt-6 pb-4 md:pb-6 relative overflow-visible">
-        {/* Mobile View */}
-        <div className="md:hidden w-full mx-auto flex flex-col gap-6 z-10 px-4 text-center">
-          <ScrollRevealText
-            text={"WOMEN HAVE ALWAYS BUILT SAFETY THROUGH SHARED INSTINCTS, TRUSTED CIRCLES, AND LOOKING OUT FOR ONE ANOTHER. NAZR BUILDS ON THAT FOUNDATION THROUGH THOUGHTFUL TECHNOLOGY, EVERYDAY ESSENTIALS, AND A COMMUNITY THAT BELIEVES PEACE OF MIND IS SOMETHING WE CREATE TOGETHER."}
-            className="m-0 font-[family-name:var(--font-bebas)] text-[36px] text-center max-w-[340px] sm:max-w-[400px] mx-auto uppercase"
-            style={{ lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
-            emptyColor="#333333"
-          />
-        </div>
-
-        {/* Desktop View */}
-        <div className="hidden md:flex relative w-[1220px] h-[466.28px] justify-between items-start">
-          {/* Text Box — narrower to match image 2 wrapping */}
-          <div className="flex flex-col relative z-10" style={{ width: '480px', height: '380px', paddingTop: '40px', gap: '10px' }}>
-            <ScrollRevealText
-              text={"Women have always built safety through shared instincts, trusted circles, and looking out for one another. NAZR builds on that foundation through thoughtful technology, everyday essentials, and a community that believes peace of mind is something we create together."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-left"
-              style={{ fontSize: '36px', lineHeight: '120%', letterSpacing: '-0.01em', fontWeight: 400 }}
-              emptyColor="#333333"
-            />
-          </div>
-
-          {/* Sticker Group — spread across right half like image 2 */}
-          <div className="absolute z-10" style={{ width: "680px", height: "500px", top: "-20px", left: "540px", overflow: "visible" }}>
-            {/* Dancer — upper left of sticker group */}
-            <div className="absolute" style={{ width: "380px", height: "355px", top: "-30px", left: "0px", transform: "rotate(-3.2deg)", transformOrigin: "center center" }}>
-              <Image unoptimized quality={100} src="/images/new22.webp" alt="Dancer sticker" fill className="object-contain" />
-            </div>
-
-            {/* Headphones — upper right */}
-            <div className="absolute" style={{ width: "270px", height: "270px", top: "-20px", left: "360px", transform: "rotate(-5.59deg)", transformOrigin: "center center" }}>
-              <Image unoptimized quality={100} src="/images/new23.webp" alt="Headphones sticker" fill className="object-contain" />
-            </div>
-
-            {/* Disco Ball — lower center-left */}
-            <div className="absolute" style={{ width: "270px", height: "270px", top: "210px", left: "120px", transform: "rotate(5.59deg)", transformOrigin: "center center" }}>
-              <Image unoptimized quality={100} src="/images/new25.webp" alt="Disco ball sticker" fill className="object-contain" />
-            </div>
-
-            {/* Lips — lower right */}
-            <div className="absolute" style={{ width: "310px", height: "310px", top: "180px", left: "360px", transform: "rotate(-1.35deg)", transformOrigin: "center center" }}>
-              <Image unoptimized quality={100} src="/images/new24.webp" alt="Lips star sticker" fill className="object-contain" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. BOTTOM BLOCK: Carousel Section (Why NAZR Exists) */}
-      <section className="w-full flex justify-center items-center pt-2 md:pt-4 pb-12 md:pb-20 relative overflow-hidden">
+      {/* Carousel Section (Why NAZR Exists) */}
+      <section className="w-full flex justify-center items-center pt-12 md:pt-16 pb-12 md:pb-20 relative overflow-hidden">
         <div className="w-full max-w-[1280px] px-4 md:px-8 flex flex-col justify-center relative md:h-full">
 
           {/* ================= MOBILE LAYOUT (Matching Image 3) ================= */}
           <div className="md:hidden w-full flex flex-col items-center mb-4">
             {/* Heading — Centered */}
-            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[42px] leading-[0.9] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
+            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] leading-[0.9] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
               WHY NAZR EXISTS.<br />IN THEIR WORDS.
             </h2>
 
             {/* Subtitle — Centered */}
-            <p className="font-['Inter',_sans-serif] font-normal text-[15px] text-[#FFF9EB] max-w-[340px] leading-[1.4] tracking-[-0.03em] text-center m-0 mb-6">
+            <p className="font-['Inter',_sans-serif] font-normal text-[16px] text-[#FFF9EB] max-w-[340px] leading-[1.4] tracking-[-0.03em] text-center m-0 mb-6">
               Real experiences from women who believe safety should be proactive, accessible, and shared.
             </p>
 

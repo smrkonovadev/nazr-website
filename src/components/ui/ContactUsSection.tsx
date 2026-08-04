@@ -11,14 +11,13 @@ export function ContactUsSection() {
       {/* ======================= */}
       <div className="flex md:hidden flex-col items-center text-center w-full max-w-[400px] px-2 mx-auto">
         <h2
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] uppercase max-min-[380px]:text-[38px] text-[48px] leading-[90%] tracking-[-0.03em]"
+          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal uppercase text-[46px] leading-[90%] tracking-[-0.03em] text-center"
         >
           JOIN THE CONVERSATION.
         </h2>
 
         <p
-          className="mt-[12px] text-[#161616] text-[19px] leading-[140%] tracking-[-0.03em] opacity-90"
-          style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}
+          className="mt-[12px] text-[#161616] font-['Inter',_sans-serif] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-center opacity-90"
         >
           NAZR is built through conversations with the people we build for. We'd love to hear yours.
         </p>
