@@ -80,8 +80,11 @@ export function DesktopScaler({
     backgroundColor: bgColor,
     width: "100%",
     position: "relative",
-    overflowX: "hidden",
-    overflowY: useTransformFallback || className.includes("overflow-hidden") ? "hidden" : undefined,
+    ...(useTransformFallback || className.includes("overflow-hidden")
+      ? {
+          overflow: "hidden",
+        }
+      : {}),
     height: useTransformFallback ? contentHeight * scale : undefined,
   };
 
