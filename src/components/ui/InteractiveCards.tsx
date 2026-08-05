@@ -199,12 +199,12 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
   }, []);
 
   return (
-    <section ref={sectionRef} className={`w-full ${theme === 'cream' ? 'bg-transparent max-md:mt-0 md:pb-[60px]' : 'bg-[#161616] -mt-4 md:-mt-8 pt-0 pb-4 md:pb-6'} flex flex-col items-center relative z-50`}>
+    <section ref={sectionRef} className={`w-full ${theme === 'cream' ? 'bg-transparent max-md:mt-0 md:pb-0' : 'bg-[#161616] mt-0 pt-0 pb-4 md:py-0'} flex flex-col items-center relative z-50`}>
 
       {theme === "dark" ? (
         // Home Page Dark Cards (5 Centered Straight Unified Cards matching Figma Screenshot)
-        <div className="w-full max-w-[1240px] mx-auto px-4 overflow-x-auto no-scrollbar pt-8 pb-4 md:pt-16 md:pb-6 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
-          <div className="flex flex-row justify-start md:justify-center items-center gap-3 sm:gap-4 md:gap-5 min-w-max md:min-w-0 mx-auto">
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[30px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-4 md:pb-0 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
+          <div className="flex flex-row justify-start md:justify-center items-center gap-3 sm:gap-4 md:gap-[35px] w-full min-w-max md:min-w-0 mx-auto">
             {darkCards.map((card, i) => {
               const isHovered = hoveredIndex === i;
 
@@ -212,7 +212,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                 <motion.div
                   key={card.id}
                   data-card-index={i}
-                  className="relative w-[155px] h-[240px] sm:w-[195px] sm:h-[295px] md:w-[220px] md:h-[330px] rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB] bg-[#161616] flex-shrink-0 cursor-pointer shadow-xl"
+                  className="relative w-[155px] h-[240px] sm:w-[195px] sm:h-[295px] md:w-[230px] md:h-[330px] rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB] bg-[#161616] flex-shrink-0 cursor-pointer shadow-xl"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{
                     opacity: isInView ? 1 : 0,
@@ -373,7 +373,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                         src={card.src!}
                         alt={`Interactive Card ${card.id}`}
                         fill
-                        className="object-cover scale-[1.02]"
+                        className="object-cover scale-[1.18]"
                       />
                     )}
                   </motion.div>

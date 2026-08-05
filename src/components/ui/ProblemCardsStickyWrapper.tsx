@@ -5,7 +5,7 @@ import { InteractiveCards } from "./InteractiveCards";
 
 export function ProblemCardsStickyWrapper() {
   return (
-    <div className="relative w-full bg-[#161616] pt-0 pb-4 md:pt-0 md:pb-6 flex flex-col justify-center items-center min-h-auto md:min-h-screen">
+    <div className="relative w-full bg-[#161616] py-6 md:py-10 flex flex-col justify-center items-center md:min-h-[calc(100vh/var(--desktop-scale,1))] relative">
       <ProblemStatement />
       <InteractiveCards />
     </div>

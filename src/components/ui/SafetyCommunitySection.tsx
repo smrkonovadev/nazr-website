@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ScrollRevealText } from "./ScrollRevealText";
 
 const cardsData = [
   {
@@ -62,19 +61,19 @@ export function SafetyCommunitySection() {
   return (
     <div className="w-full bg-[#161616] text-white flex flex-col items-center relative z-20 overflow-hidden">
       {/* Carousel Section (Why NAZR Exists) */}
-      <section className="w-full flex justify-center items-center pt-12 md:pt-16 pb-12 md:pb-20 relative overflow-hidden">
-        <div className="w-full max-w-[1280px] px-4 md:px-8 flex flex-col justify-center relative md:h-full">
+      <section className="w-full flex justify-center items-center pt-8 md:pt-8 pb-12 md:pb-20 md:min-h-[calc(100vh/var(--desktop-scale,1))] relative overflow-hidden">
+        <div className="w-full max-w-[1440px] px-4 md:px-6 flex flex-col justify-center relative md:h-full">
 
           {/* ================= MOBILE LAYOUT (Matching Image 3) ================= */}
           <div className="md:hidden w-full flex flex-col items-center mb-4">
             {/* Heading — Centered */}
-            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[clamp(36px,6vw,48px)] leading-[0.9] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
-              WHY NAZR EXISTS.<br />IN THEIR WORDS.
+            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[clamp(24px,5vw,36px)] leading-[90%] tracking-[-0.03em] text-[#FFF9EB] uppercase text-center m-0 mb-3 whitespace-nowrap">
+              WHY NAZR EXISTS. IN THEIR WORDS.
             </h2>
 
             {/* Subtitle — Centered */}
-            <p className="font-['Inter',_sans-serif] font-normal text-[clamp(14px,1.5vw,16px)] text-[#FFF9EB] max-w-[340px] leading-[1.4] tracking-[-0.03em] text-center m-0 mb-6">
-              Real experiences from women who believe safety should be proactive, accessible, and shared.
+            <p className="font-['Inter',_sans-serif] font-normal text-[clamp(14px,1.5vw,16px)] text-[#FFF9EB] max-w-[340px] leading-[140%] tracking-[-0.03em] text-center m-0 mb-6">
+              Real experiences from women who believe safety should be proactive,<br />accessible, and shared.
             </p>
 
             {/* Active Card Container */}
@@ -156,14 +155,14 @@ export function SafetyCommunitySection() {
             {/* Header Row — left-aligned heading, subtitle + nav buttons in same row */}
             <div className="w-full flex flex-col mb-6 md:mb-8 gap-3">
               {/* Heading — left-aligned */}
-              <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[48px] sm:text-[64px] md:text-[80px] leading-[0.9] tracking-[-0.03em] text-white uppercase m-0 text-left">
-                WHY NAZR EXISTS.<br />IN THEIR WORDS.
+              <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[clamp(32px,5vw,80px)] leading-[90%] tracking-[-0.03em] text-[#FFF9EB] uppercase m-0 text-left whitespace-nowrap">
+                WHY NAZR EXISTS. IN THEIR WORDS.
               </h2>
 
               {/* Subtitle row + nav buttons on right */}
               <div className="w-full flex items-end justify-between gap-4">
-                <p className="font-['Inter',_sans-serif] font-normal text-[18px] text-[#FFF9EB] max-w-[420px] leading-[1.4] tracking-[-0.03em] text-left m-0">
-                  Real experiences from women who believe safety should be proactive, accessible, and shared.
+                <p className="font-['Inter',_sans-serif] font-normal text-[18px] text-[#FFF9EB] max-w-[620px] leading-[140%] tracking-[-0.03em] text-left m-0">
+                  Real experiences from women who believe safety should be proactive,<br />accessible, and shared.
                 </p>
 
                 {/* Navigation Controls — far right */}
@@ -197,8 +196,8 @@ export function SafetyCommunitySection() {
                     layout
                     transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                     className={`relative rounded-[20px] overflow-hidden cursor-pointer border border-white/10 ${isActive
-                        ? "w-[480px] lg:w-[510px] flex-shrink-0"
-                        : "w-[200px] lg:w-[215px] flex-shrink-0"
+                      ? "w-[520px] lg:w-[580px] flex-shrink-0"
+                      : "w-[230px] lg:w-[250px] flex-shrink-0"
                       } h-full`}
                   >
                     {/* Background Image */}
@@ -213,8 +212,8 @@ export function SafetyCommunitySection() {
 
                     {/* Dark Overlay */}
                     <div className={`absolute inset-0 transition-opacity duration-300 ${isActive
-                        ? "bg-gradient-to-t from-black/90 via-black/40 to-black/20"
-                        : "bg-gradient-to-t from-black/85 via-black/30 to-black/40"
+                      ? "bg-gradient-to-t from-black/90 via-black/40 to-black/20"
+                      : "bg-gradient-to-t from-black/85 via-black/30 to-black/40"
                       }`} />
 
                     {/* Card Content: Active State */}
@@ -226,7 +225,7 @@ export function SafetyCommunitySection() {
                         </div>
 
                         {/* Bottom Info */}
-                        <div className="flex flex-col items-start max-w-[400px]">
+                        <div className="flex flex-col items-start max-w-[300px]">
                           <h3 className="font-[family-name:var(--font-bebas)] text-white text-[32px] md:text-[38px] leading-none tracking-[-0.02em] m-0 mb-2">
                             {card.topic}
                           </h3>

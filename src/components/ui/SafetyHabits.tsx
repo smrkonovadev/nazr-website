@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import { useInView } from "framer-motion";
 
@@ -82,7 +83,7 @@ export function SafetyHabits() {
       description:
         "Designed for the ride home, the late-night cab, and every journey in between. Shield Mode keeps you supported, so you never have to navigate a journey alone.",
       animData: armAnimData,
-      lottieScale: "max-md:scale-[0.98] md:scale-[1.25]",
+      lottieScale: "max-md:scale-[0.98] md:scale-[0.98]",
     },
     {
       id: 3,
@@ -90,7 +91,7 @@ export function SafetyHabits() {
       description:
         "Your safety network, built around the people you trust most. Receive support through SOS alerts, journey updates, and automated check-ins.",
       animData: trustedAnimData,
-      lottieScale: "max-md:scale-[0.98] md:scale-[1.18]",
+      lottieScale: "max-md:scale-[0.98] md:scale-[0.98]",
     },
   ];
 
@@ -163,8 +164,8 @@ export function SafetyHabits() {
   }, [activeCard]);
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#161616] flex justify-center pt-8 pb-6 md:py-[60px] md:px-[20px] lg:px-[30px] overflow-x-hidden relative z-20">
-      <div className="w-full max-w-[1280px] px-4 md:px-0 flex flex-col items-center gap-[24px] md:gap-[40px] relative">
+    <section ref={sectionRef} className="w-full bg-[#161616] flex flex-col justify-center items-center pt-8 pb-6 md:py-[24px] md:px-[20px] lg:px-[30px] md:min-h-[calc(100vh/var(--desktop-scale,1))] overflow-x-hidden relative z-20">
+      <div className="w-full max-w-[1440px] px-4 md:px-6 flex flex-col items-center gap-[20px] md:gap-[20px] relative">
 
         {/* Title Block */}
         <div className="w-full flex flex-col items-center gap-3 md:gap-4">
@@ -189,7 +190,7 @@ export function SafetyHabits() {
           <div
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="w-full flex flex-row overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none pb-2 pt-2 px-4 md:px-2 gap-5 md:gap-[40px] justify-start md:justify-center items-stretch max-w-[1280px] mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="w-full flex flex-row overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none pb-2 pt-2 px-4 md:px-2 gap-5 md:gap-[40px] justify-start md:justify-center items-stretch max-w-[1440px] mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {cards.map((card) => (
               <HabitCardItem
@@ -289,6 +290,17 @@ function HabitCardItem({
     }
   };
 
+  const handleDomLoaded = () => {
+    calculateDuration();
+    if (lottieRef.current) {
+      if (isActive && isInView) {
+        lottieRef.current.goToAndPlay(0, true);
+      } else {
+        lottieRef.current.goToAndStop(1, true);
+      }
+    }
+  };
+
   useEffect(() => {
     calculateDuration();
   }, [card.animData]);
@@ -300,9 +312,14 @@ function HabitCardItem({
       calculateDuration();
       lottieRef.current.goToAndPlay(0, true);
     } else {
-      lottieRef.current.goToAndStop(0, true);
+      const timer = setTimeout(() => {
+        if (lottieRef.current) {
+          lottieRef.current.goToAndStop(1, true);
+        }
+      }, 50);
+      return () => clearTimeout(timer);
     }
-  }, [isActive, isInView]);
+  }, [isActive, isInView, mounted]);
 
   const isCardPlaying = isActive && isInView;
 
@@ -312,11 +329,11 @@ function HabitCardItem({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-      className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[379px] md:min-w-[379px] flex flex-col gap-[20px] md:gap-[24px] cursor-pointer transition-all duration-300"
+      className="w-[85vw] max-w-[340px] shrink-0 max-md:snap-center md:w-[415px] md:min-w-[415px] flex flex-col gap-[16px] md:gap-[14px] cursor-pointer transition-all duration-300"
     >
       {/* Card Box Container (Mobile: wraps content + text inside border; Desktop: top box only) */}
       <div
-        className="relative w-full rounded-[16px] overflow-hidden shrink-0 flex flex-col items-center justify-between p-5 sm:p-6 md:pt-8 md:pb-6 md:h-[443px] transition-all duration-300 backdrop-blur-[20.3px]"
+        className="relative w-full rounded-[16px] overflow-hidden shrink-0 flex flex-col items-center justify-between p-5 sm:p-6 md:pt-6 md:pb-4 md:h-[350px] transition-all duration-300 backdrop-blur-[20.3px]"
         style={{
           backgroundColor: "rgba(248, 0, 144, 0.02)",
           border: isCardPlaying
@@ -335,11 +352,20 @@ function HabitCardItem({
               animationData={card.animData}
               loop={true}
               autoplay={isCardPlaying}
-              onDOMLoaded={calculateDuration}
+              onDOMLoaded={handleDomLoaded}
               className={`w-full h-full object-contain drop-shadow-2xl ${card.lottieScale} transform-gpu z-10`}
             />
           ) : (
-            <div className="w-full h-full bg-transparent" />
+            <div className="w-full h-full flex items-center justify-center relative">
+              <Image
+                unoptimized
+                quality={100}
+                src={card.id === 1 ? "/images/1.webp" : card.id === 2 ? "/images/2.webp" : "/images/3.webp"}
+                alt={card.title}
+                fill
+                className="object-contain drop-shadow-2xl scale-[0.95]"
+              />
+            </div>
           )}
         </div>
 
@@ -372,7 +398,7 @@ function HabitCardItem({
       </div>
 
       {/* Desktop ONLY: Text Content Below Box */}
-      <div className="hidden md:flex flex-col gap-[12px] md:gap-[16px] px-[4px] md:px-[0px]">
+      <div className="hidden md:flex flex-col gap-[8px] md:gap-[8px] px-[4px] md:px-[0px]">
         <h3
           className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[32px] m-0 w-full"
           style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}

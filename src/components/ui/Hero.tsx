@@ -103,7 +103,7 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[630px]"
+        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[calc(100vh/var(--desktop-scale,1))] md:h-[calc(100vh/var(--desktop-scale,1))]"
       >
         {/* Shader Background Effect */}
         <ShaderBackground imageUrl="/images/image 59.svg" colorA="#242424" colorB="#D46FB3" className="rounded-none" />
@@ -258,7 +258,7 @@ export function Hero() {
             {/* Left-Aligned Buttons */}
             <div className="flex flex-row items-center gap-2 sm:gap-3 flex-wrap">
               <button
-                className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[0.75px] border-[#FF0E97] rounded-[3px] w-[161.25px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[12px] sm:text-[13px] whitespace-nowrap shadow-sm opacity-100"
+                className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] gap-1.5 whitespace-nowrap shadow-sm"
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
                 <div className="relative w-4 h-4">
@@ -273,10 +273,10 @@ export function Hero() {
 
               <Link
                 href="/shop#pepper-spray"
-                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB] rounded-[4px] w-[83px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100"
+                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-md px-3.5 py-2 text-[12px] sm:text-[13px] whitespace-nowrap"
                 style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
               >
-                Buy Now
+                Explore NAZR
               </Link>
             </div>
           </div>
@@ -320,7 +320,7 @@ export function Hero() {
                   transition: { delayChildren: 0.2, staggerChildren: 0.05 }
                 }
               }}
-              className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
+              className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[275px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
             >
               {"WORLD STARES".split('').map((char, i) => {
                 const globalIdx = i + 4;
@@ -354,7 +354,14 @@ export function Hero() {
                 }
               }
             }}
-            className="relative md:absolute font-[family-name:var(--font-bebas)] uppercase m-0 p-0 z-20 flex justify-center w-full md:w-auto mt-0 md:mt-0 md:top-[363px] md:left-[465px] text-[20vw] md:text-[230px] leading-[90%] tracking-[-0.03em] whitespace-nowrap text-center"
+            className="relative md:absolute font-[family-name:var(--font-bebas)] uppercase m-0 p-0 z-20 flex justify-center w-full md:w-auto mt-0 md:mt-0 md:top-[400px] md:left-[550px] text-[20vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap text-center"
+            style={{
+              fontFamily: 'var(--font-bebas), "Bebas Neue", sans-serif',
+              fontWeight: 400,
+              fontSize: '230px',
+              lineHeight: '90%',
+              letterSpacing: '-0.03em',
+            }}
           >
             {"Stare Back".split('').map((char, i) => (
               <TiltLetter
@@ -374,14 +381,14 @@ export function Hero() {
 
           {/* Subtext Paragraph */}
           <p
-            className="relative md:absolute text-[#FFF1EB] m-0 p-0 font-['Inter',_sans-serif] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
+            className="relative md:absolute text-[#FFF1EB] m-0 p-0 font-['Inter',_sans-serif] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[420px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
           >
             India's first women's safety ecosystem combining personal defense, emergency technology, and trusted support.
           </p>
 
           {/* Buttons */}
           <div
-            className="relative md:absolute flex justify-center items-center gap-[4vw] md:gap-[16px] z-20 mt-[8.2vw] md:mt-0 md:top-[484px] md:left-[40px]"
+            className="relative md:absolute flex justify-center items-center gap-[4vw] md:gap-[16px] z-20 mt-[8.2vw] md:mt-0 md:top-[520px] md:left-[40px]"
           >
             <button
               className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[196px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] gap-[1vw] md:gap-[8px]"
@@ -402,19 +409,19 @@ export function Hero() {
 
             <Link
               href="/shop#pepper-spray"
-              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB] rounded-[4px] w-[83px] h-[33px] md:h-[40px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100 max-md:ml-[3.8vw]"
+              className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB]/40 rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[135px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] max-md:ml-[3.8vw]"
               style={{
                 fontWeight: 400,
                 fontFamily: 'Roboto, sans-serif',
               }}
             >
-              Buy Now
+              Explore NAZR
             </Link>
           </div>
 
           {/* Pink Bottle Image */}
           <motion.div
-            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[35px] left-[1015px]"
+            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[35px] left-[1220px]"
             initial={{ scale: 0, y: 150 }}
             animate={{ scale: 3, y: 0 }}
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.1 }}
@@ -430,9 +437,9 @@ export function Hero() {
 
           {/* White Bottle Image */}
           <motion.div
-            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[306px] left-[797px]"
+            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[355px] left-[895px]"
             initial={{ scale: 0, y: 150 }}
-            animate={{ scale: 3, y: 0 }}
+            animate={{ scale: 2.75, y: 0 }}
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.2 }}
           >
             <div className="relative w-full h-full rotate-[-15deg]">

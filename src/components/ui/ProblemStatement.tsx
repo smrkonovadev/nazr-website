@@ -13,8 +13,8 @@ export function ProblemStatement() {
   });
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-6 pb-2 md:pt-4 md:pb-0 z-[60] relative">
-      <div className="w-full max-w-[1240px] px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 relative">
+    <section className="w-full bg-[#161616] flex justify-center pt-6 pb-2 md:py-0 z-[60] relative">
+      <div className="w-full max-w-[1440px] px-4 md:px-[30px] flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 relative">
 
         {/* Left Side: Text Column */}
         <div ref={textContainerRef} className="w-full max-w-[640px] flex flex-col gap-4 md:gap-6 z-10">
@@ -77,15 +77,15 @@ export function ProblemStatement() {
         </div>
 
         {/* Right Side: Proportional Stacked Circular Badges (Hidden on mobile) */}
-        <div className="hidden md:block relative md:w-[360px] md:h-[360px] lg:w-[400px] lg:h-[400px] shrink-0 pointer-events-none z-10 my-0">
-          
+        <div className="hidden md:block relative md:w-[370px] md:h-[370px] lg:w-[410px] lg:h-[410px] shrink-0 pointer-events-none z-10 my-0 md:-translate-x-[60px] md:translate-y-[20px]">
+
           {/* Back Image (Pink) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 12 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 120, damping: 18, delay: 0.2 }}
-            className="absolute top-2 right-0 w-[190px] h-[190px] sm:w-[230px] sm:h-[230px] md:w-[260px] md:h-[260px] lg:w-[290px] lg:h-[290px]"
+            className="absolute top-2 right-0 w-[190px] h-[190px] sm:w-[210px] sm:h-[210px] md:w-[275px] md:h-[275px] lg:w-[305px] lg:h-[305px]"
           >
             <Image unoptimized quality={100} src="/images/new1.webp"
               alt="NAZR Badge Pink"
@@ -100,7 +100,7 @@ export function ProblemStatement() {
             whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 120, damping: 18, delay: 0.1 }}
-            className="absolute top-6 left-0 w-[190px] h-[190px] sm:w-[230px] sm:h-[230px] md:w-[260px] md:h-[260px] lg:w-[290px] lg:h-[290px] z-20"
+            className="absolute top-6 left-0 w-[190px] h-[190px] sm:w-[210px] sm:h-[210px] md:w-[275px] md:h-[275px] lg:w-[305px] lg:h-[305px] z-20"
           >
             <Image unoptimized quality={100} src="/images/new2.webp"
               alt="NAZR Badge Purple"
