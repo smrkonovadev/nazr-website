@@ -18,7 +18,7 @@ export function WhyNazrInTheirWordsSection() {
     <section className="w-full bg-[#FFF1EB] h-auto md:min-h-[calc(100vh/var(--desktop-scale,1))] flex flex-col-reverse md:flex-row items-center justify-between relative z-20 overflow-hidden">
       {/* Left Column: Hand holding phone Lottie animation */}
       <div className="w-full md:w-[48%] h-[480px] sm:h-[520px] md:h-full relative flex items-end justify-center md:justify-start pl-0 md:pl-12 lg:pl-16">
-        <div className="relative w-full h-full max-w-[500px] flex items-end justify-center md:justify-start pointer-events-none overflow-visible -translate-y-[3%] md:translate-y-[7.5%]">
+        <div className="relative w-full h-full max-w-[500px] flex items-end justify-center md:justify-start pointer-events-none overflow-visible translate-y-[14%] md:translate-y-[26%]">
           {animData ? (
             <Lottie
               animationData={animData}
