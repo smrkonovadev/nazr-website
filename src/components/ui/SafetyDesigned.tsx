@@ -206,8 +206,12 @@ export function SafetyDesigned() {
           </div>
 
           {/* Center Card (Active) */}
-          <div className={`relative ${currentIndex === 2 ? 'w-[160px] h-[170px]' : 'w-[230px] h-[240px]'} z-20 flex items-center justify-center`}>
-            <img src={carouselData[currentIndex].image} alt="Center Product" className="w-full h-full object-contain" />
+          <div className={`relative ${currentIndex === 2 ? 'w-[160px] h-[170px]' : (currentIndex === 0 ? 'w-[310px] h-[310px]' : 'w-[230px] h-[240px]')} z-20 flex items-center justify-center`}>
+            <img
+              src={carouselData[currentIndex].image}
+              alt="Center Product"
+              className={`w-full h-full object-contain ${currentIndex === 0 ? 'scale-125 sm:scale-130' : ''}`}
+            />
 
             {/* Active Product Stickers */}
             {currentIndex === 1 && (
@@ -234,18 +238,21 @@ export function SafetyDesigned() {
 
             {currentIndex === 0 && (
               <>
-                {/* Sip Check Stickers */}
-                <div className="absolute w-[100px] h-[100px] top-[-15px] left-[-25px] z-30 pointer-events-none">
+                {/* Sip Check Stickers - Arranged tight & close to product */}
+                {/* 444 (Top-Left) */}
+                <div className="absolute w-[85px] h-[85px] top-[15px] left-[5px] z-30 pointer-events-none">
                   <Image unoptimized quality={100} src="/images/new14.webp" alt="sticker" fill className="object-contain" />
                 </div>
-                <div className="absolute w-[70px] h-[65px] top-[30px] right-[-25px] z-30 pointer-events-none">
+                {/* Cherries (Top-Right) */}
+                <div className="absolute w-[65px] h-[60px] top-[35px] right-[10px] z-30 pointer-events-none">
                   <Image unoptimized quality={100} src="/images/new15.webp" alt="sticker" fill className="object-contain" />
                 </div>
-                {/* Moved up as requested */}
-                <div className="absolute w-[80px] h-[80px] bottom-[55px] left-[-25px] z-30 pointer-events-none">
+                {/* Hand with Glass (Bottom-Left) */}
+                <div className="absolute w-[75px] h-[75px] bottom-[25px] left-[5px] z-30 pointer-events-none">
                   <Image unoptimized quality={100} src="/images/new17.webp" alt="sticker" fill className="object-contain" />
                 </div>
-                <div className="absolute w-[75px] h-[70px] bottom-[55px] right-[-25px] z-30 pointer-events-none">
+                {/* Star (Bottom-Right) */}
+                <div className="absolute w-[65px] h-[60px] bottom-[25px] right-[10px] z-30 pointer-events-none">
                   <Image unoptimized quality={100} src="/images/new16.webp" alt="sticker" fill className="object-contain" />
                 </div>
               </>
