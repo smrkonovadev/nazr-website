@@ -158,15 +158,16 @@ export function SafetyCommunitySection() {
           <div className="hidden md:flex flex-col w-full">
             {/* Header Row — left-aligned heading, subtitle + nav buttons in same row */}
             <div className="w-full flex flex-col mb-6 md:mb-8 gap-3">
-              {/* Heading — left-aligned */}
-              <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[80px] leading-[90%] tracking-[-0.03em] text-white uppercase m-0 text-left">
-                WHY NAZR EXISTS.<br />IN THEIR WORDS.
+              {/* Heading — single line on desktop/laptop */}
+              <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[56px] lg:text-[72px] xl:text-[80px] leading-[90%] tracking-[-0.03em] text-[#FFF9EB] uppercase m-0 text-left whitespace-nowrap">
+                WHY NAZR EXISTS. IN THEIR WORDS.
               </h2>
 
               {/* Subtitle row + nav buttons on right */}
               <div className="w-full flex items-end justify-between gap-4">
-                <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[420px] text-left m-0">
-                  Real experiences from women who believe safety should be proactive, accessible, and shared.
+                <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[620px] text-left m-0">
+                  Real experiences from women who believe safety should be proactive,<br />
+                  accessible, and shared.
                 </p>
 
                 {/* Navigation Controls — far right */}

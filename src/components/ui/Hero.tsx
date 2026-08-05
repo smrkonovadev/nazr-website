@@ -194,7 +194,7 @@ export function Hero() {
             </div>
 
             {/* Top Right Floating Circular Eye Discs */}
-            <div className="absolute top-[40vw] sm:top-16 right-[-4vw] w-[54vw] max-w-[210px] h-[54vw] max-h-[210px] z-30 pointer-events-none">
+            <div className="absolute top-[43vw] sm:top-16 right-[-4vw] w-[54vw] max-w-[210px] h-[54vw] max-h-[210px] z-30 pointer-events-none">
               {/* Left/Purple Disc */}
               <motion.div
                 className="absolute w-[36vw] max-w-[145px] h-[36vw] max-h-[145px] top-[15%] left-[20px]"
