@@ -9,8 +9,11 @@ interface LoadingScreenProps {
   autoHide?: boolean;
 }
 
-export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: LoadingScreenProps) {
+const words = ["NAZR", "नझर", "নজর", "નજર"];
+
+export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
@@ -25,8 +28,10 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
       const currentProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
+      const currentWordIdx = Math.floor(elapsed / 1000) % words.length;
 
       setProgress(currentProgress);
+      setWordIndex(currentWordIdx);
 
       if (currentProgress >= 100) {
         clearInterval(interval);
@@ -65,8 +70,9 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-600 ${isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
+      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-600 ${
+        isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
+      }`}
     >
       {/* Background Image — high visibility like the Figma design */}
       <div className="absolute inset-0 z-0">
@@ -91,49 +97,25 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
       {/* Full-bleed content layer */}
       <div className="relative z-10 w-full h-[100dvh] flex flex-col justify-between px-[20px] py-[24px] sm:px-[32px] sm:py-[28px] md:px-[52px] md:py-[40px] lg:px-[64px] lg:py-[48px]">
 
-        {/* ---- TOP ROW ---- */}
-        <div className="w-full flex justify-between items-start gap-2">
-          {/* Top Left: SOS instruction — Bebas Neue (Exactly 2 lines on mobile) */}
-          <p
-            className="font-normal uppercase text-[#FFF1EB] max-md:w-[55%] max-md:max-w-[215px] md:max-w-[340px]"
-            style={{
-              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
-              fontSize: "clamp(16px, 4.4vw, 24px)",
-              lineHeight: "105%",
-              letterSpacing: "-0.01em",
-              fontStyle: "normal",
-            }}
-          >
-            Press your volume button three times to instantly trigger SOS.
-          </p>
+        {/* ---- TOP ROW: Empty (paragraphs removed as requested) ---- */}
+        <div className="w-full h-[30px]" />
 
-          {/* Top Right: Description — Switzer, right-aligned (Exactly 4 lines on mobile matching Image 2) */}
-          <p
-            className="font-normal text-[#FFF1EB] text-right max-md:w-[43%] max-md:max-w-[165px] md:max-w-[440px]"
-            style={{
-              fontFamily: "var(--font-switzer), 'Switzer', var(--font-inter), sans-serif",
-              fontSize: "clamp(10.5px, 2.7vw, 18px)",
-              lineHeight: "135%",
-              fontStyle: "normal",
-              fontWeight: 400,
-            }}
-          >
-            India&apos;s first women&apos;s safety ecosystem combining personal defense, emergency technology, and trusted support.
-          </p>
-        </div>
-
-        {/* ---- CENTER: NAZR + PROGRESS BAR ---- */}
+        {/* ---- CENTER: NAZR (1sec Font Cycle) + PROGRESS BAR ---- */}
         <div className="w-full flex flex-col justify-center items-center flex-1 my-auto py-2">
           <h1
-            className="font-normal text-center text-[#FFF1EB] select-none uppercase tracking-tight"
+            className="font-normal text-center text-[#FFF1EB] select-none uppercase tracking-tight transition-all duration-300"
             style={{
               fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
-              fontSize: "clamp(130px, 36vw, 320px)",
-              lineHeight: "82%",
-              letterSpacing: "-0.01em",
-            }}
+              fontWeight: 400,
+              fontStyle: "normal",
+              fontSize: "clamp(90px, 22vw, 300px)",
+              lineHeight: "90%",
+              letterSpacing: "-0.03em",
+              textAlign: "center",
+              leadingTrim: "cap-height",
+            } as React.CSSProperties}
           >
-            NAZR
+            {words[wordIndex]}
           </h1>
 
           {/* Centered Loading Bar directly below NAZR */}
@@ -187,11 +169,14 @@ export function LoadingScreen({ onComplete, duration = 3000, autoHide = true }: 
             <span
               className="font-normal text-[#FFF1EB]"
               style={{
-                fontFamily: "var(--font-switzer), 'Switzer', var(--font-inter), sans-serif",
-                fontSize: "clamp(20px, 5.2vw, 34px)",
-                lineHeight: "100%",
+                fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                fontWeight: 400,
                 fontStyle: "normal",
-              }}
+                fontSize: "clamp(18px, 4.5vw, 32px)",
+                lineHeight: "47px",
+                letterSpacing: "-4px",
+                leadingTrim: "cap-height",
+              } as React.CSSProperties}
             >
               Loading
             </span>

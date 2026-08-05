@@ -60,7 +60,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${signPainter.variable} antialiased bg-white`} suppressHydrationWarning>
         <GlobalZoom />
-        <LoadingScreen duration={2500} autoHide={true} />
+        <LoadingScreen duration={4000} autoHide={true} />
         <NavigationProvider>
           <NavigationMenu />
           <ScaleWrapper>

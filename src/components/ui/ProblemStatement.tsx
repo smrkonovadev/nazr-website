@@ -13,35 +13,39 @@ export function ProblemStatement() {
   });
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-6 pb-2 md:py-0 z-[60] relative">
+    <section className="w-full bg-[#161616] flex justify-center pt-0 pb-0 md:py-0 md:-mt-2 z-[60] relative">
       <div className="w-full max-w-[1440px] px-4 md:px-[30px] flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 relative">
 
         {/* Left Side: Text Column */}
         <div ref={textContainerRef} className="w-full max-w-[640px] flex flex-col gap-4 md:gap-6 z-10">
 
-          {/* Mobile Text (Exact line breaks & centering as per reference design) */}
+          {/* Mobile Text */}
           <div className="md:hidden flex flex-col gap-6 pt-2 pb-2 mx-auto w-full max-w-[360px] px-2 text-center">
             <ScrollRevealText
-              text={"FOR MANY WOMEN IN INDIA, SAFETY\nHAS BECOME A ROUTINE OF\nWORKAROUNDS. SHARED LOCATIONS.\nCHECK-INS. CALLS ON THE WAY HOME."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[28px] sm:text-[30px] text-center text-[#FFF9EB]"
+              text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A\nROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-\nINS. CALLS ON THE WAY HOME."}
+              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] sm:text-[36px] text-center text-[#FFF9EB]"
               style={{
-                fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
+                fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                lineHeight: '110%',
-                letterSpacing: '-0.01em',
-              }}
+                fontStyle: 'normal',
+                fontSize: '36px',
+                lineHeight: '120%',
+                letterSpacing: '0.01em',
+              } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
               progressRange={[0, 0.45]}
             />
             <ScrollRevealText
-              text={"WHEN SOMETHING FEELS WRONG,\nHELP SHOULD BE IMMEDIATE. NOT\nDEPENDENT ON FINDING A PHONE,\nUNLOCKING IT, AND ASKING FOR IT."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[28px] sm:text-[30px] text-center text-[#FFF9EB]"
+              text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
+              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] sm:text-[36px] text-center text-[#FFF9EB]"
               style={{
-                fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
+                fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                lineHeight: '110%',
-                letterSpacing: '-0.01em',
-              }}
+                fontStyle: 'normal',
+                fontSize: '36px',
+                lineHeight: '120%',
+                letterSpacing: '0.01em',
+              } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
               progressRange={[0.45, 0.9]}
             />
@@ -50,14 +54,16 @@ export function ProblemStatement() {
           {/* Desktop Text (Natural text flow for laptop/desktop screens) */}
           <div className="hidden md:flex flex-col gap-6">
             <ScrollRevealText
-              text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A ROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-INS. CALLS ON THE WAY HOME."}
+              text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A\nROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-\nINS. CALLS ON THE WAY HOME."}
               className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px]"
               style={{
-                fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
+                fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                lineHeight: '110%',
-                letterSpacing: '-0.01em',
-              }}
+                fontStyle: 'normal',
+                fontSize: '36px',
+                lineHeight: '120%',
+                letterSpacing: '0.01em',
+              } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
               progressRange={[0.05, 0.50]}
             />
@@ -65,11 +71,13 @@ export function ProblemStatement() {
               text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
               className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px]"
               style={{
-                fontFamily: 'var(--font-bebas), Bebas Neue, sans-serif',
+                fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                lineHeight: '110%',
-                letterSpacing: '-0.01em',
-              }}
+                fontStyle: 'normal',
+                fontSize: '36px',
+                lineHeight: '120%',
+                letterSpacing: '0.01em',
+              } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
               progressRange={[0.50, 0.95]}
             />
@@ -77,7 +85,7 @@ export function ProblemStatement() {
         </div>
 
         {/* Right Side: Proportional Stacked Circular Badges (Hidden on mobile) */}
-        <div className="hidden md:block relative md:w-[370px] md:h-[370px] lg:w-[410px] lg:h-[410px] shrink-0 pointer-events-none z-10 my-0 md:-translate-x-[60px] md:translate-y-[20px]">
+        <div className="hidden md:block relative md:w-[390px] md:h-[390px] lg:w-[450px] lg:h-[450px] shrink-0 pointer-events-none z-10 my-0 md:-translate-x-[60px] md:translate-y-[50px]">
 
           {/* Back Image (Pink) */}
           <motion.div

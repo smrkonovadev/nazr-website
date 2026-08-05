@@ -204,7 +204,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
       {theme === "dark" ? (
         // Home Page Dark Cards (5 Centered Straight Unified Cards matching Figma Screenshot)
         <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[30px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-4 md:pb-0 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
-          <div className="flex flex-row justify-start md:justify-center items-center gap-3 sm:gap-4 md:gap-[35px] w-full min-w-max md:min-w-0 mx-auto">
+          <div className="flex flex-row justify-start md:justify-start items-center gap-3 sm:gap-4 md:gap-[35px] w-full min-w-max md:min-w-0 mx-auto">
             {darkCards.map((card, i) => {
               const isHovered = hoveredIndex === i;
 
@@ -212,7 +212,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                 <motion.div
                   key={card.id}
                   data-card-index={i}
-                  className="relative w-[155px] h-[240px] sm:w-[195px] sm:h-[295px] md:w-[230px] md:h-[330px] rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB] bg-[#161616] flex-shrink-0 cursor-pointer shadow-xl"
+                  className="relative w-[155px] h-[240px] sm:w-[195px] sm:h-[295px] md:w-[248px] md:h-[335px] md:min-w-[248px] md:min-h-[335px] rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB] bg-[#161616] flex-shrink-0 cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_10px]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{
                     opacity: isInView ? 1 : 0,
@@ -243,18 +243,18 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none z-10" />
 
                   {/* Top Left Timestamp */}
-                  <div className="absolute top-3 left-3 md:top-4 md:left-4 z-20 flex flex-col text-white pointer-events-none">
-                    <span className="font-sans font-bold text-[18px] sm:text-[22px] md:text-[26px] leading-none tracking-tight">
+                  <div className="absolute top-[16px] left-[10px] md:top-[20px] md:left-[10px] z-20 flex flex-col text-[#FFF9EB] pointer-events-none">
+                    <span className="font-sans font-bold text-[18px] sm:text-[22px] md:text-[26px] leading-none tracking-tight text-[#FFF9EB]">
                       {card.timeNumber}
                     </span>
-                    <span className="font-sans text-[10px] sm:text-[11px] md:text-[12px] text-white/80 leading-none mt-0.5">
+                    <span className="font-sans text-[10px] sm:text-[11px] md:text-[12px] text-[#FFF9EB]/80 leading-none mt-0.5">
                       {card.timeUnit}
                     </span>
                   </div>
 
                   {/* Bottom Title Text */}
-                  <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 z-20 pointer-events-none">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-white text-[22px] sm:text-[26px] md:text-[30px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
+                  <div className="absolute bottom-[16px] left-[10px] right-[10px] md:bottom-[20px] md:left-[10px] md:right-[10px] z-20 pointer-events-none">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-[22px] sm:text-[26px] md:text-[30px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
                       {card.title}
                     </h3>
                   </div>
