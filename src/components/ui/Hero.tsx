@@ -321,7 +321,7 @@ export function Hero() {
                   transition: { delayChildren: 0.2, staggerChildren: 0.05 }
                 }
               }}
-              className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
+              className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[275px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
             >
               {"WORLD STARES".split('').map((char, i) => {
                 const globalIdx = i + 4;
@@ -355,7 +355,7 @@ export function Hero() {
                 }
               }
             }}
-            className="relative md:absolute font-[family-name:var(--font-bebas)] uppercase m-0 p-0 z-20 flex justify-center w-full md:w-auto mt-0 md:mt-0 md:top-[363px] md:left-[465px] text-[20vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap text-center"
+            className="relative md:absolute font-[family-name:var(--font-bebas)] uppercase m-0 p-0 z-20 flex justify-center w-full md:w-auto mt-0 md:mt-0 md:top-[400px] md:left-[550px] text-[20vw] md:text-[230px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap text-center"
           >
             {"Stare Back".split('').map((char, i) => (
               <TiltLetter
@@ -375,7 +375,7 @@ export function Hero() {
 
           {/* Subtext Paragraph */}
           <p
-            className="relative md:absolute text-[#FFF1EB] m-0 p-0 font-[family-name:var(--font-inter)] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
+            className="relative md:absolute text-[#FFF1EB] m-0 p-0 font-[family-name:var(--font-inter)] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[420px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
             style={{ fontWeight: 400, fontStyle: 'normal' }}
           >
             India's first women's safety ecosystem combining personal defense, emergency technology, and trusted support.
@@ -383,7 +383,7 @@ export function Hero() {
 
           {/* Buttons */}
           <div
-            className="relative md:absolute flex justify-center items-center gap-[4vw] md:gap-[16px] z-20 mt-[8.2vw] md:mt-0 md:top-[484px] md:left-[40px]"
+            className="relative md:absolute flex justify-center items-center gap-[4vw] md:gap-[16px] z-20 mt-[8.2vw] md:mt-0 md:top-[520px] md:left-[40px]"
           >
             <button
               className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[196px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] gap-[1vw] md:gap-[8px]"
@@ -416,7 +416,7 @@ export function Hero() {
 
           {/* Pink Bottle Image */}
           <motion.div
-            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[140px] left-[960px]"
+            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[35px] left-[1220px]"
             initial={{ scale: 0, y: 150 }}
             animate={{ scale: 3, y: 0 }}
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.1 }}
@@ -432,9 +432,9 @@ export function Hero() {
 
           {/* White Bottle Image */}
           <motion.div
-            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[306px] left-[797px]"
+            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[355px] left-[895px]"
             initial={{ scale: 0, y: 150 }}
-            animate={{ scale: 3, y: 0 }}
+            animate={{ scale: 2.75, y: 0 }}
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.2 }}
           >
             <div className="relative w-full h-full rotate-[-15deg]">

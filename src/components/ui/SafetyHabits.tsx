@@ -180,9 +180,18 @@ export function SafetyHabits() {
             className="text-[#FFF9EB] text-center font-[family-name:var(--font-inter)] font-normal text-[16px] md:text-[18px] max-w-[340px] md:max-w-[720px] m-0 opacity-90"
             style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
           >
-            Designed around the routines women already<br />
-            rely on, with smarter tools to keep every<br />
-            journey connected, informed, and secure.
+            {/* Mobile 3-line split */}
+            <span className="md:hidden">
+              Designed around the routines women already<br />
+              rely on, with smarter tools to keep every<br />
+              journey connected, informed, and secure.
+            </span>
+
+            {/* Desktop / Laptop 2-line split matching screenshot */}
+            <span className="hidden md:inline">
+              Designed around the routines women already rely on, with smarter tools to<br />
+              keep every journey connected, informed, and secure.
+            </span>
           </p>
         </div>
 
