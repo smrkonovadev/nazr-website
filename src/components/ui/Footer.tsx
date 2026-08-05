@@ -26,7 +26,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[30px] md:pb-[40px] px-5 sm:px-6 md:px-10 flex flex-col relative z-20 overflow-hidden min-h-[360px] transform-gpu">
+    <footer className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[20px] md:pb-[30px] px-4 sm:px-6 md:px-[30px] flex flex-col justify-between relative z-20 overflow-hidden md:min-h-[calc(100vh/var(--desktop-scale,1))] md:h-[calc(100vh/var(--desktop-scale,1))] transform-gpu">
       {/* Background Video with Hardware Acceleration for Mobile & Desktop */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
         <video
@@ -47,9 +47,9 @@ export function Footer() {
         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>
 
-      <div className="relative z-10 w-full flex flex-col">
+      <div className="relative z-10 w-full flex flex-col justify-between h-full max-w-[1440px] mx-auto">
         {/* Top section: 2-Column Grid on Mobile, 4-Column Grid on Desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-8 w-full max-w-[1205px] mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-8 w-full max-w-[1440px] mx-auto">
           {/* Pages Column */}
           <div className="flex flex-col col-span-2 md:col-span-2">
             <button
@@ -218,16 +218,16 @@ export function Footer() {
         </div>
 
         {/* Spacer matching Figma height */}
-        <div className="h-[40px] sm:h-[60px] md:h-[80px] w-full shrink-0" />
+        <div className="h-[20px] sm:h-[30px] md:h-[30px] w-full shrink-0 flex-1" />
 
         {/* Bottom section: Brand & Logo */}
-        <div className="w-full max-w-[1205px] mx-auto flex flex-col justify-between shrink-0">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col justify-between shrink-0">
           <span className="text-[9px] sm:text-[11px] md:text-[14px] font-['Switzer',_sans-serif] font-normal text-[#FFF1EB]/80 tracking-wider uppercase leading-none mb-2">
             THE WORLD STARES, STARE BACK
           </span>
 
           {/* Large Logo */}
-          <div className="relative w-full h-[90px] sm:h-[140px] md:h-[342px] mt-2 shrink-0 pointer-events-none">
+          <div className="relative w-full h-[90px] sm:h-[140px] md:h-[260px] lg:h-[280px] mt-2 shrink-0 pointer-events-none">
             <Image
               unoptimized
               quality={100}

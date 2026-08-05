@@ -11,7 +11,7 @@ interface DesktopScalerProps {
 
 export function DesktopScaler({
   children,
-  desktopWidth = 1280,
+  desktopWidth = 1440,
   bgColor = "#161616",
   className = "",
 }: DesktopScalerProps) {
@@ -31,23 +31,21 @@ export function DesktopScaler({
     setUseTransformFallback(!supportsZoom);
 
     const checkScale = () => {
-      const windowWidth = document.documentElement.clientWidth || window.innerWidth;
+      const windowWidth = window.innerWidth;
       const mobile = windowWidth < 768;
 
       setIsMobile(mobile);
 
       if (mobile) {
-        setScale(windowWidth / 390);
+        setScale(Math.min(1.1, windowWidth / 390));
         return;
       }
 
       /**
-       * Responsive desktop scaling:
-       * Exactly scales the 1280px base canvas to fit 100% of available viewport width
-       * (e.g. 1024px -> 0.8x, 1280px -> 1.0x, 1440px -> ~1.12x, 1920px -> 1.5x)
+       * Global Desktop Scaling (1440px base width)
+       * Scales fluidly with windowWidth / 1440 so zooming out below 100% holds 1440px layout ratio
        */
-      const calculatedScale = windowWidth / desktopWidth;
-      setScale(calculatedScale);
+      setScale(windowWidth / desktopWidth);
     };
 
     checkScale();
@@ -80,26 +78,26 @@ export function DesktopScaler({
     backgroundColor: bgColor,
     width: "100%",
     position: "relative",
-    ...(useTransformFallback || className.includes("overflow-hidden")
-      ? {
-          overflow: "hidden",
-        }
-      : {}),
+    overflow:
+      useTransformFallback || className.includes("overflow-hidden")
+        ? "hidden"
+        : undefined,
     height: useTransformFallback ? contentHeight * scale : undefined,
   };
 
-  const innerStyle: React.CSSProperties & { zoom?: number | string } = {
+  const innerStyle: React.CSSProperties & { [key: string]: any } = {
     width: targetWidth,
     margin: "0 auto",
     transformOrigin: "top center",
+    "--desktop-scale": scale,
 
     ...(useTransformFallback
       ? {
-          transform: `scale(${scale})`,
-        }
+        transform: `scale(${scale})`,
+      }
       : {
-          zoom: scale,
-        }),
+        zoom: scale,
+      }),
   };
 
   return (

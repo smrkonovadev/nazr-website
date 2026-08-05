@@ -39,7 +39,7 @@ export function HelpWithoutHoldUp() {
   };
 
   return (
-    <section className="w-full bg-[#FFF1EB] flex justify-center pt-10 pb-10 md:py-0 md:h-[872px] overflow-hidden relative z-[70]">
+    <section className="w-full bg-[#FFF1EB] flex justify-center pt-10 pb-10 md:py-0 md:min-h-[calc(100vh/var(--desktop-scale,1))] md:h-[calc(100vh/var(--desktop-scale,1))] overflow-hidden relative z-[70]">
       <div className="w-full max-w-[1280px] h-full flex flex-col items-center relative">
 
         {/* Mobile Layout (Hidden on Desktop) */}
@@ -157,20 +157,20 @@ export function HelpWithoutHoldUp() {
         </div>
 
         {/* Desktop Layout (Hidden on Mobile) */}
-        <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[1280px] h-[872px] pointer-events-none">
+        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1280px] h-[720px] pointer-events-none">
 
           {/* Title */}
           <div className="absolute flex justify-center items-center pointer-events-auto left-1/2 -translate-x-1/2"
-            style={{ width: "600px", height: "210px", top: "50px" }}>
-            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] text-[100px] leading-[0.9] tracking-[-0.03em] text-center m-0">
+            style={{ width: "600px", height: "170px", top: "60px" }}>
+            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] text-[96px] leading-[90%] tracking-[-0.03em] text-center m-0">
               HELP. WITHOUT<br />THE HOLD UP.
             </h2>
           </div>
 
           {/* Phone Display with Smooth Cross-Fade Lottie Animation Triggers */}
           <div
-            className="absolute pointer-events-none z-20 flex items-center justify-center overflow-visible transition-all duration-500 ease-in-out left-1/2 -translate-x-1/2"
-            style={{ width: "270px", height: "550px", top: "205px" }}
+            className="absolute pointer-events-none z-20 flex items-center justify-center overflow-visible transition-all duration-500 ease-in-out left-[calc(50%-25px)] -translate-x-1/2"
+            style={{ width: "290px", height: "490px", top: "190px" }}
           >
             {/* Default Static Phone / Lottie */}
             <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
@@ -178,7 +178,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData0}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.05] transform-gpu"
                 />
               ) : (
                 <Image unoptimized quality={100} src="/images/new8.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
@@ -191,7 +191,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData1}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.05] transform-gpu"
                 />
               </div>
             )}
@@ -202,7 +202,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData2}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.05] transform-gpu"
                 />
               </div>
             )}
@@ -213,7 +213,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData3}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.05] transform-gpu"
                 />
               </div>
             )}
@@ -225,7 +225,7 @@ export function HelpWithoutHoldUp() {
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => setActiveCard(1)}
             className="absolute pointer-events-auto z-30 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
-            style={{ width: "250px", height: "136px", top: "360px", left: "195px" }}
+            style={{ width: "250px", height: "136px", top: "285px", left: "195px" }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
               <rect x="1" y="1" width="248" height="134" rx="16" ry="16" fill={effectiveCard === 1 ? "#FF0E97" : "none"} stroke={effectiveCard === 1 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 1 ? "2" : "1"} strokeDasharray={effectiveCard === 1 ? "none" : "9 5"} />
@@ -249,7 +249,7 @@ export function HelpWithoutHoldUp() {
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => setActiveCard(2)}
             className="absolute pointer-events-auto z-30 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
-            style={{ width: "260px", height: "136px", top: "310px", left: "834.75px" }}
+            style={{ width: "260px", height: "136px", top: "235px", left: "834.75px" }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
               <rect x="1" y="1" width="258" height="134" rx="12" ry="12" fill={effectiveCard === 2 ? "#FF0E97" : "none"} stroke={effectiveCard === 2 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 2 ? "2" : "1"} strokeDasharray={effectiveCard === 2 ? "none" : "9 5"} />
@@ -273,7 +273,7 @@ export function HelpWithoutHoldUp() {
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => setActiveCard(3)}
             className="absolute pointer-events-auto z-30 cursor-pointer transition-transform duration-200 hover:scale-[1.03]"
-            style={{ width: "285px", height: "136px", top: "540px", left: "805px" }}
+            style={{ width: "285px", height: "136px", top: "440px", left: "805px" }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
               <rect x="1" y="1" width="283" height="134" rx="16" ry="16" fill={effectiveCard === 3 ? "#FF0E97" : "none"} stroke={effectiveCard === 3 ? "#FF0E97" : "#242424"} strokeWidth={effectiveCard === 3 ? "2" : "1"} strokeDasharray={effectiveCard === 3 ? "none" : "9 5"} />
@@ -292,8 +292,8 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Footer Text */}
-          <div className="absolute pointer-events-auto z-30" style={{ width: "480px", height: "auto", top: "769px", left: "400px" }}>
-            <p className="font-['Inter',_sans-serif] font-normal text-[18px] text-[#161616] leading-[1.4] tracking-[-0.03em] text-center m-0">
+          <div className="absolute pointer-events-auto z-30" style={{ width: "480px", height: "auto", top: "640px", left: "400px" }}>
+            <p className="font-['Inter',_sans-serif] font-normal text-[16px] text-[#161616] leading-[1.4] tracking-[-0.03em] text-center m-0">
               Three ways to activate SOS. Because every second spent searching is a second too many.
             </p>
           </div>
