@@ -38,18 +38,20 @@ export function WhyNazrInTheirWordsSection() {
       </div>
 
       {/* Right Column: Text content & Action button */}
-      <div className="w-full md:w-[52%] flex flex-col items-start justify-center text-left pt-10 pb-6 md:py-0 px-6 sm:px-10 md:px-10 lg:px-14 z-10">
-        <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] uppercase text-[clamp(42px,6.25vw,80px)] leading-[90%] tracking-[-0.03em] m-0">
+      <div className="w-full md:w-[52%] flex flex-col items-center md:items-start justify-center text-center md:text-left pt-10 pb-6 md:py-0 px-6 sm:px-10 md:px-10 lg:px-14 z-10">
+        <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[#161616] uppercase text-[clamp(42px,6.25vw,80px)] leading-[90%] tracking-[-0.03em] m-0 text-center md:text-left">
           WHY NAZR EXISTS.<br />
           IN THEIR WORDS.
         </h2>
 
-        <p className="font-['Inter',_sans-serif] font-normal text-[#161616] text-[clamp(15px,1.41vw,18px)] leading-[140%] tracking-[-0.03em] mt-0 max-w-[480px] m-0">
-          Real experiences from women who believe safety<br />should be proactive, accessible, and shared.
+        <p className="font-['Inter',_sans-serif] font-normal text-[#161616] text-[clamp(15px,1.41vw,18px)] leading-[140%] tracking-[-0.03em] mt-3 md:mt-0 max-w-[320px] md:max-w-[480px] m-0 text-center md:text-left">
+          Real experiences from women who<br />
+          believe safety should be proactive,<br />
+          accessible, and shared.
         </p>
 
         <button
-          className="mt-[12px] bg-[#FF0E97] hover:bg-[#e00b84] text-white font-['Roboto',_sans-serif] font-normal text-[16px] leading-[150%] tracking-normal px-[20px] py-[8px] rounded-[4px] border border-[#FF0E97] inline-flex items-center justify-center cursor-pointer transition-colors shadow-sm whitespace-nowrap"
+          className="mt-4 md:mt-[12px] bg-[#FF0E97] hover:bg-[#e00b84] text-white font-['Roboto',_sans-serif] font-normal text-[16px] leading-[150%] tracking-normal px-[20px] py-[8px] rounded-[4px] border border-[#FF0E97] inline-flex items-center justify-center cursor-pointer transition-colors shadow-sm whitespace-nowrap"
         >
           Tell us More
         </button>
