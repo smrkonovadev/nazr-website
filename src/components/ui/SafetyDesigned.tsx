@@ -190,7 +190,7 @@ export function SafetyDesigned() {
           <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[46px] sm:text-[80px] text-center m-0 leading-[0.9] tracking-[-0.03em]">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-[family-name:var(--font-inter)] font-normal text-[16px] sm:text-[18px] text-center m-0 mb-12 sm:mb-16 max-w-[360px] sm:max-w-[420px] leading-[1.4] tracking-[-0.03em]">
+          <p className="text-[#FFF9EB] font-[family-name:var(--font-inter)] font-normal text-[16px] sm:text-[18px] text-center m-0 mb-6 sm:mb-8 max-w-[360px] sm:max-w-[420px] leading-[1.4] tracking-[-0.03em]">
             Smart safety products designed to work with<br />
             the NAZR app, helping you stay prepared,<br />
             connected, and supported.
@@ -198,7 +198,7 @@ export function SafetyDesigned() {
         </div>
 
         {/* Carousel Display */}
-        <div className="w-full relative h-[285px] flex justify-center items-center overflow-visible my-0">
+        <div className="w-full relative h-[255px] flex justify-center items-center overflow-visible my-0">
           {/* Animated Product Cards */}
           {carouselData.map((item, index) => {
             let pos = 'hidden';
@@ -221,12 +221,16 @@ export function SafetyDesigned() {
                   scale: isCenter ? 1 : 0.7,
                   opacity: isCenter ? 1 : 0.6,
                   zIndex: isCenter ? 20 : 10,
-                  width: isCenter ? (item.id === "sip-check" ? "290px" : item.id === "nazr-360" ? "180px" : "230px") : "130px",
-                  height: isCenter ? (item.id === "sip-check" ? "290px" : item.id === "nazr-360" ? "190px" : "240px") : "190px"
+                  width: isCenter ? (item.id === "sip-check" ? "280px" : item.id === "nazr-360" ? "180px" : "230px") : "130px",
+                  height: isCenter ? (item.id === "sip-check" ? "280px" : item.id === "nazr-360" ? "190px" : "240px") : "190px"
                 }}
                 transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
               >
-                <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className={`w-full h-full object-contain ${item.id === "sip-check" ? "scale-[1.38] transform-gpu" : ""}`}
+                />
 
                 {/* Pepper Spray Stickers */}
                 {item.id === "pepper-spray" && (
