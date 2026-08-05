@@ -197,7 +197,7 @@ export function SafetyDesigned() {
         </div>
 
         {/* Carousel Display */}
-        <div className="w-full relative h-[245px] flex justify-center items-center overflow-visible my-0">
+        <div className="w-full relative h-[285px] flex justify-center items-center overflow-visible my-0">
           {/* Animated Product Cards */}
           {carouselData.map((item, index) => {
             let pos = 'hidden';
@@ -220,8 +220,8 @@ export function SafetyDesigned() {
                   scale: isCenter ? 1 : 0.7,
                   opacity: isCenter ? 1 : 0.6,
                   zIndex: isCenter ? 20 : 10,
-                  width: isCenter ? (item.id === "nazr-360" ? "160px" : "230px") : "130px",
-                  height: isCenter ? (item.id === "nazr-360" ? "170px" : "240px") : "190px"
+                  width: isCenter ? (item.id === "sip-check" ? "290px" : item.id === "nazr-360" ? "180px" : "230px") : "130px",
+                  height: isCenter ? (item.id === "sip-check" ? "290px" : item.id === "nazr-360" ? "190px" : "240px") : "190px"
                 }}
                 transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
               >
