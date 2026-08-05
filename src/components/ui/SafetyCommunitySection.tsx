@@ -66,7 +66,7 @@ export function SafetyCommunitySection() {
   return (
     <div className="w-full bg-[#161616] text-white flex flex-col items-center relative z-20 overflow-hidden">
       {/* Carousel Section (Why NAZR Exists) */}
-      <section className="w-full flex justify-center items-center pt-12 md:pt-16 pb-12 md:pb-20 relative overflow-hidden">
+      <section className="w-full flex justify-center items-center pt-4 md:pt-6 pb-12 md:pb-20 relative overflow-hidden">
         <div className="w-full max-w-[1440px] px-4 md:px-8 flex flex-col justify-center relative md:h-full">
 
           {/* ================= MOBILE LAYOUT (Matching Image 3) ================= */}

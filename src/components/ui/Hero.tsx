@@ -9,23 +9,28 @@ import { ShaderBackground } from "@/components/ui/ShaderBackground";
 function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, globalMouseY }: any) {
   const ref = useRef<HTMLSpanElement>(null);
   const [center, setCenter] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const updateCenter = () => {
+      if (typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window)) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
       if (ref.current) {
         const rect = ref.current.getBoundingClientRect();
         setCenter({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
       }
     };
     updateCenter();
-    // Re-calculate after animations settle
     setTimeout(updateCenter, 2000);
     window.addEventListener('resize', updateCenter);
     return () => window.removeEventListener('resize', updateCenter);
   }, []);
 
   const localX = useTransform(globalMouseX, (mx: number) => {
-    if (!center.x || mx === -1000) return 0;
+    if (isMobile || !center.x || mx === -1000) return 0;
     const my = globalMouseY.get();
     const distanceX = mx - center.x;
     const distanceY = my - center.y;
@@ -37,7 +42,7 @@ function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, glob
   });
 
   const localY = useTransform(globalMouseY, (my: number) => {
-    if (!center.y || globalMouseX.get() === -1000) return 0;
+    if (isMobile || !center.y || globalMouseX.get() === -1000) return 0;
     const mx = globalMouseX.get();
     const distanceX = mx - center.x;
     const distanceY = my - center.y;
@@ -55,8 +60,21 @@ function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, glob
   const rotateY = useTransform(mouseXSpring, [-100, 100], [-30, 30]);
 
   if (char === ' ') {
-    return <span className={`inline-block w-[2vw] md:w-[40px] ${className || ''}`}> </span>;
+    return <span className={`inline-block w-[14px] sm:w-[18px] md:w-[40px] ${className || ''}`}> </span>;
   }
+
+  const computedBgStyle = isMobile
+    ? { backgroundImage: bgStyle?.backgroundImage }
+    : bgStyle;
+
+  const motionStyle = isMobile
+    ? computedBgStyle
+    : {
+        ...computedBgStyle,
+        rotateX,
+        rotateY,
+        transformPerspective: 800,
+      };
 
   return (
     <motion.span
@@ -70,12 +88,7 @@ function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, glob
           transition: { type: "spring", bounce: 0.45, duration: 0.6 }
         }
       }}
-      style={{
-        ...bgStyle,
-        rotateX,
-        rotateY,
-        transformPerspective: 800
-      }}
+      style={motionStyle}
     >
       {char}
     </motion.span>
@@ -120,7 +133,14 @@ export function Hero() {
                 animate="visible"
                 variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
                 className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap text-[#FFFDF7]"
-                style={{ fontWeight: 400 }}
+                style={{
+                  fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  fontWeight: 400,
+                  fontStyle: "normal",
+                  fontSize: "78px",
+                  lineHeight: "90%",
+                  letterSpacing: "-0.03em",
+                }}
               >
                 {"THE WORLD".split('').map((char, i) => (
                   <TiltLetter
@@ -144,7 +164,14 @@ export function Hero() {
                 animate="visible"
                 variants={{ visible: { transition: { delayChildren: 0.15, staggerChildren: 0.04 } } }}
                 className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
-                style={{ fontWeight: 400 }}
+                style={{
+                  fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  fontWeight: 400,
+                  fontStyle: "normal",
+                  fontSize: "78px",
+                  lineHeight: "90%",
+                  letterSpacing: "-0.03em",
+                }}
               >
                 {"STARES.".split('').map((char, i) => {
                   const idx = i + 9;
@@ -171,7 +198,14 @@ export function Hero() {
                 animate="visible"
                 variants={{ visible: { transition: { delayChildren: 0.3, staggerChildren: 0.04 } } }}
                 className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
-                style={{ fontWeight: 400 }}
+                style={{
+                  fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  fontWeight: 400,
+                  fontStyle: "normal",
+                  fontSize: "78px",
+                  lineHeight: "90%",
+                  letterSpacing: "-0.03em",
+                }}
               >
                 {"STARE BACK.".split('').map((char, i) => {
                   const idx = i + 16;
