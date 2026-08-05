@@ -170,7 +170,7 @@ export function HelpWithoutHoldUp() {
           {/* Phone Display with Smooth Cross-Fade Lottie Animation Triggers */}
           <div
             className="absolute pointer-events-none z-20 flex items-center justify-center overflow-visible transition-all duration-500 ease-in-out left-[calc(50%-25px)] -translate-x-1/2"
-            style={{ width: "290px", height: "490px", top: "190px" }}
+            style={{ width: "290px", height: "490px", top: "215px" }}
           >
             {/* Default Static Phone / Lottie */}
             <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
@@ -292,7 +292,7 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Footer Text */}
-          <div className="absolute pointer-events-auto z-30" style={{ width: "480px", height: "auto", top: "640px", left: "400px" }}>
+          <div className="absolute pointer-events-auto z-30" style={{ width: "480px", height: "auto", top: "675px", left: "400px" }}>
             <p className="font-['Inter',_sans-serif] font-normal text-[16px] text-[#161616] leading-[1.4] tracking-[-0.03em] text-center m-0">
               Three ways to activate SOS. Because every second spent searching is a second too many.
             </p>
