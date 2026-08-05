@@ -198,7 +198,7 @@ export function SafetyDesigned() {
         </div>
 
         {/* Carousel Display */}
-        <div className="w-full relative h-[300px] flex justify-center items-center overflow-visible my-0">
+        <div className="w-full relative h-[285px] flex justify-center items-center overflow-visible my-0">
           {/* Animated Product Cards */}
           {carouselData.map((item, index) => {
             let pos = 'hidden';
