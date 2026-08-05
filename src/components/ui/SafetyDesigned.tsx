@@ -41,7 +41,8 @@ export function SafetyDesigned() {
 
       {/* Desktop Master Wrapper */}
       <div className="hidden md:block w-full max-w-[1220px] relative h-[940px]">
-        {/* Title Block */}
+
+        {/* Title Block */}
         <div className="absolute flex flex-col items-center gap-[32px]" style={{ width: "610px", height: "236px", top: 0, left: "305px" }}>
           <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[80px] leading-[0.9] tracking-[-0.03em] text-center m-0 w-full">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
@@ -197,7 +198,7 @@ export function SafetyDesigned() {
         </div>
 
         {/* Carousel Display */}
-        <div className="w-full relative h-[285px] flex justify-center items-center overflow-visible my-0">
+        <div className="w-full relative h-[300px] flex justify-center items-center overflow-visible my-0">
           {/* Animated Product Cards */}
           {carouselData.map((item, index) => {
             let pos = 'hidden';
