@@ -67,7 +67,7 @@ export function SafetyCommunitySection() {
     <div className="w-full bg-[#161616] text-white flex flex-col items-center relative z-20 overflow-hidden">
       {/* Carousel Section (Why NAZR Exists) */}
       <section className="w-full flex justify-center items-center pt-12 md:pt-16 pb-12 md:pb-20 relative overflow-hidden">
-        <div className="w-full max-w-[1280px] px-4 md:px-8 flex flex-col justify-center relative md:h-full">
+        <div className="w-full max-w-[1440px] px-4 md:px-8 flex flex-col justify-center relative md:h-full">
 
           {/* ================= MOBILE LAYOUT (Matching Image 3) ================= */}
           <div className="md:hidden w-full flex flex-col items-center mb-4">
@@ -190,7 +190,7 @@ export function SafetyCommunitySection() {
             </div>
 
             {/* Carousel / Cards Track */}
-            <div className="w-full flex flex-row gap-4 justify-between items-stretch h-[440px]">
+            <div className="w-full flex flex-row gap-4 justify-between items-stretch h-[480px]">
               {cardsData.map((card, index) => {
                 const isActive = index === activeIndex;
                 return (
@@ -200,8 +200,8 @@ export function SafetyCommunitySection() {
                     layout
                     transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                     className={`relative rounded-[20px] overflow-hidden cursor-pointer border border-white/10 ${isActive
-                        ? "w-[480px] lg:w-[510px] flex-shrink-0"
-                        : "w-[200px] lg:w-[215px] flex-shrink-0"
+                        ? "flex-[2.2] min-w-0"
+                        : "flex-1 min-w-0"
                       } h-full`}
                   >
                     {/* Background Image */}
