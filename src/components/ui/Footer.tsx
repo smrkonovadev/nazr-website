@@ -222,7 +222,17 @@ export function Footer() {
 
         {/* Bottom section: Brand & Logo */}
         <div className="w-full max-w-[1440px] mx-auto flex flex-col justify-between shrink-0">
-          <span className="text-[9px] sm:text-[11px] md:text-[14px] font-['Switzer',_sans-serif] font-normal text-[#FFF1EB]/80 tracking-wider uppercase leading-none mb-2">
+          <span
+            className="font-normal text-[#FFF1EB] uppercase mb-2"
+            style={{
+              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              fontWeight: 400,
+              fontStyle: 'normal',
+              fontSize: 'clamp(14px, 1.8vw, 21px)',
+              lineHeight: '120%',
+              letterSpacing: '-0.02em',
+            }}
+          >
             THE WORLD STARES, STARE BACK
           </span>
 
