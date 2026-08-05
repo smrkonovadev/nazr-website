@@ -176,11 +176,12 @@ export function SafetyHabits() {
             ALREADY HAVE. UPGRADED.
           </h2>
           <p
-            className="text-[#FFF9EB] text-center font-['Inter',_sans-serif] font-normal text-[16px] md:text-[18px] max-w-[720px] m-0 opacity-90"
+            className="text-[#FFF9EB] text-center font-[family-name:var(--font-inter)] font-normal text-[16px] md:text-[18px] max-w-[340px] md:max-w-[720px] m-0 opacity-90"
             style={{ lineHeight: "140%", letterSpacing: "-0.03em" }}
           >
-            Designed around the routines women already rely on, with smarter tools to<br className="hidden md:block" />{" "}
-            keep every journey connected, informed, and secure.
+            Designed around the routines women already<br />
+            rely on, with smarter tools to keep every<br />
+            journey connected, informed, and secure.
           </p>
         </div>
 

@@ -46,8 +46,8 @@ export function SafetyDesigned() {
           <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[80px] leading-[0.9] tracking-[-0.03em] text-center m-0 w-full">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[18px] leading-[1.4] tracking-[-0.03em] text-center m-0 w-full max-w-[608px]">
-            A growing range of smart safety products designed to work alongside the NAZR app, providing additional ways to stay prepared, connected, and supported.
+          <p className="text-[#FFF9EB] font-[family-name:var(--font-inter)] font-normal text-[18px] leading-[1.4] tracking-[-0.03em] text-center m-0 w-full max-w-[608px]">
+            Smart safety products designed to work with the NAZR app, helping you stay prepared, connected, and supported.
           </p>
 
           {/* Badges positioned relative to the title block for exactness */}
@@ -189,102 +189,162 @@ export function SafetyDesigned() {
           <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[46px] sm:text-[80px] text-center m-0 leading-[0.9] tracking-[-0.03em]">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[16px] sm:text-[18px] text-center m-0 max-w-[340px] sm:max-w-[400px] leading-[1.4] tracking-[-0.03em]">
-            A growing range of smart safety products<br />
-            designed to work alongside the NAZR app,<br />
-            providing additional ways to stay prepared,<br />
+          <p className="text-[#FFF9EB] font-[family-name:var(--font-inter)] font-normal text-[16px] sm:text-[18px] text-center m-0 mb-12 sm:mb-16 max-w-[360px] sm:max-w-[420px] leading-[1.4] tracking-[-0.03em]">
+            Smart safety products designed to work with<br />
+            the NAZR app, helping you stay prepared,<br />
             connected, and supported.
           </p>
         </div>
 
         {/* Carousel Display */}
         <div className="w-full relative h-[245px] flex justify-center items-center overflow-visible my-0">
-          {/* Left Card Preview — >50% cropped off-screen to the left */}
-          <div className="absolute left-0 -translate-x-[60%] w-[130px] sm:w-[150px] h-[190px] opacity-100 z-10 flex items-center justify-center pointer-events-none">
-            <img src={carouselData[leftIndex].image} alt="Left Product" className="w-full h-full object-contain" />
-          </div>
+          {/* Animated Product Cards */}
+          {carouselData.map((item, index) => {
+            let pos = 'hidden';
+            if (index === currentIndex) pos = 'center';
+            else if (index === leftIndex) pos = 'left';
+            else if (index === rightIndex) pos = 'right';
 
-          {/* Center Card (Active) */}
-          <div className={`relative ${currentIndex === 2 ? 'w-[160px] h-[170px]' : 'w-[230px] h-[240px]'} z-20 flex items-center justify-center`}>
-            <img src={carouselData[currentIndex].image} alt="Center Product" className="w-full h-full object-contain" />
+            const isCenter = pos === 'center';
+            const isLeft = pos === 'left';
+            const isRight = pos === 'right';
 
-            {/* Active Product Stickers */}
-            {currentIndex === 1 && (
-              <>
-                {/* Pepper Spray Stickers — Matched to Image 2 Figma Spec */}
-                {/* Top-Left: UNWANTED ATTENTION BLOCKED */}
-                <div className="absolute w-[95px] h-[90px] top-[-5px] left-[-30px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new9.webp" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
-                </div>
-                {/* Top-Right: Silver Handbag with Star Glow */}
-                <div className="absolute w-[85px] h-[80px] top-[-10px] right-[-25px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new10.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                {/* Bottom-Left: 777 Glow */}
-                <div className="absolute w-[80px] h-[45px] bottom-[20px] left-[-30px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new11.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                {/* Bottom-Right: Star Glow */}
-                <div className="absolute w-[55px] h-[55px] bottom-[15px] right-[-25px] z-30 pointer-events-none opacity-80">
-                  <Image unoptimized quality={100} src="/images/new12.webp" alt="sticker" fill className="object-contain" />
-                </div>
-              </>
-            )}
+            return (
+              <motion.div
+                key={item.id}
+                className="absolute flex items-center justify-center pointer-events-none"
+                initial={false}
+                animate={{
+                  left: isCenter ? "50%" : isLeft ? "0%" : "100%",
+                  x: isCenter ? "-50%" : isLeft ? "-60%" : "-40%",
+                  scale: isCenter ? 1 : 0.7,
+                  opacity: isCenter ? 1 : 0.6,
+                  zIndex: isCenter ? 20 : 10,
+                  width: isCenter ? (item.id === "nazr-360" ? "160px" : "230px") : "130px",
+                  height: isCenter ? (item.id === "nazr-360" ? "170px" : "240px") : "190px"
+                }}
+                transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
+              >
+                <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
 
-            {currentIndex === 0 && (
-              <>
+                {/* Pepper Spray Stickers */}
+                {item.id === "pepper-spray" && (
+                  <>
+                    <motion.div
+                      className="absolute w-[95px] h-[90px] top-[-5px] left-[-30px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.05 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new9.webp" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[85px] h-[80px] top-[-10px] right-[-25px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.1 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new10.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[80px] h-[45px] bottom-[20px] left-[-30px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.15 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new11.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[55px] h-[55px] bottom-[15px] right-[-25px] z-30 pointer-events-none opacity-80"
+                      animate={{ opacity: isCenter ? 0.8 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.2 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new12.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                  </>
+                )}
+
                 {/* Sip Check Stickers */}
-                <div className="absolute w-[100px] h-[100px] top-[-15px] left-[-25px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new14.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                <div className="absolute w-[70px] h-[65px] top-[30px] right-[-25px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new15.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                {/* Moved up as requested */}
-                <div className="absolute w-[80px] h-[80px] bottom-[55px] left-[-25px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new17.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                <div className="absolute w-[75px] h-[70px] bottom-[55px] right-[-25px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new16.webp" alt="sticker" fill className="object-contain" />
-                </div>
-              </>
-            )}
+                {item.id === "sip-check" && (
+                  <>
+                    <motion.div
+                      className="absolute w-[100px] h-[100px] top-[-15px] left-[-25px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.05 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new14.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[70px] h-[65px] top-[30px] right-[-25px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.1 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new15.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[80px] h-[80px] bottom-[55px] left-[-25px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.15 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new17.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[75px] h-[70px] bottom-[55px] right-[-25px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.2 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new16.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                  </>
+                )}
 
-            {currentIndex === 2 && (
-              <>
-                {/* Nazr 360 Stickers - Spaced out further from product */}
-                {/* Silver Saturn Planet (Top-Left) */}
-                <div className="absolute w-[85px] h-[85px] top-[-45px] left-[-58px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new18.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                {/* Top-Right Glow Sticker */}
-                <div className="absolute w-[90px] h-[90px] top-[-25px] right-[-58px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new19.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                {/* Silver Shooting Star (Bottom-Left) */}
-                <div className="absolute w-[95px] h-[85px] bottom-[-20px] left-[-75px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new21.webp" alt="sticker" fill className="object-contain" />
-                </div>
-                {/* 1111 Glow (Bottom-Right) */}
-                <div className="absolute w-[70px] h-[65px] bottom-[-20px] right-[-52px] z-30 pointer-events-none">
-                  <Image unoptimized quality={100} src="/images/new20.webp" alt="sticker" fill className="object-contain" />
-                </div>
-              </>
-            )}
-          </div>
-
-          {/* Right Card Preview — >50% cropped off-screen to the right */}
-          <div className="absolute right-0 translate-x-[60%] w-[130px] sm:w-[150px] h-[190px] opacity-100 z-10 flex items-center justify-center pointer-events-none">
-            <img src={carouselData[rightIndex].image} alt="Right Product" className="w-full h-full object-contain" />
-          </div>
+                {/* Nazr 360 Stickers */}
+                {item.id === "nazr-360" && (
+                  <>
+                    <motion.div
+                      className="absolute w-[85px] h-[85px] top-[-45px] left-[-58px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.05 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new18.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[90px] h-[90px] top-[-25px] right-[-58px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.1 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new19.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[95px] h-[85px] bottom-[-20px] left-[-75px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.15 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new21.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute w-[70px] h-[65px] bottom-[-20px] right-[-52px] z-30 pointer-events-none"
+                      animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.2 : 0 }}
+                    >
+                      <Image unoptimized quality={100} src="/images/new20.webp" alt="sticker" fill className="object-contain" />
+                    </motion.div>
+                  </>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Text & Controls */}
         <div className="flex flex-col items-center gap-0.5 w-full px-2">
           {/* Title */}
-          <h3 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[32px] leading-[1.5] tracking-normal m-0 text-center uppercase">
+          <motion.h3
+            key={`m-title-${currentIndex}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[32px] leading-[1.5] tracking-normal m-0 text-center uppercase"
+          >
             {carouselData[currentIndex].title}
-          </h3>
+          </motion.h3>
 
           {/* Subtitle & Side Arrows — Exactly like Image 2 Figma Spec */}
           <div className="relative w-full max-w-[370px] flex items-center justify-center px-8 min-h-[80px]">
@@ -298,9 +358,15 @@ export function SafetyDesigned() {
             </button>
 
             {/* Subtitle */}
-            <p className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.4] tracking-[-0.03em] max-w-[310px]">
+            <motion.p
+              key={`m-sub-${currentIndex}`}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.4] tracking-[-0.03em] max-w-[310px]"
+            >
               {(carouselData[currentIndex] as any).mobileSubtitle || carouselData[currentIndex].subtitle}
-            </p>
+            </motion.p>
 
             {/* Right Arrow Button */}
             <button

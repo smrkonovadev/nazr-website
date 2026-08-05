@@ -9,42 +9,46 @@ const cardsData = [
   {
     id: 1,
     badge: "/images/1.svg",
-    bgImage: "/images/community2.webp",
-    topic: "TOPIC ONE",
+    bgImage: "/images/COMMUNITY%20STORIES.svg",
+    topic: "COMMUNITY STORIES",
     handle: "@NAZR.360",
     description:
-      "Compact, accessible, and designed to help you create the time and distance needed to get to safety. Doubles as a bag charm and glows in the dark for easy access when visibility is low.",
-    link: "/shop",
+      "Hear from the women building a culture of preparedness through everyday habits, shared experiences, and real conversations.",
+    link: "/blog",
+    buttonText: "Read Their Stories"
   },
   {
     id: 2,
     badge: "/images/2.svg",
-    bgImage: "/images/2ndfromleft.webp",
-    topic: "TOPIC TWO",
+    bgImage: "/images/EVENTS.svg",
+    topic: "EVENTS",
     handle: "@NAZR.360",
     description:
-      "Built with high-precision GPS tracking and instant 1-tap SOS alerts. Connects directly to your trusted circle for 24/7 protection whenever you need it.",
-    link: "/shop",
+      "From workshops and campus sessions to launches and meetups, see what's happening across the NAZR community.",
+    link: "/blog",
+    buttonText: "View All Events"
   },
   {
     id: 3,
     badge: "/images/3.svg",
-    bgImage: "/images/3rdimage.webp",
-    topic: "TOPIC THREE",
+    bgImage: "/images/FIELD%20NOTES.svg",
+    topic: "FIELD NOTES",
     handle: "@NAZR.360",
     description:
-      "Sip Check drink safety covers prevent drink tampering at parties and social events. Made from food-grade material for ultimate peace of mind.",
-    link: "/shop",
+      "Explore the research, psychology, observations, and everyday behaviours shaping the future of personal safety.",
+    link: "/blog",
+    buttonText: "Explore Field Notes"
   },
   {
     id: 4,
     badge: "/images/4.svg",
-    bgImage: "/images/OUR4.webp",
-    topic: "TOPIC FOUR",
+    bgImage: "/images/JOIN%20THE%20COMMUNITY.svg",
+    topic: "JOIN THE COMMUNITY",
     handle: "@NAZR.360",
     description:
-      "Shield Mode creates a digital guardian layer for your daily commute. Auto check-ins and live location sharing keep you connected throughout your journey.",
-    link: "/shop",
+      "Follow our journey, share your story, stay updated, and help build a safer future together.",
+    link: "/blog",
+    buttonText: "Join NAZR"
   },
 ];
 
@@ -68,12 +72,12 @@ export function SafetyCommunitySection() {
           {/* ================= MOBILE LAYOUT (Matching Image 3) ================= */}
           <div className="md:hidden w-full flex flex-col items-center mb-4">
             {/* Heading — Centered */}
-            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[clamp(36px,6vw,48px)] leading-[0.9] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
+            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] leading-[90%] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
               WHY NAZR EXISTS.<br />IN THEIR WORDS.
             </h2>
 
             {/* Subtitle — Centered */}
-            <p className="font-['Inter',_sans-serif] font-normal text-[clamp(14px,1.5vw,16px)] text-[#FFF9EB] max-w-[340px] leading-[1.4] tracking-[-0.03em] text-center m-0 mb-6">
+            <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[340px] text-center m-0 mb-6">
               Real experiences from women who believe safety should be proactive, accessible, and shared.
             </p>
 
@@ -81,15 +85,12 @@ export function SafetyCommunitySection() {
             {(() => {
               const card = cardsData[activeIndex];
               return (
-                <div className="relative rounded-[20px] overflow-hidden border border-white/10 w-full max-w-[340px] h-[380px] mb-6 shadow-2xl">
+                <div className="relative rounded-[20px] overflow-hidden border border-white/10 w-full max-w-[340px] h-[400px] mb-6 shadow-2xl">
                   {/* Background Image */}
-                  <Image
-                    unoptimized
-                    quality={100}
+                  <img
                     src={card.bgImage}
                     alt={card.topic}
-                    fill
-                    className="object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
 
                   {/* Dark Overlay */}
@@ -97,34 +98,36 @@ export function SafetyCommunitySection() {
 
                   {/* Card Content */}
                   <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
-                    {/* Top Badge */}
-                    <div className="flex items-center gap-3">
+                    {/* Top Badge & Topic Title */}
+                    <div className="flex flex-col items-start gap-2">
                       <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
+                      <h3 className="font-[family-name:var(--font-bebas)] font-normal text-white text-[32.53px] leading-[150%] tracking-normal m-0">
+                        {card.topic}
+                      </h3>
                     </div>
 
                     {/* Bottom Info */}
                     <div className="flex flex-col items-start max-w-[300px]">
-                      <h3 className="font-[family-name:var(--font-bebas)] text-white text-[32px] leading-none tracking-[-0.02em] m-0 mb-2">
-                        {card.topic}
-                      </h3>
-                      <p className="font-['Inter',_sans-serif] text-white/90 text-[13px] leading-[1.35] tracking-[-0.02em] m-0 mb-4">
+                      <p className="font-[family-name:var(--font-inter)] font-normal text-white/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4">
                         {card.description}
                       </p>
                       <a
                         href={card.link}
-                        className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-semibold text-[13px] leading-none transition-all duration-300 shadow-lg whitespace-nowrap"
+                        className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] font-medium text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
                         style={{
-                          width: "110px",
+                          minWidth: "110px",
                           height: "36px",
                           borderRadius: "3.92px",
                           paddingLeft: "20px",
                           paddingRight: "20px",
+                          paddingTop: "12px",
+                          paddingBottom: "12px",
                           borderWidth: "0.98px",
                           borderColor: "#FF0E97",
                           gap: "7.83px",
                         }}
                       >
-                        Get Yours
+                        {card.buttonText}
                       </a>
                     </div>
                   </div>
@@ -156,13 +159,13 @@ export function SafetyCommunitySection() {
             {/* Header Row — left-aligned heading, subtitle + nav buttons in same row */}
             <div className="w-full flex flex-col mb-6 md:mb-8 gap-3">
               {/* Heading — left-aligned */}
-              <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[48px] sm:text-[64px] md:text-[80px] leading-[0.9] tracking-[-0.03em] text-white uppercase m-0 text-left">
+              <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[80px] leading-[90%] tracking-[-0.03em] text-white uppercase m-0 text-left">
                 WHY NAZR EXISTS.<br />IN THEIR WORDS.
               </h2>
 
               {/* Subtitle row + nav buttons on right */}
               <div className="w-full flex items-end justify-between gap-4">
-                <p className="font-['Inter',_sans-serif] font-normal text-[18px] text-[#FFF9EB] max-w-[420px] leading-[1.4] tracking-[-0.03em] text-left m-0">
+                <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[420px] text-left m-0">
                   Real experiences from women who believe safety should be proactive, accessible, and shared.
                 </p>
 
@@ -187,7 +190,7 @@ export function SafetyCommunitySection() {
             </div>
 
             {/* Carousel / Cards Track */}
-            <div className="w-full flex flex-row gap-4 justify-between items-stretch h-[420px]">
+            <div className="w-full flex flex-row gap-4 justify-between items-stretch h-[440px]">
               {cardsData.map((card, index) => {
                 const isActive = index === activeIndex;
                 return (
@@ -202,13 +205,10 @@ export function SafetyCommunitySection() {
                       } h-full`}
                   >
                     {/* Background Image */}
-                    <Image
-                      unoptimized
-                      quality={100}
+                    <img
                       src={card.bgImage}
                       alt={card.topic}
-                      fill
-                      className="object-cover transition-transform duration-700 hover:scale-105"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     />
 
                     {/* Dark Overlay */}
@@ -220,46 +220,48 @@ export function SafetyCommunitySection() {
                     {/* Card Content: Active State */}
                     {isActive ? (
                       <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between z-10">
-                        {/* Top Badge */}
-                        <div className="flex items-center gap-3">
+                        {/* Top Badge & Topic Title */}
+                        <div className="flex flex-col items-start gap-2">
                           <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
+                          <h3 className="font-[family-name:var(--font-bebas)] font-normal text-white text-[32.53px] leading-[150%] tracking-normal m-0">
+                            {card.topic}
+                          </h3>
                         </div>
 
                         {/* Bottom Info */}
                         <div className="flex flex-col items-start max-w-[400px]">
-                          <h3 className="font-[family-name:var(--font-bebas)] text-white text-[32px] md:text-[38px] leading-none tracking-[-0.02em] m-0 mb-2">
-                            {card.topic}
-                          </h3>
-                          <p className="font-['Inter',_sans-serif] text-white/90 text-[13.5px] md:text-[14px] leading-[1.35] tracking-[-0.02em] m-0 mb-4">
+                          <p className="font-[family-name:var(--font-inter)] font-normal text-white/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4">
                             {card.description}
                           </p>
                           <a
                             href={card.link}
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-semibold text-[13px] leading-none transition-all duration-300 shadow-lg whitespace-nowrap"
+                            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] font-medium text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
                             style={{
-                              width: "110px",
+                              minWidth: "110px",
                               height: "36px",
                               borderRadius: "3.92px",
                               paddingLeft: "20px",
                               paddingRight: "20px",
+                              paddingTop: "12px",
+                              paddingBottom: "12px",
                               borderWidth: "0.98px",
                               borderColor: "#FF0E97",
                               gap: "7.83px",
                             }}
                           >
-                            Get Yours
+                            {card.buttonText}
                           </a>
                         </div>
                       </div>
                     ) : (
                       /* Card Content: Collapsed State */
                       <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-between z-10">
-                        {/* Top Badge & Handle */}
-                        <div className="flex items-center gap-2.5">
+                        {/* Top Badge & Topic Title */}
+                        <div className="flex flex-col items-start gap-1.5">
                           <Image unoptimized src={card.badge} width={30} height={30} alt={`Step ${card.id}`} />
-                          <span className="font-[family-name:var(--font-bebas)] text-white text-[22px] md:text-[26px] leading-none tracking-[-0.02em]">
-                            {card.handle}
+                          <span className="font-[family-name:var(--font-bebas)] font-normal text-white text-[24px] md:text-[32.53px] leading-[150%] tracking-normal">
+                            {card.topic}
                           </span>
                         </div>
 

@@ -53,7 +53,7 @@ const testimonialCards: any[] = [
     id: 1,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"Finally, a safety product I actually carry. I\'ve bought multiple safety tools before, but they always ended up forgotten at the bottom of my bag. This one is designed so well that it stays within reach, which makes all the difference."',
+    quote: '"Finally, a safety product that doesn\'t disappear into my bag. It\'s always right where I need it."',
     name: "Priyanshi Mehta",
     stars: "⭐⭐⭐⭐",
     rotation: -2
@@ -63,8 +63,8 @@ const testimonialCards: any[] = [
     id: 3,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: '"I love that it doesn\'t look like a typical safety product. It blends into my everyday essentials while still being easy to access when needed. People have even said it\'s soo cute."',
-    name: "Kavya Kapoor",
+    quote: '"A thoughtful gift she\'ll actually use. She absolutely loved it."',
+    name: "Akshat Kanungo",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -2
   },
@@ -73,8 +73,8 @@ const testimonialCards: any[] = [
     id: 5,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"I wanted to gift her something thoughtful, and this felt much more meaningful than flowers or chocolates. She absolutely loved it."',
-    name: "Akshat Kanungo",
+    quote: '"It doesn\'t look like a safety product, and that\'s why I love it. People even call it cute."',
+    name: "Kavya Kapoor",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -2
   },
@@ -83,9 +83,9 @@ const testimonialCards: any[] = [
     id: 7,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: '"NAZR feels like it understands what women actually need. It just makes you feel more prepared."',
-    name: "Aina K",
-    stars: "⭐⭐⭐⭐",
+    quote: '"The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail."',
+    name: "Shikha Verma",
+    stars: "⭐⭐⭐⭐⭐",
     rotation: -2
   },
   { id: 8, type: "image", src: "/home why (2).svg", rotation: 3 },
@@ -93,8 +93,8 @@ const testimonialCards: any[] = [
     id: 9,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"The glow-in-the-dark feature sounded minor at first, but it\'s surprisingly useful. I had kept it on my bag the whole day and then in the evening when I got home I realised that it was glowing as it was pitch dark, great detailing!"',
-    name: "Shikha Verma",
+    quote: '"Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out."',
+    name: "Jiya Raul",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -2
   },
@@ -103,8 +103,8 @@ const testimonialCards: any[] = [
     id: 11,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: '"Every woman should know about NAZR. I came across the brand on Instagram and ended up ordering. The mission, the design, and the products all feel very well thought of :)"',
-    name: "",
+    quote: '"The kind of product you hope to never use. I liked it so much, I bought one for my sister too."',
+    name: "Shanaya Singh",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -2
   },
@@ -113,8 +113,8 @@ const testimonialCards: any[] = [
     id: 13,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"It\'s one of those products you hope you never need, but you\'re glad to have. So when I came across this, I got one for my sister too!"',
-    name: "",
+    quote: '"Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed."',
+    name: "Somakshi Sen",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -2
   },
@@ -354,7 +354,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                               : '·'}
                           </span>
                         </div>
-                        <div className="font-['Inter',_sans-serif] text-[10.5px] md:text-[15.5px] text-[#FFF9EB] leading-[1.35] mb-auto">
+                        <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#FFF9EB] leading-[140%] mb-auto">
                           {(card as any).quote}
                         </div>
                         <div className="flex flex-col mt-2 md:mt-4">

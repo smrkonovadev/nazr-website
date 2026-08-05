@@ -60,7 +60,7 @@ export function AboutTestimonial() {
             textAlign: "center",
           }}
         >
-          &ldquo;Finally, a safety product I actually carry. I&apos;ve bought multiple safety tools before, but they always ended up forgotten at the bottom of my bag. This one is designed so well that it stays within reach, which makes all the difference.&rdquo;
+          &ldquo;Finally, a safety product that doesn&apos;t disappear into my bag. It&apos;s always right where I need it.&rdquo;
         </h2>
 
         {/* Pink Button */}

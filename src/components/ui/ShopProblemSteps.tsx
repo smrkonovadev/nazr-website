@@ -9,7 +9,7 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"Finally, a safety product I actually carry. I\'ve bought multiple safety tools before, but they always ended up forgotten at the bottom of my bag. This one is designed so well that it stays within reach, which makes all the difference."',
+      '"Finally, a safety product that doesn\'t disappear into my bag. It\'s always right where I need it."',
     name: "Priyanshi Mehta",
     stars: "⭐⭐⭐⭐",
     rotation: -8,
@@ -26,8 +26,8 @@ const cards = [
     type: "testimonial",
     bgColor: "#E5007D",
     quote:
-      '"I love that it doesn\'t look like a typical safety product. It blends into my everyday essentials while still being easy to access when needed. People have even said it\'s soo cute."',
-    name: "Kavya Kapoor",
+      '"A thoughtful gift she\'ll actually use. She absolutely loved it."',
+    name: "Akshat Kanungo",
     stars: "⭐⭐⭐⭐⭐",
     rotation: 6,
   },
@@ -43,8 +43,8 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"I wanted to gift her something thoughtful, and this felt much more meaningful than flowers or chocolates. She absolutely loved it."',
-    name: "Akshat Kanungo",
+      '"It doesn\'t look like a safety product, and that\'s why I love it. People even call it cute."',
+    name: "Kavya Kapoor",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -6,
   },
@@ -60,9 +60,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#E5007D",
     quote:
-      '"NAZR feels like it understands what women actually need. It just makes you feel more prepared."',
-    name: "Aina K",
-    stars: "⭐⭐⭐⭐",
+      '"The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail."',
+    name: "Shikha Verma",
+    stars: "⭐⭐⭐⭐⭐",
     rotation: -5,
   },
   {
@@ -77,8 +77,8 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"The glow-in-the-dark feature sounded minor at first, but it\'s surprisingly useful. I had kept it on my bag the whole day and then in the evening when I got home I realised that it was glowing as it was pitch dark, great detailing!"',
-    name: "Shikha Verma",
+      '"Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out."',
+    name: "Jiya Raul",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -4,
   },
@@ -94,8 +94,8 @@ const cards = [
     type: "testimonial",
     bgColor: "#E5007D",
     quote:
-      '"Every woman should know about NAZR. I came across the brand on Instagram and ended up ordering. The mission, the design, and the products all feel very well thought of :)"',
-    name: "",
+      '"The kind of product you hope to never use. I liked it so much, I bought one for my sister too."',
+    name: "Shanaya Singh",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -7,
   },
@@ -111,8 +111,8 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"It\'s one of those products you hope you never need, but you\'re glad to have. So when I came across this, I got one for my sister too!"',
-    name: "",
+      '"Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed."',
+    name: "Somakshi Sen",
     stars: "⭐⭐⭐⭐⭐",
     rotation: -5,
   },
@@ -327,7 +327,7 @@ export function ShopProblemSteps() {
                       </div>
 
                       {/* Quote Text */}
-                      <p className="font-sans text-[14px] md:text-[15px] leading-[1.45] text-[#FFF9EB] font-normal opacity-100 my-2">
+                      <p className="font-[family-name:var(--font-inter)] text-[14px] leading-[140%] text-[#FFF9EB] font-normal opacity-100 my-2">
                         {card.quote}
                       </p>
 

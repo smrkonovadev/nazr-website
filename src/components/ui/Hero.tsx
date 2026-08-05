@@ -119,7 +119,7 @@ export function Hero() {
                 initial="hidden"
                 animate="visible"
                 variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
-                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[18.5vw] sm:text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap text-[#FFFDF7]"
+                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap text-[#FFFDF7]"
                 style={{ fontWeight: 400 }}
               >
                 {"THE WORLD".split('').map((char, i) => (
@@ -138,15 +138,15 @@ export function Hero() {
                 ))}
               </motion.h1>
 
-              {/* Line 2: STARES STARE */}
+              {/* Line 2: STARES. */}
               <motion.h1
                 initial="hidden"
                 animate="visible"
                 variants={{ visible: { transition: { delayChildren: 0.15, staggerChildren: 0.04 } } }}
-                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[18.5vw] sm:text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
+                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
                 style={{ fontWeight: 400 }}
               >
-                {"STARES STARE".split('').map((char, i) => {
+                {"STARES.".split('').map((char, i) => {
                   const idx = i + 9;
                   return (
                     <TiltLetter
@@ -165,16 +165,16 @@ export function Hero() {
                 })}
               </motion.h1>
 
-              {/* Line 3: BACK */}
+              {/* Line 3: STARE BACK. */}
               <motion.h1
                 initial="hidden"
                 animate="visible"
                 variants={{ visible: { transition: { delayChildren: 0.3, staggerChildren: 0.04 } } }}
-                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[18.5vw] sm:text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
+                className="font-[family-name:var(--font-bebas)] uppercase m-0 p-0 flex text-[78px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap mt-1 text-[#FFFDF7]"
                 style={{ fontWeight: 400 }}
               >
-                {"BACK".split('').map((char, i) => {
-                  const idx = i + 21;
+                {"STARE BACK.".split('').map((char, i) => {
+                  const idx = i + 16;
                   return (
                     <TiltLetter
                       key={`m-bk-${i}`}
@@ -194,7 +194,7 @@ export function Hero() {
             </div>
 
             {/* Top Right Floating Circular Eye Discs */}
-            <div className="absolute top-[25vw] sm:top-10 right-[-4vw] w-[54vw] max-w-[210px] h-[54vw] max-h-[210px] z-30 pointer-events-none">
+            <div className="absolute top-[40vw] sm:top-16 right-[-4vw] w-[54vw] max-w-[210px] h-[54vw] max-h-[210px] z-30 pointer-events-none">
               {/* Left/Purple Disc */}
               <motion.div
                 className="absolute w-[36vw] max-w-[145px] h-[36vw] max-h-[145px] top-[15%] left-[20px]"
@@ -244,9 +244,10 @@ export function Hero() {
           <div className="flex flex-col items-start w-full max-w-[292px] z-30 mt-auto pt-4">
             {/* Left-Aligned Subtext */}
             <p
-              className="text-[#FFF1EB] font-['Inter',_sans-serif] text-[16px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
+              className="text-[#FFF1EB] font-[family-name:var(--font-inter)] text-[16px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
               style={{
                 fontWeight: 400,
+                fontStyle: 'normal',
                 width: '292px',
                 transform: 'rotate(0deg)',
                 opacity: 1
@@ -258,8 +259,8 @@ export function Hero() {
             {/* Left-Aligned Buttons */}
             <div className="flex flex-row items-center gap-2 sm:gap-3 flex-wrap">
               <button
-                className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[0.75px] border-[#FF0E97] rounded-[3px] w-[161.25px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[12px] sm:text-[13px] whitespace-nowrap shadow-sm opacity-100"
-                style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
+                className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[0.75px] border-[#FF0E97] rounded-[3px] w-[161.25px] h-[37px] px-[15px] py-[8px] gap-[6px] text-[12px] sm:text-[13px] whitespace-nowrap shadow-sm opacity-100"
+                style={{ fontWeight: 400, fontFamily: 'Roboto, sans-serif' }}
               >
                 <div className="relative w-4 h-4">
                   <Image unoptimized quality={100} src="/images/logo.webp"
@@ -273,8 +274,8 @@ export function Hero() {
 
               <Link
                 href="/shop#pepper-spray"
-                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB] rounded-[4px] w-[83px] h-[33px] px-[15px] py-[6px] gap-[6px] text-[13px] whitespace-nowrap opacity-100"
-                style={{ fontWeight: 500, fontFamily: 'Roboto, sans-serif' }}
+                className="flex items-center justify-center text-[#FFF1EB] bg-transparent hover:bg-white/10 transition-colors border border-[#FFF1EB] rounded-[4px] w-[83px] h-[37px] px-[15px] py-[8px] gap-[6px] text-[13px] whitespace-nowrap opacity-100"
+                style={{ fontWeight: 400, fontFamily: 'Roboto, sans-serif' }}
               >
                 Buy Now
               </Link>
@@ -374,7 +375,8 @@ export function Hero() {
 
           {/* Subtext Paragraph */}
           <p
-            className="relative md:absolute text-[#FFF1EB] m-0 p-0 font-['Inter',_sans-serif] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
+            className="relative md:absolute text-[#FFF1EB] m-0 p-0 font-[family-name:var(--font-inter)] z-20 text-center md:text-left w-[60vw] md:w-[397px] mt-[4.1vw] md:mt-0 md:top-[384px] md:left-[40px] text-[4.1vw] md:text-[20px] leading-[140%] tracking-[-0.03em] font-normal mx-auto md:mx-0"
+            style={{ fontWeight: 400, fontStyle: 'normal' }}
           >
             India's first women's safety ecosystem combining personal defense, emergency technology, and trusted support.
           </p>

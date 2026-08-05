@@ -103,7 +103,7 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Mobile Phone Mockup / Animation Display */}
-          <div className="relative z-10 pointer-events-none my-4 mx-auto flex items-center justify-center w-[280px] sm:w-[320px] h-[480px] sm:h-[520px] overflow-visible">
+          <div className="relative z-10 pointer-events-none my-2 mx-auto flex items-center justify-center w-[280px] sm:w-[320px] h-[370px] sm:h-[410px] overflow-visible">
             {/* Default Mobile Image / Lottie */}
             <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
               {animData0 ? (
@@ -151,7 +151,7 @@ export function HelpWithoutHoldUp() {
             )}
           </div>
 
-          <div className="relative z-30 mt-10 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em]">
+          <div className="relative z-30 mt-1 sm:mt-2 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em]">
             Three ways to activate SOS. Because every second spent searching is a second too many.
           </div>
         </div>
