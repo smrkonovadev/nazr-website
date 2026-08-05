@@ -8,6 +8,7 @@ import { HelpWithoutHoldUp } from "@/components/ui/HelpWithoutHoldUp";
 import { SafetyHabits } from "@/components/ui/SafetyHabits";
 import { SafetyDesigned } from "@/components/ui/SafetyDesigned";
 import { WhyNazrExists } from "@/components/ui/WhyNazrExists";
+import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
 export const metadata: Metadata = {
@@ -59,6 +60,7 @@ export default function Home() {
           <div className="w-full bg-[#FFF1EB] relative z-20 pb-0 rounded-t-[9.71px] md:rounded-t-[26px] rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
             <WhyNazrExists />
             <InteractiveCards theme="cream" />
+            <WhyNazrInTheirWordsSection />
           </div>
         </DesktopScaler>
       </main>
