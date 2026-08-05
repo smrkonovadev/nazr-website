@@ -17,20 +17,20 @@ export function WhyNazrInTheirWordsSection() {
   return (
     <section className="w-full bg-[#FFF1EB] h-auto md:min-h-[calc(100vh/var(--desktop-scale,1))] flex flex-col-reverse md:flex-row items-center justify-between relative z-20 overflow-hidden">
       {/* Left Column: Hand holding phone Lottie animation */}
-      <div className="w-full md:w-[48%] h-[460px] sm:h-[540px] md:h-full relative flex items-end justify-start pl-4 sm:pl-8 md:pl-12 lg:pl-16">
-        <div className="relative w-full h-full max-w-[500px] flex items-end justify-start pointer-events-none overflow-visible translate-y-[22%] md:translate-y-[30%]">
+      <div className="w-full md:w-[48%] h-[480px] sm:h-[520px] md:h-full relative flex items-end justify-center md:justify-start pl-0 md:pl-12 lg:pl-16">
+        <div className="relative w-full h-full max-w-[500px] flex items-end justify-center md:justify-start pointer-events-none overflow-visible translate-y-[14%] md:translate-y-[30%]">
           {animData ? (
             <Lottie
               animationData={animData}
               loop={true}
-              className="w-full h-full object-contain object-bottom-left drop-shadow-xl transform-gpu scale-[1.15] sm:scale-[1.25] md:scale-[1.38] origin-bottom-left"
+              className="w-full h-full object-contain object-bottom-center md:object-bottom-left drop-shadow-xl transform-gpu scale-[1.38] sm:scale-[1.3] md:scale-[1.38] origin-bottom-center md:origin-bottom-left"
             />
           ) : (
             <Image
               src="/images/WHYNAZR.webp"
               alt="Why NAZR Exists - App UI Hand Mockup"
               fill
-              className="object-contain object-bottom-left"
+              className="object-contain object-bottom-center md:object-bottom-left"
               priority
             />
           )}
