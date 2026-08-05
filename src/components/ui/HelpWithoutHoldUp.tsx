@@ -103,7 +103,7 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Mobile Phone Mockup / Animation Display */}
-          <div className="relative z-10 pointer-events-none my-2 mx-auto flex items-center justify-center w-[280px] sm:w-[320px] h-[370px] sm:h-[410px] overflow-visible">
+          <div className="relative z-10 pointer-events-none my-4 mx-auto flex items-center justify-center w-[280px] sm:w-[320px] h-[480px] sm:h-[520px] overflow-visible">
             {/* Default Mobile Image / Lottie */}
             <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
               {animData0 ? (
@@ -151,7 +151,7 @@ export function HelpWithoutHoldUp() {
             )}
           </div>
 
-          <div className="relative z-30 mt-1 sm:mt-2 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em]">
+          <div className="relative z-30 mt-10 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em]">
             Three ways to activate SOS. Because every second spent searching is a second too many.
           </div>
         </div>
@@ -170,7 +170,7 @@ export function HelpWithoutHoldUp() {
           {/* Phone Display with Smooth Cross-Fade Lottie Animation Triggers */}
           <div
             className="absolute pointer-events-none z-20 flex items-center justify-center overflow-visible transition-all duration-500 ease-in-out left-[calc(50%-25px)] -translate-x-1/2"
-            style={{ width: "290px", height: "490px", top: "215px" }}
+            style={{ width: "290px", height: "490px", top: "190px" }}
           >
             {/* Default Static Phone / Lottie */}
             <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
@@ -292,7 +292,7 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Footer Text */}
-          <div className="absolute pointer-events-auto z-30" style={{ width: "480px", height: "auto", top: "675px", left: "400px" }}>
+          <div className="absolute pointer-events-auto z-30" style={{ width: "480px", height: "auto", top: "640px", left: "400px" }}>
             <p className="font-['Inter',_sans-serif] font-normal text-[16px] text-[#161616] leading-[1.4] tracking-[-0.03em] text-center m-0">
               Three ways to activate SOS. Because every second spent searching is a second too many.
             </p>
