@@ -11,7 +11,7 @@ export function WhyNazrExists() {
         <p
           className="font-['Inter',_sans-serif] font-normal text-[#161616] text-center mt-3 md:mt-4 text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] max-w-[620px] mx-auto"
         >
-          Real experiences from women who believe safety should be proactive,<br />accessible, and shared.
+          Real experiences from women who<br /> believe safety should be proactive,<br />accessible, and shared.
         </p>
       </div>
     </section>
