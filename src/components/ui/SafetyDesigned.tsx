@@ -9,7 +9,7 @@ export const carouselData = [
     id: "sip-check",
     image: "/images/productsip.webp",
     title: "sip check",
-    subtitle: "An anti drink spike sticker designed to protect your drink while you stay in the moment. Seals securely to your glass, peels away with ease, and helps deter unwanted tampering.",
+    subtitle: "A drink safety sticker that helps protect your drink. Seals securely, removes easily, and helps deter unwanted tampering.",
     mobileSubtitle: "A drink safety sticker that helps protect your drink. Seals securely, removes easily, and helps deter unwanted tampering."
   },
   {
