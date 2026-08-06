@@ -18,6 +18,8 @@ export function DesktopScaler({
   const [scale, setScale] = useState(1);
   const [contentHeight, setContentHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
+  const [isDesktopSiteMobile, setIsDesktopSiteMobile] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(0);
   const [useTransformFallback, setUseTransformFallback] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,10 +36,31 @@ export function DesktopScaler({
       const windowWidth = window.innerWidth;
       const mobile = windowWidth < 768;
 
+      setViewportWidth(windowWidth);
+
+      // Detect "Request Desktop Site" on a mobile phone:
+      // The browser reports a wide viewport (>=768px) but the physical screen is small
+      // and the device is touch-primary (phone/tablet).
+      const desktopSiteMobile =
+        !mobile &&
+        typeof screen !== "undefined" &&
+        screen.width < 768 &&
+        navigator.maxTouchPoints > 0;
+
       setIsMobile(mobile);
+      setIsDesktopSiteMobile(desktopSiteMobile);
 
       if (mobile) {
         setScale(Math.min(1.1, windowWidth / 390));
+        return;
+      }
+
+      if (desktopSiteMobile) {
+        // In "Request Desktop Site" mode the browser already scales the page
+        // to fit the physical screen. Applying our own zoom causes double-shrinking
+        // and massive empty gaps between sections. Set scale=1 and render at
+        // the viewport width so the browser's own scaling handles everything.
+        setScale(1);
         return;
       }
 
@@ -72,7 +95,9 @@ export function DesktopScaler({
     };
   }, [desktopWidth]);
 
-  const targetWidth = isMobile ? 390 : desktopWidth;
+  // In "desktop site" mode on mobile, use the viewport width directly (no zoom).
+  // Otherwise use the standard mobile (390) or desktop (1440) base widths.
+  const targetWidth = isMobile ? 390 : (isDesktopSiteMobile ? viewportWidth : desktopWidth);
 
   const parentStyle: React.CSSProperties = {
     backgroundColor: bgColor,
