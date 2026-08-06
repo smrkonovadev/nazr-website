@@ -68,3 +68,24 @@ body {
   50% { color: #FF0E97; }
   100% { color: #FFF1EB; }
 }
+
+/*
+ * "Request Desktop Site" on mobile — prevent sections from being
+ * taller than their content. The DesktopScaler adds this class to <html>
+ * when it detects a touch device with a small physical screen requesting
+ * a wide (>=768px) viewport.
+ */
+@media (min-width: 768px) {
+  html.dsm-mode section,
+  html.dsm-mode footer {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* Catch div-based section containers (Hero, ProblemCards wrapper, etc.) */
+  html.dsm-mode [class*="md:min-h-"],
+  html.dsm-mode [class*="md:h-[calc"] {
+    min-height: auto !important;
+    height: auto !important;
+  }
+}

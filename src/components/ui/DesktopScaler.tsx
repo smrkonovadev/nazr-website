@@ -95,6 +95,18 @@ export function DesktopScaler({
     };
   }, [desktopWidth]);
 
+  // Toggle a class on <html> so global CSS can override section heights
+  useEffect(() => {
+    if (isDesktopSiteMobile) {
+      document.documentElement.classList.add("dsm-mode");
+    } else {
+      document.documentElement.classList.remove("dsm-mode");
+    }
+    return () => {
+      document.documentElement.classList.remove("dsm-mode");
+    };
+  }, [isDesktopSiteMobile]);
+
   // In "desktop site" mode on mobile, use the viewport width directly (no zoom).
   // Otherwise use the standard mobile (390) or desktop (1440) base widths.
   const targetWidth = isMobile ? 390 : (isDesktopSiteMobile ? viewportWidth : desktopWidth);
@@ -114,7 +126,10 @@ export function DesktopScaler({
     width: targetWidth,
     margin: "0 auto",
     transformOrigin: "top center",
-    "--desktop-scale": scale,
+    // When desktop-site-on-mobile, set --desktop-scale to a huge number so
+    // calc(100vh/var(--desktop-scale)) ≈ 0px, making max(750px, ~0) = 750px.
+    // The actual zoom scale stays at 1 (no zoom applied).
+    "--desktop-scale": isDesktopSiteMobile ? 9999 : scale,
 
     ...(useTransformFallback
       ? {
