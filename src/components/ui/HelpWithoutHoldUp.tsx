@@ -123,7 +123,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData1}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[2.25] translate-y-12 transform-gpu"
                 />
               </div>
             )}

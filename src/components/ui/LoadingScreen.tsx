@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 interface LoadingScreenProps {
@@ -9,13 +9,21 @@ interface LoadingScreenProps {
   autoHide?: boolean;
 }
 
-const words = ["NAZR", "नझर", "নজর", "નજર"];
+const words = ["नझर", "NAZR", "নজর", "નજર"];
 
 export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.loop = false;
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   useEffect(() => {
     // Prevent scrolling robustly on all devices
@@ -28,7 +36,7 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
       const currentProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
-      const currentWordIdx = Math.floor(elapsed / 1000) % words.length;
+      const currentWordIdx = Math.floor(elapsed / 500) % words.length;
 
       setProgress(currentProgress);
       setWordIndex(currentWordIdx);
@@ -78,20 +86,29 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
         isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      {/* Background Image — high visibility like the Figma design */}
-      <div className="absolute inset-0 z-0">
-        <Image unoptimized quality={100} src="/images/footer bg.webp"
-          alt="NAZR Background"
-          fill
-          className="object-cover object-center"
-          style={{ opacity: 0.75 }}
-          priority
-        />
+      {/* Background Video — plays once and pauses at final frame */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover opacity-75 mix-blend-normal pointer-events-none transform-gpu"
+          style={{
+            transform: "translateZ(0)",
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+            objectPosition: "center center",
+          }}
+        >
+          <source src="/images/Footer.mp4" type="video/mp4" />
+        </video>
         {/* Subtle dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         {/* Subtle vignette edges */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)",
           }}
@@ -178,7 +195,7 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
                 fontStyle: "normal",
                 fontSize: "clamp(18px, 4.5vw, 32px)",
                 lineHeight: "47px",
-                letterSpacing: "-4px",
+                letterSpacing: "-0.03em",
                 leadingTrim: "cap-height",
               } as React.CSSProperties}
             >

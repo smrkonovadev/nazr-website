@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Lottie from "lottie-react";
@@ -48,11 +49,12 @@ export function WhyNazrInTheirWordsSection() {
           NAZR is built through conversations with the people we build for. We'd love to hear yours.
         </p>
 
-        <button
+        <Link
+          href="/support"
           className="mt-[12px] bg-[#FF0E97] hover:bg-[#e00b84] text-white font-['Roboto',_sans-serif] font-normal text-[16px] leading-[150%] tracking-normal px-[20px] py-[8px] rounded-[4px] border border-[#FF0E97] inline-flex items-center justify-center cursor-pointer transition-colors shadow-sm whitespace-nowrap"
         >
           Tell us More
-        </button>
+        </Link>
       </div>
     </section>
   );

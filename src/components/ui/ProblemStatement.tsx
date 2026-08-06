@@ -20,9 +20,9 @@ export function ProblemStatement() {
         <div ref={textContainerRef} className="w-full max-w-[640px] flex flex-col gap-4 md:gap-6 z-10">
 
           {/* Mobile Text */}
-          <div className="md:hidden flex flex-col gap-6 pt-2 pb-2 mx-auto w-full max-w-[360px] px-2 text-center">
+          <div className="md:hidden flex flex-col gap-6 pt-10 pb-2 mx-auto w-full max-w-[360px] px-2 text-center">
             <ScrollRevealText
-              text={"FOR MANY WOMEN IN INDIA, SAFETY\nHAS BECOME A ROUTINE OF\nWORKAROUNDS. SHARED LOCATIONS.CHECK-INS. CALLS ON THE WAY HOME."}
+              text={"FOR MANY WOMEN IN INDIA, SAFETY\nHAS BECOME A ROUTINE OF\nWORKAROUNDS. SHARED LOCATIONS.\nCHECK-INS.CALLS ON THE WAY HOME."}
               className="m-0 font-[family-name:var(--font-bebas)] text-[36px] text-center text-[#FFF9EB]"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",

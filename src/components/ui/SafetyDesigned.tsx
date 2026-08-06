@@ -10,20 +10,23 @@ export const carouselData = [
     image: "/images/productsip.webp",
     title: "sip check",
     subtitle: "A drink safety sticker that helps protect your drink. Seals securely, removes easily, and helps deter unwanted tampering.",
-    mobileSubtitle: "A drink safety sticker that helps protect your drink. Seals securely, removes easily, and helps deter unwanted tampering."
+    mobileSubtitle: "A drink safety sticker that helps protect your drink. Seals securely, removes easily, and helps deter unwanted tampering.",
+    link: "https://shop.nazrco.in/products/sip-check"
   },
   {
     id: "pepper-spray",
     image: "/images/center.webp",
     title: "ON ME SPRAY",
     subtitle: "A compact personal safety spray that stays within reach, glows in the dark, and doubles as a bag charm for everyday carry.",
-    mobileSubtitle: "A compact personal safety spray that stays within reach, glows in the dark, and doubles as a bag charm for everyday carry."
+    mobileSubtitle: "A compact personal safety spray that stays within reach, glows in the dark, and doubles as a bag charm for everyday carry.",
+    link: "https://shop.nazrco.in/products/on-me-pepper-spray"
   },
   {
     id: "nazr-360",
     image: "/images/NAZR360.webp",
     title: "NAZR 360°",
-    subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you."
+    subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you.",
+    link: "https://shop.nazrco.in/products/on-me-pepper-spray"
   }
 ];
 
@@ -112,14 +115,14 @@ export function SafetyDesigned() {
         {/* Floating Icons (Visible only for pepper-spray, index 1) */}
         <FloatingIcon src="/images/new9.webp" visible={currentIndex === 1} width="191.41px" height="169.84px" top="260px" left="310px" delay={0.0} />
         <FloatingIcon src="/images/new10.webp" visible={currentIndex === 1} width="70.26px" height="48.17px" top="290px" left="670px" rotate={-30} delay={0.05} />
-        <FloatingIcon src="/images/new11.webp" visible={currentIndex === 1} width="170px" height="186px" top="460px" left="385px" rotate={36.59} delay={0.1} />
+        <FloatingIcon src="/images/new11.webp" visible={currentIndex === 1} width="260px" height="285px" top="430px" left="315px" rotate={36.59} delay={0.1} />
         <FloatingIcon src="/images/new12.webp" visible={currentIndex === 1} width="91.95px" height="90.19px" top="470px" left="680px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for sip-check, index 0) */}
         <FloatingIcon src="/images/new14.webp" visible={currentIndex === 0} width="191.41px" height="169.84px" top="260px" left="380px" delay={0.0} />
-        <FloatingIcon src="/images/new15.webp" visible={currentIndex === 0} width="80.26px" height="70.17px" top="430px" left="750px" rotate={-30} delay={0.05} />
-        <FloatingIcon src="/images/new17.webp" visible={currentIndex === 0} width="112.46px" height="110.13px" top="590px" left="430px" rotate={10.59} delay={0.1} />
-        <FloatingIcon src="/images/new16.webp" visible={currentIndex === 0} width="130.95px" height="110.19px" top="600px" left="680px" rotate={-60} delay={0.15} />
+        <FloatingIcon src="/images/new15.webp" visible={currentIndex === 0} width="115px" height="100px" top="410px" left="730px" rotate={-30} delay={0.05} />
+        <FloatingIcon src="/images/new17.webp" visible={currentIndex === 0} width="180px" height="176px" top="565px" left="390px" rotate={10.59} delay={0.1} />
+        <FloatingIcon src="/images/new16.webp" visible={currentIndex === 0} width="165px" height="140px" top="585px" left="670px" rotate={-60} delay={0.15} />
 
         {/* Floating Icons (Visible only for nazr-360, index 2) */}
         <FloatingIcon src="/images/new18.webp" visible={currentIndex === 2} width="220px" height="250px" top="240px" left="355px" delay={0.0} />
@@ -164,7 +167,10 @@ export function SafetyDesigned() {
           </div>
 
           {/* Get Yours Button */}
-          <button
+          <a
+            href={(carouselData[currentIndex] as any).link || "https://shop.nazrco.in/products/on-me-pepper-spray"}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors whitespace-nowrap cursor-pointer mt-1"
             style={{
               width: "110px",
@@ -178,7 +184,7 @@ export function SafetyDesigned() {
             }}
           >
             <span style={{ fontFamily: "Roboto, sans-serif", fontSize: "14px", lineHeight: "1.5" }}>Get Yours</span>
-          </button>
+          </a>
         </div>
 
       </div>
@@ -250,7 +256,7 @@ export function SafetyDesigned() {
                       <Image unoptimized quality={100} src="/images/new10.webp" alt="sticker" fill className="object-contain" />
                     </motion.div>
                     <motion.div
-                      className="absolute w-[80px] h-[45px] bottom-[20px] left-[-30px] z-30 pointer-events-none"
+                      className="absolute w-[155px] h-[90px] bottom-[10px] left-[-55px] z-30 pointer-events-none"
                       animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.15 : 0 }}
                     >
@@ -270,28 +276,28 @@ export function SafetyDesigned() {
                 {item.id === "sip-check" && (
                   <>
                     <motion.div
-                      className="absolute w-[100px] h-[100px] top-[-15px] left-[-25px] z-30 pointer-events-none"
+                      className="absolute w-[95px] h-[95px] top-[5px] left-[0px] z-30 pointer-events-none"
                       animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.05 : 0 }}
                     >
                       <Image unoptimized quality={100} src="/images/new14.webp" alt="sticker" fill className="object-contain" />
                     </motion.div>
                     <motion.div
-                      className="absolute w-[70px] h-[65px] top-[30px] right-[-25px] z-30 pointer-events-none"
+                      className="absolute w-[90px] h-[85px] top-[30px] right-[-10px] z-30 pointer-events-none"
                       animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.1 : 0 }}
                     >
                       <Image unoptimized quality={100} src="/images/new15.webp" alt="sticker" fill className="object-contain" />
                     </motion.div>
                     <motion.div
-                      className="absolute w-[80px] h-[80px] bottom-[55px] left-[-25px] z-30 pointer-events-none"
+                      className="absolute w-[135px] h-[135px] bottom-[35px] left-[-30px] z-30 pointer-events-none"
                       animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.15 : 0 }}
                     >
                       <Image unoptimized quality={100} src="/images/new17.webp" alt="sticker" fill className="object-contain" />
                     </motion.div>
                     <motion.div
-                      className="absolute w-[75px] h-[70px] bottom-[55px] right-[-25px] z-30 pointer-events-none"
+                      className="absolute w-[95px] h-[90px] bottom-[45px] right-[-10px] z-30 pointer-events-none"
                       animate={{ opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.2 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20, delay: isCenter ? 0.2 : 0 }}
                     >
@@ -346,17 +352,17 @@ export function SafetyDesigned() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[32px] leading-[1.5] tracking-normal m-0 text-center uppercase"
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[32px] leading-[1.0] tracking-normal m-0 text-center uppercase"
           >
             {carouselData[currentIndex].title}
           </motion.h3>
 
           {/* Subtitle & Side Arrows — Exactly like Image 2 Figma Spec */}
-          <div className="relative w-full max-w-[370px] flex items-center justify-center px-8 min-h-[80px]">
+          <div className="relative w-full max-w-[370px] flex items-center justify-center px-12 sm:px-14 min-h-0">
             {/* Left Arrow Button */}
             <button
               onClick={handlePrev}
-              className="absolute left-[-6px] top-1/2 -translate-y-1/2 cursor-pointer hover:scale-105 active:scale-95 transition-transform outline-none z-10"
+              className="absolute left-[2px] top-1/2 -translate-y-1/2 cursor-pointer hover:scale-105 active:scale-95 transition-transform outline-none z-10"
               aria-label="Previous product"
             >
               <Image unoptimized src="/images/buttonl.svg" width={36} height={36} alt="prev" className="w-[36px] h-[36px]" />
@@ -368,7 +374,7 @@ export function SafetyDesigned() {
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.4] tracking-[-0.03em] max-w-[310px]"
+              className="text-[#FFF9EB] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.4] tracking-[-0.03em] max-w-[245px] sm:max-w-[270px]"
             >
               {(carouselData[currentIndex] as any).mobileSubtitle || carouselData[currentIndex].subtitle}
             </motion.p>
@@ -376,7 +382,7 @@ export function SafetyDesigned() {
             {/* Right Arrow Button */}
             <button
               onClick={handleNext}
-              className="absolute right-[-6px] top-1/2 -translate-y-1/2 cursor-pointer hover:scale-105 active:scale-95 transition-transform outline-none z-10"
+              className="absolute right-[2px] top-1/2 -translate-y-1/2 cursor-pointer hover:scale-105 active:scale-95 transition-transform outline-none z-10"
               aria-label="Next product"
             >
               <Image unoptimized src="/images/button r.svg" width={36} height={36} alt="next" className="w-[36px] h-[36px]" />
@@ -384,7 +390,12 @@ export function SafetyDesigned() {
           </div>
 
           {/* Join Ecosystem Button with Owl Icon */}
-          <button className="flex items-center justify-center gap-2 text-[#FFF1EB] bg-[#FF0E97] px-6 h-[44px] rounded-[6px] hover:opacity-90 transition-opacity mt-4 shadow-md">
+          <a
+            href={(carouselData[currentIndex] as any).link || "https://shop.nazrco.in/products/on-me-pepper-spray"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 text-[#FFF1EB] bg-[#FF0E97] px-6 h-[44px] rounded-[6px] hover:opacity-90 transition-opacity mt-2 shadow-md"
+          >
             <svg viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[20px] h-[14px]">
               <path
                 d="M33.3819 7.62744C33.2869 7.7107 33.1684 7.80134 33.0152 7.90883C31.7545 8.79569 30.1546 9.34741 28.4602 9.9318C25.5573 10.933 22.5555 11.9679 20.6471 14.8161C20.1564 15.5486 19.9687 16.291 20.1005 16.925C20.2926 16.613 20.4759 16.3311 20.7075 16.026L20.9298 15.733L21.1449 16.0307C21.8991 17.0757 23.061 17.6748 24.3328 17.6748C25.032 17.6748 25.7455 17.492 26.3954 17.1458C27.3707 16.6262 28.0239 15.8294 28.2352 14.9025C28.4421 13.9935 28.2044 13.0324 27.565 12.1972L27.3614 11.9316L29.5025 11.0863L29.6293 11.2255C30.7797 12.4917 31.1502 14.0721 30.7007 15.7968C30.2319 17.5947 28.7078 19.1239 26.7236 19.7879C25.9799 20.0366 25.2236 20.1626 24.4749 20.1626C23.4562 20.1626 22.4595 19.9344 21.5001 19.4828C21.926 19.936 22.4726 20.289 22.9836 20.5973C23.8355 21.1111 24.8394 21.3825 25.8866 21.3825C26.9338 21.3825 27.9157 21.1332 28.8362 20.6621C29.4756 20.3349 30.0387 19.9202 30.5585 19.3932C31.5421 18.3962 22.227 17.1126 32.5279 15.6808C32.7737 14.5263 32.7189 13.8228 32.7178 13.8139C32.6338 12.7542 32.4329 11.8183 32.0855 10.8687C31.7885 10.0556 31.9214 9.42171 32.5169 8.81308C32.9241 8.39626 33.2117 8.00263 33.3808 7.62797L33.3819 7.62744ZM27.3954 13.8613L27.7599 13.9003C27.8466 13.9219 27.8312 14.012 27.7467 14.0088C27.1309 13.9877 26.9146 13.8755 26.6929 14.2043C26.6023 14.3382 26.5749 14.5621 26.7077 14.7608L27.2807 15.3515C27.284 15.5264 26.5095 14.7149 25.9761 15.1044C25.5276 15.4316 26.127 16.4565 25.9475 16.437L25.4744 15.7024C25.3915 15.5855 25.0836 15.5243 24.8717 15.596C24.3926 15.7588 24.4996 16.6615 24.4047 16.6425C24.2938 16.6272 24.4118 15.7825 24.0847 15.5596C23.9645 15.478 23.7685 15.5143 23.6664 15.6166L23.0034 16.2795C22.8179 16.3058 23.6143 15.4985 23.0281 15.0748C22.3634 14.5943 21.7739 15.3452 21.7372 15.1876L22.4748 14.5837C23.28 13.9245 23.785 15.8742 25.6572 14.7913C26.9915 14.0194 26.1314 12.3147 26.4492 12.556C26.4739 12.5745 26.5419 12.7304 26.5496 12.8079C26.5595 12.907 26.5743 13.0255 26.5875 13.103C26.6451 13.4355 26.8147 13.7817 27.3954 13.8602V13.8613Z"
@@ -404,7 +415,7 @@ export function SafetyDesigned() {
               />
             </svg>
             <span style={{ fontFamily: 'Roboto, sans-serif', fontWeight: 400, fontSize: '16px', lineHeight: '150%', letterSpacing: '0%' }}>Get Yours</span>
-          </button>
+          </a>
         </div>
       </div>
 
