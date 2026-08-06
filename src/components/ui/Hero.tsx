@@ -126,7 +126,7 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[calc(100vh/var(--desktop-scale,1))] md:h-[calc(100vh/var(--desktop-scale,1))]"
+        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[max(750px,calc(100vh/var(--desktop-scale,1)))] md:h-auto"
       >
         {/* Shader Background Effect */}
         <ShaderBackground imageUrl="/images/image 59.svg" colorA="#242424" colorB="#D46FB3" className="rounded-none" />

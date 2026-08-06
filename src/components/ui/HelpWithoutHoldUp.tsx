@@ -39,7 +39,7 @@ export function HelpWithoutHoldUp() {
   };
 
   return (
-    <section className="w-full bg-[#FFF1EB] flex justify-center pt-10 pb-10 md:py-0 md:h-[720px] overflow-hidden relative z-[70]">
+    <section className="w-full bg-[#FFF1EB] flex justify-center pt-10 pb-10 md:py-0 md:min-h-[720px] md:h-auto overflow-hidden relative z-[70]">
       <div className="w-full max-w-[1280px] h-full flex flex-col items-center relative">
 
         {/* Mobile Layout (Hidden on Desktop) */}

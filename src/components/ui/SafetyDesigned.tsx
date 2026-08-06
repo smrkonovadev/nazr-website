@@ -40,7 +40,7 @@ export function SafetyDesigned() {
   const rightIndex = (currentIndex + 1) % carouselData.length;
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-4 md:pt-[60px] md:pb-[10px] md:px-[30px] overflow-hidden relative z-20 md:h-[950px]">
+    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-4 md:pt-[60px] md:pb-[10px] md:px-[30px] overflow-hidden relative z-20 md:min-h-[950px] md:h-auto">
 
       {/* Desktop Master Wrapper */}
       <div className="hidden md:block w-full max-w-[1220px] relative h-[940px]">

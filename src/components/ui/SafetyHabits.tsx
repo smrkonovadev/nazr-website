@@ -164,7 +164,7 @@ export function SafetyHabits() {
   }, [activeCard]);
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#161616] flex flex-col justify-center items-center pt-14 pb-8 md:pt-[70px] md:pb-[40px] md:px-[20px] lg:px-[30px] md:min-h-[calc(100vh/var(--desktop-scale,1))] overflow-x-hidden relative z-20">
+    <section ref={sectionRef} className="w-full bg-[#161616] flex flex-col justify-center items-center pt-14 pb-8 md:pt-[70px] md:pb-[40px] md:px-[20px] lg:px-[30px] md:min-h-[max(700px,calc(100vh/var(--desktop-scale,1)))] md:h-auto overflow-x-hidden relative z-20">
       <div className="w-full max-w-[1440px] px-4 md:px-6 flex flex-col items-center gap-[20px] md:gap-[20px] relative">
 
         {/* Title Block */}
