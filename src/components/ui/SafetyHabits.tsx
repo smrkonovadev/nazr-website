@@ -83,7 +83,7 @@ export function SafetyHabits() {
       description:
         "Designed for the ride home, the late-night cab, and every journey in between. Shield Mode keeps you supported, so you never have to navigate a journey alone.",
       animData: armAnimData,
-      lottieScale: "max-md:scale-[1.28] md:scale-[1.25]",
+      lottieScale: "max-md:scale-[1.21] md:scale-[1.25]",
     },
     {
       id: 3,
@@ -91,7 +91,7 @@ export function SafetyHabits() {
       description:
         "Your safety network, built around the people you trust most. Receive support through SOS alerts, journey updates, and automated check-ins.",
       animData: trustedAnimData,
-      lottieScale: "max-md:scale-[1.28] md:scale-[1.25]",
+      lottieScale: "max-md:scale-[1.21] md:scale-[1.25]",
     },
   ];
 

@@ -94,11 +94,12 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover object-center opacity-75 mix-blend-normal pointer-events-none transform-gpu"
+          className="w-full h-full object-cover opacity-75 mix-blend-normal pointer-events-none transform-gpu"
           style={{
             transform: "translateZ(0)",
             willChange: "transform",
             backfaceVisibility: "hidden",
+            objectPosition: "center center",
           }}
         >
           <source src="/images/Footer.mp4" type="video/mp4" />
