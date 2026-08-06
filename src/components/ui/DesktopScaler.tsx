@@ -55,18 +55,12 @@ export function DesktopScaler({
         return;
       }
 
-      if (desktopSiteMobile) {
-        // In "Request Desktop Site" mode the browser already scales the page
-        // to fit the physical screen. Applying our own zoom causes double-shrinking
-        // and massive empty gaps between sections. Set scale=1 and render at
-        // the viewport width so the browser's own scaling handles everything.
-        setScale(1);
-        return;
-      }
-
       /**
        * Global Desktop Scaling (1440px base width)
-       * Scales fluidly with windowWidth / 1440 so zooming out below 100% holds 1440px layout ratio
+       * Scales fluidly with windowWidth / 1440 so zooming out below 100% holds 1440px layout ratio.
+       * Same zoom applies for desktop-site-on-mobile — content renders at 1440px
+       * and zooms to fit. The only difference is --desktop-scale is decoupled
+       * (set to 9999 in innerStyle) to prevent section height inflation.
        */
       setScale(windowWidth / desktopWidth);
     };
@@ -95,7 +89,7 @@ export function DesktopScaler({
     };
   }, [desktopWidth]);
 
-  // Toggle a class on <html> so global CSS can override section heights
+  // Toggle a class on <html> so global CSS can override section heights if needed
   useEffect(() => {
     if (isDesktopSiteMobile) {
       document.documentElement.classList.add("dsm-mode");
@@ -107,9 +101,7 @@ export function DesktopScaler({
     };
   }, [isDesktopSiteMobile]);
 
-  // In "desktop site" mode on mobile, use the viewport width directly (no zoom).
-  // Otherwise use the standard mobile (390) or desktop (1440) base widths.
-  const targetWidth = isMobile ? 390 : (isDesktopSiteMobile ? viewportWidth : desktopWidth);
+  const targetWidth = isMobile ? 390 : desktopWidth;
 
   const parentStyle: React.CSSProperties = {
     backgroundColor: bgColor,
@@ -126,9 +118,9 @@ export function DesktopScaler({
     width: targetWidth,
     margin: "0 auto",
     transformOrigin: "top center",
-    // When desktop-site-on-mobile, set --desktop-scale to a huge number so
-    // calc(100vh/var(--desktop-scale)) ≈ 0px, making max(750px, ~0) = 750px.
-    // The actual zoom scale stays at 1 (no zoom applied).
+    // When desktop-site-on-mobile, decouple --desktop-scale from the actual zoom.
+    // Set it to 9999 so calc(100vh/9999) ≈ 0, making max(750px, ~0) = 750px.
+    // The CSS zoom still applies normally (content renders at 1440px, zoomed to fit).
     "--desktop-scale": isDesktopSiteMobile ? 9999 : scale,
 
     ...(useTransformFallback
