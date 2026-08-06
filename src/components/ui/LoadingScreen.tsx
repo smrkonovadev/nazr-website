@@ -38,6 +38,10 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
         if (autoHide) {
           setTimeout(() => {
             setIsFadingOut(true);
+            if (typeof window !== "undefined") {
+              (window as any).__LOADING_COMPLETE__ = true;
+              window.dispatchEvent(new CustomEvent("loadingComplete"));
+            }
             setTimeout(() => {
               setIsHidden(true);
               document.documentElement.style.overflow = "";

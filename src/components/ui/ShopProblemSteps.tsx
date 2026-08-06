@@ -9,9 +9,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"Finally, a safety product that doesn\'t disappear into my bag. It\'s always right where I need it."',
+      "Finally, a safety product that doesn't disappear into my bag. It's always right where I need it.",
     name: "Priyanshi Mehta",
-    stars: "⭐⭐⭐⭐",
+    rating: 4,
     rotation: -8,
   },
   {
@@ -26,9 +26,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#E5007D",
     quote:
-      '"A thoughtful gift she\'ll actually use. She absolutely loved it."',
+      "A thoughtful gift she'll actually use. She absolutely loved it.",
     name: "Akshat Kanungo",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: 6,
   },
   {
@@ -43,9 +43,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"It doesn\'t look like a safety product, and that\'s why I love it. People even call it cute."',
+      "It doesn't look like a safety product, and that's why I love it. People even call it cute.",
     name: "Kavya Kapoor",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -6,
   },
   {
@@ -60,9 +60,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#E5007D",
     quote:
-      '"The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail."',
+      "The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail.",
     name: "Shikha Verma",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -5,
   },
   {
@@ -77,9 +77,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out."',
+      "Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out.",
     name: "Jiya Raul",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -4,
   },
   {
@@ -94,9 +94,9 @@ const cards = [
     type: "testimonial",
     bgColor: "#E5007D",
     quote:
-      '"The kind of product you hope to never use. I liked it so much, I bought one for my sister too."',
+      "The kind of product you hope to never use. I liked it so much, I bought one for my sister too.",
     name: "Shanaya Singh",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -7,
   },
   {
@@ -111,12 +111,34 @@ const cards = [
     type: "testimonial",
     bgColor: "#0E8DFF",
     quote:
-      '"Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed."',
+      "Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed.",
     name: "Somakshi Sen",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -5,
   },
 ];
+
+function StarRating({ rating = 5 }: { rating?: number }) {
+  const count = Math.min(Math.max(rating, 1), 5);
+  return (
+    <div className="flex items-center gap-1 mt-1">
+      {Array.from({ length: count }).map((_, i) => (
+        <svg
+          key={i}
+          viewBox="0 0 24 24"
+          className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"
+          fill="none"
+          stroke="#FFF9EB"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ))}
+    </div>
+  );
+}
 
 export function ShopProblemSteps() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -169,15 +191,15 @@ export function ShopProblemSteps() {
     };
 
     const onWheel = (e: WheelEvent) => {
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if (delta !== 0) {
+      if (typeof window !== "undefined" && window.innerWidth < 768) return;
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && e.deltaX !== 0) {
         const maxScroll = container.scrollWidth - container.clientWidth;
         if (
-          (delta > 0 && container.scrollLeft < maxScroll - 1) ||
-          (delta < 0 && container.scrollLeft > 1)
+          (e.deltaX > 0 && container.scrollLeft < maxScroll - 1) ||
+          (e.deltaX < 0 && container.scrollLeft > 1)
         ) {
           e.preventDefault();
-          container.scrollLeft += delta * 1.2;
+          container.scrollLeft += e.deltaX * 1.2;
         }
       }
     };
@@ -328,7 +350,7 @@ export function ShopProblemSteps() {
 
                       {/* Quote Text */}
                       <p className="font-[family-name:var(--font-inter)] text-[14px] leading-[140%] text-[#FFF9EB] font-normal opacity-100 my-2">
-                        {card.quote}
+                        {card.quote?.replace(/^["“]|["”]$/g, '')}
                       </p>
 
                       {/* Name & Stars */}
@@ -338,9 +360,7 @@ export function ShopProblemSteps() {
                             {card.name}
                           </span>
                         ) : null}
-                        <span className="text-[13px] text-[#FFF9EB] opacity-90 mt-0.5">
-                          {(card as any).stars || (card as any).role}
-                        </span>
+                        <StarRating rating={(card as any).rating || 5} />
                       </div>
                     </div>
                   ) : (

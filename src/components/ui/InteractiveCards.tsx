@@ -53,9 +53,9 @@ const testimonialCards: any[] = [
     id: 1,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"Finally, a safety product that doesn\'t disappear into my bag. It\'s always right where I need it."',
+    quote: "Finally, a safety product that doesn't disappear into my bag. It's always right where I need it.",
     name: "Priyanshi Mehta",
-    stars: "⭐⭐⭐⭐",
+    rating: 4,
     rotation: -2
   },
   { id: 2, type: "image", src: "/home why (1).svg", rotation: 3 },
@@ -63,9 +63,9 @@ const testimonialCards: any[] = [
     id: 3,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: '"A thoughtful gift she\'ll actually use. She absolutely loved it."',
+    quote: "A thoughtful gift she'll actually use. She absolutely loved it.",
     name: "Akshat Kanungo",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -2
   },
   { id: 4, type: "image", src: "/home why (2).svg", rotation: 3 },
@@ -73,9 +73,9 @@ const testimonialCards: any[] = [
     id: 5,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"It doesn\'t look like a safety product, and that\'s why I love it. People even call it cute."',
+    quote: "It doesn't look like a safety product, and that's why I love it. People even call it cute.",
     name: "Kavya Kapoor",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -2
   },
   { id: 6, type: "image", src: "/home why (1).svg", rotation: 3 },
@@ -83,9 +83,9 @@ const testimonialCards: any[] = [
     id: 7,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: '"The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail."',
+    quote: "The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail.",
     name: "Shikha Verma",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -2
   },
   { id: 8, type: "image", src: "/home why (2).svg", rotation: 3 },
@@ -93,9 +93,9 @@ const testimonialCards: any[] = [
     id: 9,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out."',
+    quote: "Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out.",
     name: "Jiya Raul",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -2
   },
   { id: 10, type: "image", src: "/home why (1).svg", rotation: 3 },
@@ -103,9 +103,9 @@ const testimonialCards: any[] = [
     id: 11,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: '"The kind of product you hope to never use. I liked it so much, I bought one for my sister too."',
+    quote: "The kind of product you hope to never use. I liked it so much, I bought one for my sister too.",
     name: "Shanaya Singh",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -2
   },
   { id: 12, type: "image", src: "/home why (2).svg", rotation: 3 },
@@ -113,9 +113,9 @@ const testimonialCards: any[] = [
     id: 13,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: '"Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed."',
+    quote: "Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed.",
     name: "Somakshi Sen",
-    stars: "⭐⭐⭐⭐⭐",
+    rating: 5,
     rotation: -2
   },
 ];
@@ -123,6 +123,28 @@ const testimonialCards: any[] = [
 interface InteractiveCardsProps {
   theme?: "dark" | "cream";
   scrollProgress?: MotionValue<number>;
+}
+
+function StarRating({ rating = 5 }: { rating?: number }) {
+  const count = Math.min(Math.max(rating, 1), 5);
+  return (
+    <div className="flex items-center gap-1 mt-1">
+      {Array.from({ length: count }).map((_, i) => (
+        <svg
+          key={i}
+          viewBox="0 0 24 24"
+          className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"
+          fill="none"
+          stroke="#FFF9EB"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ))}
+    </div>
+  );
 }
 
 export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {}) {
@@ -170,15 +192,18 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
     };
 
     const onWheel = (e: WheelEvent) => {
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if (delta !== 0) {
+      // Never hijack vertical page scroll or trap wheel on mobile screens
+      if (typeof window !== "undefined" && window.innerWidth < 768) return;
+
+      // Only handle explicit horizontal scroll gestures
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && e.deltaX !== 0) {
         const maxScroll = container.scrollWidth - container.clientWidth;
         if (
-          (delta > 0 && container.scrollLeft < maxScroll - 1) ||
-          (delta < 0 && container.scrollLeft > 1)
+          (e.deltaX > 0 && container.scrollLeft < maxScroll - 1) ||
+          (e.deltaX < 0 && container.scrollLeft > 1)
         ) {
           e.preventDefault();
-          container.scrollLeft += delta * 1.2;
+          container.scrollLeft += e.deltaX * 1.2;
         }
       }
     };
@@ -203,7 +228,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
 
       {theme === "dark" ? (
         // Home Page Dark Cards (5 Centered Straight Unified Cards matching Figma Screenshot)
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[30px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-4 md:pb-0 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[30px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-6 md:pb-2 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
           <div className="flex flex-row justify-start md:justify-start items-center gap-3 sm:gap-4 md:gap-[35px] w-full min-w-max md:min-w-0 mx-auto">
             {darkCards.map((card, i) => {
               const isHovered = hoveredIndex === i;
@@ -244,10 +269,30 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
 
                   {/* Top Left Timestamp */}
                   <div className="absolute top-[16px] left-[10px] md:top-[20px] md:left-[10px] z-20 flex flex-col text-[#FFF9EB] pointer-events-none">
-                    <span className="font-sans font-bold text-[18px] sm:text-[22px] md:text-[26px] leading-none tracking-tight text-[#FFF9EB]">
+                    <span
+                      className="font-['Inter',_sans-serif] text-[#FFF9EB]"
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontWeight: 400,
+                        fontStyle: "normal",
+                        fontSize: "24px",
+                        lineHeight: "120%",
+                        letterSpacing: "-0.03em",
+                      }}
+                    >
                       {card.timeNumber}
                     </span>
-                    <span className="font-sans text-[10px] sm:text-[11px] md:text-[12px] text-[#FFF9EB]/80 leading-none mt-0.5">
+                    <span
+                      className="font-['Inter',_sans-serif] text-[#FFF9EB]/80 mt-0.5"
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontWeight: 400,
+                        fontStyle: "normal",
+                        fontSize: "12px",
+                        lineHeight: "120%",
+                        letterSpacing: "-0.03em",
+                      }}
+                    >
                       {card.timeUnit}
                     </span>
                   </div>
@@ -304,9 +349,9 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                 <motion.div
                   key={card.id}
                   className="relative -mx-2 flex-shrink-0"
-                  initial={{ x: "100vw" }}
+                  initial={typeof window !== "undefined" && window.innerWidth < 768 ? false : { x: "100vw" }}
                   animate={{
-                    x: isInView ? 0 : "100vw",
+                    x: (typeof window !== "undefined" && window.innerWidth < 768) ? 0 : (isInView ? 0 : "100vw"),
                     zIndex: isHovered ? 50 : i
                   }}
                   transition={{
@@ -355,7 +400,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                           </span>
                         </div>
                         <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#FFF9EB] leading-[140%] mb-auto">
-                          {(card as any).quote}
+                          {(card as any).quote?.replace(/^["“]|["”]$/g, '')}
                         </div>
                         <div className="flex flex-col mt-2 md:mt-4">
                           {(card as any).name ? (
@@ -363,9 +408,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                               {(card as any).name}
                             </div>
                           ) : null}
-                          <div className="text-[10px] md:text-[14px] text-[#FFF9EB] opacity-90 mt-0.5">
-                            {(card as any).stars || card.role}
-                          </div>
+                          <StarRating rating={(card as any).rating || 5} />
                         </div>
                       </div>
                     ) : (

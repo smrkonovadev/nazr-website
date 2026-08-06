@@ -22,13 +22,13 @@ export function ProblemStatement() {
           {/* Mobile Text */}
           <div className="md:hidden flex flex-col gap-6 pt-2 pb-2 mx-auto w-full max-w-[360px] px-2 text-center">
             <ScrollRevealText
-              text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A\nROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-\nINS. CALLS ON THE WAY HOME."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] sm:text-[36px] text-center text-[#FFF9EB]"
+              text={"FOR MANY WOMEN IN INDIA, SAFETY\nHAS BECOME A ROUTINE OF\nWORKAROUNDS. SHARED LOCATIONS.CHECK-INS. CALLS ON THE WAY HOME."}
+              className="m-0 font-[family-name:var(--font-bebas)] text-[36px] text-center text-[#FFF9EB]"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
                 fontStyle: 'normal',
-                fontSize: '36px',
+                fontSize: '30px',
                 lineHeight: '120%',
                 letterSpacing: '0.01em',
               } as React.CSSProperties}
@@ -37,12 +37,12 @@ export function ProblemStatement() {
             />
             <ScrollRevealText
               text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] sm:text-[36px] text-center text-[#FFF9EB]"
+              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] text-center text-[#FFF9EB]"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
                 fontStyle: 'normal',
-                fontSize: '36px',
+                fontSize: '30px',
                 lineHeight: '120%',
                 letterSpacing: '0.01em',
               } as React.CSSProperties}
@@ -85,7 +85,7 @@ export function ProblemStatement() {
         </div>
 
         {/* Right Side: Proportional Stacked Circular Badges (Hidden on mobile) */}
-        <div className="hidden md:block relative md:w-[390px] md:h-[390px] lg:w-[450px] lg:h-[450px] shrink-0 pointer-events-none z-10 my-0 md:-translate-x-[60px] md:translate-y-[50px]">
+        <div className="hidden md:block relative md:w-[360px] md:h-[320px] lg:w-[400px] lg:h-[360px] shrink-0 pointer-events-none z-10 my-0 md:-translate-x-[60px] md:translate-y-[0px]">
 
           {/* Back Image (Pink) */}
           <motion.div

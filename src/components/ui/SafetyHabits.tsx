@@ -164,13 +164,13 @@ export function SafetyHabits() {
   }, [activeCard]);
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#161616] flex flex-col justify-center items-center pt-8 pb-6 md:py-[24px] md:px-[20px] lg:px-[30px] md:min-h-[calc(100vh/var(--desktop-scale,1))] overflow-x-hidden relative z-20">
+    <section ref={sectionRef} className="w-full bg-[#161616] flex flex-col justify-center items-center pt-14 pb-8 md:pt-[70px] md:pb-[40px] md:px-[20px] lg:px-[30px] md:min-h-[calc(100vh/var(--desktop-scale,1))] overflow-x-hidden relative z-20">
       <div className="w-full max-w-[1440px] px-4 md:px-6 flex flex-col items-center gap-[20px] md:gap-[20px] relative">
 
         {/* Title Block */}
         <div className="w-full flex flex-col items-center gap-3 md:gap-4">
           <h2
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[76px] text-center w-full m-0"
+            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[80px] text-center w-full m-0"
             style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
           >
             THE SAFETY HABITS YOU<br />
@@ -231,11 +231,10 @@ export function SafetyHabits() {
                   className="p-0 focus:outline-none cursor-pointer"
                 >
                   <div
-                    className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${
-                      isDotActive
+                    className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${isDotActive
                         ? "bg-[#FF0E97] border-[0.3px] border-[#FF0E97]"
                         : "bg-transparent border-[0.3px] border-[#FF0E97]"
-                    }`}
+                      }`}
                   />
                 </button>
               );

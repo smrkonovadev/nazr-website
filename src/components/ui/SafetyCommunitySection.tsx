@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ScrollRevealText } from "./ScrollRevealText";
 
 const cardsData = [
@@ -55,66 +55,86 @@ const cardsData = [
 export function SafetyCommunitySection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [direction, setDirection] = useState(1);
+
   const nextCard = () => {
+    setDirection(1);
     setActiveIndex((prev) => (prev + 1) % cardsData.length);
   };
 
   const prevCard = () => {
+    setDirection(-1);
     setActiveIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
   };
 
   return (
     <div className="w-full bg-[#161616] text-white flex flex-col items-center relative z-20 overflow-hidden">
       {/* Carousel Section (Why NAZR Exists) */}
-      <section className="w-full flex justify-center items-center pt-4 md:pt-6 pb-12 md:pb-20 relative overflow-hidden">
+      <section className="w-full flex justify-center items-center pt-14 md:pt-28 pb-12 md:pb-20 relative overflow-hidden">
         <div className="w-full max-w-[1440px] px-4 md:px-8 flex flex-col justify-center relative md:h-full">
 
           {/* ================= MOBILE LAYOUT (Matching Image 3) ================= */}
           <div className="md:hidden w-full flex flex-col items-center mb-4">
             {/* Heading — Centered */}
-            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] leading-[90%] tracking-[-0.03em] text-white uppercase text-center m-0 mb-3">
-              WHY NAZR EXISTS.<br />IN THEIR WORDS.
+            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] leading-[90%] tracking-[-0.03em] text-[#FFF9EB] uppercase text-center m-0 mb-3">
+              BEYOND THE ECOSYSTEM
             </h2>
 
             {/* Subtitle — Centered */}
             <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[340px] text-center m-0 mb-6">
-              Real experiences from women who believe safety should be proactive, accessible, and shared.
+              The products are only the beginning. Discover the people, conversations, and experiences shaping the NAZR ecosystem.
             </p>
 
-            {/* Active Card Container */}
+            {/* Active Card Container (Static Frame) */}
             {(() => {
               const card = cardsData[activeIndex];
               return (
                 <div className="relative rounded-[20px] overflow-hidden border border-white/10 w-full max-w-[340px] h-[400px] mb-6 shadow-2xl">
-                  {/* Background Image */}
-                  <img
-                    src={card.bgImage}
-                    alt={card.topic}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+                  {/* Background Image (Stacked smooth fade) */}
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={card.bgImage}
+                      src={card.bgImage}
+                      alt={card.topic}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </AnimatePresence>
 
                   {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 pointer-events-none z-10" />
 
-                  {/* Card Content */}
-                  <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
+                  {/* Static Card Content (Title, Badge, Text & Button stay in place) */}
+                  <div className="absolute inset-0 p-5 flex flex-col justify-between z-20">
                     {/* Top Badge & Topic Title */}
                     <div className="flex flex-col items-start gap-2">
                       <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
-                      <h3 className="font-[family-name:var(--font-bebas)] font-normal text-white text-[32.53px] leading-[150%] tracking-normal m-0">
+                      <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[32.53px] leading-[150%] tracking-normal m-0">
                         {card.topic}
                       </h3>
                     </div>
 
                     {/* Bottom Info */}
                     <div className="flex flex-col items-start max-w-[300px]">
-                      <p className="font-[family-name:var(--font-inter)] font-normal text-white/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4">
+                      <motion.p
+                        key={activeIndex}
+                        initial={{ opacity: 0, scale: 0.9, y: 6 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.35, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
+                        className="font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4 origin-left"
+                      >
                         {card.description}
-                      </p>
+                      </motion.p>
                       <a
                         href={card.link}
-                        className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] font-medium text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
+                        className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
                         style={{
+                          fontWeight: 400,
+                          fontStyle: 'normal',
+                          fontFamily: "Inter, var(--font-inter), sans-serif",
                           minWidth: "110px",
                           height: "36px",
                           borderRadius: "3.92px",
@@ -159,15 +179,34 @@ export function SafetyCommunitySection() {
             {/* Header Row — left-aligned heading, subtitle + nav buttons in same row */}
             <div className="w-full flex flex-col mb-6 md:mb-8 gap-3">
               {/* Heading — single line on desktop/laptop */}
-              <h2 className="font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[56px] lg:text-[72px] xl:text-[80px] leading-[90%] tracking-[-0.03em] text-[#FFF9EB] uppercase m-0 text-left whitespace-nowrap">
-                WHY NAZR EXISTS. IN THEIR WORDS.
+              <h2
+                className="font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[80px] leading-[90%] tracking-[-0.03em] text-[#FFF9EB] uppercase m-0 text-left whitespace-nowrap"
+                style={{
+                  fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  fontWeight: 400,
+                  fontStyle: "normal",
+                  lineHeight: "90%",
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                BEYOND THE ECOSYSTEM
               </h2>
 
               {/* Subtitle row + nav buttons on right */}
               <div className="w-full flex items-end justify-between gap-4">
-                <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[620px] text-left m-0">
-                  Real experiences from women who believe safety should be proactive,<br />
-                  accessible, and shared.
+                <p
+                  className="font-['Inter',_sans-serif] font-normal text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[560px] text-left m-0"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 400,
+                    fontStyle: "normal",
+                    lineHeight: "140%",
+                    letterSpacing: "-0.03em",
+                  }}
+                >
+                  The products are only the beginning. Discover<br className="hidden md:inline" />
+                  the people, conversations, and experiences<br className="hidden md:inline" />
+                  shaping the NAZR ecosystem.
                 </p>
 
                 {/* Navigation Controls — far right */}
@@ -201,21 +240,21 @@ export function SafetyCommunitySection() {
                     layout
                     transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                     className={`relative rounded-[20px] overflow-hidden cursor-pointer border border-white/10 ${isActive
-                        ? "flex-[2.2] min-w-0"
-                        : "flex-1 min-w-0"
+                      ? "flex-[2.2] min-w-0"
+                      : "flex-1 min-w-0"
                       } h-full`}
                   >
                     {/* Background Image */}
                     <img
                       src={card.bgImage}
                       alt={card.topic}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[540px] lg:w-[600px] max-w-none object-cover object-center transition-transform duration-700 hover:scale-105"
                     />
 
                     {/* Dark Overlay */}
                     <div className={`absolute inset-0 transition-opacity duration-300 ${isActive
-                        ? "bg-gradient-to-t from-black/90 via-black/40 to-black/20"
-                        : "bg-gradient-to-t from-black/85 via-black/30 to-black/40"
+                      ? "bg-gradient-to-t from-black/90 via-black/40 to-black/20"
+                      : "bg-gradient-to-t from-black/85 via-black/30 to-black/40"
                       }`} />
 
                     {/* Card Content: Active State */}
@@ -224,21 +263,29 @@ export function SafetyCommunitySection() {
                         {/* Top Badge & Topic Title */}
                         <div className="flex flex-col items-start gap-2">
                           <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
-                          <h3 className="font-[family-name:var(--font-bebas)] font-normal text-white text-[32.53px] leading-[150%] tracking-normal m-0">
+                          <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[32.53px] leading-[150%] tracking-normal m-0">
                             {card.topic}
                           </h3>
                         </div>
 
                         {/* Bottom Info */}
                         <div className="flex flex-col items-start max-w-[400px]">
-                          <p className="font-[family-name:var(--font-inter)] font-normal text-white/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4">
+                          <motion.p
+                            initial={{ opacity: 0, scale: 0.9, y: 6 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.35, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+                            className="font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4 origin-left"
+                          >
                             {card.description}
-                          </p>
+                          </motion.p>
                           <a
                             href={card.link}
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] font-medium text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
+                            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
                             style={{
+                              fontWeight: 400,
+                              fontStyle: 'normal',
+                              fontFamily: "Inter, var(--font-inter), sans-serif",
                               minWidth: "110px",
                               height: "36px",
                               borderRadius: "3.92px",
@@ -261,7 +308,7 @@ export function SafetyCommunitySection() {
                         {/* Top Badge & Topic Title */}
                         <div className="flex flex-col items-start gap-1.5">
                           <Image unoptimized src={card.badge} width={30} height={30} alt={`Step ${card.id}`} />
-                          <span className="font-[family-name:var(--font-bebas)] font-normal text-white text-[24px] md:text-[32.53px] leading-[150%] tracking-normal">
+                          <span className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[24px] md:text-[32.53px] leading-[150%] tracking-normal">
                             {card.topic}
                           </span>
                         </div>

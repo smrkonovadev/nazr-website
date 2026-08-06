@@ -65,5 +65,6 @@ body {
 
 @keyframes pinkToBlackWave {
   0% { color: #FF0E97; }
+  50% { color: #FF0E97; }
   100% { color: #FFF1EB; }
 }

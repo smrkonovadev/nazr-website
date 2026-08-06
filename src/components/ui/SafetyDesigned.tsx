@@ -55,7 +55,7 @@ export function SafetyDesigned() {
           <div className="absolute flex items-center justify-center z-10" style={{ width: "222px", height: "222px", top: "10px", left: "-190px" }}>
             <Image unoptimized quality={100} src="/images/new29.webp" alt="Safety Sticker" fill className="object-contain relative z-10 hover:animate-[spin_4s_linear_infinite]" />
           </div>
-          <div className="absolute z-10" style={{ width: "241.23px", height: "159.03px", top: "-70px", left: "550px", transform: "rotate(5.94deg)" }}>
+          <div className="absolute z-10" style={{ width: "241.23px", height: "159.03px", top: "-20px", left: "550px", transform: "rotate(5.94deg)" }}>
             <Image unoptimized quality={100} src="/images/new30.webp" alt="Fact Oval" fill className="object-contain" />
           </div>
         </div>
@@ -403,7 +403,7 @@ export function SafetyDesigned() {
                 fill="#FFF1EB"
               />
             </svg>
-            <span className="font-['Roboto',_sans-serif] text-[15px] font-semibold">Join Ecosystem</span>
+            <span style={{ fontFamily: 'Roboto, sans-serif', fontWeight: 400, fontSize: '16px', lineHeight: '150%', letterSpacing: '0%' }}>Get Yours</span>
           </button>
         </div>
       </div>
