@@ -1,7 +1,7 @@
 "use client";
 
+import { useState, useRef } from "react";
 import Image from "next/image";
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollRevealText } from "./ScrollRevealText";
 
@@ -54,17 +54,31 @@ const cardsData = [
 
 export function SafetyCommunitySection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const mobileCardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
-  const [direction, setDirection] = useState(1);
+  const scrollToCard = (index: number) => {
+    const cardEl = mobileCardRefs.current[index];
+    const container = mobileScrollRef.current;
+    if (cardEl && container) {
+      const targetLeft = cardEl.offsetLeft - (container.clientWidth - cardEl.clientWidth) / 2;
+      container.scrollTo({
+        left: targetLeft,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const nextCard = () => {
-    setDirection(1);
-    setActiveIndex((prev) => (prev + 1) % cardsData.length);
+    const nextIdx = (activeIndex + 1) % cardsData.length;
+    setActiveIndex(nextIdx);
+    scrollToCard(nextIdx);
   };
 
   const prevCard = () => {
-    setDirection(-1);
-    setActiveIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
+    const prevIdx = (activeIndex - 1 + cardsData.length) % cardsData.length;
+    setActiveIndex(prevIdx);
+    scrollToCard(prevIdx);
   };
 
   return (
@@ -85,75 +99,97 @@ export function SafetyCommunitySection() {
               The products are only the beginning. Discover the people, conversations, and experiences shaping the NAZR ecosystem.
             </p>
 
-            {/* Active Card Container (Static Frame) */}
-            {(() => {
-              const card = cardsData[activeIndex];
-              return (
-                <div className="relative rounded-[20px] overflow-hidden border border-white/10 w-full max-w-[340px] h-[400px] mb-6 shadow-2xl">
-                  {/* Background Image (Stacked smooth fade) */}
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={card.bgImage}
+            {/* Mobile Carousel Track (Full 4 Cards Horizontal Slide Track) */}
+            <div
+              ref={mobileScrollRef}
+              onScroll={() => {
+                const container = mobileScrollRef.current;
+                if (!container) return;
+                const center = container.scrollLeft + container.clientWidth / 2;
+                let closestIdx = activeIndex;
+                let minDiff = Infinity;
+                cardsData.forEach((_, idx) => {
+                  const el = mobileCardRefs.current[idx];
+                  if (el) {
+                    const elCenter = el.offsetLeft + el.clientWidth / 2;
+                    const diff = Math.abs(center - elCenter);
+                    if (diff < minDiff) {
+                      minDiff = diff;
+                      closestIdx = idx;
+                    }
+                  }
+                });
+                if (closestIdx !== activeIndex) {
+                  setActiveIndex(closestIdx);
+                }
+              }}
+              className="w-full flex flex-row overflow-x-auto snap-x snap-mandatory px-4 gap-4 pb-4 mb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
+              {cardsData.map((card, idx) => {
+                const isCurrent = idx === activeIndex;
+                return (
+                  <div
+                    key={card.id}
+                    ref={(el) => { mobileCardRefs.current[idx] = el; }}
+                    onClick={() => {
+                      setActiveIndex(idx);
+                      scrollToCard(idx);
+                    }}
+                    className={`w-[85vw] max-w-[330px] h-[400px] shrink-0 snap-center rounded-[20px] overflow-hidden border ${isCurrent ? 'border-white/30 scale-[1.0]' : 'border-white/10 opacity-70 scale-[0.96]'} relative shadow-2xl transition-all duration-300 cursor-pointer`}
+                  >
+                    {/* Background Image */}
+                    <img
                       src={card.bgImage}
                       alt={card.topic}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.22, ease: "easeOut" }}
                       className="absolute inset-0 w-full h-full object-cover"
                     />
-                  </AnimatePresence>
 
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 pointer-events-none z-10" />
+                    {/* Dark Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 pointer-events-none z-10" />
 
-                  {/* Static Card Content (Title, Badge, Text & Button stay in place) */}
-                  <div className="absolute inset-0 p-5 flex flex-col justify-between z-20">
-                    {/* Top Badge & Topic Title */}
-                    <div className="flex flex-col items-start gap-2">
-                      <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
-                      <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[32.53px] leading-[150%] tracking-normal m-0">
-                        {card.topic}
-                      </h3>
-                    </div>
+                    {/* Card Content */}
+                    <div className="absolute inset-0 p-5 flex flex-col justify-between z-20">
+                      {/* Top Badge & Topic Title */}
+                      <div className="flex flex-col items-start gap-2">
+                        <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
+                        <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[32.53px] leading-[130%] tracking-normal m-0">
+                          {card.topic}
+                        </h3>
+                      </div>
 
-                    {/* Bottom Info */}
-                    <div className="flex flex-col items-start max-w-[300px]">
-                      <motion.p
-                        key={activeIndex}
-                        initial={{ opacity: 0, scale: 0.9, y: 6 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.35, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
-                        className="font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4 origin-left"
-                      >
-                        {card.description}
-                      </motion.p>
-                      <a
-                        href={card.link}
-                        className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
-                        style={{
-                          fontWeight: 400,
-                          fontStyle: 'normal',
-                          fontFamily: "Inter, var(--font-inter), sans-serif",
-                          minWidth: "110px",
-                          height: "36px",
-                          borderRadius: "3.92px",
-                          paddingLeft: "20px",
-                          paddingRight: "20px",
-                          paddingTop: "12px",
-                          paddingBottom: "12px",
-                          borderWidth: "0.98px",
-                          borderColor: "#FF0E97",
-                          gap: "7.83px",
-                        }}
-                      >
-                        {card.buttonText}
-                      </a>
+                      {/* Bottom Info */}
+                      <div className="flex flex-col items-start max-w-[280px]">
+                        <p className="font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[15px] leading-[140%] tracking-[-0.03em] m-0 mb-4">
+                          {card.description}
+                        </p>
+                        <button
+                          type="button"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center justify-center bg-[#FF0E97] text-white font-[family-name:var(--font-inter)] text-[15px] leading-[150%] tracking-[-0.04em] shadow-lg whitespace-nowrap cursor-default"
+                          style={{
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            fontFamily: "Inter, var(--font-inter), sans-serif",
+                            minWidth: "110px",
+                            height: "36px",
+                            borderRadius: "3.92px",
+                            paddingLeft: "20px",
+                            paddingRight: "20px",
+                            paddingTop: "10px",
+                            paddingBottom: "10px",
+                            borderWidth: "0.98px",
+                            borderColor: "#FF0E97",
+                            gap: "7.83px",
+                          }}
+                        >
+                          {card.buttonText}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })()}
+                );
+              })}
+            </div>
 
             {/* Navigation Arrows — Centered directly below card */}
             <div className="flex items-center justify-center gap-4">
@@ -195,7 +231,7 @@ export function SafetyCommunitySection() {
               {/* Subtitle row + nav buttons on right */}
               <div className="w-full flex items-end justify-between gap-4">
                 <p
-                  className="font-['Inter',_sans-serif] font-normal text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[560px] text-left m-0"
+                  className="font-['Inter',_sans-serif] font-normal text-[16px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB] max-w-[680px] text-left m-0"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 400,
@@ -204,9 +240,8 @@ export function SafetyCommunitySection() {
                     letterSpacing: "-0.03em",
                   }}
                 >
-                  The products are only the beginning. Discover<br className="hidden md:inline" />
-                  the people, conversations, and experiences<br className="hidden md:inline" />
-                  shaping the NAZR ecosystem.
+                  The products are only the beginning. Discover the people, conversations,<br className="hidden md:inline" />
+                  and experiences shaping the NAZR ecosystem.
                 </p>
 
                 {/* Navigation Controls — far right */}
@@ -278,10 +313,10 @@ export function SafetyCommunitySection() {
                           >
                             {card.description}
                           </motion.p>
-                          <a
-                            href={card.link}
+                          <button
+                            type="button"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-inter)] text-[16px] leading-[150%] tracking-[-0.04em] transition-all duration-300 shadow-lg whitespace-nowrap"
+                            className="inline-flex items-center justify-center bg-[#FF0E97] text-white font-[family-name:var(--font-inter)] text-[16px] leading-[150%] tracking-[-0.04em] shadow-lg whitespace-nowrap cursor-default"
                             style={{
                               fontWeight: 400,
                               fontStyle: 'normal',
@@ -299,7 +334,7 @@ export function SafetyCommunitySection() {
                             }}
                           >
                             {card.buttonText}
-                          </a>
+                          </button>
                         </div>
                       </div>
                     ) : (

@@ -302,7 +302,8 @@ export function Hero() {
 
             {/* Left-Aligned Buttons */}
             <div className="flex flex-row items-center gap-2 sm:gap-3 flex-wrap">
-              <button
+              <Link
+                href="/shop#pepper-spray"
                 className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[0.75px] border-[#FF0E97] rounded-[3px] w-[161.25px] h-[37px] px-[15px] py-[8px] gap-[6px] whitespace-nowrap shadow-sm opacity-100"
                 style={{ fontFamily: 'Roboto, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '150%', letterSpacing: '0%' }}
               >
@@ -314,7 +315,7 @@ export function Hero() {
                   />
                 </div>
                 <span>Join Ecosystem</span>
-              </button>
+              </Link>
 
               <Link
                 href="/shop#pepper-spray"
@@ -439,7 +440,8 @@ export function Hero() {
           <div
             className="relative md:absolute flex justify-center items-center gap-[4vw] md:gap-[16px] z-20 mt-[8.2vw] md:mt-0 md:top-[515px] md:left-[40px]"
           >
-            <button
+            <Link
+              href="/shop#pepper-spray"
               className="flex items-center justify-center bg-[#FF0E97] text-white hover:bg-[#FF0E97]/90 transition-colors border border-[#FF0E97] rounded-[1vw] md:rounded-[4px] w-[35.8vw] h-[8.2vw] md:w-[196px] md:h-[40px] text-[3vw] md:text-[14px] px-[2vw] md:px-[20px] md:py-[8px] gap-[1vw] md:gap-[8px] leading-[150%] tracking-normal shadow-sm opacity-100"
               style={{
                 fontWeight: 400,
@@ -454,7 +456,7 @@ export function Hero() {
                 />
               </div>
               <span>Join Ecosystem</span>
-            </button>
+            </Link>
 
             <Link
               href="/shop#pepper-spray"
@@ -486,7 +488,7 @@ export function Hero() {
 
           {/* White Bottle Image */}
           <motion.div
-            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[355px] left-[895px]"
+            className="absolute pointer-events-none z-30 w-[165px] h-[369px] top-[355px] left-[440px]"
             initial={{ scale: 0, y: 150 }}
             animate={isLoaded ? { scale: 2.75, y: 0 } : { scale: 0, y: 150 }}
             transition={{ type: "spring", bounce: 0.5, duration: 0.8, delay: 0.2 }}

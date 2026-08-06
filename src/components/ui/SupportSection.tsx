@@ -208,10 +208,10 @@ export function SupportSection() {
           {/* Right Column: Map Graphic Container */}
           <div className="lg:col-span-6 flex min-h-[340px] lg:min-h-[420px] w-full">
             <div className="w-full h-full bg-[#DCDCDC] rounded-[14px] md:rounded-[20px] relative overflow-hidden flex flex-col justify-between border border-black/5 shadow-inner group">
-              {/* Google Maps Embed iframe for 802 Harshvardhan Opp Saki Vihar Telephone Exchange Mumbai 400072 */}
+              {/* Google Maps Embed iframe for Supreme Business Park, Powai, Mumbai */}
               <iframe
                 title="Lumina Hospitality Location Map"
-                src="https://maps.google.com/maps?q=802%20Harshvardhan%20Opp%20Saki%20Vihar%20Telephone%20Exchange%20Mumbai%20400072&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Supreme%20Business%20Park%20Powai%20Mumbai&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="absolute inset-0 w-full h-full border-0 grayscale-[25%] opacity-85 contrast-[105%]"
                 allowFullScreen
                 loading="lazy"
@@ -219,7 +219,7 @@ export function SupportSection() {
 
               {/* Top Address Overlay Card */}
               <a
-                href="https://www.google.com/maps/search/?api=1&query=802+Harshvardhan+Opp+Saki+Vihar+Telephone+Exchange+Mumbai+400072"
+                href="https://maps.app.goo.gl/czYtE4hs12AEtVcB6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative z-10 m-4 p-3 md:p-4 bg-[#FFF1EB]/95 backdrop-blur-md rounded-[10px] border border-black/10 shadow-md flex items-start gap-3 hover:bg-[#FFF1EB] transition-all group-hover:scale-[1.01]"
@@ -237,8 +237,8 @@ export function SupportSection() {
                     LUMINA HOSPITALITY PVT LTD
                   </span>
                   <span className="text-[12px] md:text-[13px] text-[#161616]/80 leading-tight">
-                    802, Harshvardhan, Opp. Saki Vihar Telephone Exchange,<br />
-                    Mumbai, Maharashtra - 400072
+                    Supreme Business Park, Hiranandani Gardens,<br />
+                    Powai, Mumbai, Maharashtra - 400076
                   </span>
                 </div>
               </a>
@@ -246,7 +246,7 @@ export function SupportSection() {
               {/* Bottom "Open in Google Maps ↗" Pill */}
               <div className="relative z-10 m-4 self-end">
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=802+Harshvardhan+Opp+Saki+Vihar+Telephone+Exchange+Mumbai+400072"
+                  href="https://maps.app.goo.gl/czYtE4hs12AEtVcB6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#161616] hover:bg-[#FF0E97] transition-colors text-[#FFF1EB] hover:text-white px-3.5 py-1.5 rounded-full text-[12px] md:text-[13px] font-medium shadow-md flex items-center gap-1.5"
