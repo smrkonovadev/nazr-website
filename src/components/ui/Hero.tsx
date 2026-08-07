@@ -244,13 +244,19 @@ export function Hero() {
               </motion.h1>
             </div>
 
-            {/* Top Right Floating Circular Eye Discs */}
-            <div className="absolute top-[43vw] sm:top-16 right-[-4vw] w-[54vw] max-w-[210px] h-[54vw] max-h-[210px] z-30 pointer-events-none">
+            {/* Top Right Floating Circular Eye Discs (Exact Figma Visual Match) */}
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-30">
               {/* Left/Purple Disc */}
               <motion.div
-                className="absolute w-[36vw] max-w-[145px] h-[36vw] max-h-[145px] top-[15%] left-[20px]"
-                initial={{ scale: 0, rotate: -20 }}
-                animate={isLoaded ? { scale: 1, rotate: -10 } : { scale: 0, rotate: -20 }}
+                className="absolute z-10"
+                style={{
+                  width: "163.28px",
+                  height: "163.28px",
+                  top: "243.23px",
+                  left: "26.82px",
+                }}
+                initial={{ scale: 0, rotate: -10 }}
+                animate={isLoaded ? { scale: 1, rotate: -10 } : { scale: 0, rotate: -10 }}
                 transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.2 }}
               >
                 <Image unoptimized quality={100} src="/images/nazreyeback.webp"
@@ -261,9 +267,15 @@ export function Hero() {
               </motion.div>
               {/* Right/Pink Disc */}
               <motion.div
-                className="absolute w-[36vw] max-w-[165px] h-[46vw] max-h-[165px] top-[-2] right-0"
-                initial={{ scale: 0, rotate: 10 }}
-                animate={isLoaded ? { scale: 1, rotate: 2 } : { scale: 0, rotate: 10 }}
+                className="absolute z-20"
+                style={{
+                  width: "181.11px",
+                  height: "189.90px",
+                  top: "206.03px",
+                  left: "74px",
+                }}
+                initial={{ scale: 0, rotate: 0 }}
+                animate={isLoaded ? { scale: 1, rotate: 0 } : { scale: 0, rotate: 0 }}
                 transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.3 }}
               >
                 <Image unoptimized quality={100} src="/images/nazreyefront.webp"

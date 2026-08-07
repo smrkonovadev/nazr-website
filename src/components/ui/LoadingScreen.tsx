@@ -21,8 +21,17 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.loop = false;
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
+  }, []);
+
+  // Smooth word cycling animation (independent loop)
+  useEffect(() => {
+    const wordInterval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 200);
+
+    return () => clearInterval(wordInterval);
   }, []);
 
   useEffect(() => {
@@ -36,10 +45,8 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
       const currentProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
-      const currentWordIdx = Math.floor(elapsed / 500) % words.length;
 
       setProgress(currentProgress);
-      setWordIndex(currentWordIdx);
 
       if (currentProgress >= 100) {
         clearInterval(interval);
@@ -82,9 +89,8 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-600 ${
-        isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
+      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-600 ${isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
     >
       {/* Background Video — plays once and pauses at final frame */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
@@ -124,7 +130,7 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
         {/* ---- CENTER: NAZR (1sec Font Cycle) + PROGRESS BAR ---- */}
         <div className="w-full flex flex-col justify-center items-center flex-1 my-auto py-2">
           <h1
-            className="font-normal text-center text-[#FFF1EB] select-none uppercase tracking-tight transition-all duration-300"
+            className="font-normal text-center text-[#FFF1EB] select-none uppercase tracking-tight"
             style={{
               fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
               fontWeight: 400,

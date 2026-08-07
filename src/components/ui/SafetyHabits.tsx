@@ -27,7 +27,7 @@ export function SafetyHabits() {
 
   useEffect(() => {
     setMounted(true);
-    fetch("/images/Trigger.json")
+    fetch("/images/SH_Trigger.json")
       .then((res) => res.json())
       .then((data) => {
         setTriggerAnimData(data);
@@ -35,7 +35,7 @@ export function SafetyHabits() {
       })
       .catch((err) => console.error("Error loading Trigger Lottie:", err));
 
-    fetch("/images/SM ARM-Turn On.json")
+    fetch("/images/SH_SM ARM Turn On.json")
       .then((res) => res.json())
       .then((data) => {
         setArmAnimData(data);
@@ -43,7 +43,7 @@ export function SafetyHabits() {
       })
       .catch((err) => console.error("Error loading SM ARM-Turn On Lottie:", err));
 
-    fetch("/images/Trusted Circle.json")
+    fetch("/images/SH_Trusted Circle.json")
       .then((res) => res.json())
       .then((data) => {
         setTrustedAnimData(data);
@@ -75,7 +75,7 @@ export function SafetyHabits() {
       description:
         "Connects you to your support network with real-time location sharing, emergency alerts, and quick access to critical support services when you need them most.",
       animData: triggerAnimData,
-      lottieScale: "max-md:scale-[0.98] md:scale-[0.96]",
+      lottieScale: "max-md:scale-[1.0] md:scale-[1.0]",
     },
     {
       id: 2,
@@ -83,7 +83,7 @@ export function SafetyHabits() {
       description:
         "Designed for the ride home, the late-night cab, and every journey in between. Shield Mode keeps you supported, so you never have to navigate a journey alone.",
       animData: armAnimData,
-      lottieScale: "max-md:scale-[1.21] md:scale-[1.25]",
+      lottieScale: "max-md:scale-[1.0] md:scale-[1.0]",
     },
     {
       id: 3,
@@ -91,7 +91,7 @@ export function SafetyHabits() {
       description:
         "Your safety network, built around the people you trust most. Receive support through SOS alerts, journey updates, and automated check-ins.",
       animData: trustedAnimData,
-      lottieScale: "max-md:scale-[1.21] md:scale-[1.25]",
+      lottieScale: "max-md:scale-[1.0] md:scale-[1.0]",
     },
   ];
 
@@ -232,8 +232,8 @@ export function SafetyHabits() {
                 >
                   <div
                     className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${isDotActive
-                        ? "bg-[#FF0E97] border-[0.3px] border-[#FF0E97]"
-                        : "bg-transparent border-[0.3px] border-[#FF0E97]"
+                      ? "bg-[#FF0E97] border-[0.3px] border-[#FF0E97]"
+                      : "bg-transparent border-[0.3px] border-[#FF0E97]"
                       }`}
                   />
                 </button>
@@ -338,7 +338,7 @@ function HabitCardItem({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-      className="w-[88vw] max-w-[355px] shrink-0 max-md:snap-center md:w-[415px] md:min-w-[415px] flex flex-col gap-[16px] md:gap-[14px] cursor-pointer transition-all duration-300"
+      className="w-[88vw] max-w-[355px] shrink-0 max-md:snap-center md:w-[415px] md:min-w-[415px] flex flex-col gap-[16px] md:gap-[15px] cursor-pointer transition-all duration-300"
     >
       {/* Card Box Container (Mobile: wraps content + text inside border; Desktop: top box only) */}
       <div
@@ -407,7 +407,7 @@ function HabitCardItem({
       </div>
 
       {/* Desktop ONLY: Text Content Below Box */}
-      <div className="hidden md:flex flex-col gap-[8px] md:gap-[8px] px-[4px] md:px-[0px]">
+      <div className="hidden md:flex flex-col gap-[8px] md:gap-[9px] px-[4px] md:px-[0px] pt-3 md:pt-4">
         <h3
           className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[32px] m-0 w-full"
           style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
