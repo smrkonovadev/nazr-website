@@ -6,6 +6,13 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { ShaderBackground } from "@/components/ui/ShaderBackground";
 
+const HERO_SVGS = [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93];
+
+function getHeroImage(index: number, salt: number = 0) {
+  const imgNum = HERO_SVGS[(index * 11 + salt * 7 + 13) % HERO_SVGS.length];
+  return `/images/image ${imgNum}.svg`;
+}
+
 function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, globalMouseY, isLoaded }: any) {
   const ref = useRef<HTMLSpanElement>(null);
   const [center, setCenter] = useState({ x: 0, y: 0 });
@@ -162,7 +169,7 @@ export function Hero() {
                     globalMouseY={globalMouseY}
                     isLoaded={isLoaded}
                     bgStyle={{
-                      backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
+                      backgroundImage: `url('${getHeroImage(i, 1)}')`,
                     }}
                   />
                 ))}
@@ -195,7 +202,7 @@ export function Hero() {
                       globalMouseY={globalMouseY}
                       isLoaded={isLoaded}
                       bgStyle={{
-                        backgroundImage: `url('/images/image${(idx % 8) + 1}.png')`,
+                        backgroundImage: `url('${getHeroImage(idx, 2)}')`,
                       }}
                     />
                   );
@@ -228,7 +235,7 @@ export function Hero() {
                       globalMouseY={globalMouseY}
                       isLoaded={isLoaded}
                       bgStyle={{
-                        backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
+                        backgroundImage: `url('${getHeroImage(i, 3)}')`,
                         animation: isLoaded ? `pinkToBlackWave 1.4s ease-out ${0.4 + (i * 0.12)}s backwards` : 'none'
                       }}
                     />
@@ -352,7 +359,7 @@ export function Hero() {
                   globalMouseY={globalMouseY}
                   isLoaded={isLoaded}
                   bgStyle={{
-                    backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
+                    backgroundImage: `url('${getHeroImage(i, 4)}')`,
                     animation: `pinkToBlackWave 0.01s linear ${0.2 + (i * 0.09)}s backwards`
                   }}
                 />
@@ -381,7 +388,7 @@ export function Hero() {
                     globalMouseY={globalMouseY}
                     isLoaded={isLoaded}
                     bgStyle={{
-                      backgroundImage: `url('/images/image${(globalIdx % 8) + 1}.png')`,
+                      backgroundImage: `url('${getHeroImage(globalIdx, 5)}')`,
                       animation: `pinkToBlackWave 0.01s linear ${0.2 + (globalIdx * 0.09)}s backwards`
                     }}
                   />
@@ -421,7 +428,7 @@ export function Hero() {
                 globalMouseY={globalMouseY}
                 isLoaded={isLoaded}
                 bgStyle={{
-                  backgroundImage: `url('/images/image${(i % 8) + 1}.png')`,
+                  backgroundImage: `url('${getHeroImage(i, 6)}')`,
                   animation: isLoaded ? `pinkToBlackWave 1.4s ease-out ${0.6 + (i * 0.12)}s backwards` : 'none'
                 }}
               />

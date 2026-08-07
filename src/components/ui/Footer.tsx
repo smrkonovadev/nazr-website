@@ -63,9 +63,8 @@ export function Footer() {
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover object-center opacity-75 mix-blend-normal pointer-events-none transform-gpu"
+          className="w-full h-full object-cover object-[58%_center] md:object-center opacity-75 mix-blend-normal pointer-events-none transform-gpu"
           style={{
-            transform: "translateZ(0)",
             willChange: "transform",
             backfaceVisibility: "hidden",
           }}
