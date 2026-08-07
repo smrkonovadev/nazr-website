@@ -103,14 +103,14 @@ export function HelpWithoutHoldUp() {
           </div>
 
           {/* Mobile Phone Mockup / Animation Display */}
-          <div className="relative z-10 pointer-events-none my-2 mx-auto flex items-center justify-center w-[280px] sm:w-[320px] h-[370px] sm:h-[410px] overflow-visible">
+          <div className="relative z-10 pointer-events-none my-3 mx-auto flex items-center justify-center w-[280px] sm:w-[320px] h-[370px] sm:h-[410px] overflow-visible">
             {/* Default Mobile Image / Lottie */}
             <div className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${!effectiveCard ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
               {animData0 ? (
                 <Lottie
                   animationData={animData0}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.95] translate-y-6 transform-gpu"
                 />
               ) : (
                 <Image unoptimized quality={100} src="/images/phone.webp" alt="NAZR SOS App Interface" fill className="object-contain" />
@@ -123,7 +123,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData1}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[2.25] translate-y-12 transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.95] translate-y-6 transform-gpu"
                 />
               </div>
             )}
@@ -134,7 +134,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData2}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.95] translate-y-6 transform-gpu"
                 />
               </div>
             )}
@@ -145,7 +145,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData3}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[1.85] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[1.95] translate-y-6 transform-gpu"
                 />
               </div>
             )}
