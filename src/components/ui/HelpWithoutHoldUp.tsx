@@ -123,7 +123,7 @@ export function HelpWithoutHoldUp() {
                 <Lottie
                   animationData={animData1}
                   loop={true}
-                  className="w-full h-full object-contain drop-shadow-xl scale-[1.95] translate-y-[21px] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-xl scale-[2.05] translate-y-11 transform-gpu"
                 />
               </div>
             )}
@@ -151,7 +151,7 @@ export function HelpWithoutHoldUp() {
             )}
           </div>
 
-          <div className="relative z-30 mt-6 sm:mt-8 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em]">
+          <div className="relative z-30 mt-10 sm:mt-12 text-center text-[#161616] max-w-[408px] px-4 font-['Inter',_sans-serif] font-normal text-[16px] leading-[1.4] tracking-[-0.03em]">
             Three ways to activate SOS. Because every second spent searching is a second too many.
           </div>
         </div>
