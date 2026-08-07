@@ -75,7 +75,7 @@ export function SafetyHabits() {
       description:
         "Connects you to your support network with real-time location sharing, emergency alerts, and quick access to critical support services when you need them most.",
       animData: triggerAnimData,
-      lottieScale: "max-md:scale-[1.05] max-md:translate-y-1 md:scale-[1.0]",
+      lottieScale: "max-md:scale-[0.95] md:scale-[0.96]",
     },
     {
       id: 2,
@@ -83,7 +83,7 @@ export function SafetyHabits() {
       description:
         "Designed for the ride home, the late-night cab, and every journey in between. Shield Mode keeps you supported, so you never have to navigate a journey alone.",
       animData: armAnimData,
-      lottieScale: "max-md:scale-[1.05] max-md:translate-y-1 md:scale-[1.0]",
+      lottieScale: "max-md:scale-[0.95] md:scale-[0.96]",
     },
     {
       id: 3,
@@ -91,7 +91,7 @@ export function SafetyHabits() {
       description:
         "Your safety network, built around the people you trust most. Receive support through SOS alerts, journey updates, and automated check-ins.",
       animData: trustedAnimData,
-      lottieScale: "max-md:scale-[1.05] max-md:translate-y-1 md:scale-[1.0]",
+      lottieScale: "max-md:scale-[0.95] md:scale-[0.96]",
     },
   ];
 
@@ -342,7 +342,7 @@ function HabitCardItem({
     >
       {/* Card Box Container (Mobile: wraps content + text inside border; Desktop: top box only) */}
       <div
-        className="relative w-full rounded-[16px] overflow-hidden shrink-0 flex flex-col items-center justify-between p-5 sm:p-6 md:pt-6 md:pb-4 md:h-[470px] transition-all duration-300 backdrop-blur-[20.3px]"
+        className="relative w-full rounded-[16px] overflow-hidden shrink-0 flex flex-col items-center justify-between p-5 sm:p-6 md:pt-6 md:pb-4 h-[530px] md:h-[470px] transition-all duration-300 backdrop-blur-[20.3px]"
         style={{
           backgroundColor: "rgba(248, 0, 144, 0.02)",
           border: isCardPlaying
@@ -354,7 +354,7 @@ function HabitCardItem({
         }}
       >
         {/* Phone Lottie Display */}
-        <div className="w-full h-[340px] sm:h-[370px] md:h-auto md:flex-1 flex items-center justify-center relative overflow-hidden">
+        <div className="w-full h-[360px] sm:h-[380px] md:h-auto md:flex-1 flex items-center justify-center relative max-md:overflow-visible md:overflow-hidden">
           {mounted && card.animData ? (
             <Lottie
               lottieRef={lottieRef}
