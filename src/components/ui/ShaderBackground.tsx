@@ -39,6 +39,9 @@ export function ShaderBackground({
       if (!canvas) return;
 
       const forwardEvent = (type: string) => (e: MouseEvent | PointerEvent) => {
+        if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return;
+        if ('pointerType' in e && (e as PointerEvent).pointerType === 'touch') return;
+
         const clientX = 'clientX' in e ? e.clientX : (e as any).touches?.[0]?.clientX ?? 0;
         const clientY = 'clientY' in e ? e.clientY : (e as any).touches?.[0]?.clientY ?? 0;
 

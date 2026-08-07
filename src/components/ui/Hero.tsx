@@ -117,6 +117,7 @@ export function Hero() {
   }, []);
 
   function handleMouseMove(e: React.MouseEvent) {
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
     globalMouseX.set(e.clientX);
     globalMouseY.set(e.clientY);
   }
@@ -133,13 +134,13 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100dvh-60px)] md:min-h-[max(750px,calc(100vh/var(--desktop-scale,1)))] md:h-auto"
+        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100vh-60px)] md:min-h-[max(750px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu"
       >
         {/* Shader Background Effect */}
         <ShaderBackground imageUrl="/images/image 59.svg" colorA="#242424" colorB="#D46FB3" className="rounded-none" />
 
         {/* ================= MOBILE HERO LAYOUT (100% Screen Height Fit) ================= */}
-        <div className="w-full flex flex-col justify-between min-h-[calc(100dvh-80px)] px-4 sm:px-6 py-4 relative z-20 md:hidden">
+        <div className="w-full flex flex-col justify-between min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 relative z-20 md:hidden">
           {/* Top Section: Left Headline + Right Eye Discs */}
           <div className="flex flex-row justify-between items-start w-full relative">
             {/* Left-Aligned Stacked Headline */}
