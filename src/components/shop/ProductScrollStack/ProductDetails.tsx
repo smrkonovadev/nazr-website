@@ -101,7 +101,7 @@ export function ProductDetails({
       )}
 
       {/* Action Buttons */}
-      <div className="w-full max-w-[440px] flex justify-start">
+      <div className="w-full max-w-[440px] hidden md:flex justify-start">
         <Link
           href={url}
           className="w-full md:w-[211px] h-[48px] md:h-[54px] px-6 py-2.5 md:py-3 bg-[#2A2828] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] text-[20px] md:text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"

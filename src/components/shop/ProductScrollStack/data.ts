@@ -14,8 +14,8 @@ export const productsData: ProductData[] = [
     imageWidthHeightClass: "w-[400px] h-[360px] md:w-[580px] md:h-[500px]",
     description: "Convenient to locate, powerful enough to protect. Nazr’s On Me Personal Safety Spray is designed to be within reach when you need it the most. With a compact design that can be clipped to your keys or bag and a silicon glow-in-the-dark cap for easy visibility, On Me is ready when you are.",
     price: "₹777",
-    rating: 4,
-    reviews: "(3.5 stars) • 10 reviews",
+    rating: 5,
+    reviews: "(5 stars) • 10 reviews",
     hasVariants: true,
     url: "https://shop.nazrco.in/products/on-me-pepper-spray",
     variants: [
@@ -37,8 +37,8 @@ export const productsData: ProductData[] = [
     imageWidthHeightClass: "w-[400px] h-[360px] md:w-[580px] md:h-[500px]",
     description: "The Sip Check is a discreet drink cover designed to help you be in the moment without worry. An adhesive layer that can be securely attached to your cup and removed once you’re done, this is a seal that ensures nothing unwanted finds its way to your peace of mind.",
     price: "₹444",
-    rating: 4,
-    reviews: "(3.5 stars) • 10 reviews",
+    rating: 5,
+    reviews: "(5 stars) • 10 reviews",
     hasVariants: false,
     url: "https://shop.nazrco.in/products/sip-check",
     zIndex: 20
@@ -56,8 +56,8 @@ export const productsData: ProductData[] = [
     imageWidthHeightClass: "w-[580px] h-[520px] md:w-[580px] md:h-[500px]",
     description: "Nazr 360° pairs two essentials for everyday peace of mind. The compact On Me designed for quick access, and a pack of Sip Checks to keep your beverage protected. Different tools with one goal: feeling secure and present wherever you go.",
     price: "₹1111",
-    rating: 4,
-    reviews: "(3.5 stars) • 10 reviews",
+    rating: 5,
+    reviews: "(5 stars) • 10 reviews",
     hasVariants: false,
     url: "#",
     zIndex: 30

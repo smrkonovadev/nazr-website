@@ -54,6 +54,7 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
                 imageAlt={product.imageAlt}
                 imageTransformClass={product.imageTransformClass}
                 imageWidthHeightClass={product.imageWidthHeightClass}
+                url={product.url}
               />
               <ProductDetails
                 description={product.description}

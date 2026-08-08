@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductImageProps {
   titleLines: string[];
@@ -7,6 +8,7 @@ interface ProductImageProps {
   imageAlt: string;
   imageTransformClass: string;
   imageWidthHeightClass: string;
+  url: string;
 }
 
 export function ProductImage({
@@ -15,6 +17,7 @@ export function ProductImage({
   imageAlt,
   imageTransformClass,
   imageWidthHeightClass,
+  url,
 }: ProductImageProps) {
   const isEnlargedMobile =
     imageSrc.includes("SHOPPRO2") ||
@@ -27,14 +30,21 @@ export function ProductImage({
   return (
     <div className="w-full flex-1 md:flex-none md:w-[60%] md:border-r border-black relative flex flex-col justify-start md:justify-end items-center overflow-hidden pt-4 md:pt-6 pb-2 md:py-20">
       {/* Huge Typography Background */}
-      <div className="relative md:absolute md:top-8 md:left-12 pointer-events-none z-10 w-full px-6 md:px-0 mb-2 md:mb-2 text-left">
-        <h3 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] leading-[0.9] md:text-[140px] md:leading-[0.85] tracking-[-0.03em] m-0">
+      <div className="relative md:absolute md:top-8 md:left-12 pointer-events-none z-10 w-full px-6 md:px-0 mb-2 md:mb-2 text-left flex justify-between items-start md:block">
+        <h3 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[36px] leading-[1] md:text-[140px] md:leading-[0.85] tracking-[-0.03em] m-0 flex flex-wrap gap-1.5 md:block">
           {titleLines.map((line, idx) => (
             <React.Fragment key={idx}>
-              {line} {idx < titleLines.length - 1 && <br className="hidden md:block" />}
+              <span>{line}</span> {idx < titleLines.length - 1 && <br className="hidden md:block" />}
             </React.Fragment>
           ))}
         </h3>
+        
+        <Link
+          href={url}
+          className="pointer-events-auto md:hidden px-4 py-2 bg-[#2A2828] text-[#FFF9EB] rounded-[6px] font-[family-name:var(--font-bebas)] text-[14px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase shrink-0 mt-1"
+        >
+          View More
+        </Link>
       </div>
 
       {/* Product Image — static, no animation */}

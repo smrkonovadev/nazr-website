@@ -134,13 +134,13 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 min-h-[calc(100vh-60px)] md:min-h-[max(750px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu"
+        className="w-full bg-[#242424] relative z-[70] max-md:mt-0 md:-mt-[48px] overflow-x-clip md:overflow-visible flex flex-col items-center md:block pt-4 pb-4 md:pt-0 md:pb-0 md:min-h-[max(750px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu"
       >
         {/* Shader Background Effect */}
         <ShaderBackground imageUrl="/images/image 59.svg" colorA="#242424" colorB="#D46FB3" className="rounded-none" />
 
-        {/* ================= MOBILE HERO LAYOUT (100% Screen Height Fit) ================= */}
-        <div className="w-full flex flex-col justify-between min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 relative z-20 md:hidden">
+        {/* ================= MOBILE HERO LAYOUT ================= */}
+        <div className="w-full flex flex-col px-4 sm:px-6 py-4 relative z-20 md:hidden">
           {/* Top Section: Left Headline + Right Eye Discs */}
           <div className="flex flex-row justify-between items-start w-full relative">
             {/* Left-Aligned Stacked Headline */}
@@ -260,7 +260,7 @@ export function Hero() {
                 animate={isLoaded ? { scale: 1, rotate: -10 } : { scale: 0, rotate: -10 }}
                 transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.2 }}
               >
-                <Image unoptimized quality={100} src="/images/nazreyeback.webp"
+                <Image unoptimized quality={100} src="/images/nazreyeback1.webp"
                   alt="Eye Sticker Purple"
                   fill
                   className="object-contain drop-shadow-md"
@@ -279,7 +279,7 @@ export function Hero() {
                 animate={isLoaded ? { scale: 1, rotate: 0 } : { scale: 0, rotate: 0 }}
                 transition={{ type: "spring", bounce: 0.4, duration: 0.7, delay: 0.3 }}
               >
-                <Image unoptimized quality={100} src="/images/nazreyefront.webp"
+                <Image unoptimized quality={100} src="/images/nazreyefront1.webp"
                   alt="Eye Sticker Pink"
                   fill
                   className="object-contain drop-shadow-lg"
@@ -305,7 +305,7 @@ export function Hero() {
           </motion.div>
 
           {/* Bottom Left Portion: Paragraph + Buttons */}
-          <div className="flex flex-col items-start w-full max-w-[292px] z-30 mt-auto pt-4">
+          <div className="flex flex-col items-start w-full max-w-[292px] z-30 mt-[210px] pt-4">
             {/* Left-Aligned Subtext */}
             <p
               className="text-[#FFF1EB] font-[family-name:var(--font-inter)] text-[16px] leading-[140%] tracking-[-0.03em] font-normal text-left m-0 mb-4 opacity-100 max-w-full"
