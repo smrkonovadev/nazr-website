@@ -28,7 +28,7 @@ export function ProductDetails({
   setSelectedVariant,
 }: ProductDetailsProps) {
   return (
-    <div className="w-full md:w-[40%] px-4 md:pl-8 md:pr-12 pb-6 md:pb-8 flex flex-col justify-end overflow-y-auto max-md:gap-3 flex-none md:flex-1 mt-auto">
+    <div className="w-full md:w-[40%] px-4 md:pl-8 md:pr-12 pb-6 md:pb-8 flex flex-col justify-end max-md:gap-3 flex-none md:flex-1 mt-auto">
       {/* Description Text */}
       <p className="font-['Inter',_sans-serif] text-[#161616] text-[16px] font-normal leading-[140%] tracking-[-0.03em] md:text-[24px] md:font-semibold md:leading-[140%] md:tracking-[-0.03em] max-w-[440px] mb-3 md:mb-5">
         {description}

@@ -21,6 +21,9 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Disable ScrollTrigger's automatic refresh on mobile resize (address bar show/hide)
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
     const viewport = viewportRef.current;
     const track = trackRef.current;
     const root = rootRef.current;
@@ -49,6 +52,8 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
       // Total = initialHold + (peels * segment) + holdDistance + 100vh
       const totalTrackHeight = initialHold + peelable.length * panelSegment + holdDistance + vh;
 
+      root.style.height = `${totalTrackHeight}px`;
+      track.style.height = `${totalTrackHeight}px`;
       setTrackHeightPx(totalTrackHeight);
 
       return { panelSegment, initialHold, totalTrackHeight };
@@ -59,7 +64,7 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
     peelable.forEach((mask, index) => {
       const nextMask = masks[index + 1];
       const trigger = ScrollTrigger.create({
-        trigger: track,
+        trigger: root,
         start: () => `top+=${initialHold + index * panelSegment} top`,
         end: () => `top+=${initialHold + (index + 1) * panelSegment} top`,
         scrub: true,
@@ -78,6 +83,7 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
             "--divider-opacity",
             self.progress >= 0.999 ? "0" : "1"
           );
+          mask.style.pointerEvents = self.progress >= 0.999 ? "none" : "auto";
 
           if (nextMask) {
             nextMask.style.setProperty(
