@@ -48,8 +48,9 @@ export function ShopProductPepperSpray() {
         <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 pb-8 flex flex-col justify-end overflow-y-auto">
 
           {/* Description Text */}
-          <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em]">
-            Convenient to locate, powerful enough to protect. Nazr’s On Me Personal Safety Spray is designed to be within reach when you need it the most. With a compact design that can be clipped to your keys or bag and a silicon glow-in-the-dark cap for easy visibility, On Me is ready when you are.          </p>
+          <p className="font-['Inter',_sans-serif] text-[#161616] text-[16px] font-normal leading-[140%] tracking-[-0.03em] md:text-[24px] md:font-semibold md:leading-[140%] md:tracking-[-0.03em] max-w-[440px] mb-3 md:mb-5">
+            A personal safety spray designed for quick access when you need it most. Clips onto your bag or keys and glows in the dark for easy visibility.
+          </p>
 
           {/* Price and Rating */}
           <div className="flex items-center gap-4 mb-8">
@@ -78,7 +79,31 @@ export function ShopProductPepperSpray() {
             <h4 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[20px] md:text-[24px] mb-3 leading-none">
               VARIANT
             </h4>
-            <div className="flex gap-4">
+            
+            {/* Mobile View: Circular Swatches */}
+            <div className="flex md:hidden items-center gap-2.5">
+              <button
+                type="button"
+                onClick={() => setSelectedVariant("pink")}
+                aria-label="Pink variant"
+                style={{ backgroundColor: "#FF0E97" }}
+                className={`w-[20px] h-[20px] rounded-full border border-black transition-all cursor-pointer ${
+                  selectedVariant === "pink" ? "ring-2 ring-black ring-offset-2 scale-110" : "opacity-100 hover:scale-105"
+                }`}
+              />
+              <button
+                type="button"
+                onClick={() => setSelectedVariant("white")}
+                aria-label="White variant"
+                style={{ backgroundColor: "#FFF9EB" }}
+                className={`w-[20px] h-[20px] rounded-full border border-black transition-all cursor-pointer ${
+                  selectedVariant === "white" ? "ring-2 ring-black ring-offset-2 scale-110" : "opacity-100 hover:scale-105"
+                }`}
+              />
+            </div>
+
+            {/* Desktop View: Cards */}
+            <div className="hidden md:flex gap-4">
               {/* Option 1: Pink */}
               <button
                 onClick={() => setSelectedVariant("pink")}

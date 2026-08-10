@@ -129,12 +129,12 @@ function StarRating({ rating = 5 }: { rating?: number }) {
   const count = Math.min(Math.max(rating, 1), 5);
   return (
     <div className="flex items-center gap-1 mt-1">
-      {Array.from({ length: count }).map((_, i) => (
+      {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
           viewBox="0 0 24 24"
           className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"
-          fill="none"
+          fill={i < count ? "#FFF9EB" : "none"}
           stroke="#FFF9EB"
           strokeWidth="2"
           strokeLinecap="round"

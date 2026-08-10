@@ -1,383 +1,239 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import Image from "next/image";
+import { Star } from "lucide-react";
 
-const cards = [
+interface TestimonialCard {
+  id: number;
+  quote: string;
+  name: string;
+  role: string;
+  rating: string;
+  stars: number;
+  src: string;
+  initialsColor?: string;
+}
+
+const cards: TestimonialCard[] = [
   {
     id: 1,
-    type: "testimonial",
-    bgColor: "#0E8DFF",
-    quote:
-      "Finally, a safety product that doesn't disappear into my bag. It's always right where I need it.",
+    quote: "Finally, a safety product that doesn't disappear into my bag. It's always right where I need it.",
     name: "Priyanshi Mehta",
-    rating: 4,
-    rotation: -8,
+    role: "Verified Buyer",
+    rating: "4.0/5",
+    stars: 4,
+    src: "/images/image1.webp",
+    initialsColor: "#0A84FF",
   },
   {
     id: 2,
-    type: "image",
-    src: "/home why (1).svg",
-    alt: "Woman Reaction 1",
-    rotation: -4,
+    quote: "A thoughtful gift she'll actually use. She absolutely loved it.",
+    name: "Akshat Kanungo",
+    role: "Verified Buyer",
+    rating: "5.0/5",
+    stars: 5,
+    src: "/images/image2.webp",
+    initialsColor: "#FF0E97",
   },
   {
     id: 3,
-    type: "testimonial",
-    bgColor: "#E5007D",
-    quote:
-      "A thoughtful gift she'll actually use. She absolutely loved it.",
-    name: "Akshat Kanungo",
-    rating: 5,
-    rotation: 6,
+    quote: "It doesn't look like a safety product, and that's why I love it. People even call it cute.",
+    name: "Kavya Kapoor",
+    role: "Verified Buyer",
+    rating: "5.0/5",
+    stars: 5,
+    src: "/images/image3.webp",
+    initialsColor: "#0A84FF",
   },
   {
     id: 4,
-    type: "image",
-    src: "/home why (2).svg",
-    alt: "Woman Reaction 2",
-    rotation: 3,
+    quote: "The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail.",
+    name: "Shikha Verma",
+    role: "Verified Buyer",
+    rating: "5.0/5",
+    stars: 5,
+    src: "/images/image4.webp",
+    initialsColor: "#FF0E97",
   },
   {
     id: 5,
-    type: "testimonial",
-    bgColor: "#0E8DFF",
-    quote:
-      "It doesn't look like a safety product, and that's why I love it. People even call it cute.",
-    name: "Kavya Kapoor",
-    rating: 5,
-    rotation: -6,
+    quote: "Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out.",
+    name: "Jiya Raul",
+    role: "Verified Buyer",
+    rating: "5.0/5",
+    stars: 5,
+    src: "/images/image5.webp",
+    initialsColor: "#0A84FF",
   },
   {
     id: 6,
-    type: "image",
-    src: "/home why (1).svg",
-    alt: "Woman Reaction 1",
-    rotation: 4,
+    quote: "The kind of product you hope to never use. I liked it so much, I bought one for my sister too.",
+    name: "Shanaya Singh",
+    role: "Verified Buyer",
+    rating: "5.0/5",
+    stars: 5,
+    src: "/images/image6.webp",
+    initialsColor: "#FF0E97",
   },
   {
     id: 7,
-    type: "testimonial",
-    bgColor: "#E5007D",
-    quote:
-      "The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail.",
-    name: "Shikha Verma",
-    rating: 5,
-    rotation: -5,
-  },
-  {
-    id: 8,
-    type: "image",
-    src: "/home why (2).svg",
-    alt: "Woman Reaction 2",
-    rotation: 5,
-  },
-  {
-    id: 9,
-    type: "testimonial",
-    bgColor: "#0E8DFF",
-    quote:
-      "Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out.",
-    name: "Jiya Raul",
-    rating: 5,
-    rotation: -4,
-  },
-  {
-    id: 10,
-    type: "image",
-    src: "/home why (1).svg",
-    alt: "Woman Reaction 1",
-    rotation: 6,
-  },
-  {
-    id: 11,
-    type: "testimonial",
-    bgColor: "#E5007D",
-    quote:
-      "The kind of product you hope to never use. I liked it so much, I bought one for my sister too.",
-    name: "Shanaya Singh",
-    rating: 5,
-    rotation: -7,
-  },
-  {
-    id: 12,
-    type: "image",
-    src: "/home why (2).svg",
-    alt: "Woman Reaction 2",
-    rotation: 4,
-  },
-  {
-    id: 13,
-    type: "testimonial",
-    bgColor: "#0E8DFF",
-    quote:
-      "Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed.",
+    quote: "Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed.",
     name: "Somakshi Sen",
-    rating: 5,
-    rotation: -5,
+    role: "Verified Buyer",
+    rating: "5.0/5",
+    stars: 5,
+    src: "/images/image7.webp",
+    initialsColor: "#0A84FF",
   },
 ];
 
-function StarRating({ rating = 5 }: { rating?: number }) {
-  const count = Math.min(Math.max(rating, 1), 5);
-  return (
-    <div className="flex items-center gap-1 mt-1">
-      {Array.from({ length: count }).map((_, i) => (
-        <svg
-          key={i}
-          viewBox="0 0 24 24"
-          className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"
-          fill="none"
-          stroke="#FFF9EB"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 export function ShopProblemSteps() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const cardsWrapperRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Enable smooth mouse click & drag horizontal scrolling and wheel support without trapping vertical page scroll
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    let isDown = false;
-    let startX = 0;
-    let scrollLeftPos = 0;
-
-    const onMouseDown = (e: MouseEvent) => {
-      isDown = true;
-      startX = e.clientX;
-      scrollLeftPos = container.scrollLeft;
-    };
-
-    const onMouseLeave = () => {
-      isDown = false;
-    };
-
-    const onMouseUp = () => {
-      isDown = false;
-    };
-
-    const onMouseMove = (e: MouseEvent) => {
-      if (!isDown) return;
-      const x = e.clientX;
-      const walk = (x - startX) * 1.5;
-      if (Math.abs(walk) > 4) {
-        e.preventDefault();
-        container.scrollLeft = scrollLeftPos - walk;
-      }
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (typeof window !== "undefined" && window.innerWidth < 768) return;
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && e.deltaX !== 0) {
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        if (
-          (e.deltaX > 0 && container.scrollLeft < maxScroll - 1) ||
-          (e.deltaX < 0 && container.scrollLeft > 1)
-        ) {
-          e.preventDefault();
-          container.scrollLeft += e.deltaX * 1.2;
-        }
-      }
-    };
-
-    container.addEventListener("mousedown", onMouseDown);
-    container.addEventListener("mouseleave", onMouseLeave);
-    container.addEventListener("mouseup", onMouseUp);
-    container.addEventListener("mousemove", onMouseMove);
-    container.addEventListener("wheel", onWheel, { passive: false });
-
-    return () => {
-      container.removeEventListener("mousedown", onMouseDown);
-      container.removeEventListener("mouseleave", onMouseLeave);
-      container.removeEventListener("mouseup", onMouseUp);
-      container.removeEventListener("mousemove", onMouseMove);
-      container.removeEventListener("wheel", onWheel);
-    };
-  }, []);
+  // Duplicate cards for seamless infinite marquee loop
+  const marqueeCards = [...cards, ...cards];
 
   return (
-    <section
-      ref={sectionRef}
-      className="w-full relative z-[60] bg-[#161616] py-6 md:py-8 overflow-hidden flex flex-col justify-center h-auto min-h-[580px] md:h-[calc(100vh-60px)] md:max-h-[750px]"
-    >
-      {/* Top Header Section */}
-      <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-8 md:px-12 mb-4 md:mb-6 shrink-0">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-12">
-          {/* Left Title */}
-          <div className="w-full md:w-[68%] lg:w-[65%]">
-            <h2 className="font-[family-name:var(--font-bebas)] font-normal text-left text-[#FFF9EB] text-[32px] md:text-[40px] leading-[120%] tracking-[-0.01em] uppercase opacity-100">
-              {/* Mobile Line Breakdown */}
-              <span className="md:hidden">
-                THE MOST THOUGHTFUL GIFTS AREN&apos;T<br />
-                ALWAYS THE BIGGEST. SOMETIMES<br />
-                THEY&apos;RE THE ONES THAT QUIETLY SAY,<br />
-                &quot;I WANT YOU TO GET HOME SAFE.&quot;
-              </span>
-              {/* Desktop Line Breakdown */}
-              <span className="hidden md:inline">
-                THE MOST THOUGHTFUL GIFTS AREN&apos;T ALWAYS THE<br />
-                BIGGEST. SOMETIMES THEY&apos;RE THE ONES THAT<br />
-                QUIETLY SAY, &quot;I WANT YOU TO GET HOME SAFE.&quot;
-              </span>
-            </h2>
+    <section className="w-full relative z-[60] bg-[#FFF1EB] py-10 md:py-16 overflow-hidden">
+      <div className="w-full flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-12 lg:pl-[40px] pl-0 pr-0">
+        
+        {/* Left Header Section */}
+        <div className="w-full lg:w-[380px] shrink-0 flex flex-col items-start px-[20px] lg:px-0">
+          {/* Dark Rating Badge */}
+          <div className="inline-flex items-center gap-2 bg-[#242424] text-[#FFF9EB] px-3 py-1.5 rounded-[6px] mb-4">
+            <div className="flex items-center gap-1">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star
+                  key={s}
+                  className="w-3.5 h-3.5 fill-[#FFF9EB] text-[#FFF9EB]"
+                />
+              ))}
+            </div>
+            <span className="font-['Inter',_sans-serif] text-[13px] font-medium text-[#FFF9EB]">
+              (4.5/5)
+            </span>
           </div>
 
-          {/* Right Description */}
-          <div className="w-full md:w-[32%] lg:w-[30%]">
-            <p className="font-sans font-normal text-left text-[#FFF9EB] text-[20px] leading-[140%] tracking-[-0.01em] opacity-100">
-              Discover why thousands are choosing NAZR for the women they care about.
-            </p>
-          </div>
+          {/* Title */}
+          <h2
+            className="font-[family-name:var(--font-bebas)] font-normal text-left text-[#161616] text-[32px] sm:text-[36px] md:text-[40px] leading-[90%] tracking-[-0.03em] uppercase m-0"
+            style={{
+              // @ts-ignore
+              leadingTrim: "cap-height",
+            }}
+          >
+            IT IS A LONG ESTABLISHED FACT<br />
+            THAT A READERIT IS A LONG
+          </h2>
+
+          {/* Description */}
+          <p
+            className="font-['Inter',_sans-serif] font-normal text-left text-[#161616] text-[16px] md:text-[20px] leading-[120%] tracking-[-0.01em] mt-3 md:mt-4"
+            style={{
+              // @ts-ignore
+              leadingTrim: "cap-height",
+            }}
+          >
+            Discover why thousands are choosing NAZR for.
+          </p>
         </div>
-      </div>
 
-      {/* Cards Scroll Track */}
-      <div
-        ref={scrollContainerRef}
-        className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 py-2 h-[440px] md:h-[460px] shrink-0 select-none cursor-grab active:cursor-grabbing"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none", touchAction: "pan-x pan-y", overscrollBehaviorX: "contain" }}
-      >
+        {/* Right Cards Track: Full-width swipe on mobile, Marquee with fade on desktop */}
         <div
-          ref={cardsWrapperRef}
-          className="flex items-center min-w-max px-5 md:px-16 gap-4 md:space-x-4 pt-4 pb-4 select-none"
+          className="w-full flex-1 relative min-w-0 overflow-x-auto lg:overflow-hidden no-scrollbar px-[20px] lg:px-0 lg:[mask-image:linear-gradient(to_right,transparent_0px,black_80px,black_100%)] lg:[-webkit-mask-image:linear-gradient(to_right,transparent_0px,black_80px,black_100%)]"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
         >
-          {cards.map((card, i) => {
-            const isHovered = hoveredIndex === i;
-            const baseRotation = isMobile ? 0 : (card.rotation || 0);
-
-            let xOffset = 0;
-            let targetRotation = baseRotation;
-
-            if (!isMobile && hoveredIndex !== null) {
-              if (isHovered) {
-                targetRotation = 0;
-              } else {
-                const distance = Math.abs(i - hoveredIndex);
-                const direction = i < hoveredIndex ? -1 : 1;
-
-                if (distance === 1) {
-                  xOffset = direction * 45;
-                  targetRotation = baseRotation + direction * 5;
-                } else if (distance === 2) {
-                  xOffset = direction * 20;
-                  targetRotation = baseRotation + direction * 2;
-                }
-              }
-            }
-
-            return (
-              <motion.div
-                key={card.id}
-                className="relative flex-shrink-0 max-md:mx-0 md:-mx-2 opacity-100"
-                initial={{ x: "20vw", opacity: 1 }}
-                animate={{
-                  x: isInView ? 0 : "20vw",
+          <div
+            className="flex w-max gap-[16px] py-2 max-lg:snap-x max-lg:snap-mandatory max-lg:animate-none lg:animate-marquee lg:hover:[animation-play-state:paused] max-lg:pr-[20px]"
+            style={{
+              animationDuration: "45s",
+            }}
+          >
+            {marqueeCards.map((card, idx) => (
+              <div
+                key={`${card.id}-${idx}`}
+                className="w-[310px] sm:w-[350px] h-[212px] bg-[#242424] rounded-[16px] p-[12px] flex flex-row items-stretch gap-[14px] sm:gap-[16px] shrink-0 border-[0.5px] border-white/10 select-none transition-transform duration-200 hover:scale-[1.02] max-lg:snap-start"
+                style={{
+                  transform: "rotate(0deg)",
                   opacity: 1,
-                  zIndex: isHovered ? 50 : i + 1,
-                }}
-                transition={{
-                  x: { duration: 1.0, delay: i * 0.08, type: "spring", bounce: 0.2 },
                 }}
               >
-                <motion.div
-                  data-card-index={i}
-                  className="relative w-[279px] h-[400px] max-md:rounded-[16px] md:rounded-[32px] cursor-pointer origin-center overflow-hidden shadow-2xl opacity-100 flex-shrink-0"
-                  onMouseEnter={() => {
-                    if (!isMobile) {
-                      setHoveredIndex(i);
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    if (!isMobile) {
-                      setHoveredIndex(null);
-                    }
-                  }}
-                  animate={{
-                    rotate: targetRotation,
-                    scale: isHovered ? 1.08 : 1,
-                    x: xOffset,
-                    y: isHovered ? -10 : 0,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 170,
-                    damping: 22,
-                  }}
-                >
-                  {card.type === "testimonial" ? (
-                    <div
-                      className="w-full h-full flex flex-col justify-between p-6 md:p-7 text-[#FFF9EB] opacity-100 max-md:rounded-[16px] md:rounded-[32px]"
-                      style={{ backgroundColor: card.bgColor }}
-                    >
-                      {/* Avatar Circle */}
-                      <div className="w-14 h-14 md:w-14 md:h-14 rounded-full bg-[#EAEAEA]/80 flex items-center justify-center shrink-0 opacity-100">
-                        <svg
-                          className="w-6 h-6 text-[#8E8E8E]"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <rect x="3" y="3" width="18" height="18" rx="2" />
-                          <circle cx="8.5" cy="8.5" r="1.5" />
-                          <path d="M21 15l-5-5L5 21" />
-                        </svg>
-                      </div>
-
-                      {/* Quote Text */}
-                      <p className="font-[family-name:var(--font-inter)] text-[14px] leading-[140%] text-[#FFF9EB] font-normal opacity-100 my-2">
-                        {card.quote?.replace(/^["“]|["”]$/g, '')}
-                      </p>
-
-                      {/* Name & Stars */}
-                      <div className="flex flex-col opacity-100">
-                        {card.name ? (
-                          <span className="font-[family-name:var(--font-bebas)] text-[18px] tracking-[0.02em] text-[#FFF9EB] uppercase opacity-100">
-                            {card.name}
-                          </span>
-                        ) : null}
-                        <StarRating rating={(card as any).rating || 5} />
-                      </div>
+                {/* Left Column: Text & Reviewer details */}
+                <div className="flex-1 flex flex-col justify-between min-w-0 h-full py-0.5">
+                  {/* Stars + Rating */}
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Star
+                          key={s}
+                          className={`w-3.5 h-3.5 ${s <= (card.stars || 5) ? "fill-[#FFF9EB] text-[#FFF9EB]" : "fill-transparent text-[#FFF9EB]/30"}`}
+                        />
+                      ))}
                     </div>
-                  ) : (
-                    <div className="w-full h-full bg-[#161616] relative overflow-hidden max-md:rounded-[16px] md:rounded-[32px] opacity-100">
-                      <img
-                        src={card.src}
-                        alt={card.alt}
-                        className="w-full h-full object-cover scale-[1.05] pointer-events-none max-md:rounded-[16px] md:rounded-[32px] opacity-100"
-                      />
+                    <span className="font-['Inter',_sans-serif] text-[12px] font-medium text-[#FFF9EB]">
+                      ({card.rating})
+                    </span>
+                  </div>
+
+                  {/* Quote text */}
+                  <p className="font-['Inter',_sans-serif] text-[12.5px] sm:text-[13px] text-[#FFF9EB] leading-[1.35] tracking-[-0.01em] line-clamp-4 my-auto">
+                    {card.quote}
+                  </p>
+
+                  {/* Reviewer Profile */}
+                  <div className="flex items-center gap-2.5 mt-auto shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#FFF9EB] flex items-center justify-center shrink-0">
+                      <span
+                        className="font-[family-name:var(--font-bebas)] text-[14px] leading-none tracking-wide"
+                        style={{ color: card.initialsColor || (card.id % 2 === 1 ? "#0A84FF" : "#FF0E97") }}
+                      >
+                        {card.name
+                          .split(" ")
+                          .filter(Boolean)
+                          .map((w) => w[0])
+                          .join("")
+                          .toUpperCase()}
+                      </span>
                     </div>
-                  )}
-                </motion.div>
-              </motion.div>
-            );
-          })}
+                    <div className="flex flex-col min-w-0">
+                      <span
+                        className="font-[family-name:var(--font-bebas)] font-normal text-[16px] text-[#FFF9EB] uppercase tracking-[0] leading-[150%] truncate"
+                        style={{
+                          // @ts-ignore
+                          leadingTrim: "cap-height",
+                        }}
+                      >
+                        {card.name}
+                      </span>
+                      <span
+                        className="font-['Switzer',_sans-serif] font-normal text-[12px] text-[#FFF9EB]/80 tracking-[0] leading-[150%] truncate"
+                      >
+                        {card.role}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Card Image */}
+                <div className="w-[100px] sm:w-[111px] h-[187px] rounded-[4px] overflow-hidden shrink-0 relative bg-black/40">
+                  <Image
+                    src={card.src}
+                    alt={card.name}
+                    fill
+                    className="object-cover rounded-[4px]"
+                    sizes="(max-width: 640px) 100px, 111px"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );
 }
+
+

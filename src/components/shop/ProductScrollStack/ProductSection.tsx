@@ -41,6 +41,7 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
               indexText={product.indexText}
               bg={product.headerBg}
               textColor={product.headerTextColor}
+              gradientSrc={product.gradientSrc}
             />
 
             {/* Content area */}
