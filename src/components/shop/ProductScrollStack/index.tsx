@@ -34,8 +34,13 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
     const peelable = masks.slice(0, -1);
     const triggers: ScrollTrigger[] = [];
 
+    // Lock the viewport height at mount time so mobile address bar
+    // toggling doesn't recalculate the track mid-scroll.
+    let stableVh = window.innerHeight;
+    let lastWidth = window.innerWidth;
+
     const computeDimensions = () => {
-      const vh = window.innerHeight;
+      const vh = stableVh;
       const panelSegment = vh * scrollPerPanel;
       // Initial hold: let user view 1st product fully before any peel starts
       const initialHold = vh * 1.0;
@@ -86,7 +91,13 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
       triggers.push(trigger);
     });
 
+    // Only recalculate on genuine width changes (orientation flip, window resize)
+    // Ignore height-only changes caused by the mobile address bar toggling.
     const onResize = () => {
+      const currentWidth = window.innerWidth;
+      if (currentWidth === lastWidth) return; // address bar toggle — skip
+      lastWidth = currentWidth;
+      stableVh = window.innerHeight; // width changed, so re-lock vh
       const dims = computeDimensions();
       panelSegment = dims.panelSegment;
       initialHold = dims.initialHold;
@@ -107,7 +118,7 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
       setTimeout(() => {
         const rootRect = root.getBoundingClientRect();
         const rootTop = rootRect.top + window.pageYOffset;
-        const vh = window.innerHeight;
+        const vh = stableVh;
         const seg = vh * scrollPerPanel;
         const hold = vh * 1.0;
         
