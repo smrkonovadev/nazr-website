@@ -1,150 +1,202 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 export function ScalableShopCollage() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
 
   return (
     <div
-      className="w-full relative mx-auto overflow-hidden flex justify-center max-md:h-[125vw] md:h-[720px] max-w-[1440px]"
+      className="w-full relative mx-auto overflow-hidden flex justify-center max-md:h-[680px] md:h-[720px] max-w-[1440px]"
     >
+      {/* SVG Liquid Water Wave Ripple Displacement Filter */}
+      <svg className="absolute w-0 h-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <filter id="water-wave-ripple" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.02 0.04"
+            numOctaves="2"
+            result="waveNoise"
+          >
+            <animate
+              attributeName="baseFrequency"
+              dur="6s"
+              values="0.015 0.035; 0.03 0.015; 0.015 0.035"
+              repeatCount="indefinite"
+            />
+          </feTurbulence>
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="waveNoise"
+            scale="16"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
+      </svg>
+
       <div
-        className="absolute left-1/2 w-full h-full max-md:top-0 md:top-0 max-w-[1440px]"
+        className="absolute left-1/2 w-full h-full top-0 max-w-[1440px]"
         style={{
           transform: 'translateX(-50%)'
         }}
       >
-        {/* We use a sub-container that is centered and responsive */}
-        <div className="relative w-full h-full">
+        <div
+          className="relative w-full h-full"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            setMousePos({ x: -1000, y: -1000 });
+          }}
+        >
 
-          {/* Huge Background Text - z-10 */}
-          <div className="absolute max-md:top-[14%] md:top-[2%] w-full flex flex-col items-center justify-center pointer-events-none z-10">
-            <h1
-              className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[24.5vw] md:text-[240px] max-md:leading-[0.9] md:leading-[0.8] tracking-[-0.03em] m-0 text-center"
-            >
-              NAZR <br />
-              PRODUCTS
-            </h1>
-          </div>
-
-          {/* Floating Icons Background Layer */}
-          {/* Left Owl Sticker - z-20 (in front of text) */}
+          {/* Base Monochrome Artwork Layer - z-[5] */}
+          {/* Top-Left Branch (shop-branch-left.webp) */}
           <div
-            className="absolute z-20 pointer-events-none"
-            style={
-              isMobile
-                ? {
-                  width: '85px',
-                  left: '12%',
-                  top: '10%',
-                  transform: 'rotate(-32deg)',
-                }
-                : {
-                  width: 'clamp(180px, 22.9vw, 330px)',
-                  left: '17%',
-                  top: '4%',
-                }
-            }
+            className="absolute z-[5] pointer-events-none max-md:w-[220px] max-md:left-[-4%] max-md:top-[-8%] md:w-[clamp(360px,38vw,540px)] md:left-[10%] md:top-[-20%]"
           >
-            <Image unoptimized quality={100} src="/images/shopow.svg"
-              alt="Owl Sticker"
-              width={330}
-              height={252}
+            <Image
+              unoptimized
+              quality={100}
+              src="/images/shop-branch-left.webp"
+              alt="Top Left Branch"
+              width={764}
+              height={658}
               className="w-full h-auto object-contain"
             />
           </div>
 
-          {/* Right Pink Eye Sticker - z-20 (in front of text) */}
+          {/* Bottom-Left Branch (shop-branch-right.webp) */}
           <div
-            className="absolute z-20 pointer-events-none"
-            style={
-              isMobile
-                ? {
-                  width: '50px',
-                  height: '46px',
-                  right: '13%',
-                  top: '22%',
-                  transform: 'rotate(12deg)',
-                }
-                : {
-                  width: 'clamp(110px, 12.8vw, 185px)',
-                  right: '17.5%',
-                  top: '12.5%',
-                }
-            }
+            className="absolute z-[5] pointer-events-none max-md:w-[260px] max-md:left-[-6%] max-md:bottom-[2%] md:w-[clamp(480px,50vw,750px)] md:left-[-8%] md:bottom-[-11%]"
           >
-            <Image unoptimized quality={100} src="/images/shop.svg"
-              alt="Pink Eye Sticker"
-              width={185}
-              height={170}
+            <Image
+              unoptimized
+              quality={100}
+              src="/images/shop-branch-right.webp"
+              alt="Bottom Left Branch"
+              width={1009}
+              height={768}
               className="w-full h-auto object-contain"
             />
           </div>
 
-          {/* Center Product Collage */}
+          {/* Right Owl (shop-owl.webp) - Scaled 230px for mobile right-side placement */}
           <div
-            className="absolute left-1/2 -translate-x-1/2 max-md:top-[42%] max-md:w-[92vw] max-md:h-[60vw] z-20"
+            className="absolute z-[5] pointer-events-none max-md:w-[230px] max-md:right-[-4%] max-md:top-[40%] max-md:h-auto md:w-[clamp(400px,40vw,600px)] md:right-[0%] md:top-[-2%] md:h-[104%]"
+          >
+            <Image
+              unoptimized
+              quality={100}
+              src="/images/shop-owl.webp"
+              alt="Halftone Owl"
+              width={590}
+              height={885}
+              className="w-full h-full object-contain object-right-top"
+            />
+          </div>
+
+          {/* Dynamic Pink Spotlight Layer with Liquid Water Wavy Effect - z-[6] */}
+          <div
+            className="absolute inset-0 pointer-events-none z-[6] transition-opacity duration-300"
             style={{
-              width: 'clamp(400px, 48.6vw, 700px)',
-              height: 'clamp(260px, 31.25vw, 450px)',
-              top: '27%'
+              opacity: isHovered ? 1 : 0,
+              WebkitMaskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+              maskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+              filter: isHovered ? 'url(#water-wave-ripple)' : 'none',
             }}
           >
-
-            {/* Left Purple Coaster/Sticker */}
-            <div className="absolute max-md:left-[8%] max-md:top-[40%] max-md:w-[38%] md:left-[6%] md:top-[10%] md:w-[44%] aspect-square z-10">
-              <Image unoptimized quality={100} src="/images/shop2.webp"
-                alt="Purple Coaster"
-                fill
-                className="object-contain drop-shadow-2xl"
-              />
-            </div>
-
-            {/* Right Pink Coaster/Sticker */}
-            <div className="absolute max-md:right-[7%] max-md:top-[35%] max-md:w-[40%] md:right-[5%] md:top-[6%] md:w-[46%] aspect-square z-20">
-              <Image unoptimized quality={100} src="/images/shop1.webp"
-                alt="Pink Coaster"
-                fill
-                className="object-contain drop-shadow-2xl"
-              />
-            </div>
-
-            {/* Center Spray Bottle */}
-            <div className="absolute left-1/2 -translate-x-1/2 max-md:top-[-22%] md:top-[-40%] w-[55%] aspect-[1/2] z-30">
-              <Image unoptimized quality={100} src="/images/spray-pink.webp"
-                alt="Pink Spray"
-                fill
-                className="object-contain drop-shadow-2xl transform rotate-6"
-              />
-            </div>
-
-            {/* Cursive Blue NAZR Overlap */}
+            {/* Top-Left Branch (Strict Pink ASCII) */}
             <div
-              className="absolute left-1/2 max-md:top-[78%] md:top-[56%] z-[60] text-[#0E8DFF] pointer-events-none whitespace-nowrap"
+              className="absolute pointer-events-none max-md:w-[220px] max-md:left-[-4%] max-md:top-[-4%] md:w-[clamp(360px,38vw,540px)] md:left-[-14%] md:top-[-30%]"
+            >
+              <Image
+                unoptimized
+                quality={100}
+                src="/images/shop-branch-left-pink.webp"
+                alt="Top Left Branch Pink"
+                width={764}
+                height={658}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Bottom-Left Branch (Strict Pink ASCII) */}
+            <div
+              className="absolute pointer-events-none max-md:w-[260px] max-md:left-[-6%] max-md:bottom-[2%] md:w-[clamp(480px,50vw,750px)] md:left-[-8%] md:bottom-[-11%]"
+            >
+              <Image
+                unoptimized
+                quality={100}
+                src="/images/shop-branch-right-pink.webp"
+                alt="Bottom Left Branch Pink"
+                width={1009}
+                height={768}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Right Owl (Strict Pink ASCII) */}
+            <div
+              className="absolute pointer-events-none max-md:w-[230px] max-md:right-[-4%] max-md:top-[40%] max-md:h-auto md:w-[clamp(400px,40vw,600px)] md:right-[0%] md:top-[-2%] md:h-[104%]"
+            >
+              <Image
+                unoptimized
+                quality={100}
+                src="/images/shop-owl-pink.webp"
+                alt="Halftone Owl Pink"
+                width={590}
+                height={885}
+                className="w-full h-full object-contain object-right-top"
+              />
+            </div>
+          </div>
+
+          {/* Center Text Group: Title + Spacing + Subtitle */}
+          <div className="absolute max-md:top-[6%] md:top-[4%] w-full flex flex-col items-center justify-center pointer-events-none z-[10] px-4">
+            {/* Title (Mobile Figma Specs: Bebas Neue, 400, 92px, leading 88%, tracking -3%) */}
+            <h1
+              className="font-[family-name:var(--font-bebas)] text-[#161616] max-md:text-[92px] md:text-[220px] font-normal max-md:leading-[88%] md:leading-[90%] max-md:tracking-[-0.03em] md:tracking-[-0.03em] m-0 text-center uppercase"
               style={{
-                fontFamily: 'var(--font-signpainter), SignPainter, "HouseScript Semibold", cursive',
-                fontSize: isMobile ? '107.33px' : 'clamp(80px, 13.8vw, 198.95px)',
-                fontWeight: 400,
-                lineHeight: '90%',
-                letterSpacing: '-0.03em',
-                textAlign: 'center',
-                transform: isMobile ? 'translateX(-50%) rotate(0deg)' : 'translateX(-50%) rotate(-5deg)',
-                opacity: 1,
                 // @ts-ignore
                 leadingTrim: 'cap-height',
               }}
             >
-              NAZR
-            </div>
+              NAZR <br />
+              PRODUCTS
+            </h1>
+
+            {/* Subtitle (Mobile Figma Specs: Switzer, 600, 14px, leading 115%, tracking -3%, UPPERCASE, 3 lines max-w-[290px]) */}
+            <p
+              className="font-['Switzer',_sans-serif] md:font-['Inter',_sans-serif] text-[#161616] text-center max-md:text-[14px] md:text-[24px] font-semibold max-md:leading-[115%] md:leading-[110%] max-md:tracking-[-0.03em] md:tracking-[-0.03em] max-md:max-w-[290px] md:max-w-[460px] uppercase md:normal-case max-md:mt-[20px] md:mt-[32px]"
+              style={{
+                // @ts-ignore
+                leadingTrim: 'cap-height',
+              }}
+            >
+              Discover thoughtfully designed safety essentials for everyday confidence and peace of mind.
+            </p>
+          </div>
+
+          {/* SHOP NOW Button (Mobile Figma Specs: Switzer, 600, 18px, leading 110%, tracking -3%, UPPERCASE, Underline) */}
+          <div className="absolute max-md:bottom-[24px] md:bottom-[4%] w-full flex justify-center z-[20]">
+            <a
+              href="#products"
+              className="font-['Switzer',_sans-serif] text-[#161616] max-md:text-[18px] md:text-[18px] font-semibold max-md:leading-[110%] md:leading-[110%] max-md:tracking-[-0.03em] md:tracking-[0.08em] uppercase underline underline-offset-4 decoration-[1.5px] hover:opacity-70 transition-opacity pointer-events-auto"
+            >
+              SHOP NOW
+            </a>
           </div>
 
         </div>

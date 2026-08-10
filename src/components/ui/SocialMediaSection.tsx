@@ -73,7 +73,7 @@ export function SocialMediaSection() {
   const getPost = (index: number): InstagramPost => posts[index] || DEFAULT_POSTS[index];
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-0 pb-10 md:pt-0 md:pb-32 px-4 md:px-[30px] lg:px-[30px]">
+    <section className="w-full bg-[#161616] flex justify-center pt-12 pb-12 md:pt-0 md:pb-32 px-4 md:px-[30px] lg:px-[30px]">
       <div className="w-full max-w-[338px] aspect-[338/212.42] md:aspect-[1220/730] md:max-w-[1220px] md:h-auto bg-white relative flex flex-col overflow-hidden mx-auto border-[2.04px] border-[#EDEDED] md:border-0 rounded-[6.99px] md:rounded-[48px] md:p-[45px_50px_45px_50px]">
         <div className="w-[1220px] md:contents origin-top-left flex flex-col scale-[0.27705]" style={{ padding: "45px 50px 0 50px" }}>
           {/* Profile Header */}

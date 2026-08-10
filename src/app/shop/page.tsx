@@ -44,12 +44,12 @@ export default function ShopPage() {
         </DesktopScaler>
 
         {/* The Beige Canvas Section */}
-        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
-          <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
+        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
+          <DesktopScaler bgColor="#F1E4DE" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
             <div
-              className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px]"
+              className="w-full bg-[#F1E4DE] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden"
               style={{
-                minHeight: '680px',
+                minHeight: '720px',
               }}
             >
               <ShopHero />
