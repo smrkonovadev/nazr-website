@@ -64,7 +64,7 @@ export function ScalableShopCollage() {
           {/* Base Monochrome Artwork Layer - z-[5] */}
           {/* Top-Left Branch (shop-branch-left.webp) */}
           <div
-            className="absolute z-[5] pointer-events-none max-md:w-[220px] max-md:left-[-4%] max-md:top-[-10%] md:w-[clamp(360px,38vw,540px)] md:left-[2%] md:top-[-4%]"
+            className="absolute z-[5] pointer-events-none max-md:w-[220px] max-md:left-[-10%] max-md:top-[-15%] md:w-[clamp(360px,38vw,540px)] md:left-[-8%] md:top-[-14%]"
           >
             <Image
               unoptimized
@@ -119,7 +119,7 @@ export function ScalableShopCollage() {
           >
             {/* Top-Left Branch (Strict Pink ASCII) */}
             <div
-              className="absolute pointer-events-none max-md:w-[220px] max-md:left-[-4%] max-md:top-[-4%] md:w-[clamp(360px,38vw,540px)] md:left-[2%] md:top-[-4%]"
+              className="absolute pointer-events-none max-md:w-[220px] max-md:left-[-8%] max-md:top-[-15%] md:w-[clamp(360px,38vw,540px)] md:left-[-8%] md:top-[-14%]"
             >
               <Image
                 unoptimized
