@@ -1,6 +1,7 @@
 .root {
   position: relative;
   width: 100%;
+  background-color: #FFF1EB;
   touch-action: pan-y;
 }
 
@@ -9,7 +10,7 @@
   top: 0;
   width: 100%;
   height: 100vh;
-  height: 100dvh; /* dynamic viewport height — tracks address bar on mobile */
+  height: 100lvh; /* fixed large viewport height — does NOT stretch or resize when mobile address bar moves */
   overflow: hidden;
   z-index: 10;
   touch-action: pan-y;

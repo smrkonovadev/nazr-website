@@ -37,9 +37,19 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
     const peelable = masks.slice(0, -1);
     const triggers: ScrollTrigger[] = [];
 
-    // Lock the viewport height at mount time so mobile address bar
-    // toggling doesn't recalculate the track mid-scroll.
-    let stableVh = window.innerHeight;
+    // Measure true LVH (large viewport height, address bar collapsed)
+    const measureLvh = () => {
+      if (typeof document === "undefined" || typeof window === "undefined") return 800;
+      const probe = document.createElement("div");
+      probe.style.cssText = "position:fixed;top:0;left:0;height:100lvh;height:100vh;pointer-events:none;opacity:0;z-index:-1;";
+      document.body.appendChild(probe);
+      const h = probe.clientHeight || window.innerHeight;
+      document.body.removeChild(probe);
+      return h || window.innerHeight;
+    };
+
+    // Lock the viewport height at mount time based on large viewport height
+    let stableVh = measureLvh();
     let lastWidth = window.innerWidth;
 
     const computeDimensions = () => {
@@ -48,7 +58,7 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
       // Initial hold: let user view 1st product fully before any peel starts
       const initialHold = vh * 1.0;
       // Hold distance after revealing last panel so user can view it before sticky unpins
-      const holdDistance = vh * 0.75;
+      const holdDistance = vh * 1.0;
       // Total = initialHold + (peels * segment) + holdDistance + 100vh
       const totalTrackHeight = initialHold + peelable.length * panelSegment + holdDistance + vh;
 
@@ -98,12 +108,11 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
     });
 
     // Only recalculate on genuine width changes (orientation flip, window resize)
-    // Ignore height-only changes caused by the mobile address bar toggling.
     const onResize = () => {
       const currentWidth = window.innerWidth;
       if (currentWidth === lastWidth) return; // address bar toggle — skip
       lastWidth = currentWidth;
-      stableVh = window.innerHeight; // width changed, so re-lock vh
+      stableVh = measureLvh(); // width changed, so re-measure LVH
       const dims = computeDimensions();
       panelSegment = dims.panelSegment;
       initialHold = dims.initialHold;
