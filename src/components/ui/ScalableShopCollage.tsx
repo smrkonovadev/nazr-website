@@ -64,7 +64,7 @@ export function ScalableShopCollage() {
           {/* Base Monochrome Artwork Layer - z-[5] */}
           {/* Top-Left Branch (shop-branch-left.webp) */}
           <div
-            className="absolute z-[5] pointer-events-none max-md:w-[220px] max-md:left-[-10%] max-md:top-[-30%] md:w-[clamp(360px,38vw,540px)] md:left-[-12%] md:top-[-28%]"
+            className="absolute z-[5] pointer-events-none max-md:w-[260px] max-md:left-[-12%] max-md:top-[-6%] md:w-[clamp(360px,38vw,540px)] md:left-[-12%] md:top-[-28%]"
           >
             <Image
               unoptimized
@@ -79,7 +79,7 @@ export function ScalableShopCollage() {
 
           {/* Bottom-Left Branch (shop-branch-right.webp) */}
           <div
-            className="absolute z-[5] pointer-events-none max-md:w-[260px] max-md:left-[-6%] max-md:bottom-[2%] md:w-[clamp(480px,50vw,750px)] md:left-[-8%] md:bottom-[-11%]"
+            className="absolute z-[5] pointer-events-none max-md:w-[400px] max-md:left-[-6%] max-md:bottom-[-20%] max-md:top-auto max-md:rotate-[-45deg] max-md:origin-bottom-left md:w-[clamp(480px,50vw,750px)] md:left-[-8%] md:bottom-[-11%] md:rotate-0"
           >
             <Image
               unoptimized
@@ -92,9 +92,9 @@ export function ScalableShopCollage() {
             />
           </div>
 
-          {/* Right Owl (shop-owl.webp) - Scaled 230px for mobile right-side placement */}
+          {/* Right Owl (shop-owl.webp) - Scaled for mobile right-side placement */}
           <div
-            className="absolute z-[5] pointer-events-none max-md:w-[230px] max-md:right-[-4%] max-md:top-[40%] max-md:h-auto md:w-[clamp(400px,40vw,600px)] md:right-[0%] md:top-[-2%] md:h-[104%]"
+            className="absolute z-[5] pointer-events-none max-md:w-[310px] max-md:right-[-12%] max-md:bottom-0 max-md:top-auto md:w-[clamp(400px,40vw,600px)] md:right-[0%] md:top-[-2%] md:h-[104%]"
           >
             <Image
               unoptimized
@@ -103,7 +103,7 @@ export function ScalableShopCollage() {
               alt="Halftone Owl"
               width={590}
               height={885}
-              className="w-full h-full object-contain object-right-top"
+              className="w-full h-full object-contain object-right-bottom"
             />
           </div>
 
@@ -119,7 +119,7 @@ export function ScalableShopCollage() {
           >
             {/* Top-Left Branch (Strict Pink ASCII) */}
             <div
-              className="absolute pointer-events-none max-md:w-[220px] max-md:left-[-10%] max-md:top-[-30%] md:w-[clamp(360px,38vw,540px)] md:left-[-12%] md:top-[-28%]"
+              className="absolute pointer-events-none max-md:w-[260px] max-md:left-[-12%] max-md:top-[-6%] md:w-[clamp(360px,38vw,540px)] md:left-[-12%] md:top-[-28%]"
             >
               <Image
                 unoptimized
@@ -134,7 +134,7 @@ export function ScalableShopCollage() {
 
             {/* Bottom-Left Branch (Strict Pink ASCII) */}
             <div
-              className="absolute pointer-events-none max-md:w-[260px] max-md:left-[-6%] max-md:bottom-[2%] md:w-[clamp(480px,50vw,750px)] md:left-[-8%] md:bottom-[-11%]"
+              className="absolute pointer-events-none max-md:w-[400px] max-md:left-[-6%] max-md:bottom-[-20%] max-md:top-auto max-md:rotate-[-45deg] max-md:origin-bottom-left md:w-[clamp(480px,50vw,750px)] md:left-[-8%] md:bottom-[-11%] md:rotate-0"
             >
               <Image
                 unoptimized
@@ -149,7 +149,7 @@ export function ScalableShopCollage() {
 
             {/* Right Owl (Strict Pink ASCII) */}
             <div
-              className="absolute pointer-events-none max-md:w-[230px] max-md:right-[-4%] max-md:top-[40%] max-md:h-auto md:w-[clamp(400px,40vw,600px)] md:right-[0%] md:top-[-2%] md:h-[104%]"
+              className="absolute pointer-events-none max-md:w-[310px] max-md:right-[-12%] max-md:bottom-0 max-md:top-auto md:w-[clamp(400px,40vw,600px)] md:right-[0%] md:top-[-2%] md:h-[104%]"
             >
               <Image
                 unoptimized
@@ -158,7 +158,7 @@ export function ScalableShopCollage() {
                 alt="Halftone Owl Pink"
                 width={590}
                 height={885}
-                className="w-full h-full object-contain object-right-top"
+                className="w-full h-full object-contain object-right-bottom"
               />
             </div>
           </div>

@@ -47,10 +47,7 @@ export default function ShopPage() {
         <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
           <DesktopScaler bgColor="#F1E4DE" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
             <div
-              className="w-full bg-[#F1E4DE] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden"
-              style={{
-                minHeight: '720px',
-              }}
+              className="w-full bg-[#F1E4DE] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden max-md:min-h-0 md:min-h-[720px]"
             >
               <ShopHero />
             </div>
