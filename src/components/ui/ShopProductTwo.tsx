@@ -57,8 +57,9 @@ export function ShopProductTwo() {
         {/* Right Column (Product Details) */}
         <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 pb-8 flex flex-col justify-end overflow-y-auto">
 
-          <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em]">
-            The Sip Check is a discreet drink cover designed to help you be in the moment without worry. An adhesive layer that can be securely attached to your cup and removed once you’re done, this is a seal that ensures nothing unwanted finds its way to your peace of mind.          </p>
+          <p className="font-['Inter',_sans-serif] text-[#161616] text-[16px] font-normal leading-[140%] tracking-[-0.03em] md:text-[24px] md:font-semibold md:leading-[140%] md:tracking-[-0.03em] max-w-[440px] mb-3 md:mb-5">
+            A drink safety sticker designed to help protect your beverage while you're out. Seals securely to your glass and peels away easily when you're done.
+          </p>
 
           {/* Price and Rating */}
           <div className="flex items-center gap-4 mb-8">

@@ -2,6 +2,7 @@ export interface ProductVariant {
   id: string;
   name: string;
   imageSrc: string;
+  color?: string;
 }
 
 export interface ProductData {
@@ -22,5 +23,6 @@ export interface ProductData {
   hasVariants: boolean;
   variants?: ProductVariant[];
   url: string;
+  gradientSrc?: string;
   zIndex: number;
 }

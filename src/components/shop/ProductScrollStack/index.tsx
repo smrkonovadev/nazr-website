@@ -11,7 +11,10 @@ interface ProductScrollStackProps {
   scrollPerPanel?: number;
 }
 
-export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStackProps) {
+export function ProductScrollStack({ 
+  scrollPerPanel = 0.85,
+  holdRatio = 0.85,
+}: ProductScrollStackProps & { holdRatio?: number }) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -20,6 +23,9 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    // Disable ScrollTrigger's automatic refresh on mobile resize (address bar show/hide)
+    ScrollTrigger.config({ ignoreMobileResize: true });
 
     const viewport = viewportRef.current;
     const track = trackRef.current;
@@ -34,29 +40,54 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
     const peelable = masks.slice(0, -1);
     const triggers: ScrollTrigger[] = [];
 
-    const computeDimensions = () => {
-      const vh = window.innerHeight;
-      const panelSegment = vh * scrollPerPanel;
-      // Initial hold: let user view 1st product fully before any peel starts
-      const initialHold = vh * 1.0;
-      // Hold distance after revealing last panel so user can view it before sticky unpins
-      const holdDistance = vh * 0.75;
-      // Total = initialHold + (peels * segment) + holdDistance + 100vh
-      const totalTrackHeight = initialHold + peelable.length * panelSegment + holdDistance + vh;
-
-      setTrackHeightPx(totalTrackHeight);
-
-      return { panelSegment, initialHold, totalTrackHeight };
+    // Measure true LVH (large viewport height, address bar collapsed)
+    const measureLvh = () => {
+      if (typeof document === "undefined" || typeof window === "undefined") return 800;
+      const probe = document.createElement("div");
+      probe.style.cssText = "position:fixed;top:0;left:0;height:100lvh;height:100vh;pointer-events:none;opacity:0;z-index:-1;";
+      document.body.appendChild(probe);
+      const h = probe.clientHeight || window.innerHeight;
+      document.body.removeChild(probe);
+      return h || window.innerHeight;
     };
 
-    let { panelSegment, initialHold } = computeDimensions();
+    // Lock the viewport height at mount time based on large viewport height
+    let stableVh = measureLvh();
+    let lastWidth = window.innerWidth;
+
+    const computeDimensions = () => {
+      const vh = stableVh;
+      const peelDistance = vh * scrollPerPanel;
+      const holdDistance = vh * holdRatio;
+      const totalProducts = productsData.length;
+
+      // Each product has a hold period; each transition has a peel distance
+      // Total = (totalProducts * holdDistance) + (peelable.length * peelDistance) + 100vh
+      const totalTrackHeight = (totalProducts * holdDistance) + (peelable.length * peelDistance) + vh;
+
+      root.style.height = `${totalTrackHeight}px`;
+      track.style.height = `${totalTrackHeight}px`;
+      setTrackHeightPx(totalTrackHeight);
+
+      return { peelDistance, holdDistance, totalTrackHeight };
+    };
+
+    let { peelDistance, holdDistance } = computeDimensions();
 
     peelable.forEach((mask, index) => {
       const nextMask = masks[index + 1];
+
+      // Start peel after the current product's hold period has completed
+      // Product 0 peels from (1 * hold) to (1 * hold + 1 * peel)
+      // Product 1 is held from (1 * hold + 1 * peel) to (2 * hold + 1 * peel)
+      // Product 1 peels from (2 * hold + 1 * peel) to (2 * hold + 2 * peel)
+      const peelStart = (index + 1) * holdDistance + index * peelDistance;
+      const peelEnd = peelStart + peelDistance;
+
       const trigger = ScrollTrigger.create({
-        trigger: track,
-        start: () => `top+=${initialHold + index * panelSegment} top`,
-        end: () => `top+=${initialHold + (index + 1) * panelSegment} top`,
+        trigger: root,
+        start: () => `top+=${peelStart} top`,
+        end: () => `top+=${peelEnd} top`,
         scrub: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -73,6 +104,7 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
             "--divider-opacity",
             self.progress >= 0.999 ? "0" : "1"
           );
+          mask.style.pointerEvents = self.progress >= 0.999 ? "none" : "auto";
 
           if (nextMask) {
             nextMask.style.setProperty(
@@ -86,10 +118,15 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
       triggers.push(trigger);
     });
 
+    // Only recalculate on genuine width changes (orientation flip, window resize)
     const onResize = () => {
+      const currentWidth = window.innerWidth;
+      if (currentWidth === lastWidth) return; // address bar toggle — skip
+      lastWidth = currentWidth;
+      stableVh = measureLvh(); // width changed, so re-measure LVH
       const dims = computeDimensions();
-      panelSegment = dims.panelSegment;
-      initialHold = dims.initialHold;
+      peelDistance = dims.peelDistance;
+      holdDistance = dims.holdDistance;
       ScrollTrigger.refresh();
     };
 
@@ -107,14 +144,14 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
       setTimeout(() => {
         const rootRect = root.getBoundingClientRect();
         const rootTop = rootRect.top + window.pageYOffset;
-        const vh = window.innerHeight;
-        const seg = vh * scrollPerPanel;
-        const hold = vh * 1.0;
         
-        const targetY = rootTop + hold + productIndex * seg;
+        // Target Y is at the start of the product's hold period
+        const targetY = productIndex === 0 
+          ? rootTop + 2 
+          : rootTop + (productIndex * holdDistance) + (productIndex * peelDistance) + 2;
         
         window.scrollTo({
-          top: targetY + 2,
+          top: targetY,
           behavior: "smooth",
         });
       }, 300);
@@ -129,7 +166,7 @@ export function ProductScrollStack({ scrollPerPanel = 0.75 }: ProductScrollStack
       window.removeEventListener("hashchange", handleHashScroll);
       triggers.forEach((t) => t.kill());
     };
-  }, [scrollPerPanel]);
+  }, [scrollPerPanel, holdRatio]);
 
   return (
     <div 

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
-import { ContactUsSection } from "@/components/ui/ContactUsSection";
-import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { ShopHero } from "@/components/ui/ShopHero";
 import { ProductScrollStack } from "@/components/shop/ProductScrollStack";
 import { ShopProblemSteps } from "@/components/ui/ShopProblemSteps";
+import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
 export const metadata: Metadata = {
@@ -58,22 +57,22 @@ export default function ShopPage() {
         <ProductScrollStack />
 
         {/* Problem Steps Section */}
-        <section className="w-full flex justify-center bg-[#161616]">
-          <DesktopScaler bgColor="#161616" className="w-full">
-            <div className="w-full bg-[#161616]">
+        <section className="w-full flex justify-center bg-[#FFF1EB]">
+          <DesktopScaler bgColor="#FFF1EB" className="w-full">
+            <div className="w-full bg-[#FFF1EB]">
               <ShopProblemSteps />
             </div>
           </DesktopScaler>
         </section>
 
-        {/* Contact Us Section & Carousel */}
+        {/* Why NAZR In Their Words Section (Home page last section) */}
         <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
           <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
-            <ContactUsSection />
-            <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
+            <WhyNazrInTheirWordsSection />
           </div>
         </DesktopScaler>
       </main>
     </>
   );
 }
+

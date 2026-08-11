@@ -27,29 +27,11 @@ export function ProductDetails({
   selectedVariant,
   setSelectedVariant,
 }: ProductDetailsProps) {
-  const [isExpanded, setIsExpanded] = React.useState(false);
-
   return (
-    <div className="w-full md:w-[40%] px-4 md:pl-8 md:pr-12 pb-6 md:pb-8 flex flex-col justify-end overflow-y-auto max-md:gap-3 flex-none md:flex-1 mt-auto">
+    <div className="w-full md:w-[40%] px-4 md:pl-8 md:pr-12 pb-6 md:pb-8 flex flex-col justify-end max-md:gap-3 flex-none md:flex-1 mt-auto">
       {/* Description Text */}
-      <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em] hidden md:block">
+      <p className="font-['Inter',_sans-serif] text-[#161616] text-[16px] font-normal leading-[140%] tracking-[-0.03em] md:text-[24px] md:font-semibold md:leading-[140%] md:tracking-[-0.03em] max-w-[440px] mb-3 md:mb-5">
         {description}
-      </p>
-      <p className="font-['Inter',_sans-serif] text-[#161616] text-[13.5px] font-bold leading-[1.3] mb-2 tracking-[-0.02em] md:hidden max-md:max-h-[140px] max-md:overflow-y-auto">
-        {isExpanded
-          ? description
-          : description.length > 95
-            ? `${description.slice(0, 95)}... `
-            : description}
-        {description.length > 95 && (
-          <button
-            type="button"
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="underline cursor-pointer font-bold inline-block ml-1 text-[#161616]"
-          >
-            {isExpanded ? "Show less" : "Read more"}
-          </button>
-        )}
       </p>
 
       {/* Price and Rating */}
@@ -80,18 +62,42 @@ export function ProductDetails({
           <h4 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[18px] md:text-[22px] mb-2 md:mb-3 leading-none">
             VARIANT
           </h4>
-          <div className="flex gap-3 md:gap-4">
+
+          {/* Mobile View: Circular Swatches */}
+          <div className="flex md:hidden items-center gap-2.5">
             {variants.map((v) => (
               <button
                 key={v.id}
+                type="button"
                 onClick={() => setSelectedVariant(v.id)}
-                className={`w-[84px] h-[92px] md:w-[96px] md:h-[110px] rounded-[8px] border-[2px] flex flex-col items-center justify-between p-1.5 md:p-2 transition-all ${selectedVariant === v.id ? "border-black bg-white/40" : "border-black/70 bg-transparent"
-                  }`}
+                aria-label={`${v.name} variant`}
+                style={{
+                  backgroundColor: v.color || (v.id === "pink" ? "#FF0E97" : "#FFF9EB"),
+                }}
+                className={`w-[20px] h-[20px] rounded-full border border-black transition-all cursor-pointer ${
+                  selectedVariant === v.id
+                    ? "ring-2 ring-black ring-offset-2 scale-110"
+                    : "opacity-100 hover:scale-105"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Desktop View: Card Selector */}
+          <div className="hidden md:flex gap-4">
+            {variants.map((v) => (
+              <button
+                key={v.id}
+                type="button"
+                onClick={() => setSelectedVariant(v.id)}
+                className={`w-[96px] h-[110px] rounded-[8px] border-[2px] flex flex-col items-center justify-between p-2 transition-all ${
+                  selectedVariant === v.id ? "border-black bg-white/40" : "border-black/70 bg-transparent"
+                }`}
               >
-                <div className="relative w-full h-[58px] md:h-[76px]">
+                <div className="relative w-full h-[76px]">
                   <Image src={v.imageSrc} alt={`${v.name} Variant`} fill className="object-contain" />
                 </div>
-                <span className="font-['Inter',_sans-serif] text-[12px] md:text-[14px] font-bold text-black">
+                <span className="font-['Inter',_sans-serif] text-[14px] font-bold text-black">
                   {v.name}
                 </span>
               </button>
