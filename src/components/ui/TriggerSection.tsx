@@ -81,7 +81,7 @@ export function TriggerSection() {
   const mobileLineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: mobileLineProgress } = useScroll({
     target: mobileLineRef,
-    offset: ["start center", "end center"]
+    offset: ["start center", "end center"],
   });
 
   // --- FIRST BLACK SOS BUTTON ANIMATIONS (y = 450px -> 450/1820 = 0.247) ---
@@ -162,14 +162,14 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             />
           ) : (
@@ -178,20 +178,26 @@ export function TriggerSection() {
         </motion.div>
 
         {/* TRIGGER Text */}
-        <motion.div className="absolute left-[115px] top-[-50px] w-[240px] flex flex-col gap-1 z-10" style={{ opacity: section1Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
-            ONE TAP. IMMEDIATE RESPONSE.
+        <motion.div className="absolute left-[115px] top-[-50px] w-[260px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section1Opacity }}>
+          <h2
+            className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase"
+            style={{ fontWeight: 400, fontStyle: "normal" }}
+          >
+            One Tap. Immediate Response.
           </h2>
-          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
+          <p
+            className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right"
+            style={{ fontWeight: 400, fontStyle: "normal" }}
+          >
             Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.
           </p>
         </motion.div>
 
         {/* Top Pink SOS Circle */}
         <div className="absolute left-[500px] top-[0] transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '2s', opacity: 0.6 }}></div>
-          <div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '2.5s', opacity: 0.4 }}></div>
-          <div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '3s', opacity: 0.2 }}></div>
+          <div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: "2s", opacity: 0.6 }}></div>
+          <div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: "2.5s", opacity: 0.4 }}></div>
+          <div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: "3s", opacity: 0.2 }}></div>
           <motion.div
             animate={{ opacity: [0.4, 0.8, 0.4] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -200,18 +206,18 @@ export function TriggerSection() {
           <motion.div
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-[130px] h-[130px] rounded-full bg-[#FF0E97] flex flex-col items-center justify-center shadow-[0_0_40px_rgba(255,14,151,0.8)] "
+            className="relative w-[130px] h-[130px] rounded-full bg-[#FF0E97] flex flex-col items-center justify-center shadow-[0_0_40px_rgba(255,14,151,0.8)]"
           >
             <span className="text-white font-[family-name:var(--font-bebas)] text-4xl leading-none tracking-wide">SOS</span>
-            <span className="text-white font-sans text-xs font-medium tracking-widest mt-1">TAP</span>
+            <span className="text-white font-[family-name:var(--font-inter)] font-medium text-xs tracking-widest mt-1">TAP</span>
           </motion.div>
         </div>
 
         {/* First Black SOS Circle */}
         <div className="absolute left-[550px] top-[450px] transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: ringsOpacity1, animationDuration: '2s' }}></motion.div>
-          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: ringsOpacity2, animationDuration: '2.5s' }}></motion.div>
-          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: ringsOpacity3, animationDuration: '3s' }}></motion.div>
+          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: ringsOpacity1, animationDuration: "2s" }}></motion.div>
+          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: ringsOpacity2, animationDuration: "2.5s" }}></motion.div>
+          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: ringsOpacity3, animationDuration: "3s" }}></motion.div>
           <motion.div className="absolute inset-0 rounded-full bg-[#FF0E97] blur-2xl" style={{ opacity: blackButtonGlowOpacity }} />
 
           <motion.div
@@ -219,7 +225,7 @@ export function TriggerSection() {
             style={{ backgroundColor: blackButtonBg, scale: blackButtonScale }}
           >
             <span className="text-white font-[family-name:var(--font-bebas)] text-3xl leading-none tracking-wide">SOS</span>
-            <span className="text-white font-sans text-xs font-medium tracking-widest mt-1">TAP</span>
+            <span className="text-white font-[family-name:var(--font-inter)] font-medium text-xs tracking-widest mt-1">TAP</span>
           </motion.div>
         </div>
 
@@ -232,14 +238,14 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             />
           ) : (
@@ -250,14 +256,14 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             >
               <source src="/images/vid4.mp4" type="video/mp4" />
@@ -266,11 +272,11 @@ export function TriggerSection() {
         </motion.div>
 
         {/* CANCEL WINDOW Text */}
-        <motion.div className="absolute left-[895px] top-[403px] w-[240px] flex flex-col gap-1 z-10" style={{ opacity: section2Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
+        <motion.div className="absolute left-[895px] top-[403px] w-[250px] flex flex-col gap-1.5 z-10 text-left" style={{ opacity: section2Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-left uppercase">
             SOS JOURNEY
           </h2>
-          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
+          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-left">
             After activation, NAZR guides you through every stage, from alerting your Trusted Circle to giving you quick access to emergency services.
           </p>
         </motion.div>
@@ -292,14 +298,14 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             >
               <source src="/images/vid5.mp4" type="video/mp4" />
@@ -308,20 +314,20 @@ export function TriggerSection() {
         </motion.div>
 
         {/* BROADCAST FIRES Text */}
-        <motion.div className="absolute left-[260px] top-[900px] w-[250px] flex flex-col gap-1 z-10" style={{ opacity: section3Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
+        <motion.div className="absolute left-[260px] top-[900px] w-[250px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section3Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase">
             WORKING IN THE BACKGROUND
           </h2>
-          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
+          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right">
             The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.
           </p>
         </motion.div>
 
         {/* Third Black SOS Circle (Right Side) */}
         <div className="absolute left-[600px] top-[950px] transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: thirdRingsOpacity1, animationDuration: '2s' }}></motion.div>
-          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: thirdRingsOpacity2, animationDuration: '2.5s' }}></motion.div>
-          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: thirdRingsOpacity3, animationDuration: '3s' }}></motion.div>
+          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: thirdRingsOpacity1, animationDuration: "2s" }}></motion.div>
+          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: thirdRingsOpacity2, animationDuration: "2.5s" }}></motion.div>
+          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: thirdRingsOpacity3, animationDuration: "3s" }}></motion.div>
           <motion.div className="absolute inset-0 rounded-full bg-[#FF0E97] blur-2xl" style={{ opacity: thirdButtonGlowOpacity }} />
 
           <motion.div
@@ -329,15 +335,15 @@ export function TriggerSection() {
             style={{ backgroundColor: thirdButtonBg, scale: thirdButtonScale }}
           >
             <span className="text-white font-[family-name:var(--font-bebas)] text-3xl leading-none tracking-wide">SOS</span>
-            <span className="text-white font-sans text-xs font-medium tracking-widest mt-1">TAP</span>
+            <span className="text-white font-[family-name:var(--font-inter)] font-medium text-xs tracking-widest mt-1">TAP</span>
           </motion.div>
         </div>
 
         {/* Fourth Black SOS Circle */}
         <div className="absolute left-[400px] top-[1420px] transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fourthRingsOpacity1, animationDuration: '2s' }}></motion.div>
-          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fourthRingsOpacity2, animationDuration: '2.5s' }}></motion.div>
-          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fourthRingsOpacity3, animationDuration: '3s' }}></motion.div>
+          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fourthRingsOpacity1, animationDuration: "2s" }}></motion.div>
+          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fourthRingsOpacity2, animationDuration: "2.5s" }}></motion.div>
+          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fourthRingsOpacity3, animationDuration: "3s" }}></motion.div>
           <motion.div className="absolute inset-0 rounded-full bg-[#FF0E97] blur-2xl" style={{ opacity: fourthButtonGlowOpacity }} />
 
           <motion.div
@@ -345,7 +351,7 @@ export function TriggerSection() {
             style={{ backgroundColor: fourthButtonBg, scale: fourthButtonScale }}
           >
             <span className="text-white font-[family-name:var(--font-bebas)] text-3xl leading-none tracking-wide">SOS</span>
-            <span className="text-white font-sans text-xs font-medium tracking-widest mt-1">TAP</span>
+            <span className="text-white font-[family-name:var(--font-inter)] font-medium text-xs tracking-widest mt-1">TAP</span>
           </motion.div>
         </div>
 
@@ -358,14 +364,14 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             />
           ) : (
@@ -376,14 +382,14 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             >
               <source src="/images/vid6.mp4" type="video/mp4" />
@@ -392,11 +398,11 @@ export function TriggerSection() {
         </motion.div>
 
         {/* GUARDIANS ALERTED Text */}
-        <motion.div className="absolute left-[775px] top-[1300px] w-[250px] flex flex-col gap-1 z-10" style={{ opacity: section4Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
+        <motion.div className="absolute left-[775px] top-[1300px] w-[250px] flex flex-col gap-1.5 z-10 text-left" style={{ opacity: section4Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-left uppercase">
             GUARDIANS ALERTED
           </h2>
-          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
+          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-left">
             Your guardians receive an SMS and WhatsApp alert with your live location, giving them immediate visibility and the ability to act.
           </p>
         </motion.div>
@@ -410,14 +416,14 @@ export function TriggerSection() {
               loop={true}
               className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             />
           ) : (
@@ -428,14 +434,14 @@ export function TriggerSection() {
               playsInline
               className="object-contain drop-shadow-2xl w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             >
               <source src="/images/vid7.mp4" type="video/mp4" />
@@ -444,20 +450,20 @@ export function TriggerSection() {
         </motion.div>
 
         {/* TAKE ACTION Text */}
-        <motion.div className="absolute left-[225px] top-[1740px] w-[250px] flex flex-col gap-1 z-10" style={{ opacity: section5Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[40px] leading-[90%] tracking-[-0.03em]">
+        <motion.div className="absolute left-[225px] top-[1740px] w-[250px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section5Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase">
             TAKE ACTION
           </h2>
-          <p className="m-0 text-[#161616] font-sans text-[16px] leading-[140%] tracking-[-0.03em]">
+          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right">
             Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.
           </p>
         </motion.div>
 
         {/* Fifth Black SOS Circle */}
         <div className="absolute left-[600px] top-[1900px] transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fifthRingsOpacity1, animationDuration: '2s' }}></motion.div>
-          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fifthRingsOpacity2, animationDuration: '2.5s' }}></motion.div>
-          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '3s', opacity: 0.2 }}></motion.div>
+          <motion.div className="absolute inset-0 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fifthRingsOpacity1, animationDuration: "2s" }}></motion.div>
+          <motion.div className="absolute -inset-4 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ opacity: fifthRingsOpacity2, animationDuration: "2.5s" }}></motion.div>
+          <motion.div className="absolute -inset-8 rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: "3s", opacity: 0.2 }}></motion.div>
           <motion.div className="absolute inset-0 rounded-full bg-[#FF0E97] blur-2xl" style={{ opacity: fifthButtonGlowOpacity }} />
 
           <motion.div
@@ -465,7 +471,7 @@ export function TriggerSection() {
             style={{ backgroundColor: fifthButtonBg, scale: fifthButtonScale }}
           >
             <span className="text-white font-[family-name:var(--font-bebas)] text-3xl leading-none tracking-wide">SOS</span>
-            <span className="text-white font-sans text-xs font-medium tracking-widest mt-1">TAP</span>
+            <span className="text-white font-[family-name:var(--font-inter)] font-medium text-xs tracking-widest mt-1">TAP</span>
           </motion.div>
         </div>
 
@@ -475,20 +481,61 @@ export function TriggerSection() {
       <div className="w-full flex flex-col items-center md:hidden px-2 relative z-10 pt-0 pb-12 mt-0">
         <div className="w-full max-w-[360px] relative">
           {/* Mobile Vertical Timeline Line (Animated on Scroll) */}
-          <div ref={mobileLineRef} className="absolute left-[55px] top-[45px] bottom-[505px] w-[1px] bg-[#161616] z-0 opacity-10"></div>
+          <div
+            ref={mobileLineRef}
+            className="absolute left-[55px] top-[45px] bottom-[505px] w-[1px] bg-[#161616] z-0 opacity-10"
+          />
           <motion.div
             className="absolute left-[55px] top-[45px] bottom-[505px] w-[1px] bg-[#FF0E97] z-0 origin-top"
             style={{ scaleY: mobileLineProgress }}
-          ></motion.div>
+          />
 
           {[
-            { title: "ONE TAP. IMMEDIATE RESPONSE.", text: "Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.", vid: "/images/vid1.mp4" },
-            { title: "SOS JOURNEY", text: "After activation, NAZR guides you through every stage, from alerting your Trusted Circle to giving you quick access to emergency services.", vid: "/images/vid4.mp4" },
-            { title: "WORKING IN THE BACKGROUND", text: "The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.", vid: "/images/vid5.mp4" },
-            { title: "GUARDIANS ALERTED", text: "Your guardians receive an SMS and WhatsApp alert with your live location, giving them immediate visibility and the ability to act.", vid: "/images/vid6.mp4" },
-            { title: "TAKE ACTION", text: "Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.", vid: "/images/vid7.mp4" }
+            {
+              title: "ONE TAP. IMMEDIATE RESPONSE.",
+              text: "Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.",
+              vid: "/images/vid1.mp4",
+            },
+            {
+              title: "SOS JOURNEY",
+              text: "After activation, NAZR guides you through every stage, from alerting your Trusted Circle to giving you quick access to emergency services.",
+              vid: "/images/vid4.mp4",
+            },
+            {
+              title: "WORKING IN THE BACKGROUND",
+              text: "The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.",
+              vid: "/images/vid5.mp4",
+            },
+            {
+              title: "GUARDIANS ALERTED",
+              text: "Your guardians receive an SMS and WhatsApp alert with your live location, giving them immediate visibility and the ability to act.",
+              vid: "/images/vid6.mp4",
+            },
+            {
+              title: "TAKE ACTION",
+              text: "Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.",
+              vid: "/images/vid7.mp4",
+            },
           ].map((step, idx, arr) => (
-            <MobileTriggerStep key={idx} step={step} idx={idx} isLast={idx === arr.length - 1} lottieAnimationData={idx === 0 ? armAnimData : idx === 1 ? journeyAnimData : idx === 2 ? broadcastAnimData : idx === 3 ? guardianAnimData : idx === 4 ? actionAnimData : null} />
+            <MobileTriggerStep
+              key={idx}
+              step={step}
+              idx={idx}
+              isLast={idx === arr.length - 1}
+              lottieAnimationData={
+                idx === 0
+                  ? armAnimData
+                  : idx === 1
+                  ? journeyAnimData
+                  : idx === 2
+                  ? broadcastAnimData
+                  : idx === 3
+                  ? guardianAnimData
+                  : idx === 4
+                  ? actionAnimData
+                  : null
+              }
+            />
           ))}
         </div>
       </div>
@@ -496,13 +543,23 @@ export function TriggerSection() {
   );
 }
 
-function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: any, idx: number, isLast: boolean, lottieAnimationData?: any }) {
+function MobileTriggerStep({
+  step,
+  idx,
+  isLast,
+  lottieAnimationData,
+}: {
+  step: any;
+  idx: number;
+  isLast: boolean;
+  lottieAnimationData?: any;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  
+
   const circleRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: circleRef,
-    offset: ["center 50%", "center 45%"]
+    offset: ["center 50%", "center 45%"],
   });
 
   // If it's the first step, it's always fully active
@@ -513,20 +570,28 @@ function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: a
   const ringsOpacity = useTransform(scrollYProgress, [0, 0.01], [0, 1]);
 
   return (
-    <div className={`flex w-full relative ${isLast ? '' : 'mb-12'}`}>
+    <div className={`flex w-full relative ${isLast ? "" : "mb-12"}`}>
       {/* Left side: Animated SOS Circle */}
       <div className="relative w-[110px] shrink-0 flex justify-center z-10 pt-[10px]">
         <div ref={circleRef} className="relative w-[70px] h-[70px] flex items-center justify-center">
-
           {/* Animated Glow and Rings Wrapper */}
           <motion.div
             className="absolute inset-0 pointer-events-none"
             style={{ opacity: isFirst ? 1 : ringsOpacity }}
           >
             {/* Concentric rings (Animated) */}
-            <div className="absolute -inset-[5px] rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '2s', opacity: 0.6 }}></div>
-            <div className="absolute -inset-[15px] rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '2.5s', opacity: 0.4 }}></div>
-            <div className="absolute -inset-[25px] rounded-full border-[1px] border-[#FF0E97] animate-ping" style={{ animationDuration: '3s', opacity: 0.2 }}></div>
+            <div
+              className="absolute -inset-[5px] rounded-full border-[1px] border-[#FF0E97] animate-ping"
+              style={{ animationDuration: "2s", opacity: 0.6 }}
+            />
+            <div
+              className="absolute -inset-[15px] rounded-full border-[1px] border-[#FF0E97] animate-ping"
+              style={{ animationDuration: "2.5s", opacity: 0.4 }}
+            />
+            <div
+              className="absolute -inset-[25px] rounded-full border-[1px] border-[#FF0E97] animate-ping"
+              style={{ animationDuration: "3s", opacity: 0.2 }}
+            />
 
             {/* Center Circle Glow */}
             <motion.div
@@ -538,23 +603,38 @@ function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: a
 
           {/* Center Circle */}
           <motion.div
-            className="relative w-full h-full rounded-full flex flex-col items-center justify-center z-20 shadow-2xl "
+            className="relative w-full h-full rounded-full flex flex-col items-center justify-center z-20 shadow-2xl"
             style={{ backgroundColor: isFirst ? "#FF0E97" : buttonBg }}
           >
-            <span className="text-white font-[family-name:var(--font-bebas)] text-[18px] leading-none tracking-wide">SOS</span>
-            <span className="text-white font-sans text-[8px] font-medium tracking-widest mt-[2px]">TAP</span>
+            <span className="text-white font-[family-name:var(--font-bebas)] text-[18px] leading-none tracking-wide">
+              SOS
+            </span>
+            <span className="text-white font-[family-name:var(--font-inter)] text-[8px] font-medium tracking-widest mt-[2px]">
+              TAP
+            </span>
           </motion.div>
         </div>
       </div>
 
       {/* Right side: Text and Phone */}
-      <motion.div className="flex flex-col gap-4 flex-1 pl-4 z-10" style={{ opacity: isFirst ? 1 : contentOpacity }}>
+      <motion.div
+        className="flex flex-col gap-4 flex-1 pl-4 z-10"
+        style={{ opacity: isFirst ? 1 : contentOpacity }}
+      >
         <div className="flex flex-col gap-1 pr-4">
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[32px] font-normal leading-[90%] tracking-[-0.03em]">{step.title}</h2>
-          <p className="m-0 text-[#161616] font-sans text-[14px] font-normal leading-[140%] tracking-[-0.03em]">{step.text}</p>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[32px] font-normal leading-[90%] tracking-[-0.03em]">
+            {step.title}
+          </h2>
+          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] text-[14px] font-normal leading-[140%] tracking-[-0.03em]">
+            {step.text}
+          </p>
         </div>
 
-        <div className={`relative w-full ${idx === 2 ? 'max-w-[280px] h-[440px] -ml-2' : 'max-w-[230px] h-[440px]'} shrink-0 mt-2 overflow-visible`}>
+        <div
+          className={`relative w-full ${
+            idx === 2 ? "max-w-[280px] h-[440px] -ml-2" : "max-w-[230px] h-[440px]"
+          } shrink-0 mt-2 overflow-visible`}
+        >
           {lottieAnimationData ? (
             <Lottie
               animationData={lottieAnimationData}
@@ -569,14 +649,14 @@ function MobileTriggerStep({ step, idx, isLast, lottieAnimationData }: { step: a
               playsInline
               className="object-contain drop-shadow-2xl object-top w-full h-full"
               style={{
-                WebkitMaskImage: 'url(/images/nazrapp4img.webp)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'top center',
-                maskImage: 'url(/images/nazrapp4img.webp)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'top center',
+                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "top center",
+                maskImage: "url(/images/nazrapp4img.webp)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "top center",
               }}
             >
               <source src={step.vid} type="video/mp4" />

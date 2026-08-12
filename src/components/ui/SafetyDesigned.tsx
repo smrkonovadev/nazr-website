@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -32,12 +32,48 @@ export const carouselData = [
 
 export function SafetyDesigned() {
   const [currentIndex, setCurrentIndex] = useState(1);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const lastWheelTime = useRef<number>(0);
 
   const handleNext = () => setCurrentIndex((prev) => (prev + 1) % carouselData.length);
   const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + carouselData.length) % carouselData.length);
 
   const leftIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
   const rightIndex = (currentIndex + 1) % carouselData.length;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchEndX.current = null;
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 35) {
+      handleNext();
+    } else if (distance < -35) {
+      handlePrev();
+    }
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    const now = Date.now();
+    if (now - lastWheelTime.current < 350) return;
+    if (Math.abs(e.deltaX) > 25 && Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      if (e.deltaX > 0) {
+        handleNext();
+        lastWheelTime.current = now;
+      } else {
+        handlePrev();
+        lastWheelTime.current = now;
+      }
+    }
+  };
 
   return (
     <section className="w-full bg-[#161616] flex justify-center pt-8 pb-4 md:pt-[60px] md:pb-[10px] md:px-[30px] overflow-hidden relative z-20 md:min-h-[950px] md:h-auto">
@@ -204,7 +240,13 @@ export function SafetyDesigned() {
         </div>
 
         {/* Carousel Display */}
-        <div className="w-full relative h-[255px] flex justify-center items-center overflow-visible my-0">
+        <div
+          onWheel={handleWheel}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className="w-full relative h-[255px] flex justify-center items-center overflow-visible my-0 touch-pan-y select-none"
+        >
           {/* Animated Product Cards */}
           {carouselData.map((item, index) => {
             let pos = 'hidden';
@@ -219,7 +261,23 @@ export function SafetyDesigned() {
             return (
               <motion.div
                 key={item.id}
-                className="absolute flex items-center justify-center pointer-events-none"
+                onClick={() => {
+                  if (isLeft) handlePrev();
+                  if (isRight) handleNext();
+                }}
+                drag={isCenter ? "x" : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.25}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x < -30 || info.velocity.x < -200) {
+                    handleNext();
+                  } else if (info.offset.x > 30 || info.velocity.x > 200) {
+                    handlePrev();
+                  }
+                }}
+                className={`absolute flex items-center justify-center ${
+                  isCenter ? 'pointer-events-auto cursor-grab active:cursor-grabbing z-20' : 'pointer-events-auto cursor-pointer hover:opacity-80 z-10'
+                }`}
                 initial={false}
                 animate={{
                   left: isCenter ? "50%" : isLeft ? "0%" : "100%",
@@ -235,7 +293,8 @@ export function SafetyDesigned() {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className={`w-full h-full object-contain ${item.id === "sip-check" ? "scale-[1.38] transform-gpu" : ""}`}
+                  draggable={false}
+                  className={`w-full h-full object-contain pointer-events-none ${item.id === "sip-check" ? "scale-[1.38] transform-gpu" : ""}`}
                 />
 
                 {/* Pepper Spray Stickers */}

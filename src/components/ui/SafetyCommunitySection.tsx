@@ -52,6 +52,9 @@ const cardsData = [
   },
 ];
 
+// Toggle to show/hide the pink CTA buttons ("Read Their Stories", "View All Events", etc.)
+const SHOW_CARD_BUTTONS = false;
+
 export function SafetyCommunitySection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const mobileScrollRef = useRef<HTMLDivElement>(null);
@@ -159,31 +162,33 @@ export function SafetyCommunitySection() {
 
                       {/* Bottom Info */}
                       <div className="flex flex-col items-start max-w-[280px]">
-                        <p className="font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[15px] leading-[140%] tracking-[-0.03em] m-0 mb-4">
+                        <p className={`font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[15px] leading-[140%] tracking-[-0.03em] m-0 ${SHOW_CARD_BUTTONS ? "mb-4" : "mb-0"}`}>
                           {card.description}
                         </p>
-                        <button
-                          type="button"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center justify-center bg-[#FF0E97] text-white font-[family-name:var(--font-inter)] text-[15px] leading-[150%] tracking-[-0.04em] shadow-lg whitespace-nowrap cursor-default"
-                          style={{
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            fontFamily: "Inter, var(--font-inter), sans-serif",
-                            minWidth: "110px",
-                            height: "36px",
-                            borderRadius: "3.92px",
-                            paddingLeft: "20px",
-                            paddingRight: "20px",
-                            paddingTop: "10px",
-                            paddingBottom: "10px",
-                            borderWidth: "0.98px",
-                            borderColor: "#FF0E97",
-                            gap: "7.83px",
-                          }}
-                        >
-                          {card.buttonText}
-                        </button>
+                        {SHOW_CARD_BUTTONS && (
+                          <button
+                            type="button"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center justify-center bg-[#FF0E97] text-white font-[family-name:var(--font-inter)] text-[15px] leading-[150%] tracking-[-0.04em] shadow-lg whitespace-nowrap cursor-default"
+                            style={{
+                              fontWeight: 400,
+                              fontStyle: 'normal',
+                              fontFamily: "Inter, var(--font-inter), sans-serif",
+                              minWidth: "110px",
+                              height: "36px",
+                              borderRadius: "3.92px",
+                              paddingLeft: "20px",
+                              paddingRight: "20px",
+                              paddingTop: "10px",
+                              paddingBottom: "10px",
+                              borderWidth: "0.98px",
+                              borderColor: "#FF0E97",
+                              gap: "7.83px",
+                            }}
+                          >
+                            {card.buttonText}
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -309,32 +314,34 @@ export function SafetyCommunitySection() {
                             initial={{ opacity: 0, scale: 0.9, y: 6 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 0.35, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
-                            className="font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 mb-4 origin-left"
+                            className={`font-[family-name:var(--font-inter)] font-normal text-[#FFF9EB]/90 text-[16px] leading-[140%] tracking-[-0.03em] m-0 ${SHOW_CARD_BUTTONS ? "mb-4" : "mb-0"} origin-left`}
                           >
                             {card.description}
                           </motion.p>
-                          <button
-                            type="button"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center justify-center bg-[#FF0E97] text-white font-[family-name:var(--font-inter)] text-[16px] leading-[150%] tracking-[-0.04em] shadow-lg whitespace-nowrap cursor-default"
-                            style={{
-                              fontWeight: 400,
-                              fontStyle: 'normal',
-                              fontFamily: "Inter, var(--font-inter), sans-serif",
-                              minWidth: "110px",
-                              height: "36px",
-                              borderRadius: "3.92px",
-                              paddingLeft: "20px",
-                              paddingRight: "20px",
-                              paddingTop: "12px",
-                              paddingBottom: "12px",
-                              borderWidth: "0.98px",
-                              borderColor: "#FF0E97",
-                              gap: "7.83px",
-                            }}
-                          >
-                            {card.buttonText}
-                          </button>
+                          {SHOW_CARD_BUTTONS && (
+                            <button
+                              type="button"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center justify-center bg-[#FF0E97] text-white font-[family-name:var(--font-inter)] text-[16px] leading-[150%] tracking-[-0.04em] shadow-lg whitespace-nowrap cursor-default"
+                              style={{
+                                fontWeight: 400,
+                                fontStyle: 'normal',
+                                fontFamily: "Inter, var(--font-inter), sans-serif",
+                                minWidth: "110px",
+                                height: "36px",
+                                borderRadius: "3.92px",
+                                paddingLeft: "20px",
+                                paddingRight: "20px",
+                                paddingTop: "12px",
+                                paddingBottom: "12px",
+                                borderWidth: "0.98px",
+                                borderColor: "#FF0E97",
+                                gap: "7.83px",
+                              }}
+                            >
+                              {card.buttonText}
+                            </button>
+                          )}
                         </div>
                       </div>
                     ) : (

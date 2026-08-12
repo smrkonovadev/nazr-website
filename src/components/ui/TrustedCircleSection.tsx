@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
@@ -18,12 +19,12 @@ export function TrustedCircleSection() {
       title: "Build Your Trusted Circle.",
       description: "Invite the people you trust most to be part of your safety network. Guardians receive an SMS and WhatsApp invitation to securely join your Trusted Circle.",
       color: "#F80090",
-      lottiePath: "/images/Trusted Circle.json"
+      lottiePath: "/images/SH_Trusted Circle.json"
     },
     {
       number: 2,
       title: "Connected The Moment It Matters.",
-      description: "If an SOS is triggered or a Shield Mode check-in is missed, your Trusted Circle is alerted immediately with thhe possible courses of action that can be taken, all visible in one place to ensure everyone is on the same page.",
+      description: "If an SOS is triggered or a Shield Mode check-in is missed, your Trusted Circle is alerted immediately with the possible courses of action that can be taken, all visible in one place to ensure everyone is on the same page.",
       color: "#0A84FF",
       lottiePath: "/images/Gaurdian Alert.json"
     },
@@ -110,10 +111,48 @@ export function TrustedCircleSection() {
               <div key={index} className="flex flex-col w-full max-w-[346px] gap-6">
                 {/* Image Block */}
                 <div
-                  className="w-[346px] max-w-full h-[310.56px] rounded-[9.61px] relative overflow-hidden flex justify-center items-center p-4 shadow-md transition-colors duration-500"
-                  style={{ backgroundColor: step.color }}
+                  className="w-[346px] max-w-full h-[270px] relative flex justify-center items-center p-2 overflow-visible"
                 >
-                  <div className="w-full h-full relative flex justify-center items-center">
+                  <div className="w-full max-w-[135px] h-full relative flex justify-center items-center overflow-visible">
+                    {/* Top Left Sticker (TL.svg) */}
+                    <div className="absolute -top-[22px] -left-[48px] z-20 pointer-events-none select-none">
+                      <Image
+                        unoptimized
+                        quality={100}
+                        src="/images/TL.svg"
+                        alt="Top Left Sticker"
+                        width={60}
+                        height={57}
+                        className="w-[58px] h-auto object-contain"
+                      />
+                    </div>
+
+                    {/* Top Right Sticker (TR.svg) */}
+                    <div className="absolute -top-[12px] -right-[36px] z-20 pointer-events-none select-none">
+                      <Image
+                        unoptimized
+                        quality={100}
+                        src="/images/TR.svg"
+                        alt="Top Right Sticker"
+                        width={52}
+                        height={47}
+                        className="w-[50px] h-auto object-contain"
+                      />
+                    </div>
+
+                    {/* Down Left Sticker (DL.svg) */}
+                    <div className="absolute top-[47%] -left-[42px] z-20 pointer-events-none select-none">
+                      <Image
+                        unoptimized
+                        quality={100}
+                        src="/images/DL.svg"
+                        alt="Down Left Sticker"
+                        width={48}
+                        height={48}
+                        className="w-[44px] h-auto object-contain"
+                      />
+                    </div>
+
                     {animationsData[index] && (
                       <Lottie
                         animationData={animationsData[index]}
@@ -125,17 +164,17 @@ export function TrustedCircleSection() {
                 </div>
 
                 {/* Text Content */}
-                <div className="flex flex-col gap-2 w-full px-1">
+                <div className="flex flex-col gap-1.5 w-full px-1">
                   <div className="flex items-center gap-4">
                     <div className="w-8 h-8 shrink-0 rounded-full bg-white border-[3px] border-[#F80090] flex items-center justify-center text-[#161616] font-sans text-[14px] font-bold">
                       {step.number}
                     </div>
-                    <h3 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] text-[32px] leading-[100%] tracking-normal uppercase whitespace-nowrap pt-1">
+                    <h3 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[32px] leading-[140%] tracking-[0em] uppercase whitespace-nowrap pt-1">
                       {step.title}
                     </h3>
                   </div>
                   <div className="pl-12 w-full max-w-[341px]">
-                    <p className="m-0 text-[#161616] font-normal text-[14px] leading-[150%] tracking-normal opacity-80" style={{ fontFamily: "Inter, sans-serif" }}>
+                    <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[150%] tracking-[-0.03em] opacity-90">
                       {step.description}
                     </p>
                   </div>
@@ -190,13 +229,13 @@ export function TrustedCircleSection() {
                   {step.number}
                 </div>
                 <div
-                  className="flex flex-col gap-1 pt-1 transition-opacity duration-300"
+                  className="flex flex-col gap-1 pt-0.5 transition-opacity duration-300"
                   style={{ opacity: activeStep === index ? 1 : 0.4 }}
                 >
-                  <h3 className="m-0 font-[family-name:var(--font-bebas)] text-[28px] leading-[100%] tracking-normal uppercase text-[#161616]">
+                  <h3 className="m-0 font-[family-name:var(--font-bebas)] font-normal text-[32px] leading-[140%] tracking-[0em] uppercase text-[#161616]">
                     {step.title}
                   </h3>
-                  <p className="m-0 text-[#161616] font-sans font-normal text-[17px] leading-[150%] tracking-[0.05em] opacity-80 w-full max-w-[520px]" style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}>
+                  <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[150%] tracking-[-0.03em] opacity-90 w-full max-w-[520px]">
                     {step.description}
                   </p>
                 </div>
@@ -214,17 +253,70 @@ export function TrustedCircleSection() {
 
           {/* Right Column: Visuals */}
           <div
-            className="col-span-6 col-start-7 w-full h-[550px] rounded-[9.71px] relative overflow-hidden flex justify-center items-center p-6 shadow-2xl transition-colors duration-500"
-            style={{ backgroundColor: steps[activeStep].color }}
+            className="col-span-6 col-start-7 w-full h-[570px] relative flex justify-center items-center p-0"
           >
-            {animationsData[activeStep] && (
-              <Lottie
-                key={activeStep}
-                animationData={animationsData[activeStep]}
-                loop={true}
-                className="w-full h-full object-contain drop-shadow-2xl"
-              />
-            )}
+            {/* Phone & Stickers Container */}
+            <div className="w-full max-w-[280px] h-full relative flex justify-center items-center overflow-visible">
+              {/* Top Left Sticker (TL.svg) - Wireframe Globe */}
+              <div className="absolute -top-[42px] -left-[102px] z-20 pointer-events-none select-none">
+                <Image
+                  unoptimized
+                  quality={100}
+                  src="/images/TL.svg"
+                  alt="Top Left Sticker"
+                  width={124}
+                  height={118}
+                  className="w-[110px] md:w-[124px] h-auto object-contain drop-shadow-sm"
+                />
+              </div>
+
+              {/* Top Right Sticker (TR.svg) - Green Binoculars Eyes overlapping top-right phone edge */}
+              <div className="absolute -top-[22px] -right-[74px] z-20 pointer-events-none select-none">
+                <Image
+                  unoptimized
+                  quality={100}
+                  src="/images/TR.svg"
+                  alt="Top Right Sticker"
+                  width={104}
+                  height={94}
+                  className="w-[94px] md:w-[102px] h-auto object-contain drop-shadow-sm"
+                />
+              </div>
+
+              {/* Down Left Sticker (DL.svg) - Blue Badge Stamp */}
+              <div className="absolute top-[47%] -left-[84px] z-20 pointer-events-none select-none">
+                <Image
+                  unoptimized
+                  quality={100}
+                  src="/images/DL.svg"
+                  alt="Down Left Sticker"
+                  width={96}
+                  height={96}
+                  className="w-[84px] md:w-[90px] h-auto object-contain drop-shadow-sm"
+                />
+              </div>
+
+              {/* Phone Lottie Visual */}
+              <div className="w-full h-full relative flex justify-center items-center z-10 overflow-visible">
+                {steps.map((step, idx) => (
+                  <div
+                    key={idx}
+                    className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeStep === idx
+                        ? "opacity-100 z-10 pointer-events-auto"
+                        : "opacity-0 z-0 pointer-events-none"
+                      }`}
+                  >
+                    {animationsData[idx] && (
+                      <Lottie
+                        animationData={animationsData[idx]}
+                        loop={true}
+                        className="w-full h-full object-contain drop-shadow-2xl"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

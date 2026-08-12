@@ -38,13 +38,13 @@ export function NavigationMenu() {
 
   const links = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Why Nazr", path: "/whynazrexists" },
+    { name: "About", path: "/about", hidden: true },
+    { name: "Why Nazr", path: "/whynazrexists", hidden: true },
     { name: "Shop", path: "/shop" },
-    { name: "Nazr App", path: "/nazrapp" },
-    { name: "Helpline", path: "/helpline" },
+    { name: "Nazr App", path: "/nazrapp", hidden: true },
+    { name: "Helpline", path: "/helpline", hidden: true },
     { name: "Support", path: "/support" },
-    { name: "Blog", path: "/blog" },
+    { name: "Blog", path: "/blog", hidden: true },
   ];
 
   return (
@@ -80,24 +80,26 @@ export function NavigationMenu() {
             {/* Main Navigation Links */}
             <div className="flex flex-col items-start w-full max-md:my-0 md:my-auto max-md:gap-0 md:gap-1">
 
-              {links.map((link) => {
-                const isActive = pathname === link.path;
+              {links
+                .filter((link) => !link.hidden)
+                .map((link) => {
+                  const isActive = pathname === link.path;
 
-                return (
-                  <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
-                    <div
-                      className={`w-full max-md:px-3 md:px-6 max-md:py-0.5 md:py-1.5 transition-all border rounded-[4px] ${isActive
-                        ? "bg-[#FF0E97] border-[#FF0E97] text-white"
-                        : "border-transparent text-[#161616] hover:border-[#FF0E97]"
-                        }`}
-                    >
-                      <span className="font-[family-name:var(--font-bebas)] max-md:text-[28px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">
-                        {link.name}
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
+                  return (
+                    <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
+                      <div
+                        className={`w-full max-md:px-3 md:px-6 max-md:py-0.5 md:py-1.5 transition-all border rounded-[4px] ${isActive
+                          ? "bg-[#FF0E97] border-[#FF0E97] text-white"
+                          : "border-transparent text-[#161616] hover:border-[#FF0E97]"
+                          }`}
+                      >
+                        <span className="font-[family-name:var(--font-bebas)] max-md:text-[28px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">
+                          {link.name}
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
 
             </div>
 
@@ -111,7 +113,6 @@ export function NavigationMenu() {
                 </span>
                 <a href="https://www.instagram.com/nazr.360/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">Instagram</a>
                 <a href="https://www.linkedin.com/company/nazrco/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">LinkedIn</a>
-                <Link href="#" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">X/Twitter</Link>
               </div>
 
               {/* Quick Links */}

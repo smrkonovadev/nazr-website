@@ -182,14 +182,6 @@ export function Footer() {
                 >
                   INSTAGRAM
                 </a>
-                <Link
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors"
-                >
-                  X/TWITTER
-                </Link>
               </div>
             </div>
           </div>

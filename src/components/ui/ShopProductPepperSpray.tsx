@@ -32,11 +32,11 @@ export function ShopProductPepperSpray() {
             </h3>
           </div>
 
-          {/* Product Image — static */}
+          {/* Product Image — dynamic based on variant */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
             <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:rotate-[20deg] md:translate-x-20 md:translate-y-10">
-              <Image unoptimized quality={100} src="/images/center.webp"
-                alt="Podium and Spray"
+              <Image unoptimized quality={100} src={selectedVariant === "white" ? "/images/whitespray.svg" : "/images/center.webp"}
+                alt={selectedVariant === "white" ? "White Pepper Spray" : "Podium and Spray"}
                 fill
                 className="object-contain"
               />

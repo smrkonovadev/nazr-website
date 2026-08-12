@@ -20,8 +20,8 @@ export const productsData: ProductData[] = [
     url: "https://shop.nazrco.in/products/on-me-pepper-spray",
     gradientSrc: "/images/BLUEGRAD.svg",
     variants: [
-      { id: "pink", name: "Pink", imageSrc: "/images/spray-pink.webp", color: "#FF0E97" },
-      { id: "white", name: "White", imageSrc: "/images/spray-white.webp", color: "#FFF9EB" }
+      { id: "pink", name: "Pink", imageSrc: "/images/spray-pink.webp", mainImageSrc: "/images/shop/shop-1.webp", color: "#FF0E97" },
+      { id: "white", name: "White", imageSrc: "/images/spray-white.webp", mainImageSrc: "/images/whitespray.svg", color: "#FFF9EB" }
     ],
     zIndex: 10
   },

@@ -9,8 +9,7 @@ import { ShieldModeFeatures } from "@/components/ui/ShieldModeFeatures";
 import { TrustedCircleSection } from "@/components/ui/TrustedCircleSection";
 import { OurProductsHeader } from "@/components/ui/OurProductsHeader";
 import { ProductCardsCarousel } from "@/components/ui/ProductCardsCarousel";
-import { ContactUsSection } from "@/components/ui/ContactUsSection";
-import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
+import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
 export const metadata: Metadata = {
@@ -79,15 +78,14 @@ export default function NazrAppPage() {
           <ProductCardsCarousel />
         </DesktopScaler>
 
-        {/* Contact Us Section */}
+        {/* Join The Conversation Section */}
         <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden -mt-[1px]">
           <div className="w-full relative z-[60] bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden pb-0 -mt-[1px]">
-            <ContactUsSection />
-            {/* Animated Infinite Carousel */}
-            <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
+            <WhyNazrInTheirWordsSection />
           </div>
         </DesktopScaler>
       </main>
     </>
   );
 }
+

@@ -2,6 +2,7 @@ export interface ProductVariant {
   id: string;
   name: string;
   imageSrc: string;
+  mainImageSrc?: string;
   color?: string;
 }
 
