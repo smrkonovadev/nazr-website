@@ -7,6 +7,7 @@ import { ProductVariant } from "./types";
 interface ProductDetailsProps {
   description: string;
   price: string;
+  originalPrice?: string;
   rating: number;
   reviews: string;
   hasVariants: boolean;
@@ -19,6 +20,7 @@ interface ProductDetailsProps {
 export function ProductDetails({
   description,
   price,
+  originalPrice,
   rating,
   reviews,
   hasVariants,
@@ -35,10 +37,17 @@ export function ProductDetails({
       </p>
 
       {/* Price and Rating */}
-      <div className="flex items-center gap-4 mb-3 md:mb-6">
-        <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[38px] md:text-[52px] leading-none">
-          {price}
-        </span>
+      <div className="flex items-center gap-3.5 md:gap-4 mb-3 md:mb-6">
+        <div className="flex items-baseline gap-2 md:gap-2.5">
+          <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[38px] md:text-[52px] leading-none">
+            {price}
+          </span>
+          {originalPrice && (
+            <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[26px] md:text-[36px] line-through leading-none decoration-1 md:decoration-2">
+              {originalPrice}
+            </span>
+          )}
+        </div>
         <div className="h-[26px] md:h-[36px] w-[2px] bg-black/30"></div>
         <div className="flex items-center gap-2">
           <div className="flex gap-1 text-black">

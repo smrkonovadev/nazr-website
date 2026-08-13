@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
-import { ShopHero } from "@/components/ui/ShopHero";
+import { ShopSaleHero } from "@/components/ui/ShopSaleHero";
+// import { ShopHero } from "@/components/ui/ShopHero"; // Preserved for easy restoration
 import { ProductScrollStack } from "@/components/shop/ProductScrollStack";
 import { ShopProblemSteps } from "@/components/ui/ShopProblemSteps";
 import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
@@ -8,7 +9,7 @@ import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
 export const metadata: Metadata = {
   title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
-  description: "Shop NAZR's safety essentials: On Me pepper spray (₹777), Sip Check drink covers (₹444), and the NAZR 360° bundle — thoughtfully designed, always within reach.",
+  description: "Shop NAZR's safety essentials: On Me pepper spray (₹555), Sip Check drink covers (₹333), and the NAZR 360° bundle (₹999) — thoughtfully designed, always within reach.",
   keywords: [
     "buy pepper spray India",
     "On Me pepper spray price",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
-    description: "Shop NAZR's safety essentials: On Me pepper spray (₹777), Sip Check drink covers (₹444), and the NAZR 360° bundle — thoughtfully designed, always within reach.",
+    description: "Shop NAZR's safety essentials: On Me pepper spray (₹555), Sip Check drink covers (₹333), and the NAZR 360° bundle (₹999) — thoughtfully designed, always within reach.",
     url: "https://www.nazrco.in/shop",
     siteName: "NAZR",
     locale: "en_IN",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
-    description: "Shop NAZR's safety essentials: On Me pepper spray (₹777), Sip Check drink covers (₹444), and the NAZR 360° bundle — thoughtfully designed, always within reach.",
+    description: "Shop NAZR's safety essentials: On Me pepper spray (₹555), Sip Check drink covers (₹333), and the NAZR 360° bundle (₹999) — thoughtfully designed, always within reach.",
   },
 };
 
@@ -44,11 +45,11 @@ export default function ShopPage() {
 
         {/* The Beige Canvas Section */}
         <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
-          <DesktopScaler bgColor="#F1E4DE" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
+          <DesktopScaler bgColor="#CCC6CD" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
             <div
-              className="w-full bg-[#F1E4DE] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden max-md:min-h-0 md:min-h-[720px]"
+              className="w-full bg-[#CCC6CD] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden max-md:min-h-0 md:min-h-[810px]"
             >
-              <ShopHero />
+              <ShopSaleHero />
             </div>
           </DesktopScaler>
         </section>

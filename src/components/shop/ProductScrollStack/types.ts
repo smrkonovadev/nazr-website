@@ -19,6 +19,7 @@ export interface ProductData {
   imageWidthHeightClass: string;
   description: string;
   price: string;
+  originalPrice?: string;
   rating: number;
   reviews: string;
   hasVariants: boolean;

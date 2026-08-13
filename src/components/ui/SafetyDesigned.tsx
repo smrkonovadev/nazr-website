@@ -26,7 +26,7 @@ export const carouselData = [
     image: "/images/NAZR360.webp",
     title: "NAZR 360°",
     subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you.",
-    link: "https://shop.nazrco.in/products/on-me-pepper-spray"
+    link: "https://shop.nazrco.in/products/bundle"
   }
 ];
 

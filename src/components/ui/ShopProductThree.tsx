@@ -63,9 +63,14 @@ export function ShopProductThree() {
 
           {/* Price and Rating */}
           <div className="flex items-center gap-4 mb-8">
-            <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] md:text-[60px] leading-none">
-              ₹1111
-            </span>
+            <div className="flex items-baseline gap-2 md:gap-2.5">
+              <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] md:text-[60px] leading-none">
+                ₹999
+              </span>
+              <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[32px] md:text-[42px] line-through leading-none decoration-1 md:decoration-2">
+                ₹1111
+              </span>
+            </div>
             <div className="h-[40px] w-[1px] bg-[#161616]"></div>
             <div className="flex items-center gap-2">
               <div className="flex gap-[2px] text-[#161616]">

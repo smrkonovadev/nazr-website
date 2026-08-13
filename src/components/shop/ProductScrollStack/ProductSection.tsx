@@ -68,6 +68,7 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
               <ProductDetails
                 description={product.description}
                 price={product.price}
+                originalPrice={product.originalPrice}
                 rating={product.rating}
                 reviews={product.reviews}
                 hasVariants={product.hasVariants}
