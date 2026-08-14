@@ -8,19 +8,19 @@ import { ShaderBackground } from "@/components/ui/ShaderBackground";
 
 const LETTER_FILLER_IMAGES = [
   "/images/letterfiller/fil2.jpeg",
-  "/images/letterfiller/fil7.jpeg",
+  "/images/letterfiller/fil19.jpeg",
   "/images/letterfiller/fil12.jpeg",
   "/images/letterfiller/fil3.jpeg",
   "/images/letterfiller/fil8.jpeg",
   "/images/letterfiller/fil13.jpeg",
   "/images/letterfiller/fil4.jpeg",
   "/images/letterfiller/fil9.jpeg",
-  "/images/letterfiller/fil14.jpeg",
+  "/images/letterfiller/fil8.jpeg",
   "/images/letterfiller/fil5.jpeg",
-  "/images/letterfiller/fil10.jpeg",
-  "/images/letterfiller/fil15.jpeg",
+  "/images/letterfiller/fil19.jpeg",
+  "/images/letterfiller/fil7.jpeg",
   "/images/letterfiller/fil11.jpeg",
-  "/images/letterfiller/fil16.jpeg",
+  "/images/letterfiller/fil10.jpeg",
   "/images/letterfiller/fil17.jpeg",
 ];
 
@@ -95,6 +95,15 @@ function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, glob
       }}
       style={{
         ...bgStyle,
+        paddingRight: '0.08em',
+        marginRight: '-0.08em',
+        paddingLeft: '0.02em',
+        marginLeft: '-0.02em',
+        backgroundSize: '160% 100%',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
         animation: isLoaded ? bgStyle?.animation : 'none',
         rotateX,
         rotateY,
