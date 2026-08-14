@@ -1,9 +1,33 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { useState, useRef } from "react";
 import { Star, ShoppingBag } from "lucide-react";
 import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
+
+function HalfStar({ className = "w-5 h-5 text-[#161616]" }: { className?: string }) {
+  const id = React.useId();
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill={`url(#${id})`}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <defs>
+        <linearGradient id={id} x1="0" x2="1" y1="0" y2="0">
+          <stop offset="50%" stopColor="currentColor" />
+          <stop offset="50%" stopColor="transparent" />
+        </linearGradient>
+      </defs>
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
 
 export function ShopProductTwo() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
@@ -42,15 +66,20 @@ export function ShopProductTwo() {
             </h3>
           </div>
 
-          {/* Product Image on Podium */}
+          {/* Product Image on Podium — clickable to PDP */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
-            <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:translate-x-20 md:translate-y-10">
+            <a
+              href="https://shop.nazrco.in/products/sip-check"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-auto cursor-pointer md:transform md:translate-x-20 md:translate-y-10 hover:opacity-95 transition-opacity"
+            >
               <Image unoptimized quality={100} src="/images/productsip.webp"
                 alt="Sip Check Product"
                 fill
                 className="object-contain"
               />
-            </div>
+            </a>
           </div>
         </div>
 
@@ -78,10 +107,10 @@ export function ShopProductTwo() {
                 <Star className="w-5 h-5 fill-[#161616]" />
                 <Star className="w-5 h-5 fill-[#161616]" />
                 <Star className="w-5 h-5 fill-[#161616]" />
-                <Star className="w-5 h-5 stroke-[#161616]" />
+                <HalfStar className="w-5 h-5 text-[#161616]" />
               </div>
               <span className="font-['Inter',_sans-serif] text-[12px] md:text-[14px] text-black font-medium mt-1">
-                (3.5 stars) • 10 reviews
+                (4.5 stars) • 32 reviews
               </span>
             </div>
           </div>

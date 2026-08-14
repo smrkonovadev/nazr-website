@@ -4,6 +4,29 @@ import Link from "next/link";
 import { Star, ShoppingBag } from "lucide-react";
 import { ProductVariant } from "./types";
 
+function HalfStar({ className = "w-4 h-4 text-black" }: { className?: string }) {
+  const id = React.useId();
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill={`url(#${id})`}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <defs>
+        <linearGradient id={id} x1="0" x2="1" y1="0" y2="0">
+          <stop offset="50%" stopColor="currentColor" />
+          <stop offset="50%" stopColor="transparent" />
+        </linearGradient>
+      </defs>
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
+
 interface ProductDetailsProps {
   description: string;
   price: string;
@@ -51,13 +74,23 @@ export function ProductDetails({
         <div className="h-[26px] md:h-[36px] w-[2px] bg-black/30"></div>
         <div className="flex items-center gap-2">
           <div className="flex gap-1 text-black">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star
-                key={star}
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 ${star <= Math.floor(rating) ? "fill-black text-black" : "text-black"
-                  }`}
-              />
-            ))}
+            {[1, 2, 3, 4, 5].map((star) => {
+              const isHalf = reviews.includes("4.5") && star === 5;
+              if (isHalf) {
+                return (
+                  <HalfStar
+                    key={star}
+                    className="w-3.5 h-3.5 md:w-4 md:h-4 text-black"
+                  />
+                );
+              }
+              return (
+                <Star
+                  key={star}
+                  className="w-3.5 h-3.5 md:w-4 md:h-4 fill-black text-black"
+                />
+              );
+            })}
           </div>
           <span className="font-['Inter',_sans-serif] text-[11px] md:text-[13px] text-black font-medium mt-0.5">
             {reviews}

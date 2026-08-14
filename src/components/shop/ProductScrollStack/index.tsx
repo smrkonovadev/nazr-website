@@ -138,6 +138,16 @@ export function ProductScrollStack({
       if (!hash) return;
 
       const productId = hash.substring(1);
+      if (productId === "products") {
+        const rootRect = root.getBoundingClientRect();
+        const rootTop = rootRect.top + window.pageYOffset;
+        window.scrollTo({
+          top: rootTop,
+          behavior: "smooth",
+        });
+        return;
+      }
+
       const productIndex = productsData.findIndex((p) => p.id === productId);
       if (productIndex === -1) return;
 
@@ -147,14 +157,14 @@ export function ProductScrollStack({
         
         // Target Y is at the start of the product's hold period
         const targetY = productIndex === 0 
-          ? rootTop + 2 
+          ? rootTop 
           : rootTop + (productIndex * holdDistance) + (productIndex * peelDistance) + 2;
         
         window.scrollTo({
           top: targetY,
           behavior: "smooth",
         });
-      }, 300);
+      }, 100);
     };
 
     handleHashScroll();
@@ -171,6 +181,7 @@ export function ProductScrollStack({
   return (
     <div 
       ref={rootRef} 
+      id="products"
       className={styles.root}
       style={{ height: trackHeightPx ? `${trackHeightPx}px` : undefined }}
     >

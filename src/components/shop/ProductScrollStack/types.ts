@@ -4,6 +4,7 @@ export interface ProductVariant {
   imageSrc: string;
   mainImageSrc?: string;
   color?: string;
+  variantUrl?: string;
 }
 
 export interface ProductData {

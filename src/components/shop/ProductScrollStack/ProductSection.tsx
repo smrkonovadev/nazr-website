@@ -20,6 +20,7 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
 
   return (
     <article
+      id={product.id}
       className={styles.panel}
       style={{ zIndex }}
       data-product={product.id}
@@ -53,30 +54,33 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
                 const currentVariant = product.variants?.find((v) => v.id === selectedVariant);
                 const activeImageSrc = currentVariant?.mainImageSrc || currentVariant?.imageSrc || product.imageSrc;
                 const activeImageAlt = currentVariant ? `${product.imageAlt} - ${currentVariant.name}` : product.imageAlt;
+                const activeUrl = currentVariant?.variantUrl || product.url;
 
                 return (
-                  <ProductImage
-                    titleLines={product.titleLines}
-                    imageSrc={activeImageSrc}
-                    imageAlt={activeImageAlt}
-                    imageTransformClass={product.imageTransformClass}
-                    imageWidthHeightClass={product.imageWidthHeightClass}
-                    url={product.url}
-                  />
+                  <>
+                    <ProductImage
+                      titleLines={product.titleLines}
+                      imageSrc={activeImageSrc}
+                      imageAlt={activeImageAlt}
+                      imageTransformClass={product.imageTransformClass}
+                      imageWidthHeightClass={product.imageWidthHeightClass}
+                      url={activeUrl}
+                    />
+                    <ProductDetails
+                      description={product.description}
+                      price={product.price}
+                      originalPrice={product.originalPrice}
+                      rating={product.rating}
+                      reviews={product.reviews}
+                      hasVariants={product.hasVariants}
+                      variants={product.variants}
+                      url={activeUrl}
+                      selectedVariant={selectedVariant}
+                      setSelectedVariant={setSelectedVariant}
+                    />
+                  </>
                 );
               })()}
-              <ProductDetails
-                description={product.description}
-                price={product.price}
-                originalPrice={product.originalPrice}
-                rating={product.rating}
-                reviews={product.reviews}
-                hasVariants={product.hasVariants}
-                variants={product.variants}
-                url={product.url}
-                selectedVariant={selectedVariant}
-                setSelectedVariant={setSelectedVariant}
-              />
             </div>
           </section>
         </div>

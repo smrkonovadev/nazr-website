@@ -14,20 +14,8 @@ export function ScaleWrapper({ children }: ScaleWrapperProps) {
 
 
   useEffect(() => {
-    const updateOrigin = () => {
-      setOriginY(`${window.scrollY + (window.innerHeight / 2)}px`);
-    };
-
-    // Set initial value
-    updateOrigin();
-
-    // Keep it updated as the user scrolls
-    window.addEventListener("scroll", updateOrigin, { passive: true });
-    return () => window.removeEventListener("scroll", updateOrigin);
-  }, []);
-
-  useEffect(() => {
     if (isMenuOpen) {
+      setOriginY(`${window.scrollY + (window.innerHeight / 2)}px`);
       // Lock the body scroll so the scaled page acts like a fixed card
       document.body.style.overflow = "hidden";
     } else {

@@ -18,7 +18,7 @@ export function ShopSaleHero() {
       // Sale ends on 22nd August 23:59:59 IST
       const now = new Date();
       let targetDate = new Date(now.getFullYear(), 7, 22, 23, 59, 59); // August is month index 7
-      
+
       // If today is past August 22 of current year, calculate from future or maintain 7-day relative display
       let diff = targetDate.getTime() - now.getTime();
       if (diff <= 0) {
@@ -41,19 +41,30 @@ export function ShopSaleHero() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleScrollToProducts = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (typeof window !== "undefined") {
+      if (window.location.hash === "#sip-check") {
+        window.dispatchEvent(new Event("hashchange"));
+      } else {
+        window.location.hash = "sip-check";
+      }
+    }
+  };
+
   const marqueeItem = "UPTO 35% OFF SITEWIDE";
   const repeatedMarquee = Array(12).fill(marqueeItem).join("  •  ");
 
   return (
     <div className="w-full relative mx-auto overflow-hidden bg-[#CCC6CD] text-[#161616] max-w-[1440px] max-md:w-[390px] max-md:min-h-[740px] md:h-[810px] flex flex-col justify-between">
-      
+
       {/* ---------------------------------------------------- */}
       {/* 1. TOP CROSSED PINK PROMO RIBBONS                    */}
       {/* ---------------------------------------------------- */}
-      <div className="absolute top-0 left-0 w-full max-md:h-[120px] md:h-[240px] pointer-events-none z-[25] overflow-hidden">
+      <div className="absolute top-0 left-0 w-full max-md:h-[130px] md:h-[240px] pointer-events-none z-[25] overflow-hidden">
         {/* Behind Ribbon: +6.35deg */}
         <div
-          className="absolute left-1/2 max-md:top-[30px] md:top-[60px] max-md:h-[32px] md:h-[50px] bg-[#a8005f] flex items-center select-none overflow-hidden z-[1]"
+          className="absolute left-1/2 max-md:top-[30px] md:top-[45px] max-md:h-[32px] md:h-[50px] bg-[#a8005f] flex items-center select-none overflow-hidden z-[1]"
           style={{
             width: '2600px',
             transform: 'translateX(-50%) rotate(6.35deg)',
@@ -67,12 +78,12 @@ export function ShopSaleHero() {
           </div>
         </div>
 
-        {/* Top/Front Ribbon: -4.89deg */}
+        {/* Top/Front Ribbon: -8.4deg */}
         <div
-          className="absolute left-1/2 max-md:top-[16px] md:top-[34px] max-md:h-[32px] md:h-[50px] bg-[#a8005f] flex items-center select-none overflow-hidden z-[2]"
+          className="absolute left-1/2 max-md:top-[30px] md:top-[45px] max-md:h-[32px] md:h-[50px] bg-[#a8005f] flex items-center select-none overflow-hidden z-[2]"
           style={{
             width: '2600px',
-            transform: 'translateX(-50%) rotate(-4.89deg)',
+            transform: 'translateX(-50%) rotate(-8.4deg)',
             transformOrigin: 'center center',
           }}
         >
@@ -102,7 +113,7 @@ export function ShopSaleHero() {
       {/* MOBILE LAYOUT (< md: 768px / 390px canvas)           */}
       {/* ==================================================== */}
       <div className="md:hidden relative z-[10] w-full min-h-[720px] flex flex-col justify-between items-center text-center pt-[92px] pb-[28px] px-3">
-        
+
         {/* TOP BLOCK: TIMER + HEADLINE */}
         <div className="flex flex-col items-center w-full">
           {/* COUNTDOWN TIMER */}
@@ -170,13 +181,14 @@ export function ShopSaleHero() {
           <p className="font-['Inter',_sans-serif] text-[#161616] text-[12px] leading-[140%] tracking-[-0.03em] max-w-[340px] px-2 mb-3 text-center">
             Independence means having the freedom to go where <br />
             you want, when you want. This Independence Day, make <br />
-            preparedness part of it. Shop the <span className="font-semibold text-[#161616]">NAZR sale, 15–22 August.</span>
+            preparedness part of it. Shop the <span className="font-semibold text-[#161616]">NAZR sale, 15 - 22 August.</span>
           </p>
 
           {/* CTA BUTTON */}
           <a
-            href="#products"
-            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-[#FFF1EB] transition-all duration-200 active:scale-[0.98] shadow-sm group px-4"
+            href="#pepper-spray"
+            onClick={handleScrollToProducts}
+            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-[#FFF1EB] transition-all duration-200 active:scale-[0.98] shadow-sm group px-4 cursor-pointer"
             style={{
               height: '38px',
               gap: '8px',
@@ -241,7 +253,7 @@ export function ShopSaleHero() {
       </div>
 
       <div className="hidden md:flex relative z-[10] w-full h-full flex-col justify-center pl-[40px] md:pl-[40px] pr-4 max-md:pt-[110px] md:pt-[130px] max-md:pb-[36px] md:pb-[48px] max-w-[690px]">
-        
+
         {/* COUNTDOWN TIMER SECTION */}
         <div className="flex flex-col mb-2 md:mb-3">
           {/* "Sale ends in" text */}
@@ -341,14 +353,15 @@ export function ShopSaleHero() {
         >
           Independence means having the freedom to go where you want, <br className="max-md:hidden" />
           when you want. This Independence Day, make preparedness part of <br className="max-md:hidden" />
-          it. Shop the <span className="font-semibold text-[#161616]">NAZR sale, 15–22 August.</span>
+          it. Shop the <span className="font-semibold text-[#161616]">NAZR sale, 15 - 22 August.</span>
         </p>
 
         {/* CTA BUTTON: Shop Sale */}
         <div>
           <a
-            href="#products"
-            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm group"
+            href="#pepper-spray"
+            onClick={handleScrollToProducts}
+            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm group cursor-pointer"
             style={{
               width: '199.25px',
               height: '51.69px',

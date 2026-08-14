@@ -47,13 +47,16 @@ export function ProductImage({
         </Link>
       </div>
 
-      {/* Product Image — static, no animation */}
+      {/* Product Image — clickable to PDP */}
       <div className="relative z-20 flex flex-col items-center justify-center flex-1 w-full min-h-[160px]">
-        <div
-          className={`relative ${imageWidthHeightClass} z-20 pointer-events-none ${imageTransformClass} max-md:!transform-none max-md:!translate-x-0 max-md:!translate-y-0 ${isEnlargedMobile
+        <Link
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`relative ${imageWidthHeightClass} z-20 pointer-events-auto cursor-pointer ${imageTransformClass} max-md:!transform-none max-md:!translate-x-0 max-md:!translate-y-0 ${isEnlargedMobile
             ? "max-md:!w-[270px] max-md:!h-[200px] max-md:scale-[1.65] max-md:origin-center"
-            : "max-md:!w-[280px] max-md:!h-[220px] max-md:scale-[1.25] max-md:origin-center"
-            } max-md:mx-auto max-md:relative`}
+            : "max-md:!w-[280px] max-md:!h-[220px] max-md:scale-[1.5] max-md:origin-center"
+            } max-md:mx-auto max-md:relative hover:opacity-95 transition-opacity`}
         >
           <Image
             src={imageSrc}
@@ -61,7 +64,7 @@ export function ProductImage({
             fill
             className="object-contain"
           />
-        </div>
+        </Link>
       </div>
     </div>
   );

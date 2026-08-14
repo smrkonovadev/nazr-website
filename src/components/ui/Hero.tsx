@@ -6,11 +6,27 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { ShaderBackground } from "@/components/ui/ShaderBackground";
 
-const HERO_SVGS = [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93];
+const LETTER_FILLER_IMAGES = [
+  "/images/letterfiller/fil2.jpeg",
+  "/images/letterfiller/fil7.jpeg",
+  "/images/letterfiller/fil12.jpeg",
+  "/images/letterfiller/fil3.jpeg",
+  "/images/letterfiller/fil8.jpeg",
+  "/images/letterfiller/fil13.jpeg",
+  "/images/letterfiller/fil4.jpeg",
+  "/images/letterfiller/fil9.jpeg",
+  "/images/letterfiller/fil14.jpeg",
+  "/images/letterfiller/fil5.jpeg",
+  "/images/letterfiller/fil10.jpeg",
+  "/images/letterfiller/fil15.jpeg",
+  "/images/letterfiller/fil11.jpeg",
+  "/images/letterfiller/fil16.jpeg",
+  "/images/letterfiller/fil17.jpeg",
+];
 
-function getHeroImage(index: number, salt: number = 0) {
-  const imgNum = HERO_SVGS[(index * 11 + salt * 7 + 13) % HERO_SVGS.length];
-  return `/images/image ${imgNum}.svg`;
+function getHeroImage(letterIndex: number) {
+  const imgIdx = letterIndex % LETTER_FILLER_IMAGES.length;
+  return LETTER_FILLER_IMAGES[imgIdx];
 }
 
 function TiltLetter({ char, index, delay, bgStyle, className, globalMouseX, globalMouseY, isLoaded }: any) {
@@ -127,6 +143,9 @@ export function Hero() {
     globalMouseY.set(-1000);
   }
 
+  let mobileCharCounter = 0;
+  let desktopCharCounter = 0;
+
   return (
     <section
       className="relative w-full overflow-hidden md:overflow-visible"
@@ -160,20 +179,24 @@ export function Hero() {
                   letterSpacing: "-0.03em",
                 }}
               >
-                {"THE WORLD".split('').map((char, i) => (
-                  <TiltLetter
-                    key={`m-tw-${i}`}
-                    char={char}
-                    index={i}
-                    className="text-image-mask"
-                    globalMouseX={globalMouseX}
-                    globalMouseY={globalMouseY}
-                    isLoaded={isLoaded}
-                    bgStyle={{
-                      backgroundImage: `url('${getHeroImage(i, 1)}')`,
-                    }}
-                  />
-                ))}
+                {"THE WORLD".split('').map((char, i) => {
+                  if (char === ' ') return <TiltLetter key={`m-tw-${i}`} char={char} index={i} className="" globalMouseX={globalMouseX} globalMouseY={globalMouseY} isLoaded={isLoaded} />;
+                  const cIdx = mobileCharCounter++;
+                  return (
+                    <TiltLetter
+                      key={`m-tw-${i}`}
+                      char={char}
+                      index={i}
+                      className="text-image-mask"
+                      globalMouseX={globalMouseX}
+                      globalMouseY={globalMouseY}
+                      isLoaded={isLoaded}
+                      bgStyle={{
+                        backgroundImage: `url('${getHeroImage(cIdx)}')`,
+                      }}
+                    />
+                  );
+                })}
               </motion.h1>
 
               {/* Line 2: STARES. */}
@@ -192,18 +215,19 @@ export function Hero() {
                 }}
               >
                 {"STARES.".split('').map((char, i) => {
-                  const idx = i + 9;
+                  if (char === ' ') return <TiltLetter key={`m-ss-${i}`} char={char} index={i} className="" globalMouseX={globalMouseX} globalMouseY={globalMouseY} isLoaded={isLoaded} />;
+                  const cIdx = mobileCharCounter++;
                   return (
                     <TiltLetter
                       key={`m-ss-${i}`}
                       char={char}
-                      index={idx}
+                      index={i}
                       className="text-image-mask"
                       globalMouseX={globalMouseX}
                       globalMouseY={globalMouseY}
                       isLoaded={isLoaded}
                       bgStyle={{
-                        backgroundImage: `url('${getHeroImage(idx, 2)}')`,
+                        backgroundImage: `url('${getHeroImage(cIdx)}')`,
                       }}
                     />
                   );
@@ -226,6 +250,8 @@ export function Hero() {
                 }}
               >
                 {"STARE BACK.".split('').map((char, i) => {
+                  if (char === ' ') return <TiltLetter key={`m-bk-${i}`} char={char} index={i} className="" globalMouseX={globalMouseX} globalMouseY={globalMouseY} isLoaded={isLoaded} />;
+                  const cIdx = mobileCharCounter++;
                   return (
                     <TiltLetter
                       key={`m-bk-${i}`}
@@ -236,7 +262,7 @@ export function Hero() {
                       globalMouseY={globalMouseY}
                       isLoaded={isLoaded}
                       bgStyle={{
-                        backgroundImage: `url('${getHeroImage(i, 3)}')`,
+                        backgroundImage: `url('${getHeroImage(cIdx)}')`,
                         animation: isLoaded ? `pinkToBlackWave 1.4s ease-out ${0.4 + (i * 0.12)}s backwards` : 'none'
                       }}
                     />
@@ -362,21 +388,25 @@ export function Hero() {
               }}
               className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[60px] md:left-[32px] text-[16.6vw] md:text-[130px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
             >
-              {"THE ".split('').map((char, i) => (
-                <TiltLetter
-                  key={`the-${i}`}
-                  char={char}
-                  index={i}
-                  className="text-image-mask"
-                  globalMouseX={globalMouseX}
-                  globalMouseY={globalMouseY}
-                  isLoaded={isLoaded}
-                  bgStyle={{
-                    backgroundImage: `url('${getHeroImage(i, 4)}')`,
-                    animation: `pinkToBlackWave 0.01s linear ${0.2 + (i * 0.09)}s backwards`
-                  }}
-                />
-              ))}
+              {"THE ".split('').map((char, i) => {
+                if (char === ' ') return <TiltLetter key={`the-${i}`} char={char} index={i} className="" globalMouseX={globalMouseX} globalMouseY={globalMouseY} isLoaded={isLoaded} />;
+                const cIdx = desktopCharCounter++;
+                return (
+                  <TiltLetter
+                    key={`the-${i}`}
+                    char={char}
+                    index={i}
+                    className="text-image-mask"
+                    globalMouseX={globalMouseX}
+                    globalMouseY={globalMouseY}
+                    isLoaded={isLoaded}
+                    bgStyle={{
+                      backgroundImage: `url('${getHeroImage(cIdx)}')`,
+                      animation: `pinkToBlackWave 0.01s linear ${0.2 + (i * 0.09)}s backwards`
+                    }}
+                  />
+                );
+              })}
             </motion.h1>
 
             <motion.h1
@@ -390,19 +420,20 @@ export function Hero() {
               className="font-[family-name:var(--font-bebas)] m-0 p-0 flex md:absolute md:top-[170px] md:left-[31px] text-[16.6vw] md:text-[275px] leading-[90%] tracking-[-0.03em] font-normal whitespace-nowrap z-20"
             >
               {"WORLD STARES".split('').map((char, i) => {
-                const globalIdx = i + 4;
+                if (char === ' ') return <TiltLetter key={`ws-${i}`} char={char} index={i} className="" globalMouseX={globalMouseX} globalMouseY={globalMouseY} isLoaded={isLoaded} />;
+                const cIdx = desktopCharCounter++;
                 return (
                   <TiltLetter
                     key={`ws-${i}`}
                     char={char}
-                    index={globalIdx}
+                    index={i}
                     className="text-image-mask"
                     globalMouseX={globalMouseX}
                     globalMouseY={globalMouseY}
                     isLoaded={isLoaded}
                     bgStyle={{
-                      backgroundImage: `url('${getHeroImage(globalIdx, 5)}')`,
-                      animation: `pinkToBlackWave 0.01s linear ${0.2 + (globalIdx * 0.09)}s backwards`
+                      backgroundImage: `url('${getHeroImage(cIdx)}')`,
+                      animation: `pinkToBlackWave 0.01s linear ${0.2 + (i * 0.09)}s backwards`
                     }}
                   />
                 );
@@ -431,21 +462,25 @@ export function Hero() {
               letterSpacing: '-0.03em',
             }}
           >
-            {"Stare Back".split('').map((char, i) => (
-              <TiltLetter
-                key={`w2-${i}`}
-                char={char}
-                index={i}
-                className="text-image-mask"
-                globalMouseX={globalMouseX}
-                globalMouseY={globalMouseY}
-                isLoaded={isLoaded}
-                bgStyle={{
-                  backgroundImage: `url('${getHeroImage(i, 6)}')`,
-                  animation: isLoaded ? `pinkToBlackWave 1.4s ease-out ${0.6 + (i * 0.12)}s backwards` : 'none'
-                }}
-              />
-            ))}
+            {"Stare Back".split('').map((char, i) => {
+              if (char === ' ') return <TiltLetter key={`w2-${i}`} char={char} index={i} className="" globalMouseX={globalMouseX} globalMouseY={globalMouseY} isLoaded={isLoaded} />;
+              const cIdx = desktopCharCounter++;
+              return (
+                <TiltLetter
+                  key={`w2-${i}`}
+                  char={char}
+                  index={i}
+                  className="text-image-mask"
+                  globalMouseX={globalMouseX}
+                  globalMouseY={globalMouseY}
+                  isLoaded={isLoaded}
+                  bgStyle={{
+                    backgroundImage: `url('${getHeroImage(cIdx)}')`,
+                    animation: isLoaded ? `pinkToBlackWave 1.4s ease-out ${0.6 + (i * 0.12)}s backwards` : 'none'
+                  }}
+                />
+              );
+            })}
           </motion.h1>
 
           {/* Subtext Paragraph */}

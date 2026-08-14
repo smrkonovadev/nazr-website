@@ -1,8 +1,31 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
+
+function HalfStar({ className = "w-3.5 h-3.5 text-[#FFF9EB]" }: { className?: string }) {
+  const id = React.useId();
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill={`url(#${id})`}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <defs>
+        <linearGradient id={id} x1="0" x2="1" y1="0" y2="0">
+          <stop offset="50%" stopColor="currentColor" />
+          <stop offset="50%" stopColor="transparent" />
+        </linearGradient>
+      </defs>
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
 
 interface TestimonialCard {
   id: number;
@@ -18,122 +41,142 @@ interface TestimonialCard {
 const cards: TestimonialCard[] = [
   {
     id: 1,
-    quote: "Finally, a safety product that doesn't disappear into my bag. It's always right where I need it.",
+    quote: "Finally, a safety product I actually carry. I've bought multiple safety tools before, but they always ended up forgotten at the bottom of my bag. This one is designed so well that it stays within reach, which makes all the difference.",
     name: "Priyanshi Mehta",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r1.png",
+    src: "/images/1rev.jpg",
     initialsColor: "#0A84FF",
   },
   {
     id: 2,
-    quote: "A thoughtful gift she'll actually use. She absolutely loved it.",
-    name: "Akshat Kanungo",
-    role: "Verified Buyer",
-    rating: "5.0/5",
-    stars: 5,
-    src: "/images/r2.png",
-    initialsColor: "#FF0E97",
-  },
-  {
-    id: 3,
-    quote: "It doesn't look like a safety product, and that's why I love it. People even call it cute.",
+    quote: "I love that it doesn't look like a typical safety product. It blends into my everyday essentials while still being easy to access when needed.People have even said it’s soo cute.",
     name: "Kavya Kapoor",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r3.png",
+    src: "/images/2rev.png",
+    initialsColor: "#FF0E97",
+  },
+  {
+    id: 3,
+    quote: "Tiny product. Huge peace of mind.",
+    name: "Sakshi Gupta",
+    role: "Verified Buyer",
+    rating: "4.0/5",
+    stars: 4,
+    src: "/images/3rev.png",
     initialsColor: "#0A84FF",
   },
   {
     id: 4,
-    quote: "The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail.",
-    name: "Shikha Verma",
+    quote: "I really like the way the packaging and the arc of the product. It has a recoil and seems very potent",
+    name: "Auman Subhasish Bose",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r4.png",
+    src: "/images/4rev.png",
     initialsColor: "#FF0E97",
   },
   {
     id: 5,
-    quote: "Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out.",
-    name: "Jiya Raul",
+    quote: "Used it at a concert last weekend and honestly forgot it was even there. That's what I liked most.",
+    name: "Muskaan Arora",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r5.png",
+    src: "/images/5rev.png",
     initialsColor: "#0A84FF",
   },
   {
     id: 6,
-    quote: "The kind of product you hope to never use. I liked it so much, I bought one for my sister too.",
-    name: "Shanaya Singh",
+    quote: "I wanted to gift her something thoughtful, and this felt much more meaningful than flowers or chocolates. She absolutely loved it.",
+    name: "Akshat S",
     role: "Verified Buyer",
-    rating: "5.0/5",
-    stars: 5,
-    src: "/images/r6.png",
+    rating: "4.0/5",
+    stars: 4,
+    src: "/images/6rev.png",
     initialsColor: "#FF0E97",
   },
   {
     id: 7,
-    quote: "Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed.",
-    name: "Somakshi Sen",
+    quote: "NAZR feels like it understands what women actually need. It just makes you feel more prepared.",
+    name: "Aina K",
     role: "Verified Buyer",
-    rating: "5.0/5",
+    rating: "4.5/5",
     stars: 5,
-    src: "/images/r7.png",
+    src: "/images/7rev.png",
     initialsColor: "#0A84FF",
   },
   {
     id: 8,
-    quote: "Gives me so much peace of mind during late evening commutes. Compact and discreet.",
-    name: "Ananya Deshmukh",
+    quote: "Such a clever idea. I hope every café starts keeping these.",
+    name: "Vaishnavi Iyer",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r8.png",
+    src: "/images/8rev.png",
     initialsColor: "#FF0E97",
   },
   {
     id: 9,
-    quote: "The build quality is premium and sturdy. It easily attaches to my keychain without feeling bulky.",
-    name: "Rhea Chawla",
+    quote: "Everything feels premium, from the packaging to the products themselves.",
+    name: "Riya Bhatia",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r9.png",
+    src: "/images/9rev.png",
     initialsColor: "#0A84FF",
   },
   {
     id: 10,
-    quote: "Essential everyday carry. The quick-access design makes all the difference when you need it fast.",
-    name: "Meera Nair",
+    quote: "Gifted this to my cousin before she moved to another city. She absolutely loved it.",
+    name: "Isha Kapoor",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r10.png",
+    src: "/images/10rev.png",
     initialsColor: "#FF0E97",
   },
   {
     id: 11,
-    quote: "Bought one for myself and two for my best friends. Highly recommend to everyone!",
-    name: "Devika Roy",
+    quote: "The glow-in-the-dark feature sounded minor at first, but it's surprisingly useful. I had kept it on my bag the whole day and then in the evening when I got home I realised that it was glowing as it was pitch dark, great detailing!",
+    name: "Shikha Verma",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r12.png",
+    src: "/images/11rev.png",
     initialsColor: "#0A84FF",
   },
   {
     id: 12,
-    quote: "Sleek, ergonomic, and extremely reliable. Gives me confidence whenever I'm out alone.",
-    name: "Aarushi Patel",
+    quote: "Every woman should know about NAZR. I came across the brand on Instagram and ended up ordering. The mission, the design, and the products all feel very well thought of :)",
+    name: "Jiya Raul",
+    role: "Verified Buyer",
+    rating: "4.0/5",
+    stars: 4,
+    src: "/images/12rev.png",
+    initialsColor: "#FF0E97",
+  },
+  {
+    id: 13,
+    quote: "Bought these before a girls' trip and everyone wanted a pack by the end.",
+    name: "Tanvi Desai",
     role: "Verified Buyer",
     rating: "5.0/5",
     stars: 5,
-    src: "/images/r13.png",
+    src: "/images/13rev.png",
+    initialsColor: "#0A84FF",
+  },
+  {
+    id: 14,
+    quote: "It's one of those products you hope you never need, but you're glad to have. So when I came across this, I got one for my sister too!",
+    name: "Shanaya Singh",
+    role: "Verified Buyer",
+    rating: "4.5/5",
+    stars: 5,
+    src: "/images/14rev.png",
     initialsColor: "#FF0E97",
   },
 ];
@@ -145,7 +188,7 @@ export function ShopProblemSteps() {
   return (
     <section className="w-full relative z-[60] bg-[#FFF1EB] py-10 md:py-16 overflow-hidden">
       <div className="w-full flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-12 lg:pl-[40px] pl-0 pr-0">
-        
+
         {/* Left Header Section */}
         <div className="w-full lg:w-[380px] shrink-0 flex flex-col items-start px-[20px] lg:px-0">
           {/* Dark Rating Badge */}
@@ -159,20 +202,20 @@ export function ShopProblemSteps() {
               ))}
             </div>
             <span className="font-['Inter',_sans-serif] text-[13px] font-medium text-[#FFF9EB]">
-              (4.5/5)
+              (4.8/5)
             </span>
           </div>
 
           {/* Title */}
           <h2
-            className="font-[family-name:var(--font-bebas)] font-normal text-left text-[#161616] text-[32px] sm:text-[36px] md:text-[40px] leading-[90%] tracking-[-0.03em] uppercase m-0"
+            className="font-[family-name:var(--font-bebas)] font-normal text-left text-[#161616] text-[46px] md:text-[48px] leading-[95%] md:leading-[90%] tracking-[-0.03em] uppercase m-0 whitespace-nowrap md:whitespace-normal"
             style={{
               // @ts-ignore
               leadingTrim: "cap-height",
             }}
           >
-            IT IS A LONG ESTABLISHED FACT<br />
-            THAT A READERIT IS A LONG
+            WHY WOMEN <br className="hidden md:block" />
+            CHOOSE NAZR.
           </h2>
 
           {/* Description */}
@@ -183,7 +226,7 @@ export function ShopProblemSteps() {
               leadingTrim: "cap-height",
             }}
           >
-            Discover why thousands are choosing NAZR for.
+            Discover what makes NAZR part of everyday preparedness.
           </p>
         </div>
 
@@ -215,12 +258,16 @@ export function ShopProblemSteps() {
                   {/* Stars + Rating */}
                   <div className="flex items-center gap-1.5 shrink-0">
                     <div className="flex items-center gap-0.5">
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <Star
-                          key={s}
-                          className={`w-3.5 h-3.5 ${s <= (card.stars || 5) ? "fill-[#FFF9EB] text-[#FFF9EB]" : "fill-transparent text-[#FFF9EB]/30"}`}
-                        />
-                      ))}
+                      {[1, 2, 3, 4, 5].map((s) => {
+                        const numRating = parseFloat(card.rating);
+                        if (s <= Math.floor(numRating)) {
+                          return <Star key={s} className="w-3.5 h-3.5 fill-[#FFF9EB] text-[#FFF9EB]" />;
+                        }
+                        if (s === Math.ceil(numRating) && numRating % 1 !== 0) {
+                          return <HalfStar key={s} className="w-3.5 h-3.5 text-[#FFF9EB]" />;
+                        }
+                        return <Star key={s} className="w-3.5 h-3.5 fill-transparent text-[#FFF9EB]" />;
+                      })}
                     </div>
                     <span className="font-['Inter',_sans-serif] text-[12px] font-medium text-[#FFF9EB]">
                       ({card.rating})

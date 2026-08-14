@@ -42,15 +42,20 @@ export function ShopProductThree() {
             </h3>
           </div>
 
-          {/* Product Image on Podium */}
+          {/* Product Image on Podium — clickable to PDP */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
-            <div className="relative w-[400px] h-[360px] md:w-[520px] md:h-[440px] z-20 pointer-events-none md:transform md:translate-x-12 md:translate-y-6">
+            <a
+              href="https://shop.nazrco.in/products/bundle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative w-[400px] h-[360px] md:w-[520px] md:h-[440px] z-20 pointer-events-auto cursor-pointer md:transform md:translate-x-12 md:translate-y-6 hover:opacity-95 transition-opacity"
+            >
               <Image unoptimized quality={100} src="/images/SHOPPRO3.webp"
                 alt="Nazr 360 Bundle"
                 fill
                 className="object-contain"
               />
-            </div>
+            </a>
           </div>
         </div>
 
@@ -78,10 +83,10 @@ export function ShopProductThree() {
                 <Star className="w-5 h-5 fill-[#161616]" />
                 <Star className="w-5 h-5 fill-[#161616]" />
                 <Star className="w-5 h-5 fill-[#161616]" />
-                <Star className="w-5 h-5 stroke-[#161616]" />
+                <Star className="w-5 h-5 fill-[#161616]" />
               </div>
               <span className="font-['Inter',_sans-serif] text-[12px] md:text-[14px] text-black font-medium mt-1">
-                (3.5 stars) • 10 reviews
+                (5 stars) • 18 reviews
               </span>
             </div>
           </div>
