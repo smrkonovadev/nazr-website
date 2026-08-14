@@ -11,6 +11,14 @@ export function Footer() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasPlayedRef = useRef<boolean>(false);
 
+  // Reset video playback state on page navigation so it plays on every page
+  useEffect(() => {
+    hasPlayedRef.current = false;
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+    }
+  }, [pathname]);
+
   useEffect(() => {
     if (!footerRef.current || !videoRef.current) return;
 
@@ -36,7 +44,7 @@ export function Footer() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
     pages: true,

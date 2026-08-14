@@ -60,7 +60,7 @@ export function NavigationMenu() {
       >
         {/* Single right-aligned flex container */}
         <div className="absolute top-0 bottom-0 right-6 md:right-10 flex flex-col max-md:w-[220px] md:w-[450px] z-10">
-          
+
           {/* Top right close button - fixed header at top */}
           <div className="flex justify-end w-full flex-shrink-0 pt-[12px] md:pt-[32px] pb-2 md:pb-4 z-20">
             <button
@@ -113,6 +113,7 @@ export function NavigationMenu() {
                 </span>
                 <a href="https://www.instagram.com/nazr.360/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">Instagram</a>
                 <a href="https://www.linkedin.com/company/nazrco/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">LinkedIn</a>
+
               </div>
 
               {/* Quick Links */}
