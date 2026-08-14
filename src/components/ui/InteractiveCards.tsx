@@ -53,7 +53,7 @@ const testimonialCards: any[] = [
     id: 1,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: "Finally, a safety product I actually carry. I've bought multiple safety tools before, but they always ended up forgotten at the bottom of my bag. This one is designed so well that it stays within reach, which makes all the difference.",
+    quote: "Finally, a safety product I actually carry. The others always ended up at the bottom of my bag.",
     name: "Priyanshi Mehta",
     rating: 5,
     rotation: -2
@@ -63,7 +63,7 @@ const testimonialCards: any[] = [
     id: 3,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "I love that it doesn't look like a typical safety product. It blends into my everyday essentials while still being easy to access when needed.People have even said it’s soo cute.",
+    quote: "Love that it doesn’t look like a safety product. Blends right in and is easy to grab.",
     name: "Kavya Kapoor",
     rating: 5,
     rotation: -2
@@ -103,7 +103,7 @@ const testimonialCards: any[] = [
     id: 11,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "I wanted to gift her something thoughtful, and this felt much more meaningful than flowers or chocolates. She absolutely loved it.",
+    quote: "Wanted to gift her something thoughtful—felt much more meaningful than flowers or chocolates.",
     name: "Akshat S",
     rating: 4,
     rotation: -2
@@ -153,7 +153,7 @@ const testimonialCards: any[] = [
     id: 21,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: "The glow-in-the-dark feature sounded minor at first, but it's surprisingly useful. I had kept it on my bag the whole day and then in the evening when I got home I realised that it was glowing as it was pitch dark, great detailing!",
+    quote: "The glow-in-the-dark feature seemed small, but it’s actually so useful. Love the detailing, GG NAZR!",
     name: "Shikha Verma",
     rating: 5,
     rotation: -2
@@ -163,7 +163,7 @@ const testimonialCards: any[] = [
     id: 23,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "Every woman should know about NAZR. I came across the brand on Instagram and ended up ordering. The mission, the design, and the products all feel very well thought of :)",
+    quote: "Found NAZR on Instagram and ended up ordering. Really love how well thought out everything is :)",
     name: "Jiya Raul",
     rating: 4,
     rotation: -2
@@ -183,7 +183,7 @@ const testimonialCards: any[] = [
     id: 27,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "It's one of those products you hope you never need, but you're glad to have. So when I came across this, I got one for my sister too!",
+    quote: "It's one of those products you hope you never need, but you're glad to have. Got one for my sister too!",
     name: "Shanaya Singh",
     rating: 4.5,
     rotation: -2
