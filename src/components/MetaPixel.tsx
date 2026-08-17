@@ -4,47 +4,47 @@ import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, Suspense } from "react";
 
-const PIXEL_ID = "2760095656193436";
+const PIXEL_ID = "27600956556193436";
 
 export function trackMetaViewContent(params: {
-  content_name: string;
-  content_ids?: string[];
-  content_type?: string;
-  value?: number;
-  currency?: string;
+    content_name: string;
+    content_ids?: string[];
+    content_type?: string;
+    value?: number;
+    currency?: string;
 }) {
-  if (typeof window !== "undefined" && (window as any).fbq) {
-    (window as any).fbq("track", "ViewContent", {
-      content_name: params.content_name,
-      content_ids: params.content_ids || [],
-      content_type: params.content_type || "product",
-      value: params.value,
-      currency: params.currency || "INR",
-    });
-  }
+    if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "ViewContent", {
+            content_name: params.content_name,
+            content_ids: params.content_ids || [],
+            content_type: params.content_type || "product",
+            value: params.value,
+            currency: params.currency || "INR",
+        });
+    }
 }
 
 function MetaPixelTracker() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "PageView");
-    }
-  }, [pathname, searchParams]);
+    useEffect(() => {
+        if (typeof window !== "undefined" && (window as any).fbq) {
+            (window as any).fbq("track", "PageView");
+        }
+    }, [pathname, searchParams]);
 
-  return null;
+    return null;
 }
 
 export default function MetaPixel() {
-  return (
-    <>
-      <Script
-        id="meta-pixel"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+    return (
+        <>
+            <Script
+                id="meta-pixel"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: `
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -57,20 +57,20 @@ export default function MetaPixel() {
             fbq('init', '${PIXEL_ID}');
             fbq('track', 'PageView');
           `,
-        }}
-      />
-      <Suspense fallback={null}>
-        <MetaPixelTracker />
-      </Suspense>
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`}
-          alt=""
-        />
-      </noscript>
-    </>
-  );
-}
+                }}
+            />
+            <Suspense fallback={null}>
+                <MetaPixelTracker />
+            </Suspense>
+            <noscript>
+                <img
+                    height="1"
+                    width="1"
+                    style={{ display: "none" }}
+                    src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`}
+                    alt=""
+                />
+            </noscript>
+        </>
+    );
+}
