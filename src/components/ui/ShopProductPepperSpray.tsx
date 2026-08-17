@@ -4,9 +4,20 @@ import Image from "next/image";
 import { useState } from "react";
 import { Star, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
+import { trackMetaViewContent } from "@/components/MetaPixel";
 
 export function ShopProductPepperSpray() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white" | null>(null);
+
+  const handleProductClick = () => {
+    trackMetaViewContent({
+      content_name: "On Me Pepper Spray",
+      content_ids: ["on-me-pepper-spray"],
+      content_type: "product",
+      value: 555,
+      currency: "INR",
+    });
+  };
 
   return (
     <section className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 10 }}>
@@ -35,9 +46,10 @@ export function ShopProductPepperSpray() {
           {/* Product Image — dynamic based on variant, clickable to PDP */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
             <a
-              href={selectedVariant === "white" ? "https://shop.nazrco.in/products/on-me-pepper-spray?variant=49831092453613" : "https://shop.nazrco.in/products/on-me-pepper-spray?variant=49831092420845"}
+              href={selectedVariant === "white" ? "https://shop.nazrco.in/products/on-me-spray?variant=49831092453613" : "https://shop.nazrco.in/products/on-me-spray?variant=49831092420845"}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleProductClick}
               className="relative w-[420px] h-[380px] md:w-[560px] md:h-[480px] z-20 pointer-events-auto cursor-pointer md:transform md:rotate-[20deg] md:translate-x-20 md:translate-y-10 hover:opacity-95 transition-opacity"
             >
               <Image unoptimized quality={100} src={selectedVariant === "white" ? "/images/whitesprayfinal.svg" : "/images/pinkspryfinal.svg"}
@@ -139,9 +151,10 @@ export function ShopProductPepperSpray() {
           {/* Action Buttons */}
           <div className="w-full max-w-[500px] flex justify-start">
             <a
-              href={selectedVariant === "white" ? "https://shop.nazrco.in/products/on-me-pepper-spray?variant=49831092453613" : "https://shop.nazrco.in/products/on-me-pepper-spray?variant=49831092420845"}
+              href={selectedVariant === "white" ? "https://shop.nazrco.in/products/on-me-spray?variant=49831092453613" : "https://shop.nazrco.in/products/on-me-spray?variant=49831092420845"}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleProductClick}
               className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
             >
               View More

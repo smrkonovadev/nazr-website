@@ -27,7 +27,11 @@ function HalfStar({ className = "w-4 h-4 text-black" }: { className?: string }) 
   );
 }
 
+import { trackMetaViewContent } from "@/components/MetaPixel";
+
 interface ProductDetailsProps {
+  productId?: string;
+  productTitle?: string;
   description: string;
   price: string;
   originalPrice?: string;
@@ -41,6 +45,8 @@ interface ProductDetailsProps {
 }
 
 export function ProductDetails({
+  productId,
+  productTitle,
   description,
   price,
   originalPrice,
@@ -52,6 +58,16 @@ export function ProductDetails({
   selectedVariant,
   setSelectedVariant,
 }: ProductDetailsProps) {
+  const handleProductClick = () => {
+    const numericPrice = parseFloat(price.replace(/[^0-9.]/g, "")) || 0;
+    trackMetaViewContent({
+      content_name: productTitle || (productId === "pepper-spray" ? "On Me Pepper Spray" : "Product"),
+      content_ids: [productId === "pepper-spray" ? "on-me-pepper-spray" : (productId || "product")],
+      content_type: "product",
+      value: numericPrice,
+      currency: "INR",
+    });
+  };
   return (
     <div className="w-full md:w-[40%] px-4 md:pl-8 md:pr-12 pb-6 md:pb-8 flex flex-col justify-end max-md:gap-3 flex-none md:flex-1 mt-auto">
       {/* Description Text */}
@@ -152,6 +168,9 @@ export function ProductDetails({
       <div className="w-full max-w-[440px] hidden md:flex justify-start">
         <Link
           href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleProductClick}
           className="w-full md:w-[211px] h-[48px] md:h-[54px] px-6 py-2.5 md:py-3 bg-[#2A2828] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] text-[20px] md:text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
         >
           View More

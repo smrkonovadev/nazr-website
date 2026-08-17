@@ -1,8 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { trackMetaViewContent } from "@/components/MetaPixel";
 
 interface ProductImageProps {
+  productId?: string;
+  productTitle?: string;
+  price?: string;
   titleLines: string[];
   imageSrc: string;
   imageAlt: string;
@@ -12,6 +16,9 @@ interface ProductImageProps {
 }
 
 export function ProductImage({
+  productId,
+  productTitle,
+  price,
   titleLines,
   imageSrc,
   imageAlt,
@@ -27,6 +34,17 @@ export function ProductImage({
     titleLines.join("").includes("360") ||
     titleLines.join("").includes("SIP");
 
+  const handleProductClick = () => {
+    const numericPrice = parseFloat((price || "").replace(/[^0-9.]/g, "")) || 0;
+    trackMetaViewContent({
+      content_name: productTitle || (productId === "pepper-spray" ? "On Me Pepper Spray" : "Product"),
+      content_ids: [productId === "pepper-spray" ? "on-me-pepper-spray" : (productId || "product")],
+      content_type: "product",
+      value: numericPrice,
+      currency: "INR",
+    });
+  };
+
   return (
     <div className="w-full flex-1 md:flex-none md:w-[60%] md:border-r border-black relative flex flex-col justify-start md:justify-end items-center overflow-hidden pt-4 md:pt-6 pb-2 md:py-20">
       {/* Huge Typography Background */}
@@ -41,6 +59,9 @@ export function ProductImage({
         
         <Link
           href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleProductClick}
           className="pointer-events-auto md:hidden px-4 py-2 bg-[#2A2828] text-[#FFF9EB] rounded-[6px] font-[family-name:var(--font-bebas)] text-[14px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase shrink-0 mt-1"
         >
           View More
@@ -53,6 +74,7 @@ export function ProductImage({
           href={url}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleProductClick}
           className={`relative ${imageWidthHeightClass} z-20 pointer-events-auto cursor-pointer ${imageTransformClass} max-md:!transform-none max-md:!translate-x-0 max-md:!translate-y-0 ${isEnlargedMobile
             ? "max-md:!w-[270px] max-md:!h-[200px] max-md:scale-[1.65] max-md:origin-center"
             : "max-md:!w-[280px] max-md:!h-[220px] max-md:scale-[1.5] max-md:origin-center"

@@ -7,6 +7,7 @@ import { ShopProblemSteps } from "@/components/ui/ShopProblemSteps";
 import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
+
 export const metadata: Metadata = {
   title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
   description: "Shop NAZR's safety essentials: On Me pepper spray (₹555), Sip Check drink covers (₹333), and the NAZR 360° bundle (₹999) — thoughtfully designed, always within reach.",

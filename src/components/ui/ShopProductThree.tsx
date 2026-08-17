@@ -5,6 +5,8 @@ import { useState, useRef } from "react";
 import { Star, ShoppingBag } from "lucide-react";
 import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 
+import { trackMetaViewContent } from "@/components/MetaPixel";
+
 export function ShopProductThree() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
   const sectionRef = useRef<HTMLElement>(null);
@@ -14,6 +16,16 @@ export function ShopProductThree() {
   });
   const clipBottom = useTransform(scrollYProgress, [0, 0.7], ["100%", "0%"]);
   const clipPath = useMotionTemplate`inset(0 0 ${clipBottom} 0)`;
+
+  const handleProductClick = () => {
+    trackMetaViewContent({
+      content_name: "NAZR 360° Bundle Pack",
+      content_ids: ["bundle"],
+      content_type: "product",
+      value: 999,
+      currency: "INR",
+    });
+  };
 
   return (
     <section ref={sectionRef} className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 30 }}>
@@ -48,6 +60,7 @@ export function ShopProductThree() {
               href="https://shop.nazrco.in/products/bundle"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleProductClick}
               className="relative w-[400px] h-[360px] md:w-[520px] md:h-[440px] z-20 pointer-events-auto cursor-pointer md:transform md:translate-x-12 md:translate-y-6 hover:opacity-95 transition-opacity"
             >
               <Image unoptimized quality={100} src="/images/SHOPPRO3.webp"
@@ -91,14 +104,17 @@ export function ShopProductThree() {
             </div>
           </div>
 
-          {/* Variant Selector */}
-
-
           {/* Action Buttons */}
           <div className="w-full max-w-[500px] flex justify-start">
-            <button className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase">
+            <a
+              href="https://shop.nazrco.in/products/bundle"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleProductClick}
+              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
+            >
               View More
-            </button>
+            </a>
           </div>
 
         </div>

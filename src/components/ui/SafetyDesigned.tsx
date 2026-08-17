@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { trackMetaViewContent } from "@/components/MetaPixel";
 
 export const carouselData = [
   {
@@ -11,7 +12,9 @@ export const carouselData = [
     title: "sip check",
     subtitle: "A drink safety sticker that helps protect your drink. Seals securely, removes easily, and helps deter unwanted tampering.",
     mobileSubtitle: "A drink safety sticker that helps protect your drink. Seals securely, removes easily, and helps deter unwanted tampering.",
-    link: "https://shop.nazrco.in/products/sip-check"
+    link: "https://shop.nazrco.in/products/sip-check",
+    price: 333,
+    name: "Sip Check Anti Drink Spike Stickers"
   },
   {
     id: "pepper-spray",
@@ -19,14 +22,18 @@ export const carouselData = [
     title: "ON ME SPRAY",
     subtitle: "A compact personal safety spray that stays within reach, glows in the dark, and doubles as a bag charm for everyday carry.",
     mobileSubtitle: "A compact personal safety spray that stays within reach, glows in the dark, and doubles as a bag charm for everyday carry.",
-    link: "https://shop.nazrco.in/products/on-me-pepper-spray"
+    link: "https://shop.nazrco.in/products/on-me-spray",
+    price: 555,
+    name: "On Me Pepper Spray"
   },
   {
     id: "nazr-360",
     image: "/images/NAZR360.webp",
     title: "NAZR 360°",
     subtitle: "The essentials, rethought. Personal safety and drink protection in one kit designed for wherever the day, or night, takes you.",
-    link: "https://shop.nazrco.in/products/bundle"
+    link: "https://shop.nazrco.in/products/bundle",
+    price: 999,
+    name: "NAZR 360° Bundle Pack"
   }
 ];
 
@@ -35,6 +42,19 @@ export function SafetyDesigned() {
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
   const lastWheelTime = useRef<number>(0);
+
+  const handleProductClick = () => {
+    const item = carouselData[currentIndex] as any;
+    if (item) {
+      trackMetaViewContent({
+        content_name: item.name || item.title,
+        content_ids: [item.id === "pepper-spray" ? "on-me-pepper-spray" : item.id],
+        content_type: "product",
+        value: item.price || 555,
+        currency: "INR",
+      });
+    }
+  };
 
   const handleNext = () => setCurrentIndex((prev) => (prev + 1) % carouselData.length);
   const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + carouselData.length) % carouselData.length);
@@ -204,9 +224,10 @@ export function SafetyDesigned() {
 
           {/* Get Yours Button */}
           <a
-            href={(carouselData[currentIndex] as any).link || "https://shop.nazrco.in/products/on-me-pepper-spray"}
+            href={(carouselData[currentIndex] as any).link || "https://shop.nazrco.in/products/on-me-spray"}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleProductClick}
             className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-colors whitespace-nowrap cursor-pointer mt-1"
             style={{
               width: "110px",
@@ -450,9 +471,10 @@ export function SafetyDesigned() {
 
           {/* Join Ecosystem Button with Owl Icon */}
           <a
-            href={(carouselData[currentIndex] as any).link || "https://shop.nazrco.in/products/on-me-pepper-spray"}
+            href={(carouselData[currentIndex] as any).link || "https://shop.nazrco.in/products/on-me-spray"}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleProductClick}
             className="flex items-center justify-center gap-2 text-[#FFF1EB] bg-[#FF0E97] px-6 h-[44px] rounded-[6px] hover:opacity-90 transition-opacity mt-2 shadow-md"
           >
             <svg viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[20px] h-[14px]">

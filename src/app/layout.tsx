@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bebas_Neue, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NavigationProvider } from "@/context/NavigationContext";
 import { NavigationMenu } from "@/components/ui/NavigationMenu";
@@ -11,6 +11,7 @@ import { GlobalZoom } from "@/components/ui/GlobalZoom";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 import { Footer } from "@/components/ui/Footer";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import MetaPixel from "@/components/MetaPixel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,7 +59,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${signPainter.variable} antialiased bg-white`} suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${signPainter.variable} antialiased bg-white`}
+        suppressHydrationWarning
+      >
+        <MetaPixel />
         <GlobalZoom />
         <LoadingScreen duration={4000} autoHide={true} />
         <NavigationProvider>

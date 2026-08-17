@@ -59,6 +59,9 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
                 return (
                   <>
                     <ProductImage
+                      productId={product.id}
+                      productTitle={product.titleLines.join(" ")}
+                      price={product.price}
                       titleLines={product.titleLines}
                       imageSrc={activeImageSrc}
                       imageAlt={activeImageAlt}
@@ -67,6 +70,8 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
                       url={activeUrl}
                     />
                     <ProductDetails
+                      productId={product.id}
+                      productTitle={product.titleLines.join(" ")}
                       description={product.description}
                       price={product.price}
                       originalPrice={product.originalPrice}

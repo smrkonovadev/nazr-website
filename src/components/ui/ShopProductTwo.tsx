@@ -29,6 +29,8 @@ function HalfStar({ className = "w-5 h-5 text-[#161616]" }: { className?: string
   );
 }
 
+import { trackMetaViewContent } from "@/components/MetaPixel";
+
 export function ShopProductTwo() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,6 +40,16 @@ export function ShopProductTwo() {
   });
   const clipBottom = useTransform(scrollYProgress, [0, 0.7], ["100%", "0%"]);
   const clipPath = useMotionTemplate`inset(0 0 ${clipBottom} 0)`;
+
+  const handleProductClick = () => {
+    trackMetaViewContent({
+      content_name: "Sip Check Anti Drink Spike Stickers",
+      content_ids: ["sip-check"],
+      content_type: "product",
+      value: 333,
+      currency: "INR",
+    });
+  };
 
   return (
     <section ref={sectionRef} className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 20 }}>
@@ -72,6 +84,7 @@ export function ShopProductTwo() {
               href="https://shop.nazrco.in/products/sip-check"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleProductClick}
               className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-auto cursor-pointer md:transform md:translate-x-20 md:translate-y-10 hover:opacity-95 transition-opacity"
             >
               <Image unoptimized quality={100} src="/images/productsip.webp"
@@ -115,14 +128,17 @@ export function ShopProductTwo() {
             </div>
           </div>
 
-          {/* Variant Selector */}
-
-
           {/* Action Buttons */}
           <div className="w-full max-w-[500px] flex justify-start">
-            <button className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase">
+            <a
+              href="https://shop.nazrco.in/products/sip-check"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleProductClick}
+              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
+            >
               View More
-            </button>
+            </a>
           </div>
 
         </div>

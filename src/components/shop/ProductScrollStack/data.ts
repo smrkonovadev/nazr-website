@@ -18,11 +18,11 @@ export const productsData: ProductData[] = [
     rating: 5,
     reviews: "(4.9 stars) • 47 reviews",
     hasVariants: true,
-    url: "https://shop.nazrco.in/products/on-me-pepper-spray",
+    url: "https://shop.nazrco.in/products/on-me-spray",
     gradientSrc: "/images/BLUEGRAD.svg",
     variants: [
-      { id: "pink", name: "Pink", imageSrc: "/images/spray-pink.webp", mainImageSrc: "/images/pinkspryfinal.svg", color: "#FF0E97", variantUrl: "https://shop.nazrco.in/products/on-me-pepper-spray?variant=49831092420845" },
-      { id: "white", name: "White", imageSrc: "/images/spray-white.webp", mainImageSrc: "/images/whitesprayfinal.svg", color: "#FFF9EB", variantUrl: "https://shop.nazrco.in/products/on-me-pepper-spray?variant=49831092453613" }
+      { id: "pink", name: "Pink", imageSrc: "/images/spray-pink.webp", mainImageSrc: "/images/pinkspryfinal.svg", color: "#FF0E97", variantUrl: "https://shop.nazrco.in/products/on-me-spray?variant=49831092420845" },
+      { id: "white", name: "White", imageSrc: "/images/spray-white.webp", mainImageSrc: "/images/whitesprayfinal.svg", color: "#FFF9EB", variantUrl: "https://shop.nazrco.in/products/on-me-spray?variant=49831092453613" }
     ],
     zIndex: 10
   },
