@@ -12,7 +12,7 @@ export function ShopProductPepperSpray() {
   const handleProductClick = () => {
     trackMetaViewContent({
       content_name: "On Me Pepper Spray",
-      content_ids: ["on-me-pepper-spray"],
+      content_ids: ["on-me-spray"],
       content_type: "product",
       value: 555,
       currency: "INR",

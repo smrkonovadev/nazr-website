@@ -48,7 +48,7 @@ export function SafetyDesigned() {
     if (item) {
       trackMetaViewContent({
         content_name: item.name || item.title,
-        content_ids: [item.id === "pepper-spray" ? "on-me-pepper-spray" : item.id],
+        content_ids: [item.id === "pepper-spray" ? "on-me-spray" : item.id],
         content_type: "product",
         value: item.price || 555,
         currency: "INR",

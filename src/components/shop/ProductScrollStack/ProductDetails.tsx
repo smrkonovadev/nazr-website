@@ -62,7 +62,7 @@ export function ProductDetails({
     const numericPrice = parseFloat(price.replace(/[^0-9.]/g, "")) || 0;
     trackMetaViewContent({
       content_name: productTitle || (productId === "pepper-spray" ? "On Me Pepper Spray" : "Product"),
-      content_ids: [productId === "pepper-spray" ? "on-me-pepper-spray" : (productId || "product")],
+      content_ids: [productId === "pepper-spray" ? "on-me-spray" : (productId || "product")],
       content_type: "product",
       value: numericPrice,
       currency: "INR",
