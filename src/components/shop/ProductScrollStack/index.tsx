@@ -104,7 +104,11 @@ export function ProductScrollStack({
             "--divider-opacity",
             self.progress >= 0.999 ? "0" : "1"
           );
-          mask.style.pointerEvents = self.progress >= 0.999 ? "none" : "auto";
+          
+          const clippedEl = mask.querySelector<HTMLElement>("[data-reveal-clipped]");
+          if (clippedEl) {
+            clippedEl.style.pointerEvents = self.progress >= 0.999 ? "none" : "auto";
+          }
 
           if (nextMask) {
             nextMask.style.setProperty(

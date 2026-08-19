@@ -5,6 +5,7 @@
   height: 100%;
   overflow: hidden;
   touch-action: pan-y;
+  pointer-events: none;
 }
 
 .clipped {
@@ -17,6 +18,7 @@
   will-change: clip-path;
   contain: paint;
   touch-action: pan-y;
+  pointer-events: auto;
 }
 
 .content {

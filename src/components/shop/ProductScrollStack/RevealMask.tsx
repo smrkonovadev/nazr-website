@@ -36,7 +36,7 @@ export function RevealMask({
       style={maskStyle}
       data-reveal-mask=""
     >
-      <div className={styles.clipped}>
+      <div className={styles.clipped} data-reveal-clipped="">
         <div className={styles.content}>{children}</div>
       </div>
       {showDivider && (
