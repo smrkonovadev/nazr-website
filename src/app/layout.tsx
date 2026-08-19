@@ -12,6 +12,7 @@ import { DesktopScaler } from "@/components/ui/DesktopScaler";
 import { Footer } from "@/components/ui/Footer";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import MetaPixel from "@/components/MetaPixel";
+import { PostHogProvider } from "@/components/PostHogProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,20 +64,22 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${signPainter.variable} antialiased bg-white`}
         suppressHydrationWarning
       >
-        <MetaPixel />
-        <GlobalZoom />
-        <LoadingScreen duration={4000} autoHide={true} />
-        <NavigationProvider>
-          <NavigationMenu />
-          <ScaleWrapper>
-            {children}
-            <DesktopScaler bgColor="#161616">
-              <Footer />
-            </DesktopScaler>
-          </ScaleWrapper>
-        </NavigationProvider>
-        <Analytics />
-        <SpeedInsights />
+        <PostHogProvider>
+          <MetaPixel />
+          <GlobalZoom />
+          <LoadingScreen duration={4000} autoHide={true} />
+          <NavigationProvider>
+            <NavigationMenu />
+            <ScaleWrapper>
+              {children}
+              <DesktopScaler bgColor="#161616">
+                <Footer />
+              </DesktopScaler>
+            </ScaleWrapper>
+          </NavigationProvider>
+          <Analytics />
+          <SpeedInsights />
+        </PostHogProvider>
       </body>
     </html>
   );
