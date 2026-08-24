@@ -46,9 +46,9 @@ export default function ShopPage() {
 
         {/* The Beige Canvas Section */}
         <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
-          <DesktopScaler bgColor="#CCC6CD" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
+          <DesktopScaler bgColor="#E8DDE0" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
             <div
-              className="w-full bg-[#CCC6CD] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden max-md:min-h-0 md:min-h-[810px]"
+              className="w-full bg-[#E8DDE0] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden max-md:min-h-0 md:min-h-[810px]"
             >
               <ShopSaleHero />
             </div>

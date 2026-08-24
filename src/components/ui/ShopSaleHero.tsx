@@ -15,16 +15,16 @@ export function ShopSaleHero() {
   useEffect(() => {
     setMounted(true);
     const calculateTime = () => {
-      // Sale ends on 22nd August 23:59:59 IST
+      // Sale ends on 31st of this month 12 midnight (23:59:59)
       const now = new Date();
-      let targetDate = new Date(now.getFullYear(), 7, 22, 23, 59, 59); // August is month index 7
+      // Target is 31st of the current month, 23:59:59
+      let targetDate = new Date(now.getFullYear(), now.getMonth(), 31, 23, 59, 59);
 
-      // If today is past August 22 of current year, calculate from future or maintain 7-day relative display
       let diff = targetDate.getTime() - now.getTime();
       if (diff <= 0) {
-        // Fallback for visual demonstration: 6 days 12 hours from current time
-        const demoEnd = new Date(now.getTime() + (6 * 24 * 3600 + 12 * 3600 + 56 * 60 + 12) * 1000);
-        diff = demoEnd.getTime() - now.getTime();
+        // Fallback for visual demonstration if expired: calculate towards next month end
+        targetDate = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+        diff = targetDate.getTime() - now.getTime();
       }
 
       if (diff > 0) {
@@ -56,7 +56,7 @@ export function ShopSaleHero() {
   const repeatedMarquee = Array(12).fill(marqueeItem).join("  •  ");
 
   return (
-    <div className="w-full relative mx-auto overflow-hidden bg-[#CCC6CD] text-[#161616] max-w-[1440px] max-md:w-[390px] max-md:min-h-[740px] md:h-[810px] flex flex-col justify-between">
+    <div className="w-full relative mx-auto overflow-hidden bg-[#E8DDE0] text-[#161616] max-w-[1440px] max-md:w-[390px] max-md:min-h-[820px] md:h-[810px] flex flex-col justify-between">
 
       {/* ---------------------------------------------------- */}
       {/* 1. TOP CROSSED PINK PROMO RIBBONS                    */}
@@ -96,12 +96,12 @@ export function ShopSaleHero() {
       </div>
 
       {/* ==================================================== */}
-      {/* MOBILE BACKGROUND SVG (mobilesales.svg)              */}
+      {/* MOBILE BACKGROUND SVG (RKMOBILE.svg)                */}
       {/* ==================================================== */}
       <div className="md:hidden absolute inset-0 w-full h-full pointer-events-none z-[1] overflow-hidden">
         <Image
-          src="/images/mobilesales.svg"
-          alt="NAZR Women's Independence Sale"
+          src="/images/RKMOBILE.svg"
+          alt="NAZR Gift Her Confidence"
           fill
           unoptimized
           priority
@@ -112,7 +112,7 @@ export function ShopSaleHero() {
       {/* ==================================================== */}
       {/* MOBILE LAYOUT (< md: 768px / 390px canvas)           */}
       {/* ==================================================== */}
-      <div className="md:hidden relative z-[10] w-full min-h-[720px] flex flex-col justify-between items-center text-center pt-[92px] pb-[28px] px-3">
+      <div className="md:hidden relative z-[10] w-full min-h-[800px] flex flex-col justify-between items-center text-center pt-[92px] pb-[16px] px-3">
 
         {/* TOP BLOCK: TIMER + HEADLINE */}
         <div className="flex flex-col items-center w-full">
@@ -167,27 +167,28 @@ export function ShopSaleHero() {
 
           {/* HEADLINE */}
           <h1 className="font-[family-name:var(--font-bebas)] text-[#161616] font-normal text-[48px] leading-[88%] tracking-[-0.03em] uppercase my-2 select-none text-center">
-            WOMEN&apos;S <br />
-            INDEPENDENCE SALE
+            GIFT HER <br />
+            CONFIDENCE
           </h1>
         </div>
 
-        {/* MIDDLE SPACER: REVEALS CENTER MODELS FROM mobilesales.svg */}
-        <div className="w-full flex-1 min-h-[260px] pointer-events-none" />
+        {/* MIDDLE SPACER: REVEALS CENTER MODELS FROM RKMOBILE.svg */}
+        <div className="w-full flex-1 min-h-[360px] pointer-events-none" />
 
         {/* BOTTOM BLOCK: PARAGRAPH + CTA */}
         <div className="flex flex-col items-center w-full">
           {/* PARAGRAPH */}
           <p className="font-['Inter',_sans-serif] text-[#161616] text-[12px] leading-[140%] tracking-[-0.03em] max-w-[340px] px-2 mb-3 text-center">
-            Independence means having the freedom to go where <br />
-            you want, when you want. This Independence Day, make <br />
-            preparedness part of it. Shop the <span className="font-semibold text-[#161616]">NAZR sale, 15 - 22 August.</span>
+            This Raksha Bandhan, go beyond the promise of protection. <br />
+            Give her something that helps her feel prepared, <br />
+            independent, and in control wherever she goes.
           </p>
 
           {/* CTA BUTTON */}
           <a
-            href="#pepper-spray"
-            onClick={handleScrollToProducts}
+            href="https://shop.nazrco.in/products/rakhi-bundle"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-[#FFF1EB] transition-all duration-200 active:scale-[0.98] shadow-sm group px-4 cursor-pointer"
             style={{
               height: '38px',
@@ -197,8 +198,8 @@ export function ShopSaleHero() {
             }}
           >
             <svg
-              width="18"
-              height="12"
+              width="24"
+              height="16.5"
               viewBox="0 0 35 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -224,13 +225,14 @@ export function ShopSaleHero() {
             <span
               style={{
                 fontFamily: "'Roboto', sans-serif",
-                fontWeight: 400,
+                fontWeight: 200,
+                fontStyle: 'normal',
                 fontSize: '14.5px',
                 lineHeight: '150%',
                 color: '#FFF1EB',
               }}
             >
-              Shop Sale
+              Shop Rakhi Hamper
             </span>
           </a>
         </div>
@@ -240,10 +242,10 @@ export function ShopSaleHero() {
       {/* DESKTOP LAYOUT (>= md: 768px / 1440px canvas)        */}
       {/* ==================================================== */}
       <div className="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-[1] overflow-hidden">
-        <div className="relative w-full h-full translate-x-[30px] md:translate-x-[75px]">
+        <div className="relative w-full h-full">
           <Image
-            src="/images/salehero.svg"
-            alt="NAZR Women's Independence Sale"
+            src="/images/RK.svg"
+            alt="NAZR Gift Her Confidence"
             fill
             unoptimized
             priority
@@ -335,7 +337,7 @@ export function ShopSaleHero() {
           </div>
         </div>
 
-        {/* HEADLINE: WOMEN'S INDEPENDENCE SALE (Matching 689x192 Figma Box) */}
+        {/* HEADLINE: GIFT HER CONFIDENCE */}
         <h1
           className="font-[family-name:var(--font-bebas)] text-[#161616] font-normal max-md:text-[46px] md:text-[88px] lg:text-[94px] leading-[90%] tracking-[-0.03em] uppercase my-2 md:my-3 select-none"
           style={{
@@ -343,27 +345,27 @@ export function ShopSaleHero() {
             leadingTrim: 'cap-height',
           }}
         >
-          WOMEN&apos;S <br />
-          INDEPENDENCE SALE
+          GIFT HER <br />
+          CONFIDENCE
         </h1>
 
         {/* PARAGRAPH DESCRIPTION */}
         <p
           className="font-['Inter',_sans-serif] text-[#161616] max-md:text-[14px] md:text-[17px] lg:text-[18px] leading-[140%] tracking-[-0.03em] max-w-[560px] mb-4 md:mb-6"
         >
-          Independence means having the freedom to go where you want, <br className="max-md:hidden" />
-          when you want. This Independence Day, make preparedness part of <br className="max-md:hidden" />
-          it. Shop the <span className="font-semibold text-[#161616]">NAZR sale, 15 - 22 August.</span>
+          This Raksha Bandhan, go beyond the promise of protection. <br className="max-md:hidden" />
+          Give her something that helps her feel prepared, independent, and in <br className="max-md:hidden" />
+          control wherever she goes.
         </p>
 
-        {/* CTA BUTTON: Shop Sale */}
+        {/* CTA BUTTON: Shop Rakhi Hamper */}
         <div>
           <a
-            href="#pepper-spray"
-            onClick={handleScrollToProducts}
+            href="https://shop.nazrco.in/products/rakhi-bundle"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm group cursor-pointer"
             style={{
-              width: '199.25px',
               height: '51.69px',
               paddingTop: '10.34px',
               paddingBottom: '10.34px',
@@ -376,8 +378,8 @@ export function ShopSaleHero() {
           >
             {/* NAZR Owl Icon */}
             <svg
-              width="26"
-              height="18"
+              width="34"
+              height="23"
               viewBox="0 0 35 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -401,19 +403,20 @@ export function ShopSaleHero() {
               />
             </svg>
 
-            {/* "Shop Sale" Text */}
+            {/* "Shop Rakhi Hamper" Text */}
             <span
               className="text-[#FFF1EB] select-none whitespace-nowrap"
               style={{
                 fontFamily: "'Roboto', sans-serif",
-                fontWeight: 400,
+                fontWeight: 200,
+                fontStyle: 'normal',
                 fontSize: '20.68px',
                 lineHeight: '150%',
                 letterSpacing: '0%',
                 color: '#FFF1EB',
               }}
             >
-              Shop Sale
+              Shop Rakhi Hamper
             </span>
           </a>
         </div>
