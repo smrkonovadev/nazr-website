@@ -225,7 +225,7 @@ export function ShopSaleHero() {
             <span
               style={{
                 fontFamily: "'Roboto', sans-serif",
-                fontWeight: 200,
+                fontWeight: 300,
                 fontStyle: 'normal',
                 fontSize: '14.5px',
                 lineHeight: '150%',
@@ -408,7 +408,7 @@ export function ShopSaleHero() {
               className="text-[#FFF1EB] select-none whitespace-nowrap"
               style={{
                 fontFamily: "'Roboto', sans-serif",
-                fontWeight: 200,
+                fontWeight: 300,
                 fontStyle: 'normal',
                 fontSize: '20.68px',
                 lineHeight: '150%',
