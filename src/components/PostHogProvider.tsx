@@ -25,7 +25,6 @@ function PostHogPageView() {
 }
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  /*
   useEffect(() => {
     const posthogKey =
       process.env.NEXT_PUBLIC_POSTHOG_KEY ||
@@ -43,9 +42,15 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       });
     }
   }, []);
-  */
 
-  return <>{children}</>;
+  return (
+    <PHProvider client={posthog}>
+      <Suspense fallback={null}>
+        <PostHogPageView />
+      </Suspense>
+      {children}
+    </PHProvider>
+  );
 }
 
 // Utility function to easily track custom events across the app
