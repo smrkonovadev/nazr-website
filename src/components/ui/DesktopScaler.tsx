@@ -108,10 +108,10 @@ export function DesktopScaler({
     width: "100%",
     position: "relative",
     overflow:
-      useTransformFallback || className.includes("overflow-hidden")
+      (!isMobile && useTransformFallback) || className.includes("overflow-hidden")
         ? "hidden"
         : undefined,
-    height: useTransformFallback ? contentHeight * scale : undefined,
+    height: (!isMobile && useTransformFallback) ? contentHeight * scale : undefined,
   };
 
   const innerStyle: React.CSSProperties & { [key: string]: any } = {

@@ -41,7 +41,7 @@ export function NavigationMenu() {
     { name: "About", path: "/about", hidden: true },
     { name: "Why Nazr", path: "/whynazrexists", hidden: true },
     { name: "Shop", path: "/shop" },
-    { name: "Nazr App", path: "/nazrapp", hidden: true },
+    { name: "Nazr App", path: "/nazrapp" },
     { name: "Helpline", path: "/helpline", hidden: true },
     { name: "Support", path: "/support" },
     { name: "Blog", path: "/blog", hidden: true },
@@ -49,7 +49,7 @@ export function NavigationMenu() {
 
   return (
     <div
-      className={`fixed inset-0 w-full h-[100vh] bg-[#F1E4DE] z-0 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none transition-opacity duration-0 delay-700"}`}
+      className={`fixed inset-0 w-full h-[100dvh] bg-[#F1E4DE] z-0 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none transition-opacity duration-0 delay-700"}`}
     >
       <div
         className="absolute top-1/2 right-0 origin-right w-[1440px] max-md:w-[390px]"

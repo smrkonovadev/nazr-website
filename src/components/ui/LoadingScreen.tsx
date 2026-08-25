@@ -37,9 +37,7 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
   useEffect(() => {
     // Prevent scrolling robustly on all devices
     document.documentElement.style.overflow = "hidden";
-    document.documentElement.style.touchAction = "none";
     document.body.style.overflow = "hidden";
-    document.body.style.touchAction = "none";
 
     const startTime = Date.now();
     const interval = setInterval(() => {
@@ -60,17 +58,13 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
             setTimeout(() => {
               setIsHidden(true);
               document.documentElement.style.overflow = "";
-              document.documentElement.style.touchAction = "";
               document.body.style.overflow = "";
-              document.body.style.touchAction = "";
               if (onComplete) onComplete();
             }, 600);
           }, 300);
         } else {
           document.documentElement.style.overflow = "";
-          document.documentElement.style.touchAction = "";
           document.body.style.overflow = "";
-          document.body.style.touchAction = "";
           if (onComplete) onComplete();
         }
       }
@@ -79,9 +73,7 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
     return () => {
       clearInterval(interval);
       document.documentElement.style.overflow = "";
-      document.documentElement.style.touchAction = "";
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
     };
   }, [duration, autoHide, onComplete]);
 

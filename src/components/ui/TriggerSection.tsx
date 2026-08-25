@@ -52,28 +52,33 @@ export function TriggerSection() {
 
   // Real-time viewport center progress calculation (100% bi-directional forward & reverse up to y=1820px)
   useEffect(() => {
-    let animationFrameId: number;
+    let ticking = false;
 
-    const updateScrollProgress = () => {
+    const calculateProgress = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const viewportCenter = window.innerHeight * 0.5;
-        // Calculate distance from top of section to viewport center relative to total line length (1820px)
         const relativeY = viewportCenter - rect.top;
         const progress = Math.max(0, Math.min(1, relativeY / 1900));
         rawScrollYProgress.set(progress);
       }
-      animationFrameId = requestAnimationFrame(updateScrollProgress);
+      ticking = false;
     };
 
-    window.addEventListener("scroll", updateScrollProgress, { passive: true });
-    window.addEventListener("resize", updateScrollProgress);
-    updateScrollProgress();
+    const onScrollOrResize = () => {
+      if (!ticking) {
+        requestAnimationFrame(calculateProgress);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
+    calculateProgress();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("scroll", updateScrollProgress);
-      window.removeEventListener("resize", updateScrollProgress);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
     };
   }, [rawScrollYProgress]);
 
