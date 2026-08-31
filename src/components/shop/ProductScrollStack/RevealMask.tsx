@@ -41,15 +41,20 @@ export function RevealMask({
       </div>
       {showDivider && (
         <div 
-          className={`${styles.divider} w-full flex items-center border-t border-b border-black shrink-0 px-6 md:px-12`}
-          style={{
-            backgroundColor: accent,
-            color: textColor
-          }}
+          className={`${styles.divider} w-full flex items-center border-t border-b border-black shrink-0 px-6 md:px-12 relative overflow-hidden`}
           aria-hidden="true"
         >
-          <div className={styles.dividerText}>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[28px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
+          {/* Background with gradient and noise */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{ background: accent }}
+          />
+          {/* Clean text with NO noise overlay */}
+          <div className={`${styles.dividerText} relative z-10 select-none`}>
+            <h2 
+              className="font-[family-name:var(--font-bebas)] text-[28px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0"
+              style={{ color: textColor }}
+            >
               {text}
             </h2>
           </div>

@@ -63,9 +63,8 @@ export default function NazrAppPage() {
 
         {/* Shield Mode Dark Section */}
         <DesktopScaler>
-          <ShieldModeSection />
+          <ShieldModeFeatures />
         </DesktopScaler>
-        <ShieldModeFeatures />
 
         {/* Trusted Circle Section */}
         <DesktopScaler bgColor="#F1E4DE">

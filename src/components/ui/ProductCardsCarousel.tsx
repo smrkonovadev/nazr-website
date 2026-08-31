@@ -2,24 +2,27 @@
 
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
+import { motion, useTransform, useMotionValue } from "framer-motion";
 
 const cards = [
   {
     id: 1,
     title: "1) ON ME SPRAY",
+    bgImage: "/images/PINKGRADPRO.svg",
     image: "/images/my-new-spray.webp",
     borderColor: "border-[#EC008C]",
   },
   {
     id: 2,
-    title: "2] ANTI DRINK SPIKE STICKERS",
+    title: "2) SIP CHECK STICKERS",
+    bgImage: "/images/PURPLEGRADPRO.svg",
     image: "/images/productsip.webp",
     borderColor: "border-[#4338CA]",
   },
   {
     id: 3,
-    title: "3] BUNDLE PACK",
+    title: "3) BUNDLE PACK",
+    bgImage: "/images/PINKGRADPRO.svg",
     image: "/images/product365.webp",
     borderColor: "border-[#EC008C]",
   }
@@ -31,7 +34,7 @@ export function ProductCardsCarousel() {
   const [xTranslation, setXTranslation] = useState(0);
 
   const renderTitle = (title: string) => {
-    const match = title.match(/^(\d+[)\]])(.*)$/);
+    const match = title.match(/^(\d+\))(.*)$/);
     if (match) {
       return (
         <>
@@ -49,8 +52,8 @@ export function ProductCardsCarousel() {
       if (rowRef.current && rowRef.current.parentElement) {
         const rowWidth = rowRef.current.scrollWidth;
         const parentWidth = rowRef.current.parentElement.offsetWidth;
-        // Add 24px right padding so the last card doesn't touch the screen edge
-        const translation = Math.max(0, rowWidth - parentWidth + 24);
+        // Add 40px right padding so the last card doesn't touch the screen edge
+        const translation = Math.max(0, rowWidth - parentWidth + 40);
         setXTranslation(translation);
       }
     };
@@ -101,21 +104,53 @@ export function ProductCardsCarousel() {
     };
   }, [scrollYProgress]);
 
-  // Map vertical scroll progress to negative horizontal translation, completing at 75% scroll to prevent unpinning lag under high zoom
-  const x = useTransform(scrollYProgress, [0, 0.75], [0, -xTranslation], { clamp: true });
+  // Map vertical scroll progress to negative horizontal translation
+  const x = useTransform(scrollYProgress, [0.05, 0.85], [0, -xTranslation], { clamp: true });
 
   const isSticky = xTranslation > 0;
 
   return (
-    <section ref={containerRef} className={`w-full bg-[#161616] relative z-50 ${isSticky ? 'h-[200vh]' : 'h-auto pb-[90px]'} max-md:h-auto max-md:pb-[90px]`}>
+    <section ref={containerRef} className={`w-full bg-[#161616] relative z-50 ${isSticky ? 'h-[260vh]' : 'h-auto pb-[60px]'} max-md:h-auto max-md:pb-[60px]`}>
 
-      {/* Desktop view only: horizontal pin scroll */}
-      <div className={`hidden md:block ${isSticky ? 'sticky top-0 h-screen overflow-hidden' : 'relative h-auto overflow-visible'} pt-[60px] w-full`}>
-        {/* Horizontal scroll container */}
-        <div className="w-full px-[40px]">
+      {/* Desktop view only: horizontal pin scroll with Header pinned inside */}
+      <div className={`hidden md:block ${isSticky ? 'sticky top-0 h-screen overflow-hidden' : 'relative h-auto overflow-visible'} pt-3 pb-3 w-full flex flex-col justify-between bg-[#161616]`}>
+        
+        {/* Header inside the sticky pin container */}
+        <div className="w-full flex flex-col items-center text-center px-4 mb-2 md:mb-3">
+          <h2
+            className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[48px] md:text-[90px] lg:text-[110px] xl:text-[120px] leading-[88%] tracking-[-0.03em] uppercase text-center w-full"
+            style={{
+              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "88%",
+              letterSpacing: "-0.03em",
+              color: "#FFF9EB",
+            }}
+          >
+            OUR PRODUCTS
+          </h2>
+
+          <p 
+            className="m-0 text-[#FFF9EB] font-normal text-[14px] md:text-[16px] xl:text-[20px] leading-[135%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-1.5 md:mt-2" 
+            style={{
+              fontFamily: "Inter, var(--font-inter), sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "135%",
+              letterSpacing: "-0.03em",
+              color: "#FFF9EB",
+            }}
+          >
+            Everything in the Nazr ecosystem is built with the one idea that protection fits into your life, not the other way around. Thoughtfully designed. Quietly powerful. Always within reach.
+          </p>
+        </div>
+
+        {/* Horizontal scroll container with viewport-aware card height to fit any screen height without cutoff */}
+        <div className="w-full px-[40px] pb-2 flex-1 flex items-center">
           <motion.div
             ref={rowRef}
-            className="flex gap-6 pr-[40px]"
+            className="flex gap-[28px] pr-[40px]"
             style={{
               width: "max-content",
               paddingBottom: "1px",
@@ -125,15 +160,140 @@ export function ProductCardsCarousel() {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className={`shrink-0 w-[calc(min(556px,72vh)*0.97)] h-[min(556px,72vh)] rounded-[24px] overflow-hidden relative group bg-[#111111] border-[3.5px] ${card.borderColor}`}
+                className={`shrink-0 rounded-[16px] overflow-hidden relative group border-[5px] ${card.borderColor}`}
+                style={{
+                  height: "min(556px, calc(100vh - 200px))",
+                  width: "calc(min(556px, calc(100vh - 200px)) * (542 / 556))",
+                  maxHeight: "556px",
+                  maxWidth: "542px",
+                  borderRadius: "16px",
+                  borderWidth: "5px",
+                }}
               >
+                {/* Gradient SVG Background */}
+                <img
+                  src={card.bgImage}
+                  alt={card.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                />
+
                 {/* Card Header Overlay */}
-                <div className="absolute top-0 left-0 right-0 p-8 flex justify-between items-start z-20 pointer-events-none">
-                  <h3 className="m-0 text-white font-[family-name:var(--font-bebas)] text-[34px] leading-[100%] tracking-normal uppercase drop-shadow-sm max-w-[65%] mt-1">
+                <div className="absolute top-0 left-0 right-0 p-6 lg:p-8 flex justify-between items-start gap-[24px] z-20 pointer-events-none">
+                  <h3
+                    className="m-0 text-[#FFF9EB] uppercase drop-shadow-sm max-w-[65%] mt-1"
+                    style={{
+                      fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                      fontWeight: 400,
+                      fontStyle: "normal",
+                      fontSize: "32px",
+                      lineHeight: "140%",
+                      letterSpacing: "0%",
+                      color: "#FFF9EB",
+                    }}
+                  >
                     {renderTitle(card.title)}
                   </h3>
 
-                  <button className="bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[14px] leading-[150%] px-5 py-2 rounded-[4px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+                  <button
+                    className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[14px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer"
+                    style={{
+                      width: "111px",
+                      height: "40px",
+                      fontFamily: "Inter, sans-serif",
+                    }}
+                  >
+                    Shop now
+                  </button>
+                </div>
+
+                {/* Product Image on Pedestal */}
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.84] group-hover:scale-[0.89]'}`}
+                  sizes="542px"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Mobile view only: Header + horizontal scroll track */}
+      <div className="block md:hidden w-full pt-6 pb-8 overflow-hidden bg-[#161616]">
+        {/* Mobile Header */}
+        <div className="w-full flex flex-col items-center text-center px-4 mb-5">
+          <h2
+            className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[44px] leading-[90%] tracking-[-0.03em] uppercase text-center w-full"
+            style={{
+              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "90%",
+              letterSpacing: "-0.03em",
+              color: "#FFF9EB",
+            }}
+          >
+            OUR PRODUCTS
+          </h2>
+
+          <p 
+            className="m-0 text-[#FFF9EB] font-normal text-[15px] leading-[140%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-[8px]" 
+            style={{
+              fontFamily: "Inter, var(--font-inter), sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "140%",
+              letterSpacing: "-0.03em",
+              color: "#FFF9EB",
+            }}
+          >
+            Everything in the Nazr ecosystem is built with the one idea that protection fits into your life, not the other way around. Thoughtfully designed. Quietly powerful. Always within reach.
+          </p>
+        </div>
+
+        {/* Mobile Cards Track */}
+        <div className="w-full overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div className="flex flex-row gap-4 px-4 w-max">
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className={`shrink-0 w-[320px] min-w-[320px] h-[340px] rounded-[16px] overflow-hidden relative group border-[4px] ${card.borderColor}`}
+                style={{ opacity: 1, transform: "rotate(0deg)" }}
+              >
+                {/* Gradient SVG Background */}
+                <img
+                  src={card.bgImage}
+                  alt={card.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                />
+
+                {/* Card Header Overlay */}
+                <div className="absolute top-0 left-0 right-0 p-5 flex justify-between items-start gap-[16px] z-20 pointer-events-none">
+                  <h3
+                    className="m-0 text-[#FFF9EB] uppercase drop-shadow-sm max-w-[65%] mt-1"
+                    style={{
+                      fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                      fontWeight: 400,
+                      fontStyle: "normal",
+                      fontSize: "26px",
+                      lineHeight: "140%",
+                      letterSpacing: "0%",
+                      color: "#FFF9EB",
+                    }}
+                  >
+                    {renderTitle(card.title)}
+                  </h3>
+
+                  <button
+                    className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[12px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer"
+                    style={{
+                      width: "95px",
+                      height: "36px",
+                      fontFamily: "Inter, sans-serif",
+                    }}
+                  >
                     Shop now
                   </button>
                 </div>
@@ -142,49 +302,15 @@ export function ProductCardsCarousel() {
                   src={card.image}
                   alt={card.title}
                   fill
-                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.82] group-hover:scale-[0.87]'}`}
-                  sizes="650px"
+                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.84] group-hover:scale-[0.89]'}`}
+                  sizes="320px"
                 />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Mobile view only: horizontal scroll track */}
-      <div className="block md:hidden w-full pt-4 pb-8 overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-        <div className="flex flex-row gap-4 px-4 w-max">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`shrink-0 w-[330px] min-w-[330px] h-[350px] rounded-[18px] overflow-hidden relative group bg-[#111111] border-[3px] ${card.borderColor}`}
-              style={{ opacity: 1, transform: "rotate(0deg)" }}
-            >
-              {/* Card Header Overlay */}
-              <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start z-20 pointer-events-none">
-                <h3 className="m-0 text-white font-[family-name:var(--font-bebas)] text-[26px] leading-[100%] tracking-normal uppercase drop-shadow-sm max-w-[65%] mt-1">
-                  {renderTitle(card.title)}
-                </h3>
-
-                <button className="bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] px-4 py-2 rounded-[4px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Shop now
-                </button>
-              </div>
-
-              <Image
-                src={card.image}
-                alt={card.title}
-                fill
-                className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.82] group-hover:scale-[0.87]'}`}
-                sizes="330px"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 90px beige transition bar at the bottom of the scroll track */}
-      <div className="absolute bottom-0 left-0 w-full h-[90px] bg-[#FFF1EB]" />
     </section>
   );
 }

@@ -1,21 +1,21 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Lottie from "lottie-react";
 
 const features = [
   {
-    title: "ARM/TURN ON",
-    bgColor: "#0E8DFF",
+    title: "ACTIVATE",
+    bgImage: "/images/PINKGRADPRO.svg",
     description:
-      "Start your journey by enabling Nazr to run smoothly and silently in the background. All safety features will be equipped to launch the moment it's necessary.",
+      "Start your journey by enabling Nazr to run smoothly and silently in the background. All safety features will be equipped to launch the moment it’s necessary.",
     lottieJson: "/images/SM ARM-Turn On.json",
     vid: "/images/vid8.mp4",
   },
   {
     title: "CHECK IN",
-    bgColor: "#F80090",
+    bgImage: "/images/PURPLEGRADPRO.svg",
     description:
       "At intervals you've set, Nazr sends a check-in reminder to make sure you're okay. One quick tap confirms you're safe and keeps your Trusted Circle informed.",
     lottieJson: "/images/SM Check In Timer.json",
@@ -23,7 +23,7 @@ const features = [
   },
   {
     title: "ARRIVAL REMINDER",
-    bgColor: "#F5C518",
+    bgImage: "/images/BLUEGRADPRO.svg",
     description:
       "Five minutes before your destination, NAZR prompts you to confirm your arrival or extend your journey if your plans have changed.",
     lottieJson: "/images/SM Check In Alert.json",
@@ -31,90 +31,127 @@ const features = [
   },
   {
     title: "ARRIVED OR SOS",
-    bgColor: "#03A781",
+    bgImage: "/images/PINKGRADPRO.svg",
     description:
-      "Miss a check-in? Your Trusted Circle is notified. If you're unreachable, they can initiate SOS, or NAZR will in 5 minutes. Arrived safely? End your journey.",
+      "A quiet pause in a busy day, captured in soft light and simple tones. A quiet pause in a busy day, captured in soft light and simple tones.",
     lottieJson: "/images/SM Arrived SOS.json",
     vid: "/images/vid11.mp4",
   },
 ];
 
 export function ShieldModeFeatures() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const rowRef = useRef<HTMLDivElement>(null);
-  const [xTranslation, setXTranslation] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Measure the total horizontal scrollable distance dynamically
-  useEffect(() => {
-    const calculateTranslation = () => {
-      if (rowRef.current && rowRef.current.parentElement) {
-        const rowWidth = rowRef.current.scrollWidth;
-        const parentWidth = rowRef.current.parentElement.offsetWidth;
-        // Add 24px right padding so the last card doesn't touch the screen edge
-        const translation = Math.max(0, rowWidth - parentWidth + 24);
-        setXTranslation(translation);
-      }
-    };
+  const handlePrev = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -403, behavior: "smooth" });
+    }
+  };
 
-    calculateTranslation();
-    
-    const timer = setTimeout(calculateTranslation, 150);
-    const interval = setInterval(calculateTranslation, 500);
-    
-    window.addEventListener("resize", calculateTranslation);
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-      window.removeEventListener("resize", calculateTranslation);
-    };
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Map vertical scroll progress to negative horizontal translation, completing at 75% scroll to prevent unpinning lag under high zoom
-  const x = useTransform(scrollYProgress, [0, 0.75], [0, -xTranslation], { clamp: true });
-
-  const isSticky = xTranslation > 0;
+  const handleNext = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 403, behavior: "smooth" });
+    }
+  };
 
   return (
-    <section ref={containerRef} className={`w-full bg-[#161616] relative z-50 ${isSticky ? 'h-[270vh]' : 'h-auto pb-[90px]'} max-md:h-auto`}>
-      
-      {/* Desktop view only: horizontal pin scroll */}
-      <div className={`hidden md:block ${isSticky ? 'sticky top-0 h-screen overflow-hidden' : 'relative h-auto overflow-visible'} flex flex-col justify-start pt-[60px] w-full`}>
-        <div className="w-full px-[40px]">
-          <motion.div
-            ref={rowRef}
-            className="flex gap-6 pr-[40px]"
-            style={{ 
-              width: "max-content", 
-              paddingBottom: "1px",
-              x: isSticky ? x : 0
+    <section className="w-full bg-[#161616] text-[#FFF9EB] pt-10 md:pt-14 pb-14 md:pb-20 relative z-50 overflow-hidden">
+      <div className="w-full max-w-[1440px] mx-auto flex flex-col">
+        
+        {/* Header Row — 40px left padding to match track */}
+        <div
+          className="w-full flex flex-col mb-8 md:mb-10 gap-3"
+          style={{ paddingLeft: "40px", paddingRight: "40px" }}
+        >
+          {/* Main Title */}
+          <h2
+            className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[44px] md:text-[120px] leading-[90%] tracking-[-0.03em] uppercase text-left"
+            style={{
+              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "90%",
+              letterSpacing: "-0.03em",
             }}
           >
-            {features.map((feature, index) => (
-              <FeatureCard key={index} feature={feature} index={index} />
-            ))}
-          </motion.div>
-        </div>
-      </div>
+            SHIELD MODE
+          </h2>
 
-      {/* Mobile view only: horizontal scroll track */}
-      <div className="block md:hidden w-full pt-4 pb-8 bg-[#161616] overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-        <div className="flex flex-row gap-[12px] pl-[12px] pr-[16px] w-max">
+          {/* Subtitle row + Nav buttons */}
+          <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <p
+              className="m-0 text-[#FFF9EB] font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-left max-w-[760px]"
+              style={{
+                fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
+                fontWeight: 400,
+                fontStyle: "normal",
+                lineHeight: "140%",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              Some journeys don't need intervention. They just need someone paying attention. Shield<br className="hidden md:inline" />{" "}
+              Mode stays with you, quietly checking in along the way.<br className="hidden md:inline" />{" "}
+              If you stop responding, it doesn't wait. It acts.
+            </p>
+
+            {/* Navigation Controls on the Right */}
+            <div className="flex items-center gap-3 flex-shrink-0 self-end md:self-auto">
+              <button
+                onClick={handlePrev}
+                className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none"
+                aria-label="Previous card"
+              >
+                <Image
+                  unoptimized
+                  src="/images/buttonl.svg"
+                  width={44}
+                  height={44}
+                  alt="Previous"
+                  className="w-[40px] h-[40px] md:w-[44px] md:h-[44px]"
+                />
+              </button>
+              <button
+                onClick={handleNext}
+                className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none"
+                aria-label="Next card"
+              >
+                <Image
+                  unoptimized
+                  src="/images/button r.svg"
+                  width={44}
+                  height={44}
+                  alt="Next"
+                  className="w-[40px] h-[40px] md:w-[44px] md:h-[44px]"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Carousel Track with explicit 40px left padding and scroll-padding */}
+        <div
+          ref={scrollRef}
+          className="w-full flex flex-row gap-[24px] overflow-x-auto snap-x snap-mandatory pb-4 pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          style={{
+            paddingLeft: "40px",
+            paddingRight: "40px",
+            scrollPaddingLeft: "40px",
+            scrollPaddingRight: "40px",
+          }}
+        >
           {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} index={index} isMobile={true} />
+            <FeatureCard key={index} feature={feature} />
           ))}
+          {/* Spacer to preserve right scroll boundary */}
+          <div className="shrink-0 w-[16px] md:w-[20px] pointer-events-none" />
         </div>
-      </div>
 
+      </div>
     </section>
   );
 }
 
-function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[0]; index: number; isMobile?: boolean }) {
+function FeatureCard({ feature }: { feature: (typeof features)[0] }) {
   const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
@@ -133,25 +170,21 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
 
   return (
     <div
-      className={`flex flex-col shrink-0 overflow-hidden ${
-        isMobile ? "w-[343px] min-w-[343px] h-[436.6px] shrink-0 rounded-[16px]" : "w-[85vw] md:w-[calc((100vw-80px-72px)/3.25)] md:h-auto md:aspect-[379/533] rounded-[24px]"
-      }`}
-      style={isMobile ? { opacity: 1, transform: "rotate(0deg)" } : undefined}
+      className="w-[310px] min-w-[310px] md:w-[378.67px] md:min-w-[378.67px] h-[500px] md:h-[533.3px] shrink-0 snap-start rounded-[16px] overflow-hidden flex flex-col shadow-2xl transition-all duration-300"
     >
-      {/* Top coloured image area */}
+      {/* Top coloured image area with gradient SVG background */}
       <div
-        className={`w-full relative overflow-hidden flex justify-center ${isMobile ? "h-[270px] items-center p-3" : "h-[320px] pt-[15px] md:h-auto md:aspect-[379/339] md:pt-[12%]"}`}
-        style={{
-          backgroundColor: feature.bgColor,
-        }}
+        className="w-full relative overflow-hidden flex justify-center items-center h-[306px] md:h-[339.3px]"
       >
-        <motion.div
-          className={`relative ${isMobile ? "w-full h-full max-w-[200px] max-h-[250px] flex items-center justify-center" : "w-[140px] h-[280px] md:w-[70%] md:h-auto md:aspect-[180/360]"}`}
-          initial={isMobile ? { y: 0 } : { y: 80 }}
-          whileInView={{ y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: isMobile ? 0 : 0.6, ease: "easeOut" }}
-        >
+        {/* Gradient SVG Background */}
+        <img
+          src={feature.bgImage}
+          alt={feature.title}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+
+        {/* Center Phone / Animation Mockup */}
+        <div className="relative z-10 w-[170px] md:w-[180px] h-[280px] md:h-[300px] flex items-center justify-center">
           {animationData ? (
             <Lottie
               animationData={animationData}
@@ -179,25 +212,39 @@ function FeatureCard({ feature, index, isMobile }: { feature: (typeof features)[
               <source src={feature.vid} type="video/mp4" />
             </video>
           )}
-        </motion.div>
+        </div>
       </div>
 
-      {/* Bottom content area */}
+      {/* Bottom Content Area */}
       <div
-        className={`w-full flex flex-col p-5 gap-2 ${isMobile ? "h-[166.6px] justify-center" : "min-h-[180px] md:p-[6.3%] md:gap-[2%] flex-1"}`}
-        style={{
-          backgroundColor: "#F1E4DE",
-        }}
+        className="w-full flex flex-col justify-start h-[194px] p-[24px] gap-[8px] bg-[#F1E4DF]"
       >
         <h3
-          className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[26px] md:text-[clamp(26px,2.2vw,36px)] leading-[110%] tracking-normal uppercase"
+          className="m-0 text-[#161616] uppercase"
+          style={{
+            fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+            fontWeight: 400,
+            fontStyle: "normal",
+            fontSize: "32px",
+            lineHeight: "130%",
+            letterSpacing: "0%",
+            color: "#161616",
+          }}
         >
           {feature.title}
         </h3>
 
         <p
-          className="m-0 text-[#161616]/80 font-normal text-[14px] md:text-[clamp(14px,1.1vw,18px)] leading-[150%] tracking-normal"
-          style={{ fontFamily: "Switzer, Inter, sans-serif" }}
+          className="m-0 text-[#161616]"
+          style={{
+            fontFamily: "Inter, var(--font-inter), sans-serif",
+            fontWeight: 400,
+            fontStyle: "normal",
+            fontSize: "16px",
+            lineHeight: "150%",
+            letterSpacing: "0%",
+            color: "#161616",
+          }}
         >
           {feature.description}
         </p>

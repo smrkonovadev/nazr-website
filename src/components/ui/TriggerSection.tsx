@@ -412,8 +412,18 @@ export function TriggerSection() {
           </p>
         </motion.div>
 
-        {/* Fifth Phone Mockup (Take Action) */}
-        <motion.div className="absolute left-[5px] top-[1680px] w-[198px] h-[401px] z-10" style={{ opacity: section5Opacity }}>
+        {/* TAKE ACTION Text (Left) */}
+        <motion.div className="absolute left-[-35px] top-[1740px] w-[250px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section5Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase">
+            TAKE ACTION
+          </h2>
+          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right">
+            Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.
+          </p>
+        </motion.div>
+
+        {/* Fifth Phone Mockup (Take Action - Right) */}
+        <motion.div className="absolute left-[235px] top-[1680px] w-[198px] h-[401px] z-10" style={{ opacity: section5Opacity }}>
           {mounted && actionAnimData ? (
             <Lottie
               key="action-lottie"
@@ -452,16 +462,6 @@ export function TriggerSection() {
               <source src="/images/vid7.mp4" type="video/mp4" />
             </video>
           )}
-        </motion.div>
-
-        {/* TAKE ACTION Text */}
-        <motion.div className="absolute left-[225px] top-[1740px] w-[250px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section5Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase">
-            TAKE ACTION
-          </h2>
-          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right">
-            Your Trusted Circle can track your location, access audio updates, view nearby emergency services, and stay connected all from one screen.
-          </p>
         </motion.div>
 
         {/* Fifth Black SOS Circle */}
@@ -531,14 +531,14 @@ export function TriggerSection() {
                 idx === 0
                   ? armAnimData
                   : idx === 1
-                  ? journeyAnimData
-                  : idx === 2
-                  ? broadcastAnimData
-                  : idx === 3
-                  ? guardianAnimData
-                  : idx === 4
-                  ? actionAnimData
-                  : null
+                    ? journeyAnimData
+                    : idx === 2
+                      ? broadcastAnimData
+                      : idx === 3
+                        ? guardianAnimData
+                        : idx === 4
+                          ? actionAnimData
+                          : null
               }
             />
           ))}
@@ -636,9 +636,8 @@ function MobileTriggerStep({
         </div>
 
         <div
-          className={`relative w-full ${
-            idx === 2 ? "max-w-[280px] h-[440px] -ml-2" : "max-w-[230px] h-[440px]"
-          } shrink-0 mt-2 overflow-visible`}
+          className={`relative w-full ${idx === 2 ? "max-w-[280px] h-[440px] -ml-2" : "max-w-[230px] h-[440px]"
+            } shrink-0 mt-2 overflow-visible`}
         >
           {lottieAnimationData ? (
             <Lottie
