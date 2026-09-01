@@ -158,8 +158,24 @@ export function TriggerSection() {
           </svg>
         </div>
 
-        {/* Top Phone Mockup */}
-        <motion.div className="absolute left-[-110px] top-[-110px] w-[198px] h-[401px] z-10" style={{ opacity: section1Opacity }}>
+        {/* TRIGGER Text (Left) */}
+        <motion.div className="absolute left-[-110px] top-[-50px] w-[260px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section1Opacity }}>
+          <h2
+            className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase"
+            style={{ fontWeight: 400, fontStyle: "normal" }}
+          >
+            One Tap. Immediate Response.
+          </h2>
+          <p
+            className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right"
+            style={{ fontWeight: 400, fontStyle: "normal" }}
+          >
+            Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.
+          </p>
+        </motion.div>
+
+        {/* Top Phone Mockup (Center) */}
+        <motion.div className="absolute left-[180px] top-[-110px] w-[198px] h-[401px] z-10" style={{ opacity: section1Opacity }}>
           {mounted && armAnimData ? (
             <Lottie
               key="arm-lottie"
@@ -180,22 +196,6 @@ export function TriggerSection() {
           ) : (
             <div className="w-full h-full bg-transparent" />
           )}
-        </motion.div>
-
-        {/* TRIGGER Text */}
-        <motion.div className="absolute left-[115px] top-[-50px] w-[260px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section1Opacity }}>
-          <h2
-            className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase"
-            style={{ fontWeight: 400, fontStyle: "normal" }}
-          >
-            One Tap. Immediate Response.
-          </h2>
-          <p
-            className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right"
-            style={{ fontWeight: 400, fontStyle: "normal" }}
-          >
-            Trigger SOS with a single tap. NAZR shares critical information with your Trusted Circle instantly with a 5-second window to cancel.
-          </p>
         </motion.div>
 
         {/* Top Pink SOS Circle */}
@@ -286,8 +286,18 @@ export function TriggerSection() {
           </p>
         </motion.div>
 
-        {/* Third Phone Mockup (Working in the background / Broadcast Fires) */}
-        <motion.div className="absolute left-[-170px] top-[800px] w-[425px] h-[401px] z-10" style={{ opacity: section3Opacity }}>
+        {/* WORKING IN THE BACKGROUND Text (Left) */}
+        <motion.div className="absolute left-[-180px] top-[900px] w-[240px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section3Opacity }}>
+          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase">
+            WORKING IN THE BACKGROUND
+          </h2>
+          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right">
+            The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.
+          </p>
+        </motion.div>
+
+        {/* Third Phone Mockup (Working in the background / Broadcast Fires - Center/Right) */}
+        <motion.div className="absolute left-[75px] top-[800px] w-[425px] h-[401px] z-10" style={{ opacity: section3Opacity }}>
           {mounted && broadcastAnimData ? (
             <Lottie
               key="broadcast-lottie"
@@ -316,16 +326,6 @@ export function TriggerSection() {
               <source src="/images/vid5.mp4" type="video/mp4" />
             </video>
           )}
-        </motion.div>
-
-        {/* BROADCAST FIRES Text */}
-        <motion.div className="absolute left-[260px] top-[900px] w-[250px] flex flex-col gap-1.5 z-10 text-right" style={{ opacity: section3Opacity }}>
-          <h2 className="m-0 text-[#161616] font-[family-name:var(--font-bebas)] font-normal text-[40px] leading-[90%] tracking-[-0.03em] text-right uppercase">
-            WORKING IN THE BACKGROUND
-          </h2>
-          <p className="m-0 text-[#161616] font-[family-name:var(--font-inter)] font-normal text-[16px] leading-[140%] tracking-[-0.03em] text-right">
-            The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.
-          </p>
         </motion.div>
 
         {/* Third Black SOS Circle (Right Side) */}

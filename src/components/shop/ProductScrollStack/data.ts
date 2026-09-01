@@ -2,9 +2,9 @@ import { ProductData } from "./types";
 
 const NOISE_DATA_URL = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
-export const BLUE_HEADER_GRADIENT = `${NOISE_DATA_URL}, linear-gradient(90deg, #171C38 0%, #1F2E61 15%, #26458C 30%, #3361B8 50%, #4785E0 70%, #80B8F5 85%, #D1EBFF 100%)`;
+export const BLUE_HEADER_GRADIENT = `${NOISE_DATA_URL}, linear-gradient(270deg, #171C38 0%, #1F2E61 15%, #26458C 30%, #3361B8 50%, #4785E0 70%, #80B8F5 85%, #D1EBFF 100%)`;
 
-export const PINK_HEADER_GRADIENT = `${NOISE_DATA_URL}, linear-gradient(90deg, #730A38 0%, #940D47 15%, #B80F59 35%, #D9146B 55%, #EB4D8C 72%, #F28CB8 85%, #FAD1E0 100%)`;
+export const PINK_HEADER_GRADIENT = `${NOISE_DATA_URL}, linear-gradient(270deg, #730A38 0%, #940D47 15%, #B80F59 35%, #D9146B 55%, #EB4D8C 72%, #F28CB8 85%, #FAD1E0 100%)`;
 
 export const productsData: ProductData[] = [
   {

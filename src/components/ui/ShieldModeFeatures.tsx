@@ -77,7 +77,7 @@ export function ShieldModeFeatures() {
             SHIELD MODE
           </h2>
 
-          {/* Subtitle row + Nav buttons */}
+          {/* Subtitle row */}
           <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-4">
             <p
               className="m-0 text-[#FFF9EB] font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-left max-w-[760px]"
@@ -93,38 +93,6 @@ export function ShieldModeFeatures() {
               Mode stays with you, quietly checking in along the way.<br className="hidden md:inline" />{" "}
               If you stop responding, it doesn't wait. It acts.
             </p>
-
-            {/* Navigation Controls on the Right */}
-            <div className="flex items-center gap-3 flex-shrink-0 self-end md:self-auto">
-              <button
-                onClick={handlePrev}
-                className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none"
-                aria-label="Previous card"
-              >
-                <Image
-                  unoptimized
-                  src="/images/buttonl.svg"
-                  width={44}
-                  height={44}
-                  alt="Previous"
-                  className="w-[40px] h-[40px] md:w-[44px] md:h-[44px]"
-                />
-              </button>
-              <button
-                onClick={handleNext}
-                className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none"
-                aria-label="Next card"
-              >
-                <Image
-                  unoptimized
-                  src="/images/button r.svg"
-                  width={44}
-                  height={44}
-                  alt="Next"
-                  className="w-[40px] h-[40px] md:w-[44px] md:h-[44px]"
-                />
-              </button>
-            </div>
           </div>
         </div>
 
@@ -144,6 +112,38 @@ export function ShieldModeFeatures() {
           ))}
           {/* Spacer to preserve right scroll boundary */}
           <div className="shrink-0 w-[16px] md:w-[20px] pointer-events-none" />
+        </div>
+
+        {/* Navigation Controls Centered Below Cards */}
+        <div className="w-full flex items-center justify-center gap-4 mt-6 md:mt-8">
+          <button
+            onClick={handlePrev}
+            className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none"
+            aria-label="Previous card"
+          >
+            <Image
+              unoptimized
+              src="/images/buttonl.svg"
+              width={44}
+              height={44}
+              alt="Previous"
+              className="w-[40px] h-[40px] md:w-[44px] md:h-[44px]"
+            />
+          </button>
+          <button
+            onClick={handleNext}
+            className="cursor-pointer transition-transform hover:scale-105 active:scale-95 focus:outline-none"
+            aria-label="Next card"
+          >
+            <Image
+              unoptimized
+              src="/images/button r.svg"
+              width={44}
+              height={44}
+              alt="Next"
+              className="w-[40px] h-[40px] md:w-[44px] md:h-[44px]"
+            />
+          </button>
         </div>
 
       </div>
@@ -184,7 +184,7 @@ function FeatureCard({ feature }: { feature: (typeof features)[0] }) {
         />
 
         {/* Center Phone / Animation Mockup */}
-        <div className="relative z-10 w-[170px] md:w-[180px] h-[280px] md:h-[300px] flex items-center justify-center">
+        <div className="relative z-10 w-[240px] md:w-[280px] h-[320px] md:h-[350px] flex items-center justify-center scale-[1.15] md:scale-[1.2]">
           {animationData ? (
             <Lottie
               animationData={animationData}

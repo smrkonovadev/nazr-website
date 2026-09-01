@@ -211,7 +211,13 @@ export function ProductCardsCarousel() {
                   src={card.image}
                   alt={card.title}
                   fill
-                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.84] group-hover:scale-[0.89]'}`}
+                  className={`z-10 transition-transform duration-500 ease-out ${
+                    card.id === 1
+                      ? 'object-contain scale-[0.92] group-hover:scale-[0.97] translate-y-2'
+                      : card.id === 2
+                      ? 'object-contain scale-[1.25] group-hover:scale-[1.30] translate-y-3'
+                      : 'object-contain scale-[1.05] group-hover:scale-[1.10] translate-y-2'
+                  }`}
                   sizes="542px"
                 />
               </div>
@@ -302,7 +308,13 @@ export function ProductCardsCarousel() {
                   src={card.image}
                   alt={card.title}
                   fill
-                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.84] group-hover:scale-[0.89]'}`}
+                  className={`z-10 transition-transform duration-500 ease-out ${
+                    card.id === 1
+                      ? 'object-contain scale-[0.86] translate-y-6'
+                      : card.id === 2
+                      ? 'object-contain scale-[1.08] translate-y-6'
+                      : 'object-contain scale-[0.96] translate-y-6'
+                  }`}
                   sizes="320px"
                 />
               </div>

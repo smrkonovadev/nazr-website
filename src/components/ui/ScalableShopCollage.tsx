@@ -8,10 +8,14 @@ export function ScalableShopCollage() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
+    const current = e.currentTarget;
+    const rect = current.getBoundingClientRect();
+    const scaleX = (current.offsetWidth > 0 ? rect.width / current.offsetWidth : 1) || 1;
+    const scaleY = (current.offsetHeight > 0 ? rect.height / current.offsetHeight : 1) || 1;
+
     setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: (e.clientX - rect.left) / scaleX,
+      y: (e.clientY - rect.top) / scaleY,
     });
   };
 
@@ -193,7 +197,14 @@ export function ScalableShopCollage() {
           <div className="absolute max-md:bottom-[24px] md:bottom-[4%] w-full flex justify-center z-[20]">
             <a
               href="#products"
-              className="font-['Switzer',_sans-serif] text-[#161616] max-md:text-[18px] md:text-[18px] font-semibold max-md:leading-[110%] md:leading-[110%] max-md:tracking-[-0.03em] md:tracking-[0.08em] uppercase underline underline-offset-4 decoration-[1.5px] hover:opacity-70 transition-opacity pointer-events-auto"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById("products");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="font-['Switzer',_sans-serif] text-[#161616] max-md:text-[18px] md:text-[18px] font-semibold max-md:leading-[110%] md:leading-[110%] max-md:tracking-[-0.03em] md:tracking-[0.08em] uppercase underline underline-offset-4 decoration-[1.5px] hover:opacity-70 transition-opacity pointer-events-auto cursor-pointer"
             >
               SHOP NOW
             </a>
