@@ -41,7 +41,7 @@ export function NavigationMenu() {
     { name: "About", path: "/about", hidden: true },
     { name: "Why Nazr", path: "/whynazrexists", hidden: true },
     { name: "Shop", path: "/shop" },
-    { name: "Nazr App", path: "/nazrapp" },
+    { name: "Nazr App", path: "/nazrapp", hidden: true },
     { name: "Helpline", path: "/helpline", hidden: true },
     { name: "Support", path: "/support" },
     { name: "Blog", path: "/blog", hidden: true },

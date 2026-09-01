@@ -119,9 +119,9 @@ export function Footer() {
                   <Link href="/shop" className={getLinkClass("/shop")}>
                     SHOP
                   </Link>
-                  <Link href="/nazrapp" className={`${getLinkClass("/nazrapp")} uppercase`}>
+                  {/* <Link href="/nazrapp" className={`${getLinkClass("/nazrapp")} uppercase`}>
                     NAZR APP
-                  </Link>
+                  </Link> */}
                 </div>
                 <div className="flex flex-col gap-1 md:gap-2">
                   <Link href="/support" className={getLinkClass("/support")}>

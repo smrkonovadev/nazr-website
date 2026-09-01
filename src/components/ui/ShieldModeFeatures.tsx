@@ -57,7 +57,7 @@ export function ShieldModeFeatures() {
   return (
     <section className="w-full bg-[#161616] text-[#FFF9EB] pt-10 md:pt-14 pb-14 md:pb-20 relative z-50 overflow-hidden">
       <div className="w-full max-w-[1440px] mx-auto flex flex-col">
-        
+
         {/* Header Row — 40px left padding to match track */}
         <div
           className="w-full flex flex-col mb-8 md:mb-10 gap-3"

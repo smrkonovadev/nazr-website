@@ -5,10 +5,11 @@ This file contains the exact JSX code and backup instructions to restore the hid
 ## Hidden Pages List:
 - **ABOUT** (`/about`)
 - **WHY NAZR** (`/whynazrexists`)
+- **NAZR APP** (`/nazrapp`)
 - **HELPLINE** (`/helpline`)
 - **BLOG** (`/blog`)
 
-> **Active Pages**: Home (`/`), Shop (`/shop`), Nazr App (`/nazrapp`), Support (`/support`), Login (`#`).
+> **Active Pages**: Home (`/`), Shop (`/shop`), Support (`/support`), Login (`#`).
 
 ---
 

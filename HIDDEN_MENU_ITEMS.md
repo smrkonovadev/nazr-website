@@ -12,11 +12,11 @@ The following menu items in the sliding navigation drawer have been hidden tempo
 | :--- | :--- | :--- |
 | **About** | `/about` | `hidden: true` |
 | **Why Nazr** | `/whynazrexists` | `hidden: true` |
-| **Nazr App** | `/nazrapp` | **Visible** |
+| **Nazr App** | `/nazrapp` | `hidden: true` |
 | **Helpline** | `/helpline` | `hidden: true` |
 | **Blog** | `/blog` | `hidden: true` |
 
-> **Currently Visible Menu Items**: Home (`/`), Shop (`/shop`), Nazr App (`/nazrapp`), Support (`/support`).
+> **Currently Visible Menu Items**: Home (`/`), Shop (`/shop`), Support (`/support`).
 
 ---
 
