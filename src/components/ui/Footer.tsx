@@ -62,6 +62,10 @@ export function Footer() {
       }`;
   };
 
+  if (pathname === "/girls-powered" || pathname === "/event" || pathname === "/events" || pathname === "/fight-club") {
+    return null;
+  }
+
   return (
     <footer ref={footerRef} className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[20px] md:pb-[30px] px-4 sm:px-6 md:px-[30px] flex flex-col justify-between relative z-20 overflow-visible md:overflow-hidden md:min-h-[max(680px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu">
       {/* Background Video with Hardware Acceleration for Mobile & Desktop */}
