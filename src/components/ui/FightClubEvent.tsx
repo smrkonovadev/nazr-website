@@ -45,153 +45,205 @@ export function FightClubEvent() {
         {/* =========================================================================
             SECTION 1: HERO - "FIGHT CLUB" (NAZR X WCMMA)
             ========================================================================= */}
-        <section className="relative w-full bg-[#1C1C1C] border border-[#3A3A3A] rounded-[2px] shadow-2xl overflow-hidden [clip-path:polygon(0_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%)]">
-          {/* Subtle grid background */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-20"
-            style={{
-              backgroundImage: "radial-gradient(#5A5A5A 1px, transparent 1px)",
-              backgroundSize: "24px 24px",
-            }}
-          />
-
-          {/* Top Metadata Header Bar */}
-          <div className="relative z-10 w-full flex flex-wrap items-center justify-between border-b border-[#333333] px-3 sm:px-5 py-2.5 bg-[#141414]/90 text-xs font-[family-name:var(--font-mono)] text-[#A0A0A0]">
-            {/* Left: NAZR X WCMMA badge with diagonal stripes + Date */}
-            <div className="flex items-center gap-3">
-              <div className="flex items-center border border-[#555555] px-2.5 py-0.5 font-bold tracking-wider text-white bg-[repeating-linear-gradient(45deg,#242424,#242424_2px,#181818_2px,#181818_6px)]">
-                NAZR X WCMMA
-              </div>
-              <span className="text-[#666666]">|</span>
-              <span className="text-white tracking-widest">26/09/26</span>
-            </div>
-
-            {/* Right: GPS Coordinates & City */}
-            <div className="flex items-center gap-3 sm:gap-4 mt-1 sm:mt-0 text-[11px] sm:text-xs">
-              <span className="text-[#888888] tracking-wider">28°28&apos;18.3&quot;N 77°05&apos;52.5&quot;E</span>
-              <span className="text-[#666666]">|</span>
-              <span className="text-white font-semibold tracking-widest">DELHI</span>
-            </div>
-          </div>
-
-          {/* Giant Display Title: "FIGHT CLUB" */}
-          <div className="relative z-10 w-full px-3 sm:px-6 pt-3 sm:pt-6 pb-2 border-b border-[#2E2E2E]">
-            <h1 className="w-full font-[family-name:var(--font-bebas)] text-[#5E5E5E] text-[76px] sm:text-[130px] md:text-[180px] lg:text-[218px] leading-[82%] tracking-[-0.03em] uppercase text-left select-none drop-shadow-sm">
-              FIGHT CLUB
-            </h1>
-          </div>
-
-          {/* Lower 3-Column Tactical Grid */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#2E2E2E]">
+        <div className="relative w-full bg-[#383A3D] p-[1px] shadow-2xl overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,34px_100%,0_calc(100%-34px))]">
+          <section className="relative w-full bg-[#222325] overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,33px_100%,0_calc(100%-33px))]">
             
-            {/* Column 1: Feature Tags, CTA Button & Owl Eyes (4 cols) */}
-            <div className="md:col-span-4 flex flex-col justify-between p-4 sm:p-6 space-y-6">
-              <div className="space-y-4">
-                <div className="border-b border-[#2E2E2E] pb-3">
-                  <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] leading-none tracking-wide uppercase">
-                    LIVE MMA ACTION
-                  </h3>
+            {/* Top Metadata Header Bar */}
+            <div className="relative z-10 w-full flex flex-wrap items-center justify-between border-b border-[#323438] px-3 sm:px-5 py-2.5 bg-[#1F2022] text-xs font-[family-name:var(--font-mono)]">
+              {/* Left: NAZR X WCMMA badge with diagonal stripes + Date */}
+              <div className="flex items-center gap-4">
+                <div className="flex items-center border border-[#4E5055] px-2.5 py-0.5 font-bold tracking-wider text-white text-[11px] bg-[repeating-linear-gradient(45deg,#2C2D30,#2C2D30_3px,#1E1F21_3px,#1E1F21_6px)] font-[family-name:var(--font-inter)]">
+                  NAZR X WCMMA
                 </div>
-                <div className="border-b border-[#2E2E2E] pb-3">
-                  <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] leading-none tracking-wide uppercase">
-                    REAL COMMUNITY
-                  </h3>
-                </div>
-                <div className="border-b border-[#2E2E2E] pb-3">
-                  <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] leading-none tracking-wide uppercase">
-                    NEW EXPERIENCES
-                  </h3>
-                </div>
+                <span className="text-[#A0A2A6] text-[11px] tracking-widest font-mono">26/09/26</span>
               </div>
 
-              {/* Button & Owl Eyes Footer */}
-              <div className="pt-2 space-y-4">
-                <button
-                  onClick={() => setIsBookingOpen(true)}
-                  className="w-full sm:w-auto px-5 py-2.5 bg-[#9C135A] hover:bg-[#B31767] active:scale-[0.98] border border-[#FF0E97]/40 text-white font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer text-center"
-                >
-                  Book Your Slot Now
-                </button>
-
-                {/* Dual Owl Eyes Icons */}
-                <div className="flex items-center gap-2 pt-2">
-                  <div className="w-12 h-10 border border-[#3E3E3E] bg-[#141414] p-1 flex items-center justify-center rounded-[2px]">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/fight-club/owl-eyes.png"
-                        alt="NAZR Owl Eyes"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-12 h-10 border border-[#3E3E3E] bg-[#141414] p-1 flex items-center justify-center rounded-[2px]">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/fight-club/owl-eyes.png"
-                        alt="NAZR Owl Eyes"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-                </div>
+              {/* Right: GPS Coordinates & City */}
+              <div className="flex items-center gap-5 mt-1 sm:mt-0 text-[11px]">
+                <span className="text-[#888B90] tracking-wider font-mono">28°28&apos;18.3&quot;N 77°05&apos;52.5&quot;E</span>
+                <span className="text-white font-medium tracking-widest font-mono">DELHI</span>
               </div>
             </div>
 
-            {/* Column 2: Event Summary Copy on Grid (4 cols) */}
-            <div className="md:col-span-4 flex items-center justify-center p-6 sm:p-8 bg-[#181818]/60 relative">
-              <div
-                className="absolute inset-0 pointer-events-none opacity-20"
-                style={{
-                  backgroundImage: "radial-gradient(#666 1px, transparent 1px)",
-                  backgroundSize: "16px 16px",
-                }}
-              />
-              <div className="relative z-10 border border-[#333333] p-5 sm:p-6 bg-[#161616]/90 rounded-[2px]">
-                <p className="font-[family-name:var(--font-inter)] text-[13px] sm:text-[14px] text-[#C4C4C4] leading-[165%] font-normal">
-                  NAZR X WCMMA brings you a full day of MMA, community and culture. Experience live MMA action, meet fighters, creators, and be part of the community that comes together to celebrate strength, confidence and safety.
-                </p>
-              </div>
+            {/* Giant Display Title: "FIGHT CLUB" */}
+            <div className="relative z-10 w-full px-3 sm:px-6 pt-2 sm:pt-4 pb-1 sm:pb-2 border-b border-[#323438]">
+              <h1 className="w-full font-[family-name:var(--font-bebas)] text-[#5A5D62] text-[74px] sm:text-[130px] md:text-[180px] lg:text-[218px] leading-[82%] tracking-[-0.03em] uppercase text-left select-none">
+                FIGHT CLUB
+              </h1>
             </div>
 
-            {/* Column 3: Hanma Fighter Graphic & Barcode (4 cols) */}
-            <div className="md:col-span-4 relative min-h-[320px] sm:min-h-[380px] bg-[#161616] overflow-hidden flex flex-col justify-end p-4">
-              {/* Background Fighter Image */}
-              <div className="absolute inset-0 z-0">
-                <Image
-                  src="/images/fight-club/hanma.jpg"
-                  alt="Hanma MMA Fighter"
-                  fill
-                  priority
-                  className="object-cover object-top opacity-90"
+            {/* Lower 3-Column Tactical Grid */}
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#323438]">
+              
+              {/* Column 1: Feature Tags, CTA Button (4 cols) */}
+              <div className="md:col-span-4 flex flex-col justify-between p-4 sm:p-6 relative">
+                {/* Tactical grid background with subtle crosshairs */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-25"
+                  style={{
+                    backgroundImage: "radial-gradient(#55585E 1px, transparent 1px)",
+                    backgroundSize: "28px 28px",
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-[#161616]/40 to-transparent" />
+
+                <div className="relative z-10 space-y-4">
+                  {/* Tag 1 */}
+                  <div className="relative pb-3 border-b border-[#323438]">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-white text-[30px] sm:text-[36px] leading-none tracking-wide uppercase">
+                      LIVE MMA ACTION
+                    </h3>
+                    <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
+                    <span className="absolute -bottom-[6px] right-20 text-[#55585E] text-[10px] select-none">+</span>
+                  </div>
+
+                  {/* Tag 2 */}
+                  <div className="relative pb-3 border-b border-[#323438]">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-white text-[30px] sm:text-[36px] leading-none tracking-wide uppercase">
+                      REAL COMMUNITY
+                    </h3>
+                    <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
+                    <span className="absolute -bottom-[6px] right-20 text-[#55585E] text-[10px] select-none">+</span>
+                  </div>
+
+                  {/* Tag 3 */}
+                  <div className="relative pb-3 border-b border-[#323438]">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-white text-[30px] sm:text-[36px] leading-none tracking-wide uppercase">
+                      NEW EXPERIENCES
+                    </h3>
+                    <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
+                    <span className="absolute -bottom-[6px] right-20 text-[#55585E] text-[10px] select-none">+</span>
+                  </div>
+                </div>
+
+                {/* CTA Button & Bottom Owl Eyes Box Alignment */}
+                <div className="relative z-10 pt-6 flex flex-col justify-between">
+                  <div>
+                    <button
+                      onClick={() => setIsBookingOpen(true)}
+                      className="px-4 py-2 bg-[#780D41] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-white font-[family-name:var(--font-inter)] text-xs font-medium tracking-wide rounded-[2px] transition-all shadow-md cursor-pointer"
+                    >
+                      Book Your Slot Now
+                    </button>
+                  </div>
+
+                  {/* Bottom Owl Box positioned at bottom right of Col 1 */}
+                  <div className="hidden md:flex justify-end pt-6 -mb-6 -mr-6">
+                    <div className="relative w-14 h-12 border-t border-l border-[#323438] bg-[#1F2022] flex items-center justify-center p-2">
+                      <span className="absolute -top-[6px] -left-[6px] text-[#55585E] text-[10px] select-none">+</span>
+                      <span className="absolute -top-[6px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
+                      <div className="relative w-full h-full">
+                        <Image
+                          src="/images/fight-club/owl-eyes.png"
+                          alt="NAZR Owl"
+                          fill
+                          className="object-contain invert brightness-200"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Bold "HANMA" Typography Layer */}
-              <div className="relative z-10 w-full text-center pb-2">
-                <h2 className="font-[family-name:var(--font-bebas)] text-[#DDD7CE] text-[64px] sm:text-[84px] leading-none tracking-normal uppercase drop-shadow-md">
-                  HANMA
-                </h2>
-                
-                {/* Barcode visual */}
-                <div className="w-full flex justify-center items-center gap-[2px] mt-1 opacity-70">
-                  {Array.from({ length: 38 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-white"
-                      style={{
-                        width: i % 4 === 0 ? "3px" : i % 2 === 0 ? "2px" : "1px",
-                        height: i % 5 === 0 ? "20px" : "15px",
-                      }}
-                    />
-                  ))}
+              {/* Column 2: Event Summary Copy on Blueprint Grid (4 cols) */}
+              <div className="md:col-span-4 flex flex-col justify-between p-4 sm:p-6 relative">
+                {/* Blueprint grid background */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-25"
+                  style={{
+                    backgroundImage: "radial-gradient(#55585E 1px, transparent 1px)",
+                    backgroundSize: "28px 28px",
+                  }}
+                />
+
+                {/* Centered Technical Text Box with Crosshair Marks */}
+                <div className="my-auto relative z-10 border border-[#323438] p-5 sm:p-6 bg-[#1F2022]/80 rounded-[2px]">
+                  {/* Top Crosshairs */}
+                  <div className="flex justify-between text-[#55585E] text-xs font-mono select-none -mt-7 mb-2 px-1">
+                    <span>+</span>
+                    <span>+</span>
+                    <span>+</span>
+                    <span>+</span>
+                  </div>
+
+                  <p className="font-[family-name:var(--font-inter)] text-[13px] sm:text-[13.5px] text-[#C6C9CE] leading-[170%] font-normal">
+                    NAZR X WCMMA brings you a full day of MMA, community and culture.<br />
+                    Experience live MMA action, meet fighters, creators, and be part of the community that comes together to celebrate strength, confidence and safety.
+                  </p>
+
+                  {/* Bottom Crosshairs */}
+                  <div className="flex justify-between text-[#55585E] text-xs font-mono select-none -mb-7 mt-3 px-1">
+                    <span>+</span>
+                    <span>+</span>
+                    <span>+</span>
+                    <span>+</span>
+                  </div>
+                </div>
+
+                {/* Bottom Owl Box positioned at bottom left of Col 2 */}
+                <div className="hidden md:flex justify-start pt-6 -mb-6 -ml-6 relative z-10">
+                  <div className="relative w-14 h-12 border-t border-r border-[#323438] bg-[#1F2022] flex items-center justify-center p-2">
+                    <span className="absolute -top-[6px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
+                    <span className="absolute -bottom-[6px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/images/fight-club/owl-eyes.png"
+                        alt="NAZR Owl"
+                        fill
+                        className="object-contain invert brightness-200"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Column 3: Hanma Fighter Graphic & Barcode (4 cols) */}
+              <div className="md:col-span-4 relative min-h-[380px] sm:min-h-[440px] bg-[#17181A] overflow-hidden flex flex-col justify-end p-4">
+                {/* Background Fighter Image */}
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src="/images/fight-club/hanma-fighter.jpg"
+                    alt="Hanma MMA Fighter"
+                    fill
+                    priority
+                    className="object-cover object-top opacity-95"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#17181A] via-[#17181A]/30 to-transparent" />
+                </div>
+
+                {/* Bold "HANMA" Typography Layer */}
+                <div className="relative z-10 w-full text-center pb-2">
+                  <h2 className="font-[family-name:var(--font-bebas)] text-[#D8D5CC] text-[68px] sm:text-[88px] leading-none tracking-normal uppercase drop-shadow-md">
+                    HANMA
+                  </h2>
+                  
+                  {/* Technical Barcode Graphic */}
+                  <div className="w-full flex justify-center items-end gap-[2px] mt-1 opacity-80">
+                    <div className="bg-[#D8D5CC] w-[2px] h-[22px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[3px] h-[20px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[2px] h-[18px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[4px] h-[22px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[2px] h-[18px]" />
+                    <div className="bg-[#D8D5CC] w-[3px] h-[20px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[2px] h-[22px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[3px] h-[18px]" />
+                    <div className="bg-[#D8D5CC] w-[2px] h-[20px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[4px] h-[22px]" />
+                    <div className="bg-[#D8D5CC] w-[1px] h-[16px]" />
+                    <div className="bg-[#D8D5CC] w-[2px] h-[18px]" />
+                    <div className="bg-[#D8D5CC] w-[3px] h-[22px]" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
 
         {/* =========================================================================
