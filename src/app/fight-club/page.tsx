@@ -3,12 +3,12 @@ import { FightClubEvent } from "@/components/ui/FightClubEvent";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
 export const metadata: Metadata = {
-  title: "NAZR X WCMMA - FIGHT CLUB | 26 Sept 2026 Delhi",
+  title: "NAZR X WCMMA - FIGHT SOCIAL | 26 Sept 2026 Delhi",
   description:
     "NAZR X WCMMA brings you a full day of live MMA action, community and culture on Sep 26, 2026 in Delhi. Experience live fights, meet creators, and celebrate safety and strength.",
   keywords: [
     "NAZR X WCMMA",
-    "Fight Club Delhi",
+    "Fight Social Delhi",
     "MMA event Delhi",
     "women safety ecosystem",
     "WCMMA live fights",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "/fight-club",
   },
   openGraph: {
-    title: "NAZR X WCMMA - FIGHT CLUB",
+    title: "NAZR X WCMMA - FIGHT SOCIAL",
     description: "Live MMA action, real community, new experiences. Sep 26, 2026 Delhi.",
     url: "https://www.nazrco.in/fight-club",
     siteName: "NAZR",
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 
 export default function FightClubPage() {
   return (
-    <main className="flex flex-col min-h-screen bg-[#EBE6DF] w-full">
-      <DesktopScaler desktopWidth={1280} bgColor="#EBE6DF">
+    <main className="flex flex-col min-h-screen bg-[#F1E4DE] w-full">
+      <DesktopScaler desktopWidth={1280} bgColor="#F1E4DE">
         <FightClubEvent />
       </DesktopScaler>
     </main>
