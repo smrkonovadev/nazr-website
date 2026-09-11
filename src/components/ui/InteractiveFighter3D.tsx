@@ -1,10 +1,21 @@
 "use client";
 
 import React, { useRef, useState, useCallback, useEffect } from "react";
+import Image from "next/image";
 
 const fighters = [
-  { id: 1, name: "FIGHTER 1", video: "/images/fight-club/fighter-1%20(1).mp4" },
-  { id: 2, name: "FIGHTER 2", video: "/images/fight-club/fighter-2%20(1).mp4" },
+  {
+    id: 1,
+    name: "FIGHTER 1",
+    video: "/images/fight-club/fighter-1%20(1).mp4",
+    image: "/images/fight-club/fighter-1-thumb.webp",
+  },
+  {
+    id: 2,
+    name: "FIGHTER 2",
+    video: "/images/fight-club/fighter-2%20(1).mp4",
+    image: "/images/fight-club/fighter-2-thumb.webp",
+  },
 ];
 
 export function InteractiveFighter3D({ className = "" }: { className?: string }) {
@@ -87,6 +98,7 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
         <video
           ref={videoRef}
           src={fighters[0].video}
+          poster={fighters[activeFighter].image}
           muted
           playsInline
           preload="auto"
@@ -116,13 +128,14 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
                 : 'border-[#3E4044] hover:border-[#55585E]'
             }`}
           >
-            {/* Thumbnail */}
-            <video
-              src={fighter.video}
-              muted
-              playsInline
-              preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover object-center group-hover/card:scale-110 transition-transform duration-300"
+            {/* Thumbnail Image */}
+            <Image
+              src={fighter.image}
+              alt={fighter.name}
+              fill
+              sizes="(max-width: 640px) 56px, 68px"
+              className="object-cover object-center group-hover/card:scale-110 transition-transform duration-300"
+              priority
             />
 
             {/* Overlay */}
