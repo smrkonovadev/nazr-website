@@ -79,10 +79,10 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
 
   return (
     <div
-      className={`order-1 md:order-3 md:col-span-4 relative min-h-[340px] sm:min-h-[420px] md:min-h-[480px] overflow-hidden flex flex-col justify-between p-4 select-none ${className}`}
+      className={`order-1 md:order-3 md:col-span-4 relative min-h-[540px] sm:min-h-[580px] md:min-h-[480px] overflow-hidden flex flex-col justify-between p-4 select-none ${className}`}
     >
       {/* Main Video Display */}
-      <div className="relative flex-1 w-full rounded-[10px] overflow-hidden bg-[#3e3d48]">
+      <div className="relative flex-1 w-full aspect-[4/5] md:aspect-auto md:h-auto rounded-[10px] overflow-hidden bg-[#24232a]">
         {/* Video */}
         <video
           ref={videoRef}
@@ -94,15 +94,14 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
         />
 
         {/* Fighter name overlay */}
-        <div className="absolute inset-x-0 top-[45%] -translate-y-1/2 z-10 text-center pointer-events-none mix-blend-difference">
-          <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[60px] sm:text-[80px] md:text-[96px] leading-none tracking-tight uppercase select-none opacity-80">
-            {fighters[activeFighter].name}
+        <div className="absolute inset-x-0 top-[45%] -translate-y-1/2 z-10 text-center pointer-events-none mix-blend-difference px-2">
+          <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[48px] leading-[0.95] tracking-tight uppercase select-none opacity-80">
+            FIGHTER<br />REVEALING SOON
           </h2>
         </div>
 
-        {/* Bottom vignette */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#3e3d48]/80 via-transparent to-transparent z-[5] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3e3d48]/60 via-transparent to-transparent pointer-events-none" />
+        {/* Subtle Bottom vignette */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#24232a]/60 via-transparent to-transparent z-[5] pointer-events-none" />
       </div>
 
       {/* Fighter Thumbnail Cards */}
@@ -111,7 +110,7 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
           <button
             key={fighter.id}
             onClick={() => handleFighterSelect(index)}
-            className={`relative w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] rounded-[8px] sm:rounded-[10px] overflow-hidden border transition-all duration-300 cursor-pointer group/card bg-[#3e3d48] ${
+            className={`relative w-[56px] h-[70px] sm:w-[68px] sm:h-[85px] rounded-[8px] sm:rounded-[10px] overflow-hidden border transition-all duration-300 cursor-pointer group/card bg-[#24232a] ${
               activeFighter === index
                 ? 'border-[#F1E4DE]/60'
                 : 'border-[#3E4044] hover:border-[#55585E]'
@@ -123,20 +122,13 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
               muted
               playsInline
               preload="metadata"
-              className="absolute inset-0 w-full h-full object-contain object-center group-hover/card:scale-110 transition-transform duration-300"
+              className="absolute inset-0 w-full h-full object-cover object-center group-hover/card:scale-110 transition-transform duration-300"
             />
 
             {/* Overlay */}
             <div className={`absolute inset-0 transition-opacity duration-300 ${
               activeFighter === index ? 'bg-transparent' : 'bg-black/40 group-hover/card:bg-black/20'
             }`} />
-
-            {/* Label */}
-            <div className="absolute inset-x-0 bottom-0 p-1 z-10 bg-gradient-to-t from-black/60 to-transparent">
-              <span className="text-[#F1E4DE] text-[7px] sm:text-[8px] font-mono tracking-wider uppercase block text-center">
-                {fighter.name}
-              </span>
-            </div>
           </button>
         ))}
       </div>

@@ -1,43 +1,26 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { InteractiveFighter3D } from "./InteractiveFighter3D";
 
-function CloseIcon({ className = "w-6 h-6" }: { className?: string }) {
+function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
     </svg>
   );
 }
 
-function CheckCircleIcon({ className = "w-12 h-12" }: { className?: string }) {
+function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
     </svg>
   );
 }
 
 export function FightClubEvent() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [selectedSlot, setSelectedSlot] = useState("11:00 AM Onwards");
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-
-  const slots = [
-    { time: "11:00 AM Onwards", label: "General Pass: Full Day MMA & Community Access" },
-    { time: "02:00 PM - 04:00 PM", label: "Fighter Meet & Creator Moments" },
-    { time: "05:00 PM - 08:00 PM", label: "Evening Main Card & Live Exhibition Fights" },
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email) return;
-    setIsSubmitted(true);
-  };
 
   return (
     <div className="w-full bg-[#F1E4DE] text-[#F1E4DE] selection:bg-[#FF0E97] selection:text-white font-[family-name:var(--font-inter)]">
@@ -129,16 +112,18 @@ export function FightClubEvent() {
                 {/* CTA Button & Bottom Owl Eyes Box Alignment */}
                 <div className="relative z-10 pt-6 flex flex-col justify-between">
                   <div>
-                    <button
-                      onClick={() => setIsBookingOpen(true)}
-                      className="w-full md:w-auto px-6 py-3 sm:py-2 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer text-center relative group"
+                    <a
+                      href="https://form.typeform.com/to/rrrhHrZt"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full md:w-auto px-6 py-3 sm:py-2 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer text-center relative group inline-block"
                     >
                       <span className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#FF007A]" />
                       <span className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#FF007A]" />
                       <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#FF007A]" />
                       <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#FF007A]" />
                       Book Your Slot Now
-                    </button>
+                    </a>
                   </div>
 
                   {/* Mobile-only Owl Box positioned after CTA */}
@@ -209,12 +194,12 @@ export function FightClubEvent() {
                   <div className="relative w-16 h-14 border-t border-r border-[#3E4044] flex items-center justify-center p-2 bg-[#222426]/60">
                     <span className="absolute -top-[7px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
                     <span className="absolute -bottom-[7px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
-                    <div className="relative w-10 h-7">
+                    <div className="relative w-[40px] h-[40px]">
                       <Image
-                        src="/images/logosvg.svg"
-                        alt="NAZR Owl"
+                        src="/images/fignterlogo.svg"
+                        alt="NAZR Fighter"
                         fill
-                        className="object-contain brightness-200"
+                        className="object-contain"
                       />
                     </div>
                   </div>
@@ -396,20 +381,20 @@ export function FightClubEvent() {
               {/* Right: Event Details & Registration (7 cols) */}
               <div className="md:col-span-7 flex flex-col justify-between space-y-6 text-left">
                 <div>
-                  <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[48px] sm:text-[68px] md:text-[76px] leading-[90%] tracking-tight uppercase">
+                  <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[90px] md:text-[76px] text-center md:text-left leading-[90%] tracking-tight uppercase">
                     ABOUT EVENT
                   </h2>
                   <div className="w-full h-px bg-[#323438] my-4" />
 
                   <p className="font-[family-name:var(--font-inter)] text-sm sm:text-[14.5px] text-[#F1E4DE] leading-[160%] font-normal">
-                    Experiance MMA up close with stimulated fights, fighter interactions, creator moments and more - all coming together for a day of action and entertainment. Register and be part of the experiance.
+                    Experience MMA up close with stimulated fights, fighter interactions, creator moments and more - all coming together for a day of action and entertainment. Register and be part of the experience.
                   </p>
                   <div className="w-full h-px bg-[#323438] my-4" />
 
                   {/* Event Timing */}
                   <div className="py-1">
                     <span className="text-[#FF1493] font-semibold text-sm mr-2 font-[family-name:var(--font-inter)]">Time:</span>
-                    <span className="text-[#F1E4DE] text-sm font-medium">11 am onwards</span>
+                    <span className="text-[#F1E4DE] text-sm font-medium">2 pm onwards</span>
                   </div>
                   <div className="w-full h-px bg-[#323438] my-4" />
 
@@ -425,16 +410,18 @@ export function FightClubEvent() {
 
                 {/* Action Button (shifted up on mobile to avoid bottom notch) */}
                 <div className="w-full relative -translate-y-4 md:translate-y-0 pb-2 md:pb-0">
-                  <button
-                    onClick={() => setIsBookingOpen(true)}
-                    className="w-full sm:w-auto px-6 py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer relative group"
+                  <a
+                    href="https://form.typeform.com/to/rrrhHrZt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-6 py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer relative group text-center inline-block"
                   >
                     <span className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#FF007A]" />
                     <span className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#FF007A]" />
                     <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#FF007A]" />
                     <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#FF007A]" />
                     Book Your Slot Now
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -442,13 +429,120 @@ export function FightClubEvent() {
         </div>
 
 
+        {/* Mobile Partners / Custom Section (Mobile only) */}
+        <div className="block md:hidden relative w-full drop-shadow-2xl">
+          <div
+            className="relative w-full aspect-[370/314] bg-[url('/images/paternes.png')] flex flex-col items-center pt-8 pb-4 px-4 overflow-hidden"
+            style={{
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            {/* Subtle background blueprint grid crosses */}
+            <div className="absolute inset-0 pointer-events-none opacity-25 flex flex-col justify-between p-6">
+              <div className="flex justify-between text-[#888888] font-mono text-[10px]">
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+              </div>
+              <div className="flex justify-between text-[#888888] font-mono text-[10px]">
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+              </div>
+              <div className="flex justify-between text-[#888888] font-mono text-[10px]">
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+              </div>
+            </div>
+
+            {/* Heading: OUR PARTNERS */}
+            <h2
+              className="text-[#F1E4DE] text-[44px] sm:text-[48px] tracking-wider uppercase font-bold leading-none mb-3 z-10 select-none"
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+            >
+              OUR PARTNERS
+            </h2>
+
+            {/* 2x2 Magenta Blueprint Grid */}
+            <div className="w-full max-w-[310px] relative border border-[#FF007A]/80 z-10">
+              {/* Technical crosshairs (+) at corners and borders */}
+              <span className="absolute -top-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -top-[7px] left-1/2 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -top-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+
+              <span className="absolute top-1/2 -translate-y-1/2 -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute top-1/2 -translate-y-1/2 -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+
+              <span className="absolute -bottom-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -bottom-[7px] left-1/2 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -bottom-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+
+              {/* Grid 2x2 cells */}
+              <div className="grid grid-cols-2 grid-rows-2 h-[142px] sm:h-[150px]">
+                {/* Cell 1 (top-left): Pinnora Logo + Events Partner */}
+                <div className="relative border-r border-b border-[#FF007A]/80 flex flex-col items-center justify-center p-2">
+                  <Image
+                    src="/images/Pinnora - Events.svg"
+                    alt="Pinnora"
+                    width={120}
+                    height={32}
+                    className="max-h-6 max-w-[100px] w-auto h-auto object-contain"
+                  />
+                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1.5 select-none leading-none">
+                    Events Partner
+                  </span>
+                </div>
+
+                {/* Cell 2 (top-right): bree.svg + Wellness Partner */}
+                <div className="relative border-b border-[#FF007A]/80 flex flex-col items-center justify-center p-2">
+                  <Image
+                    src="/images/bree.svg"
+                    alt="Wellness Partner"
+                    width={110}
+                    height={32}
+                    className="max-h-6 max-w-[100px] w-auto h-auto object-contain"
+                  />
+                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1.5 select-none leading-none">
+                    Wellness Partner
+                  </span>
+                </div>
+
+                {/* Cell 3 (bottom-left): NAZR Fighter Logo + Venue Partner */}
+                <div className="relative border-r border-[#FF007A]/80 flex flex-col items-center justify-center p-2">
+                  <Image
+                    src="/images/fignterlogo.svg"
+                    alt="Venue Partner"
+                    width={38}
+                    height={38}
+                    className="max-h-8 max-w-[38px] w-auto h-auto object-contain"
+                  />
+                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1.5 select-none leading-none">
+                    Venue Partner
+                  </span>
+                </div>
+
+                {/* Cell 4 (bottom-right): Empty with center crosshair */}
+                <div className="relative flex items-center justify-center p-2">
+                  <span className="text-[#55585E] text-xs font-mono select-none pointer-events-none">+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* =========================================================================
             SECTION 4: DEDICATED PAGE FOOTER ("FIGHT CLUB" / NAZR X WCMMA)
             Figma Frame Silhouette, overlay.png & Giant FIGHT CLUB (W 1192, H 280, #F1E4DE)
             ========================================================================= */}
         <div className="relative w-full drop-shadow-2xl">
           <footer
-            className="relative w-full bg-[url('/images/fighterfootermobile.png')] md:bg-[url('/images/fighterfooter.png')]"
+            className="relative w-full bg-[url('/images/fighterfootermobile.svg')] md:bg-[url('/images/fighterfooter.png')]"
             style={{
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat",
@@ -481,191 +575,129 @@ export function FightClubEvent() {
               </div>
             </div>
 
-            {/* Middle Schedule & Manifesto Matrix */}
-            <div className="relative z-10 pt-6 md:pt-0 grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#323438] border-b border-[#323438]">
-              {/* Left Column: Manifesto Paragraph */}
-              <div className="md:col-span-6 p-5 sm:p-8 flex items-center">
-                <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[13px] md:text-[13.5px] text-[#F1E4DE] leading-[165%] font-normal">
-                  NAZR is India&apos;s first women&apos;s safety ecosystem, bringing together practical products, technology and community experiences to help women feel more confident and prepared in their everyday lives.
-                </p>
-              </div>
+            {/* Middle Manifesto Paragraph */}
+            <div className="relative z-10 pt-10 sm:pt-12 md:pt-10 px-5 pb-6 sm:p-8 md:p-10 border-b border-[#323438]">
+              {/* Desktop Copy */}
+              <p className="hidden md:block font-[family-name:var(--font-inter)] text-sm sm:text-[15px] md:text-[17px] text-[#F1E4DE] leading-[160%] font-normal max-w-5xl">
+                NAZR is India’s first women safety ecosystem built around the way you actually live from around the way you actually live. From everyday products to technology, we’re making safety feel simpler, smarter, and more accessible, because preparedness should feel natural.
+              </p>
+              {/* Mobile Copy */}
+              <p className="block md:hidden font-[family-name:var(--font-inter)] text-[13.5px] sm:text-[14.5px] text-[#F1E4DE] leading-[150%] font-normal">
+                NAZR is India’s first women’s safety ecosystem, bringing together safety products, technology and community experiences to help women feel more confident and prepared in their everyday lives.
+              </p>
+            </div>
 
-              {/* Right Column: 2x2 Slots Grid */}
-              <div className="md:col-span-6 grid grid-cols-2 divide-x divide-y divide-[#323438]">
-                <div className="p-4 sm:p-5 flex items-center">
-                  <span className="text-[#FF1493] font-semibold text-xs font-[family-name:var(--font-inter)] mr-2">Time:</span>
-                  <span className="text-[#F1E4DE] text-xs font-medium">10-12am</span>
-                </div>
-                <div className="p-4 sm:p-5 flex items-center">
-                  <span className="text-[#FF1493] font-semibold text-xs font-[family-name:var(--font-inter)] mr-2">Address:</span>
-                  <span className="text-[#F1E4DE] text-xs font-medium">10-12am</span>
-                </div>
-                <div className="p-4 sm:p-5 flex items-center">
-                  <span className="text-[#FF1493] font-semibold text-xs font-[family-name:var(--font-inter)] mr-2">Time:</span>
-                  <span className="text-[#F1E4DE] text-xs font-medium">10-12am</span>
-                </div>
-                <div className="p-4 sm:p-5 flex items-center">
-                  <span className="text-[#FF1493] font-semibold text-xs font-[family-name:var(--font-inter)] mr-2">Address:</span>
-                  <span className="text-[#F1E4DE] text-xs font-medium">10-12am</span>
-                </div>
+            {/* Visit Website CTA Button (Mobile only) */}
+            <div className="block md:hidden relative z-10 w-full px-5 py-4 border-b border-[#323438]">
+              <div className="relative flex justify-center">
+                <a
+                  href="https://nazrco.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-sm font-semibold tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer relative group text-center block"
+                >
+                  <span className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#FF007A]" />
+                  <span className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#FF007A]" />
+                  <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#FF007A]" />
+                  <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#FF007A]" />
+                  Visit website
+                </a>
               </div>
             </div>
 
-            {/* Visit Website CTA Button */}
-            <div className="relative z-10 w-full p-4 sm:p-6 border-b border-[#323438] flex justify-center">
-              <button
-                onClick={() => window.open("https://nazr.in", "_blank")}
-                className="w-full sm:w-auto px-10 py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer relative group"
-              >
-                <span className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#FF007A]" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#FF007A]" />
-                <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#FF007A]" />
-                <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#FF007A]" />
-                Visit website
-              </button>
-            </div>
-
-            {/* Massive Full-Bleed "FIGHT SOCIAL" Footer Typography */}
-            <div className="@container relative z-10 w-full flex items-center justify-center overflow-hidden px-1 sm:px-2 py-6 sm:py-8 md:py-10">
+            {/* Massive Full-Bleed "FIGHT CLUB" Footer Typography */}
+            <div className="@container relative z-10 w-full flex items-center justify-center overflow-hidden px-1 sm:px-2 pt-6 sm:pt-8 md:py-10 pb-2 md:pb-10">
               <h2
                 className="w-full text-[#F1E4DE] font-[family-name:var(--font-bebas)] leading-[82%] tracking-[-0.01em] uppercase text-center select-none whitespace-nowrap block"
                 style={{ fontSize: "clamp(68px, 23.4cqw, 292px)" }}
               >
-                FIGHT SOCIAL
+                FIGHT CLUB
               </h2>
+            </div>
+
+            {/* Desktop Footer Links & Socials */}
+            <div className="hidden md:flex relative z-10 w-full px-8 pb-8 items-center justify-between font-mono text-xs text-[#F1E4DE]/80">
+              <div className="flex items-center gap-6">
+                <a
+                  href="https://nazrco.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#FF007A] hover:underline transition-all"
+                >
+                  Visit Website
+                </a>
+                <span className="text-[#55585E]">•</span>
+                <Link href="/fight-social/terms" className="hover:text-[#FF007A] hover:underline transition-all">
+                  Terms &amp; Conditions
+                </Link>
+                <span className="text-[#55585E]">•</span>
+                <Link href="/fight-social/privacy-policy" className="hover:text-[#FF007A] hover:underline transition-all">
+                  Privacy Policy
+                </Link>
+              </div>
+
+              {/* Social Icons (Desktop) */}
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.linkedin.com/company/nazrco/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-9 h-9 rounded-full bg-white text-black hover:bg-[#FF007A] hover:text-white flex items-center justify-center transition-all duration-200 shadow"
+                >
+                  <LinkedinIcon className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="https://www.instagram.com/nazr.360?stkn=emhsaHE3MGNvbmxx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-9 h-9 rounded-full bg-white text-black hover:bg-[#FF007A] hover:text-white flex items-center justify-center transition-all duration-200 shadow"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Mobile Footer Links & Socials */}
+            <div className="block md:hidden relative z-10 w-full pb-8 text-center space-y-5">
+              <div className="flex flex-col items-center gap-1.5 font-mono text-xs text-[#F1E4DE]">
+                <Link href="/fight-social/terms" className="hover:underline transition-all">
+                  Terms &amp; Conditions
+                </Link>
+                <Link href="/fight-social/privacy-policy" className="hover:underline transition-all">
+                  Privacy Policy
+                </Link>
+              </div>
+
+              {/* Social Icons */}
+              <div className="flex items-center justify-center gap-4 pt-1">
+                <a
+                  href="https://www.linkedin.com/company/nazrco/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-11 h-11 rounded-full bg-white text-black hover:bg-[#FF007A] hover:text-white flex items-center justify-center transition-all duration-200 shadow"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.instagram.com/nazr.360?stkn=emhsaHE3MGNvbmxx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-11 h-11 rounded-full bg-white text-black hover:bg-[#FF007A] hover:text-white flex items-center justify-center transition-all duration-200 shadow"
+                >
+                  <InstagramIcon className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </footer>
         </div>
 
       </div>
 
-      {/* =========================================================================
-          INTERACTIVE BOOKING MODAL
-          ========================================================================= */}
-      {isBookingOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-lg bg-[#181818] border border-[#3A3A3A] rounded-[4px] p-6 sm:p-8 shadow-2xl text-left">
-            <button
-              onClick={() => {
-                setIsBookingOpen(false);
-                setIsSubmitted(false);
-              }}
-              className="absolute top-5 right-5 text-gray-400 hover:text-[#F1E4DE] transition-colors cursor-pointer"
-            >
-              <CloseIcon />
-            </button>
 
-            {!isSubmitted ? (
-              <div>
-                <div className="mb-6">
-                  <span className="text-[#FF0E97] text-xs font-semibold tracking-widest uppercase font-[family-name:var(--font-mono)]">
-                    NAZR X WCMMA
-                  </span>
-                  <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-3xl sm:text-4xl uppercase mt-1">
-                    Reserve Your Pass
-                  </h3>
-                  <p className="text-[#F1E4DE]/80 text-xs sm:text-sm mt-1">
-                    DLF Phase 1, Sector 26A, Gurugram • 26 Sept 2026
-                  </p>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#F1E4DE]/80 mb-2 font-medium">
-                      Select Access Pass
-                    </label>
-                    <div className="space-y-2">
-                      {slots.map((s) => (
-                        <button
-                          key={s.time}
-                          type="button"
-                          onClick={() => setSelectedSlot(s.time)}
-                          className={`w-full text-left p-3 rounded-[2px] border text-xs transition-all flex justify-between items-center cursor-pointer ${selectedSlot === s.time
-                              ? "border-[#FF0E97] bg-[#FF0E97]/10 text-[#F1E4DE] font-medium"
-                              : "border-[#333333] bg-[#222222] text-[#F1E4DE]/70 hover:border-[#555555]"
-                            }`}
-                        >
-                          <span>{s.label}</span>
-                          <span className="font-mono text-[#FF0E97]">{s.time}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#F1E4DE]/80 mb-1 font-medium">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Enter your name"
-                      className="w-full bg-[#222222] border border-[#333333] rounded-[2px] px-3.5 py-2.5 text-sm text-[#F1E4DE] placeholder:text-[#F1E4DE]/40 focus:outline-none focus:border-[#FF0E97]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#F1E4DE]/80 mb-1 font-medium">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="you@example.com"
-                      className="w-full bg-[#222222] border border-[#333333] rounded-[2px] px-3.5 py-2.5 text-sm text-[#F1E4DE] placeholder:text-[#F1E4DE]/40 focus:outline-none focus:border-[#FF0E97]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#F1E4DE]/80 mb-1 font-medium">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+91 98765 43210"
-                      className="w-full bg-[#222222] border border-[#333333] rounded-[2px] px-3.5 py-2.5 text-sm text-[#F1E4DE] placeholder:text-[#F1E4DE]/40 focus:outline-none focus:border-[#FF0E97]"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-3 mt-4 bg-[#FF0E97] hover:bg-[#E00D86] text-[#F1E4DE] font-[family-name:var(--font-bebas)] text-xl tracking-wider uppercase rounded-[2px] transition-all cursor-pointer shadow-lg"
-                  >
-                    Confirm Registration
-                  </button>
-                </form>
-              </div>
-            ) : (
-              <div className="text-center py-8 space-y-4">
-                <div className="flex justify-center text-[#FF0E97]">
-                  <CheckCircleIcon />
-                </div>
-                <h4 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-3xl uppercase">
-                  You&apos;re in the Club!
-                </h4>
-                <p className="text-sm text-[#F1E4DE]/80 max-w-sm mx-auto">
-                  Confirmation and entry pass details have been sent to <span className="text-[#F1E4DE] font-semibold">{formData.email}</span>. See you at the ring!
-                </p>
-                <button
-                  onClick={() => {
-                    setIsBookingOpen(false);
-                    setIsSubmitted(false);
-                  }}
-                  className="mt-4 px-6 py-2 border border-[#444444] text-[#F1E4DE] text-xs uppercase tracking-wider hover:bg-white/10 rounded-[2px] cursor-pointer"
-                >
-                  Done
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

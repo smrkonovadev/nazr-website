@@ -1,1 +1,1 @@
-export { default, metadata } from "../fight-club/page";
+export { default, metadata } from "../fight-social/page";

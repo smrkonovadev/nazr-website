@@ -62,7 +62,13 @@ export function Footer() {
       }`;
   };
 
-  if (pathname === "/girls-powered" || pathname === "/event" || pathname === "/events" || pathname === "/fight-club") {
+  if (
+    pathname === "/girls-powered" ||
+    pathname === "/event" ||
+    pathname === "/events" ||
+    pathname?.startsWith("/fight-club") ||
+    pathname?.startsWith("/fight-social")
+  ) {
     return null;
   }
 
