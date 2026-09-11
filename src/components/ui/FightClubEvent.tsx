@@ -26,6 +26,7 @@ export function FightClubEvent() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+
   const slots = [
     { time: "11:00 AM Onwards", label: "General Pass: Full Day MMA & Community Access" },
     { time: "02:00 PM - 04:00 PM", label: "Fighter Meet & Creator Moments" },
@@ -55,15 +56,6 @@ export function FightClubEvent() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            {/* Tech grid overlay with lines and '+' crosshairs from overlay.png, masked to card */}
-            <div
-              className="absolute inset-0 z-0 pointer-events-none opacity-70 [mask-image:url('/images/herosectionmobilenew.svg')] md:[mask-image:url('/images/fighthero.png')] [-webkit-mask-image:url('/images/herosectionmobilenew.svg')] md:[-webkit-mask-image:url('/images/fighthero.png')] [mask-size:100%_100%] [-webkit-mask-size:100%_100%] [mask-repeat:no-repeat] [-webkit-mask-repeat:no-repeat]"
-              style={{
-                backgroundImage: "url('/images/overlay.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
 
             {/* Top Metadata Header Bar (Desktop only, mobile has it baked into herosectionmobilenew.svg) */}
             <div className="hidden md:flex relative z-10 w-full items-center justify-between border-b border-[#3E4044] text-xs font-[family-name:var(--font-mono)]">
@@ -91,9 +83,9 @@ export function FightClubEvent() {
             </div>
 
             {/* Giant Display Title: "FIGHT SOCIAL" */}
-            <div className="@container relative z-10 w-full px-1 sm:px-2 pt-9 md:pt-5 pb-1 sm:pb-2 border-b border-[#3E4044] overflow-hidden flex justify-center items-center">
+            <div className="@container relative z-10 w-full max-w-[1192px] md:h-[280px] mx-auto px-1 sm:px-2 pt-9 pb-3 md:py-0 border-b border-[#3E4044] overflow-hidden flex justify-center items-center">
               <h1
-                className="w-full font-[family-name:var(--font-bebas)] text-[#F1E4DE] leading-[78%] tracking-[-0.01em] uppercase text-center select-none whitespace-nowrap block"
+                className="w-full font-[family-name:var(--font-bebas)] text-[#F1E4DE] md:text-[#696868] leading-[78%] tracking-[-0.01em] uppercase text-center select-none whitespace-nowrap block"
                 style={{ fontSize: "clamp(68px, 23.4cqw, 292px)" }}
               >
                 FIGHT SOCIAL
@@ -102,13 +94,13 @@ export function FightClubEvent() {
 
             {/* Lower 3-Column Tactical Grid */}
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#3E4044]">
-              
+
               {/* Column 1: Feature Tags, CTA Button (4 cols, order-2 on mobile) */}
-              <div className="order-2 md:order-1 md:col-span-4 flex flex-col justify-between p-4 sm:p-6 relative">
+              <div className="order-2 md:order-1 md:col-span-4 flex flex-col justify-start p-4 sm:p-6 relative">
                 <div className="relative z-10 space-y-4">
                   {/* Tag 1 */}
                   <div className="relative pb-3 border-b border-[#3E4044]">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[30px] sm:text-[36px] leading-none tracking-wide uppercase">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
                       LIVE MMA ACTION
                     </h3>
                     <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
@@ -117,7 +109,7 @@ export function FightClubEvent() {
 
                   {/* Tag 2 */}
                   <div className="relative pb-3 border-b border-[#3E4044]">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[30px] sm:text-[36px] leading-none tracking-wide uppercase">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
                       REAL COMMUNITY
                     </h3>
                     <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
@@ -126,7 +118,7 @@ export function FightClubEvent() {
 
                   {/* Tag 3 */}
                   <div className="relative pb-3 border-b border-[#3E4044]">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[30px] sm:text-[36px] leading-none tracking-wide uppercase">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
                       NEW EXPERIENCES
                     </h3>
                     <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
@@ -166,32 +158,32 @@ export function FightClubEvent() {
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Desktop Bottom Owl Box positioned at bottom right of Col 1 */}
-                  <div className="hidden md:flex justify-end pt-6 -mb-4 -mr-4 sm:-mb-6 sm:-mr-6">
-                    <div className="relative w-16 h-14 border-t border-l border-[#3E4044] flex items-center justify-center p-2 bg-[#222426]/60">
-                      <span className="absolute -top-[7px] -left-[6px] text-[#55585E] text-[10px] select-none">+</span>
-                      <span className="absolute -top-[7px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
-                      <span className="absolute -bottom-[7px] -left-[6px] text-[#55585E] text-[10px] select-none">+</span>
-                      <div className="relative w-10 h-7">
-                        <Image
-                          src="/images/logosvg.svg"
-                          alt="NAZR Owl"
-                          fill
-                          className="object-contain brightness-200"
-                        />
-                      </div>
+                {/* Desktop Bottom Owl Box positioned at bottom right of Col 1 */}
+                <div className="hidden md:flex justify-end absolute bottom-0 right-0 z-10">
+                  <div className="relative w-16 h-14 border-t border-l border-[#3E4044] flex items-center justify-center p-2 bg-[#222426]/60">
+                    <span className="absolute -top-[7px] -left-[6px] text-[#55585E] text-[10px] select-none">+</span>
+                    <span className="absolute -top-[7px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
+                    <span className="absolute -bottom-[7px] -left-[6px] text-[#55585E] text-[10px] select-none">+</span>
+                    <div className="relative w-10 h-7">
+                      <Image
+                        src="/images/logosvg.svg"
+                        alt="NAZR Owl"
+                        fill
+                        className="object-contain brightness-200"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Column 2: Event Summary Copy on Blueprint Grid (4 cols, order-3 on mobile) */}
-              <div className="order-3 md:order-2 md:col-span-4 flex flex-col justify-between p-4 sm:p-6 relative">
+              <div className="order-3 md:order-2 md:col-span-4 flex flex-col justify-start p-4 sm:p-6 pb-14 md:pb-6 relative">
                 {/* Centered Technical Text Box with Crosshair Marks */}
-                <div className="my-auto relative z-10 border border-[#3E4044] p-5 sm:p-6 rounded-[2px] bg-[#222426]/40">
+                <div className="mt-2 md:mt-4 mb-6 md:mb-0 relative z-10 border border-[#3E4044] p-4 sm:p-6 rounded-[2px] bg-[#222426]/40">
                   {/* Top Crosshairs */}
-                  <div className="flex justify-between text-[#55585E] text-xs font-mono select-none -mt-7 mb-2 px-1">
+                  <div className="flex justify-between text-[#55585E] text-xs font-mono select-none -mt-6 mb-2 px-1">
                     <span>+</span>
                     <span>+</span>
                     <span>+</span>
@@ -200,11 +192,11 @@ export function FightClubEvent() {
 
                   <p className="font-[family-name:var(--font-inter)] text-[13px] sm:text-[13.5px] text-[#F1E4DE] leading-[170%] font-normal">
                     NAZR X WCMMA brings you a full day of MMA, community and culture.<br />
-                    Experience live MMA action, meet fighters and creators, and be part of the community that comes together to celebrate strength, confidence and safety.
+                    Experience live MMA action, meet fighters and creators, explore brand activations, and be part of a community that comes together to celebrate strength, confidence and preparedness.
                   </p>
 
                   {/* Bottom Crosshairs */}
-                  <div className="flex justify-between text-[#55585E] text-xs font-mono select-none -mb-7 mt-3 px-1">
+                  <div className="flex justify-between text-[#55585E] text-xs font-mono select-none -mb-6 mt-3 px-1">
                     <span>+</span>
                     <span>+</span>
                     <span>+</span>
@@ -213,7 +205,7 @@ export function FightClubEvent() {
                 </div>
 
                 {/* Bottom Owl Box positioned at bottom left of Col 2 (Desktop only) */}
-                <div className="hidden md:flex justify-start pt-6 -mb-4 -ml-4 sm:-mb-6 sm:-ml-6 relative z-10">
+                <div className="hidden md:flex justify-start absolute bottom-0 left-0 z-10">
                   <div className="relative w-16 h-14 border-t border-r border-[#3E4044] flex items-center justify-center p-2 bg-[#222426]/60">
                     <span className="absolute -top-[7px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
                     <span className="absolute -bottom-[7px] -right-[6px] text-[#55585E] text-[10px] select-none">+</span>
@@ -266,95 +258,96 @@ export function FightClubEvent() {
             />
 
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-12">
-            
-            {/* Left Column: Stacked Giant Typography + Overlaid Majestic Owl (7 cols) */}
-            <div className="md:col-span-7 relative min-h-0 md:min-h-[640px] p-6 sm:p-10 pr-0 sm:pr-0 flex flex-col justify-between overflow-hidden">
-              {/* Stacked Typography with Overlaid Owl */}
-              <div className="relative z-0 space-y-1 sm:space-y-2">
-                {/* Overlaid Owl Image placed behind the typography, positioned at top-right on mobile */}
-                <div className="absolute right-0 sm:left-[17%] md:left-[19%] top-2 sm:-top-14 md:-top-16 w-[200px] sm:w-[340px] md:w-[400px] h-[320px] sm:h-[95%] z-0 pointer-events-none opacity-90">
+
+              {/* Left Column: Stacked Giant Typography + Overlaid Majestic Owl (7 cols) */}
+              <div className="md:col-span-7 relative min-h-0 md:min-h-[640px] p-6 sm:p-10 pr-0 sm:pr-0 flex flex-col justify-between overflow-hidden">
+                {/* Stacked Typography with Overlaid Owl */}
+                <div className="relative z-0 space-y-1 sm:space-y-2">
+                  {/* Overlaid Owl Image placed behind the typography, positioned at top-right on mobile */}
+                  <div className="absolute right-0 sm:left-[17%] md:left-[19%] top-2 sm:-top-14 md:-top-16 w-[200px] sm:w-[340px] md:w-[400px] h-[320px] sm:h-[95%] z-0 pointer-events-none opacity-90">
+                    <Image
+                      src="/images/owfighter.svg"
+                      alt="NAZR Guardian Owl"
+                      fill
+                      priority
+                      unoptimized
+                      className="object-contain object-top drop-shadow-2xl"
+                    />
+                  </div>
+
+                  <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#c5b9b3] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                      WE
+                    </span>
+                  </div>
+                  <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                      MAKE
+                    </span>
+                  </div>
+                  <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                      SAFETY
+                    </span>
+                  </div>
+                  <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                      SIMPLE,
+                    </span>
+                  </div>
+                  <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                      ACCESSIBLE
+                    </span>
+                  </div>
+                  <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                      AND
+                    </span>
+                  </div>
+                  <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                      ACTIONABLE.
+                    </span>
+                  </div>
+
+                  {/* Additional technical pink grid lines from Figma (desktop only) */}
+                  <div className="hidden md:block w-16 sm:w-20 border-b border-[#FF0E97]/40 pt-10 sm:pt-14" />
+                  <div className="hidden md:block w-full border-b border-[#FF0E97]/40 pt-10 sm:pt-14" />
+                  <div className="hidden md:block w-full border-b border-[#FF0E97]/40 pt-10 sm:pt-14" />
+                </div>
+              </div>
+
+              {/* Right Column: Giant Hot Pink Neon Outlined Devanagari "न ज़र" (5 cols) */}
+              <div className="md:col-span-5 flex items-center justify-center md:justify-start p-4 sm:p-10 pl-4 sm:pl-0 relative min-h-0 md:min-h-[460px] pt-0 md:pt-10">
+                {/* Mobile horizontal Devanagari */}
+                <div className="w-full flex justify-center md:hidden pt-0 pb-8">
                   <Image
-                    src="/images/owfighter.svg"
-                    alt="NAZR Guardian Owl"
-                    fill
-                    priority
+                    src="/images/nazrfightmobile.svg"
+                    alt="न ज़र"
+                    width={370}
+                    height={193}
                     unoptimized
-                    className="object-contain object-top drop-shadow-2xl"
+                    priority
+                    className="w-full max-w-[320px] sm:max-w-[360px] h-auto drop-shadow-[0_0_15px_rgba(255,14,151,0.55)]"
                   />
                 </div>
 
-                <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                  <span className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
-                    WE
-                  </span>
-                </div>
-                <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                  <span className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
-                    MAKE
-                  </span>
-                </div>
-                <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                  <span className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
-                    SAFETY
-                  </span>
-                </div>
-                <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                  <span className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
-                    SIMPLE,
-                  </span>
-                </div>
-                <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                  <span className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
-                    ACCESSIBLE
-                  </span>
-                </div>
-                <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                  <span className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
-                    AND
-                  </span>
-                </div>
-                <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                  <span className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
-                    ACTIONABLE.
-                  </span>
-                </div>
-
-                {/* Additional technical pink grid lines from Figma (desktop only) */}
-                <div className="hidden md:block w-16 sm:w-20 border-b border-[#FF0E97]/40 pt-10 sm:pt-14" />
-                <div className="hidden md:block w-full border-b border-[#FF0E97]/40 pt-10 sm:pt-14" />
-                <div className="hidden md:block w-full border-b border-[#FF0E97]/40 pt-10 sm:pt-14" />
-              </div>
-            </div>
-
-            {/* Right Column: Giant Hot Pink Neon Outlined Devanagari "न ज़र" (5 cols) */}
-            <div className="md:col-span-5 flex items-center justify-center md:justify-start p-4 sm:p-10 pl-4 sm:pl-0 relative min-h-0 md:min-h-[460px] pt-0 md:pt-10">
-              {/* Mobile horizontal Devanagari */}
-              <div className="w-full flex justify-center md:hidden pt-0 pb-8">
+                {/* Desktop vertical Devanagari */}
                 <Image
-                  src="/images/nazrfightmobile.svg"
+                  src="/images/nazrfightclub.svg"
                   alt="न ज़र"
-                  width={370}
-                  height={193}
+                  width={501}
+                  height={1460}
                   unoptimized
                   priority
-                  className="w-full max-w-[320px] sm:max-w-[360px] h-auto drop-shadow-[0_0_15px_rgba(255,14,151,0.55)]"
+                  className="hidden md:block w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px] h-auto drop-shadow-[0_0_15px_rgba(255,14,151,0.55)]"
                 />
               </div>
-
-              {/* Desktop vertical Devanagari */}
-              <Image
-                src="/images/nazrfightclub.svg"
-                alt="न ज़र"
-                width={501}
-                height={1460}
-                unoptimized
-                priority
-                className="hidden md:block w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px] h-auto drop-shadow-[0_0_15px_rgba(255,14,151,0.55)]"
-              />
             </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+
 
 
         {/* =========================================================================
@@ -387,23 +380,17 @@ export function FightClubEvent() {
             />
 
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-10 items-center">
-              
-              {/* Left: Event Photo Frame with Tactical Corner Brackets (5 cols) */}
-              <div className="md:col-span-5 relative w-full h-[280px] sm:h-[380px] md:h-[460px] p-2">
-                <span className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2 border-[#F1E4DE] pointer-events-none" />
-                <span className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-[#F1E4DE] pointer-events-none" />
-                <span className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2 border-[#F1E4DE] pointer-events-none" />
-                <span className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2 border-[#F1E4DE] pointer-events-none" />
-                <div className="relative w-full h-full overflow-hidden">
-                  <Image
-                    src="/images/2ndlastsection.svg"
-                    alt="NAZR Fight Club Event"
-                    fill
-                    priority
-                    unoptimized
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
+
+              {/* Left: Event Photo (5 cols) */}
+              <div className="md:col-span-5 relative w-full h-[280px] sm:h-[380px] md:h-[460px] overflow-hidden">
+                <Image
+                  src="/images/2ndlastsection.svg"
+                  alt="NAZR Fight Club Event"
+                  fill
+                  priority
+                  unoptimized
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
               {/* Right: Event Details & Registration (7 cols) */}
@@ -461,7 +448,7 @@ export function FightClubEvent() {
             ========================================================================= */}
         <div className="relative w-full drop-shadow-2xl">
           <footer
-            className="relative w-full bg-[url('/images/fighterfootermobile.svg')] md:bg-[url('/images/fighterfooter.png')]"
+            className="relative w-full bg-[url('/images/fighterfootermobile.png')] md:bg-[url('/images/fighterfooter.png')]"
             style={{
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat",
@@ -593,11 +580,10 @@ export function FightClubEvent() {
                           key={s.time}
                           type="button"
                           onClick={() => setSelectedSlot(s.time)}
-                          className={`w-full text-left p-3 rounded-[2px] border text-xs transition-all flex justify-between items-center cursor-pointer ${
-                            selectedSlot === s.time
+                          className={`w-full text-left p-3 rounded-[2px] border text-xs transition-all flex justify-between items-center cursor-pointer ${selectedSlot === s.time
                               ? "border-[#FF0E97] bg-[#FF0E97]/10 text-[#F1E4DE] font-medium"
                               : "border-[#333333] bg-[#222222] text-[#F1E4DE]/70 hover:border-[#555555]"
-                          }`}
+                            }`}
                         >
                           <span>{s.label}</span>
                           <span className="font-mono text-[#FF0E97]">{s.time}</span>

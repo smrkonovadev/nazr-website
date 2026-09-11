@@ -1,231 +1,144 @@
 "use client";
 
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 
-// 25 lines: 5 tall markers (indices 0, 6, 12, 18, 24) with 4 groups of 5 short lines between them
-const TOTAL_LINES = 25;
-const TALL_INDICES = new Set([0, 6, 12, 18, 24]);
+const fighters = [
+  { id: 1, name: "FIGHTER 1", video: "/images/fight-club/fighter-1%20(1).mp4" },
+  { id: 2, name: "FIGHTER 2", video: "/images/fight-club/fighter-2%20(1).mp4" },
+];
 
 export function InteractiveFighter3D({ className = "" }: { className?: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeFighter, setActiveFighter] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const linesRef = useRef<HTMLDivElement>(null);
 
-  // Turntable loop progress (0.0 to 1.0)
-  const [progress, setProgress] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-
-  const targetProgressRef = useRef(0);
-  const currentProgressRef = useRef(0);
-  const dragStartXRef = useRef(0);
-  const dragStartProgressRef = useRef(0);
-  const rafIdRef = useRef<number | null>(null);
-
-  // Safe normalized loop progress [0, 1)
-  const setTargetProgress = useCallback((val: number | ((prev: number) => number)) => {
-    const nextVal = typeof val === "function" ? val(targetProgressRef.current) : val;
-    let normalized = nextVal % 1;
-    if (normalized < 0) normalized += 1;
-    targetProgressRef.current = normalized;
-  }, []);
-
-  // Frame-accurate video seeking with smooth interpolation
+  // Auto-play fighter 1 only after loading screen completes
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    let isSeeking = false;
+    let hasStarted = false;
 
-    const updateFrame = () => {
-      const diff = targetProgressRef.current - currentProgressRef.current;
-      
-      // Shortest circular wrap-around distance for continuous 360° loop
-      let delta = diff;
-      if (delta > 0.5) delta -= 1;
-      if (delta < -0.5) delta += 1;
+    const startPlay = () => {
+      if (!video || hasStarted) return;
+      hasStarted = true;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    };
 
-      if (Math.abs(delta) > 0.0005) {
-        currentProgressRef.current = (currentProgressRef.current + delta * 0.22 + 1) % 1;
-        const currentProg = currentProgressRef.current;
-        setProgress(currentProg);
-
-        if (video.duration && !isNaN(video.duration) && !isSeeking) {
-          const targetTime = currentProg * (video.duration - 0.04);
-          if (Math.abs(video.currentTime - targetTime) > 0.02) {
-            isSeeking = true;
-            video.currentTime = targetTime;
-          }
-        }
+    // If loading screen is already complete (or navigating back to page)
+    if (typeof window !== "undefined" && (window as any).__LOADING_COMPLETE__) {
+      if (video.readyState >= 2) {
+        startPlay();
+      } else {
+        video.addEventListener("loadeddata", startPlay, { once: true });
       }
+      return;
+    }
 
-      rafIdRef.current = requestAnimationFrame(updateFrame);
+    // Wait for the loadingComplete event dispatched by LoadingScreen
+    const handleLoadingComplete = () => {
+      if (!video) return;
+      if (video.readyState >= 2) {
+        startPlay();
+      } else {
+        video.addEventListener("loadeddata", startPlay, { once: true });
+      }
     };
 
-    const handleSeeked = () => {
-      isSeeking = false;
-    };
+    if (typeof window !== "undefined") {
+      window.addEventListener("loadingComplete", handleLoadingComplete, { once: true });
+    }
 
-    video.addEventListener("seeked", handleSeeked);
-    rafIdRef.current = requestAnimationFrame(updateFrame);
+    // Safety fallback: if loadingComplete doesn't fire within 4.5s, play
+    const fallbackTimer = setTimeout(() => {
+      startPlay();
+    }, 4500);
 
     return () => {
-      video.removeEventListener("seeked", handleSeeked);
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("loadingComplete", handleLoadingComplete);
+      }
+      clearTimeout(fallbackTimer);
     };
   }, []);
 
-  // 1. Scroll attached ONLY to the lines / card in a seamless loop (NOT the whole page)
-  useEffect(() => {
-    const targetElement = containerRef.current;
-    if (!targetElement) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const scrollDelta = (e.deltaY || e.deltaX) * 0.0015;
-      setTargetProgress((prev) => (prev + scrollDelta + 1) % 1);
-    };
-
-    targetElement.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      targetElement.removeEventListener("wheel", handleWheel);
-    };
-  }, [setTargetProgress]);
-
-  // 2. Drag & Touch swiping support on card / lines
-  const handleStart = (clientX: number) => {
-    setIsDragging(true);
-    dragStartXRef.current = clientX;
-    dragStartProgressRef.current = targetProgressRef.current;
-  };
-
-  const handleMove = useCallback((clientX: number) => {
-    if (!isDragging) return;
-    const deltaX = clientX - dragStartXRef.current;
-    const progressDelta = deltaX / 240;
-    setTargetProgress(dragStartProgressRef.current + progressDelta);
-  }, [isDragging, setTargetProgress]);
-
-  const handleEnd = useCallback(() => {
-    if (isDragging) setIsDragging(false);
-  }, [isDragging]);
-
-  // Mouse handlers
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    handleStart(e.clientX);
-  };
-
-  useEffect(() => {
-    const handleGlobalMouseMove = (e: MouseEvent) => handleMove(e.clientX);
-    const handleGlobalMouseUp = () => handleEnd();
-
-    if (isDragging) {
-      window.addEventListener("mousemove", handleGlobalMouseMove);
-      window.addEventListener("mouseup", handleGlobalMouseUp);
+  const handleFighterSelect = useCallback((index: number) => {
+    if (index === activeFighter) return;
+    setActiveFighter(index);
+    const video = videoRef.current;
+    if (video) {
+      video.src = fighters[index].video;
+      video.currentTime = 0;
+      video.load();
+      const playWhenReady = () => {
+        video.play().catch(() => {});
+      };
+      video.addEventListener("loadeddata", playWhenReady, { once: true });
     }
-
-    return () => {
-      window.removeEventListener("mousemove", handleGlobalMouseMove);
-      window.removeEventListener("mouseup", handleGlobalMouseUp);
-    };
-  }, [isDragging, handleMove, handleEnd]);
-
-  // Touch handlers for mobile
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (e.touches.length === 1) {
-      handleStart(e.touches[0].clientX);
-    }
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length === 1) {
-      handleMove(e.touches[0].clientX);
-    }
-  };
-
-  const handleTouchEnd = () => {
-    handleEnd();
-  };
-
-  // Direct click / tap along the lines
-  const handleLinesClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!linesRef.current) return;
-    const rect = linesRef.current.getBoundingClientRect();
-    const clickX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
-    const newProgress = clickX / rect.width;
-    setTargetProgress(newProgress);
-  };
-
-  const activeLineIndex = Math.round(progress * (TOTAL_LINES - 1));
+  }, [activeFighter]);
 
   return (
     <div
-      ref={containerRef}
-      onMouseDown={handleMouseDown}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      className={`order-1 md:order-3 md:col-span-4 relative min-h-[340px] sm:min-h-[420px] md:min-h-[480px] overflow-hidden flex flex-col justify-end p-4 select-none ${className}`}
+      className={`order-1 md:order-3 md:col-span-4 relative min-h-[340px] sm:min-h-[420px] md:min-h-[480px] overflow-hidden flex flex-col justify-between p-4 select-none ${className}`}
     >
-      {/* Background Fighter Video (Fixed, centered) */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+      {/* Main Video Display */}
+      <div className="relative flex-1 w-full rounded-[10px] overflow-hidden bg-[#3e3d48]">
+        {/* Video */}
         <video
           ref={videoRef}
-          src="/images/fighter.mp4"
+          src={fighters[0].video}
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-contain object-center filter contrast-[1.05] brightness-[0.95]"
+          className="absolute inset-0 w-full h-full object-contain object-center"
         />
 
-        {/* Seamless Vignette Edge Blends */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/80 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#242424]/50 via-transparent to-transparent pointer-events-none" />
-      </div>
-
-      {/* Bold "HANNYA" Typography Layer with Difference Blend Mode */}
-      <div className="absolute inset-x-0 top-[52%] -translate-y-1/2 z-10 text-center pointer-events-none mix-blend-difference">
-        <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[74px] sm:text-[96px] md:text-[112px] leading-none tracking-tight uppercase select-none">
-          HANNYA
-        </h2>
-      </div>
-
-      {/* Technical Barcode Lines ("That Line Thing") - Exact Match to Image 3 */}
-      <div className="relative z-20 w-full flex justify-center pb-2 pointer-events-auto">
-        <div
-          ref={linesRef}
-          onClick={handleLinesClick}
-          className="flex justify-center items-center gap-[4px] sm:gap-[5px] py-2 px-3 cursor-ew-resize group/lines"
-          title="Scroll with mouse wheel, swipe or drag to rotate in loop"
-        >
-          {Array.from({ length: TOTAL_LINES }).map((_, idx) => {
-            const isTall = TALL_INDICES.has(idx);
-            const isCurrent = idx === activeLineIndex;
-            const isPast = idx <= activeLineIndex;
-
-            const height = isTall ? "36px" : "22px";
-
-            return (
-              <div
-                key={idx}
-                style={{
-                  width: "1px",
-                  height,
-                }}
-                className={`transition-all duration-75 ${
-                  isCurrent
-                    ? "bg-[#F1E4DE] opacity-100 shadow-[0_0_6px_rgba(241,228,222,0.9)] scale-y-105"
-                    : isPast
-                    ? "bg-[#F1E4DE] opacity-90"
-                    : "bg-[#F1E4DE] opacity-45 group-hover/lines:opacity-65"
-                }`}
-              />
-            );
-          })}
+        {/* Fighter name overlay */}
+        <div className="absolute inset-x-0 top-[45%] -translate-y-1/2 z-10 text-center pointer-events-none mix-blend-difference">
+          <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[60px] sm:text-[80px] md:text-[96px] leading-none tracking-tight uppercase select-none opacity-80">
+            {fighters[activeFighter].name}
+          </h2>
         </div>
+
+        {/* Bottom vignette */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#3e3d48]/80 via-transparent to-transparent z-[5] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3e3d48]/60 via-transparent to-transparent pointer-events-none" />
+      </div>
+
+      {/* Fighter Thumbnail Cards */}
+      <div className="flex gap-2.5 sm:gap-3 mt-3 justify-center">
+        {fighters.map((fighter, index) => (
+          <button
+            key={fighter.id}
+            onClick={() => handleFighterSelect(index)}
+            className={`relative w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] rounded-[8px] sm:rounded-[10px] overflow-hidden border transition-all duration-300 cursor-pointer group/card bg-[#3e3d48] ${
+              activeFighter === index
+                ? 'border-[#F1E4DE]/60'
+                : 'border-[#3E4044] hover:border-[#55585E]'
+            }`}
+          >
+            {/* Thumbnail */}
+            <video
+              src={fighter.video}
+              muted
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-contain object-center group-hover/card:scale-110 transition-transform duration-300"
+            />
+
+            {/* Overlay */}
+            <div className={`absolute inset-0 transition-opacity duration-300 ${
+              activeFighter === index ? 'bg-transparent' : 'bg-black/40 group-hover/card:bg-black/20'
+            }`} />
+
+            {/* Label */}
+            <div className="absolute inset-x-0 bottom-0 p-1 z-10 bg-gradient-to-t from-black/60 to-transparent">
+              <span className="text-[#F1E4DE] text-[7px] sm:text-[8px] font-mono tracking-wider uppercase block text-center">
+                {fighter.name}
+              </span>
+            </div>
+          </button>
+        ))}
       </div>
     </div>
   );
