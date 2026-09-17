@@ -7,13 +7,15 @@ const fighters = [
   {
     id: 1,
     name: "FIGHTER 1",
-    video: "/images/fight-club/fighter-1%20(1).mp4",
+    video: "/images/fight-club/fighter-1.mp4",
+    poster: "/images/fight-club/fighter-1-poster.jpg",
     image: "/images/fight-club/fighter-1-thumb.webp",
   },
   {
     id: 2,
     name: "FIGHTER 2",
-    video: "/images/fight-club/fighter%20vid%202.mp4",
+    video: "/images/fight-club/fighter-2.mp4",
+    poster: "/images/fight-club/fighter-2-poster.jpg",
     image: "/images/fight-club/fighter-2-thumb.webp",
   },
 ];
@@ -22,65 +24,74 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
   const [activeFighter, setActiveFighter] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Preload and initialize
-  useEffect(() => {
-    // Warm up fighter 2 video in background so it's ready instantly
-    const video2 = videoRefs.current[1];
-    if (video2) {
-      video2.load();
-    }
-  }, []);
-
-  // Auto-play active fighter only after loading screen completes
-  useEffect(() => {
-    const video = videoRefs.current[0];
+  // Function to safely start playing active video
+  const playActiveVideo = useCallback(() => {
+    const video = videoRefs.current[activeFighter];
     if (!video) return;
 
-    let hasStarted = false;
+    video.muted = true;
+    video.defaultMuted = true;
 
-    const startPlay = () => {
-      if (!video || hasStarted) return;
-      hasStarted = true;
-      video.currentTime = 0;
-      video.play().catch(() => {});
-    };
-
-    // If loading screen is already complete (or navigating back to page)
-    if (typeof window !== "undefined" && (window as any).__LOADING_COMPLETE__) {
-      if (video.readyState >= 2) {
-        startPlay();
-      } else {
-        video.addEventListener("loadeddata", startPlay, { once: true });
-      }
-      return;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay may be deferred until user touches the screen (e.g. Low Power Mode on iOS)
+      });
     }
+  }, [activeFighter]);
 
-    // Wait for the loadingComplete event dispatched by LoadingScreen
-    const handleLoadingComplete = () => {
-      if (!video) return;
-      if (video.readyState >= 2) {
-        startPlay();
-      } else {
-        video.addEventListener("loadeddata", startPlay, { once: true });
-      }
-    };
+  // Preload and warm up inactive video
+  useEffect(() => {
+    const inactiveIndex = activeFighter === 0 ? 1 : 0;
+    const inactiveVideo = videoRefs.current[inactiveIndex];
+    if (inactiveVideo) {
+      inactiveVideo.muted = true;
+      inactiveVideo.defaultMuted = true;
+      inactiveVideo.load();
+    }
+  }, [activeFighter]);
 
-    if (typeof window !== "undefined") {
+  // Play active fighter on mount and after loading screen completes
+  useEffect(() => {
+    playActiveVideo();
+
+    // If loading screen is still active, listen for its completion
+    if (typeof window !== "undefined" && !(window as any).__LOADING_COMPLETE__) {
+      const handleLoadingComplete = () => {
+        playActiveVideo();
+      };
+
       window.addEventListener("loadingComplete", handleLoadingComplete, { once: true });
-    }
+      const fallbackTimer = setTimeout(playActiveVideo, 3500);
 
-    // Safety fallback: if loadingComplete doesn't fire within 4.5s, play
-    const fallbackTimer = setTimeout(() => {
-      startPlay();
-    }, 4500);
+      return () => {
+        window.removeEventListener("loadingComplete", handleLoadingComplete);
+        clearTimeout(fallbackTimer);
+      };
+    }
+  }, [playActiveVideo]);
+
+  // iOS Safari Low Power Mode fallback: start playback on first touch/interaction
+  useEffect(() => {
+    const unlockOnInteraction = () => {
+      const video = videoRefs.current[activeFighter];
+      if (video && video.paused && !video.ended) {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.play().catch(() => {});
+      }
+    };
+
+    window.addEventListener("touchstart", unlockOnInteraction, { once: true, passive: true });
+    window.addEventListener("click", unlockOnInteraction, { once: true, passive: true });
+    window.addEventListener("scroll", unlockOnInteraction, { once: true, passive: true });
 
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("loadingComplete", handleLoadingComplete);
-      }
-      clearTimeout(fallbackTimer);
+      window.removeEventListener("touchstart", unlockOnInteraction);
+      window.removeEventListener("click", unlockOnInteraction);
+      window.removeEventListener("scroll", unlockOnInteraction);
     };
-  }, []);
+  }, [activeFighter]);
 
   const handleFighterSelect = useCallback(
     (index: number) => {
@@ -98,6 +109,8 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
 
       const nextVideo = videoRefs.current[index];
       if (nextVideo) {
+        nextVideo.muted = true;
+        nextVideo.defaultMuted = true;
         nextVideo.currentTime = 0;
         nextVideo.play().catch(() => {});
       }
@@ -126,17 +139,26 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
             <video
               key={fighter.id}
               ref={(el) => {
+                if (el) {
+                  el.muted = true;
+                  el.defaultMuted = true;
+                  el.setAttribute("playsinline", "");
+                  el.setAttribute("webkit-playsinline", "");
+                }
                 videoRefs.current[index] = el;
               }}
               src={fighter.video}
-              poster={fighter.image}
+              poster={fighter.poster}
+              autoPlay
               muted
               playsInline
               preload="auto"
               className={`absolute inset-0 w-full h-full object-contain object-center transform-gpu transition-opacity duration-500 ease-in-out ${
                 isActive ? "opacity-100 z-[2]" : "opacity-0 z-[1] pointer-events-none"
               }`}
-            />
+            >
+              <source src={fighter.video} type="video/mp4" />
+            </video>
           );
         })}
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 // Self-contained SVGs for maximum reliability
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -20,66 +20,7 @@ function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-
-
-function CloseIcon({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  );
-}
-
-function CheckCircleIcon({ className = "w-14 h-14" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  );
-}
-
-function CalendarIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-    </svg>
-  );
-}
-
-function ClockIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  );
-}
-
-function MapPinIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-  );
-}
-
 export function GirlsPoweredEvent() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [selectedSlot, setSelectedSlot] = useState("11:00 AM - 12:30 PM");
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const slots = [
-    { time: "11:00 AM - 12:30 PM", label: "Slot 01: Morning Power Session" },
-    { time: "01:00 PM - 02:30 PM", label: "Slot 02: Afternoon Rhythm & Flow" },
-    { time: "03:30 PM - 05:00 PM", label: "Slot 03: Sunset Ring & Community" },
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email) return;
-    setIsSubmitted(true);
-  };
 
   return (
     <div className="w-full bg-[#161616] text-[#FFF1EB] selection:bg-[#FF0E97] selection:text-white">
@@ -135,12 +76,14 @@ export function GirlsPoweredEvent() {
 
               {/* Right Button */}
               <div className="w-auto flex justify-end">
-                <button
-                  onClick={() => setIsBookingOpen(true)}
+                <a
+                  href="https://www.district.in/events/girls-powered-by-nazr-sep27-2026-buy-tickets"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="h-[48px] px-8 bg-[#161616] text-[#FFF1EB] hover:bg-black hover:scale-105 active:scale-95 font-[family-name:var(--font-inter)] font-semibold text-[15px] flex items-center justify-center shadow-2xl tracking-wide uppercase transition-all duration-200 cursor-pointer text-center"
                 >
                   Book Your Slot Now
-                </button>
+                </a>
               </div>
             </div>
 
@@ -193,12 +136,14 @@ export function GirlsPoweredEvent() {
 
           {/* Centered Overlaid Button across the model's knees */}
           <div className="w-full flex justify-center mb-14 z-20">
-            <button
-              onClick={() => setIsBookingOpen(true)}
+            <a
+              href="https://www.district.in/events/girls-powered-by-nazr-sep27-2026-buy-tickets"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-[82%] max-w-[280px] h-[46px] bg-[#161616] text-[#FFF1EB] hover:bg-black font-[family-name:var(--font-inter)] font-medium text-sm flex items-center justify-center px-4 shadow-2xl tracking-normal transition-all duration-200 cursor-pointer text-center"
             >
               Book Your Slot Now
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -422,12 +367,14 @@ export function GirlsPoweredEvent() {
 
               {/* Big Pink CTA Button */}
               <div className="mt-8 md:mt-12 w-full">
-                <button
-                  onClick={() => setIsBookingOpen(true)}
+                <a
+                  href="https://www.district.in/events/girls-powered-by-nazr-sep27-2026-buy-tickets"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full h-[48px] bg-[#FF0E97] hover:bg-[#E00D86] active:scale-[0.99] text-white font-[family-name:var(--font-bebas)] text-[22px] md:text-[24px] tracking-wide flex items-center justify-center uppercase transition-all duration-200 shadow-xl cursor-pointer"
                 >
                   BOOK YOUR SLOT NOW
-                </button>
+                </a>
               </div>
             </div>
 
@@ -566,160 +513,6 @@ export function GirlsPoweredEvent() {
           </div>
         </div>
       </footer>
-
-      {/* =========================================================================
-          SLOT BOOKING MODAL
-          ========================================================================= */}
-      {isBookingOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-[500px] bg-[#1a1a1a] border border-white/20 p-6 md:p-8 text-white shadow-2xl">
-            {/* Close Button */}
-            <button
-              onClick={() => {
-                setIsBookingOpen(false);
-                setIsSubmitted(false);
-              }}
-              className="absolute top-4 right-4 text-white/60 hover:text-white p-1 transition-colors cursor-pointer"
-              aria-label="Close modal"
-            >
-              <CloseIcon className="w-6 h-6" />
-            </button>
-
-            {!isSubmitted ? (
-              <div>
-                <span className="text-[#FF0E97] font-[family-name:var(--font-bebas)] text-[20px] tracking-wider uppercase">
-                  NAZR SUNDAY SPECIAL
-                </span>
-                <h3 className="font-[family-name:var(--font-bebas)] text-[34px] md:text-[40px] leading-none text-white mt-1">
-                  RESERVE YOUR SPOT
-                </h3>
-                <p className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/70 mt-1">
-                  Sunday, Sep 27th 2026 • Delhi
-                </p>
-
-                {/* Event Highlights Badge */}
-                <div className="grid grid-cols-3 gap-2 my-4 py-2 border-y border-white/10 text-center">
-                  <div className="flex flex-col items-center">
-                    <CalendarIcon className="w-4 h-4 text-[#FF0E97] mb-1" />
-                    <span className="text-[11px] text-[#FFF1EB]/70">Sep 27, 2026</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <ClockIcon className="w-4 h-4 text-[#FF0E97] mb-1" />
-                    <span className="text-[11px] text-[#FFF1EB]/70">Morning to Eve</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <MapPinIcon className="w-4 h-4 text-[#FF0E97] mb-1" />
-                    <span className="text-[11px] text-[#FFF1EB]/70">Vasant Kunj</span>
-                  </div>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-4 mt-2">
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#888888] font-medium mb-1.5">
-                      Select Your Time Slot
-                    </label>
-                    <div className="space-y-2">
-                      {slots.map((s) => (
-                        <label
-                          key={s.time}
-                          className={`flex items-center justify-between p-2.5 border cursor-pointer transition-all ${
-                            selectedSlot === s.time
-                              ? "border-[#FF0E97] bg-[#FF0E97]/10 text-white"
-                              : "border-white/15 bg-white/5 text-[#FFF1EB]/75 hover:border-white/30"
-                          }`}
-                        >
-                          <span className="font-[family-name:var(--font-inter)] text-xs md:text-sm font-medium">
-                            {s.label}
-                          </span>
-                          <input
-                            type="radio"
-                            name="slot"
-                            value={s.time}
-                            checked={selectedSlot === s.time}
-                            onChange={(e) => setSelectedSlot(e.target.value)}
-                            className="accent-[#FF0E97]"
-                          />
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#888888] font-medium mb-1">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 text-sm text-white placeholder-white/40 outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#888888] font-medium mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="you@domain.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 text-sm text-white placeholder-white/40 outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#888888] font-medium mb-1">
-                      Phone Number (WhatsApp updates)
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 text-sm text-white placeholder-white/40 outline-none transition-colors"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-[#FF0E97] hover:bg-[#E00D86] text-white font-[family-name:var(--font-bebas)] text-[24px] py-3 tracking-wider uppercase transition-colors cursor-pointer mt-4"
-                  >
-                    CONFIRM &amp; BOOK SLOT
-                  </button>
-                </form>
-              </div>
-            ) : (
-              <div className="py-8 text-center flex flex-col items-center">
-                <CheckCircleIcon className="w-14 h-14 text-[#FF0E97] mb-3 animate-bounce" />
-                <h3 className="font-[family-name:var(--font-bebas)] text-[36px] text-white leading-tight">
-                  YOU&apos;RE IN!
-                </h3>
-                <p className="font-[family-name:var(--font-inter)] text-sm text-[#FFF1EB]/80 mt-2 max-w-[340px]">
-                  Thanks <span className="text-white font-semibold">{formData.name}</span>! Your slot for{" "}
-                  <span className="text-[#FF0E97] font-semibold">{selectedSlot}</span> on Sep 27th 2026 has been reserved.
-                </p>
-                <p className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/50 mt-4">
-                  Check your inbox ({formData.email}) for your entry QR pass and prep guide.
-                </p>
-                <button
-                  onClick={() => {
-                    setIsBookingOpen(false);
-                    setIsSubmitted(false);
-                  }}
-                  className="mt-6 bg-white/10 hover:bg-white/20 text-white font-[family-name:var(--font-inter)] text-xs font-semibold px-6 py-2.5 uppercase tracking-wider transition-colors cursor-pointer"
-                >
-                  Done
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

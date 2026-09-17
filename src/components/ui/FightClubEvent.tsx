@@ -113,7 +113,7 @@ export function FightClubEvent() {
                 <div className="relative z-10 pt-6 flex flex-col justify-between">
                   <div>
                     <a
-                      href="https://form.typeform.com/to/rrrhHrZt"
+                      href="https://link.district.in/DSTRKT/qgy9f6wo"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full md:w-auto px-6 py-3 sm:py-2 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold tracking-[-0.03em] rounded-[2px] transition-all shadow-md cursor-pointer text-center relative group inline-block"
@@ -411,7 +411,7 @@ export function FightClubEvent() {
                 {/* Action Button (shifted up on mobile to avoid bottom notch) */}
                 <div className="w-full relative -translate-y-4 md:translate-y-0 pb-2 md:pb-0">
                   <a
-                    href="https://form.typeform.com/to/rrrhHrZt"
+                    href="https://link.district.in/DSTRKT/qgy9f6wo"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto px-6 py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[-0.03em] rounded-[2px] transition-all shadow-md cursor-pointer relative group text-center inline-block"
