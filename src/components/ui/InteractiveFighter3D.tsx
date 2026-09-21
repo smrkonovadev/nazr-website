@@ -6,14 +6,18 @@ import Image from "next/image";
 const fighters = [
   {
     id: 1,
-    name: "FIGHTER 1",
+    name: "Atharva Tiwari",
+    firstName: "ATHARVA",
+    lastName: "TIWARI",
     video: "/images/fight-club/fighter-1.mp4",
     poster: "/images/fight-club/fighter-1-poster.jpg",
     image: "/images/fight-club/fighter-1-thumb.webp",
   },
   {
     id: 2,
-    name: "FIGHTER 2",
+    name: "Sachin Roy",
+    firstName: "SACHIN",
+    lastName: "ROY",
     video: "/images/fight-club/fighter-2.mp4",
     poster: "/images/fight-club/fighter-2-poster.jpg",
     image: "/images/fight-club/fighter-2-thumb.webp",
@@ -162,12 +166,22 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
           );
         })}
 
-        {/* Fighter name overlay */}
-        <div className="absolute inset-x-0 top-[45%] -translate-y-1/2 z-10 text-center pointer-events-none mix-blend-difference px-2">
-          <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[48px] leading-[0.95] tracking-tight uppercase select-none opacity-80">
-            FIGHTER<br />REVEALING SOON
-          </h2>
-        </div>
+        {/* Fighter name overlay with cross-fade transition */}
+        {fighters.map((fighter, index) => {
+          const isActive = activeFighter === index;
+          return (
+            <div
+              key={fighter.id}
+              className={`absolute inset-x-0 top-[45%] -translate-y-1/2 z-10 text-center pointer-events-none mix-blend-difference px-2 transition-opacity duration-500 ease-in-out ${
+                isActive ? "opacity-80" : "opacity-0"
+              }`}
+            >
+              <h2 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[52px] sm:text-[60px] md:text-[64px] leading-[0.92] tracking-tight uppercase select-none">
+                {fighter.firstName}<br />{fighter.lastName}
+              </h2>
+            </div>
+          );
+        })}
 
         {/* Subtle Bottom vignette */}
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#24232a]/60 via-transparent to-transparent z-[5] pointer-events-none" />
@@ -179,6 +193,8 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
           <button
             key={fighter.id}
             onClick={() => handleFighterSelect(index)}
+            title={fighter.name}
+            aria-label={fighter.name}
             className={`relative w-[56px] h-[70px] sm:w-[68px] sm:h-[85px] rounded-[8px] sm:rounded-[10px] overflow-hidden border transition-all duration-300 cursor-pointer group/card bg-[#24232a] ${
               activeFighter === index
                 ? "border-[#F1E4DE]/60"

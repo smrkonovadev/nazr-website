@@ -392,6 +392,87 @@ export function GirlsPoweredEvent() {
       </section>
 
       {/* =========================================================================
+          AGENDA / EVENT ITINERARY SECTION
+          ========================================================================= */}
+      <section className="relative w-full bg-[#161616] px-4 md:px-[40px] py-10 md:py-20">
+        <div className="w-full max-w-[1200px] mx-auto">
+          {/* Desktop 2-column split / Mobile stack */}
+          <div className="flex flex-col md:flex-row items-center md:items-stretch gap-8 md:gap-12">
+            {/* Left Column: Boxing Ring Photo (5 cols proportional) */}
+            <div className="w-full max-w-[340px] sm:max-w-[358px] mx-auto md:mx-0 md:max-w-none md:w-1/2 relative flex items-center justify-center">
+              <div className="relative w-full aspect-[9/16] md:aspect-[584/655] rounded-[3px] overflow-hidden shadow-2xl border border-white/10">
+                <Image
+                  src="/images/girlspoweradj.svg"
+                  alt="Girls Powered Pad Work"
+                  fill
+                  priority
+                  unoptimized
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
+
+            {/* Right Column: Itinerary List & Booking (7 cols proportional) */}
+            <div className="w-full max-w-[340px] sm:max-w-[358px] mx-auto md:mx-0 md:max-w-none md:w-1/2 flex flex-col justify-start">
+              <div className="w-full divide-y divide-white/20">
+                {/* Item 1 */}
+                <div className="pb-4 sm:pb-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    ARRIVE + CHECK IN
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                    Wristband · Goodie bag
+                  </p>
+                </div>
+
+                {/* Item 2 */}
+                <div className="py-4 sm:py-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    GET ON THE MATS
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                    Pad work · Movement · Practical self-<br className="md:hidden" />defence
+                  </p>
+                </div>
+
+                {/* Item 3 */}
+                <div className="py-4 sm:py-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    TRY THE EXPERIENCE
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                    Games · Challenges · Photo moments
+                  </p>
+                </div>
+
+                {/* Item 4 */}
+                <div className="py-4 sm:py-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    EXPLORE THE SOCIAL
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                    Light Bites · Matcha · Protein Shots ·<br className="md:hidden" /> Music · Meet the Founders
+                  </p>
+                </div>
+              </div>
+
+              {/* Big Pink CTA Button */}
+              <div className="pt-6 w-full">
+                <a
+                  href="https://www.district.in/events/girls-powered-by-nazr-sep27-2026-buy-tickets"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-[48px] bg-[#FF0E97] hover:bg-[#E00D86] active:scale-[0.99] text-white font-[family-name:var(--font-bebas)] text-[22px] md:text-[24px] tracking-wide flex items-center justify-center uppercase transition-all duration-200 shadow-xl cursor-pointer"
+                >
+                  BOOK NOW
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
           OUR PARTNERS MARQUEE SECTION
           ========================================================================= */}
       <section className="relative w-full bg-[#161616] px-4 md:px-[40px] py-10 md:py-16 overflow-hidden">
@@ -403,23 +484,78 @@ export function GirlsPoweredEvent() {
           {/* Marquee Container */}
           <div className="w-full overflow-hidden relative">
             {/* Scrolling track */}
-            <div className="flex animate-marquee-partners items-center gap-16 md:gap-24 w-max">
-              {/* First set */}
-              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              {/* Duplicate set for seamless loop */}
-              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              {/* Third set for wider screens */}
-              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              {/* Fourth set */}
-              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
-              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+            <div className="flex animate-marquee-partners items-center gap-12 sm:gap-16 md:gap-24 w-max">
+              {[...Array(3)].map((_, setIdx) => (
+                <div key={setIdx} className="flex items-center gap-12 sm:gap-16 md:gap-24 shrink-0">
+                  {/* Pinnora: Events Partner */}
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="h-[46px] md:h-[56px] flex items-center justify-center">
+                      <Image
+                        src="/images/Pinnora - Events.svg"
+                        alt="Pinnora"
+                        width={140}
+                        height={40}
+                        className="max-h-7 md:max-h-9 max-w-[120px] md:max-w-[140px] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+                        unoptimized
+                      />
+                    </div>
+                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                      Events Partner
+                    </span>
+                  </div>
+
+                  {/* Warrior's Cove: Venue Partner */}
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="h-[46px] md:h-[56px] flex items-center justify-center">
+                      <Image
+                        src="/images/fignterlogo.svg"
+                        alt="Warrior's Cove"
+                        width={46}
+                        height={46}
+                        className="max-h-9 md:max-h-11 max-w-[46px] md:max-w-[50px] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+                        unoptimized
+                      />
+                    </div>
+                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                      Venue Partner
+                    </span>
+                  </div>
+
+                  {/* Bree Matcha: Wellness Partner */}
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="h-[46px] md:h-[56px] flex items-center justify-center">
+                      <Image
+                        src="/images/bree.svg"
+                        alt="Bree Matcha"
+                        width={130}
+                        height={40}
+                        className="max-h-8 md:max-h-10 max-w-[110px] md:max-w-[130px] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+                        unoptimized
+                      />
+                    </div>
+                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                      Wellness Partner
+                    </span>
+                  </div>
+
+                  {/* The Basics Woman: Protein Partner */}
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="h-[46px] md:h-[56px] flex items-center justify-center">
+                      <Image
+                        src="/images/girlnewpro.svg"
+                        alt="The Basics Woman"
+                        width={140}
+                        height={44}
+                        className="max-h-8 md:max-h-10 max-w-[120px] md:max-w-[140px] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+                        unoptimized
+                      />
+                    </div>
+                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                      Protein Partner
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -431,7 +567,7 @@ export function GirlsPoweredEvent() {
             100% { transform: translateX(-50%); }
           }
           .animate-marquee-partners {
-            animation: marquee-partners 20s linear infinite;
+            animation: marquee-partners 25s linear infinite;
           }
         `}</style>
       </section>

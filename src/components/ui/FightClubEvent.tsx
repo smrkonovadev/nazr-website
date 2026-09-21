@@ -429,6 +429,219 @@ export function FightClubEvent() {
         </div>
 
 
+        {/* =========================================================================
+            SECTION 3.5: "AGENDA" CARD
+            Figma Frame Silhouette & overlay.png Grid Overlay
+            ========================================================================= */}
+        <div className="relative w-full drop-shadow-2xl">
+          <section
+            className="relative w-full p-4 sm:p-8 md:p-10 bg-[#222426]"
+            style={{
+              backgroundImage: "url('/images/adjenda.png')",
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+              WebkitMaskImage: "url('/images/adjenda.png')",
+              WebkitMaskSize: "100% 100%",
+              WebkitMaskRepeat: "no-repeat",
+              maskImage: "url('/images/adjenda.png')",
+              maskSize: "100% 100%",
+              maskRepeat: "no-repeat",
+            }}
+          >
+            {/* Tech grid overlay with lines and '+' crosshairs from overlay.png */}
+            <div
+              className="absolute inset-0 z-0 pointer-events-none opacity-80"
+              style={{
+                backgroundImage: "url('/images/overlay.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
+              {/* Left: Cage Fight Graphic (5 cols) */}
+              <div className="md:col-span-5 relative w-full flex items-center justify-center">
+                <div className="relative w-full aspect-[565/538] max-w-[480px] overflow-hidden">
+                  <Image
+                    src="/images/ADJIMAG.svg"
+                    alt="NAZR Fight Action"
+                    fill
+                    priority
+                    unoptimized
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Right: Agenda List & Booking (7 cols) */}
+              <div className="md:col-span-7 w-full border border-[#3E4044] rounded-[2px] bg-[#1E2022]/60 backdrop-blur-sm divide-y divide-[#3E4044]">
+                {/* Item 1 */}
+                <div className="p-4 sm:p-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    ARRIVE + CHECK IN
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[13.5px] text-[#F1E4DE]/90 mt-1.5 font-normal tracking-[-0.01em]">
+                    Wristband · Personalise your NAZR Safety Card.
+                  </p>
+                </div>
+
+                {/* Item 2 */}
+                <div className="p-4 sm:p-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    WATCH THE FIGHT
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[13.5px] text-[#F1E4DE]/90 mt-1.5 font-normal tracking-[-0.01em]">
+                    Live MMA · Feel the action up close
+                  </p>
+                </div>
+
+                {/* Item 3 */}
+                <div className="p-4 sm:p-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    TRY THE EXPERIENCE
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[13.5px] text-[#F1E4DE]/90 mt-1.5 font-normal tracking-[-0.01em]">
+                    Games · Activations · Photo moments
+                  </p>
+                </div>
+
+                {/* Item 4 */}
+                <div className="p-4 sm:p-5">
+                  <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
+                    EXPLORE THE SOCIAL
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[13.5px] text-[#F1E4DE]/90 mt-1.5 font-normal tracking-[-0.01em]">
+                    Small Bites · Refreshment Station · Music
+                  </p>
+                </div>
+
+                {/* Button Container */}
+                <div className="p-4 sm:p-5">
+                  <div className="inline-block p-1 border border-[#FF007A]/40 rounded-[2px]">
+                    <a
+                      href="https://link.district.in/DSTRKT/qgy9f6wo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2 sm:px-6 sm:py-2.5 bg-[#8A185B] hover:bg-[#A31C6C] active:scale-[0.98] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold tracking-[-0.01em] rounded-[2px] transition-all inline-block text-center cursor-pointer shadow"
+                    >
+                      Book Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+
+        {/* =========================================================================
+            SECTION: PARTNERS (Desktop: desktoppat.png, Mobile: paternes.png)
+            ========================================================================= */}
+        {/* Desktop Partners Section (Desktop only) */}
+        <div className="hidden md:block relative w-full drop-shadow-2xl">
+          <div
+            className="relative w-full aspect-[1240/295] bg-[url('/images/desktoppat.png')] flex flex-col items-center justify-center py-6 px-8 overflow-hidden"
+            style={{
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            {/* Subtle background blueprint grid crosses */}
+            <div className="absolute inset-0 pointer-events-none opacity-25 flex flex-col justify-between p-6">
+              <div className="flex justify-between text-[#888888] font-mono text-[10px]">
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+              </div>
+              <div className="flex justify-between text-[#888888] font-mono text-[10px]">
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+              </div>
+            </div>
+
+            {/* Heading: OUR PARTNERS */}
+            <h2
+              className="text-[#F1E4DE] text-[50px] lg:text-[56px] tracking-wider uppercase font-bold leading-none mb-5 z-10 select-none text-center"
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+            >
+              OUR PARTNERS
+            </h2>
+
+            {/* Magenta Blueprint Grid - Horizontal 3 Partners (Expanded to fill desktop space) */}
+            <div className="w-full max-w-[1000px] lg:max-w-[1040px] relative border border-[#FF007A]/80 z-10">
+              {/* Technical crosshairs (+) at corners and borders */}
+              <span className="absolute -top-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -top-[7px] left-1/3 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -top-[7px] left-2/3 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -top-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+
+              <span className="absolute top-1/2 -translate-y-1/2 -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute top-1/2 -translate-y-1/2 -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+
+              <span className="absolute -bottom-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -bottom-[7px] left-1/3 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -bottom-[7px] left-2/3 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute -bottom-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+
+              {/* Side-by-side 3-column cells */}
+              <div className="grid grid-cols-3 divide-x divide-[#FF007A]/80">
+                {/* Col 1: Pinnora Logo + Events Partner */}
+                <div className="relative flex flex-col items-center justify-center py-5 lg:py-6 px-6 text-center min-h-[105px] lg:min-h-[115px]">
+                  <div className="h-[46px] lg:h-[50px] flex items-center justify-center">
+                    <Image
+                      src="/images/Pinnora - Events.svg"
+                      alt="Pinnora"
+                      width={160}
+                      height={45}
+                      className="max-h-9 lg:max-h-10 max-w-[150px] lg:max-w-[170px] w-auto h-auto object-contain"
+                    />
+                  </div>
+                  <span className="text-[#F1E4DE] text-[13px] lg:text-[14px] font-normal tracking-wide mt-2.5 select-none leading-none">
+                    Events Partner
+                  </span>
+                </div>
+
+                {/* Col 2: NAZR Fighter Logo + Venue Partner */}
+                <div className="relative flex flex-col items-center justify-center py-5 lg:py-6 px-6 text-center min-h-[105px] lg:min-h-[115px]">
+                  <div className="h-[46px] lg:h-[50px] flex items-center justify-center">
+                    <Image
+                      src="/images/fignterlogo.svg"
+                      alt="Venue Partner"
+                      width={50}
+                      height={50}
+                      className="max-h-11 lg:max-h-12 max-w-[48px] lg:max-w-[52px] w-auto h-auto object-contain"
+                    />
+                  </div>
+                  <span className="text-[#F1E4DE] text-[13px] lg:text-[14px] font-normal tracking-wide mt-2.5 select-none leading-none">
+                    Venue Partner
+                  </span>
+                </div>
+
+                {/* Col 3: Sepoy & Co Logo + Beverage Partner */}
+                <div className="relative flex flex-col items-center justify-center py-5 lg:py-6 px-6 text-center min-h-[105px] lg:min-h-[115px]">
+                  <div className="h-[46px] lg:h-[50px] flex items-center justify-center">
+                    <Image
+                      src="/images/newfightsp.svg"
+                      alt="Sepoy & Co"
+                      width={150}
+                      height={45}
+                      className="max-h-9 lg:max-h-10 max-w-[140px] lg:max-w-[160px] w-auto h-auto object-contain"
+                    />
+                  </div>
+                  <span className="text-[#F1E4DE] text-[13px] lg:text-[14px] font-normal tracking-wide mt-2.5 select-none leading-none">
+                    Beverage Partner
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Mobile Partners / Custom Section (Mobile only) */}
         <div className="block md:hidden relative w-full drop-shadow-2xl">
           <div
@@ -462,36 +675,39 @@ export function FightClubEvent() {
 
             {/* Heading: OUR PARTNERS */}
             <h2
-              className="text-[#F1E4DE] text-[44px] sm:text-[48px] tracking-wider uppercase font-bold leading-none mb-3.5 z-10 select-none text-center"
+              className="text-[#F1E4DE] text-[44px] sm:text-[48px] tracking-wider uppercase font-bold leading-none mb-3 z-10 select-none text-center"
               style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
             >
               OUR PARTNERS
             </h2>
 
-            {/* Magenta Blueprint Grid - Stacked 2 Partners */}
+            {/* Magenta Blueprint Grid - Stacked 3 Partners */}
             <div className="w-full max-w-[260px] sm:max-w-[280px] relative border border-[#FF007A]/80 z-10">
               {/* Technical crosshairs (+) at corners and borders */}
               <span className="absolute -top-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -top-[7px] left-1/2 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -top-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
 
-              <span className="absolute top-1/2 -translate-y-1/2 -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
-              <span className="absolute top-1/2 -translate-y-1/2 -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute top-1/3 -translate-y-1/2 -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute top-1/3 -translate-y-1/2 -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+
+              <span className="absolute top-2/3 -translate-y-1/2 -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
+              <span className="absolute top-2/3 -translate-y-1/2 -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
 
               <span className="absolute -bottom-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -bottom-[7px] left-1/2 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -bottom-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
 
-              {/* Stacked 2-row cells */}
+              {/* Stacked 3-row cells */}
               <div className="grid grid-cols-1 divide-y divide-[#FF007A]/80">
                 {/* Row 1: Pinnora Logo + Events Partner */}
-                <div className="relative flex flex-col items-center justify-center py-2.5 px-3 text-center">
+                <div className="relative flex flex-col items-center justify-center py-2 px-3 text-center">
                   <Image
                     src="/images/Pinnora - Events.svg"
                     alt="Pinnora"
-                    width={120}
-                    height={32}
-                    className="max-h-5 sm:max-h-6 max-w-[100px] w-auto h-auto object-contain"
+                    width={110}
+                    height={30}
+                    className="max-h-5 sm:max-h-6 max-w-[95px] w-auto h-auto object-contain"
                   />
                   <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1 select-none leading-none">
                     Events Partner
@@ -499,16 +715,30 @@ export function FightClubEvent() {
                 </div>
 
                 {/* Row 2: NAZR Fighter Logo + Venue Partner */}
-                <div className="relative flex flex-col items-center justify-center py-2.5 px-3 text-center">
+                <div className="relative flex flex-col items-center justify-center py-2 px-3 text-center">
                   <Image
                     src="/images/fignterlogo.svg"
                     alt="Venue Partner"
-                    width={34}
-                    height={34}
-                    className="max-h-7 sm:max-h-8 max-w-[34px] w-auto h-auto object-contain"
+                    width={32}
+                    height={32}
+                    className="max-h-6 sm:max-h-7 max-w-[32px] w-auto h-auto object-contain"
                   />
                   <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1 select-none leading-none">
                     Venue Partner
+                  </span>
+                </div>
+
+                {/* Row 3: Sepoy & Co Logo + Beverage Partner */}
+                <div className="relative flex flex-col items-center justify-center py-2 px-3 text-center">
+                  <Image
+                    src="/images/newfightsp.svg"
+                    alt="Sepoy & Co"
+                    width={100}
+                    height={30}
+                    className="max-h-5 sm:max-h-6 max-w-[95px] w-auto h-auto object-contain"
+                  />
+                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1 select-none leading-none">
+                    Beverage Partner
                   </span>
                 </div>
               </div>
