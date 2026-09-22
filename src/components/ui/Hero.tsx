@@ -31,8 +31,8 @@ export function Hero() {
       const centerX = window.innerWidth / 2;
       const normalized = Math.max(-1, Math.min(1, (e.clientX - centerX) / (window.innerWidth / 2)));
 
-      // Cursor Left (-1) -> +10.5deg, Cursor Right (+1) -> -10.5deg
-      rotateSpotlight(10.5 - normalized * 21);
+      // Center (0) -> 0deg, Right (+1) -> +10.5deg, Left (-1) -> -10.5deg
+      rotateSpotlight(normalized * 10.5);
       shiftPool(normalized * 52);
     };
 
