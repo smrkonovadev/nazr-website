@@ -15,30 +15,8 @@ const CRITICAL_ASSETS = [
   // Core UI / Hero Graphics
   "/images/HOMEHERO/heorleft.webp",
   "/images/HOMEHERO/heroright.webp",
+  "/images/HOMEHERO/interactive card.webp",
   "/images/logosvg.svg",
-  "/images/google-play-badge.png",
-  "/images/buttonl.svg",
-  "/images/button r.svg",
-  // Interactive Cards Images
-  "/images/new3.webp",
-  "/images/new4.webp",
-  "/images/new5.webp",
-  "/images/new6.webp",
-  "/images/new7.webp",
-  // Product Showcase Images
-  "/images/productsip.webp",
-  "/images/center.webp",
-  "/images/NAZR360.webp",
-  // Heavy Lottie Animation JSONs
-  "/images/SOS Default.json",
-  "/images/sos_hand.json",
-  "/images/sos2.json",
-  "/images/sos3.json",
-  "/images/SH_SM ARM Turn On.json",
-  "/images/SH_Trusted Circle.json",
-  "/images/SH_Trigger.json",
-  // Brand Fonts
-  "/fonts/signpainter.ttf",
 ];
 
 export function LoadingScreen({ onComplete, duration = 1200, autoHide = true }: LoadingScreenProps) {
@@ -201,21 +179,22 @@ export function LoadingScreen({ onComplete, duration = 1200, autoHide = true }: 
 
         {/* ---- CENTER: NAZR (1sec Font Cycle) + PROGRESS BAR ---- */}
         <div className="w-full flex flex-col justify-center items-center flex-1 my-auto py-2">
-          <h1
-            className="font-normal text-center text-[#FFF1EB] select-none uppercase tracking-tight"
-            style={{
-              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
-              fontWeight: 400,
-              fontStyle: "normal",
-              fontSize: "clamp(90px, 22vw, 300px)",
-              lineHeight: "90%",
-              letterSpacing: "-0.03em",
-              textAlign: "center",
-              leadingTrim: "cap-height",
-            } as React.CSSProperties}
-          >
-            {words[wordIndex]}
-          </h1>
+          <div className="h-[clamp(90px,22vw,300px)] flex items-center justify-center overflow-hidden">
+            <h1
+              className="font-normal text-center text-[#FFF1EB] select-none uppercase tracking-tight m-0"
+              style={{
+                fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "clamp(90px, 22vw, 300px)",
+                lineHeight: "1",
+                letterSpacing: "-0.03em",
+                textAlign: "center",
+              }}
+            >
+              {words[wordIndex]}
+            </h1>
+          </div>
 
           {/* Centered Loading Bar directly below NAZR */}
           <div className="w-full flex justify-center mt-3 sm:mt-4 md:mt-8">

@@ -55,7 +55,7 @@ export function Hero() {
             alt="Safety in motion"
             fill
             priority
-            unoptimized
+            fetchPriority="high"
             className="object-cover"
             sizes="(max-width: 1024px) 240px, (max-width: 1280px) 290px, 320px"
           />
@@ -235,7 +235,7 @@ export function Hero() {
             alt="On Me Safety Spray"
             fill
             priority
-            unoptimized
+            fetchPriority="high"
             className="object-cover"
             sizes="(max-width: 1024px) 240px, (max-width: 1280px) 290px, 320px"
           />

@@ -17,7 +17,7 @@ export function DesktopScaler({
 }: DesktopScalerProps) {
   const [scale, setScale] = useState(1);
   const [contentHeight, setContentHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [isDesktopSiteMobile, setIsDesktopSiteMobile] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [useTransformFallback, setUseTransformFallback] = useState(false);
@@ -139,7 +139,7 @@ export function DesktopScaler({
     >
       <div
         ref={containerRef}
-        className="relative flex shrink-0 flex-col"
+        className="relative flex shrink-0 flex-col w-[390px] md:w-[1440px]"
         style={innerStyle}
       >
         {children}

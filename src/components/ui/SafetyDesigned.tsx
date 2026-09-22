@@ -268,57 +268,59 @@ export function SafetyDesigned() {
           <div
             key={item.id}
             ref={(el) => { desktopCarouselRefs.current[index] = el; }}
-            className="absolute rounded-[23.5px] flex items-center justify-center"
+            className="absolute rounded-[23.5px] flex items-center justify-center overflow-hidden"
           >
-            <img
-              ref={(el) => { desktopImgRefs.current[index] = el; }}
+            <Image
+              ref={(el) => { desktopImgRefs.current[index] = el as any; }}
               src={item.image}
               alt={item.title}
-              className="w-full h-full object-contain"
+              fill
+              className="object-contain"
+              sizes="(max-width: 1024px) 350px, 500px"
             />
           </div>
         ))}
 
         {/* Floating Icons (Pepper Spray) */}
         <div ref={(el) => { floatingIconRefs.current["ps-0"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "191.41px", height: "169.84px", top: "260px", left: "310px", opacity: 0 }}>
-          <Image src="/images/new9.webp" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" alt="" />
+          <Image src="/images/new9.webp" fill sizes="200px" className="object-contain hover:animate-[spin_4s_linear_infinite]" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["ps-1"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "70.26px", height: "48.17px", top: "290px", left: "670px", transform: "rotate(-30deg)", opacity: 0 }}>
-          <Image src="/images/new10.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new10.webp" fill sizes="100px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["ps-2"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "260px", height: "285px", top: "430px", left: "315px", transform: "rotate(36.59deg)", opacity: 0 }}>
-          <Image src="/images/new11.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new11.webp" fill sizes="280px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["ps-3"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "91.95px", height: "90.19px", top: "470px", left: "680px", transform: "rotate(-60deg)", opacity: 0 }}>
-          <Image src="/images/new12.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new12.webp" fill sizes="120px" className="object-contain" alt="" />
         </div>
 
         {/* Floating Icons (Sip Check) */}
         <div ref={(el) => { floatingIconRefs.current["sc-0"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "191.41px", height: "169.84px", top: "260px", left: "380px", opacity: 0 }}>
-          <Image src="/images/new14.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new14.webp" fill sizes="200px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["sc-1"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "115px", height: "100px", top: "410px", left: "730px", transform: "rotate(-30deg)", opacity: 0 }}>
-          <Image src="/images/new15.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new15.webp" fill sizes="120px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["sc-2"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "180px", height: "176px", top: "565px", left: "390px", transform: "rotate(10.59deg)", opacity: 0 }}>
-          <Image src="/images/new17.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new17.webp" fill sizes="180px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["sc-3"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "165px", height: "140px", top: "585px", left: "670px", transform: "rotate(-60deg)", opacity: 0 }}>
-          <Image src="/images/new16.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new16.webp" fill sizes="165px" className="object-contain" alt="" />
         </div>
 
         {/* Floating Icons (NAZR 360) */}
         <div ref={(el) => { floatingIconRefs.current["n3-0"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "220px", height: "250px", top: "240px", left: "355px", opacity: 0 }}>
-          <Image src="/images/new18.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new18.webp" fill sizes="220px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["n3-1"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "180px", height: "190px", top: "260px", left: "680px", transform: "rotate(-15deg)", opacity: 0 }}>
-          <Image src="/images/new19.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new19.webp" fill sizes="180px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["n3-2"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "270px", height: "195px", top: "580px", left: "275px", transform: "rotate(10.59deg)", opacity: 0 }}>
-          <Image src="/images/new21.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new21.webp" fill sizes="270px" className="object-contain" alt="" />
         </div>
         <div ref={(el) => { floatingIconRefs.current["n3-3"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "120px", height: "100px", top: "590px", left: "750px", opacity: 0 }}>
-          <Image src="/images/new20.webp" fill className="object-contain" alt="" />
+          <Image src="/images/new20.webp" fill sizes="120px" className="object-contain" alt="" />
         </div>
 
         {/* Text & Controls Block */}
@@ -410,16 +412,16 @@ export function SafetyDesigned() {
                 {item.id === "pepper-spray" && (
                   <>
                     <div className="absolute w-[95px] h-[90px] top-[-5px] left-[-30px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)' }}>
-                      <Image unoptimized quality={100} src="/images/new9.webp" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
+                      <Image sizes="100px" src="/images/new9.webp" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
                     </div>
                     <div className="absolute w-[85px] h-[80px] top-[-10px] right-[-25px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.1s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new10.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="90px" src="/images/new10.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[155px] h-[90px] bottom-[10px] left-[-55px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.15s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new11.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="160px" src="/images/new11.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[55px] h-[55px] bottom-[15px] right-[-25px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 0.8 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.2s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new12.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="60px" src="/images/new12.webp" alt="sticker" fill className="object-contain" />
                     </div>
                   </>
                 )}
@@ -428,16 +430,16 @@ export function SafetyDesigned() {
                 {item.id === "sip-check" && (
                   <>
                     <div className="absolute w-[95px] h-[95px] top-[5px] left-[0px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)' }}>
-                      <Image unoptimized quality={100} src="/images/new14.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="100px" src="/images/new14.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[90px] h-[85px] top-[30px] right-[-10px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.1s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new15.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="90px" src="/images/new15.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[135px] h-[135px] bottom-[35px] left-[-30px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.15s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new17.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="140px" src="/images/new17.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[95px] h-[90px] bottom-[45px] right-[-10px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.2s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new16.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="100px" src="/images/new16.webp" alt="sticker" fill className="object-contain" />
                     </div>
                   </>
                 )}
@@ -446,16 +448,16 @@ export function SafetyDesigned() {
                 {item.id === "nazr-360" && (
                   <>
                     <div className="absolute w-[85px] h-[85px] top-[-45px] left-[-58px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)' }}>
-                      <Image unoptimized quality={100} src="/images/new18.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="90px" src="/images/new18.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[90px] h-[90px] top-[-25px] right-[-58px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.1s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new19.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="90px" src="/images/new19.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[95px] h-[85px] bottom-[-20px] left-[-75px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.15s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new21.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="100px" src="/images/new21.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[70px] h-[65px] bottom-[-20px] right-[-52px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.2s' : '0s' }}>
-                      <Image unoptimized quality={100} src="/images/new20.webp" alt="sticker" fill className="object-contain" />
+                      <Image sizes="70px" src="/images/new20.webp" alt="sticker" fill className="object-contain" />
                     </div>
                   </>
                 )}
