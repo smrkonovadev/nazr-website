@@ -14,41 +14,40 @@ const darkCards = [
     timeNumber: "0:03",
     timeUnit: "Seconds",
     title: "FIND THE\nDAMN PHONE",
-    src: "/images/new3.webp",
-    imgRotation: 4.44,
+    src: "/images/HOMEHERO/interactive card.webp",
+    imgRotation: 0,
   },
   {
     id: 2,
     timeNumber: "0:06",
     timeUnit: "Seconds",
     title: "CONVINCE IT\nYOU'RE YOU",
-    src: "/images/new4.webp",
-    imgRotation: -4.24,
+    src: "/images/HOMEHERO/interactive card.webp",
+    imgRotation: 0,
   },
   {
     id: 3,
     timeNumber: "0:09",
     timeUnit: "Seconds",
     title: "FIND THE\nRIGHT APP",
-    src: "/images/new5.webp",
-    imgRotation: 4.44,
+    src: "/images/HOMEHERO/interactive card.webp",
+    imgRotation: 0,
   },
   {
     id: 4,
     timeNumber: "0:12",
     timeUnit: "Seconds",
     title: "FIND THE\nRIGHT BUTTON",
-    src: "/images/new7.webp",
-    imgRotation: -4.24,
-    objectPosition: "80% center",
+    src: "/images/HOMEHERO/interactive card.webp",
+    imgRotation: 0,
   },
   {
     id: 5,
     timeNumber: "0:15+",
     timeUnit: "Seconds",
     title: "...STILL\nWAITING",
-    src: "/images/new6.webp",
-    imgRotation: 4.44,
+    src: "/images/HOMEHERO/interactive card.webp",
+    imgRotation: 0,
   },
 ];
 
@@ -235,58 +234,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
     setDynamicRotations(testimonialCards.map(() => (Math.random() * 12) - 6));
   };
 
-  // GSAP ScrollTrigger for staggered card reveal (replaces framer-motion useInView)
-  useEffect(() => {
-    if (!sectionRef.current) return;
 
-    const trigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top 90%",
-      once: true,
-      onEnter: () => {
-        setIsInView(true);
-
-        // Staggered reveal for dark cards
-        const cards = darkCardsRef.current.filter(Boolean);
-        if (cards.length > 0) {
-          gsap.fromTo(cards,
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "power2.out" }
-          );
-        }
-
-        // Pink card reveal
-        if (pinkCardRef.current) {
-          gsap.fromTo(pinkCardRef.current,
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.4, delay: 0.4, ease: "power2.out" }
-          );
-        }
-      },
-    });
-
-    return () => trigger.kill();
-  }, []);
-
-  // GSAP hover effects for dark cards
-  useEffect(() => {
-    darkCardsRef.current.forEach((card, i) => {
-      if (!card) return;
-      if (hoveredIndex === i) {
-        gsap.to(card, { y: -4, scale: 1.02, duration: 0.3, ease: "power2.out" });
-      } else {
-        gsap.to(card, { y: 0, scale: 1, duration: 0.3, ease: "power2.out" });
-      }
-    });
-
-    if (pinkCardRef.current) {
-      if (hoveredIndex === 5) {
-        gsap.to(pinkCardRef.current, { y: -4, scale: 1.02, duration: 0.3, ease: "power2.out" });
-      } else {
-        gsap.to(pinkCardRef.current, { y: 0, scale: 1, duration: 0.3, ease: "power2.out" });
-      }
-    }
-  }, [hoveredIndex]);
 
   // Cream theme: drag scrolling + wheel handling
   useEffect(() => {
@@ -367,18 +315,15 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                   ref={(el) => { darkCardsRef.current[i] = el; }}
                   data-card-index={i}
                   className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB]/80 bg-[#161616] cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_12px]"
-                  style={{ opacity: isInView ? undefined : 0 }}
-                  onMouseEnter={() => setHoveredIndex(i)}
-                  onMouseLeave={() => setHoveredIndex(null)}
                 >
                   {/* Background Image (Counter-rotated to exact 0 degrees) */}
                   <Image
                     src={card.src}
                     alt={card.title.replace('\n', ' ')}
                     fill
-                    className="object-cover transition-transform duration-300"
+                    className="object-cover"
                     style={{
-                      transform: `rotate(${card.imgRotation}deg) scale(1.12)`,
+                      transform: card.imgRotation ? `rotate(${card.imgRotation}deg) scale(1.12)` : undefined,
                       objectPosition: (card as any).objectPosition || 'center center'
                     }}
                     priority={i < 3}
@@ -433,9 +378,6 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
               ref={pinkCardRef}
               data-card-index={5}
               className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border border-[#FF0E97] bg-[#FF0E97] cursor-pointer shadow-xl flex flex-col justify-between p-[14px_12px] sm:p-[16px_14px] md:p-[20px_16px]"
-              style={{ opacity: isInView ? undefined : 0 }}
-              onMouseEnter={() => setHoveredIndex(5)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Top: With NAZR */}
               <div className="flex flex-col text-left">

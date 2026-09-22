@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,46 +8,8 @@ import { NazrMilaoSection } from "@/components/ui/NazrMilaoSection";
 
 export function Footer() {
   const pathname = usePathname();
-  const footerRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const hasPlayedRef = useRef<boolean>(false);
   const [contactInput, setContactInput] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Reset video playback state on page navigation so it plays on every page
-  useEffect(() => {
-    hasPlayedRef.current = false;
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-    }
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!footerRef.current || !videoRef.current) return;
-
-    const videoElement = videoRef.current;
-    videoElement.loop = false;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasPlayedRef.current) {
-            hasPlayedRef.current = true;
-            videoElement.play().catch(() => {
-              // Handle optional browser play policies silently
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(footerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [pathname]);
 
   const handleJoin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,26 +36,8 @@ export function Footer() {
     <>
       <NazrMilaoSection />
       <footer
-        ref={footerRef}
         className="w-full bg-[#161616] text-[#FFF1EB] pt-10 sm:pt-14 md:pt-16 pb-6 md:pb-8 px-5 sm:px-8 md:px-12 lg:px-16 flex flex-col justify-between relative z-20 overflow-visible md:overflow-hidden md:min-h-[max(700px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu md:-mt-[26px] max-md:-mt-[9.71px]"
       >
-      {/* Background Video with Hardware Acceleration for Mobile & Desktop */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
-        <video
-          ref={videoRef}
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover object-[58%_center] md:object-center opacity-75 mix-blend-normal pointer-events-none transform-gpu"
-          style={{
-            willChange: "transform",
-            backfaceVisibility: "hidden",
-          }}
-        >
-          <source src="/images/Footer.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/35 pointer-events-none" />
-      </div>
 
       <div className="relative z-10 w-full flex flex-col justify-between min-h-full max-w-[1440px] mx-auto">
         {/* Top Section: Left Headline & Newsletter + Right 4 Columns */}
