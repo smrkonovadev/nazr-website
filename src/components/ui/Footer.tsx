@@ -4,12 +4,15 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { NazrMilaoSection } from "@/components/ui/NazrMilaoSection";
 
 export function Footer() {
   const pathname = usePathname();
   const footerRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasPlayedRef = useRef<boolean>(false);
+  const [contactInput, setContactInput] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Reset video playback state on page navigation so it plays on every page
   useEffect(() => {
@@ -46,20 +49,14 @@ export function Footer() {
     };
   }, [pathname]);
 
-  const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
-    pages: true,
-    socials: true,
-    contact: true,
-  });
-
-  const toggleSection = (key: string) => {
-    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
-
-  const getLinkClass = (href: string) => {
-    const isActive = pathname === href;
-    return `font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] transition-colors ${isActive ? "text-[#FFF1EB]" : "text-[#FFF1EB]/40 hover:text-[#FFF1EB]"
-      }`;
+  const handleJoin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contactInput.trim()) return;
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setContactInput("");
+    }, 3000);
   };
 
   if (
@@ -74,7 +71,12 @@ export function Footer() {
   }
 
   return (
-    <footer ref={footerRef} className="w-full bg-[#161616] text-[#FFF1EB] pt-[30px] md:pt-[40px] pb-[20px] md:pb-[30px] px-4 sm:px-6 md:px-[30px] flex flex-col justify-between relative z-20 overflow-visible md:overflow-hidden md:min-h-[max(680px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu">
+    <>
+      <NazrMilaoSection />
+      <footer
+        ref={footerRef}
+        className="w-full bg-[#161616] text-[#FFF1EB] pt-10 sm:pt-14 md:pt-16 pb-6 md:pb-8 px-5 sm:px-8 md:px-12 lg:px-16 flex flex-col justify-between relative z-20 overflow-visible md:overflow-hidden md:min-h-[max(700px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu md:-mt-[26px] max-md:-mt-[9.71px]"
+      >
       {/* Background Video with Hardware Acceleration for Mobile & Desktop */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
         <video
@@ -90,174 +92,128 @@ export function Footer() {
         >
           <source src="/images/Footer.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/35 pointer-events-none" />
       </div>
 
       <div className="relative z-10 w-full flex flex-col justify-between min-h-full max-w-[1440px] mx-auto">
-        {/* Top section: 2-Column Grid on Mobile, 4-Column Grid on Desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-8 w-full max-w-[1440px] mx-auto">
-          {/* Pages Column */}
-          <div className="flex flex-col col-span-2 md:col-span-2">
-            <button
-              onClick={() => toggleSection("pages")}
-              className="flex items-center gap-1.5 mb-2 md:mb-4 w-fit cursor-pointer text-left focus:outline-none group"
-              aria-expanded={openSections.pages}
+        {/* Top Section: Left Headline & Newsletter + Right 4 Columns */}
+        <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-10 md:gap-14 lg:gap-16">
+          {/* Left Column: Bold Headline & Email/WhatsApp Signup */}
+          <div className="flex flex-col gap-6 sm:gap-7 w-full max-w-[480px]">
+            <h2 className="font-[family-name:var(--font-bebas)] text-[44px] sm:text-[56px] md:text-[68px] lg:text-[76px] font-normal leading-[0.92] tracking-[-0.02em] text-[#FFF1EB] uppercase m-0">
+              THE WORLD STARES.<br />
+              STARE BACK.
+            </h2>
+
+            {/* Newsletter Pill Input */}
+            <form
+              onSubmit={handleJoin}
+              className="relative flex items-center w-full max-w-[420px] bg-white rounded-full p-1.5 pl-4 sm:pl-5 shadow-lg transition-all focus-within:ring-2 focus-within:ring-white/40"
             >
-              <span className="font-[family-name:var(--font-bebas)] font-normal text-[16px] md:text-[21px] leading-[120%] tracking-[-0.02em] text-[#FFF1EB] uppercase group-hover:text-[#FFF1EB]/80 transition-colors">
-                [ PAGES ]
-              </span>
-              <svg
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 text-[#FFF1EB] stroke-[2.5] transition-transform duration-300 ${openSections.pages ? "rotate-0" : "-rotate-90"
-                  }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <input
+                type="text"
+                value={contactInput}
+                onChange={(e) => setContactInput(e.target.value)}
+                placeholder="Email or WhatsApp for drops and events"
+                className="w-full bg-transparent text-[13px] sm:text-[14px] text-[#161616] placeholder:text-[#161616]/60 focus:outline-none pr-3 font-['Switzer',_sans-serif]"
+                required
+              />
+              <button
+                type="submit"
+                className="shrink-0 bg-black text-white text-[13px] sm:text-[14px] font-medium px-5 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-neutral-800 transition-colors cursor-pointer font-['Switzer',_sans-serif]"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div
-              className={`transition-all duration-300 ease-in-out ${openSections.pages
-                ? "max-h-[300px] opacity-100"
-                : "max-h-0 opacity-0 overflow-hidden pointer-events-none"
-                }`}
-            >
-              <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 md:gap-x-8 gap-y-1.5 md:gap-y-2">
-                <div className="flex flex-col gap-1 md:gap-2">
-                  <Link href="/" className={getLinkClass("/")}>
-                    HOME
-                  </Link>
-                  <Link href="/shop" className={getLinkClass("/shop")}>
-                    SHOP
-                  </Link>
-                  {/* <Link href="/nazrapp" className={`${getLinkClass("/nazrapp")} uppercase`}>
-                    NAZR APP
-                  </Link> */}
-                </div>
-                <div className="flex flex-col gap-1 md:gap-2">
-                  <Link href="/support" className={getLinkClass("/support")}>
-                    SUPPORT
-                  </Link>
-                  <Link href="#" className={getLinkClass("#")}>
-                    LOGIN
-                  </Link>
-                </div>
-              </div>
-            </div>
+                {isSubmitted ? "Joined ✓" : "Join"}
+              </button>
+            </form>
           </div>
 
-          {/* Socials Column */}
-          <div className="flex flex-col col-span-1 md:order-2">
-            <button
-              onClick={() => toggleSection("socials")}
-              className="flex items-center gap-1.5 mb-2 md:mb-4 w-fit cursor-pointer text-left focus:outline-none group"
-              aria-expanded={openSections.socials}
-            >
-              <span className="font-[family-name:var(--font-bebas)] font-normal text-[16px] md:text-[21px] leading-[120%] tracking-[-0.02em] text-[#FFF1EB] uppercase group-hover:text-[#FFF1EB]/80 transition-colors">
-                [ SOCIALS ]
+          {/* Right Section: 4 Nav Columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-10 md:gap-x-12 lg:gap-14 gap-y-8 w-full lg:w-auto">
+            {/* SHOP */}
+            <div className="flex flex-col gap-2.5">
+              <span className="font-[family-name:var(--font-bebas)] text-[18px] sm:text-[20px] md:text-[22px] tracking-wide text-[#FFF1EB] uppercase mb-1">
+                SHOP
               </span>
-              <svg
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 text-[#FFF1EB] stroke-[2.5] transition-transform duration-300 ${openSections.socials ? "rotate-0" : "-rotate-90"
-                  }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div
-              className={`transition-all duration-300 ease-in-out ${openSections.socials
-                ? "max-h-[300px] opacity-100"
-                : "max-h-0 opacity-0 overflow-hidden pointer-events-none"
-                }`}
-            >
-              <div className="flex flex-col gap-1 md:gap-2">
-                <a
-                  href="https://www.linkedin.com/company/nazrco/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors"
-                >
-                  LINKEDIN
-                </a>
-                <a
-                  href="https://www.instagram.com/nazr.360/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-bebas)] text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors"
-                >
-                  INSTAGRAM
-                </a>
-              </div>
+              <Link href="/shop" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                On Me
+              </Link>
+              <Link href="/shop" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Sip Check
+              </Link>
+              <Link href="/shop" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Nazr 360° bundle
+              </Link>
+              <Link href="/shop" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                All tools
+              </Link>
             </div>
-          </div>
 
-          {/* Contact Column */}
-          <div className="flex flex-col col-span-1 md:order-3">
-            <button
-              onClick={() => toggleSection("contact")}
-              className="flex items-center gap-1.5 mb-2 md:mb-4 w-fit cursor-pointer text-left focus:outline-none group"
-              aria-expanded={openSections.contact}
-            >
-              <span className="font-[family-name:var(--font-bebas)] font-normal text-[16px] md:text-[21px] leading-[120%] tracking-[-0.02em] text-[#FFF1EB] uppercase group-hover:text-[#FFF1EB]/80 transition-colors">
-                [ CONTACT ]
+            {/* NAZR */}
+            <div className="flex flex-col gap-2.5">
+              <span className="font-[family-name:var(--font-bebas)] text-[18px] sm:text-[20px] md:text-[22px] tracking-wide text-[#FFF1EB] uppercase mb-1">
+                NAZR
               </span>
-              <svg
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 text-[#FFF1EB] stroke-[2.5] transition-transform duration-300 ${openSections.contact ? "rotate-0" : "-rotate-90"
-                  }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div
-              className={`transition-all duration-300 ease-in-out ${openSections.contact
-                ? "max-h-[300px] opacity-100"
-                : "max-h-0 opacity-0 overflow-hidden pointer-events-none"
-                }`}
-            >
-              <div className="flex flex-col gap-1 md:gap-2">
-                <a
-                  href="mailto:support@nazrco.in"
-                  className="font-[family-name:var(--font-bebas)] text-[13px] sm:text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors break-all"
-                >
-                  SUPPORT@NAZRCO.IN
-                </a>
-                <a
-                  href="tel:+917208940212"
-                  className="font-[family-name:var(--font-bebas)] text-[16px] sm:text-[18px] md:text-[32px] font-normal leading-[100%] tracking-[-0.02em] text-[#FFF1EB]/40 hover:text-[#FFF1EB] transition-colors"
-                >
-                  +91-7208940212
-                </a>
-              </div>
+              <Link href="/about" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                About us
+              </Link>
+              <Link href="/nazrapp" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                The app
+              </Link>
+              <Link href="/events" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Events
+              </Link>
+              <Link href="/blog" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Field Notes
+              </Link>
+            </div>
+
+            {/* HELP */}
+            <div className="flex flex-col gap-2.5">
+              <span className="font-[family-name:var(--font-bebas)] text-[18px] sm:text-[20px] md:text-[22px] tracking-wide text-[#FFF1EB] uppercase mb-1">
+                HELP
+              </span>
+              <Link href="/faq" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                FAQ
+              </Link>
+              <Link href="/support" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Contact us
+              </Link>
+              <Link href="/shipping" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Track my order
+              </Link>
+              <Link href="/shipping#shipping" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Shipping
+              </Link>
+              <Link href="/shipping#returns-policy" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Returns
+              </Link>
+            </div>
+
+            {/* LEGAL */}
+            <div className="flex flex-col gap-2.5">
+              <span className="font-[family-name:var(--font-bebas)] text-[18px] sm:text-[20px] md:text-[22px] tracking-wide text-[#FFF1EB] uppercase mb-1">
+                LEGAL
+              </span>
+              <Link href="/privacy-policy" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Terms of Use
+              </Link>
+              <Link href="/privacy-policy#grievance-officer" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#FFF1EB]/75 hover:text-[#FFF1EB] transition-colors leading-[1.6]">
+                Grievance Officer
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Spacer matching Figma height */}
-        <div className="h-[80px] sm:h-[90px] md:h-[100px] w-full shrink-0 flex-1" />
+        {/* Dynamic Spacer */}
+        <div className="h-[40px] sm:h-[60px] md:h-[80px] w-full shrink-0" />
 
-        {/* Bottom section: Brand & Logo */}
+        {/* Middle Section: Giant Owl Logo & NAZR Text */}
         <div className="w-full max-w-[1440px] mx-auto flex flex-col justify-between shrink-0">
-          <span
-            className="font-normal text-[#FFF1EB] uppercase mb-0 mt-6 md:mt-8"
-            style={{
-              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
-              fontWeight: 400,
-              fontStyle: 'normal',
-              fontSize: 'clamp(14px, 1.8vw, 21px)',
-              lineHeight: '120%',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            THE WORLD STARES, STARE BACK
-          </span>
-
           {/* Large Logo - Mobile: Combined SVG */}
-          <div className="relative md:hidden w-full h-[120px] sm:h-[150px] mt-0 mb-3 shrink-0 pointer-events-none">
+          <div className="relative md:hidden w-full h-[120px] sm:h-[150px] my-2 shrink-0 pointer-events-none">
             <Image
               unoptimized
               quality={100}
@@ -270,7 +226,7 @@ export function Footer() {
           </div>
 
           {/* Large Logo - Desktop: Left Eye, Right NAZR Text */}
-          <div className="hidden md:flex flex-row items-end justify-between w-full h-[260px] lg:h-[280px] mt-2 shrink-0 pointer-events-none gap-8">
+          <div className="hidden md:flex flex-row items-end justify-between w-full h-[220px] lg:h-[260px] my-2 shrink-0 pointer-events-none gap-8">
             {/* Left: Eye Image */}
             <div className="relative w-[38%] h-full">
               <Image
@@ -296,53 +252,44 @@ export function Footer() {
               />
             </div>
           </div>
+        </div>
 
-          {/* Ownership & Copyright Bar */}
-          <div className="w-full flex flex-row flex-wrap md:flex-nowrap items-start md:items-center justify-between mt-4 gap-y-3 gap-x-2 text-[11px] sm:text-[12px] md:text-[13px] font-['Switzer',_sans-serif] text-[#FFF1EB]/70 border-t border-[#FFF1EB]/10 pt-4">
-            {/* Left Side: Ownership Info + Mobile Copyright */}
-            <div className="flex flex-col items-start text-left gap-3">
-              <p className="m-0 leading-[1.3] text-[#FFF1EB]/70">
-                NAZR™ is owned and operated by<br className="md:hidden" /> Lumina Hospitality Private Limited
-              </p>
-              <p className="m-0 text-left shrink-0 text-[#FFF1EB]/70 md:hidden">
-                © {new Date().getFullYear()} NAZR. All rights reserved.
-              </p>
-            </div>
-
-            {/* Right Side on Mobile / Middle on Desktop */}
-            <div className="flex flex-col md:flex-row items-end md:items-center text-right md:text-center gap-0 md:gap-1 shrink-0 text-[#FFF1EB]/70">
-              <p className="m-0 leading-[1.3]">
-                Developed by{" "}
-                <a
-                  href="https://www.smrkonova.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#FFF1EB] underline transition-colors"
-                >
-                  Smrkonova
-                </a>{" "}
-                •
-              </p>
-              <p className="m-0 leading-[1.3]">
-                Designed by{" "}
-                <a
-                  href="https://www.momm.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#FFF1EB] underline transition-colors"
-                >
-                  MOMM
-                </a>
-              </p>
-            </div>
-
-            {/* Desktop Only: Copyright on far right */}
-            <p className="m-0 text-right shrink-0 text-[#FFF1EB]/70 hidden md:block">
-              © {new Date().getFullYear()} NAZR. All rights reserved.
-            </p>
+        {/* Bottom Bar: Address & Social Links */}
+        <div className="w-full pt-4 md:pt-6 mt-4 border-t border-[#FFF1EB]/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] sm:text-[13px] font-['Switzer',_sans-serif] text-[#FFF1EB]/70">
+          <p className="m-0 leading-relaxed">
+            © 2026 Lumina Hospitality Private Limited · Supreme Business Park, Hiranandani Gardens, Powai, Mumbai 400076
+          </p>
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            <a
+              href="https://www.instagram.com/nazr.360/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#FFF1EB] transition-colors"
+            >
+              Instagram
+            </a>
+            <span className="text-[#FFF1EB]/40">·</span>
+            <a
+              href="https://www.linkedin.com/company/nazrco/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#FFF1EB] transition-colors"
+            >
+              LinkedIn
+            </a>
+            <span className="text-[#FFF1EB]/40">·</span>
+            <a
+              href="https://www.youtube.com/@nazr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#FFF1EB] transition-colors"
+            >
+              YouTube
+            </a>
           </div>
         </div>
       </div>
     </footer>
+    </>
   );
 }

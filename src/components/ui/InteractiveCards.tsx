@@ -1,8 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, useInView, MotionValue } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const darkCards = [
   {
@@ -63,7 +67,7 @@ const testimonialCards: any[] = [
     id: 3,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "Love that it doesn’t look like a safety product. Blends right in and is easy to grab.",
+    quote: "Love that it doesn't look like a safety product. Blends right in and is easy to grab.",
     name: "Kavya Kapoor",
     rating: 5,
     rotation: -2
@@ -153,7 +157,7 @@ const testimonialCards: any[] = [
     id: 21,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: "The glow-in-the-dark feature seemed small, but it’s actually so useful. Love the detailing, GG NAZR!",
+    quote: "The glow-in-the-dark feature seemed small, but it's actually so useful. Love the detailing, GG NAZR!",
     name: "Shikha Verma",
     rating: 5,
     rotation: -2
@@ -193,7 +197,6 @@ const testimonialCards: any[] = [
 
 interface InteractiveCardsProps {
   theme?: "dark" | "cream";
-  scrollProgress?: MotionValue<number>;
 }
 
 function StarRating({ rating = 5 }: { rating?: number }) {
@@ -223,13 +226,69 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
   const [dynamicRotations, setDynamicRotations] = useState<number[] | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const darkCardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const pinkCardRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   const handleMouseLeave = () => {
     setHoveredIndex(null);
     setDynamicRotations(testimonialCards.map(() => (Math.random() * 12) - 6));
   };
 
+  // GSAP ScrollTrigger for staggered card reveal (replaces framer-motion useInView)
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const trigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 90%",
+      once: true,
+      onEnter: () => {
+        setIsInView(true);
+
+        // Staggered reveal for dark cards
+        const cards = darkCardsRef.current.filter(Boolean);
+        if (cards.length > 0) {
+          gsap.fromTo(cards,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "power2.out" }
+          );
+        }
+
+        // Pink card reveal
+        if (pinkCardRef.current) {
+          gsap.fromTo(pinkCardRef.current,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.4, delay: 0.4, ease: "power2.out" }
+          );
+        }
+      },
+    });
+
+    return () => trigger.kill();
+  }, []);
+
+  // GSAP hover effects for dark cards
+  useEffect(() => {
+    darkCardsRef.current.forEach((card, i) => {
+      if (!card) return;
+      if (hoveredIndex === i) {
+        gsap.to(card, { y: -4, scale: 1.02, duration: 0.3, ease: "power2.out" });
+      } else {
+        gsap.to(card, { y: 0, scale: 1, duration: 0.3, ease: "power2.out" });
+      }
+    });
+
+    if (pinkCardRef.current) {
+      if (hoveredIndex === 5) {
+        gsap.to(pinkCardRef.current, { y: -4, scale: 1.02, duration: 0.3, ease: "power2.out" });
+      } else {
+        gsap.to(pinkCardRef.current, { y: 0, scale: 1, duration: 0.3, ease: "power2.out" });
+      }
+    }
+  }, [hoveredIndex]);
+
+  // Cream theme: drag scrolling + wheel handling
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -298,27 +357,17 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
     <section ref={sectionRef} className={`w-full ${theme === 'cream' ? 'bg-transparent max-md:mt-0 md:pb-0' : 'bg-[#161616] mt-0 pt-0 pb-4 md:py-0'} flex flex-col items-center relative z-50`}>
 
       {theme === "dark" ? (
-        // Home Page Dark Cards (5 Centered Straight Unified Cards matching Figma Screenshot)
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[30px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-6 md:pb-2 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
-          <div className="flex flex-row justify-start md:justify-start items-center gap-3 sm:gap-4 md:gap-[35px] w-full min-w-max md:min-w-0 mx-auto">
+        // Home Page Dark Cards (6 Centered Straight Unified Cards matching reference)
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[20px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-6 md:pb-2 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
+          <div className="flex flex-row justify-start xl:justify-center items-stretch gap-3 sm:gap-3.5 md:gap-4 lg:gap-[18px] xl:gap-[20px] w-fit xl:w-full mx-auto">
             {darkCards.map((card, i) => {
-              const isHovered = hoveredIndex === i;
-
               return (
-                <motion.div
+                <div
                   key={card.id}
+                  ref={(el) => { darkCardsRef.current[i] = el; }}
                   data-card-index={i}
-                  className="relative w-[155px] h-[240px] sm:w-[195px] sm:h-[295px] md:w-[248px] md:h-[335px] md:min-w-[248px] md:min-h-[335px] rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB] bg-[#161616] flex-shrink-0 cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_10px]"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{
-                    opacity: isInView ? 1 : 0,
-                    y: isInView ? (isHovered ? -4 : 0) : 30,
-                    scale: isHovered ? 1.02 : 1
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    delay: i * 0.08
-                  }}
+                  className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB]/80 bg-[#161616] cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_12px]"
+                  style={{ opacity: isInView ? undefined : 0 }}
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
@@ -336,17 +385,17 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                   />
 
                   {/* Bottom Dark Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent pointer-events-none z-10" />
 
                   {/* Top Left Timestamp */}
-                  <div className="absolute top-[16px] left-[10px] md:top-[20px] md:left-[10px] z-20 flex flex-col text-[#FFF9EB] pointer-events-none">
+                  <div className="absolute top-[14px] left-[10px] md:top-[18px] md:left-[12px] z-20 flex flex-col text-[#FFF9EB] pointer-events-none">
                     <span
                       className="font-['Inter',_sans-serif] text-[#FFF9EB]"
                       style={{
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 400,
                         fontStyle: "normal",
-                        fontSize: "24px",
+                        fontSize: "22px",
                         lineHeight: "120%",
                         letterSpacing: "-0.03em",
                       }}
@@ -359,7 +408,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 400,
                         fontStyle: "normal",
-                        fontSize: "12px",
+                        fontSize: "11px",
                         lineHeight: "120%",
                         letterSpacing: "-0.03em",
                       }}
@@ -369,133 +418,65 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                   </div>
 
                   {/* Bottom Title Text */}
-                  <div className="absolute bottom-[16px] left-[10px] right-[10px] md:bottom-[20px] md:left-[10px] md:right-[10px] z-20 pointer-events-none">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-[22px] sm:text-[26px] md:text-[30px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
+                  <div className="absolute bottom-[14px] left-[10px] right-[10px] md:bottom-[18px] md:left-[12px] md:right-[12px] z-20 pointer-events-none">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-[20px] sm:text-[23px] md:text-[25px] lg:text-[28px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
                       {card.title}
                     </h3>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
+
+            {/* 6th Card: With NAZR Pink Card */}
+            <div
+              key="pink-nazr-card"
+              ref={pinkCardRef}
+              data-card-index={5}
+              className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border border-[#FF0E97] bg-[#FF0E97] cursor-pointer shadow-xl flex flex-col justify-between p-[14px_12px] sm:p-[16px_14px] md:p-[20px_16px]"
+              style={{ opacity: isInView ? undefined : 0 }}
+              onMouseEnter={() => setHoveredIndex(5)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Top: With NAZR */}
+              <div className="flex flex-col text-left">
+                <span className="font-['Inter',_sans-serif] text-white text-[13px] sm:text-[14px] md:text-[16px] font-normal leading-tight">
+                  With
+                </span>
+                <h3 className="font-[family-name:var(--font-bebas)] text-white text-[36px] sm:text-[42px] md:text-[48px] lg:text-[52px] font-normal leading-[0.88] tracking-wide uppercase m-0 mt-0.5">
+                  NAZR
+                </h3>
+              </div>
+
+              {/* Middle: YOUR PEOPLE KNOW BEFORE YOU HAVE TO ASK */}
+              <div className="my-auto py-1 flex flex-col text-left w-full">
+                <p className="font-[family-name:var(--font-bebas)] text-white text-[19px] sm:text-[22px] md:text-[24px] lg:text-[27px] font-normal leading-[0.92] tracking-tight uppercase m-0">
+                  YOUR PEOPLE<br />
+                  KNOW BEFORE YOU<br />
+                  HAVE TO ASK
+                </p>
+              </div>
+
+              {/* Bottom: How the App Works Button */}
+              <Link
+                href="/nazrapp"
+                className="w-full bg-[#111111] hover:bg-black text-white text-center py-2 sm:py-2.5 px-2 rounded-[6px] font-['Inter',_sans-serif] text-[10px] sm:text-[11px] md:text-[12px] lg:text-[13px] font-medium tracking-wide transition-colors whitespace-nowrap block"
+              >
+                How the App Works
+              </Link>
+            </div>
           </div>
         </div>
       ) : (
-        // Cream Theme Testimonial Cards (About page)
-        <div
-          ref={scrollContainerRef}
-          className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0 select-none cursor-grab active:cursor-grabbing"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-x pan-y', overscrollBehaviorX: 'contain' }}
-        >
-          <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0 select-none">
-            {testimonialCards.map((card, i) => {
-              const isHovered = hoveredIndex === i;
-              const baseRotation = (dynamicRotations && typeof dynamicRotations[i] === 'number') ? dynamicRotations[i] : (card.rotation || 0);
-
-              let xOffset = 0;
-              let targetRotation = baseRotation;
-
-              if (hoveredIndex !== null) {
-                if (isHovered) {
-                  targetRotation = 0;
-                } else {
-                  const distance = Math.abs(i - hoveredIndex);
-                  const direction = i < hoveredIndex ? -1 : 1;
-
-                  if (distance === 1) {
-                    xOffset = direction * 65;
-                    targetRotation = baseRotation + (direction * 8);
-                  } else if (distance === 2) {
-                    xOffset = direction * 30;
-                    targetRotation = baseRotation + (direction * 4);
-                  } else if (distance === 3) {
-                    xOffset = direction * 15;
-                    targetRotation = baseRotation + (direction * 2);
-                  } else {
-                    xOffset = 0;
-                  }
-                }
-              }
-
-              return (
-                <motion.div
-                  key={card.id}
-                  className="relative -mx-2 flex-shrink-0"
-                  initial={typeof window !== "undefined" && window.innerWidth < 768 ? false : { x: "100vw" }}
-                  animate={{
-                    x: (typeof window !== "undefined" && window.innerWidth < 768) ? 0 : (isInView ? 0 : "100vw"),
-                    zIndex: isHovered ? 50 : i
-                  }}
-                  transition={{
-                    x: { duration: 1.8, delay: i * 0.2, type: "spring", bounce: 0.25 }
-                  }}
-                >
-                  <motion.div
-                    data-card-index={i}
-                    className="relative w-[154px] h-[240px] rounded-[18px] md:w-[279px] md:h-[400px] md:rounded-[32px] cursor-pointer origin-bottom overflow-hidden shadow-lg"
-                    onMouseEnter={() => {
-                      if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
-                        setHoveredIndex(i);
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
-                        handleMouseLeave();
-                      }
-                    }}
-                    animate={{
-                      rotate: targetRotation,
-                      scale: isHovered ? 1.15 : 1,
-                      x: xOffset,
-                      y: isHovered ? -36 : 0,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 150,
-                      damping: 22,
-                      mass: 1.2
-                    }}
-                  >
-                    {card.type === "testimonial" ? (
-                      <div
-                        className="w-full h-full flex flex-col p-4 md:p-8 justify-between"
-                        style={{ backgroundColor: card.bgColor }}
-                      >
-                        <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#FFF9EB] flex items-center justify-center mb-2 md:mb-6 shrink-0">
-                          <span
-                            className="font-[family-name:var(--font-bebas)] text-[11px] md:text-[20px] leading-none tracking-wide"
-                            style={{ color: card.bgColor }}
-                          >
-                            {(card as any).name
-                              ? (card as any).name.split(' ').map((w: string) => w[0]).join('').toUpperCase()
-                              : '·'}
-                          </span>
-                        </div>
-                        <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#FFF9EB] leading-[140%] mb-auto">
-                          {(card as any).quote?.replace(/^["“]|["”]$/g, '')}
-                        </div>
-                        <div className="flex flex-col mt-2 md:mt-4">
-                          {(card as any).name ? (
-                            <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#FFF9EB] leading-[1.3] tracking-normal uppercase">
-                              {(card as any).name}
-                            </div>
-                          ) : null}
-                          <StarRating rating={(card as any).rating || 5} />
-                        </div>
-                      </div>
-                    ) : (
-                      <Image
-                        src={card.src!}
-                        alt={`Interactive Card ${card.id}`}
-                        fill
-                        className="object-cover scale-[1.18]"
-                      />
-                    )}
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+        // Cream Theme Testimonial Cards (About page) — uses GSAP for entrance + hover
+        <CreamTestimonialCards
+          testimonialCards={testimonialCards}
+          scrollContainerRef={scrollContainerRef}
+          hoveredIndex={hoveredIndex}
+          setHoveredIndex={setHoveredIndex}
+          handleMouseLeave={handleMouseLeave}
+          dynamicRotations={dynamicRotations}
+          isInView={isInView}
+        />
       )}
 
       <style jsx global>{`
@@ -504,5 +485,174 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
         }
       `}</style>
     </section>
+  );
+}
+
+// Extracted cream theme cards to use GSAP for entrance animation
+function CreamTestimonialCards({
+  testimonialCards,
+  scrollContainerRef,
+  hoveredIndex,
+  setHoveredIndex,
+  handleMouseLeave,
+  dynamicRotations,
+  isInView,
+}: {
+  testimonialCards: any[];
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
+  hoveredIndex: number | null;
+  setHoveredIndex: (i: number | null) => void;
+  handleMouseLeave: () => void;
+  dynamicRotations: number[] | null;
+  isInView: boolean;
+}) {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const innerCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const hasAnimated = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // GSAP entrance animation (replaces framer-motion spring slide-in)
+  useEffect(() => {
+    if (!containerRef.current || hasAnimated.current) return;
+
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 85%",
+      once: true,
+      onEnter: () => {
+        hasAnimated.current = true;
+        const cards = cardRefs.current.filter(Boolean);
+        if (typeof window !== "undefined" && window.innerWidth >= 768) {
+          gsap.fromTo(cards,
+            { x: "100vw" },
+            { x: 0, duration: 1.8, stagger: 0.2, ease: "back.out(1.2)" }
+          );
+        }
+      },
+    });
+
+    return () => trigger.kill();
+  }, []);
+
+  // GSAP hover animations for testimonial cards
+  useEffect(() => {
+    innerCardRefs.current.forEach((card, i) => {
+      if (!card) return;
+      const baseRotation = (dynamicRotations && typeof dynamicRotations[i] === 'number') ? dynamicRotations[i] : (testimonialCards[i]?.rotation || 0);
+
+      let xOffset = 0;
+      let targetRotation = baseRotation;
+      let targetScale = 1;
+      let targetY = 0;
+
+      if (hoveredIndex !== null) {
+        if (hoveredIndex === i) {
+          targetRotation = 0;
+          targetScale = 1.15;
+          targetY = -36;
+        } else {
+          const distance = Math.abs(i - hoveredIndex);
+          const direction = i < hoveredIndex ? -1 : 1;
+
+          if (distance === 1) {
+            xOffset = direction * 65;
+            targetRotation = baseRotation + (direction * 8);
+          } else if (distance === 2) {
+            xOffset = direction * 30;
+            targetRotation = baseRotation + (direction * 4);
+          } else if (distance === 3) {
+            xOffset = direction * 15;
+            targetRotation = baseRotation + (direction * 2);
+          }
+        }
+      }
+
+      gsap.to(card, {
+        rotation: targetRotation,
+        scale: targetScale,
+        x: xOffset,
+        y: targetY,
+        duration: 0.5,
+        ease: "back.out(1.7)",
+      });
+    });
+  }, [hoveredIndex, dynamicRotations, testimonialCards]);
+
+  return (
+    <div
+      ref={(el) => {
+        containerRef.current = el;
+        if (scrollContainerRef && 'current' in scrollContainerRef) {
+          (scrollContainerRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+        }
+      }}
+      className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0 select-none cursor-grab active:cursor-grabbing"
+      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-x pan-y', overscrollBehaviorX: 'contain' }}
+    >
+      <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0 select-none">
+        {testimonialCards.map((card, i) => {
+          return (
+            <div
+              key={card.id}
+              ref={(el) => { cardRefs.current[i] = el; }}
+              className="relative -mx-2 flex-shrink-0"
+              style={{ zIndex: hoveredIndex === i ? 50 : i }}
+            >
+              <div
+                ref={(el) => { innerCardRefs.current[i] = el; }}
+                data-card-index={i}
+                className="relative w-[154px] h-[240px] rounded-[18px] md:w-[279px] md:h-[400px] md:rounded-[32px] cursor-pointer origin-bottom overflow-hidden shadow-lg"
+                onMouseEnter={() => {
+                  if (typeof window !== "undefined" && window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
+                    setHoveredIndex(i);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (typeof window !== "undefined" && window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
+                    handleMouseLeave();
+                  }
+                }}
+              >
+                {card.type === "testimonial" ? (
+                  <div
+                    className="w-full h-full flex flex-col p-4 md:p-8 justify-between"
+                    style={{ backgroundColor: card.bgColor }}
+                  >
+                    <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#FFF9EB] flex items-center justify-center mb-2 md:mb-6 shrink-0">
+                      <span
+                        className="font-[family-name:var(--font-bebas)] text-[11px] md:text-[20px] leading-none tracking-wide"
+                        style={{ color: card.bgColor }}
+                      >
+                        {(card as any).name
+                          ? (card as any).name.split(' ').map((w: string) => w[0]).join('').toUpperCase()
+                          : '·'}
+                      </span>
+                    </div>
+                    <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#FFF9EB] leading-[140%] mb-auto">
+                      {(card as any).quote?.replace(/^[""]|[""]$/g, '')}
+                    </div>
+                    <div className="flex flex-col mt-2 md:mt-4">
+                      {(card as any).name ? (
+                        <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#FFF9EB] leading-[1.3] tracking-normal uppercase">
+                          {(card as any).name}
+                        </div>
+                      ) : null}
+                      <StarRating rating={(card as any).rating || 5} />
+                    </div>
+                  </div>
+                ) : (
+                  <Image
+                    src={card.src!}
+                    alt={`Interactive Card ${card.id}`}
+                    fill
+                    className="object-cover scale-[1.18]"
+                  />
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

@@ -11,66 +11,174 @@ interface LoadingScreenProps {
 
 const words = ["नझर", "NAZR", "নজর", "નજર"];
 
-export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: LoadingScreenProps) {
+const CRITICAL_ASSETS = [
+  // Core UI / Hero Graphics
+  "/images/HOMEHERO/heorleft.webp",
+  "/images/HOMEHERO/heroright.webp",
+  "/images/logosvg.svg",
+  "/images/google-play-badge.png",
+  "/images/buttonl.svg",
+  "/images/button r.svg",
+  // Interactive Cards Images
+  "/images/new3.webp",
+  "/images/new4.webp",
+  "/images/new5.webp",
+  "/images/new6.webp",
+  "/images/new7.webp",
+  // Product Showcase Images
+  "/images/productsip.webp",
+  "/images/center.webp",
+  "/images/NAZR360.webp",
+  // Heavy Lottie Animation JSONs
+  "/images/SOS Default.json",
+  "/images/sos_hand.json",
+  "/images/sos2.json",
+  "/images/sos3.json",
+  "/images/SH_SM ARM Turn On.json",
+  "/images/SH_Trusted Circle.json",
+  "/images/SH_Trigger.json",
+  // Brand Fonts
+  "/fonts/signpainter.ttf",
+];
+
+export function LoadingScreen({ onComplete, duration = 1200, autoHide = true }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.loop = false;
-      videoRef.current.play().catch(() => { });
-    }
-  }, []);
+  const progressRef = useRef(0);
 
   // Smooth word cycling animation (independent loop)
   useEffect(() => {
     const wordInterval = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % words.length);
-    }, 200);
+    }, 150);
 
     return () => clearInterval(wordInterval);
   }, []);
 
   useEffect(() => {
-    // Prevent scrolling robustly on all devices
+    // Prevent scrolling robustly on all devices while loading
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
-    const startTime = Date.now();
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const currentProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
+    let isCancelled = false;
+    let finishTriggered = false;
 
-      setProgress(currentProgress);
+    const finish = () => {
+      if (finishTriggered) return;
+      finishTriggered = true;
+      setProgress(100);
 
-      if (currentProgress >= 100) {
-        clearInterval(interval);
-        if (autoHide) {
+      if (autoHide) {
+        setTimeout(() => {
+          setIsFadingOut(true);
+          if (typeof window !== "undefined") {
+            (window as any).__LOADING_COMPLETE__ = true;
+            window.dispatchEvent(new CustomEvent("loadingComplete"));
+          }
           setTimeout(() => {
-            setIsFadingOut(true);
-            if (typeof window !== "undefined") {
-              (window as any).__LOADING_COMPLETE__ = true;
-              window.dispatchEvent(new CustomEvent("loadingComplete"));
-            }
-            setTimeout(() => {
-              setIsHidden(true);
-              document.documentElement.style.overflow = "";
-              document.body.style.overflow = "";
-              if (onComplete) onComplete();
-            }, 600);
+            setIsHidden(true);
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+            if (onComplete) onComplete();
           }, 300);
-        } else {
-          document.documentElement.style.overflow = "";
-          document.body.style.overflow = "";
-          if (onComplete) onComplete();
+        }, 150);
+      } else {
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        if (onComplete) onComplete();
+      }
+    };
+
+    // Check if session was already cached previously
+    const isRepeatVisit =
+      typeof window !== "undefined" &&
+      sessionStorage.getItem("nazr_preloaded") === "true";
+
+    const targetDuration = isRepeatVisit ? 300 : Math.max(800, duration);
+    const startTime = Date.now();
+    let loadedAssetsCount = 0;
+    const totalAssets = CRITICAL_ASSETS.length;
+
+    // Asynchronously preload and cache into CacheStorage & browser HTTP cache
+    const preloadAssets = async () => {
+      let cache: Cache | null = null;
+      if (typeof window !== "undefined" && "caches" in window) {
+        try {
+          cache = await caches.open("nazr-assets-v1");
+        } catch {
+          cache = null;
         }
       }
-    }, 30);
+
+      await Promise.allSettled(
+        CRITICAL_ASSETS.map(async (url) => {
+          try {
+            // 1. Prime browser Image memory cache for image formats
+            if (/\.(webp|png|jpe?g|svg)$/i.test(url)) {
+              const img = new window.Image();
+              img.src = url;
+            }
+
+            // 2. Prime CacheStorage & HTTP fetch cache
+            if (cache) {
+              const match = await cache.match(url);
+              if (!match) {
+                const res = await fetch(url, { cache: "force-cache" });
+                if (res.ok) {
+                  await cache.put(url, res.clone());
+                }
+              }
+            } else {
+              await fetch(url, { cache: "force-cache" });
+            }
+          } catch {
+            // Silently fallback if individual asset fetch fails
+          } finally {
+            loadedAssetsCount++;
+          }
+        })
+      );
+
+      try {
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("nazr_preloaded", "true");
+        }
+      } catch {}
+    };
+
+    preloadAssets();
+
+    // Smooth progress animation linking real asset load progress and elapsed time
+    const interval = setInterval(() => {
+      if (isCancelled) return;
+      const elapsed = Date.now() - startTime;
+      const timeProgress = Math.min(100, Math.floor((elapsed / targetDuration) * 100));
+      const assetProgress = Math.min(100, Math.floor((loadedAssetsCount / totalAssets) * 100));
+
+      // Calculate combined progress weighted by real asset downloads
+      const currentTarget = Math.min(
+        100,
+        Math.max(timeProgress, Math.floor(assetProgress * 0.95))
+      );
+
+      // Smooth step towards target
+      if (currentTarget > progressRef.current) {
+        progressRef.current = Math.min(100, progressRef.current + 3);
+        setProgress(progressRef.current);
+      }
+
+      const isAssetLoadingDone = loadedAssetsCount >= totalAssets || elapsed >= targetDuration;
+
+      if (progressRef.current >= 100 || (isAssetLoadingDone && elapsed >= targetDuration)) {
+        clearInterval(interval);
+        finish();
+      }
+    }, 20);
 
     return () => {
+      isCancelled = true;
       clearInterval(interval);
       document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
@@ -81,37 +189,10 @@ export function LoadingScreen({ onComplete, duration = 4000, autoHide = true }: 
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-600 ${isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
+      className={`fixed inset-0 z-[99999] bg-[#0a0a0a] text-[#FFF1EB] overflow-hidden select-none transition-opacity duration-300 ${
+        isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
+      }`}
     >
-      {/* Background Video — plays once and pauses at final frame */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover max-md:object-[58%_top] md:object-center opacity-75 mix-blend-normal pointer-events-none transform-gpu"
-          style={{
-            transform: "translateZ(0)",
-            willChange: "transform",
-            backfaceVisibility: "hidden",
-          }}
-        >
-          <source src="/images/Footer.mp4" type="video/mp4" />
-        </video>
-        {/* Subtle dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
-        {/* Subtle vignette edges */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)",
-          }}
-        />
-      </div>
-
       {/* Full-bleed content layer */}
       <div className="relative z-10 w-full h-[100dvh] flex flex-col justify-between px-[20px] py-[24px] sm:px-[32px] sm:py-[28px] md:px-[52px] md:py-[40px] lg:px-[64px] lg:py-[48px]">
 

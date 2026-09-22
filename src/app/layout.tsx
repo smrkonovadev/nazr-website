@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bebas_Neue, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Bebas_Neue, Inter, Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -13,6 +13,7 @@ import { Footer } from "@/components/ui/Footer";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import MetaPixel from "@/components/MetaPixel";
 import { PostHogProvider } from "@/components/PostHogProvider";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,13 @@ const bebas = Bebas_Neue({
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const roboto = Roboto({
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
   subsets: ["latin"],
   display: "swap",
 });
@@ -61,22 +69,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${signPainter.variable} antialiased bg-white`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${roboto.variable} ${signPainter.variable} antialiased bg-white`}
         suppressHydrationWarning
       >
         <PostHogProvider>
           <MetaPixel />
           <GlobalZoom />
-          <LoadingScreen duration={4000} autoHide={true} />
-          <NavigationProvider>
-            <NavigationMenu />
-            <ScaleWrapper>
-              {children}
-              <DesktopScaler bgColor="#161616">
-                <Footer />
-              </DesktopScaler>
-            </ScaleWrapper>
-          </NavigationProvider>
+          <LoadingScreen autoHide={true} />
+          <SmoothScroll>
+            <NavigationProvider>
+              <NavigationMenu />
+              <ScaleWrapper>
+                {children}
+                <DesktopScaler bgColor="#161616">
+                  <Footer />
+                </DesktopScaler>
+              </ScaleWrapper>
+            </NavigationProvider>
+          </SmoothScroll>
           <Analytics />
           <SpeedInsights />
         </PostHogProvider>
