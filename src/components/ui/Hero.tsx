@@ -31,8 +31,8 @@ export function Hero() {
       const centerX = window.innerWidth / 2;
       const normalized = Math.max(-1, Math.min(1, (e.clientX - centerX) / (window.innerWidth / 2)));
 
-      // Center (0) -> 0deg, Right (+1) -> +10.5deg, Left (-1) -> -10.5deg
-      rotateSpotlight(normalized * 10.5);
+      // Center (0) -> 0deg, Mouse Right (+1) -> tilts right, Mouse Left (-1) -> tilts left
+      rotateSpotlight(-normalized * 10.5);
       shiftPool(normalized * 52);
     };
 
@@ -67,7 +67,7 @@ export function Hero() {
           {/* Interactive Volumetric Spotlight Container (Attached to Top Axle) */}
           <div
             ref={spotlightRef}
-            className="absolute top-[-10px] left-1/2 -translate-x-1/2 w-[520px] h-[500px] pointer-events-none z-0 overflow-hidden"
+            className="absolute top-[-65px] left-1/2 -translate-x-1/2 w-[520px] h-[560px] pointer-events-none z-0 overflow-hidden"
             style={{ transformOrigin: "50% 12px" }}
           >
             <svg
