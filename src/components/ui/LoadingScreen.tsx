@@ -13,7 +13,7 @@ const words = ["नझर", "NAZR", "নজর", "નજર"];
 
 const CRITICAL_ASSETS = [
   // Core UI / Hero Graphics
-  "/images/HOMEHERO/heorleft.webp",
+  "/images/HOMEHERO/heorleft.webp?v=2",
   "/images/HOMEHERO/heroright.webp",
   "/images/HOMEHERO/interactive card.webp",
   "/images/logosvg.svg",
