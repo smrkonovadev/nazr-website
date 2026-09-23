@@ -8,11 +8,11 @@ export function AppBackupBanner() {
   return (
     <section className="w-full bg-[#2e5bff] text-white pt-8 sm:pt-10 md:pt-16 lg:pt-20 xl:pt-24 pb-0 px-5 sm:px-8 md:px-12 lg:px-16 flex justify-center max-md:rounded-b-[9.71px] md:rounded-b-[26px] relative z-10 select-none overflow-hidden min-h-[460px] md:min-h-[580px] lg:min-h-[640px] xl:min-h-[680px]">
       <div className="w-full max-w-[1240px] flex flex-col md:flex-row items-center md:items-stretch justify-between gap-6 md:gap-10 lg:gap-12">
-        {/* Left: Phone UI & Floating Stickers (Cut off at bottom like in mockup) */}
-        <div className="w-full md:w-[45%] lg:w-[46%] flex justify-center items-end self-end relative order-2 md:order-1 mt-6 md:mt-0">
-          <div className="relative w-[250px] sm:w-[280px] md:w-[340px] lg:w-[380px] xl:w-[410px] h-[380px] sm:h-[420px] md:h-[510px] lg:h-[580px] xl:h-[620px] -mb-28 sm:-mb-36 md:-mb-44 lg:-mb-48 xl:-mb-52 flex items-center justify-center">
-            {/* Floating Globe Sticker (Top Left, shifted right) */}
-            <div className="absolute top-2 sm:top-4 md:top-5 lg:top-6 left-6 sm:left-8 md:left-10 lg:left-11 w-13 sm:w-15 md:w-17 lg:w-18 h-13 sm:h-15 md:h-17 lg:h-18 z-20 pointer-events-none transform -rotate-12">
+        {/* Left: Phone UI & Floating Stickers */}
+        <div className="w-full md:w-[48%] lg:w-[50%] flex justify-center items-end self-end relative order-2 md:order-1 mt-6 md:mt-0">
+          <div className="relative w-[300px] sm:w-[350px] md:w-[440px] lg:w-[500px] xl:w-[540px] h-[460px] sm:h-[530px] md:h-[640px] lg:h-[720px] xl:h-[780px] -mb-10 sm:-mb-16 md:-mb-24 lg:-mb-28 xl:-mb-32 flex items-center justify-center -translate-y-8 md:-translate-y-14 lg:-translate-y-20">
+            {/* Floating Globe Sticker */}
+            <div className="absolute top-2 sm:top-4 md:top-6 left-2 sm:left-4 md:left-6 w-14 sm:w-16 md:w-20 lg:w-22 h-14 sm:h-16 md:h-20 lg:h-22 z-20 pointer-events-none transform -rotate-12">
               <Image
                 src="/images/globe.webp"
                 alt="Global Network"
@@ -22,7 +22,7 @@ export function AppBackupBanner() {
             </div>
 
             {/* Floating Pink Camera / Top Sticker */}
-            <div className="absolute top-0 sm:top-1 md:top-2 -right-5 sm:-right-7 md:-right-8 lg:-right-9 w-16 sm:w-20 md:w-24 lg:w-26 h-14 sm:h-17 md:h-20 lg:h-22 z-20 pointer-events-none transform rotate-12">
+            <div className="absolute top-1 sm:top-2 md:top-4 -right-2 sm:-right-4 md:-right-6 lg:-right-8 w-18 sm:w-22 md:w-26 lg:w-30 h-16 sm:h-19 md:h-22 lg:h-25 z-20 pointer-events-none transform rotate-12">
               <Image
                 src="/images/niowef.svg"
                 alt="Camera Sticker"
@@ -31,8 +31,8 @@ export function AppBackupBanner() {
               />
             </div>
 
-            {/* Circular Pink Seal / Left Round Sticker (shifted right) */}
-            <div className="absolute top-[40%] sm:top-[42%] md:top-[41%] left-2 sm:left-3 md:left-4 lg:left-5 w-20 sm:w-24 md:w-28 lg:w-30 h-20 sm:h-24 md:h-28 lg:h-30 z-20 pointer-events-none transform -rotate-12">
+            {/* Circular Pink Seal / Left Round Sticker */}
+            <div className="absolute top-[42%] sm:top-[44%] md:top-[45%] -left-3 sm:-left-2 md:left-0 lg:left-1 w-22 sm:w-26 md:w-32 lg:w-36 h-22 sm:h-26 md:h-32 lg:h-36 z-20 pointer-events-none transform -rotate-12">
               <Image
                 src="/images/asdf.svg"
                 alt="Established Fact Sticker"
@@ -43,13 +43,13 @@ export function AppBackupBanner() {
 
             {/* Center Phone Mockup with Default SOS Lottie */}
             <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
-              <div className="w-[210px] sm:w-[240px] md:w-[290px] lg:w-[330px] xl:w-[360px] h-[340px] sm:h-[380px] md:h-[460px] lg:h-[520px] xl:h-[560px] relative">
+              <div className="w-[260px] sm:w-[300px] md:w-[380px] lg:w-[440px] xl:w-[480px] h-[400px] sm:h-[470px] md:h-[580px] lg:h-[660px] xl:h-[720px] relative">
                 <DynamicDotLottie
                   src="/lottie/homepage/sos_default.lottie"
                   isActive={true}
                   fallbackImage="/images/new8.webp"
                   fallbackAlt="NAZR SOS App Interface"
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.05] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] md:scale-[2.45] transform-gpu"
                 />
               </div>
             </div>
@@ -76,8 +76,10 @@ export function AppBackupBanner() {
           <div className="w-full max-w-[460px] bg-[#1a40d6]/40 backdrop-blur-md border border-white/20 rounded-[18px] p-4 sm:p-5 flex flex-col gap-2.5 shadow-xl">
             <div className="flex flex-row items-center gap-3">
               {/* Download on the App Store */}
-              <Link
-                href="/nazrapp"
+              <a
+                href="https://apps.apple.com/in/app/nazr-women-safety-app/id6787188929"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2.5 bg-black hover:bg-black/85 text-white px-3 py-1.5 rounded-[8px] transition-all shadow-sm active:scale-95 whitespace-nowrap h-[42px] sm:h-[44px]"
               >
                 <svg className="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24">
@@ -87,11 +89,13 @@ export function AppBackupBanner() {
                   <span className="text-[8px] sm:text-[8.5px] leading-tight text-white/80 font-normal">Download on the</span>
                   <span className="text-[12px] sm:text-[13px] font-semibold leading-tight font-sans text-white">App Store</span>
                 </div>
-              </Link>
+              </a>
 
               {/* GET IT ON Google Play */}
-              <Link
-                href="/nazrapp"
+              <a
+                href="https://play.google.com/store/apps/details?id=com.nazr.app"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2.5 bg-black hover:bg-black/85 text-white px-3 py-1.5 rounded-[8px] transition-all shadow-sm active:scale-95 whitespace-nowrap h-[42px] sm:h-[44px]"
               >
                 <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
@@ -104,7 +108,7 @@ export function AppBackupBanner() {
                   <span className="text-[8px] sm:text-[8.5px] leading-tight text-white/80 font-normal uppercase">GET IT ON</span>
                   <span className="text-[12px] sm:text-[13px] font-semibold leading-tight font-sans text-white">Google Play</span>
                 </div>
-              </Link>
+              </a>
             </div>
 
             <div className="text-center pt-0.5 text-[11px] sm:text-[11.5px] font-medium text-white/80 tracking-wide">

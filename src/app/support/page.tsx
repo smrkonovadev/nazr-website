@@ -37,7 +37,7 @@ export default function SupportPage() {
         <Header />
 
         {/* The Beige Canvas Section */}
-        <div className="w-full flex-1 bg-[#f4f4f4] md:rounded-t-[26px] max-md:rounded-t-[9.71px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden relative z-[70] max-md:mt-0 md:-mt-[48px] flex flex-col">
+        <div className="w-full flex-1 bg-[#f4f4f4] md:rounded-t-[26px] max-md:rounded-t-[9.71px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden relative z-[70] flex flex-col">
           <SupportSection />
         </div>
       </DesktopScaler>

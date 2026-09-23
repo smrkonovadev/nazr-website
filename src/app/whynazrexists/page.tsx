@@ -49,7 +49,7 @@ export default function WhyNazrExistsPage() {
           {/* The Beige Canvas Section */}
           <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70]">
             <div
-              className="w-full bg-[#f4f4f4] relative max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px] min-h-[450px] md:min-h-[800px]"
+              className="w-full bg-[#f4f4f4] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] min-h-[450px] md:min-h-[800px] overflow-hidden"
             >
               <WhyNazrExistsIntro />
             </div>

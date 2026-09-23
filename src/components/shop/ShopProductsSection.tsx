@@ -16,8 +16,9 @@ interface ProductData {
   discount: string;
   rating: string;
   reviewsCount: string;
-  description: string;
-  features: { icon: string; label: string }[];
+  desktopDescription: [string, string];
+  mobileDescription: string;
+  features: { icon?: string; svg?: string; label: string }[];
   colors: { id: string; name: string; hex: string; mainImage: string; thumbnails: string[] }[];
   bundlePrompt: { title: string; subtitle: string; link: string };
   headerBg: string;
@@ -35,45 +36,49 @@ const PRODUCTS: ProductData[] = [
     price: "₹555",
     originalPrice: "₹777",
     discount: "28% OFF",
-    rating: "4.9",
-    reviewsCount: "184 verified reviews",
-    description:
-      "A quick-draw personal safety spray with a 10-foot ballistic stream, UV identifying dye, and glow-in-the-dark quick release clip. Designed to be carried on you, never buried in a bag.",
+    rating: "(4.9 stars)",
+    reviewsCount: "47 reviews",
+    desktopDescription: [
+      "A personal safety spray designed for quick access when you need it most.",
+      "Clips onto your bag or keys and glows in the dark for easy visibility.",
+    ],
+    mobileDescription:
+      "A personal safety spray designed for quick access and easy visibility.",
     features: [
-      { icon: "stream", label: "10-foot ballistic stream" },
-      { icon: "glow", label: "Glows in the dark" },
-      { icon: "pocket", label: "Quick-release carabiner" },
-      { icon: "dye", label: "UV identifying marker" },
+      { svg: "/10test.svg", label: "10 tests per pack" },
+      { svg: "/resultsinsec.svg", label: "Results in seconds" },
+      { svg: "/phoenw.svg", label: "Pocket friendly" },
+      { svg: "/noapp.svg", label: "No app needed" },
     ],
     colors: [
       {
         id: "pink",
-        name: "HOT PINK",
+        name: "PINK",
         hex: "#FF0E97",
-        mainImage: "/images/pinkspryfinal.svg",
+        mainImage: "/images/pinkspray.svg",
         thumbnails: [
-          "/images/spray-pink.webp",
-          "/images/pinkspryfinal.svg",
-          "/images/shopt2.webp",
-          "/images/shop/shop-1.webp",
+          "/images/pinkspray.svg",
+          "/onme/Sip Check  (4) 1.png",
+          "/onme/Frame 1073716575.png",
+          "/onme/image 81.png",
         ],
       },
       {
-        id: "white",
-        name: "ALABASTER WHITE",
-        hex: "#F4F4F4",
-        mainImage: "/images/whitesprayfinal.svg",
+        id: "silver",
+        name: "SILVER",
+        hex: "#B8B8B8",
+        mainImage: "/images/whitespray.svg",
         thumbnails: [
-          "/images/spray-white.webp",
-          "/images/whitesprayfinal.svg",
-          "/images/shopt4.webp",
-          "/images/shop/shop-1.webp",
+          "/images/whitespray.svg",
+          "/onme/Sip Check  (4) 1.png",
+          "/onme/Frame 1073716575.png",
+          "/onme/image 81.png",
         ],
       },
     ],
     bundlePrompt: {
-      title: "PAIR WITH SIP CHECK — SAVE ₹200",
-      subtitle: "The night-out safety duo for complete peace of mind.",
+      title: "PAIR WITH SIP CHECK - SAVE ₹200",
+      subtitle: "The night-out safety duo.",
       link: "#bundle-pack",
     },
     headerBg: "bg-[#0084FF]",
@@ -86,48 +91,40 @@ const PRODUCTS: ProductData[] = [
     categoryTag: "02 - ANTI DRINK SPIKE STICKERS",
     title: "SIP CHECK",
     watermark: "SIP CHECK",
-    price: "₹299",
-    originalPrice: "₹399",
+    price: "₹333",
+    originalPrice: "₹444",
     discount: "25% OFF",
-    rating: "4.9",
-    reviewsCount: "164 verified reviews",
-    description:
-      "A quick, discreet check before your first sip. Two drops, one sticker, and a clear visual result in seconds. Fits effortlessly in your phone case, cardholder, or clutch.",
+    rating: "(4.5 stars)",
+    reviewsCount: "32 reviews",
+    desktopDescription: [
+      "A drink safety sticker designed to help protect your beverage while you're out.",
+      "Seals securely to your glass and peels away easily when you're done.",
+    ],
+    mobileDescription:
+      "A drink safety sticker designed to help protect your beverage while you're out.",
     features: [
-      { icon: "tests", label: "10 test stickers per pack" },
-      { icon: "clock", label: "Results in under 10 seconds" },
-      { icon: "pocket", label: "Pocket & clutch friendly" },
-      { icon: "app", label: "Zero tech or app required" },
+      { svg: "/10test.svg", label: "10 tests per pack" },
+      { svg: "/resultsinsec.svg", label: "Results in seconds" },
+      { svg: "/phoenw.svg", label: "Pocket friendly" },
+      { svg: "/noapp.svg", label: "No app needed" },
     ],
     colors: [
       {
-        id: "blue",
-        name: "ELECTRIC BLUE",
-        hex: "#0084FF",
-        mainImage: "/images/productsip.webp",
+        id: "default",
+        name: "DEFAULT",
+        hex: "#E6007E",
+        mainImage: "/SIPCHECK/dfjsk.png",
         thumbnails: [
-          "/images/productsip.webp",
-          "/images/SPICHECKPRO.webp",
-          "/images/shop/shop-2.webp",
-          "/images/shopt3.webp",
-        ],
-      },
-      {
-        id: "pink",
-        name: "NEON PINK",
-        hex: "#FF0E97",
-        mainImage: "/images/SPICHECKPRO.webp",
-        thumbnails: [
-          "/images/SPICHECKPRO.webp",
-          "/images/productsip.webp",
-          "/images/shop/shop-2.webp",
-          "/images/shopt1.webp",
+          "/SIPCHECK/dfjsk.png",
+          "/SIPCHECK/dsd.png",
+          "/SIPCHECK/dsf.png",
+          "/SIPCHECK/sdf.png",
         ],
       },
     ],
     bundlePrompt: {
-      title: "PAIR WITH ON ME SPRAY — SAVE ₹200",
-      subtitle: "Carry readiness wherever the evening takes you.",
+      title: "PAIR WITH ON ME SPRAY - SAVE ₹200",
+      subtitle: "The night-out safety duo.",
       link: "#bundle-pack",
     },
     headerBg: "bg-[#FF0E97]",
@@ -143,39 +140,31 @@ const PRODUCTS: ProductData[] = [
     price: "₹999",
     originalPrice: "₹1,554",
     discount: "SAVE ₹555",
-    rating: "5.0",
-    reviewsCount: "312 verified reviews",
-    description:
-      "The definitive daily readiness bundle: On Me Pepper Spray, Sip Check Drink Spiking Test Pack, and the bespoke weather-resistant NAZR Shield Pouch — delivered together at maximum value.",
+    rating: "(5.0 stars)",
+    reviewsCount: "18 reviews",
+    desktopDescription: [
+      "A personal safety kit that brings two everyday essentials together.",
+      "Includes On Me and Sip Check for confidence wherever you go.",
+    ],
+    mobileDescription:
+      "Two everyday safety essentials in one kit: ON ME and SIP CHECK, made to keep you ready wherever you go.",
     features: [
-      { icon: "spray", label: "1x On Me Pepper Spray" },
-      { icon: "tests", label: "1x Sip Check (10 Tests)" },
-      { icon: "pouch", label: "1x NAZR Shield Travel Pouch" },
-      { icon: "truck", label: "Free Express Shipping Included" },
+      { svg: "/10test.svg", label: "10 tests per pack" },
+      { svg: "/resultsinsec.svg", label: "Results in seconds" },
+      { svg: "/phoenw.svg", label: "Pocket friendly" },
+      { svg: "/noapp.svg", label: "No app needed" },
     ],
     colors: [
       {
-        id: "bundle-pink",
-        name: "PINK DUO",
+        id: "bundle",
+        name: "DEFAULT",
         hex: "#FF0E97",
-        mainImage: "/images/product365.webp",
+        mainImage: "/product360/Group.png",
         thumbnails: [
-          "/images/product365.webp",
-          "/images/NAZR360.webp",
-          "/images/shop/shop-3.webp",
-          "/images/shop/shop-1.webp",
-        ],
-      },
-      {
-        id: "bundle-white",
-        name: "WHITE DUO",
-        hex: "#F4F4F4",
-        mainImage: "/images/NAZR360.webp",
-        thumbnails: [
-          "/images/NAZR360.webp",
-          "/images/product365.webp",
-          "/images/shop/shop-3.webp",
-          "/images/shop/shop-2.webp",
+          "/product360/Group.png",
+          "/product360/Sip Check  2.png",
+          "/product360/fsj.png",
+          "/product360/rver.png",
         ],
       },
     ],
@@ -186,7 +175,7 @@ const PRODUCTS: ProductData[] = [
     },
     headerBg: "bg-[#0084FF]",
     stageBg: "bg-[#dff0ff]",
-    defaultVariantUrl: "https://shop.nazrco.in/products/nazr-360",
+    defaultVariantUrl: "https://shop.nazrco.in/products/bundle",
   },
 ];
 
@@ -249,29 +238,17 @@ function ProductCard({ product }: { product: ProductData }) {
             </span>
           </div>
 
-          {/* Center 3D Pedestal & Product Stage */}
-          <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-6 sm:py-10">
-            {/* 3D Circular Pedestal Base */}
-            <div className="relative w-[280px] sm:w-[340px] md:w-[400px] h-[340px] sm:h-[400px] md:h-[440px] flex items-center justify-center">
-              {/* Pedestal Bottom Cylinder / Ellipse */}
-              <div
-                className="absolute bottom-4 sm:bottom-6 w-[240px] sm:w-[300px] md:w-[340px] h-[55px] sm:h-[65px] rounded-[50%] bg-gradient-to-b from-[#FAF8F5] via-[#EAE6E1] to-[#C8C2BA] shadow-[0_30px_50px_rgba(0,0,0,0.15)] border border-white/60"
+          {/* Center Product Stage */}
+          <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-6 sm:py-8">
+            <div className="relative z-20 w-[260px] sm:w-[320px] md:w-[380px] h-[300px] sm:h-[360px] md:h-[420px] flex items-center justify-center transition-all duration-300 transform hover:scale-105">
+              <Image
+                src={activeImage}
+                alt={product.title}
+                fill
+                priority
+                className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.2)]"
+                sizes="(max-width: 768px) 320px, 450px"
               />
-              <div
-                className="absolute bottom-6 sm:bottom-9 w-[220px] sm:w-[280px] md:w-[320px] h-[40px] sm:h-[50px] rounded-[50%] bg-gradient-to-b from-white to-[#F0EDE8] opacity-90"
-              />
-
-              {/* Product Render Floating/Standing on Pedestal */}
-              <div className="relative z-20 w-[240px] sm:w-[290px] md:w-[330px] h-[300px] sm:h-[350px] md:h-[380px] flex items-center justify-center transition-all duration-300 transform hover:scale-105">
-                <Image
-                  src={activeImage}
-                  alt={product.title}
-                  fill
-                  priority
-                  className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)]"
-                  sizes="(max-width: 768px) 280px, 400px"
-                />
-              </div>
             </div>
           </div>
 
@@ -281,10 +258,10 @@ function ProductCard({ product }: { product: ProductData }) {
               <button
                 key={idx}
                 onClick={() => setSelectedImageIndex(idx)}
-                className={`relative w-[60px] sm:w-[72px] md:w-[80px] h-[54px] sm:h-[64px] md:h-[70px] rounded-[10px] overflow-hidden bg-white/70 border transition-all ${
+                className={`relative w-[60px] sm:w-[72px] md:w-[80px] h-[54px] sm:h-[64px] md:h-[70px] rounded-[10px] sm:rounded-[12px] overflow-hidden bg-white/80 transition-all border-2 ${
                   selectedImageIndex === idx
-                    ? "border-[#161616] ring-2 ring-[#161616] scale-105 shadow-md"
-                    : "border-black/15 hover:border-black/40 opacity-80 hover:opacity-100"
+                    ? "border-black shadow-sm"
+                    : "border-transparent hover:border-black/20 opacity-80 hover:opacity-100"
                 }`}
               >
                 <Image
@@ -335,36 +312,54 @@ function ProductCard({ product }: { product: ProductData }) {
                   ))}
                 </div>
                 <span className="text-[13px] font-medium text-black/70">
-                  <strong className="text-black font-semibold">{product.rating}</strong> | {product.reviewsCount}
+                  <strong className="text-black font-semibold">{product.rating}</strong> • {product.reviewsCount}
                 </span>
               </div>
             </div>
 
-            {/* Description */}
-            <p className="font-['Inter',_sans-serif] text-[15px] sm:text-[16px] leading-[150%] text-black/80 max-w-[560px]">
-              {product.description}
-            </p>
+            {/* Description: 2 distinct lines on desktop, concise copy on mobile */}
+            <div className="font-['Inter',_sans-serif] text-[15px] sm:text-[16px] leading-[150%] text-black/80 max-w-[560px]">
+              {/* Mobile version */}
+              <p className="block sm:hidden">
+                {product.mobileDescription}
+              </p>
+              {/* Desktop version: strictly 2 separate lines */}
+              <p className="hidden sm:block">
+                <span>{product.desktopDescription[0]}</span>
+                <br />
+                <span>{product.desktopDescription[1]}</span>
+              </p>
+            </div>
 
             {/* 2x2 Feature Pills matching mockup */}
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 max-w-[540px]">
               {product.features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2.5 sm:gap-3.5 px-4 sm:px-5 py-3 sm:py-3.5 rounded-[16px] sm:rounded-[18px] bg-[#EAE5DD] border border-black/[0.04] shadow-2xs"
+                  className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-3 sm:py-3.5 rounded-[16px] sm:rounded-[18px] bg-[#F5F3EF] border border-black/[0.04] shadow-2xs"
                 >
-                  <span className="shrink-0 text-[#161616]">
-                    {feat.icon === "tests" && <Box className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "clock" && <Clock className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "pocket" && <Smartphone className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "app" && <Nfc className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "stream" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "glow" && <Sparkles className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "dye" && <Eye className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "spray" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "pouch" && <Package className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
-                    {feat.icon === "truck" && <Truck className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px]" strokeWidth={2} />}
+                  <span className="shrink-0 flex items-center justify-center">
+                    {feat.svg ? (
+                      <Image
+                        src={feat.svg}
+                        alt=""
+                        width={18}
+                        height={18}
+                        className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] object-contain shrink-0"
+                      />
+                    ) : (
+                      <>
+                        {feat.icon === "stream" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
+                        {feat.icon === "glow" && <Sparkles className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
+                        {feat.icon === "pocket" && <Smartphone className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
+                        {feat.icon === "dye" && <Eye className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
+                        {feat.icon === "spray" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
+                        {feat.icon === "pouch" && <Package className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
+                        {feat.icon === "truck" && <Truck className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
+                      </>
+                    )}
                   </span>
-                  <span className="text-[13px] sm:text-[14.5px] font-semibold text-[#161616] leading-tight">
+                  <span className="text-[13px] sm:text-[14px] font-normal sm:font-medium text-[#161616] leading-tight">
                     {feat.label}
                   </span>
                 </div>
@@ -373,86 +368,128 @@ function ProductCard({ product }: { product: ProductData }) {
 
             {/* Colour Selector - only for on-me-spray */}
             {product.id === "on-me-spray" && (
-              <div className="flex flex-col gap-2 pt-1">
-                <div className="flex items-center justify-between text-[13px]">
-                  <span className="font-semibold text-black/90 tracking-wide uppercase">
-                    Colour — <span className="text-[#FF0E97] font-bold">{currentColor.name}</span>
-                  </span>
-                  <span className="text-black/40 text-[11px] font-medium uppercase tracking-wider">
-                    Edition 02
+              <div className="flex flex-col gap-2.5 pt-1">
+                {/* Dynamic Colour Label */}
+                <div
+                  className="flex items-center gap-1.5 uppercase select-none tracking-[0.05em] text-[13px] sm:text-[14px]"
+                  style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
+                >
+                  <span className="font-bold text-[#555555]">COLOUR —</span>
+                  <span className="font-extrabold text-[#161616]">
+                    {product.colors[selectedColorIndex]?.name || "PINK"}
                   </span>
                 </div>
+
                 <div className="flex items-center gap-3">
                   {product.colors.map((color, idx) => (
                     <button
                       key={color.id}
                       onClick={() => handleVariantChange(idx)}
-                      className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-bold uppercase transition-all cursor-pointer ${
+                      className={`flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-5 py-2 rounded-full text-[13px] uppercase transition-all cursor-pointer ${
                         selectedColorIndex === idx
-                          ? "bg-transparent text-black border-2 border-black shadow-xs"
-                          : "bg-white text-black/75 border border-black/15 hover:border-black/35"
+                          ? "bg-white text-black font-bold border-2 border-black shadow-xs"
+                          : "bg-white text-black/75 font-medium border border-black/15 hover:border-black/35"
                       }`}
                     >
                       <span
-                        className="w-3.5 h-3.5 rounded-full border border-black/20 shrink-0"
+                        className="w-3.5 h-3.5 rounded-[2px] shrink-0"
                         style={{ backgroundColor: color.hex }}
                       />
-                      <span>{color.name.split(" ").pop()}</span>
-                      {selectedColorIndex === idx && <Check className="w-3.5 h-3.5 ml-0.5" />}
+                      <span>{color.name}</span>
                     </button>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Action Buttons: Add to Cart & Buy Now */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            {/* Action Button: Single VIEW MORE Button linked to PDP */}
+            <div className="w-full pt-1">
               <button
                 onClick={handleBuyNow}
-                className="flex-1 bg-[#FF0E97] hover:bg-[#e00c85] active:scale-[0.99] text-white font-bold py-3.5 px-6 rounded-full text-[15px] uppercase tracking-wider shadow-sm transition-all text-center cursor-pointer"
+                className="w-full bg-[#E6007E] hover:bg-[#d0006f] active:scale-[0.99] text-white font-bold py-3.5 sm:py-4 px-6 rounded-full text-[15px] sm:text-[16px] uppercase tracking-wider shadow-sm transition-all text-center cursor-pointer block"
               >
-                Add to Cart
-              </button>
-              <button
-                onClick={handleBuyNow}
-                className="flex-1 bg-transparent hover:bg-black/5 active:scale-[0.99] text-[#161616] font-bold py-3.5 px-6 rounded-full border border-black/30 text-[15px] uppercase tracking-wider transition-all text-center cursor-pointer"
-              >
-                Buy Now
+                VIEW MORE
               </button>
             </div>
 
-            {/* Pair with Bundle Upsell Banner */}
-            <div className="mt-1 p-3.5 sm:p-4 rounded-[16px] bg-[#FFEBF5] border border-[#FF0E97]/25 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-              <div className="flex flex-col">
-                <span className="font-bold text-[13px] sm:text-[14px] text-[#161616] uppercase tracking-tight">
-                  {product.bundlePrompt.title}
-                </span>
-                <span className="text-[12px] text-black/70">
-                  {product.bundlePrompt.subtitle}
-                </span>
-              </div>
-              <a
-                href={product.bundlePrompt.link}
-                className="inline-flex items-center gap-1.5 bg-[#FF0E97] hover:bg-[#e00c85] text-white text-[12px] font-bold px-4 py-2 rounded-full uppercase tracking-wider shrink-0 transition-colors"
+            {/* Pair with Bundle Upsell Banner - for on-me-spray and sip-check */}
+            {(product.id === "on-me-spray" || product.id === "sip-check") && (
+              <div
+                style={{ border: "1px solid #E6007E" }}
+                className="mt-1 p-3.5 sm:p-4 rounded-[22px] sm:rounded-[24px] bg-[#FCE2ED] flex flex-row items-center justify-between gap-2.5 sm:gap-4 transition-all"
               >
-                <span>Get the Bundle</span>
-                <ArrowRight className="w-3 h-3" />
-              </a>
-            </div>
+                <div className="flex flex-col min-w-0">
+                  <span
+                    style={{
+                      fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                      fontWeight: 800,
+                      fontSize: "12px",
+                      lineHeight: "15.63px",
+                      letterSpacing: "0px",
+                      verticalAlign: "middle",
+                      textTransform: "uppercase",
+                    }}
+                    className="text-[#090507]"
+                  >
+                    {product.id === "on-me-spray" ? (
+                      <>
+                        <span className="block whitespace-nowrap">PAIR WITH SIP CHECK -</span>
+                        <span className="block whitespace-nowrap">SAVE ₹200</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="block whitespace-nowrap">PAIR WITH ON ME SPRAY -</span>
+                        <span className="block whitespace-nowrap">SAVE ₹200</span>
+                      </>
+                    )}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                      fontWeight: 500,
+                      fontSize: "12px",
+                      lineHeight: "18px",
+                      letterSpacing: "0px",
+                      verticalAlign: "middle",
+                      color: "#404040",
+                    }}
+                    className="mt-0.5 sm:mt-1"
+                  >
+                    {product.bundlePrompt.subtitle}
+                  </span>
+                </div>
+                <a
+                  href={product.bundlePrompt.link}
+                  className="inline-flex items-center justify-center bg-[#E6007E] hover:bg-[#d0006f] active:scale-95 text-white text-[11px] sm:text-[13px] font-bold px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full uppercase tracking-wider shrink-0 transition-all shadow-sm whitespace-nowrap"
+                >
+                  <span>GET THE BUNDLE →</span>
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Shipping & Trust Guarantees */}
-          <div className="pt-5 mt-5 border-t border-black/10 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5 text-[10px] sm:text-[11px] font-bold text-black/60 uppercase tracking-wider text-center">
-            <span className="inline-flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00C853] inline-block" />
-              3-Day Delivery
+          <div
+            className="pt-4 mt-2 border-t border-black/10 flex flex-wrap items-center justify-center text-center gap-x-2.5 sm:gap-x-3 gap-y-1 uppercase select-none text-[#737373] w-full"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: "11px",
+              lineHeight: "16.5px",
+              letterSpacing: "0.55px",
+              color: "#737373",
+            }}
+          >
+            <span className="inline-flex items-center gap-1.5 shrink-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00C853] inline-block shrink-0" />
+              3-DAY DELIVERY
             </span>
-            <span className="text-black/30">/</span>
-            <span>Discreet Shield Packaging</span>
-            <span className="text-black/30">/</span>
-            <span>Free over ₹899</span>
-            <span className="text-black/30">/</span>
-            <span>Easy Returns</span>
+            <span>DISCREET SHIELD PACKAGING</span>
+            <span className="text-[#737373]/50">/</span>
+            <span>FREE OVER ₹999</span>
+            <span className="text-[#737373]/50">/</span>
+            <span>EASY RETURNS</span>
+            <span className="text-[#737373]/50">/</span>
           </div>
         </div>
       </div>

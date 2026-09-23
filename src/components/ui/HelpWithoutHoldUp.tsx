@@ -281,8 +281,10 @@ export function HelpWithoutHoldUp() {
             {/* Row 1: App Store & Google Play side-by-side */}
             <div className="flex items-center justify-center gap-2.5 w-full">
               {/* Download on the App Store */}
-              <Link
-                href="/nazrapp"
+              <a
+                href="https://apps.apple.com/in/app/nazr-women-safety-app/id6787188929"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 bg-black hover:bg-black/85 text-white px-2 py-1.5 rounded-[4px] transition-all shadow-sm active:scale-95 whitespace-nowrap h-[44px] border border-white/10"
               >
                 <svg className="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24">
@@ -292,11 +294,13 @@ export function HelpWithoutHoldUp() {
                   <span className="text-[7.5px] leading-tight text-white/80 font-normal">Download on the</span>
                   <span className="text-[12px] font-semibold leading-tight font-sans text-white">App Store</span>
                 </div>
-              </Link>
+              </a>
 
               {/* GET IT ON Google Play */}
-              <Link
-                href="/nazrapp"
+              <a
+                href="https://play.google.com/store/apps/details?id=com.nazr.app"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 h-[44px] transition-all hover:opacity-90 active:scale-95 shrink-0 flex items-center justify-center"
               >
                 <Image
@@ -307,7 +311,7 @@ export function HelpWithoutHoldUp() {
                   height={44}
                   className="h-[44px] w-full object-contain rounded-[4px]"
                 />
-              </Link>
+              </a>
             </div>
 
             {/* Row 2: Pink Get the app button centered below */}
@@ -346,8 +350,10 @@ export function HelpWithoutHoldUp() {
             </Link>
 
             {/* Download on the App Store */}
-            <Link
-              href="/nazrapp"
+            <a
+              href="https://apps.apple.com/in/app/nazr-women-safety-app/id6787188929"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-black hover:bg-black/85 text-white px-3.5 py-1.5 rounded-[4px] transition-all shadow-sm active:scale-95 whitespace-nowrap h-[44px]"
             >
               <svg className="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24">
@@ -357,11 +363,13 @@ export function HelpWithoutHoldUp() {
                 <span className="text-[8.5px] leading-tight text-white/80 font-normal">Download on the</span>
                 <span className="text-[13px] font-semibold leading-tight font-sans text-white">App Store</span>
               </div>
-            </Link>
+            </a>
 
             {/* GET IT ON Google Play */}
-            <Link
-              href="/nazrapp"
+            <a
+              href="https://play.google.com/store/apps/details?id=com.nazr.app"
+              target="_blank"
+              rel="noopener noreferrer"
               className="h-[44px] transition-all hover:opacity-90 active:scale-95 shrink-0 flex items-center justify-center"
             >
               <Image
@@ -372,7 +380,7 @@ export function HelpWithoutHoldUp() {
                 height={44}
                 className="h-[44px] w-auto object-contain rounded-[4px]"
               />
-            </Link>
+            </a>
           </div>
         </div>
 

@@ -12,7 +12,7 @@ export default function DeleteAccountPage() {
       </DesktopScaler>
 
       {/* Delete Account Canvas Section */}
-      <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
+      <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
         <DesktopScaler bgColor="#f4f4f4" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px]">
           <div className="w-full bg-[#f4f4f4] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] min-h-[800px] px-6 md:px-16 py-12 md:py-20 flex flex-col items-center">
             

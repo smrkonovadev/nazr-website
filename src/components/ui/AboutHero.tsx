@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Header } from "./Header";
 
 export function AboutHero() {
   const [scaledViewportHeight, setScaledViewportHeight] = useState<number | string>("100vh");
@@ -30,12 +29,7 @@ export function AboutHero() {
         height: typeof scaledViewportHeight === "number" ? `${scaledViewportHeight}px` : scaledViewportHeight
       }}
     >
-      <div className="relative w-full h-full md:rounded-[16px] max-md:rounded-b-[16px] max-md:rounded-t-none overflow-hidden flex flex-col">
-
-        {/* Header - relative on mobile with dark background bar, absolute transparent on desktop */}
-        <div className="max-md:relative max-md:z-30 md:absolute md:top-0 md:left-0 md:right-0 md:z-20 w-full">
-          <Header variant="transparent" mobileVariant="dark" />
-        </div>
+      <div className="relative w-full h-full md:rounded-[16px] max-md:rounded-[16px] overflow-hidden flex flex-col">
 
         {/* Image & Content Container - relative flex-1 on mobile, absolute inset-0 on desktop */}
         <div className="max-md:relative max-md:flex-1 max-md:w-full md:absolute md:inset-0 z-0">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/ui/Header";
 import { AboutHero } from "@/components/ui/AboutHero";
 import { AboutStatement } from "@/components/ui/AboutStatement";
 import { AboutCollage } from "@/components/ui/AboutCollage";
@@ -45,6 +46,11 @@ export default function AboutPage() {
   return (
     <>
       <main className="flex flex-col min-h-screen bg-[#161616] w-full">
+        {/* Navigation Bar */}
+        <DesktopScaler>
+          <Header />
+        </DesktopScaler>
+
         {/* Dark Sections */}
         <DesktopScaler bgColor="transparent" className="relative z-30">
           <AboutHero />

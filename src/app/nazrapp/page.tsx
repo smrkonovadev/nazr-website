@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
 
 import { NazrAppIntro } from "@/components/ui/NazrAppIntro";
-import { OneTapSOSSection } from "@/components/ui/OneTapSOSSection";
-import { TriggerSection } from "@/components/ui/TriggerSection";
+import { HowSosWorksSection } from "@/components/ui/HowSosWorksSection";
 import { ShieldModeSection } from "@/components/ui/ShieldModeSection";
 import { ShieldModeFeatures } from "@/components/ui/ShieldModeFeatures";
 import { TrustedCircleSection } from "@/components/ui/TrustedCircleSection";
-import { OurProductsHeader } from "@/components/ui/OurProductsHeader";
-import { ProductCardsCarousel } from "@/components/ui/ProductCardsCarousel";
-import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
+import { PrivacySection } from "@/components/ui/PrivacySection";
+import { AskUsAnythingSection } from "@/components/ui/AskUsAnythingSection";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
 export const metadata: Metadata = {
@@ -48,39 +46,43 @@ export default function NazrAppPage() {
           <Header />
         </DesktopScaler>
 
-        {/* The World Stares Rectangle Section (Empty Canvas) */}
-        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
-          <DesktopScaler bgColor="#F3E5E0" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
+        {/* Hero Section */}
+        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
+          <DesktopScaler bgColor="#f4f4f4" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
             <div
-              className="w-full bg-[#F3E5E0] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px]"
+              className="w-full max-md:bg-white md:bg-[#f4f4f4] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden"
             >
               <NazrAppIntro />
-              <OneTapSOSSection />
-              <TriggerSection />
             </div>
           </DesktopScaler>
         </section>
 
+        {/* How SOS Works Section */}
+        <DesktopScaler bgColor="#0A0A0A">
+          <HowSosWorksSection />
+        </DesktopScaler>
+
         {/* Shield Mode Dark Section */}
-        <DesktopScaler>
+        <DesktopScaler bgColor="#0A0A0A">
           <ShieldModeFeatures />
         </DesktopScaler>
 
         {/* Trusted Circle Section */}
-        <DesktopScaler bgColor="#F1E4DE">
+        <DesktopScaler bgColor="#0A0A0A">
           <TrustedCircleSection />
         </DesktopScaler>
 
-        {/* Our Products Section */}
-        <DesktopScaler>
-          <OurProductsHeader />
-          <ProductCardsCarousel />
+        {/* Privacy Section */}
+        <DesktopScaler bgColor="#FFF1EB">
+          <div className="w-full relative z-[60] bg-[#FFF1EB]">
+            <PrivacySection />
+          </div>
         </DesktopScaler>
 
-        {/* Join The Conversation Section */}
-        <DesktopScaler bgColor="#f4f4f4" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden -mt-[1px]">
-          <div className="w-full relative z-[60] bg-[#f4f4f4] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden pb-0 -mt-[1px]">
-            <WhyNazrInTheirWordsSection />
+        {/* Ask Us Anything FAQ Section */}
+        <DesktopScaler bgColor="#0B0B0D" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden">
+          <div className="w-full relative z-[60] bg-[#0B0B0D] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden pb-0">
+            <AskUsAnythingSection />
           </div>
         </DesktopScaler>
       </main>

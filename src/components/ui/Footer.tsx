@@ -33,13 +33,15 @@ export function Footer() {
   }
 
   const isShopPage = pathname === "/shop" || pathname?.startsWith("/shop");
+  const isNazrAppPage = pathname === "/nazrapp" || pathname?.startsWith("/nazrapp");
+  const hideNazrMilao = isShopPage || isNazrAppPage;
 
   return (
     <>
-      {!isShopPage && <NazrMilaoSection />}
+      {!hideNazrMilao && <NazrMilaoSection />}
       <footer
         className={`w-full bg-[#161616] text-[#f4f4f4] ${
-          isShopPage
+          hideNazrMilao
             ? "pt-14 sm:pt-18 md:pt-24 mt-0"
             : "pt-20 sm:pt-28 md:pt-36 md:-mt-[26px] max-md:-mt-[9.71px]"
         } pb-6 md:pb-8 px-5 sm:px-8 md:px-12 lg:px-16 flex flex-col justify-between relative z-20 overflow-visible md:overflow-hidden md:min-h-[max(700px,calc(100vh/var(--desktop-scale,1)))] md:h-auto transform-gpu`}

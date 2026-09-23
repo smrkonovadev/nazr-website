@@ -6,9 +6,10 @@ import { useNavigation } from "@/context/NavigationContext";
 interface HeaderProps {
   variant?: "dark" | "transparent";
   mobileVariant?: "dark" | "transparent";
+  showShop?: boolean;
 }
 
-export function Header({ variant = "dark", mobileVariant }: HeaderProps) {
+export function Header({ variant = "dark", mobileVariant, showShop = false }: HeaderProps) {
   const { setIsMenuOpen } = useNavigation();
   const isTransparent = variant === "transparent";
   const effectiveMobileVariant = mobileVariant || variant;
@@ -54,30 +55,47 @@ export function Header({ variant = "dark", mobileVariant }: HeaderProps) {
             NAZR
           </Link>
 
-          {/* Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className={`flex items-center justify-center md:justify-between ${menuBtnBg} transition-colors rounded-[4px] max-md:px-[9px] max-md:py-[7px] md:px-[16px] md:py-[16px] w-auto h-auto md:w-[118px] md:h-[52px] gap-[12px] opacity-100`}
-          >
-            <span
-              className="hidden md:inline-block font-['Switzer',_sans-serif] font-normal text-[20px] leading-[100%] tracking-[-0.04em] text-right"
-              style={{
-                width: '50px',
-                height: '20px',
-                color: menuTextColor
-              }}
+          {/* Action Buttons */}
+          <div className="flex items-center gap-3">
+            {showShop && (
+              <Link
+                href="/shop"
+                className="hidden sm:inline-flex items-center justify-center border border-white/40 hover:border-white text-white rounded-full px-5 py-2 text-sm font-medium transition-all"
+                style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
+              >
+                Shop
+              </Link>
+            )}
+
+            {/* Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className={`flex items-center justify-center md:justify-between ${menuBtnBg} transition-colors ${
+                showShop
+                  ? "rounded-full px-[18px] py-[8px] md:px-[22px] md:py-[10px]"
+                  : "rounded-[4px] max-md:px-[9px] max-md:py-[7px] md:px-[16px] md:py-[16px]"
+              } w-auto h-auto gap-[8px] md:gap-[10px] opacity-100 shadow-sm`}
             >
-              Menu
-            </span>
-            <svg
-              viewBox="0 0 24 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={`max-md:w-[22px] max-md:h-[9px] md:w-[24px] md:h-[12px] ${menuIconColorClass}`}
-            >
-              <path d="M0 1H24M0 11H24" stroke="currentColor" strokeWidth="3" />
-            </svg>
-          </button>
+              <span
+                className={`${showShop ? "inline-block" : "hidden md:inline-block"} font-['Switzer',_sans-serif] font-normal text-[15px] md:text-[18px] leading-[100%] tracking-[-0.02em] text-right`}
+                style={{
+                  color: menuTextColor
+                }}
+              >
+                Menu
+              </span>
+              {!showShop && (
+                <svg
+                  viewBox="0 0 24 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`max-md:w-[22px] max-md:h-[9px] md:w-[24px] md:h-[12px] ${menuIconColorClass}`}
+                >
+                  <path d="M0 1H24M0 11H24" stroke="currentColor" strokeWidth="3" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </header>

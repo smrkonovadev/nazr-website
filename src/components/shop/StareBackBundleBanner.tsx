@@ -13,7 +13,7 @@ export function StareBackBundleBanner() {
       value: 999,
       currency: "INR",
     });
-    window.open("https://shop.nazrco.in/products/nazr-360", "_blank");
+    window.open("https://shop.nazrco.in/products/bundle", "_blank");
   };
 
   return (

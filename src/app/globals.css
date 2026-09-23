@@ -72,3 +72,37 @@ body {
   50% { color: #FF0E97; }
   100% { color: #f4f4f4; }
 }
+
+/* Ensure Step 3 Lottie renders at full 304px height (matching other phones) and cards pop out */
+.sos-step3-lottie {
+  width: 322px !important;
+  min-width: 322px !important;
+  max-width: none !important;
+  height: 304px !important;
+  flex-shrink: 0 !important;
+}
+
+.sos-step3-lottie svg {
+  width: 322px !important;
+  min-width: 322px !important;
+  max-width: none !important;
+  height: 304px !important;
+  overflow: visible !important;
+}
+
+/* Mobile Step 3 Lottie sizing (matching 324px height of mobile phones) */
+.sos-step3-lottie-mobile {
+  width: 343px !important;
+  min-width: 343px !important;
+  max-width: none !important;
+  height: 324px !important;
+  flex-shrink: 0 !important;
+}
+
+.sos-step3-lottie-mobile svg {
+  width: 343px !important;
+  min-width: 343px !important;
+  max-width: none !important;
+  height: 324px !important;
+  overflow: visible !important;
+}
