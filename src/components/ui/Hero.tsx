@@ -51,7 +51,7 @@ export function Hero() {
         {/* Left Photo Card */}
         <div className="hidden md:block shrink-0 w-[240px] lg:w-[290px] xl:w-[320px] h-[480px] lg:h-[550px] xl:h-[580px] relative rounded-[28px] lg:rounded-[32px] overflow-hidden shadow-2xl border border-white/5 bg-[#1C1C1C]">
           <Image
-            src="/images/HOMEHERO/heorleft.webp"
+            src="/images/HOMEHERO/heroleft_sipcheck.webp"
             alt="Safety in motion"
             fill
             priority
