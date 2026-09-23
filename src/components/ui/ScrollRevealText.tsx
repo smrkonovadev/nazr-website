@@ -37,7 +37,7 @@ export function ScrollRevealText({
   style, 
   scrollYProgress: externalScrollYProgress, 
   progressRange = [0, 1],
-  fillColor = "#FFF9EB",
+  fillColor = "#f4f4f4",
   emptyColor = "#444444"
 }: { 
   text: string, 

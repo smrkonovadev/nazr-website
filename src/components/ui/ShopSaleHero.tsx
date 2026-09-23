@@ -124,41 +124,41 @@ export function ShopSaleHero() {
 
             <div className="flex items-center gap-[5px]">
               {/* Days */}
-              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
-                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#FFF9EB]">
+              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
+                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#f4f4f4]">
                   {mounted ? timeLeft.days : 6}
                 </span>
-                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#FFF9EB] mt-0.5">
+                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#f4f4f4] mt-0.5">
                   Days
                 </span>
               </div>
 
               {/* Hrs */}
-              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
-                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#FFF9EB]">
+              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
+                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#f4f4f4]">
                   {mounted ? String(timeLeft.hours).padStart(2, '0') : '12'}
                 </span>
-                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#FFF9EB] mt-0.5">
+                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#f4f4f4] mt-0.5">
                   Hrs
                 </span>
               </div>
 
               {/* Mins */}
-              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
-                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#FFF9EB]">
+              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
+                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#f4f4f4]">
                   {mounted ? String(timeLeft.minutes).padStart(2, '0') : '56'}
                 </span>
-                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#FFF9EB] mt-0.5">
+                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#f4f4f4] mt-0.5">
                   Mins
                 </span>
               </div>
 
               {/* Sec */}
-              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
-                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#FFF9EB]">
+              <div className="w-[36px] h-[46px] bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[4px] shadow-sm">
+                <span className="font-['Inter',_sans-serif] font-medium text-[19px] leading-none tracking-[-0.03em] text-[#f4f4f4]">
                   {mounted ? String(timeLeft.seconds).padStart(2, '0') : '12'}
                 </span>
-                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#FFF9EB] mt-0.5">
+                <span className="font-['Inter',_sans-serif] font-medium text-[9.5px] leading-none tracking-[-0.03em] text-[#f4f4f4] mt-0.5">
                   Sec
                 </span>
               </div>
@@ -189,7 +189,7 @@ export function ShopSaleHero() {
             href="https://shop.nazrco.in/products/rakhi-bundle"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-[#FFF1EB] transition-all duration-200 active:scale-[0.98] shadow-sm group px-4 cursor-pointer"
+            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#E50080] text-[#f4f4f4] transition-all duration-200 active:scale-[0.98] shadow-sm group px-4 cursor-pointer"
             style={{
               height: '38px',
               gap: '8px',
@@ -203,7 +203,7 @@ export function ShopSaleHero() {
               viewBox="0 0 35 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-[#FFF1EB] shrink-0"
+              className="text-[#f4f4f4] shrink-0"
             >
               <path
                 d="M33.3819 7.62744C33.2869 7.7107 33.1684 7.80134 33.0152 7.90883C31.7545 8.79569 30.1546 9.34741 28.4602 9.9318C25.5573 10.933 22.5555 11.9679 20.6471 14.8161C20.1564 15.5486 19.9687 16.291 20.1005 16.925C20.2926 16.613 20.4759 16.3311 20.7075 16.026L20.9298 15.733L21.1449 16.0307C21.8991 17.0757 23.061 17.6748 24.3328 17.6748C25.032 17.6748 25.7455 17.492 26.3954 17.1458C27.3707 16.6262 28.0239 15.8294 28.2352 14.9025C28.4421 13.9935 28.2044 13.0324 27.565 12.1972L27.3614 11.9316L29.5025 11.0863L29.6293 11.2255C30.7797 12.4917 31.1502 14.0721 30.7007 15.7968C30.2319 17.5947 28.7078 19.1239 26.7236 19.7879C25.9799 20.0366 25.2236 20.1626 24.4749 20.1626C23.4562 20.1626 22.4595 19.9344 21.5001 19.4828C21.926 19.936 22.4726 20.289 22.9836 20.5973C23.8355 21.1111 24.8394 21.3825 25.8866 21.3825C26.9338 21.3825 27.9157 21.1332 28.8362 20.6621C29.4756 20.3349 30.0387 19.9202 30.5585 19.3932C31.5421 18.3962 32.2227 17.1126 32.5279 15.6808C32.7737 14.5263 32.7189 13.8228 32.7178 13.8139C32.6338 12.7542 32.4329 11.8183 32.0855 10.8687C31.7885 10.0556 31.9214 9.42171 32.5169 8.81308C32.9241 8.39626 33.2117 8.00263 33.3808 7.62797L33.3819 7.62744ZM27.3954 13.8613L27.7599 13.9003C27.8466 13.9219 27.8312 14.012 27.7467 14.0088C27.1309 13.9877 26.9146 13.8755 26.6929 14.2043C26.6023 14.3382 26.5749 14.5621 26.7077 14.7608L27.2807 15.3515C27.284 15.5264 26.5095 14.7149 25.9761 15.1044C25.5276 15.4316 26.127 16.4565 25.9475 16.437L25.4744 15.7024C25.3915 15.5855 25.0836 15.5243 24.8717 15.596C24.3926 15.7588 24.4996 16.6615 24.4047 16.6425C24.2938 16.6272 24.4118 15.7825 24.0847 15.5596C23.9645 15.478 23.7685 15.5143 23.6664 15.6166L23.0034 16.2795C22.8179 16.3058 23.6143 15.4985 23.0281 15.0748C22.3634 14.5943 21.7739 15.3452 21.7372 15.1876L22.4748 14.5837C23.28 13.9245 23.785 15.8742 25.6572 14.7913C26.9915 14.0194 26.1314 12.3147 26.4492 12.556C26.4739 12.5745 26.5419 12.7304 26.5496 12.8079C26.5595 12.907 26.5743 13.0255 26.5875 13.103C26.6451 13.4355 26.8147 13.7817 27.3954 13.8602V13.8613Z"
@@ -229,7 +229,7 @@ export function ShopSaleHero() {
                 fontStyle: 'normal',
                 fontSize: '14.5px',
                 lineHeight: '150%',
-                color: '#FFF1EB',
+                color: '#f4f4f4',
               }}
             >
               Shop Rakhi Hamper
@@ -273,64 +273,64 @@ export function ShopSaleHero() {
           <div className="flex items-center gap-[8px] md:gap-[10px]">
             {/* Days Box */}
             <div
-              className="bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
+              className="bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
               style={{
                 width: '57.04px',
                 height: '74.76px',
               }}
             >
-              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center">
+              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center">
                 {mounted ? timeLeft.days : 6}
               </span>
-              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center mt-1">
+              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center mt-1">
                 Days
               </span>
             </div>
 
             {/* Hrs Box */}
             <div
-              className="bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
+              className="bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
               style={{
                 width: '57.04px',
                 height: '74.76px',
               }}
             >
-              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center">
+              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center">
                 {mounted ? String(timeLeft.hours).padStart(2, '0') : '12'}
               </span>
-              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center mt-1">
+              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center mt-1">
                 Hrs
               </span>
             </div>
 
             {/* Mins Box */}
             <div
-              className="bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
+              className="bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
               style={{
                 width: '57.04px',
                 height: '74.76px',
               }}
             >
-              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center">
+              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center">
                 {mounted ? String(timeLeft.minutes).padStart(2, '0') : '56'}
               </span>
-              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center mt-1">
+              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center mt-1">
                 Mins
               </span>
             </div>
 
             {/* Sec Box */}
             <div
-              className="bg-[#1E1E1E] text-[#FFF9EB] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
+              className="bg-[#1E1E1E] text-[#f4f4f4] flex flex-col items-center justify-center rounded-[6.17px] shadow-sm"
               style={{
                 width: '57.04px',
                 height: '74.76px',
               }}
             >
-              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center">
+              <span className="font-['Inter',_sans-serif] font-medium text-[30.83px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center">
                 {mounted ? String(timeLeft.seconds).padStart(2, '0') : '12'}
               </span>
-              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#FFF9EB] text-center mt-1">
+              <span className="font-['Inter',_sans-serif] font-medium text-[15.42px] leading-none tracking-[-0.03em] text-[#f4f4f4] text-center mt-1">
                 Sec
               </span>
             </div>
@@ -383,7 +383,7 @@ export function ShopSaleHero() {
               viewBox="0 0 35 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-[#FFF1EB] shrink-0 transition-transform duration-200 group-hover:scale-110"
+              className="text-[#f4f4f4] shrink-0 transition-transform duration-200 group-hover:scale-110"
             >
               <path
                 d="M33.3819 7.62744C33.2869 7.7107 33.1684 7.80134 33.0152 7.90883C31.7545 8.79569 30.1546 9.34741 28.4602 9.9318C25.5573 10.933 22.5555 11.9679 20.6471 14.8161C20.1564 15.5486 19.9687 16.291 20.1005 16.925C20.2926 16.613 20.4759 16.3311 20.7075 16.026L20.9298 15.733L21.1449 16.0307C21.8991 17.0757 23.061 17.6748 24.3328 17.6748C25.032 17.6748 25.7455 17.492 26.3954 17.1458C27.3707 16.6262 28.0239 15.8294 28.2352 14.9025C28.4421 13.9935 28.2044 13.0324 27.565 12.1972L27.3614 11.9316L29.5025 11.0863L29.6293 11.2255C30.7797 12.4917 31.1502 14.0721 30.7007 15.7968C30.2319 17.5947 28.7078 19.1239 26.7236 19.7879C25.9799 20.0366 25.2236 20.1626 24.4749 20.1626C23.4562 20.1626 22.4595 19.9344 21.5001 19.4828C21.926 19.936 22.4726 20.289 22.9836 20.5973C23.8355 21.1111 24.8394 21.3825 25.8866 21.3825C26.9338 21.3825 27.9157 21.1332 28.8362 20.6621C29.4756 20.3349 30.0387 19.9202 30.5585 19.3932C31.5421 18.3962 32.2227 17.1126 32.5279 15.6808C32.7737 14.5263 32.7189 13.8228 32.7178 13.8139C32.6338 12.7542 32.4329 11.8183 32.0855 10.8687C31.7885 10.0556 31.9214 9.42171 32.5169 8.81308C32.9241 8.39626 33.2117 8.00263 33.3808 7.62797L33.3819 7.62744ZM27.3954 13.8613L27.7599 13.9003C27.8466 13.9219 27.8312 14.012 27.7467 14.0088C27.1309 13.9877 26.9146 13.8755 26.6929 14.2043C26.6023 14.3382 26.5749 14.5621 26.7077 14.7608L27.2807 15.3515C27.284 15.5264 26.5095 14.7149 25.9761 15.1044C25.5276 15.4316 26.127 16.4565 25.9475 16.437L25.4744 15.7024C25.3915 15.5855 25.0836 15.5243 24.8717 15.596C24.3926 15.7588 24.4996 16.6615 24.4047 16.6425C24.2938 16.6272 24.4118 15.7825 24.0847 15.5596C23.9645 15.478 23.7685 15.5143 23.6664 15.6166L23.0034 16.2795C22.8179 16.3058 23.6143 15.4985 23.0281 15.0748C22.3634 14.5943 21.7739 15.3452 21.7372 15.1876L22.4748 14.5837C23.28 13.9245 23.785 15.8742 25.6572 14.7913C26.9915 14.0194 26.1314 12.3147 26.4492 12.556C26.4739 12.5745 26.5419 12.7304 26.5496 12.8079C26.5595 12.907 26.5743 13.0255 26.5875 13.103C26.6451 13.4355 26.8147 13.7817 27.3954 13.8602V13.8613Z"
@@ -405,7 +405,7 @@ export function ShopSaleHero() {
 
             {/* "Shop Rakhi Hamper" Text */}
             <span
-              className="text-[#FFF1EB] select-none whitespace-nowrap"
+              className="text-[#f4f4f4] select-none whitespace-nowrap"
               style={{
                 fontFamily: "'Roboto', sans-serif",
                 fontWeight: 300,
@@ -413,7 +413,7 @@ export function ShopSaleHero() {
                 fontSize: '20.68px',
                 lineHeight: '150%',
                 letterSpacing: '0%',
-                color: '#FFF1EB',
+                color: '#f4f4f4',
               }}
             >
               Shop Rakhi Hamper

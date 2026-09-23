@@ -116,7 +116,7 @@ export function ShopProductPepperSpray() {
                 type="button"
                 onClick={() => setSelectedVariant("white")}
                 aria-label="White variant"
-                style={{ backgroundColor: "#FFF9EB" }}
+                style={{ backgroundColor: "#f4f4f4" }}
                 className={`w-[20px] h-[20px] rounded-full border border-black transition-all cursor-pointer ${selectedVariant === "white" ? "ring-2 ring-black ring-offset-2 scale-110" : "opacity-100 hover:scale-105"
                   }`}
               />
@@ -155,7 +155,7 @@ export function ShopProductPepperSpray() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleProductClick}
-              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
+              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#f4f4f4] text-[#f4f4f4] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
             >
               View More
             </a>

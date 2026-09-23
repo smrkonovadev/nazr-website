@@ -119,14 +119,14 @@ export function AboutStatement() {
       </div>
 
       {/* Top Tag */}
-      <div className="bg-[#FFF1EB] text-black text-[20px] md:text-[24px] px-4 py-1 mb-10 tracking-wide relative z-10 font-[family-name:var(--font-bebas)] leading-[100%] uppercase mt-8 md:mt-0 rounded-[4px]">
+      <div className="bg-[#f4f4f4] text-black text-[20px] md:text-[24px] px-4 py-1 mb-10 tracking-wide relative z-10 font-[family-name:var(--font-bebas)] leading-[100%] uppercase mt-8 md:mt-0 rounded-[4px]">
         A NEW STANDARD BEGINS HERE
       </div>
 
       {/* Main Typography Container */}
       <div className="relative max-w-[1000px] text-center z-10 pointer-events-none max-md:mb-20">
 
-        <h2 className="font-[family-name:var(--font-bebas)] text-[#FFF1EB] max-md:text-[80px] md:text-[100px] leading-[90%] tracking-[-0.03em] m-0 relative z-10 pointer-events-auto text-center">
+        <h2 className="font-[family-name:var(--font-bebas)] text-[#f4f4f4] max-md:text-[80px] md:text-[100px] leading-[90%] tracking-[-0.03em] m-0 relative z-10 pointer-events-auto text-center">
           EVERY WOMAN <br />
           DESERVES <br />
           <span className="relative inline-block px-1 mb-2 md:mb-4">
@@ -220,7 +220,7 @@ export function AboutStatement() {
           const el = document.getElementById("product-features-section");
           if (el) el.scrollIntoView({ behavior: "smooth" });
         }}
-        className="group max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#FFF1EB] md:w-[245px] md:px-6 md:h-[40px] max-md:w-auto max-md:px-5 max-md:h-[40px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
+        className="group max-md:mt-6 md:mt-7 bg-[#FF0E97] text-[#f4f4f4] md:w-[245px] md:px-6 md:h-[40px] max-md:w-auto max-md:px-5 max-md:h-[40px] rounded-[4px] border border-[#FF0E97] flex items-center justify-center hover:bg-[#FF0E97]/90 transition-colors z-30 relative flex-nowrap"
       >
         <Image unoptimized quality={100} src="/images/logosvg.svg"
           alt="Nazr Logo"

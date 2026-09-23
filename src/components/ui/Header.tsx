@@ -34,15 +34,15 @@ export function Header({ variant = "dark", mobileVariant }: HeaderProps) {
 
   const menuIconColorClass = isTransparent
     ? isMobileDark
-      ? "max-md:text-[#FFF1EB] md:text-[#161616]"
+      ? "max-md:text-[#f4f4f4] md:text-[#161616]"
       : "text-[#161616]"
-    : "text-[#FFF1EB]";
+    : "text-[#f4f4f4]";
 
-  const menuTextColor = isTransparent ? "#161616" : "#FFF1EB";
+  const menuTextColor = isTransparent ? "#161616" : "#f4f4f4";
 
   return (
     <header className={`w-full ${headerBgClass} flex justify-center relative z-[60]`}>
-      <div className={`flex w-full ${headerBgClass} pt-[12px] md:pt-[32px] max-md:pb-0 md:pb-[68px] px-6 md:px-10 lg:px-12`}>
+      <div className={`flex w-full ${headerBgClass} pt-[12px] md:pt-[24px] pb-[5px] px-6 md:px-10 lg:px-12`}>
         {/* Inner Section */}
         <div className="flex justify-between items-center w-full h-[52px]">
 

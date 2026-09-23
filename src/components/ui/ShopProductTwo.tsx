@@ -135,7 +135,7 @@ export function ShopProductTwo() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleProductClick}
-              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
+              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#f4f4f4] text-[#f4f4f4] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
             >
               View More
             </a>

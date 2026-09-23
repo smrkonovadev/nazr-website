@@ -80,7 +80,7 @@ export function AboutTeamList() {
   };
 
   return (
-    <section className="w-full bg-[#FFF1EB] max-md:pb-6 md:pb-8 px-4 md:px-12 relative -mt-[2px] border-none outline-none">
+    <section className="w-full bg-[#f4f4f4] max-md:pb-6 md:pb-8 px-4 md:px-12 relative -mt-[2px] border-none outline-none">
 
       {/* Desktop Layout: Vertical List with Hover Effects */}
       <div ref={containerRef} className="hidden w-full max-w-[1400px] mx-auto border-t-[3px] border-[#161616] md:block relative">
@@ -168,7 +168,7 @@ export function AboutTeamList() {
                   borderRadius: "1000px"
                 }}
               >
-                <ArrowUpRight className="text-[#FFF1EB] w-6 h-6 md:w-8 md:h-8 transition-transform duration-300 group-hover:rotate-45" />
+                <ArrowUpRight className="text-[#f4f4f4] w-6 h-6 md:w-8 md:h-8 transition-transform duration-300 group-hover:rotate-45" />
               </div>
 
             </div>

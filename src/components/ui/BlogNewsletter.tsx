@@ -15,14 +15,14 @@ export function BlogNewsletter() {
   };
 
   return (
-    <section className="w-full bg-[#FFF1EB] px-4 py-[60px] md:py-[80px] flex justify-center relative z-20">
+    <section className="w-full bg-[#f4f4f4] px-4 py-[60px] md:py-[80px] flex justify-center relative z-20">
       <div 
         className="w-full max-w-[1178px] bg-[#161616] rounded-[16px] p-6 md:p-[60px] flex flex-col md:flex-row items-center gap-8 md:gap-[80px]"
         style={{ minHeight: "446px" }}
       >
         {/* Left Column (Content & Form) */}
         <div className="flex-1 flex flex-col justify-center w-full">
-          <h2 className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[36px] md:text-[52px] leading-[95%] tracking-[-0.02em] uppercase">
+          <h2 className="m-0 text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[36px] md:text-[52px] leading-[95%] tracking-[-0.02em] uppercase">
             BE A PART OF WHAT WE&apos;RE BUILDING.
           </h2>
           

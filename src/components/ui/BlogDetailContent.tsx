@@ -251,7 +251,7 @@ export function BlogDetailContent({ post }: BlogDetailContentProps) {
           {/* Left Column: Heading, text, form */}
           <div className="flex-1 flex flex-col justify-center w-full">
             <h2
-              className="m-0 text-[#FFF9EB] uppercase max-md:text-[32px] md:text-[48px] leading-[95%]"
+              className="m-0 text-[#f4f4f4] uppercase max-md:text-[32px] md:text-[48px] leading-[95%]"
               style={{ ...bebasFont, fontWeight: 400 }}
             >
               BE A PART OF WHAT WE&apos;RE BUILDING.

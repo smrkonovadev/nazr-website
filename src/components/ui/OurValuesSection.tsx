@@ -53,10 +53,10 @@ export function OurValuesSection() {
       <div className="md:hidden w-full flex flex-col items-center py-4">
         {/* Mobile Header */}
         <div className="px-6 mb-8 text-center">
-          <h2 className="font-[family-name:var(--font-bebas)] text-[48px] leading-[90%] text-[#FFF9EB] m-0 mb-3 tracking-[-0.01em]">
+          <h2 className="font-[family-name:var(--font-bebas)] text-[48px] leading-[90%] text-[#f4f4f4] m-0 mb-3 tracking-[-0.01em]">
             OUR VALUES
           </h2>
-          <p className="text-[#FFF9EB]/90 font-medium text-[15px] leading-[135%] max-w-[320px] mx-auto tracking-[-0.01em]">
+          <p className="text-[#f4f4f4]/90 font-medium text-[15px] leading-[135%] max-w-[320px] mx-auto tracking-[-0.01em]">
             The values that bring together our unique perspectives, talents and experiences.
           </p>
         </div>
@@ -105,10 +105,10 @@ export function OurValuesSection() {
 
           {/* Main Typography */}
           <div className="mb-[72px]">
-            <h2 className="font-[family-name:var(--font-bebas)] text-[60px] md:text-[100px] lg:text-[120px] leading-[85%] text-[#FFF9EB] m-0 mb-3 tracking-[-0.01em]">
+            <h2 className="font-[family-name:var(--font-bebas)] text-[60px] md:text-[100px] lg:text-[120px] leading-[85%] text-[#f4f4f4] m-0 mb-3 tracking-[-0.01em]">
               OUR VALUES
             </h2>
-            <p className="text-[#FFF9EB] font-bold text-[18px] md:text-[22px] max-w-[700px] leading-[130%] tracking-[-0.01em]">
+            <p className="text-[#f4f4f4] font-bold text-[18px] md:text-[22px] max-w-[700px] leading-[130%] tracking-[-0.01em]">
               The values that bring together our unique perspectives, talents and experiences.
             </p>
           </div>
@@ -125,10 +125,10 @@ export function OurValuesSection() {
                   onMouseEnter={() => setActiveIndex(idx)}
                   onClick={() => setActiveIndex(idx)}
                 >
-                  <h3 className={`font-[family-name:var(--font-bebas)] text-[24px] md:text-[30px] leading-[100%] uppercase mb-3 tracking-wider transition-colors duration-300 ${isActive ? 'text-[#FFF9EB]' : 'text-[#FFF9EB]/40 group-hover:text-[#FFF9EB]/80'}`}>
+                  <h3 className={`font-[family-name:var(--font-bebas)] text-[24px] md:text-[30px] leading-[100%] uppercase mb-3 tracking-wider transition-colors duration-300 ${isActive ? 'text-[#f4f4f4]' : 'text-[#f4f4f4]/40 group-hover:text-[#f4f4f4]/80'}`}>
                     {val.title}
                   </h3>
-                  <p className={`text-[14px] md:text-[15px] leading-[150%] max-w-[350px] transition-colors duration-300 ${isActive ? 'text-[#FFF9EB]/90' : 'text-white/30 group-hover:text-white/60'}`}>
+                  <p className={`text-[14px] md:text-[15px] leading-[150%] max-w-[350px] transition-colors duration-300 ${isActive ? 'text-[#f4f4f4]/90' : 'text-white/30 group-hover:text-white/60'}`}>
                     {val.desc}
                   </p>
                 </div>

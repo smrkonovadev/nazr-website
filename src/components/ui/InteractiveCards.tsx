@@ -14,40 +14,41 @@ const darkCards = [
     timeNumber: "0:03",
     timeUnit: "Seconds",
     title: "FIND THE\nDAMN PHONE",
-    src: "/images/HOMEHERO/interactive card.webp",
-    imgRotation: 0,
+    src: "/images/new3.webp",
+    imgRotation: 4.44,
   },
   {
     id: 2,
     timeNumber: "0:06",
     timeUnit: "Seconds",
     title: "CONVINCE IT\nYOU'RE YOU",
-    src: "/images/HOMEHERO/interactive card.webp",
-    imgRotation: 0,
+    src: "/images/new4.webp",
+    imgRotation: -4.24,
   },
   {
     id: 3,
     timeNumber: "0:09",
     timeUnit: "Seconds",
     title: "FIND THE\nRIGHT APP",
-    src: "/images/HOMEHERO/interactive card.webp",
-    imgRotation: 0,
+    src: "/images/new5.webp",
+    imgRotation: 4.44,
   },
   {
     id: 4,
     timeNumber: "0:12",
     timeUnit: "Seconds",
     title: "FIND THE\nRIGHT BUTTON",
-    src: "/images/HOMEHERO/interactive card.webp",
-    imgRotation: 0,
+    src: "/images/new7.webp",
+    imgRotation: -4.24,
+    objectPosition: "80% center",
   },
   {
     id: 5,
     timeNumber: "0:15+",
     timeUnit: "Seconds",
     title: "...STILL\nWAITING",
-    src: "/images/HOMEHERO/interactive card.webp",
-    imgRotation: 0,
+    src: "/images/new6.webp",
+    imgRotation: 4.44,
   },
 ];
 
@@ -207,8 +208,8 @@ function StarRating({ rating = 5 }: { rating?: number }) {
           key={i}
           viewBox="0 0 24 24"
           className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"
-          fill={i < count ? "#FFF9EB" : "none"}
-          stroke="#FFF9EB"
+          fill={i < count ? "#f4f4f4" : "none"}
+          stroke="#f4f4f4"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -314,7 +315,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                   key={card.id}
                   ref={(el) => { darkCardsRef.current[i] = el; }}
                   data-card-index={i}
-                  className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB]/80 bg-[#161616] cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_12px]"
+                  className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border-[1px] border-[#f4f4f4]/80 bg-[#161616] cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_12px]"
                 >
                   {/* Background Image (Counter-rotated to exact 0 degrees) */}
                   <Image
@@ -333,9 +334,9 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent pointer-events-none z-10" />
 
                   {/* Top Left Timestamp */}
-                  <div className="absolute top-[14px] left-[10px] md:top-[18px] md:left-[12px] z-20 flex flex-col text-[#FFF9EB] pointer-events-none">
+                  <div className="absolute top-[14px] left-[10px] md:top-[18px] md:left-[12px] z-20 flex flex-col text-[#f4f4f4] pointer-events-none">
                     <span
-                      className="font-['Inter',_sans-serif] text-[#FFF9EB]"
+                      className="font-['Inter',_sans-serif] text-[#f4f4f4]"
                       style={{
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 400,
@@ -348,7 +349,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                       {card.timeNumber}
                     </span>
                     <span
-                      className="font-['Inter',_sans-serif] text-[#FFF9EB]/80 mt-0.5"
+                      className="font-['Inter',_sans-serif] text-[#f4f4f4]/80 mt-0.5"
                       style={{
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 400,
@@ -364,7 +365,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
 
                   {/* Bottom Title Text */}
                   <div className="absolute bottom-[14px] left-[10px] right-[10px] md:bottom-[18px] md:left-[12px] md:right-[12px] z-20 pointer-events-none">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-[20px] sm:text-[23px] md:text-[25px] lg:text-[28px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-[#f4f4f4] text-[20px] sm:text-[23px] md:text-[25px] lg:text-[28px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
                       {card.title}
                     </h3>
                   </div>
@@ -401,7 +402,7 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
               {/* Bottom: How the App Works Button */}
               <Link
                 href="/nazrapp"
-                className="w-full bg-[#111111] hover:bg-black text-white text-center py-2 sm:py-2.5 px-2 rounded-[6px] font-['Inter',_sans-serif] text-[10px] sm:text-[11px] md:text-[12px] lg:text-[13px] font-medium tracking-wide transition-colors whitespace-nowrap block"
+                className="w-full bg-[#111111] hover:bg-black text-white text-center py-2 sm:py-2.5 px-1.5 sm:px-2 rounded-[4px] font-[family-name:var(--font-roboto)] text-[12px] sm:text-[13.5px] md:text-[15px] lg:text-[16px] font-normal leading-[140%] tracking-[0px] transition-colors whitespace-nowrap block"
               >
                 How the App Works
               </Link>
@@ -560,7 +561,7 @@ function CreamTestimonialCards({
                     className="w-full h-full flex flex-col p-4 md:p-8 justify-between"
                     style={{ backgroundColor: card.bgColor }}
                   >
-                    <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#FFF9EB] flex items-center justify-center mb-2 md:mb-6 shrink-0">
+                    <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#f4f4f4] flex items-center justify-center mb-2 md:mb-6 shrink-0">
                       <span
                         className="font-[family-name:var(--font-bebas)] text-[11px] md:text-[20px] leading-none tracking-wide"
                         style={{ color: card.bgColor }}
@@ -570,12 +571,12 @@ function CreamTestimonialCards({
                           : '·'}
                       </span>
                     </div>
-                    <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#FFF9EB] leading-[140%] mb-auto">
+                    <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#f4f4f4] leading-[140%] mb-auto">
                       {(card as any).quote?.replace(/^[""]|[""]$/g, '')}
                     </div>
                     <div className="flex flex-col mt-2 md:mt-4">
                       {(card as any).name ? (
-                        <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#FFF9EB] leading-[1.3] tracking-normal uppercase">
+                        <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#f4f4f4] leading-[1.3] tracking-normal uppercase">
                           {(card as any).name}
                         </div>
                       ) : null}

@@ -45,9 +45,9 @@ export default function BlogPage() {
 
         {/* The Beige Canvas Section */}
         <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
-          <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
+          <DesktopScaler bgColor="#f4f4f4" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
             <div
-              className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px]"
+              className="w-full bg-[#f4f4f4] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px]"
               style={{
                 minHeight: '800px',
               }}
@@ -59,15 +59,15 @@ export default function BlogPage() {
         </section>
 
         {/* Newsletter Section */}
-        <DesktopScaler bgColor="#FFF1EB">
+        <DesktopScaler bgColor="#f4f4f4">
           <BlogNewsletter />
         </DesktopScaler>
 
         {/* Contact Us Section & Footer */}
-        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
-          <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
+        <DesktopScaler bgColor="#f4f4f4" className="max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
+          <div className="relative z-[60] -mt-[1px] bg-[#f4f4f4] w-full max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
             <ContactUsSection />
-            <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
+            <AutoMovingCarousel className="bg-[#f4f4f4] -mt-[1px]" />
           </div>
         </DesktopScaler>
       </main>

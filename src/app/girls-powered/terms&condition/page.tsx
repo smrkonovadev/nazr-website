@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 
 export default function GirlsPoweredTermsPage() {
   return (
-    <main className="min-h-screen bg-[#111111] text-[#FFF1EB] font-[family-name:var(--font-inter)] selection:bg-[#FF0E97] selection:text-white">
+    <main className="min-h-screen bg-[#111111] text-[#f4f4f4] font-[family-name:var(--font-inter)] selection:bg-[#FF0E97] selection:text-white">
       {/* Top Tactical Navigation Bar */}
       <header className="sticky top-0 z-40 bg-[#161616]/95 backdrop-blur-md border-b border-[#2A2A2A]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <Link
             href="/girls-powered"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#FFF1EB]/80 hover:text-[#FF0E97] transition-colors"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#f4f4f4]/80 hover:text-[#FF0E97] transition-colors"
           >
             <span>←</span>
             <span>Back to Girls Powered</span>
@@ -44,7 +44,7 @@ export default function GirlsPoweredTermsPage() {
         {/* Breadcrumb & Navigation Tabs */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-[#2A2A2A]">
           <div className="flex items-center gap-2 text-xs font-mono text-[#888888]">
-            <Link href="/girls-powered" className="hover:text-[#FFF1EB] transition-colors">
+            <Link href="/girls-powered" className="hover:text-[#f4f4f4] transition-colors">
               GIRLS POWERED
             </Link>
             <span>/</span>
@@ -55,7 +55,7 @@ export default function GirlsPoweredTermsPage() {
           <div className="flex items-center gap-2 font-mono text-xs">
             <Link
               href="/girls-powered/privacy-policy"
-              className="px-3 py-1.5 bg-[#1C1C1C] border border-[#333333] text-[#FFF1EB]/80 hover:border-[#FF0E97] hover:text-white transition-colors"
+              className="px-3 py-1.5 bg-[#1C1C1C] border border-[#333333] text-[#f4f4f4]/80 hover:border-[#FF0E97] hover:text-white transition-colors"
             >
               ← Privacy Policy
             </Link>
@@ -70,7 +70,7 @@ export default function GirlsPoweredTermsPage() {
           <span className="text-xs font-mono tracking-widest text-[#FF0E97] uppercase block mb-2 font-semibold">
             Legal Documentation
           </span>
-          <h1 className="font-[family-name:var(--font-bebas)] text-5xl sm:text-6xl md:text-7xl tracking-tight text-[#FFF1EB] uppercase leading-none">
+          <h1 className="font-[family-name:var(--font-bebas)] text-5xl sm:text-6xl md:text-7xl tracking-tight text-[#f4f4f4] uppercase leading-none">
             Terms &amp; Conditions
           </h1>
           <p className="text-xs sm:text-sm font-mono text-[#888888] mt-3">
@@ -85,19 +85,19 @@ export default function GirlsPoweredTermsPage() {
           <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#FF0E97]" />
           <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#FF0E97]" />
 
-          <p className="text-sm sm:text-[15px] leading-relaxed text-[#FFF1EB]/90 mb-4">
+          <p className="text-sm sm:text-[15px] leading-relaxed text-[#f4f4f4]/90 mb-4">
             These Terms &amp; Conditions (“Terms”) govern attendance at and participation in Girls. Powered. By NAZR (“Event”), hosted by Lumina Hospitality Private Limited, operating under the brand NAZR™ (“Company”, “we”, “us”, “our”).
           </p>
-          <p className="text-sm sm:text-[15px] leading-relaxed text-[#FFF1EB]/90 font-medium">
+          <p className="text-sm sm:text-[15px] leading-relaxed text-[#f4f4f4]/90 font-medium">
             By purchasing a ticket, registering for, or attending the Event, you agree to be bound by these Terms.
           </p>
         </div>
 
         {/* Terms Sections */}
-        <div className="space-y-8 text-sm sm:text-[15px] leading-relaxed text-[#FFF1EB]/85">
+        <div className="space-y-8 text-sm sm:text-[15px] leading-relaxed text-[#f4f4f4]/85">
           {/* Section 1 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 1
               </span>
@@ -113,7 +113,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 2 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 2
               </span>
@@ -145,7 +145,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 3 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 3
               </span>
@@ -173,7 +173,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 4 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 4
               </span>
@@ -189,7 +189,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 5 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 5
               </span>
@@ -198,7 +198,7 @@ export default function GirlsPoweredTermsPage() {
             <p className="mb-3">
               All attendees must comply with Event staff, coaches, venue security and applicable venue guidelines.
             </p>
-            <p className="mb-3 text-[#FFF1EB]/90">
+            <p className="mb-3 text-[#f4f4f4]/90">
               The Company reserves the right to refuse entry or remove any attendee engaging in inappropriate, disruptive, unsafe, aggressive or disrespectful behaviour.
             </p>
             <p className="text-[#888888] font-mono text-xs">
@@ -208,13 +208,13 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 6 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 6
               </span>
               <span>Tickets, Transfers &amp; Refunds</span>
             </h2>
-            <p className="mb-3 text-[#FFF1EB]/80">Unless otherwise stated:</p>
+            <p className="mb-3 text-[#f4f4f4]/80">Unless otherwise stated:</p>
             <ul className="space-y-2 pl-4 mb-4">
               <li className="flex items-start gap-2.5">
                 <span className="text-[#FF0E97] text-xs mt-1">▪</span>
@@ -232,7 +232,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 7 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 7
               </span>
@@ -248,7 +248,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 8 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 8
               </span>
@@ -264,7 +264,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 9 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 9
               </span>
@@ -280,13 +280,13 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 10 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 10
               </span>
               <span>Right of Admission</span>
             </h2>
-            <p className="mb-2 font-medium text-[#FFF1EB]">
+            <p className="mb-2 font-medium text-[#f4f4f4]">
               The organisers reserve the right of admission.
             </p>
             <p>
@@ -296,7 +296,7 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 11 */}
           <section className="bg-[#161616] border border-[#242424] p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97]/20 text-[#FF0E97] text-xs font-mono flex items-center justify-center font-bold">
                 11
               </span>
@@ -308,11 +308,11 @@ export default function GirlsPoweredTermsPage() {
             <div className="bg-[#121212] p-4 sm:p-5 border border-[#2C2C2C] space-y-1 font-mono text-xs sm:text-sm">
               <p className="text-[#FF0E97] font-semibold">
                 Email:{" "}
-                <a href="mailto:support@nazrco.in" className="underline hover:text-[#FFF1EB] transition-colors">
+                <a href="mailto:support@nazrco.in" className="underline hover:text-[#f4f4f4] transition-colors">
                   support@nazrco.in
                 </a>
               </p>
-              <p className="text-[#FFF1EB] font-sans font-medium pt-2">Lumina Hospitality Private Limited</p>
+              <p className="text-[#f4f4f4] font-sans font-medium pt-2">Lumina Hospitality Private Limited</p>
               <p className="text-[#888888]">802, Harshvardhan</p>
               <p className="text-[#888888]">Opp. Saki Vihar Telephone Exchange</p>
               <p className="text-[#888888]">Mumbai – 400076</p>
@@ -321,13 +321,13 @@ export default function GirlsPoweredTermsPage() {
 
           {/* Section 12 */}
           <section className="bg-[#181818] border border-[#FF0E97]/40 p-6 sm:p-7">
-            <h2 className="text-lg sm:text-xl font-semibold text-[#FFF1EB] mb-4 flex items-center gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#f4f4f4] mb-4 flex items-center gap-3">
               <span className="w-6 h-6 rounded-full bg-[#FF0E97] text-white text-xs font-mono flex items-center justify-center font-bold">
                 12
               </span>
               <span>Acceptance of Terms</span>
             </h2>
-            <p className="font-medium text-base text-[#FFF1EB]">
+            <p className="font-medium text-base text-[#f4f4f4]">
               By purchasing a ticket, registering for or attending the Event, you confirm that you have read, understood and agreed to these Terms &amp; Conditions.
             </p>
           </section>
@@ -344,7 +344,7 @@ export default function GirlsPoweredTermsPage() {
           <div className="flex items-center gap-6">
             <Link
               href="/girls-powered/privacy-policy"
-              className="hover:text-[#FFF1EB] transition-colors underline"
+              className="hover:text-[#f4f4f4] transition-colors underline"
             >
               Privacy Policy
             </Link>

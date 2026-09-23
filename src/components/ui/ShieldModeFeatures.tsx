@@ -55,7 +55,7 @@ export function ShieldModeFeatures() {
   };
 
   return (
-    <section className="w-full bg-[#161616] text-[#FFF9EB] pt-10 md:pt-14 pb-14 md:pb-20 relative z-50 overflow-hidden">
+    <section className="w-full bg-[#161616] text-[#f4f4f4] pt-10 md:pt-14 pb-14 md:pb-20 relative z-50 overflow-hidden">
       <div className="w-full max-w-[1440px] mx-auto flex flex-col">
 
         {/* Header Row — 40px left padding to match track */}
@@ -65,7 +65,7 @@ export function ShieldModeFeatures() {
         >
           {/* Main Title */}
           <h2
-            className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[44px] md:text-[120px] leading-[90%] tracking-[-0.03em] uppercase text-left"
+            className="m-0 text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[44px] md:text-[120px] leading-[90%] tracking-[-0.03em] uppercase text-left"
             style={{
               fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
               fontWeight: 400,
@@ -80,7 +80,7 @@ export function ShieldModeFeatures() {
           {/* Subtitle row */}
           <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-4">
             <p
-              className="m-0 text-[#FFF9EB] font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-left max-w-[760px]"
+              className="m-0 text-[#f4f4f4] font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-left max-w-[760px]"
               style={{
                 fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
                 fontWeight: 400,

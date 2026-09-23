@@ -3,25 +3,20 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import { DynamicDotLottie } from "@/components/lottie/DynamicDotLottie";
 
 export function SafetyHabits() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isInView, setIsInView] = useState(false);
 
-  const [armAnimData, setArmAnimData] = useState<any>(null);
-  const [trustedAnimData, setTrustedAnimData] = useState<any>(null);
-  const [triggerAnimData, setTriggerAnimData] = useState<any>(null);
-  const [mounted, setMounted] = useState(false);
   const [activeCard, setActiveCard] = useState<number>(1);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [hasEnteredView, setHasEnteredView] = useState(false);
-  const hasFetchedLottie = useRef(false);
 
   const [durations, setDurations] = useState<{ [key: number]: number }>({
-    1: 3.5,
-    2: 3.5,
-    3: 3.0,
+    1: 8.67,
+    2: 8.03,
+    3: 6.46,
   });
 
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
@@ -44,37 +39,6 @@ export function SafetyHabits() {
     return () => observer.disconnect();
   }, []);
 
-  // Lazy-load Lottie JSONs only when section becomes visible
-  useEffect(() => {
-    if (!isInView || hasFetchedLottie.current) return;
-    hasFetchedLottie.current = true;
-    setMounted(true);
-
-    fetch("/images/SH_SM ARM Turn On.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setArmAnimData(data);
-        if (data.op && data.fr) setDurations((prev) => ({ ...prev, 1: (data.op - (data.ip || 0)) / data.fr }));
-      })
-      .catch((err) => console.error("Error loading SM ARM-Turn On Lottie:", err));
-
-    fetch("/images/SH_Trusted Circle.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setTrustedAnimData(data);
-        if (data.op && data.fr) setDurations((prev) => ({ ...prev, 2: (data.op - (data.ip || 0)) / data.fr }));
-      })
-      .catch((err) => console.error("Error loading Trusted Circle Lottie:", err));
-
-    fetch("/images/SH_Trigger.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setTriggerAnimData(data);
-        if (data.op && data.fr) setDurations((prev) => ({ ...prev, 3: (data.op - (data.ip || 0)) / data.fr }));
-      })
-      .catch((err) => console.error("Error loading Trigger Lottie:", err));
-  }, [isInView]);
-
   // When section enters viewport for the first time, reset to Card 1
   useEffect(() => {
     if (isInView && !hasEnteredView) {
@@ -86,7 +50,7 @@ export function SafetyHabits() {
   const currentActive = hoveredCard !== null ? hoveredCard : activeCard;
 
   const handleDurationMeasured = (id: number, dur: number) => {
-    if (dur > 0 && durations[id] !== dur) {
+    if (dur > 0 && Math.abs((durations[id] || 0) - dur) > 0.1) {
       setDurations((prev) => ({ ...prev, [id]: dur }));
     }
   };
@@ -97,9 +61,8 @@ export function SafetyHabits() {
       title: "SHIELD MODE",
       before: "“Text me when you reach”",
       withNazr:
-        "Set a check-in for your trip. If you miss it, your Trusted Circle is alerted within minutes, and SOS triggers on its own.",
-      animData: armAnimData,
-      fallbackImage: "/images/2.webp",
+        "Set a check-in for your trip. Miss it, and your Trusted Circle is alerted and SOS starts on its own.",
+      lottieSrc: "/lottie/homepage/sh_sm_arm.lottie",
       lottieScale: "scale-[0.96]",
     },
     {
@@ -108,8 +71,7 @@ export function SafetyHabits() {
       before: "Sharing your location with whoever you remember.",
       withNazr:
         "Choose up to five people once. They get your alerts and live location by SMS, and they don't need the app.",
-      animData: trustedAnimData,
-      fallbackImage: "/images/3.webp",
+      lottieSrc: "/lottie/homepage/sh_trusted_circle.lottie",
       lottieScale: "scale-[0.96]",
     },
     {
@@ -118,8 +80,7 @@ export function SafetyHabits() {
       before: "“Searching for the right number when it matters most.”",
       withNazr:
         "Verified helplines, from police to women's helplines, one tap away.",
-      animData: triggerAnimData,
-      fallbackImage: "/images/1.webp",
+      lottieSrc: "/lottie/homepage/sh_trigger.lottie",
       lottieScale: "scale-[0.96]",
     },
   ];
@@ -129,7 +90,7 @@ export function SafetyHabits() {
     if (!isInView) return;
     if (hoveredCard !== null) return;
 
-    const currentDurationSec = durations[activeCard] || 3.5;
+    const currentDurationSec = durations[activeCard] || 8.0;
     const durationMs = currentDurationSec * 1000;
 
     const timer = setTimeout(() => {
@@ -201,14 +162,14 @@ export function SafetyHabits() {
         {/* Title Block */}
         <div className="w-full flex flex-col items-center gap-3 md:gap-4">
           <h2
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[80px] text-center w-full m-0"
+            className="text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[46px] md:text-[80px] text-center w-full m-0"
             style={{ lineHeight: "90%", letterSpacing: "-0.03em" }}
           >
             THE SAFETY HABITS YOU<br />
             ALREADY HAVE. <span className="text-[#FF0E97]">UPGRADED.</span>
           </h2>
           <p
-            className="text-[#FFF9EB] text-center font-[family-name:var(--font-inter)] font-normal text-[15px] md:text-[18px] max-w-[340px] md:max-w-[700px] m-0 opacity-90 leading-[1.4]"
+            className="text-[#f4f4f4] text-center font-[family-name:var(--font-inter)] font-normal text-[15px] md:text-[18px] max-w-[340px] md:max-w-[700px] m-0 opacity-90 leading-[1.4]"
             style={{ letterSpacing: "-0.02em" }}
           >
             Designed around the routines women already rely on, with smarter tools to keep every journey connected, informed, and secure.
@@ -229,12 +190,11 @@ export function SafetyHabits() {
                 card={card}
                 isActive={currentActive === card.id}
                 isInView={isInView}
-                exactDuration={durations[card.id] || 3.5}
+                exactDuration={durations[card.id] || 8.0}
                 onDurationMeasured={(dur) => handleDurationMeasured(card.id, dur)}
                 onMouseEnter={() => setHoveredCard(card.id)}
                 onMouseLeave={() => setHoveredCard(null)}
                 onClick={() => setActiveCard(card.id)}
-                mounted={mounted}
               />
             ))}
           </div>
@@ -265,7 +225,7 @@ export function SafetyHabits() {
           <div className="flex justify-center items-center mt-8 md:mt-10 z-30">
             <Link
               href="/nazrapp"
-              className="flex items-center justify-center gap-2.5 bg-[#FF0E97] hover:bg-[#E00A85] text-[#FFF1EB] px-7 py-3 rounded-[6px] transition-all shadow-md active:scale-95 cursor-pointer font-['Inter',_sans-serif] text-[15px] font-medium tracking-wide"
+              className="flex items-center justify-center gap-2.5 bg-[#FF0E97] hover:bg-[#E00A85] text-[#f4f4f4] px-7 py-3 rounded-[4px] transition-all shadow-md active:scale-95 cursor-pointer font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px]"
             >
               <Image
                 unoptimized
@@ -308,7 +268,6 @@ function HabitCardItem({
   onMouseEnter,
   onMouseLeave,
   onClick,
-  mounted,
 }: {
   card: any;
   cardRef: (el: HTMLDivElement | null) => void;
@@ -319,55 +278,7 @@ function HabitCardItem({
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClick: () => void;
-  mounted: boolean;
 }) {
-  const lottieRef = useRef<LottieRefCurrentProps>(null);
-
-  const calculateDuration = () => {
-    if (lottieRef.current) {
-      const dur = lottieRef.current.getDuration(false);
-      if (dur && dur > 0) {
-        onDurationMeasured(dur);
-        return;
-      }
-    }
-    if (card.animData && typeof card.animData.op === "number" && typeof card.animData.fr === "number" && card.animData.fr > 0) {
-      const ip = typeof card.animData.ip === "number" ? card.animData.ip : 0;
-      onDurationMeasured((card.animData.op - ip) / card.animData.fr);
-    }
-  };
-
-  const handleDomLoaded = () => {
-    calculateDuration();
-    if (lottieRef.current) {
-      if (isActive && isInView) {
-        lottieRef.current.goToAndPlay(0, true);
-      } else {
-        lottieRef.current.goToAndStop(1, true);
-      }
-    }
-  };
-
-  useEffect(() => {
-    calculateDuration();
-  }, [card.animData]);
-
-  useEffect(() => {
-    if (!lottieRef.current) return;
-
-    if (isActive && isInView) {
-      calculateDuration();
-      lottieRef.current.goToAndPlay(0, true);
-    } else {
-      const timer = setTimeout(() => {
-        if (lottieRef.current) {
-          lottieRef.current.goToAndStop(1, true);
-        }
-      }, 50);
-      return () => clearTimeout(timer);
-    }
-  }, [isActive, isInView, mounted]);
-
   const isCardPlaying = isActive && isInView;
 
   return (
@@ -392,26 +303,14 @@ function HabitCardItem({
       >
         {/* Phone Lottie Display */}
         <div className="w-full flex-1 flex items-center justify-center relative overflow-hidden">
-          {mounted && card.animData ? (
-            <Lottie
-              lottieRef={lottieRef}
-              animationData={card.animData}
+          {isInView && (
+            <DynamicDotLottie
+              src={card.lottieSrc}
               loop={true}
-              autoplay={isCardPlaying}
-              onDOMLoaded={handleDomLoaded}
+              isActive={isCardPlaying}
+              onDurationMeasured={onDurationMeasured}
               className={`w-full h-full object-contain drop-shadow-2xl ${card.lottieScale} transform-gpu z-10`}
             />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center relative">
-              <Image
-                unoptimized
-                quality={100}
-                src={card.fallbackImage}
-                alt={card.title}
-                fill
-                className="object-contain drop-shadow-2xl scale-[0.95]"
-              />
-            </div>
           )}
         </div>
 
@@ -431,7 +330,7 @@ function HabitCardItem({
       <div className="flex flex-col text-left w-full pt-4 md:pt-5">
         {/* Title */}
         <h3
-          className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[28px] md:text-[32px] uppercase m-0 w-full tracking-wide"
+          className="text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[28px] md:text-[32px] uppercase m-0 w-full tracking-wide"
           style={{ lineHeight: "95%" }}
         >
           {card.title}

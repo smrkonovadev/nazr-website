@@ -140,14 +140,14 @@ export function Hero() {
           <div className="relative z-10 flex flex-col items-center mt-9 sm:mt-4 md:mt-0">
             {/* THE */}
             <span
-              className="font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-[34px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.0] tracking-wide uppercase"
+              className="font-[family-name:var(--font-bebas)] text-[#f4f4f4] text-[34px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.0] tracking-wide uppercase"
             >
               THE
             </span>
 
             {/* WORLD STARES */}
             <h1
-              className="font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-[68px] sm:text-[88px] lg:text-[104px] xl:text-[112px] font-normal leading-[0.88] tracking-[-0.02em] uppercase m-0"
+              className="font-[family-name:var(--font-bebas)] text-[#f4f4f4] text-[68px] sm:text-[88px] lg:text-[104px] xl:text-[112px] font-normal leading-[0.88] tracking-[-0.02em] uppercase m-0"
             >
               WORLD STARES
             </h1>
@@ -179,7 +179,7 @@ export function Hero() {
             {/* Primary Button: Shop the tools */}
             <Link
               href="/shop"
-              className="flex items-center justify-center gap-2.5 bg-[#FF0E97] hover:bg-[#E00A85] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-[6px] transition-all shadow-md active:scale-95 cursor-pointer font-[family-name:var(--font-inter)] text-[14px] font-medium tracking-wide whitespace-nowrap"
+              className="flex items-center justify-center gap-2.5 bg-[#FF0E97] hover:bg-[#E00A85] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-[4px] transition-all shadow-md active:scale-95 cursor-pointer font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] whitespace-nowrap"
             >
               <Image
                 unoptimized
@@ -195,7 +195,7 @@ export function Hero() {
             {/* Secondary Button: Get the app */}
             <Link
               href="/nazrapp"
-              className="flex items-center justify-center bg-transparent hover:bg-white/5 text-[#FFF9EB] border border-[#484848] hover:border-white/80 px-5 sm:px-6 py-2.5 sm:py-3 rounded-[6px] transition-all active:scale-95 cursor-pointer font-[family-name:var(--font-inter)] text-[14px] font-medium tracking-wide whitespace-nowrap"
+              className="flex items-center justify-center bg-transparent hover:bg-white/5 text-[#f4f4f4] border border-[#484848] hover:border-white/80 px-5 sm:px-6 py-2.5 sm:py-3 rounded-[4px] transition-all active:scale-95 cursor-pointer font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] whitespace-nowrap"
             >
               Get the app
             </Link>

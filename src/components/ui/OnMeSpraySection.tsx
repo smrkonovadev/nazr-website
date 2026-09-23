@@ -24,7 +24,7 @@ export function OnMeSpraySection({ title, subtitle, onNext, onPrev }: OnMeSprayS
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal uppercase text-center max-md:text-[36px] md:text-[45px] absolute bottom-0 w-full"
+              className="text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal uppercase text-center max-md:text-[36px] md:text-[45px] absolute bottom-0 w-full"
               style={{ lineHeight: "1.1", letterSpacing: "0%" }}
             >
               {title}
@@ -53,7 +53,7 @@ export function OnMeSpraySection({ title, subtitle, onNext, onPrev }: OnMeSprayS
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="text-[#FFF9EB] font-[Inter] font-normal text-center absolute w-full max-md:text-[14px] md:text-[16px]"
+                className="text-[#f4f4f4] font-[Inter] font-normal text-center absolute w-full max-md:text-[14px] md:text-[16px]"
                 style={{ lineHeight: "1.5", letterSpacing: "-0.01em" }}
                 dangerouslySetInnerHTML={{ __html: subtitle }}
               />
@@ -72,7 +72,7 @@ export function OnMeSpraySection({ title, subtitle, onNext, onPrev }: OnMeSprayS
         </div>
 
         {/* Join Button */}
-        <button className="group flex justify-center items-center bg-[#FF007F] hover:bg-[#FF007F]/90 text-[#FFF9EB] font-['Roboto',_sans-serif] font-normal text-[15px] md:text-[16px] leading-[1.5] tracking-normal px-[24px] py-[8px] w-auto h-[44px] md:h-[48px] rounded-[6px] border border-transparent transition-all duration-300 shadow-lg mt-2 md:-mt-[10px] ml-0.5 z-50 relative outline-none focus:outline-none">
+        <button className="group flex justify-center items-center bg-[#FF007F] hover:bg-[#FF007F]/90 text-[#f4f4f4] font-['Roboto',_sans-serif] font-normal text-[15px] md:text-[16px] leading-[1.5] tracking-normal px-[24px] py-[8px] w-auto h-[44px] md:h-[48px] rounded-[6px] border border-transparent transition-all duration-300 shadow-lg mt-2 md:-mt-[10px] ml-0.5 z-50 relative outline-none focus:outline-none">
           <Image unoptimized quality={100} src="/images/logosvg.svg" alt="Owl Logo" width={32} height={32} className="max-md:w-8 max-md:opacity-100 max-md:mr-2 md:w-0 md:opacity-0 md:group-hover:w-8 md:group-hover:opacity-100 md:group-hover:mr-2 transition-all duration-300 ease-in-out brightness-0 invert" />
           <span className="whitespace-nowrap">Join Ecosystem</span>
         </button>

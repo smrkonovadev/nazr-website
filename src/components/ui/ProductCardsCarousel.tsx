@@ -52,28 +52,28 @@ export function ProductCardsCarousel() {
         {/* Header */}
         <div className="w-full flex flex-col items-center text-center px-4 mb-8 md:mb-10">
           <h2
-            className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[48px] md:text-[90px] lg:text-[110px] xl:text-[120px] leading-[88%] tracking-[-0.03em] uppercase text-center w-full"
+            className="m-0 text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[48px] md:text-[90px] lg:text-[110px] xl:text-[120px] leading-[88%] tracking-[-0.03em] uppercase text-center w-full"
             style={{
               fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
               fontWeight: 400,
               fontStyle: "normal",
               lineHeight: "88%",
               letterSpacing: "-0.03em",
-              color: "#FFF9EB",
+              color: "#f4f4f4",
             }}
           >
             OUR PRODUCTS
           </h2>
 
           <p 
-            className="m-0 text-[#FFF9EB] font-normal text-[14px] md:text-[16px] xl:text-[20px] leading-[135%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-2 md:mt-3" 
+            className="m-0 text-[#f4f4f4] font-normal text-[14px] md:text-[16px] xl:text-[20px] leading-[135%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-2 md:mt-3" 
             style={{
               fontFamily: "Inter, var(--font-inter), sans-serif",
               fontWeight: 400,
               fontStyle: "normal",
               lineHeight: "135%",
               letterSpacing: "-0.03em",
-              color: "#FFF9EB",
+              color: "#f4f4f4",
             }}
           >
             Everything in the Nazr ecosystem is built with the one idea that protection fits into your life, not the other way around. Thoughtfully designed. Quietly powerful. Always within reach.
@@ -104,7 +104,7 @@ export function ProductCardsCarousel() {
               {/* Card Header Overlay */}
               <div className="absolute top-0 left-0 right-0 p-6 lg:p-8 flex justify-between items-start gap-[20px] z-20 pointer-events-none">
                 <h3
-                  className="m-0 text-[#FFF9EB] uppercase drop-shadow-sm max-w-[65%] mt-1"
+                  className="m-0 text-[#f4f4f4] uppercase drop-shadow-sm max-w-[65%] mt-1"
                   style={{
                     fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                     fontWeight: 400,
@@ -112,7 +112,7 @@ export function ProductCardsCarousel() {
                     fontSize: "30px",
                     lineHeight: "140%",
                     letterSpacing: "0%",
-                    color: "#FFF9EB",
+                    color: "#f4f4f4",
                   }}
                 >
                   {renderTitle(card.title)}
@@ -157,28 +157,28 @@ export function ProductCardsCarousel() {
         {/* Mobile Header */}
         <div className="w-full flex flex-col items-center text-center px-4 mb-5">
           <h2
-            className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[44px] leading-[90%] tracking-[-0.03em] uppercase text-center w-full"
+            className="m-0 text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[44px] leading-[90%] tracking-[-0.03em] uppercase text-center w-full"
             style={{
               fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
               fontWeight: 400,
               fontStyle: "normal",
               lineHeight: "90%",
               letterSpacing: "-0.03em",
-              color: "#FFF9EB",
+              color: "#f4f4f4",
             }}
           >
             OUR PRODUCTS
           </h2>
 
           <p 
-            className="m-0 text-[#FFF9EB] font-normal text-[15px] leading-[140%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-[8px]" 
+            className="m-0 text-[#f4f4f4] font-normal text-[15px] leading-[140%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-[8px]" 
             style={{
               fontFamily: "Inter, var(--font-inter), sans-serif",
               fontWeight: 400,
               fontStyle: "normal",
               lineHeight: "140%",
               letterSpacing: "-0.03em",
-              color: "#FFF9EB",
+              color: "#f4f4f4",
             }}
           >
             Everything in the Nazr ecosystem is built with the one idea that protection fits into your life, not the other way around. Thoughtfully designed. Quietly powerful. Always within reach.
@@ -204,7 +204,7 @@ export function ProductCardsCarousel() {
                 {/* Card Header Overlay */}
                 <div className="absolute top-0 left-0 right-0 p-5 flex justify-between items-start gap-[16px] z-20 pointer-events-none">
                   <h3
-                    className="m-0 text-[#FFF9EB] uppercase drop-shadow-sm max-w-[65%] mt-1"
+                    className="m-0 text-[#f4f4f4] uppercase drop-shadow-sm max-w-[65%] mt-1"
                     style={{
                       fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                       fontWeight: 400,
@@ -212,7 +212,7 @@ export function ProductCardsCarousel() {
                       fontSize: "26px",
                       lineHeight: "140%",
                       letterSpacing: "0%",
-                      color: "#FFF9EB",
+                      color: "#f4f4f4",
                     }}
                   >
                     {renderTitle(card.title)}

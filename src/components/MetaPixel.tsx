@@ -38,11 +38,15 @@ function MetaPixelTracker() {
 }
 
 export default function MetaPixel() {
+    if (process.env.NODE_ENV !== "production") {
+        return null;
+    }
+
     return (
         <>
             <Script
                 id="meta-pixel"
-                strategy="afterInteractive"
+                strategy="lazyOnload"
                 dangerouslySetInnerHTML={{
                     __html: `
             !function(f,b,e,v,n,t,s)
@@ -62,15 +66,12 @@ export default function MetaPixel() {
             <Suspense fallback={null}>
                 <MetaPixelTracker />
             </Suspense>
-            <noscript>
-                <img
-                    height="1"
-                    width="1"
-                    style={{ display: "none" }}
-                    src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`}
-                    alt=""
-                />
-            </noscript>
+            <noscript
+                suppressHydrationWarning
+                dangerouslySetInnerHTML={{
+                    __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1" alt="" />`,
+                }}
+            />
         </>
     );
 }

@@ -70,7 +70,7 @@ export function AboutHero() {
                   const el = document.getElementById("every-woman-section");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="group flex items-center bg-[#FFF9EB] text-[#161616] px-5 py-2.5 rounded-[6px] transition-colors duration-300 ease-in-out"
+                className="group flex items-center bg-[#f4f4f4] text-[#161616] px-5 py-2.5 rounded-[6px] transition-colors duration-300 ease-in-out"
                 style={{
                   fontFamily: "Roboto, sans-serif",
                   fontWeight: 400,

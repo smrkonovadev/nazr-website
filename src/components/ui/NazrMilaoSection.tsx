@@ -24,7 +24,7 @@ export function NazrMilaoSection() {
   };
 
   return (
-    <section className="w-full bg-[#161616] text-[#FFF1EB] pt-14 sm:pt-20 md:pt-24 pb-14 sm:pb-20 md:pb-24 px-5 sm:px-8 md:px-12 lg:px-16 relative z-30 max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
+    <section className="w-full bg-[#161616] text-[#f4f4f4] pt-14 sm:pt-20 md:pt-24 pb-10 sm:pb-12 md:pb-14 px-5 sm:px-8 md:px-12 lg:px-16 relative z-30 max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
       <div className="max-w-[1440px] mx-auto w-full flex flex-col">
         {/* Title Header */}
         <div className="flex flex-col mb-10 sm:mb-12 md:mb-14">
@@ -41,7 +41,7 @@ export function NazrMilaoSection() {
             <span className="text-[#FF0E97]">BAAT</span> UTHAO
           </h2>
           <p
-            className="font-['Inter',_sans-serif] text-[15px] sm:text-[17px] md:text-[18px] text-[#FFF1EB]/90 font-normal leading-[140%] tracking-[-0.03em] mt-3 sm:mt-4 mb-0"
+            className="font-['Inter',_sans-serif] text-[15px] sm:text-[17px] md:text-[18px] text-[#f4f4f4]/90 font-normal leading-[140%] tracking-[-0.03em] mt-3 sm:mt-4 mb-0"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,
@@ -176,7 +176,7 @@ export function NazrMilaoSection() {
             <div className="flex flex-col items-start gap-3">
               <button
                 type="submit"
-                className="bg-[#FF0E97] hover:bg-[#E00A85] text-white font-medium text-[15px] sm:text-[16px] px-7 sm:px-8 py-2.5 sm:py-3 rounded-[4px] cursor-pointer transition-all active:scale-[0.98] shadow-sm font-['Inter',_sans-serif]"
+                className="bg-[#FF0E97] hover:bg-[#E00A85] text-white font-[family-name:var(--font-roboto)] font-normal text-[16px] leading-[150%] tracking-[0px] px-7 sm:px-8 py-2.5 sm:py-3 rounded-[4px] cursor-pointer transition-all active:scale-[0.98] shadow-sm"
               >
                 {status === "sent" ? "Sent ✓" : "Send it"}
               </button>
@@ -191,38 +191,38 @@ export function NazrMilaoSection() {
               </p>
             </div>
 
-            {/* Right: Direct Contact Info */}
-            <div className="grid grid-cols-[90px_1fr] sm:grid-cols-[105px_1fr] gap-x-3 gap-y-2 text-[13px] sm:text-[14px] font-['Inter',_sans-serif] self-start md:self-end">
-              <span className="text-[#FF0E97] font-semibold uppercase tracking-wider text-[12px] sm:text-[13px]">
+            {/* Right: Direct Contact Info (Full width with right-aligned values on mobile, left-aligned on desktop) */}
+            <div className="w-full md:w-auto grid grid-cols-[auto_1fr] md:grid-cols-[105px_1fr] gap-x-4 md:gap-x-3 gap-y-2.5 md:gap-y-2 text-[13px] sm:text-[14px] font-['Inter',_sans-serif] self-start md:self-end">
+              <span className="text-left text-[#FF0E97] font-semibold uppercase tracking-wider text-[12px] sm:text-[13px]">
                 EMAIL
               </span>
               <a
                 href="mailto:support@nazrco.in"
-                className="text-white/75 hover:text-white transition-colors"
+                className="text-right md:text-left text-white/75 hover:text-white transition-colors"
               >
                 support@nazrco.in
               </a>
 
-              <span className="text-[#FF0E97] font-semibold uppercase tracking-wider text-[12px] sm:text-[13px]">
+              <span className="text-left text-[#FF0E97] font-semibold uppercase tracking-wider text-[12px] sm:text-[13px]">
                 WHATSAPP
               </span>
               <a
                 href="https://wa.me/917208940212"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/75 hover:text-white transition-colors"
+                className="text-right md:text-left text-white/75 hover:text-white transition-colors"
               >
                 +91-7208940212
               </a>
 
-              <span className="text-[#FF0E97] font-semibold uppercase tracking-wider text-[12px] sm:text-[13px]">
+              <span className="text-left text-[#FF0E97] font-semibold uppercase tracking-wider text-[12px] sm:text-[13px]">
                 INSTAGRAM
               </span>
               <a
                 href="https://www.instagram.com/nazr.360/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/75 hover:text-white transition-colors"
+                className="text-right md:text-left text-white/75 hover:text-white transition-colors"
               >
                 @nazr.360
               </a>

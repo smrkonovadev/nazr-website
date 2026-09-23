@@ -13,7 +13,7 @@ export function WhyNazrStatement() {
 
       {/* Mobile Layout (md:hidden) - Exact Match for Reference Image 2 */}
       <div
-        className="md:hidden flex flex-col items-center justify-center text-[#FFF1EB] font-[family-name:var(--font-bebas)] uppercase leading-[92%] tracking-[-0.03em] text-center w-full max-w-[390px] max-w-full mx-auto text-[52px]"
+        className="md:hidden flex flex-col items-center justify-center text-[#f4f4f4] font-[family-name:var(--font-bebas)] uppercase leading-[92%] tracking-[-0.03em] text-center w-full max-w-[390px] max-w-full mx-auto text-[52px]"
       >
         {/* Line 1: FOR YEARS, [Planet] INDIAN */}
         <div className="flex items-center justify-center whitespace-nowrap">
@@ -112,7 +112,7 @@ export function WhyNazrStatement() {
 
       {/* Desktop Layout (hidden md:flex) */}
       <div
-        className="hidden md:flex flex-col items-center justify-center gap-y-[2px] text-[#FFF1EB] font-[family-name:var(--font-bebas)] uppercase leading-[90%] tracking-[-0.03em] text-center"
+        className="hidden md:flex flex-col items-center justify-center gap-y-[2px] text-[#f4f4f4] font-[family-name:var(--font-bebas)] uppercase leading-[90%] tracking-[-0.03em] text-center"
         style={{ fontSize: "clamp(24px, 6.8vw, 100px)" }}
       >
 

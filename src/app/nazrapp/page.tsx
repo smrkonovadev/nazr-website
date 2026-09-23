@@ -78,8 +78,8 @@ export default function NazrAppPage() {
         </DesktopScaler>
 
         {/* Join The Conversation Section */}
-        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden -mt-[1px]">
-          <div className="w-full relative z-[60] bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden pb-0 -mt-[1px]">
+        <DesktopScaler bgColor="#f4f4f4" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden -mt-[1px]">
+          <div className="w-full relative z-[60] bg-[#f4f4f4] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden pb-0 -mt-[1px]">
             <WhyNazrInTheirWordsSection />
           </div>
         </DesktopScaler>

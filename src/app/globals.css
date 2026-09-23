@@ -55,7 +55,7 @@ body {
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
-  color: #FFF1EB;
+  color: #f4f4f4;
   cursor: pointer;
   transition: color 0.15s ease;
 }
@@ -70,5 +70,5 @@ body {
 @keyframes pinkToBlackWave {
   0% { color: #FF0E97; }
   50% { color: #FF0E97; }
-  100% { color: #FFF1EB; }
+  100% { color: #f4f4f4; }
 }

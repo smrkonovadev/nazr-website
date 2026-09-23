@@ -48,7 +48,7 @@ export function SupportSection() {
   };
 
   return (
-    <section className="w-full bg-[#FFF1EB] px-6 md:px-16 pt-12 md:pt-20 pb-16 md:pb-24 flex flex-col items-center">
+    <section className="w-full bg-[#f4f4f4] px-6 md:px-16 pt-12 md:pt-20 pb-16 md:pb-24 flex flex-col items-center">
       <div className="w-full max-w-[1205px] mx-auto flex flex-col">
         {/* ======================= */}
         {/* HEADER SECTION          */}
@@ -222,7 +222,7 @@ export function SupportSection() {
                 href="https://maps.app.goo.gl/czYtE4hs12AEtVcB6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative z-10 m-4 p-3 md:p-4 bg-[#FFF1EB]/95 backdrop-blur-md rounded-[10px] border border-black/10 shadow-md flex items-start gap-3 hover:bg-[#FFF1EB] transition-all group-hover:scale-[1.01]"
+                className="relative z-10 m-4 p-3 md:p-4 bg-[#f4f4f4]/95 backdrop-blur-md rounded-[10px] border border-black/10 shadow-md flex items-start gap-3 hover:bg-[#f4f4f4] transition-all group-hover:scale-[1.01]"
               >
                 <div className="w-8 h-8 rounded-full bg-[#FF0E97]/15 flex items-center justify-center shrink-0 mt-0.5 text-[#FF0E97]">
                   <svg width="18" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -249,7 +249,7 @@ export function SupportSection() {
                   href="https://maps.app.goo.gl/czYtE4hs12AEtVcB6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#161616] hover:bg-[#FF0E97] transition-colors text-[#FFF1EB] hover:text-white px-3.5 py-1.5 rounded-full text-[12px] md:text-[13px] font-medium shadow-md flex items-center gap-1.5"
+                  className="bg-[#161616] hover:bg-[#FF0E97] transition-colors text-[#f4f4f4] hover:text-white px-3.5 py-1.5 rounded-full text-[12px] md:text-[13px] font-medium shadow-md flex items-center gap-1.5"
                   style={{ fontFamily: "Switzer, var(--font-geist-sans), sans-serif" }}
                 >
                   Open in Maps

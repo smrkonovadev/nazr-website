@@ -9,7 +9,7 @@ const cardsData = [
   {
     id: 1,
     badge: "/images/1.svg",
-    bgImage: "/images/EVENTS.svg",
+    bgImage: "/images/COMMUNITYIMG1.webp",
     topic: "EVENTS",
     handle: "@NAZR.360",
     description:
@@ -20,11 +20,11 @@ const cardsData = [
   {
     id: 2,
     badge: "/images/2.svg",
-    bgImage: "/images/COMMUNITY%20STORIES.svg",
+    bgImage: "/images/COMMUNITYIMG2.webp",
     topic: "COMMUNITY STORIES",
     handle: "@NAZR.360",
     description:
-      "Hear from the women building a culture of preparedness through everyday habits, shared experiences, and real conversations.",
+      "Real women on how they move through their cities, and what helps.",
     link: "/blog",
     buttonText: "Read Their Stories",
   },
@@ -35,20 +35,20 @@ const cardsData = [
     topic: "FIELD NOTES",
     handle: "@NAZR.360",
     description:
-      "Explore the research, psychology, observations, and everyday behaviours shaping the future of personal safety.",
+      "Our notes on moving through the city: tips, conversations, and what we're learning.",
     link: "/blog",
-    buttonText: "Explore Field Notes",
+    buttonText: "Read Field Notes",
   },
   {
     id: 4,
     badge: "/images/4.svg",
-    bgImage: "/images/JOIN%20THE%20COMMUNITY.svg",
+    bgImage: "/images/COMMUNITYIMG3.webp",
     topic: "JOIN THE COMMUNITY",
     handle: "@NAZR.360",
     description:
-      "Follow our journey, share your story, stay updated, and help build a safer future together.",
+      "Events, drops and stories, straight to you. No spam.",
     link: "/blog",
-    buttonText: "Join NAZR",
+    buttonText: "Read Field Notes",
   },
 ];
 
@@ -56,6 +56,22 @@ const SHOW_CARD_BUTTONS = true;
 
 export function SafetyCommunitySection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [communityInput, setCommunityInput] = useState("");
+  const [communitySubmitted, setCommunitySubmitted] = useState(false);
+
+  const handleCommunitySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!communityInput.trim()) {
+      window.location.href = "/blog";
+      return;
+    }
+    setCommunitySubmitted(true);
+    setTimeout(() => {
+      setCommunitySubmitted(false);
+      setCommunityInput("");
+    }, 3500);
+  };
+
   const mobileScrollRef = useRef<HTMLDivElement>(null);
   const mobileCardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   const desktopCardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -115,7 +131,7 @@ export function SafetyCommunitySection() {
           {/* ================= SECTION HEADER (Centered on all screen sizes) ================= */}
           <div className="w-full flex flex-col items-center text-center mb-8 md:mb-12">
             <h2
-              className="font-[family-name:var(--font-bebas)] font-normal text-[48px] sm:text-[62px] md:text-[80px] lg:text-[88px] leading-[90%] tracking-[-0.03em] text-[#FFF9EB] uppercase m-0"
+              className="font-[family-name:var(--font-bebas)] font-normal text-[48px] sm:text-[62px] md:text-[80px] lg:text-[88px] leading-[90%] tracking-[-0.03em] text-[#f4f4f4] uppercase m-0"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
@@ -128,7 +144,7 @@ export function SafetyCommunitySection() {
             </h2>
 
             <p
-              className="font-['Inter',_sans-serif] font-normal text-[15px] sm:text-[17px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#FFF9EB]/80 max-w-[620px] text-center mt-3 sm:mt-4 m-0 px-4"
+              className="font-['Inter',_sans-serif] font-normal text-[15px] sm:text-[17px] md:text-[18px] leading-[140%] tracking-[-0.03em] text-[#f4f4f4]/80 max-w-[620px] text-center mt-3 sm:mt-4 m-0 px-4"
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 400,
@@ -198,24 +214,46 @@ export function SafetyCommunitySection() {
                       {/* Top Badge & Topic Title */}
                       <div className="flex flex-col items-start gap-2">
                         <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
-                        <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[32px] leading-[130%] tracking-normal m-0">
+                        <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#f4f4f4] text-[32px] leading-[130%] tracking-normal m-0">
                           {card.topic}
                         </h3>
                       </div>
 
                       {/* Bottom Info */}
-                      <div className="flex flex-col items-start max-w-[280px]">
-                        <p className={`font-['Inter',_sans-serif] font-normal text-[#FFF9EB]/90 text-[14px] leading-[140%] tracking-[-0.03em] m-0 whitespace-pre-line ${SHOW_CARD_BUTTONS ? "mb-3" : "mb-0"}`}>
+                      <div className="flex flex-col items-start w-full max-w-[285px]">
+                        <p className={`font-['Inter',_sans-serif] font-normal text-[#f4f4f4]/90 text-[14px] leading-[140%] tracking-[-0.03em] m-0 whitespace-pre-line ${SHOW_CARD_BUTTONS ? "mb-2.5" : "mb-0"}`}>
                           {card.description}
                         </p>
-                        {SHOW_CARD_BUTTONS && (
-                          <Link
-                            href={card.link}
+                        {card.id === 4 ? (
+                          <form
+                            onSubmit={handleCommunitySubmit}
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-['Inter',_sans-serif] text-[14px] leading-normal font-medium px-4 py-2 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
+                            className="w-full flex flex-col items-start gap-[20px]"
                           >
-                            {card.buttonText}
-                          </Link>
+                            <input
+                              type="text"
+                              value={communityInput}
+                              onChange={(e) => setCommunityInput(e.target.value)}
+                              placeholder="Enter your WhatsApp number or email"
+                              className="w-full max-w-[379px] h-[42px] bg-white text-[#161616] placeholder:text-[#888888] text-[13px] px-[16px] py-[13px] rounded-[12px] font-['Inter',_sans-serif] focus:outline-none focus:ring-2 focus:ring-[#FF0E97]"
+                            />
+                            <button
+                              type="submit"
+                              className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[14px] sm:text-[15px] font-normal leading-[150%] tracking-[0px] px-4 py-2 rounded-[4px] shadow-lg transition-colors whitespace-nowrap cursor-pointer"
+                            >
+                              {communitySubmitted ? "Joined ✓" : card.buttonText}
+                            </button>
+                          </form>
+                        ) : (
+                          SHOW_CARD_BUTTONS && (
+                            <Link
+                              href={card.link}
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-4 py-2 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
+                            >
+                              {card.buttonText}
+                            </Link>
+                          )
                         )}
                       </div>
                     </div>
@@ -289,29 +327,51 @@ export function SafetyCommunitySection() {
                         {/* Top Badge & Topic Title */}
                         <div className="flex flex-col items-start gap-2">
                           <Image unoptimized src={card.badge} width={34} height={34} alt={`Step ${card.id}`} />
-                          <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[34px] leading-[130%] tracking-normal m-0">
+                          <h3 className="font-[family-name:var(--font-bebas)] font-normal text-[#f4f4f4] text-[34px] leading-[130%] tracking-normal m-0">
                             {card.topic}
                           </h3>
                         </div>
 
                         {/* Bottom Info */}
-                        <div className="flex flex-col items-start max-w-[420px]">
+                        <div className="flex flex-col items-start w-full max-w-[420px]">
                           <p
                             ref={(el) => { descriptionRefs.current[index] = el; }}
-                            className={`font-['Inter',_sans-serif] font-normal text-[#FFF9EB]/90 text-[15px] sm:text-[16px] leading-[140%] tracking-[-0.03em] m-0 whitespace-pre-line ${
+                            className={`font-['Inter',_sans-serif] font-normal text-[#f4f4f4]/90 text-[15px] sm:text-[16px] leading-[140%] tracking-[-0.03em] m-0 whitespace-pre-line ${
                               SHOW_CARD_BUTTONS ? "mb-3" : "mb-0"
                             } origin-left`}
                           >
                             {card.description}
                           </p>
-                          {SHOW_CARD_BUTTONS && (
-                            <Link
-                              href={card.link}
+                          {card.id === 4 ? (
+                            <form
+                              onSubmit={handleCommunitySubmit}
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-['Inter',_sans-serif] text-[15px] leading-normal font-medium px-5 py-2.5 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
+                              className="w-full flex flex-col items-start gap-[20px] mt-1"
                             >
-                              {card.buttonText}
-                            </Link>
+                              <input
+                                type="text"
+                                value={communityInput}
+                                onChange={(e) => setCommunityInput(e.target.value)}
+                                placeholder="Enter your WhatsApp number or email"
+                                className="w-full max-w-[379px] h-[42px] bg-white text-[#161616] placeholder:text-[#888888] text-[13.5px] px-[16px] py-[13px] rounded-[12px] font-['Inter',_sans-serif] focus:outline-none focus:ring-2 focus:ring-[#FF0E97]"
+                              />
+                              <button
+                                type="submit"
+                                className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-5 py-2.5 rounded-[4px] shadow-lg transition-colors whitespace-nowrap cursor-pointer"
+                              >
+                                {communitySubmitted ? "Joined ✓" : card.buttonText}
+                              </button>
+                            </form>
+                          ) : (
+                            SHOW_CARD_BUTTONS && (
+                              <Link
+                                href={card.link}
+                                onClick={(e) => e.stopPropagation()}
+                                className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-5 py-2.5 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
+                              >
+                                {card.buttonText}
+                              </Link>
+                            )
                           )}
                         </div>
                       </div>
@@ -321,7 +381,7 @@ export function SafetyCommunitySection() {
                         {/* Top Badge & Topic Title */}
                         <div className="flex flex-col items-start gap-2">
                           <Image unoptimized src={card.badge} width={30} height={30} alt={`Step ${card.id}`} />
-                          <span className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[26px] lg:text-[32px] leading-[140%] tracking-normal">
+                          <span className="font-[family-name:var(--font-bebas)] font-normal text-[#f4f4f4] text-[26px] lg:text-[32px] leading-[140%] tracking-normal">
                             {card.topic}
                           </span>
                         </div>

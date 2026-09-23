@@ -76,7 +76,7 @@ function ReviewCard({ review }: { review: Review }) {
       </div>
 
       {/* Quote */}
-      <p className="font-['Inter',_sans-serif] text-[#FFF9EB] text-[15px] sm:text-[16px] font-normal leading-[1.35] line-clamp-3 m-0">
+      <p className="font-['Inter',_sans-serif] text-[#f4f4f4] text-[15px] sm:text-[16px] font-normal leading-[1.35] line-clamp-3 m-0">
         {review.quote}
       </p>
 
@@ -94,7 +94,7 @@ export function WhatWomenAreSaying() {
       {/* Title */}
       <div className="w-full flex justify-center mb-8 md:mb-10 px-4">
         <h2
-          className="font-[family-name:var(--font-bebas)] font-normal text-[#FFF9EB] text-[48px] sm:text-[64px] md:text-[80px] leading-[90%] tracking-[-0.03em] uppercase text-center m-0"
+          className="font-[family-name:var(--font-bebas)] font-normal text-[#f4f4f4] text-[48px] sm:text-[64px] md:text-[80px] leading-[90%] tracking-[-0.03em] uppercase text-center m-0"
           style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
         >
           WHAT WOMEN ARE SAYING

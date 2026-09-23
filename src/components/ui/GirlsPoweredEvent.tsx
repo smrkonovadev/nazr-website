@@ -23,7 +23,7 @@ function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
 export function GirlsPoweredEvent() {
 
   return (
-    <div className="w-full bg-[#161616] text-[#FFF1EB] selection:bg-[#FF0E97] selection:text-white">
+    <div className="w-full bg-[#161616] text-[#f4f4f4] selection:bg-[#FF0E97] selection:text-white">
       {/* =========================================================================
           HERO SECTION
           ========================================================================= */}
@@ -49,10 +49,10 @@ export function GirlsPoweredEvent() {
             <div className="w-full flex flex-col">
               {/* Top Row: Date and Location tags moved up */}
               <div className="w-full flex justify-between items-center -translate-y-6 md:-translate-y-[44px]">
-                <div className="bg-[#161616] text-[#FFF1EB] px-5 py-2.5 font-[family-name:var(--font-mono)] text-xs md:text-sm tracking-wider uppercase shadow-md flex items-center justify-center">
+                <div className="bg-[#161616] text-[#f4f4f4] px-5 py-2.5 font-[family-name:var(--font-mono)] text-xs md:text-sm tracking-wider uppercase shadow-md flex items-center justify-center">
                   27.09.2026
                 </div>
-                <div className="bg-[#161616] text-[#FFF1EB] px-5 py-2.5 font-[family-name:var(--font-inter)] text-xs md:text-sm tracking-wide shadow-md flex items-center justify-center">
+                <div className="bg-[#161616] text-[#f4f4f4] px-5 py-2.5 font-[family-name:var(--font-inter)] text-xs md:text-sm tracking-wide shadow-md flex items-center justify-center">
                   Delhi, India
                 </div>
               </div>
@@ -80,7 +80,7 @@ export function GirlsPoweredEvent() {
                   href="https://www.district.in/events/girls-powered-by-nazr-sep27-2026-buy-tickets"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-[48px] px-8 bg-[#161616] text-[#FFF1EB] hover:bg-black hover:scale-105 active:scale-95 font-[family-name:var(--font-inter)] font-semibold text-[15px] flex items-center justify-center shadow-2xl tracking-wide uppercase transition-all duration-200 cursor-pointer text-center"
+                  className="h-[48px] px-8 bg-[#161616] text-[#f4f4f4] hover:bg-black hover:scale-105 active:scale-95 font-[family-name:var(--font-inter)] font-semibold text-[15px] flex items-center justify-center shadow-2xl tracking-wide uppercase transition-all duration-200 cursor-pointer text-center"
                 >
                   Book Your Slot Now
                 </a>
@@ -114,10 +114,10 @@ export function GirlsPoweredEvent() {
           <div className="w-full flex flex-col items-center">
             {/* Top Row: Date and Location tags */}
             <div className="w-full flex justify-between items-center">
-              <div className="bg-[#161616] text-[#FFF1EB] px-4 py-2 font-[family-name:var(--font-mono)] text-xs tracking-wider uppercase shadow-md">
+              <div className="bg-[#161616] text-[#f4f4f4] px-4 py-2 font-[family-name:var(--font-mono)] text-xs tracking-wider uppercase shadow-md">
                 27.09.2026
               </div>
-              <div className="bg-[#161616] text-[#FFF1EB] px-4 py-2 font-[family-name:var(--font-inter)] text-xs tracking-wide shadow-md">
+              <div className="bg-[#161616] text-[#f4f4f4] px-4 py-2 font-[family-name:var(--font-inter)] text-xs tracking-wide shadow-md">
                 Delhi, India
               </div>
             </div>
@@ -140,7 +140,7 @@ export function GirlsPoweredEvent() {
               href="https://www.district.in/events/girls-powered-by-nazr-sep27-2026-buy-tickets"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[82%] max-w-[280px] h-[46px] bg-[#161616] text-[#FFF1EB] hover:bg-black font-[family-name:var(--font-inter)] font-medium text-sm flex items-center justify-center px-4 shadow-2xl tracking-normal transition-all duration-200 cursor-pointer text-center"
+              className="w-[82%] max-w-[280px] h-[46px] bg-[#161616] text-[#f4f4f4] hover:bg-black font-[family-name:var(--font-inter)] font-medium text-sm flex items-center justify-center px-4 shadow-2xl tracking-normal transition-all duration-200 cursor-pointer text-center"
             >
               Book Your Slot Now
             </a>
@@ -158,7 +158,7 @@ export function GirlsPoweredEvent() {
             <h2 className="font-[family-name:var(--font-bebas)] text-white text-[54px] md:text-[68px] leading-none tracking-[-0.01em] uppercase text-center">
               EVENT DETAILS
             </h2>
-            <p className="mt-4 max-w-[680px] text-center font-[family-name:var(--font-inter)] text-[#FFF1EB]/80 text-[16px] leading-[160%]">
+            <p className="mt-4 max-w-[680px] text-center font-[family-name:var(--font-inter)] text-[#f4f4f4]/80 text-[16px] leading-[160%]">
               Girls. Powered. by NAZR brings together beginner-friendly pad work, movement, music and community for a Sunday morning designed to get you moving, trying something new and feeling more confident.
             </p>
           </div>
@@ -243,7 +243,7 @@ export function GirlsPoweredEvent() {
               <h2 className="font-[family-name:var(--font-bebas)] text-white text-[38px] leading-none tracking-[-0.01em] uppercase">
                 EVENT DETAILS
               </h2>
-              <p className="mt-3 text-center font-[family-name:var(--font-inter)] text-[#FFF1EB]/80 text-[13px] leading-[150%]">
+              <p className="mt-3 text-center font-[family-name:var(--font-inter)] text-[#f4f4f4]/80 text-[13px] leading-[150%]">
                 Girls. Powered. by NAZR brings together beginner-friendly pad work, movement, music and community for a Sunday morning designed to get you moving, trying something new and feeling more confident.
               </p>
             </div>
@@ -420,7 +420,7 @@ export function GirlsPoweredEvent() {
                   <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
                     ARRIVE + CHECK IN
                   </h3>
-                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#f4f4f4]/80 mt-1.5 font-normal tracking-[-0.01em]">
                     Wristband · Goodie bag
                   </p>
                 </div>
@@ -430,7 +430,7 @@ export function GirlsPoweredEvent() {
                   <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
                     GET ON THE MATS
                   </h3>
-                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#f4f4f4]/80 mt-1.5 font-normal tracking-[-0.01em]">
                     Pad work · Movement · Practical self-<br className="md:hidden" />defence
                   </p>
                 </div>
@@ -440,7 +440,7 @@ export function GirlsPoweredEvent() {
                   <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
                     TRY THE EXPERIENCE
                   </h3>
-                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#f4f4f4]/80 mt-1.5 font-normal tracking-[-0.01em]">
                     Games · Challenges · Photo moments
                   </p>
                 </div>
@@ -450,7 +450,7 @@ export function GirlsPoweredEvent() {
                   <h3 className="font-[family-name:var(--font-bebas)] text-white text-[28px] sm:text-[34px] md:text-[38px] leading-none tracking-wide uppercase">
                     EXPLORE THE SOCIAL
                   </h3>
-                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#FFF1EB]/80 mt-1.5 font-normal tracking-[-0.01em]">
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-[14px] text-[#f4f4f4]/80 mt-1.5 font-normal tracking-[-0.01em]">
                     Light Bites · Matcha · Protein Shots ·<br className="md:hidden" /> Music · Meet the Founders
                   </p>
                 </div>
@@ -499,7 +499,7 @@ export function GirlsPoweredEvent() {
                         unoptimized
                       />
                     </div>
-                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                    <span className="text-[#f4f4f4]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
                       Events Partner
                     </span>
                   </div>
@@ -516,7 +516,7 @@ export function GirlsPoweredEvent() {
                         unoptimized
                       />
                     </div>
-                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                    <span className="text-[#f4f4f4]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
                       Venue Partner
                     </span>
                   </div>
@@ -533,7 +533,7 @@ export function GirlsPoweredEvent() {
                         unoptimized
                       />
                     </div>
-                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                    <span className="text-[#f4f4f4]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
                       Wellness Partner
                     </span>
                   </div>
@@ -550,7 +550,7 @@ export function GirlsPoweredEvent() {
                         unoptimized
                       />
                     </div>
-                    <span className="text-[#FFF1EB]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
+                    <span className="text-[#f4f4f4]/80 text-[11px] sm:text-[12px] md:text-[13px] font-[family-name:var(--font-inter)] tracking-wide mt-1.5 select-none whitespace-nowrap">
                       Protein Partner
                     </span>
                   </div>
@@ -604,13 +604,13 @@ export function GirlsPoweredEvent() {
           <div className="w-full pt-8 border-t border-[#262626] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-6">
             {/* Legal Links: Centered on mobile, Left-aligned on desktop */}
             <div className="flex flex-col items-center md:items-start gap-1.5 text-center md:text-left">
-              <Link href="/terms" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
+              <Link href="/terms" className="font-[family-name:var(--font-inter)] text-xs text-[#f4f4f4]/80 hover:text-white transition-colors">
                 Accessibility Statement
               </Link>
-              <Link href="/girls-powered/terms&condition" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
+              <Link href="/girls-powered/terms&condition" className="font-[family-name:var(--font-inter)] text-xs text-[#f4f4f4]/80 hover:text-white transition-colors">
                 Terms &amp; Conditions
               </Link>
-              <Link href="/girls-powered/privacy-policy" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
+              <Link href="/girls-powered/privacy-policy" className="font-[family-name:var(--font-inter)] text-xs text-[#f4f4f4]/80 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
             </div>

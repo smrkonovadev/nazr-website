@@ -130,7 +130,7 @@ export function ProductDetails({
                 onClick={() => setSelectedVariant(v.id)}
                 aria-label={`${v.name} variant`}
                 style={{
-                  backgroundColor: v.color || (v.id === "pink" ? "#FF0E97" : "#FFF9EB"),
+                  backgroundColor: v.color || (v.id === "pink" ? "#FF0E97" : "#f4f4f4"),
                 }}
                 className={`w-[20px] h-[20px] rounded-full border border-black transition-all cursor-pointer ${
                   selectedVariant === v.id
@@ -171,7 +171,7 @@ export function ProductDetails({
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleProductClick}
-          className="w-full md:w-[211px] h-[48px] md:h-[54px] px-6 py-2.5 md:py-3 bg-[#2A2828] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] text-[20px] md:text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
+          className="w-full md:w-[211px] h-[48px] md:h-[54px] px-6 py-2.5 md:py-3 bg-[#2A2828] text-[#f4f4f4] rounded-[8px] font-[family-name:var(--font-bebas)] text-[20px] md:text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
         >
           View More
         </Link>

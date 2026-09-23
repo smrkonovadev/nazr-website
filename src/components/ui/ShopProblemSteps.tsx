@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
 
-function HalfStar({ className = "w-3.5 h-3.5 text-[#FFF9EB]" }: { className?: string }) {
+function HalfStar({ className = "w-3.5 h-3.5 text-[#f4f4f4]" }: { className?: string }) {
   const id = React.useId();
   return (
     <svg
@@ -186,22 +186,22 @@ export function ShopProblemSteps() {
   const marqueeCards = [...cards, ...cards];
 
   return (
-    <section className="w-full relative z-[60] bg-[#FFF1EB] py-10 md:py-16 overflow-hidden">
+    <section className="w-full relative z-[60] bg-[#f4f4f4] py-10 md:py-16 overflow-hidden">
       <div className="w-full flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-12 lg:pl-[40px] pl-0 pr-0">
 
         {/* Left Header Section */}
         <div className="w-full lg:w-[380px] shrink-0 flex flex-col items-start px-[20px] lg:px-0">
           {/* Dark Rating Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#242424] text-[#FFF9EB] px-3 py-1.5 rounded-[6px] mb-4">
+          <div className="inline-flex items-center gap-2 bg-[#242424] text-[#f4f4f4] px-3 py-1.5 rounded-[6px] mb-4">
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((s) => (
                 <Star
                   key={s}
-                  className="w-3.5 h-3.5 fill-[#FFF9EB] text-[#FFF9EB]"
+                  className="w-3.5 h-3.5 fill-[#f4f4f4] text-[#f4f4f4]"
                 />
               ))}
             </div>
-            <span className="font-['Inter',_sans-serif] text-[13px] font-medium text-[#FFF9EB]">
+            <span className="font-['Inter',_sans-serif] text-[13px] font-medium text-[#f4f4f4]">
               (4.8/5)
             </span>
           </div>
@@ -261,27 +261,27 @@ export function ShopProblemSteps() {
                       {[1, 2, 3, 4, 5].map((s) => {
                         const numRating = parseFloat(card.rating);
                         if (s <= Math.floor(numRating)) {
-                          return <Star key={s} className="w-3.5 h-3.5 fill-[#FFF9EB] text-[#FFF9EB]" />;
+                          return <Star key={s} className="w-3.5 h-3.5 fill-[#f4f4f4] text-[#f4f4f4]" />;
                         }
                         if (s === Math.ceil(numRating) && numRating % 1 !== 0) {
-                          return <HalfStar key={s} className="w-3.5 h-3.5 text-[#FFF9EB]" />;
+                          return <HalfStar key={s} className="w-3.5 h-3.5 text-[#f4f4f4]" />;
                         }
-                        return <Star key={s} className="w-3.5 h-3.5 fill-transparent text-[#FFF9EB]" />;
+                        return <Star key={s} className="w-3.5 h-3.5 fill-transparent text-[#f4f4f4]" />;
                       })}
                     </div>
-                    <span className="font-['Inter',_sans-serif] text-[12px] font-medium text-[#FFF9EB]">
+                    <span className="font-['Inter',_sans-serif] text-[12px] font-medium text-[#f4f4f4]">
                       ({card.rating})
                     </span>
                   </div>
 
                   {/* Quote text */}
-                  <p className="font-['Inter',_sans-serif] text-[12.5px] sm:text-[13px] text-[#FFF9EB] leading-[1.35] tracking-[-0.01em] line-clamp-4 my-auto">
+                  <p className="font-['Inter',_sans-serif] text-[12.5px] sm:text-[13px] text-[#f4f4f4] leading-[1.35] tracking-[-0.01em] line-clamp-4 my-auto">
                     {card.quote}
                   </p>
 
                   {/* Reviewer Profile */}
                   <div className="flex items-center gap-2.5 mt-auto shrink-0">
-                    <div className="w-8 h-8 rounded-full bg-[#FFF9EB] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#f4f4f4] flex items-center justify-center shrink-0">
                       <span
                         className="font-[family-name:var(--font-bebas)] text-[14px] leading-none tracking-wide"
                         style={{ color: card.initialsColor || (card.id % 2 === 1 ? "#0A84FF" : "#FF0E97") }}
@@ -296,7 +296,7 @@ export function ShopProblemSteps() {
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span
-                        className="font-[family-name:var(--font-bebas)] font-normal text-[16px] text-[#FFF9EB] uppercase tracking-[0] leading-[150%] truncate"
+                        className="font-[family-name:var(--font-bebas)] font-normal text-[16px] text-[#f4f4f4] uppercase tracking-[0] leading-[150%] truncate"
                         style={{
                           // @ts-ignore
                           leadingTrim: "cap-height",
@@ -305,7 +305,7 @@ export function ShopProblemSteps() {
                         {card.name}
                       </span>
                       <span
-                        className="font-['Switzer',_sans-serif] font-normal text-[12px] text-[#FFF9EB]/80 tracking-[0] leading-[150%] truncate"
+                        className="font-['Switzer',_sans-serif] font-normal text-[12px] text-[#f4f4f4]/80 tracking-[0] leading-[150%] truncate"
                       >
                         {card.role}
                       </span>

@@ -14,8 +14,8 @@ export const carouselData = [
     salePrice: "₹444 for 11",
     originalPrice: "₹555",
     price: 444,
-    subtitle: "A peel-off seal for your glass that physically blocks anything being slipped into your drink. India's first.",
-    mobileSubtitle: "A peel-off seal for your glass that physically blocks anything being slipped into your drink. India's first.",
+    subtitle: "A peel-off seal that stops anything being slipped into your drink. India's first.",
+    mobileSubtitle: "A peel-off seal that stops anything being slipped into your drink. India's first.",
     primaryButtonText: "Shop Sip Check",
     link: "https://shop.nazrco.in/products/sip-check",
     name: "Sip Check Anti Drink Spike Stickers"
@@ -27,8 +27,8 @@ export const carouselData = [
     salePrice: "₹777",
     originalPrice: "₹999",
     price: 777,
-    subtitle: "A safety spray that clips to your bag and glows in the dark, so it's easy to find. Sprays 8 to 10 ft, with 10 to 15 bursts per can.",
-    mobileSubtitle: "A safety spray that clips to your bag and glows in the dark, so it's easy to find. Sprays 8 to 10 ft, with 10 to 15 bursts per can.",
+    subtitle: "A safety spray that clips on and glows in the dark. 8 to 10 ft range, 35 to 40 bursts.",
+    mobileSubtitle: "A safety spray that clips on and glows in the dark. 8 to 10 ft range, 35 to 40 bursts.",
     primaryButtonText: "Shop On Me",
     link: "https://shop.nazrco.in/products/on-me-spray",
     name: "On Me Safety Spray"
@@ -135,8 +135,8 @@ export function SafetyDesigned() {
           ? (item.id === "sip-check" ? 560 : item.id === "nazr-360" ? 410 : 499.42)
           : 344.69,
         top: isCenter
-          ? (item.id === "sip-check" ? 240 : item.id === "nazr-360" ? 320 : 276)
-          : 381.76,
+          ? (item.id === "sip-check" ? 240 : item.id === "nazr-360" ? 315 : 252)
+          : (item.id === "pepper-spray" ? 342 : item.id === "nazr-360" ? 368.5 : 381.76),
         left: isCenter
           ? (item.id === "sip-check" ? 370 : item.id === "nazr-360" ? 460 : 429.81)
           : (isLeft ? 104.7 : 865.59),
@@ -183,6 +183,7 @@ export function SafetyDesigned() {
         duration: 0.5,
         delay: visible ? delay : 0,
         ease: "back.out(1.7)",
+        pointerEvents: visible ? "auto" : "none",
       });
     });
   }, [currentIndex, leftIndex]);
@@ -229,20 +230,22 @@ export function SafetyDesigned() {
       <div className="hidden md:block w-full max-w-[1220px] relative h-[940px]">
 
         {/* Title Block */}
-        <div className="absolute flex flex-col items-center gap-[24px]" style={{ width: "740px", height: "236px", top: 0, left: "50%", transform: "translateX(-50%)" }}>
-          <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[80px] leading-[0.9] tracking-[-0.03em] text-center m-0 w-full">
+        <div className="absolute flex flex-col items-center gap-[12px]" style={{ width: "740px", height: "236px", top: 0, left: "50%", transform: "translateX(-50%)" }}>
+          <h2 className="text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[80px] leading-[0.9] tracking-[-0.03em] text-center m-0 w-full">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-[family-name:var(--font-inter)] font-normal text-[17px] leading-[1.5] tracking-[-0.02em] text-center m-0 w-full max-w-[660px]">
+          <p className="text-[#f4f4f4] font-[family-name:var(--font-inter)] font-normal text-[17px] leading-[1.5] tracking-[-0.02em] text-center m-0 w-full max-w-[660px]">
             A growing range of smart safety products designed to work alongside the NAZR application, providing additional ways to stay prepared, connected, and supported.
           </p>
 
           {/* Badges positioned relative to the title block for exactness */}
           <div className="absolute flex items-center justify-center z-10" style={{ width: "222px", height: "222px", top: "10px", left: "-190px" }}>
-            <Image unoptimized quality={100} src="/images/new29.webp" alt="Safety Sticker" fill className="object-contain relative z-10 hover:animate-[spin_4s_linear_infinite]" />
+            <Image unoptimized quality={100} src="/images/new29.webp" alt="Safety Sticker" fill className="object-contain relative z-10 hover:animate-[spin_4s_linear_infinite] cursor-pointer" />
           </div>
           <div className="absolute z-10" style={{ width: "241.23px", height: "159.03px", top: "-20px", left: "680px", transform: "rotate(5.94deg)" }}>
-            <Image unoptimized quality={100} src="/images/new30.webp" alt="Fact Oval" fill className="object-contain" />
+            <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-105 hover:rotate-3 hover:drop-shadow-[0_8px_20px_rgba(10,132,255,0.25)] cursor-pointer">
+              <Image unoptimized quality={100} src="/images/new30.webp" alt="Fact Oval" fill className="object-contain" />
+            </div>
           </div>
         </div>
 
@@ -282,45 +285,69 @@ export function SafetyDesigned() {
         ))}
 
         {/* Floating Icons (Pepper Spray) */}
-        <div ref={(el) => { floatingIconRefs.current["ps-0"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "191.41px", height: "169.84px", top: "260px", left: "310px", opacity: 0 }}>
-          <Image src="/images/new9.webp" fill sizes="200px" className="object-contain hover:animate-[spin_4s_linear_infinite]" alt="" />
+        <div ref={(el) => { floatingIconRefs.current["ps-0"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "191.41px", height: "169.84px", top: "236px", left: "310px", opacity: 0 }}>
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-110 hover:-rotate-3 hover:drop-shadow-[0_8px_20px_rgba(255,255,255,0.22)] cursor-pointer">
+            <Image src="/images/new9.webp" fill sizes="200px" className="object-contain" alt="" />
+          </div>
         </div>
-        <div ref={(el) => { floatingIconRefs.current["ps-1"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "70.26px", height: "48.17px", top: "290px", left: "670px", transform: "rotate(-30deg)", opacity: 0 }}>
-          <Image src="/images/new10.webp" fill sizes="100px" className="object-contain" alt="" />
+        <div ref={(el) => { floatingIconRefs.current["ps-1"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "70.26px", height: "48.17px", top: "266px", left: "670px", transform: "rotate(-30deg)", opacity: 0 }}>
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-115 hover:rotate-6 hover:drop-shadow-[0_8px_16px_rgba(255,255,255,0.25)] cursor-pointer">
+            <Image src="/images/new10.webp" fill sizes="100px" className="object-contain" alt="" />
+          </div>
         </div>
-        <div ref={(el) => { floatingIconRefs.current["ps-2"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "260px", height: "285px", top: "430px", left: "315px", transform: "rotate(36.59deg)", opacity: 0 }}>
-          <Image src="/images/new11.webp" fill sizes="280px" className="object-contain" alt="" />
+        <div ref={(el) => { floatingIconRefs.current["ps-2"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "260px", height: "285px", top: "406px", left: "315px", transform: "rotate(36.59deg)", opacity: 0 }}>
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-108 hover:-rotate-3 hover:drop-shadow-[0_8px_20px_rgba(255,255,255,0.22)] cursor-pointer">
+            <Image src="/images/new11.webp" fill sizes="280px" className="object-contain" alt="" />
+          </div>
         </div>
-        <div ref={(el) => { floatingIconRefs.current["ps-3"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "91.95px", height: "90.19px", top: "470px", left: "680px", transform: "rotate(-60deg)", opacity: 0 }}>
-          <Image src="/images/new12.webp" fill sizes="120px" className="object-contain" alt="" />
+        <div ref={(el) => { floatingIconRefs.current["ps-3"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "91.95px", height: "90.19px", top: "446px", left: "680px", transform: "rotate(-60deg)", opacity: 0 }}>
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-115 hover:rotate-6 hover:drop-shadow-[0_8px_16px_rgba(255,255,255,0.25)] cursor-pointer">
+            <Image src="/images/new12.webp" fill sizes="120px" className="object-contain" alt="" />
+          </div>
         </div>
 
         {/* Floating Icons (Sip Check) */}
         <div ref={(el) => { floatingIconRefs.current["sc-0"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "191.41px", height: "169.84px", top: "260px", left: "380px", opacity: 0 }}>
-          <Image src="/images/new14.webp" fill sizes="200px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-110 hover:-rotate-3 hover:drop-shadow-[0_8px_20px_rgba(255,255,255,0.22)] cursor-pointer">
+            <Image src="/images/new14.webp" fill sizes="200px" className="object-contain" alt="" />
+          </div>
         </div>
         <div ref={(el) => { floatingIconRefs.current["sc-1"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "115px", height: "100px", top: "410px", left: "730px", transform: "rotate(-30deg)", opacity: 0 }}>
-          <Image src="/images/new15.webp" fill sizes="120px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-115 hover:rotate-6 hover:drop-shadow-[0_8px_16px_rgba(255,255,255,0.25)] cursor-pointer">
+            <Image src="/images/new15.webp" fill sizes="120px" className="object-contain" alt="" />
+          </div>
         </div>
         <div ref={(el) => { floatingIconRefs.current["sc-2"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "180px", height: "176px", top: "565px", left: "390px", transform: "rotate(10.59deg)", opacity: 0 }}>
-          <Image src="/images/new17.webp" fill sizes="180px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-110 hover:-rotate-3 hover:drop-shadow-[0_8px_20px_rgba(255,255,255,0.22)] cursor-pointer">
+            <Image src="/images/new17.webp" fill sizes="180px" className="object-contain" alt="" />
+          </div>
         </div>
         <div ref={(el) => { floatingIconRefs.current["sc-3"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "165px", height: "140px", top: "585px", left: "670px", transform: "rotate(-60deg)", opacity: 0 }}>
-          <Image src="/images/new16.webp" fill sizes="165px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-115 hover:rotate-6 hover:drop-shadow-[0_8px_16px_rgba(255,255,255,0.25)] cursor-pointer">
+            <Image src="/images/new16.webp" fill sizes="165px" className="object-contain" alt="" />
+          </div>
         </div>
 
         {/* Floating Icons (NAZR 360) */}
         <div ref={(el) => { floatingIconRefs.current["n3-0"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "220px", height: "250px", top: "240px", left: "355px", opacity: 0 }}>
-          <Image src="/images/new18.webp" fill sizes="220px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-110 hover:-rotate-3 hover:drop-shadow-[0_8px_20px_rgba(255,255,255,0.22)] cursor-pointer">
+            <Image src="/images/new18.webp" fill sizes="220px" className="object-contain" alt="" />
+          </div>
         </div>
         <div ref={(el) => { floatingIconRefs.current["n3-1"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "180px", height: "190px", top: "260px", left: "680px", transform: "rotate(-15deg)", opacity: 0 }}>
-          <Image src="/images/new19.webp" fill sizes="180px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-115 hover:rotate-6 hover:drop-shadow-[0_8px_16px_rgba(255,255,255,0.25)] cursor-pointer">
+            <Image src="/images/new19.webp" fill sizes="180px" className="object-contain" alt="" />
+          </div>
         </div>
         <div ref={(el) => { floatingIconRefs.current["n3-2"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "270px", height: "195px", top: "580px", left: "275px", transform: "rotate(10.59deg)", opacity: 0 }}>
-          <Image src="/images/new21.webp" fill sizes="270px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-108 hover:-rotate-3 hover:drop-shadow-[0_8px_20px_rgba(255,255,255,0.22)] cursor-pointer">
+            <Image src="/images/new21.webp" fill sizes="270px" className="object-contain" alt="" />
+          </div>
         </div>
         <div ref={(el) => { floatingIconRefs.current["n3-3"] = el; }} className="absolute z-30 pointer-events-none" style={{ width: "120px", height: "100px", top: "590px", left: "750px", opacity: 0 }}>
-          <Image src="/images/new20.webp" fill sizes="120px" className="object-contain" alt="" />
+          <div className="w-full h-full relative transition-all duration-300 ease-out hover:scale-115 hover:rotate-6 hover:drop-shadow-[0_8px_16px_rgba(255,255,255,0.25)] cursor-pointer">
+            <Image src="/images/new20.webp" fill sizes="120px" className="object-contain" alt="" />
+          </div>
         </div>
 
         {/* Text & Controls Block */}
@@ -328,17 +355,19 @@ export function SafetyDesigned() {
           className="absolute flex flex-col items-center justify-start pointer-events-auto z-40 text-center"
           style={{ width: "660px", top: "700px", left: "50%", transform: "translateX(-50%)", gap: "10px" }}
         >
-          <h3 className="text-[#FFF9EB] font-['Inter',_sans-serif] font-bold text-[28px] md:text-[32px] leading-tight tracking-tight m-0 text-center">
-            {carouselData[currentIndex].title}
-          </h3>
+          <div className="flex flex-col items-center gap-0">
+            <h3 className="text-[#f4f4f4] font-['Inter',_sans-serif] font-bold text-[28px] md:text-[32px] leading-snug tracking-tight m-0 text-center">
+              {carouselData[currentIndex].title}
+            </h3>
 
-          <div className="flex items-center justify-center gap-3">
-            <span className="text-[#FF0E97] font-bold text-[22px] tracking-tight">
-              {carouselData[currentIndex].salePrice}
-            </span>
-            <span className="line-through text-[#737373] text-[18px] font-normal">
-              {carouselData[currentIndex].originalPrice}
-            </span>
+            <div className="flex items-center justify-center gap-3 -mt-1.5">
+              <span className="text-[#FF0E97] font-bold text-[22px] tracking-tight leading-tight">
+                {carouselData[currentIndex].salePrice}
+              </span>
+              <span className="line-through text-[#737373] text-[18px] font-normal leading-tight">
+                {carouselData[currentIndex].originalPrice}
+              </span>
+            </div>
           </div>
 
           <p className="text-[#C8C8C8] font-['Inter',_sans-serif] font-normal text-[15px] leading-[1.5] tracking-normal text-center m-0 max-w-[520px]">
@@ -351,14 +380,14 @@ export function SafetyDesigned() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleProductClick}
-              className="flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] transition-all px-6 py-2.5 rounded-[4px] text-[14px] font-medium tracking-wide shadow-sm active:scale-95 whitespace-nowrap cursor-pointer"
+              className="flex items-center justify-center text-[#f4f4f4] bg-[#FF0E97] hover:bg-[#E00A85] transition-all px-6 py-2.5 rounded-[4px] font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] shadow-sm active:scale-95 whitespace-nowrap cursor-pointer"
             >
               Shop {carouselData[currentIndex].title}
             </a>
 
             <Link
               href="/shop"
-              className="flex items-center justify-center text-[#FFF1EB] bg-[#161616]/90 hover:bg-[#262626] border border-[#404040] hover:border-white transition-all px-6 py-2.5 rounded-[4px] text-[14px] font-medium tracking-wide active:scale-95 whitespace-nowrap cursor-pointer"
+              className="flex items-center justify-center text-[#f4f4f4] bg-[#161616]/90 hover:bg-[#262626] border border-[#404040] hover:border-white transition-all px-6 py-2.5 rounded-[4px] font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] active:scale-95 whitespace-nowrap cursor-pointer"
             >
               See all tools
             </Link>
@@ -370,10 +399,10 @@ export function SafetyDesigned() {
       {/* Mobile Fallback Wrapper */}
       <div className="md:hidden w-full flex flex-col items-center gap-1 relative px-4 pb-10">
         <div className="flex flex-col items-center gap-2 w-full relative">
-          <h2 className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[46px] sm:text-[80px] text-center m-0 leading-[0.9] tracking-[-0.03em]">
+          <h2 className="text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[46px] sm:text-[80px] text-center m-0 leading-[0.9] tracking-[-0.03em]">
             SAFETY, DESIGNED TO<br /> GO WITH YOU.
           </h2>
-          <p className="text-[#FFF9EB] font-[family-name:var(--font-inter)] font-normal text-[15px] sm:text-[17px] text-center m-0 mb-6 sm:mb-8 max-w-[360px] sm:max-w-[420px] leading-[1.4] tracking-[-0.02em]">
+          <p className="text-[#f4f4f4] font-[family-name:var(--font-inter)] font-normal text-[15px] sm:text-[17px] text-center m-0 mb-6 sm:mb-8 max-w-[360px] sm:max-w-[420px] leading-[1.4] tracking-[-0.02em]">
             A growing range of smart safety products designed to work alongside the NAZR application, providing additional ways to stay prepared, connected, and supported.
           </p>
         </div>
@@ -412,7 +441,7 @@ export function SafetyDesigned() {
                 {item.id === "pepper-spray" && (
                   <>
                     <div className="absolute w-[95px] h-[90px] top-[-5px] left-[-30px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)' }}>
-                      <Image sizes="100px" src="/images/new9.webp" alt="sticker" fill className="object-contain hover:animate-[spin_4s_linear_infinite]" />
+                      <Image sizes="100px" src="/images/new9.webp" alt="sticker" fill className="object-contain" />
                     </div>
                     <div className="absolute w-[85px] h-[80px] top-[-10px] right-[-25px] z-30 pointer-events-none transition-all duration-500" style={{ opacity: isCenter ? 1 : 0, transform: isCenter ? 'scale(1)' : 'scale(0.2)', transitionDelay: isCenter ? '0.1s' : '0s' }}>
                       <Image sizes="90px" src="/images/new10.webp" alt="sticker" fill className="object-contain" />
@@ -468,24 +497,9 @@ export function SafetyDesigned() {
 
         {/* Mobile Text & Controls */}
         <div className="flex flex-col items-center gap-2 w-full px-2 text-center mt-3">
-          <h3
-            key={`m-title-${currentIndex}`}
-            ref={mobileTitleRef}
-            className="text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[36px] sm:text-[42px] leading-tight tracking-[-0.02em] uppercase m-0 text-center"
-          >
-            {carouselData[currentIndex].title}
-          </h3>
-
-          <div className="flex items-center justify-center gap-2.5">
-            <span className="text-[#FF0E97] font-bold text-[22px] tracking-tight">
-              {carouselData[currentIndex].salePrice}
-            </span>
-            <span className="line-through text-[#737373] text-[18px] font-normal">
-              {carouselData[currentIndex].originalPrice}
-            </span>
-          </div>
-
-          <div className="relative w-full max-w-[390px] flex items-center justify-center px-12 min-h-0 my-2">
+          
+          {/* Title & Price Row with Arrows on Left and Right */}
+          <div className="relative w-full max-w-[390px] flex items-center justify-center min-h-[58px]">
             <button
               onClick={handlePrev}
               className="absolute left-[4px] top-1/2 -translate-y-1/2 cursor-pointer hover:scale-105 active:scale-95 transition-transform outline-none z-10"
@@ -494,13 +508,24 @@ export function SafetyDesigned() {
               <Image unoptimized src="/images/buttonl.svg" width={42} height={42} alt="prev" className="w-[42px] h-[42px]" />
             </button>
 
-            <p
-              key={`m-sub-${currentIndex}`}
-              ref={mobileSubRef}
-              className="text-[#C8C8C8] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.5] max-w-[270px] sm:max-w-[300px]"
-            >
-              {carouselData[currentIndex].subtitle}
-            </p>
+            <div className="flex flex-col items-center gap-0">
+              <h3
+                key={`m-title-${currentIndex}`}
+                ref={mobileTitleRef}
+                className="text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[36px] sm:text-[42px] leading-tight tracking-[-0.02em] uppercase m-0 text-center"
+              >
+                {carouselData[currentIndex].title}
+              </h3>
+
+              <div className="flex items-center justify-center gap-2.5 -mt-1.5">
+                <span className="text-[#FF0E97] font-bold text-[22px] tracking-tight leading-tight">
+                  {carouselData[currentIndex].salePrice}
+                </span>
+                <span className="line-through text-[#737373] text-[18px] font-normal leading-tight">
+                  {carouselData[currentIndex].originalPrice}
+                </span>
+              </div>
+            </div>
 
             <button
               onClick={handleNext}
@@ -511,20 +536,29 @@ export function SafetyDesigned() {
             </button>
           </div>
 
+          {/* Subtitle below */}
+          <p
+            key={`m-sub-${currentIndex}`}
+            ref={mobileSubRef}
+            className="text-[#C8C8C8] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.5] max-w-[280px] sm:max-w-[320px] my-2"
+          >
+            {carouselData[currentIndex].subtitle}
+          </p>
+
           <div className="flex flex-col items-center justify-center gap-3 mt-3 w-full max-w-[280px]">
             <a
               href={(carouselData[currentIndex] as any).link || "https://shop.nazrco.in"}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleProductClick}
-              className="w-full flex items-center justify-center text-[#FFF1EB] bg-[#FF0E97] hover:bg-[#E00A85] px-5 py-3 rounded-[6px] text-[14px] font-medium tracking-wide shadow-sm active:scale-95 transition-all whitespace-nowrap cursor-pointer"
+              className="w-full flex items-center justify-center text-[#f4f4f4] bg-[#FF0E97] hover:bg-[#E00A85] px-5 py-3 rounded-[4px] font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] shadow-sm active:scale-95 transition-all whitespace-nowrap cursor-pointer"
             >
               Shop {carouselData[currentIndex].title}
             </a>
 
             <Link
               href="/shop"
-              className="w-full flex items-center justify-center text-[#FFF1EB] bg-[#161616] border border-[#404040] hover:border-white px-5 py-3 rounded-[6px] text-[14px] font-medium tracking-wide active:scale-95 transition-all whitespace-nowrap cursor-pointer"
+              className="w-full flex items-center justify-center text-[#f4f4f4] bg-[#161616] border border-[#404040] hover:border-white px-5 py-3 rounded-[4px] font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] active:scale-95 transition-all whitespace-nowrap cursor-pointer"
             >
               See all tools
             </Link>

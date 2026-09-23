@@ -41,10 +41,10 @@ export function AboutFeatures() {
   });
 
   return (
-    <section id="product-features-section" className="w-full bg-[#FFF1EB] max-md:pt-[50px] pt-6 pb-12 md:pt-10 md:pb-16 relative">
+    <section id="product-features-section" className="w-full bg-[#f4f4f4] max-md:pt-[50px] pt-6 pb-12 md:pt-10 md:pb-16 relative">
 
       {/* Top Heading Marquee */}
-      <div className="w-full mb-2 md:mb-3 overflow-hidden relative flex flex-col justify-center bg-[#FFF1EB] py-1">
+      <div className="w-full mb-2 md:mb-3 overflow-hidden relative flex flex-col justify-center bg-[#f4f4f4] py-1">
         <div className="flex w-max animate-marquee-reverse">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex items-center gap-4 md:gap-8 px-2 md:px-4 shrink-0">
@@ -170,7 +170,7 @@ function CardItem({
               flexShrink: 0,
               flexWrap: "nowrap",
             }}
-            className="group text-[#FFF1EB] hover:bg-[#FF0E97]/90 transition-colors shadow-lg max-md:w-auto md:w-auto px-4 h-[40px]"
+            className="group text-[#f4f4f4] hover:bg-[#FF0E97]/90 transition-colors shadow-lg max-md:w-auto md:w-auto px-4 h-[40px]"
           >
             <Image unoptimized quality={100} src="/images/logosvg.svg"
               alt="Nazr Logo"

@@ -18,11 +18,11 @@ export function ShieldModeSection() {
   };
 
   return (
-    <section className="w-full bg-[#161616] text-[#FFF9EB] pt-10 md:pt-14 pb-4 md:pb-6 relative z-50">
+    <section className="w-full bg-[#161616] text-[#f4f4f4] pt-10 md:pt-14 pb-4 md:pb-6 relative z-50">
       <div className="w-full max-w-[1440px] mx-auto flex flex-col px-4 md:px-[40px]">
         {/* Main Title */}
         <h2
-          className="m-0 text-[#FFF9EB] font-[family-name:var(--font-bebas)] font-normal text-[44px] md:text-[120px] leading-[90%] tracking-[-0.03em] uppercase text-left"
+          className="m-0 text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[44px] md:text-[120px] leading-[90%] tracking-[-0.03em] uppercase text-left"
           style={{
             fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
             fontWeight: 400,
@@ -37,7 +37,7 @@ export function ShieldModeSection() {
         {/* Subtitle row + Nav buttons */}
         <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-4 mt-2">
           <p
-            className="m-0 text-[#FFF9EB] font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-left max-w-[760px]"
+            className="m-0 text-[#f4f4f4] font-normal text-[16px] md:text-[20px] leading-[140%] tracking-[-0.03em] text-left max-w-[760px]"
             style={{
               fontFamily: "Switzer, var(--font-geist-sans), sans-serif",
               fontWeight: 400,

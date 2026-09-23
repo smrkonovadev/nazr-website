@@ -52,8 +52,8 @@ export function PrivacyPolicyContent() {
 
       {/* Privacy Policy Canvas Section */}
       <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
-        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px]">
-          <div className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] min-h-[900px] px-6 md:px-16 py-12 md:py-20 flex flex-col md:flex-row gap-12 md:gap-20">
+        <DesktopScaler bgColor="#f4f4f4" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px]">
+          <div className="w-full bg-[#f4f4f4] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] max-md:rounded-b-[9.71px] md:rounded-b-[26px] min-h-[900px] px-6 md:px-16 py-12 md:py-20 flex flex-col md:flex-row gap-12 md:gap-20">
 
             {/* Left Column: Table of Contents (Desktop Only) */}
             <div className="hidden md:flex md:w-[260px] shrink-0 md:sticky md:top-[120px] md:self-start flex-col gap-4 select-none max-h-[calc(100vh-180px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -64,7 +64,7 @@ export function PrivacyPolicyContent() {
               <div className="flex flex-col gap-1 items-start w-full">
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="bg-[#161616] text-[#FFF1EB] rounded-[4px] w-full py-3.5 px-4 text-[15px] font-semibold uppercase tracking-tight hover:opacity-90 transition-opacity mb-2 text-left"
+                  className="bg-[#161616] text-[#f4f4f4] rounded-[4px] w-full py-3.5 px-4 text-[15px] font-semibold uppercase tracking-tight hover:opacity-90 transition-opacity mb-2 text-left"
                 >
                   View all
                 </button>
@@ -111,7 +111,7 @@ export function PrivacyPolicyContent() {
                 <div className="flex items-center gap-3 overflow-x-auto w-full pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   <button
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                    className="bg-[#161616] text-[#FFF1EB] rounded-[4px] px-4 py-2 text-[14px] font-semibold uppercase tracking-tight shrink-0 hover:opacity-90 transition-opacity"
+                    className="bg-[#161616] text-[#f4f4f4] rounded-[4px] px-4 py-2 text-[14px] font-semibold uppercase tracking-tight shrink-0 hover:opacity-90 transition-opacity"
                   >
                     View all
                   </button>

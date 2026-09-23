@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
 import { ShopHero } from "@/components/ui/ShopHero";
-import { ProductScrollStack } from "@/components/shop/ProductScrollStack";
-import { ShopProblemSteps } from "@/components/ui/ShopProblemSteps";
-import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
+import { ShopProductsSection } from "@/components/shop/ShopProductsSection";
+import { WomenWhoStareBack } from "@/components/shop/WomenWhoStareBack";
+import { WhyNazrTimeline } from "@/components/shop/WhyNazrTimeline";
+import { ShopFaqSection } from "@/components/shop/ShopFaqSection";
+import { StareBackBundleBanner } from "@/components/shop/StareBackBundleBanner";
+import { AppBackupBanner } from "@/components/shop/AppBackupBanner";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
-
 
 export const metadata: Metadata = {
   title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
@@ -39,12 +41,13 @@ export default function ShopPage() {
   return (
     <>
       <main className="flex flex-col min-h-screen bg-[#161616] w-full">
+        {/* Navigation Bar */}
         <DesktopScaler>
           <Header />
         </DesktopScaler>
 
-        {/* The Beige Canvas Section */}
-        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
+        {/* The Beige Canvas Hero Section */}
+        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
           <DesktopScaler bgColor="#F1E4DE" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
             <div
               className="w-full bg-[#F1E4DE] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden max-md:min-h-0 md:min-h-[720px]"
@@ -54,26 +57,26 @@ export default function ShopPage() {
           </DesktopScaler>
         </section>
 
-        {/* Sticky Scroll Stack — outside clipped canvas so sticky works against window */}
-        <ProductScrollStack />
+        {/* 3 Product Showcase Cards */}
+        <ShopProductsSection />
 
-        {/* Problem Steps Section */}
-        <section className="w-full flex justify-center bg-[#FFF1EB]">
-          <DesktopScaler bgColor="#FFF1EB" className="w-full">
-            <div className="w-full bg-[#FFF1EB]">
-              <ShopProblemSteps />
-            </div>
-          </DesktopScaler>
-        </section>
+        {/* Women Who Stare Back Reviews Marquee Banner */}
+        <WomenWhoStareBack />
 
-        {/* Why NAZR In Their Words Section (Home page last section) */}
-        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
-          <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
-            <WhyNazrInTheirWordsSection />
-          </div>
-        </DesktopScaler>
+        {/* Why NAZR 24-Hour Safety Journey Timeline */}
+        <WhyNazrTimeline />
+
+        {/* Ask Us Anything FAQ Accordion */}
+        <ShopFaqSection />
+
+        {/* Stare Back Fully Equipped Bundle Banner */}
+        <StareBackBundleBanner />
+
+        {/* Your Tools Now With Backup App Banner */}
+        <AppBackupBanner />
       </main>
     </>
   );
 }
+
 
