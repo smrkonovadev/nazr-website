@@ -319,18 +319,25 @@ export function ShopHero() {
               </Link>
             </div>
 
-            <p
+            <div
               style={{
                 fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 400,
                 lineHeight: "150%",
-                letterSpacing: "0%",
+                letterSpacing: "0.2px",
                 color: "#F9DCE8",
               }}
-              className="mt-0.5 text-[8.5px] sm:text-[9.5px] md:text-[10px] text-[#F9DCE8]/80 leading-normal font-sans"
+              className="mt-0.5 flex flex-wrap items-center gap-x-2 sm:gap-x-2.5 text-[8.5px] sm:text-[9.5px] md:text-[10px] text-[#F9DCE8]/80 leading-normal font-sans"
             >
-              Delivery in 3 days · Free shipping · Secure checkout · Made in India
-            </p>
+              <span className="inline-flex items-center gap-1.5 shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00C853] inline-block shrink-0" />
+                5-day delivery
+              </span>
+              <span className="text-[#F9DCE8]/40">/</span>
+              <span>Discreet packaging</span>
+              <span className="text-[#F9DCE8]/40">/</span>
+              <span>Free shipping</span>
+            </div>
           </div>
         </div>
       </div>
