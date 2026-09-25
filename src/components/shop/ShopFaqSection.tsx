@@ -3,6 +3,6 @@
 import { AskUsAnythingSection } from "@/components/ui/AskUsAnythingSection";
 
 export function ShopFaqSection() {
-  return <AskUsAnythingSection />;
+  return <AskUsAnythingSection defaultCategory="PRODUCTS" />;
 }
 

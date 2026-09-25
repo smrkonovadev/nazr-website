@@ -16,6 +16,7 @@ const cardsData = [
       "Workshops, campus sessions, sparring nights and meetups.\nNext up: Delhi, 26 and 27 September.",
     link: "/events",
     buttonText: "See upcoming events",
+    disabled: false,
   },
   {
     id: 2,
@@ -27,6 +28,7 @@ const cardsData = [
       "Real women on how they move through their cities, and what helps.",
     link: "/blog",
     buttonText: "Read Their Stories",
+    disabled: true,
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ const cardsData = [
       "Our notes on moving through the city: tips, conversations, and what we're learning.",
     link: "/blog",
     buttonText: "Read Field Notes",
+    disabled: true,
   },
   {
     id: 4,
@@ -48,7 +51,8 @@ const cardsData = [
     description:
       "Events, drops and stories, straight to you. No spam.",
     link: "/blog",
-    buttonText: "Read Field Notes",
+    buttonText: "Join the community",
+    disabled: false,
   },
 ];
 
@@ -246,13 +250,24 @@ export function SafetyCommunitySection() {
                           </form>
                         ) : (
                           SHOW_CARD_BUTTONS && (
-                            <Link
-                              href={card.link}
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-4 py-2 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
-                            >
-                              {card.buttonText}
-                            </Link>
+                            card.disabled ? (
+                              <button
+                                type="button"
+                                disabled
+                                onClick={(e) => e.stopPropagation()}
+                                className="inline-flex items-center justify-center bg-[#555555] text-white/70 font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-4 py-2 rounded-[4px] shadow-sm whitespace-nowrap cursor-not-allowed"
+                              >
+                                {card.buttonText}
+                              </button>
+                            ) : (
+                              <Link
+                                href={card.link}
+                                onClick={(e) => e.stopPropagation()}
+                                className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-4 py-2 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
+                              >
+                                {card.buttonText}
+                              </Link>
+                            )
                           )
                         )}
                       </div>
@@ -364,13 +379,24 @@ export function SafetyCommunitySection() {
                             </form>
                           ) : (
                             SHOW_CARD_BUTTONS && (
-                              <Link
-                                href={card.link}
-                                onClick={(e) => e.stopPropagation()}
-                                className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-5 py-2.5 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
-                              >
-                                {card.buttonText}
-                              </Link>
+                              card.disabled ? (
+                                <button
+                                  type="button"
+                                  disabled
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="inline-flex items-center justify-center bg-[#555555] text-white/70 font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-5 py-2.5 rounded-[4px] shadow-sm whitespace-nowrap cursor-not-allowed"
+                                >
+                                  {card.buttonText}
+                                </button>
+                              ) : (
+                                <Link
+                                  href={card.link}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="inline-flex items-center justify-center bg-[#FF0E97] hover:bg-[#e00b84] text-white font-[family-name:var(--font-roboto)] text-[16px] font-normal leading-[150%] tracking-[0px] px-5 py-2.5 rounded-[4px] shadow-lg transition-colors whitespace-nowrap"
+                                >
+                                  {card.buttonText}
+                                </Link>
+                              )
                             )
                           )}
                         </div>

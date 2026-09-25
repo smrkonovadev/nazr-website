@@ -216,24 +216,24 @@ export function HowSosWorksSection() {
           </p>
 
           {/* 3 Trigger Method Pills */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 mt-[16px] w-full max-w-[340px] sm:max-w-none">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mt-3 sm:mt-4 w-full max-w-[280px] sm:max-w-none">
             {triggerMethods.map((method, idx) => (
               <div
                 key={idx}
-                className="w-full sm:w-auto flex items-center justify-start sm:justify-center gap-2.5 px-5 py-2.5 sm:py-2 rounded-full bg-[#161215] border border-[#E6007E] text-[#FFF1EB] shadow-[0_0_15px_rgba(230,0,126,0.15)] transition-transform hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-1.5 rounded-full bg-[#161215] border border-[#E6007E]/70 text-[#FFF1EB] shadow-[0_0_10px_rgba(230,0,126,0.12)] transition-transform hover:scale-105"
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
                   fontStyle: "normal",
-                  fontSize: "16px",
-                  lineHeight: "20px",
+                  fontSize: "13px",
+                  lineHeight: "18px",
                   letterSpacing: "0px",
                   textAlign: "center",
                   verticalAlign: "middle",
                 }}
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-[#E6007E] shrink-0 shadow-[0_0_8px_#E6007E]" />
-                <span>{method}</span>
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#E6007E] shrink-0 shadow-[0_0_6px_#E6007E]" />
+                <span className="whitespace-nowrap">{method}</span>
               </div>
             ))}
           </div>
@@ -268,7 +268,7 @@ export function HowSosWorksSection() {
 
                     {/* Step Title in Bebas Neue */}
                     <h3
-                      className="m-0 text-white uppercase text-[24px] leading-[30px] tracking-[0.6px]"
+                      className="m-0 text-white uppercase text-[19px] sm:text-[21px] leading-[25px] tracking-[0.4px] whitespace-nowrap"
                       style={{
                         fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                         fontWeight: 400,
@@ -521,7 +521,7 @@ export function HowSosWorksSection() {
                   className="w-[293.5px] min-h-[147.75px] flex flex-col items-center text-center shrink-0 cursor-pointer group"
                 >
                   <h3
-                    className={`m-0 uppercase text-center min-h-[42.75px] flex items-center justify-center transition-all duration-300 ${isActive
+                    className={`m-0 uppercase text-center min-h-[28px] whitespace-nowrap flex items-center justify-center transition-all duration-300 ${isActive
                       ? "text-white scale-102"
                       : "text-white/40 group-hover:text-white/80"
                       }`}
@@ -529,9 +529,9 @@ export function HowSosWorksSection() {
                       fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                       fontWeight: 400,
                       fontStyle: "normal",
-                      fontSize: "30px",
-                      lineHeight: "36px",
-                      letterSpacing: "0.75px",
+                      fontSize: "20px",
+                      lineHeight: "26px",
+                      letterSpacing: "0.5px",
                       textAlign: "center",
                       verticalAlign: "middle",
                     }}

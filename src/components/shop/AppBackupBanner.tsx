@@ -6,13 +6,13 @@ import DynamicDotLottie from "@/components/lottie/DynamicDotLottie";
 
 export function AppBackupBanner() {
   return (
-    <section className="w-full bg-[#2e5bff] text-white pt-8 sm:pt-10 md:pt-16 lg:pt-20 xl:pt-24 pb-0 px-5 sm:px-8 md:px-12 lg:px-16 flex justify-center max-md:rounded-b-[9.71px] md:rounded-b-[26px] relative z-10 select-none overflow-hidden min-h-[460px] md:min-h-[580px] lg:min-h-[640px] xl:min-h-[680px]">
-      <div className="w-full max-w-[1240px] flex flex-col md:flex-row items-center md:items-stretch justify-between gap-6 md:gap-10 lg:gap-12">
+    <section className="w-full bg-[#2e5bff] text-white pt-8 sm:pt-10 md:pt-14 lg:pt-16 pb-8 sm:pb-10 md:pb-12 lg:pb-14 px-5 sm:px-8 md:px-12 lg:px-16 flex justify-center max-md:rounded-b-[9.71px] md:rounded-b-[26px] relative z-10 select-none overflow-hidden min-h-[460px] md:min-h-[560px] lg:min-h-[620px]">
+      <div className="w-full max-w-[1240px] flex flex-col md:flex-row items-center md:items-center justify-between gap-6 md:gap-10 lg:gap-12">
         {/* Left: Phone UI & Floating Stickers */}
-        <div className="w-full md:w-[48%] lg:w-[50%] flex justify-center items-end self-end relative order-2 md:order-1 mt-6 md:mt-0">
-          <div className="relative w-[300px] sm:w-[350px] md:w-[440px] lg:w-[500px] xl:w-[540px] h-[460px] sm:h-[530px] md:h-[640px] lg:h-[720px] xl:h-[780px] -mb-10 sm:-mb-16 md:-mb-24 lg:-mb-28 xl:-mb-32 flex items-center justify-center -translate-y-8 md:-translate-y-14 lg:-translate-y-20">
+        <div className="w-full md:w-[48%] lg:w-[50%] flex justify-center items-center relative order-2 md:order-1 mt-6 md:mt-0">
+          <div className="relative w-[300px] sm:w-[350px] md:w-[420px] lg:w-[480px] xl:w-[520px] h-[440px] sm:h-[500px] md:h-[580px] lg:h-[640px] xl:h-[680px] flex items-center justify-center">
             {/* Floating Globe Sticker */}
-            <div className="absolute top-2 sm:top-4 md:top-6 left-2 sm:left-4 md:left-6 w-14 sm:w-16 md:w-20 lg:w-22 h-14 sm:h-16 md:h-20 lg:h-22 z-20 pointer-events-none transform -rotate-12">
+            <div className="absolute top-3 sm:top-5 md:top-7 lg:top-8 left-8 sm:left-11 md:left-14 lg:left-16 w-[70px] sm:w-[84px] md:w-[98px] lg:w-[108px] h-[70px] sm:h-[84px] md:h-[98px] lg:h-[108px] z-20 pointer-events-none transform -rotate-12">
               <Image
                 src="/images/globe.webp"
                 alt="Global Network"
@@ -43,13 +43,13 @@ export function AppBackupBanner() {
 
             {/* Center Phone Mockup with Default SOS Lottie */}
             <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
-              <div className="w-[260px] sm:w-[300px] md:w-[380px] lg:w-[440px] xl:w-[480px] h-[400px] sm:h-[470px] md:h-[580px] lg:h-[660px] xl:h-[720px] relative">
+              <div className="w-[260px] sm:w-[300px] md:w-[360px] lg:w-[410px] xl:w-[450px] h-[390px] sm:h-[450px] md:h-[520px] lg:h-[570px] xl:h-[610px] relative flex items-center justify-center">
                 <DynamicDotLottie
                   src="/lottie/homepage/sos_default.lottie"
                   isActive={true}
                   fallbackImage="/images/new8.webp"
                   fallbackAlt="NAZR SOS App Interface"
-                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.35] md:scale-[2.45] transform-gpu"
+                  className="w-full h-full object-contain drop-shadow-2xl scale-[2.05] md:scale-[2.1] transform-gpu"
                 />
               </div>
             </div>
@@ -109,10 +109,6 @@ export function AppBackupBanner() {
                   <span className="text-[12px] sm:text-[13px] font-semibold leading-tight font-sans text-white">Google Play</span>
                 </div>
               </a>
-            </div>
-
-            <div className="text-center pt-0.5 text-[11px] sm:text-[11.5px] font-medium text-white/80 tracking-wide">
-              Safe &amp; Verified · 100% Free on iOS &amp; Android
             </div>
           </div>
         </div>

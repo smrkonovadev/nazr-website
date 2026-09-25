@@ -543,25 +543,28 @@ export function TrustedCircleSection() {
                 <div
                   key={index}
                   onClick={() => handleCardClick(index)}
-                  className={`cursor-pointer rounded-[18px] p-6 transition-all duration-300 ${
+                  className={`cursor-pointer rounded-[22px] md:rounded-[24px] p-5 md:p-6 transition-all duration-300 ${
                     isActive
-                      ? "bg-[#131313] border-[1.5px] border-[#E6007E] shadow-[0_0_22px_rgba(230,0,126,0.18)]"
-                      : "bg-[#111111] border border-[#222222] hover:border-[#333333]"
+                      ? "bg-[#1A1A1A] border-[1.5px] border-[#FF0E97] shadow-[0_0_22px_rgba(255,14,151,0.18)]"
+                      : "bg-[#1A1A1A] border border-[#2B2B2B] hover:border-[#383838]"
                   }`}
                 >
                   <h3
-                    className="m-0 text-[26px] md:text-[28px] leading-tight transition-colors duration-200 flex items-center"
+                    className="m-0 text-[26px] md:text-[28px] leading-tight transition-colors duration-200 flex items-center text-[#f4f4f4]"
                     style={{
                       fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
-                      color: isActive ? "#FFFFFF" : "#D4D4D4",
                     }}
                   >
-                    <span>{card.number}</span>
-                    <span className="mx-2 text-[20px] leading-none select-none">·</span>
-                    <span>{card.title}</span>
+                    <span className="text-[#FF0E97]">{card.number}</span>
+                    <span className="mx-2 text-[#FF0E97] text-[18px] leading-none select-none">·</span>
+                    <span className={isActive ? "text-white" : "text-[#f4f4f4]"}>{card.title}</span>
                   </h3>
 
-                  <p className="m-0 mt-2.5 text-[#9E9E9E] text-[14px] md:text-[14.5px] leading-[22px] font-normal font-[family-name:var(--font-inter)]">
+                  <div className="w-full h-[1px] bg-[#2E2E2E] my-3 md:my-3.5" />
+
+                  <p className={`m-0 text-[13.5px] md:text-[14px] leading-[1.45] font-normal font-[family-name:var(--font-inter)] transition-colors duration-300 ${
+                    isActive ? "text-[#E5E5E5]" : "text-[#C4C4C4]"
+                  }`}>
                     {card.description}
                   </p>
                 </div>
@@ -590,25 +593,28 @@ export function TrustedCircleSection() {
                       mobileCardRefs.current[index] = el;
                     }}
                     onClick={() => handleMobileCardTap(index)}
-                    className={`w-[85vw] max-w-[340px] shrink-0 snap-center p-5 sm:p-6 rounded-[18px] transition-all cursor-pointer select-none ${
+                    className={`w-[85vw] max-w-[340px] shrink-0 snap-center p-5 sm:p-6 rounded-[22px] transition-all cursor-pointer select-none ${
                       isActive
-                        ? "bg-[#131313] border-[1.5px] border-[#E6007E] shadow-[0_0_22px_rgba(230,0,126,0.18)]"
-                        : "bg-[#111111] border border-[#222222]"
+                        ? "bg-[#1A1A1A] border-[1.5px] border-[#FF0E97] shadow-[0_0_22px_rgba(255,14,151,0.18)]"
+                        : "bg-[#1A1A1A] border border-[#2B2B2B]"
                     }`}
                   >
                     <h3
-                      className="m-0 text-[24px] sm:text-[26px] leading-tight transition-colors duration-200 flex items-center"
+                      className="m-0 text-[24px] sm:text-[26px] leading-tight transition-colors duration-200 flex items-center text-[#f4f4f4]"
                       style={{
                         fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
-                        color: isActive ? "#FFFFFF" : "#D4D4D4",
                       }}
                     >
-                      <span>{card.number}</span>
-                      <span className="mx-2 text-[20px] leading-none select-none">·</span>
-                      <span>{card.title}</span>
+                      <span className="text-[#FF0E97]">{card.number}</span>
+                      <span className="mx-2 text-[#FF0E97] text-[18px] leading-none select-none">·</span>
+                      <span className={isActive ? "text-white" : "text-[#f4f4f4]"}>{card.title}</span>
                     </h3>
 
-                    <p className="m-0 mt-2.5 text-[#9E9E9E] text-[14px] leading-[22px] font-normal font-[family-name:var(--font-inter)]">
+                    <div className="w-full h-[1px] bg-[#2E2E2E] my-3" />
+
+                    <p className={`m-0 text-[13.5px] leading-[1.45] font-normal font-[family-name:var(--font-inter)] transition-colors duration-300 ${
+                      isActive ? "text-[#E5E5E5]" : "text-[#C4C4C4]"
+                    }`}>
                       {card.description}
                     </p>
                   </div>
@@ -616,36 +622,40 @@ export function TrustedCircleSection() {
               })}
             </div>
 
-            {/* Pagination Indicators for Mobile Carousel */}
-            <div className="flex items-center justify-center gap-2 mt-3">
+            {/* Pagination Indicators for Mobile Carousel (matching SafetyHabits style) */}
+            <div className="flex items-center justify-center gap-[6px] mt-2.5 sm:mt-3">
               {featureCards.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleMobileCardTap(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    activeCard === idx
-                      ? "w-6 bg-[#E6007E] shadow-[0_0_8px_#E6007E]"
-                      : "w-2 bg-[#333333] hover:bg-[#555555]"
-                  }`}
+                  className="p-0 focus:outline-none cursor-pointer"
                   aria-label={`Go to slide ${idx + 1}`}
-                />
+                >
+                  <div
+                    className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${
+                      activeCard === idx
+                        ? "bg-[#FF0E97] border-[0.3px] border-[#FF0E97]"
+                        : "bg-transparent border-[0.3px] border-[#FF0E97]"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>
         </div>
 
         {/* Footer Row: Dual Pills + App Store & Google Play Badges */}
-        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 mt-12 md:mt-16 pt-2">
-          {/* Left: Two Info Pills */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            <div className="rounded-full px-5 py-2.5 bg-[#121212] border border-[#521336] shadow-sm">
-              <span className="text-[#D4D4D4] font-normal text-[13px] md:text-[13.5px] leading-none font-[family-name:var(--font-inter)]">
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4 mt-3 sm:mt-4 md:mt-5 pt-0">
+          {/* Left: Two Info Pills (Center aligned on mobile) */}
+          <div className="w-full lg:w-auto flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3 text-center">
+            <div className="w-full sm:w-auto rounded-full px-5 py-2.5 bg-[#121212] border border-[#521336] shadow-sm flex items-center justify-center text-center">
+              <span className="text-[#D4D4D4] font-normal text-[13px] md:text-[13.5px] leading-snug text-center font-[family-name:var(--font-inter)]">
                 They can trigger SOS for you, remotely
               </span>
             </div>
 
-            <div className="rounded-full px-5 py-2.5 bg-[#121212] border border-[#521336] shadow-sm">
-              <span className="text-[#D4D4D4] font-normal text-[13px] md:text-[13.5px] leading-none font-[family-name:var(--font-inter)]">
+            <div className="w-full sm:w-auto rounded-full px-5 py-2.5 bg-[#121212] border border-[#521336] shadow-sm flex items-center justify-center text-center">
+              <span className="text-[#D4D4D4] font-normal text-[13px] md:text-[13.5px] leading-snug text-center font-[family-name:var(--font-inter)]">
                 They see your location only during SOS, or Shield Mode if you choose
               </span>
             </div>

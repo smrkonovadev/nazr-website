@@ -41,7 +41,7 @@ export const carouselData = [
     originalPrice: "₹1111",
     price: 999,
     subtitle: "On Me and Sip Check together, for both your bag and your night out. Save ₹443 when you carry both.",
-    mobileSubtitle: "On Me and Sip Check together, for both your bag and your night out. Save ₹443 when you carry both.",
+    mobileSubtitle: "On Me and Sip Check together, for both your bag and your night out.\nSave ₹443 when you carry both.",
     primaryButtonText: "Shop NAZR 360°",
     link: "https://shop.nazrco.in/products/bundle",
     name: "NAZR 360° Bundle Pack"
@@ -540,9 +540,9 @@ export function SafetyDesigned() {
           <p
             key={`m-sub-${currentIndex}`}
             ref={mobileSubRef}
-            className="text-[#C8C8C8] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.5] max-w-[280px] sm:max-w-[320px] my-2"
+            className="text-[#C8C8C8] font-['Inter',_sans-serif] font-normal text-[14px] text-center m-0 leading-[1.5] max-w-[280px] sm:max-w-[320px] my-2 whitespace-pre-line"
           >
-            {carouselData[currentIndex].subtitle}
+            {carouselData[currentIndex].mobileSubtitle || carouselData[currentIndex].subtitle}
           </p>
 
           <div className="flex flex-col items-center justify-center gap-3 mt-3 w-full max-w-[280px]">

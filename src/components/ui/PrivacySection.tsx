@@ -205,7 +205,7 @@ export function PrivacySection() {
                 }}
               >
                 <span className="text-white block">THE RIGHT NUMBER,</span>
-                <span className="text-[#3F3F46] block">ALWAYS ON HAND.</span>
+                <span className="text-[#9E9E9E] block">ALWAYS ON HAND.</span>
               </h3>
 
               <p
@@ -213,7 +213,24 @@ export function PrivacySection() {
                 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
               >
                 Verified helplines, saved in the app.{" "}
-                <span className="text-white font-medium">[Tap to call.]</span>
+                <a
+                  href="https://apps.apple.com/in/app/nazr-women-safety-app/id6787188929"
+                  onClick={(e) => {
+                    if (typeof navigator !== "undefined" && /android/i.test(navigator.userAgent)) {
+                      e.preventDefault();
+                      window.open(
+                        "https://play.google.com/store/apps/details?id=com.nazr.app",
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    }
+                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-medium underline underline-offset-4 hover:text-[#FF0E97] transition-colors cursor-pointer inline-block"
+                >
+                  [Tap to download]
+                </a>
               </p>
             </div>
 

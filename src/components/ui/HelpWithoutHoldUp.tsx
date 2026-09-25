@@ -213,9 +213,6 @@ export function HelpWithoutHoldUp() {
                     <p className="font-['Inter',_sans-serif] font-normal text-[#404040] text-[14px] leading-[1.4] m-0">
                       {item.description}
                     </p>
-
-                    {/* Bottom Divider Line */}
-                    <div className="w-full h-[1px] bg-[#161616]/15 mt-5" />
                   </div>
                 </div>
               ))}

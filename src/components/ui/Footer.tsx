@@ -116,14 +116,14 @@ export function Footer() {
               <span className="font-[family-name:var(--font-bebas)] text-[18px] sm:text-[20px] md:text-[22px] tracking-wide text-[#f4f4f4] uppercase mb-1">
                 NAZR
               </span>
-              <Link href="/about" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
-                About us
+              <Link href="/" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
+                Homepage
               </Link>
               <Link href="/nazrapp" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
-                The app
+                Get the NAZR App
               </Link>
-              <Link href="/events" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
-                Events
+              <Link href="/shop" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
+                The Tools
               </Link>
               <Link href="/blog" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
                 Field Notes

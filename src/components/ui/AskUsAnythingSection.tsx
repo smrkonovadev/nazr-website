@@ -230,12 +230,22 @@ const FAQ_DATA: FaqItem[] = [
 const CATEGORIES = ["PRODUCTS", "THE APP", "ORDERS", "ABOUT"] as const;
 type CategoryType = (typeof CATEGORIES)[number];
 
-export function AskUsAnythingSection() {
-  const [selectedCategory, setSelectedCategory] = useState<CategoryType>("PRODUCTS");
+export interface AskUsAnythingProps {
+  defaultCategory?: CategoryType;
+  defaultOpenId?: string;
+}
+
+export function AskUsAnythingSection({
+  defaultCategory = "THE APP",
+  defaultOpenId,
+}: AskUsAnythingProps = {}) {
+  const [selectedCategory, setSelectedCategory] = useState<CategoryType>(defaultCategory);
   const [searchQuery, setSearchQuery] = useState("");
-  // Default first item ("Is pepper spray legal to carry in India?") open as in Image
+  // Default first item for the chosen category
+  const initialOpenId =
+    defaultOpenId || (defaultCategory === "THE APP" ? "is-app-free" : "pepper-spray-legal");
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({
-    "pepper-spray-legal": true,
+    [initialOpenId]: true,
   });
 
   const toggleItem = (id: string) => {

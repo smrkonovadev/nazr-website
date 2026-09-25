@@ -629,43 +629,33 @@ export function ShieldModeFeatures() {
 
         {/* Mobile / Tablet Responsive Layout (< 1024px) */}
         <div className="lg:hidden flex flex-col items-center w-full mt-8 gap-8">
-          {/* Phone Display with Swipable Lottie Carousel (< 1024px) */}
+          {/* Phone Display (< 1024px) - Graphic stays in place while active animation plays in place */}
           <div
-            className="flex items-center justify-center relative w-full h-[360px] touch-pan-y select-none"
-            onTouchStart={handleJsonTouchStart}
-            onTouchMove={handleJsonTouchMove}
-            onTouchEnd={handleJsonTouchEnd}
-            onMouseDown={handleJsonMouseDown}
-            onMouseMove={handleJsonMouseMove}
-            onMouseUp={handleJsonMouseUp}
-            onMouseLeave={handleJsonMouseUp}
+            onClick={() => handleStepClick((activeStep + 1) % steps.length)}
+            className="flex items-center justify-center relative w-full h-[360px] select-none cursor-pointer"
+            title="Click to advance Shield Mode step"
           >
             <div className="w-[280px] h-[240px] rounded-full bg-[#350B24] absolute shadow-xl pointer-events-none" />
-            <div className="relative z-10 w-[300px] h-[340px] overflow-hidden flex items-center cursor-grab active:cursor-grabbing">
-              <div
-                className={`flex w-full h-full ${
-                  isJsonDragging ? "" : "transition-transform duration-500 ease-out"
-                }`}
-                style={{
-                  transform: `translateX(calc(-${activeStep * 100}% + ${jsonDragOffset}px))`,
-                }}
-              >
-                {steps.map((step, idx) => (
-                  <div
-                    key={idx}
-                    className="w-[300px] h-[340px] shrink-0 flex items-center justify-center pointer-events-none"
-                  >
-                    {animationDataMap[idx] && (
-                      <StepLottie
-                        animationData={animationDataMap[idx]}
-                        isActive={activeStep === idx}
-                        playTrigger={playTrigger}
-                        onComplete={handleStepComplete}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
+            <div className="relative z-10 w-[300px] h-[340px] flex items-center justify-center">
+              {steps.map((step, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${
+                    activeStep === idx
+                      ? "opacity-100 pointer-events-auto z-10"
+                      : "opacity-0 pointer-events-none z-0"
+                  }`}
+                >
+                  {animationDataMap[idx] && (
+                    <StepLottie
+                      animationData={animationDataMap[idx]}
+                      isActive={activeStep === idx}
+                      playTrigger={playTrigger}
+                      onComplete={handleStepComplete}
+                    />
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -690,26 +680,19 @@ export function ShieldModeFeatures() {
                       cardRefs.current[index] = el;
                     }}
                     onClick={() => handleCardTap(index)}
-                    className={`w-[85vw] max-w-[340px] shrink-0 snap-center p-5 rounded-[20px] transition-all cursor-pointer select-none ${
+                    className={`w-[85vw] max-w-[340px] shrink-0 snap-center p-5 rounded-[22px] transition-all cursor-pointer select-none ${
                       isActive
-                        ? "bg-[#131313] border-[1.5px] border-[#E6007E] shadow-[0_0_22px_rgba(230,0,126,0.18)]"
-                        : "bg-[#111111] border border-[#222222] opacity-75 hover:opacity-100"
+                        ? "bg-[#1A1A1A] border-[1.5px] border-[#E6007E] shadow-[0_0_22px_rgba(230,0,126,0.18)]"
+                        : "bg-[#1A1A1A] border border-[#2B2B2B] opacity-80 hover:opacity-100"
                     }`}
                   >
-                    <div className="flex items-center gap-2 mb-1.5">
+                    <div className="flex items-center mb-1.5">
                       <span
                         className="text-[#E6007E] text-[24px] leading-none"
                         style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
                       >
                         {step.number}
                       </span>
-                      <span
-                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                          isActive
-                            ? "bg-[#E6007E] shadow-[0_0_8px_#E6007E] opacity-100 scale-100"
-                            : "bg-[#E6007E]/40 opacity-40 scale-75"
-                        }`}
-                      />
                     </div>
                     <h3
                       className="m-0 text-[26px] leading-tight transition-colors duration-300"
@@ -720,7 +703,8 @@ export function ShieldModeFeatures() {
                     >
                       {step.title}
                     </h3>
-                    <p className="m-0 mt-2 text-[#9E9E9E] text-[14px] leading-[21px] font-normal font-[family-name:var(--font-inter)]">
+                    <div className="w-full h-[1px] bg-[#2E2E2E] my-3" />
+                    <p className="m-0 text-[#C4C4C4] text-[13.5px] leading-[20px] font-normal font-[family-name:var(--font-inter)]">
                       {step.description}
                     </p>
                   </div>
@@ -729,18 +713,22 @@ export function ShieldModeFeatures() {
             </div>
 
             {/* Pagination Indicators for Mobile Carousel */}
-            <div className="flex items-center justify-center gap-2 mt-4">
+            <div className="flex items-center justify-center gap-[6px] mt-4">
               {steps.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleCardTap(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    activeStep === idx
-                      ? "w-6 bg-[#E6007E] shadow-[0_0_8px_#E6007E]"
-                      : "w-2 bg-[#333333] hover:bg-[#555555]"
-                  }`}
+                  className="p-0 focus:outline-none cursor-pointer"
                   aria-label={`Go to step ${idx + 1}`}
-                />
+                >
+                  <div
+                    className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${
+                      activeStep === idx
+                        ? "bg-[#E6007E] border-[0.3px] border-[#E6007E]"
+                        : "bg-transparent border-[0.3px] border-[#E6007E]"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>

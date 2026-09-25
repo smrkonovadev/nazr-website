@@ -1,268 +1,305 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface HeroCard {
+interface ShoppageHeroImage {
   id: number;
-  label: string;
-  sublabel?: string;
-  image: string;
+  src: string;
+  alt: string;
   badge?: string;
   href: string;
-  isProduct?: boolean;
 }
 
-const CARDS: HeroCard[] = [
+const HERO_IMAGES: ShoppageHeroImage[] = [
   {
     id: 1,
-    label: "ON ME",
-    sublabel: "Safety Pepper Spray",
-    image: "/images/shop/shop-1.png",
-    href: "#on-me-spray",
-    isProduct: true,
+    src: "/shoppagehero/111.webp",
+    alt: "NAZR Night Out & Community",
+    badge: "Always on you",
+    href: "#bundle-pack",
   },
   {
     id: 2,
-    label: "SIP CHECK",
-    sublabel: "Drink Spike Detector",
-    image: "/images/shop/shop-3.png",
-    href: "#sip-check",
-    isProduct: true,
+    src: "/shoppagehero/222.webp",
+    alt: "NAZR On Me Pepper Spray",
+    badge: "Discreet & Ready",
+    href: "#on-me-spray",
   },
   {
     id: 3,
-    label: "THE BUNDLE",
-    sublabel: "Complete 360 Kit",
-    image: "/images/shop/shop-2.png",
+    src: "/shoppagehero/333.webp",
+    alt: "NAZR Quick Clip Alarm",
+    badge: "Instant Reach",
     href: "#bundle-pack",
-    isProduct: true,
   },
   {
     id: 4,
-    label: "Everyday Carry",
-    image: "/images/shop/hero-carousel/card-4.webp",
+    src: "/shoppagehero/444.webp",
+    alt: "NAZR Everyday Carry Kit",
     badge: "One tool, all our secrets",
     href: "#bundle-pack",
   },
   {
     id: 5,
-    label: "Safety Kit Box",
-    image: "/images/shop/hero-carousel/card-5.webp",
+    src: "/shoppagehero/555.webp",
+    alt: "NAZR Safety Kit Box",
+    badge: "Complete 360 Kit",
     href: "#bundle-pack",
   },
   {
     id: 6,
-    label: "NAZR Streetwear",
-    image: "/images/shop/hero-carousel/card-6.webp",
+    src: "/shoppagehero/666.webp",
+    alt: "NAZR Streetwear Apparel",
+    badge: "Wear The Confidence",
     href: "#on-me-spray",
-  },
-  {
-    id: 7,
-    label: "Night Out Glow",
-    image: "/images/shop/hero-carousel/card-7.webp",
-    href: "#bundle-pack",
   },
 ];
 
+// Repeating tracks for endless marquee sliding
+const REPEATS = 7;
+const TOTAL_CARDS = Array.from({ length: REPEATS }, () => HERO_IMAGES).flat();
+
 export function ShopHero() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(4); // Default 04 as shown in user reference
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    const maxScroll = scrollWidth - clientWidth;
-    if (maxScroll <= 0) return;
+  // Responsive layout: exactly 5 cards in view spanning the container edge-to-edge
+  const [containerWidth, setContainerWidth] = useState(1376);
 
-    const scrollRatio = scrollLeft / maxScroll;
-    const index = Math.min(
-      CARDS.length,
-      Math.max(1, Math.round(scrollRatio * (CARDS.length - 1)) + 1)
-    );
-    setActiveIndex(index);
+  // Initial index set to the 4th image (444.webp: "One tool, all our secrets") in the middle set
+  const initialIndex = 3 * HERO_IMAGES.length + 3;
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [isPaused, setIsPaused] = useState(false);
+  const [enableTransition, setEnableTransition] = useState(true);
+
+  // Track container width via ResizeObserver
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const w = containerRef.current.clientWidth;
+        if (w > 0) setContainerWidth(w);
+      }
+    };
+    updateWidth();
+
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.contentRect.width > 0) {
+          setContainerWidth(entry.contentRect.width);
+        }
+      }
+    });
+    ro.observe(containerRef.current);
+    return () => ro.disconnect();
+  }, []);
+
+  // Responsive layout: 3 cards in view on mobile (<640px), 5 cards on tablet/desktop (>=640px)
+  const cardsInView = containerWidth < 640 ? 3 : 5;
+  const gap = containerWidth >= 1024 ? 18 : containerWidth >= 768 ? 14 : 10;
+  const cardWidth = Math.max(
+    80,
+    Math.floor((containerWidth - (cardsInView - 1) * gap) / cardsInView)
+  );
+
+  // Marquee auto-sliding: advances every 3.2 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => prev + 1);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  // Seamless infinite loop normalization
+  useEffect(() => {
+    if (currentIndex >= (REPEATS - 2) * HERO_IMAGES.length) {
+      const timer = setTimeout(() => {
+        setEnableTransition(false);
+        setCurrentIndex((prev) => prev - 2 * HERO_IMAGES.length);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setEnableTransition(true);
+          });
+        });
+      }, 650);
+      return () => clearTimeout(timer);
+    } else if (currentIndex < HERO_IMAGES.length) {
+      const timer = setTimeout(() => {
+        setEnableTransition(false);
+        setCurrentIndex((prev) => prev + 2 * HERO_IMAGES.length);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setEnableTransition(true);
+          });
+        });
+      }, 650);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex]);
+
+  // Which of the 6 images is currently in the center/longer position
+  const activeImageIndex =
+    ((currentIndex % HERO_IMAGES.length) + HERO_IMAGES.length) %
+    HERO_IMAGES.length;
+
+  const touchStartX = useRef<number | null>(null);
+
+  // Touch event handlers for mobile gesture navigation
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsPaused(true);
   };
 
-  const scrollPrev = () => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: -220, behavior: "smooth" });
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        setCurrentIndex((prev) => prev - 1);
+      } else {
+        setCurrentIndex((prev) => prev + 1);
+      }
+    }
+    touchStartX.current = null;
+    setIsPaused(false);
   };
 
-  const scrollNext = () => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: 220, behavior: "smooth" });
-  };
+  // Precise offset so the card at `currentIndex` is dead-center
+  const translateX =
+    containerWidth / 2 -
+    (currentIndex * (cardWidth + gap) + cardWidth / 2);
 
   return (
-    <section className="relative w-full bg-[#5A002F] text-[#FFF9FC] overflow-hidden select-none">
-      {/* Background Hands Image with Wine Duotone / Luminosity Overlay */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <Image
-          src="/images/hands.png"
-          alt="NAZR Stare Back background"
-          fill
-          priority
-          className="object-cover object-center opacity-25 mix-blend-luminosity brightness-90 contrast-125"
-        />
-        {/* Soft Duotone Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#5A002F]/85 via-[#5A002F]/70 to-[#430023]/95" />
+    <section className="relative w-full min-h-[calc(100dvh-60px)] md:min-h-[calc(100vh-80px)] bg-[#5A002F] text-[#FFF9FC] overflow-hidden select-none flex flex-col justify-between">
+      {/* Background Images Layer: Dynamically matches the active/longer card with a smooth fade */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {HERO_IMAGES.map((img, idx) => (
+          <div
+            key={img.src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              idx === activeImageIndex ? "opacity-60" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              priority={idx === 3}
+              className="object-cover object-center mix-blend-luminosity brightness-105 contrast-110 scale-105 transition-transform duration-1000"
+            />
+          </div>
+        ))}
+        {/* Transparent Soft Duotone Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#5A002F]/55 via-[#5A002F]/40 to-[#430023]/70" />
       </div>
 
-      {/* Main Content Area: padding 32px, gap 24px, max-w 1440 */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[32px] pt-10 pb-10 md:pt-14 md:pb-12 flex flex-col gap-[24px]">
-        
-        {/* Eyebrow & Headline Block */}
+      {/* Main Content Area: Fills the screen with balanced top, middle, and bottom sections */}
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] pt-4 pb-6 sm:pt-6 sm:pb-8 md:pt-10 md:pb-10 flex flex-col justify-between flex-1 gap-[12px] sm:gap-[16px] md:gap-[20px]">
+        {/* Headline Block (Eyebrow and Subtitle removed as requested) */}
         <div className="flex flex-col items-start max-w-4xl">
-          {/* Eyebrow */}
-          <span
-            style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 500,
-              fontSize: "11px",
-              lineHeight: "100%",
-              letterSpacing: "0.8em",
-              color: "#FFF9FC",
-              textTransform: "uppercase",
-            }}
-            className="mb-3 md:mb-4 block"
-          >
-            ON ME · SIP CHECK · THE BUNDLE
-          </span>
-
-          {/* Headline */}
           <h1
             style={{
               fontFamily: "var(--font-bebas), sans-serif",
               fontWeight: 400,
-              lineHeight: "93%",
+              lineHeight: "92%",
               letterSpacing: "-0.035em",
               color: "#FFF9FC",
             }}
-            className="text-[46px] sm:text-[62px] md:text-[76px] uppercase drop-shadow-sm mb-3 md:mb-4"
+            className="text-[38px] sm:text-[56px] md:text-[76px] uppercase drop-shadow-sm mb-1"
           >
             STARE BACK,<br />
             FULLY EQUIPPED.
           </h1>
-
-          {/* Subtitle */}
-          <p
-            style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 400,
-              fontSize: "19px",
-              lineHeight: "100%",
-              letterSpacing: "0%",
-              color: "#F9DCE8",
-            }}
-            className="tracking-normal"
-          >
-            Safety tools women actually want to carry.
-          </p>
         </div>
 
         {/* Metadata Strip Bar */}
-        <div className="w-full pt-3 pb-2 border-t border-[#FFF9FC]/15 flex flex-wrap items-center justify-between gap-y-2 text-[11px] font-mono tracking-[0.16em] uppercase text-[#FFF9FC]/75">
-          <div className="flex items-center gap-6 md:gap-10">
+        <div className="w-full pt-2 pb-1.5 border-t border-[#FFF9FC]/15 flex flex-wrap items-center justify-between gap-y-1.5 text-[9.5px] sm:text-[10.5px] md:text-[11px] font-mono tracking-[0.14em] uppercase text-[#FFF9FC]/75">
+          <div className="flex items-center gap-4 sm:gap-6 md:gap-10">
             <span>FROM ₹333</span>
             <span>
               BUNDLE <span className="line-through text-[#FFF9FC]/40 mr-1">₹1,554</span> ₹999
             </span>
           </div>
 
-          <div className="flex items-center gap-6 md:gap-10 text-[10px] md:text-[11px]">
+          <div className="flex items-center gap-4 sm:gap-6 md:gap-10 text-[9px] sm:text-[10px] md:text-[11px]">
             <span>GLOWS IN THE DARK</span>
             <span>MADE IN INDIA</span>
           </div>
         </div>
 
-        {/* Horizontal Carousel with 7 Cards */}
-        <div className="relative w-full">
+        {/* 5-In-View Carousel Container (with middle card longer from bottom) */}
+        <div
+          ref={containerRef}
+          className="relative w-full overflow-hidden flex items-start pt-1 cursor-grab active:cursor-grabbing my-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
-            ref={scrollRef}
-            onScroll={handleScroll}
-            className="flex gap-[10px] md:gap-[14px] overflow-x-auto scrollbar-none scroll-smooth pb-2 pt-1 snap-x snap-mandatory"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex items-start"
+            style={{
+              transform: `translateX(${translateX}px)`,
+              transition: enableTransition
+                ? "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)"
+                : "none",
+              gap: `${gap}px`,
+            }}
           >
-            {CARDS.map((card) => (
-              <Link
-                key={card.id}
-                href={card.href}
-                className="group relative flex-shrink-0 w-[135px] sm:w-[160px] md:w-[180px] aspect-[105/153] rounded-[14px] md:rounded-[18px] overflow-hidden bg-[#2A0016]/90 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-[1.02] shadow-xl snap-start cursor-pointer block"
-              >
-                {card.isProduct ? (
-                  /* Cards 1, 2, 3: Placeholder products from public folder */
-                  <div className="w-full h-full flex flex-col items-center justify-between p-3 bg-gradient-to-b from-[#3D021D]/80 to-[#220010]/95">
-                    <div className="w-full flex justify-between items-center text-[9px] font-mono tracking-widest text-[#FFF9FC]/60">
-                      <span>0{card.id}</span>
-                      <span className="text-[8px] px-1.5 py-0.5 rounded bg-white/10 text-[#FFF9FC]/80">
-                        ESSENTIAL
-                      </span>
-                    </div>
+            {TOTAL_CARDS.map((card, index) => {
+              const isCenter = index === currentIndex;
 
-                    <div className="relative w-[82%] aspect-square my-auto transition-transform duration-300 group-hover:scale-110">
-                      <Image
-                        src={card.image}
-                        alt={card.label}
-                        fill
-                        className="object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
-                      />
-                    </div>
+              return (
+                <div
+                  key={`${card.id}-${index}`}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    setIsPaused(true);
+                    setTimeout(() => setIsPaused(false), 4500);
+                  }}
+                  style={{
+                    width: `${cardWidth}px`,
+                  }}
+                  className={`relative flex-shrink-0 rounded-[14px] sm:rounded-[18px] md:rounded-[24px] overflow-hidden bg-[#2A0016]/90 border transition-all duration-600 ease-out cursor-pointer select-none group ${
+                    isCenter
+                      ? "h-[250px] sm:h-[310px] md:h-[410px] lg:h-[470px] xl:h-[510px] border-white/35 shadow-2xl z-20"
+                      : "h-[200px] sm:h-[250px] md:h-[330px] lg:h-[380px] xl:h-[400px] border-white/10 hover:border-white/25 shadow-lg opacity-85 hover:opacity-100 z-10"
+                  }`}
+                >
+                  <Image
+                    src={card.src}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 640px) 130px, (max-width: 1024px) 210px, 260px"
+                    priority={Math.abs(index - currentIndex) <= 2}
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                    <div className="w-full text-center">
-                      <p className="font-bebas text-[17px] tracking-wide text-[#FFF9FC] leading-tight">
-                        {card.label}
-                      </p>
-                      {card.sublabel && (
-                        <p className="text-[9px] font-sans text-[#F9DCE8]/70 truncate">
-                          {card.sublabel}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  /* Lifestyle Mockup Cards (4-7) */
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={card.image}
-                      alt={card.label}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                    {/* Badge on Card 4 */}
-                    {card.badge && (
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-max max-w-[92%] px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-[9px] font-sans text-white tracking-tight shadow-md">
-                        {card.badge}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </Link>
-            ))}
+                  {/* Subtle hover gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Bottom Control & Action Row */}
-        <div className="w-full pt-1 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          
-          {/* Left Action Buttons & Trust Copy */}
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-4">
+        {/* Bottom Action Row */}
+        <div className="w-full pt-3 sm:pt-4 md:pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 z-20">
+          <div className="flex flex-col gap-1.5 sm:gap-2">
+            <div className="flex items-center gap-3 sm:gap-4">
               <Link
                 href="#bundle-pack"
                 style={{
                   fontFamily: "var(--font-inter), sans-serif",
                   fontWeight: 500,
-                  fontSize: "9px",
                   lineHeight: "100%",
                   letterSpacing: "0%",
                   color: "#090507",
                   background: "#FFF9FC",
                 }}
-                className="px-4 py-2.5 rounded-full hover:bg-white active:scale-95 transition-all shadow-sm"
+                className="px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] rounded-full hover:bg-white active:scale-95 transition-all shadow-sm font-medium"
               >
                 Shop the bundle
               </Link>
@@ -272,12 +309,11 @@ export function ShopHero() {
                 style={{
                   fontFamily: "var(--font-inter), sans-serif",
                   fontWeight: 500,
-                  fontSize: "11px",
                   lineHeight: "100%",
                   letterSpacing: "0%",
                   color: "#FFF9FC",
                 }}
-                className="hover:text-white underline-offset-4 hover:underline transition-colors"
+                className="text-[11px] sm:text-[12px] hover:text-white underline-offset-4 hover:underline transition-colors"
               >
                 See each tool
               </Link>
@@ -287,53 +323,16 @@ export function ShopHero() {
               style={{
                 fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 400,
-                fontSize: "9px",
                 lineHeight: "150%",
                 letterSpacing: "0%",
                 color: "#F9DCE8",
               }}
-              className="mt-1"
+              className="mt-0.5 text-[8.5px] sm:text-[9.5px] md:text-[10px] text-[#F9DCE8]/80 leading-normal font-sans"
             >
               Delivery in 3 days · Free shipping · Secure checkout · Made in India
             </p>
           </div>
-
-          {/* Center Slider Progress Bar: Centered horizontally on desktop */}
-          <div className="w-full md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center pointer-events-none z-10">
-            <div className="flex items-center gap-3 text-[12px] font-mono text-[#FFF9FC]/85 pointer-events-auto">
-              <span>0{activeIndex}</span>
-              <div className="w-36 sm:w-48 md:w-56 h-[1.5px] bg-[#FFF9FC]/25 relative rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-[#FFF9FC] transition-all duration-300 rounded-full"
-                  style={{ width: `${(activeIndex / CARDS.length) * 100}%` }}
-                />
-              </div>
-              <span>0{CARDS.length}</span>
-            </div>
-          </div>
-
-          {/* Right Circular Outline Prev/Next Buttons */}
-          <div className="flex items-center gap-2 self-end md:self-auto z-10">
-            <button
-              type="button"
-              onClick={scrollPrev}
-              aria-label="Previous slide"
-              className="w-[34px] h-[34px] rounded-full border border-[#FFF9FC]/50 flex items-center justify-center text-[#FFF9FC] hover:border-[#FFF9FC] hover:bg-white/10 active:scale-95 transition-all"
-            >
-              <ChevronLeft className="w-3.5 h-3.5 stroke-[1.5]" />
-            </button>
-            <button
-              type="button"
-              onClick={scrollNext}
-              aria-label="Next slide"
-              className="w-[34px] h-[34px] rounded-full border border-[#FFF9FC]/50 flex items-center justify-center text-[#FFF9FC] hover:border-[#FFF9FC] hover:bg-white/10 active:scale-95 transition-all"
-            >
-              <ChevronRight className="w-3.5 h-3.5 stroke-[1.5]" />
-            </button>
-          </div>
-
         </div>
-
       </div>
     </section>
   );

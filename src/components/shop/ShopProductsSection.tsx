@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, Sparkles, Check, ArrowRight, Box, Clock, Smartphone, Nfc, Target, Eye, Truck, Package } from "lucide-react";
+import { Star, Sparkles, Box, Clock, Smartphone, Target, Eye, Truck, Package, ShieldCheck } from "lucide-react";
 import { trackMetaViewContent } from "@/components/MetaPixel";
 
 interface ProductData {
@@ -16,39 +16,36 @@ interface ProductData {
   discount: string;
   rating: string;
   reviewsCount: string;
-  desktopDescription: [string, string];
-  mobileDescription: string;
+  description: string;
   features: { icon?: string; svg?: string; label: string }[];
-  colors: { id: string; name: string; hex: string; mainImage: string; thumbnails: string[] }[];
+  colors: { id: string; name: string; hex: string; mainImage: string; thumbnails: string[]; swatchImage?: string }[];
   bundlePrompt: { title: string; subtitle: string; link: string };
   headerBg: string;
   stageBg: string;
   defaultVariantUrl: string;
+  ctaText: string;
+  trustGuarantees: string[];
 }
 
 const PRODUCTS: ProductData[] = [
   {
     id: "on-me-spray",
     numberTag: "1) PERSONAL SAFETY SPRAY",
-    categoryTag: "01 - PERSONAL SAFETY SPRAY",
+    categoryTag: "01 · Personal Safety Spray",
     title: "ON ME SPRAY",
     watermark: "ON ME SPRAY",
-    price: "₹555",
-    originalPrice: "₹777",
-    discount: "28% OFF",
+    price: "₹777",
+    originalPrice: "₹999",
+    discount: "22.2% off",
     rating: "(4.9 stars)",
     reviewsCount: "47 reviews",
-    desktopDescription: [
-      "A personal safety spray designed for quick access when you need it most.",
-      "Clips onto your bag or keys and glows in the dark for easy visibility.",
-    ],
-    mobileDescription:
-      "A personal safety spray designed for quick access and easy visibility.",
+    description:
+      "A personal safety spray designed for quick access when you need it most. Clips onto your bag or keys and glows in the dark for easy visibility.",
     features: [
-      { svg: "/10test.svg", label: "10 tests per pack" },
-      { svg: "/resultsinsec.svg", label: "Results in seconds" },
-      { svg: "/phoenw.svg", label: "Pocket friendly" },
-      { svg: "/noapp.svg", label: "No app needed" },
+      { icon: "glow", label: "Glows in the dark" },
+      { icon: "spray", label: "35 to 40 bursts" },
+      { icon: "pocket", label: "Clips on, palm-sized" },
+      { icon: "stream", label: "8 to 10 ft range" },
     ],
     colors: [
       {
@@ -56,6 +53,7 @@ const PRODUCTS: ProductData[] = [
         name: "PINK",
         hex: "#FF0E97",
         mainImage: "/images/pinkspray.svg",
+        swatchImage: "/images/spray-pink.webp",
         thumbnails: [
           "/images/pinkspray.svg",
           "/onme/Sip Check  (4) 1.png",
@@ -68,6 +66,7 @@ const PRODUCTS: ProductData[] = [
         name: "SILVER",
         hex: "#B8B8B8",
         mainImage: "/images/whitespray.svg",
+        swatchImage: "/images/spray-white.webp",
         thumbnails: [
           "/images/whitespray.svg",
           "/onme/Sip Check  (4) 1.png",
@@ -79,34 +78,32 @@ const PRODUCTS: ProductData[] = [
     bundlePrompt: {
       title: "PAIR WITH SIP CHECK - SAVE ₹200",
       subtitle: "The night-out safety duo.",
-      link: "#bundle-pack",
+      link: "https://shop.nazrco.in/products/bundle",
     },
     headerBg: "bg-[#0084FF]",
     stageBg: "bg-[#dff0ff]",
     defaultVariantUrl: "https://shop.nazrco.in/products/on-me-spray?variant=49831092420845",
+    ctaText: "Carry It",
+    trustGuarantees: ["5-day delivery", "Discreet packaging", "Free shipping"],
   },
   {
     id: "sip-check",
     numberTag: "2) ANTI DRINK SPIKE STICKERS",
-    categoryTag: "02 - ANTI DRINK SPIKE STICKERS",
+    categoryTag: "02 · Drink protection seals",
     title: "SIP CHECK",
     watermark: "SIP CHECK",
     price: "₹333",
-    originalPrice: "₹444",
-    discount: "25% OFF",
+    originalPrice: "₹555",
+    discount: "40% off",
     rating: "(4.5 stars)",
     reviewsCount: "32 reviews",
-    desktopDescription: [
-      "A drink safety sticker designed to help protect your beverage while you're out.",
-      "Seals securely to your glass and peels away easily when you're done.",
-    ],
-    mobileDescription:
-      "A drink safety sticker designed to help protect your beverage while you're out.",
+    description:
+      "A drink safety sticker designed to help protect your beverage while you're out. Seals securely to your glass and peels away easily when you're done.",
     features: [
-      { svg: "/10test.svg", label: "10 tests per pack" },
-      { svg: "/resultsinsec.svg", label: "Results in seconds" },
-      { svg: "/phoenw.svg", label: "Pocket friendly" },
-      { svg: "/noapp.svg", label: "No app needed" },
+      { icon: "tests", label: "11 seals per pack" },
+      { icon: "glow", label: "India's first" },
+      { icon: "dye", label: "Fits almost all glasses" },
+      { icon: "stream", label: "Peel, seal, sip" },
     ],
     colors: [
       {
@@ -125,16 +122,18 @@ const PRODUCTS: ProductData[] = [
     bundlePrompt: {
       title: "PAIR WITH ON ME SPRAY - SAVE ₹200",
       subtitle: "The night-out safety duo.",
-      link: "#bundle-pack",
+      link: "https://shop.nazrco.in/products/bundle",
     },
     headerBg: "bg-[#FF0E97]",
     stageBg: "bg-[#ffdfeb]",
     defaultVariantUrl: "https://shop.nazrco.in/products/sip-check",
+    ctaText: "Get yours",
+    trustGuarantees: ["5-DAY DELIVERY", "DISCREET PACKAGING", "Free shipping"],
   },
   {
     id: "bundle-pack",
-    numberTag: "3) BUNDLE PACK",
-    categoryTag: "03 - THE COMPLETE 360° KIT",
+    numberTag: "NAZR 360° BUNDLE",
+    categoryTag: "03 · The complete 360° kit",
     title: "NAZR 360° BUNDLE",
     watermark: "NAZR 360°",
     price: "₹999",
@@ -142,17 +141,13 @@ const PRODUCTS: ProductData[] = [
     discount: "SAVE ₹555",
     rating: "(5.0 stars)",
     reviewsCount: "18 reviews",
-    desktopDescription: [
-      "A personal safety kit that brings two everyday essentials together.",
-      "Includes On Me and Sip Check for confidence wherever you go.",
-    ],
-    mobileDescription:
-      "Two everyday safety essentials in one kit: ON ME and SIP CHECK, made to keep you ready wherever you go.",
+    description:
+      "A personal safety kit that brings two everyday essentials together. Includes On Me and Sip Check for confidence wherever you go.",
     features: [
-      { svg: "/10test.svg", label: "10 tests per pack" },
-      { svg: "/resultsinsec.svg", label: "Results in seconds" },
-      { svg: "/phoenw.svg", label: "Pocket friendly" },
-      { svg: "/noapp.svg", label: "No app needed" },
+      { icon: "spray", label: "1 × On Me Spray (₹999)" },
+      { icon: "dye", label: "1 × Sip Check, 11 seals (₹555)" },
+      { icon: "pocket", label: "Colour: Pink or White" },
+      { icon: "pouch", label: "Great for gifting" },
     ],
     colors: [
       {
@@ -171,11 +166,13 @@ const PRODUCTS: ProductData[] = [
     bundlePrompt: {
       title: "EXCLUSIVE GIFT PACKAGING",
       subtitle: "Ships in an unbranded, tamper-proof discreet shield box.",
-      link: "#bundle-pack",
+      link: "https://shop.nazrco.in/products/bundle",
     },
     headerBg: "bg-[#0084FF]",
     stageBg: "bg-[#dff0ff]",
     defaultVariantUrl: "https://shop.nazrco.in/products/bundle",
+    ctaText: "Get yours",
+    trustGuarantees: ["5-Day Delivery", "Discreet Packaging", "Free shipping"],
   },
 ];
 
@@ -224,12 +221,8 @@ function ProductCard({ product }: { product: ProductData }) {
       {/* 2. Main Two-Column Split Container */}
       <div className="w-full flex flex-col lg:flex-row min-h-[680px] lg:min-h-[720px]">
         {/* Left Column: Stage & Pedestal */}
-        <div className={`w-full lg:w-[50%] xl:w-[52%] ${product.stageBg} relative flex flex-col justify-between items-center p-6 sm:p-8 md:p-10 lg:border-r border-black overflow-hidden select-none`}>
-          {/* Subheader Bar inside stage */}
-          <div className="w-full flex justify-between items-center z-20 text-[#161616]/80 font-['Inter',_sans-serif] text-[12px] sm:text-[13px] tracking-wider uppercase font-semibold">
-            <span>{product.categoryTag}</span>
-            <span>01 / 04</span>
-          </div>
+        <div className={`w-full lg:w-[50%] xl:w-[52%] ${product.stageBg} relative flex flex-col justify-center items-center p-6 sm:p-8 md:p-10 lg:border-r border-black overflow-hidden select-none`}>
+          {/* Subheader Bar inside stage was deleted per comments #1, #2, #38, #39 */}
 
           {/* Huge Faint Watermark Typography */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -238,17 +231,19 @@ function ProductCard({ product }: { product: ProductData }) {
             </span>
           </div>
 
-          {/* Center Product Stage */}
+          {/* Center Product Stage - fixed aspect ratio to prevent stretching/cropping */}
           <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-6 sm:py-8">
-            <div className="relative z-20 w-[260px] sm:w-[320px] md:w-[380px] h-[300px] sm:h-[360px] md:h-[420px] flex items-center justify-center transition-all duration-300 transform hover:scale-105">
-              <Image
-                src={activeImage}
-                alt={product.title}
-                fill
-                priority
-                className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.2)]"
-                sizes="(max-width: 768px) 320px, 450px"
-              />
+            <div className="relative z-20 w-[260px] sm:w-[320px] md:w-[360px] aspect-square flex items-center justify-center transition-all duration-300 transform hover:scale-105">
+              <div className={`relative w-full h-full ${product.id === "sip-check" ? "scale-x-[1.14]" : ""}`}>
+                <Image
+                  src={activeImage}
+                  alt={product.title}
+                  fill
+                  priority
+                  className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.2)]"
+                  sizes="(max-width: 768px) 320px, 450px"
+                />
+              </div>
             </div>
           </div>
 
@@ -281,7 +276,7 @@ function ProductCard({ product }: { product: ProductData }) {
           <div className="flex flex-col gap-5">
             {/* Top Category Tag & Title Row */}
             <div className="flex flex-col gap-1">
-              <span className="text-[#FF0E97] font-semibold text-[13px] sm:text-[14px] uppercase tracking-widest">
+              <span className="text-[#FF0E97] font-semibold text-[13px] sm:text-[14px] tracking-wider">
                 {product.categoryTag}
               </span>
               <div className="flex justify-between items-start gap-4">
@@ -294,7 +289,7 @@ function ProductCard({ product }: { product: ProductData }) {
                     {product.price}
                   </span>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-black/40 line-through text-[14px]">
+                    <span className="text-black/50 line-through decoration-2 text-[14px] font-medium">
                       {product.originalPrice}
                     </span>
                     <span className="bg-[#FF0E97] text-white font-bold text-[11px] px-1.5 py-0.5 rounded tracking-wide uppercase">
@@ -317,21 +312,12 @@ function ProductCard({ product }: { product: ProductData }) {
               </div>
             </div>
 
-            {/* Description: 2 distinct lines on desktop, concise copy on mobile */}
-            <div className="font-['Inter',_sans-serif] text-[15px] sm:text-[16px] leading-[150%] text-black/80 max-w-[560px]">
-              {/* Mobile version */}
-              <p className="block sm:hidden">
-                {product.mobileDescription}
-              </p>
-              {/* Desktop version: strictly 2 separate lines */}
-              <p className="hidden sm:block">
-                <span>{product.desktopDescription[0]}</span>
-                <br />
-                <span>{product.desktopDescription[1]}</span>
-              </p>
-            </div>
+            {/* Description: Single paragraph with natural wrapping */}
+            <p className="font-['Inter',_sans-serif] text-[15px] sm:text-[16px] leading-[150%] text-black/80 max-w-[560px] m-0">
+              {product.description}
+            </p>
 
-            {/* 2x2 Feature Pills matching mockup */}
+            {/* 2x2 Feature Pills */}
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 max-w-[540px]">
               {product.features.map((feat, idx) => (
                 <div
@@ -339,25 +325,14 @@ function ProductCard({ product }: { product: ProductData }) {
                   className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-3 sm:py-3.5 rounded-[16px] sm:rounded-[18px] bg-[#F5F3EF] border border-black/[0.04] shadow-2xs"
                 >
                   <span className="shrink-0 flex items-center justify-center">
-                    {feat.svg ? (
-                      <Image
-                        src={feat.svg}
-                        alt=""
-                        width={18}
-                        height={18}
-                        className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] object-contain shrink-0"
-                      />
-                    ) : (
-                      <>
-                        {feat.icon === "stream" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
-                        {feat.icon === "glow" && <Sparkles className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
-                        {feat.icon === "pocket" && <Smartphone className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
-                        {feat.icon === "dye" && <Eye className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
-                        {feat.icon === "spray" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
-                        {feat.icon === "pouch" && <Package className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
-                        {feat.icon === "truck" && <Truck className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#E6007E]" strokeWidth={2} />}
-                      </>
-                    )}
+                    {feat.icon === "glow" && <Sparkles className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                    {feat.icon === "spray" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                    {feat.icon === "stream" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                    {feat.icon === "pocket" && <Smartphone className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                    {feat.icon === "tests" && <Box className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                    {feat.icon === "dye" && <Eye className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                    {feat.icon === "pouch" && <Package className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                    {feat.icon === "truck" && <Truck className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
                   </span>
                   <span className="text-[13px] sm:text-[14px] font-normal sm:font-medium text-[#161616] leading-tight">
                     {feat.label}
@@ -369,15 +344,12 @@ function ProductCard({ product }: { product: ProductData }) {
             {/* Colour Selector - only for on-me-spray */}
             {product.id === "on-me-spray" && (
               <div className="flex flex-col gap-2.5 pt-1">
-                {/* Dynamic Colour Label */}
+                {/* Dynamic Colour Label - Comment #9 */}
                 <div
-                  className="flex items-center gap-1.5 uppercase select-none tracking-[0.05em] text-[13px] sm:text-[14px]"
+                  className="flex items-center gap-1.5 select-none text-[13px] sm:text-[14px]"
                   style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
                 >
-                  <span className="font-bold text-[#555555]">COLOUR —</span>
-                  <span className="font-extrabold text-[#161616]">
-                    {product.colors[selectedColorIndex]?.name || "PINK"}
-                  </span>
+                  <span className="font-bold text-[#161616]">Colours available:</span>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -385,16 +357,21 @@ function ProductCard({ product }: { product: ProductData }) {
                     <button
                       key={color.id}
                       onClick={() => handleVariantChange(idx)}
-                      className={`flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-5 py-2 rounded-full text-[13px] uppercase transition-all cursor-pointer ${
+                      className={`flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-4 sm:px-5 py-2 rounded-full text-[13px] uppercase transition-all cursor-pointer ${
                         selectedColorIndex === idx
                           ? "bg-white text-black font-bold border-2 border-black shadow-xs"
                           : "bg-white text-black/75 font-medium border border-black/15 hover:border-black/35"
                       }`}
                     >
-                      <span
-                        className="w-3.5 h-3.5 rounded-[2px] shrink-0"
-                        style={{ backgroundColor: color.hex }}
-                      />
+                      {/* Product bottle swatch image - Comments #10 and #11 */}
+                      <div className="relative w-4 h-6 shrink-0 flex items-center justify-center">
+                        <Image
+                          src={color.swatchImage || (color.id === "pink" ? "/images/spray-pink.webp" : "/images/spray-white.webp")}
+                          alt={color.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
                       <span>{color.name}</span>
                     </button>
                   ))}
@@ -402,13 +379,13 @@ function ProductCard({ product }: { product: ProductData }) {
               </div>
             )}
 
-            {/* Action Button: Single VIEW MORE Button linked to PDP */}
+            {/* Action Button: CTA linked to PDP */}
             <div className="w-full pt-1">
               <button
                 onClick={handleBuyNow}
                 className="w-full bg-[#E6007E] hover:bg-[#d0006f] active:scale-[0.99] text-white font-bold py-3.5 sm:py-4 px-6 rounded-full text-[15px] sm:text-[16px] uppercase tracking-wider shadow-sm transition-all text-center cursor-pointer block"
               >
-                VIEW MORE
+                {product.ctaText}
               </button>
             </div>
 
@@ -458,8 +435,11 @@ function ProductCard({ product }: { product: ProductData }) {
                     {product.bundlePrompt.subtitle}
                   </span>
                 </div>
+                {/* Comment #12: Link to bundle PDP */}
                 <a
                   href={product.bundlePrompt.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-[#E6007E] hover:bg-[#d0006f] active:scale-95 text-white text-[11px] sm:text-[13px] font-bold px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full uppercase tracking-wider shrink-0 transition-all shadow-sm whitespace-nowrap"
                 >
                   <span>GET THE BUNDLE →</span>
@@ -468,28 +448,26 @@ function ProductCard({ product }: { product: ProductData }) {
             )}
           </div>
 
-          {/* Shipping & Trust Guarantees */}
+          {/* Shipping & Trust Guarantees - Comments #14-19, #32-37, #48-52 */}
           <div
-            className="pt-4 mt-2 border-t border-black/10 flex flex-wrap items-center justify-center text-center gap-x-2.5 sm:gap-x-3 gap-y-1 uppercase select-none text-[#737373] w-full"
+            className="pt-4 mt-2 border-t border-black/10 flex flex-wrap items-center justify-center text-center gap-x-2.5 sm:gap-x-3 gap-y-1 select-none text-[#737373] w-full"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,
-              fontSize: "11px",
+              fontSize: "11.5px",
               lineHeight: "16.5px",
-              letterSpacing: "0.55px",
+              letterSpacing: "0.4px",
               color: "#737373",
             }}
           >
             <span className="inline-flex items-center gap-1.5 shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00C853] inline-block shrink-0" />
-              3-DAY DELIVERY
+              {product.trustGuarantees[0]}
             </span>
-            <span>DISCREET SHIELD PACKAGING</span>
             <span className="text-[#737373]/50">/</span>
-            <span>FREE OVER ₹999</span>
+            <span>{product.trustGuarantees[1]}</span>
             <span className="text-[#737373]/50">/</span>
-            <span>EASY RETURNS</span>
-            <span className="text-[#737373]/50">/</span>
+            <span>{product.trustGuarantees[2]}</span>
           </div>
         </div>
       </div>

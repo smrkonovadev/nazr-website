@@ -103,32 +103,32 @@ export function NazrAppIntro() {
               </span>
             </div>
           </Link>
-        </div>
 
-        {/* Desktop QR Code Card (Centered) */}
-        <div className="mt-5 mx-auto flex items-center gap-3.5 bg-white border border-[#E4E4E7] rounded-[16px] px-4 py-2.5 shadow-xs">
-          <div className="w-[44px] h-[44px] flex items-center justify-center shrink-0">
-            <Image
-              src="/QRCODEFORDEST.png"
-              alt="Scan to Download NAZR App"
-              width={44}
-              height={44}
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="flex flex-col text-left">
-            <span
-              className="text-[13.5px] font-bold text-[#141416] leading-snug"
-              style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
-            >
-              On desktop?
-            </span>
-            <span
-              className="text-[12px] text-[#71717A] leading-tight"
-              style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
-            >
-              Scan to download
-            </span>
+          {/* Desktop QR Code Card (Same length/width as buttons above) */}
+          <div className="w-full flex items-center justify-center gap-3.5 bg-white border border-[#E4E4E7] rounded-[14px] px-5 py-2.5 shadow-xs">
+            <div className="w-[40px] h-[40px] flex items-center justify-center shrink-0">
+              <Image
+                src="/QRCODEFORDEST.png"
+                alt="Scan to Download NAZR App"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="flex flex-col text-left">
+              <span
+                className="text-[14px] font-bold text-[#141416] leading-snug"
+                style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
+              >
+                On desktop?
+              </span>
+              <span
+                className="text-[12px] text-[#71717A] leading-tight"
+                style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
+              >
+                Scan to download
+              </span>
+            </div>
           </div>
         </div>
 

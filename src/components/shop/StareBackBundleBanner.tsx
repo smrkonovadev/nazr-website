@@ -20,14 +20,14 @@ export function StareBackBundleBanner() {
     <section className="w-full bg-[#FF0E97] text-white select-none">
       <div className="w-full flex justify-center py-10 sm:py-14 md:py-16 lg:py-20 px-5 sm:px-8 md:px-12 lg:px-16">
         <div className="w-full max-w-[1280px] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-14">
-          {/* Left Product Visual Card */}
-          <div className="w-full md:w-[42%] max-w-[430px] aspect-square rounded-[22px] sm:rounded-[28px] bg-white shadow-xl flex items-center justify-center p-3 sm:p-5 relative overflow-hidden group">
-            <div className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          {/* Left Product Visual Card - Comment #54 fix cropping */}
+          <div className="w-full md:w-[42%] max-w-[430px] aspect-square rounded-[22px] sm:rounded-[28px] bg-white shadow-xl flex items-center justify-center p-4 sm:p-6 relative group">
+            <div className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
               <Image
                 src="/images/product365-trimmed.webp"
                 alt="Nazr 360 Bundle"
                 fill
-                className="object-contain drop-shadow-md"
+                className="object-contain p-1 drop-shadow-md"
                 sizes="(max-width: 768px) 340px, 440px"
                 priority
               />
@@ -71,7 +71,7 @@ export function StareBackBundleBanner() {
                 </span>
               </div>
 
-              {/* Action Buttons: Full width on mobile, inline on desktop */}
+              {/* Action Buttons: Full width on mobile, inline on desktop - Comment #53 */}
               <div className="flex flex-col md:flex-row items-center gap-3 sm:gap-4 w-full md:w-auto">
                 <button
                   onClick={handleBuyBundle}
@@ -81,7 +81,7 @@ export function StareBackBundleBanner() {
                 </button>
                 <Link
                   href="#on-me-spray"
-                  className="w-full md:w-auto text-center font-['Inter',_sans-serif] text-white hover:opacity-75 font-semibold text-[13px] sm:text-[14px] underline underline-offset-4 tracking-wide transition-opacity"
+                  className="w-full md:w-auto text-center font-['Inter',_sans-serif] text-white hover:bg-white/15 font-bold text-[14px] px-8 py-3.5 rounded-full border-2 border-white uppercase tracking-wider transition-all cursor-pointer inline-flex items-center justify-center shadow-sm"
                 >
                   Or shop each tool
                 </Link>
