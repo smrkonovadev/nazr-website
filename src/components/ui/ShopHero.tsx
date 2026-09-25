@@ -197,7 +197,7 @@ export function ShopHero() {
 
       {/* Main Content Area: Fills the screen with balanced top, middle, and bottom sections */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] pt-4 pb-6 sm:pt-6 sm:pb-8 md:pt-10 md:pb-10 flex flex-col justify-between flex-1 gap-[12px] sm:gap-[16px] md:gap-[20px]">
-        {/* Headline Block (Eyebrow and Subtitle removed as requested) */}
+        {/* Headline Block */}
         <div className="flex flex-col items-start max-w-4xl">
           <h1
             style={{
@@ -229,10 +229,10 @@ export function ShopHero() {
           </div>
         </div>
 
-        {/* 5-In-View Carousel Container (with middle card longer from bottom) */}
+        {/* 5-In-View Carousel Container (with middle card longer from bottom, fixed container height so no shift) */}
         <div
           ref={containerRef}
-          className="relative w-full overflow-hidden flex items-start pt-1 cursor-grab active:cursor-grabbing my-auto"
+          className="relative w-full h-[255px] sm:h-[315px] md:h-[415px] lg:h-[475px] xl:h-[515px] overflow-hidden flex items-start pt-1 cursor-grab active:cursor-grabbing my-auto"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
