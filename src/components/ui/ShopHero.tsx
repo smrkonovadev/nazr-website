@@ -172,7 +172,7 @@ export function ShopHero() {
     (currentIndex * (cardWidth + gap) + cardWidth / 2);
 
   return (
-    <section className="relative w-full min-h-[calc(100dvh-60px)] md:min-h-[calc(100vh-80px)] bg-[#5A002F] text-[#FFF9FC] overflow-hidden select-none flex flex-col justify-between">
+    <section className="relative w-full h-[560px] sm:h-[640px] md:h-[750px] lg:h-[820px] bg-[#5A002F] text-[#FFF9FC] overflow-hidden select-none flex flex-col justify-between">
       {/* Background Images Layer: Dynamically matches the active/longer card with a smooth fade */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {HERO_IMAGES.map((img, idx) => (
@@ -195,8 +195,8 @@ export function ShopHero() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#5A002F]/55 via-[#5A002F]/40 to-[#430023]/70" />
       </div>
 
-      {/* Main Content Area: Fills the screen with balanced top, middle, and bottom sections */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] pt-4 pb-6 sm:pt-6 sm:pb-8 md:pt-10 md:pb-10 flex flex-col justify-between flex-1 gap-[12px] sm:gap-[16px] md:gap-[20px]">
+      {/* Main Content Area: Fills the section with balanced top, middle, and bottom sections */}
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] pt-4 pb-6 sm:pt-6 sm:pb-8 md:pt-8 md:pb-8 flex flex-col justify-between h-full gap-[12px] sm:gap-[16px] md:gap-[20px]">
         {/* Headline Block */}
         <div className="flex flex-col items-start max-w-4xl">
           <h1
