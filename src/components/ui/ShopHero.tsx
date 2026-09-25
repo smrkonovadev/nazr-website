@@ -172,7 +172,7 @@ export function ShopHero() {
     (currentIndex * (cardWidth + gap) + cardWidth / 2);
 
   return (
-    <section className="relative w-full h-[560px] sm:h-[640px] md:h-[750px] lg:h-[820px] bg-[#5A002F] text-[#FFF9FC] overflow-hidden select-none flex flex-col justify-between">
+    <section className="relative w-full h-[620px] sm:h-[700px] md:h-[820px] lg:h-[900px] xl:h-[940px] bg-[#5A002F] text-[#FFF9FC] overflow-hidden select-none flex flex-col justify-between">
       {/* Background Images Layer: Dynamically matches the active/longer card with a smooth fade */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {HERO_IMAGES.map((img, idx) => (
@@ -232,7 +232,7 @@ export function ShopHero() {
         {/* 5-In-View Carousel Container (with middle card longer from bottom, fixed container height so no shift) */}
         <div
           ref={containerRef}
-          className="relative w-full h-[255px] sm:h-[315px] md:h-[415px] lg:h-[475px] xl:h-[515px] overflow-hidden flex items-start pt-1 cursor-grab active:cursor-grabbing my-auto"
+          className="relative w-full h-[260px] sm:h-[320px] md:h-[425px] lg:h-[485px] xl:h-[525px] overflow-hidden flex items-start pt-1 pb-2 cursor-grab active:cursor-grabbing my-auto"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
