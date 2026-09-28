@@ -224,7 +224,6 @@ export function ShopHero() {
           </div>
 
           <div className="flex items-center gap-4 sm:gap-6 md:gap-10 text-[9px] sm:text-[10px] md:text-[11px]">
-            <span>GLOWS IN THE DARK</span>
             <span>MADE IN INDIA</span>
           </div>
         </div>
@@ -288,18 +287,18 @@ export function ShopHero() {
         {/* Bottom Action Row */}
         <div className="w-full pt-3 sm:pt-4 md:pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 z-20">
           <div className="flex flex-col gap-1.5 sm:gap-2">
-            <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex items-center gap-4 sm:gap-6">
               <Link
                 href="#bundle-pack"
                 style={{
                   fontFamily: "var(--font-inter), sans-serif",
-                  fontWeight: 500,
+                  fontWeight: 600,
                   lineHeight: "100%",
                   letterSpacing: "0%",
                   color: "#090507",
                   background: "#FFF9FC",
                 }}
-                className="px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] rounded-full hover:bg-white active:scale-95 transition-all shadow-sm font-medium"
+                className="px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 text-[13px] sm:text-[15px] md:text-[16px] rounded-full hover:bg-white hover:shadow-lg active:scale-95 transition-all shadow-md font-semibold cursor-pointer"
               >
                 Shop the bundle
               </Link>
@@ -313,7 +312,7 @@ export function ShopHero() {
                   letterSpacing: "0%",
                   color: "#FFF9FC",
                 }}
-                className="text-[11px] sm:text-[12px] hover:text-white underline-offset-4 hover:underline transition-colors"
+                className="text-[13px] sm:text-[14px] md:text-[15px] hover:text-white underline-offset-4 hover:underline transition-colors"
               >
                 See each tool
               </Link>

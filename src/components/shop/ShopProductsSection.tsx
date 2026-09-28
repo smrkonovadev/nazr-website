@@ -57,21 +57,21 @@ const PRODUCTS: ProductData[] = [
         thumbnails: [
           "/images/pinkspray.svg",
           "/onme/Sip Check  (4) 1.png",
-          "/onme/Frame 1073716575.png",
-          "/onme/image 81.png",
+          "/onme/pinkbagspray.png",
+          "/onme/pinkimageforp.png",
         ],
       },
       {
-        id: "silver",
-        name: "SILVER",
-        hex: "#B8B8B8",
+        id: "white",
+        name: "WHITE",
+        hex: "#FFFFFF",
         mainImage: "/images/whitespray.svg",
         swatchImage: "/images/spray-white.webp",
         thumbnails: [
           "/images/whitespray.svg",
           "/onme/Sip Check  (4) 1.png",
-          "/onme/Frame 1073716575.png",
-          "/onme/image 81.png",
+          "/onme/Frame 1073716575 white.png",
+          "/onme/image 81white.png",
         ],
       },
     ],
@@ -234,7 +234,7 @@ function ProductCard({ product }: { product: ProductData }) {
           {/* Center Product Stage - fixed aspect ratio to prevent stretching/cropping */}
           <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-6 sm:py-8">
             <div className="relative z-20 w-[260px] sm:w-[320px] md:w-[360px] aspect-square flex items-center justify-center transition-all duration-300 transform hover:scale-105">
-              <div className={`relative w-full h-full ${product.id === "sip-check" ? "scale-x-[1.14]" : ""}`}>
+              <div className="relative w-full h-full">
                 <Image
                   src={activeImage}
                   alt={product.title}
@@ -253,11 +253,10 @@ function ProductCard({ product }: { product: ProductData }) {
               <button
                 key={idx}
                 onClick={() => setSelectedImageIndex(idx)}
-                className={`relative w-[60px] sm:w-[72px] md:w-[80px] h-[54px] sm:h-[64px] md:h-[70px] rounded-[10px] sm:rounded-[12px] overflow-hidden bg-white/80 transition-all border-2 ${
-                  selectedImageIndex === idx
-                    ? "border-black shadow-sm"
-                    : "border-transparent hover:border-black/20 opacity-80 hover:opacity-100"
-                }`}
+                className={`relative w-[60px] sm:w-[72px] md:w-[80px] h-[54px] sm:h-[64px] md:h-[70px] rounded-[10px] sm:rounded-[12px] overflow-hidden bg-white/80 transition-all border-2 ${selectedImageIndex === idx
+                  ? "border-black shadow-sm"
+                  : "border-transparent hover:border-black/20 opacity-80 hover:opacity-100"
+                  }`}
               >
                 <Image
                   src={thumb}
@@ -357,11 +356,10 @@ function ProductCard({ product }: { product: ProductData }) {
                     <button
                       key={color.id}
                       onClick={() => handleVariantChange(idx)}
-                      className={`flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-4 sm:px-5 py-2 rounded-full text-[13px] uppercase transition-all cursor-pointer ${
-                        selectedColorIndex === idx
-                          ? "bg-white text-black font-bold border-2 border-black shadow-xs"
-                          : "bg-white text-black/75 font-medium border border-black/15 hover:border-black/35"
-                      }`}
+                      className={`flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-4 sm:px-5 py-2 rounded-full text-[13px] uppercase transition-all cursor-pointer ${selectedColorIndex === idx
+                        ? "bg-white text-black font-bold border-2 border-black shadow-xs"
+                        : "bg-white text-black/75 font-medium border border-black/15 hover:border-black/35"
+                        }`}
                     >
                       {/* Product bottle swatch image - Comments #10 and #11 */}
                       <div className="relative w-4 h-6 shrink-0 flex items-center justify-center">
