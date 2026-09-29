@@ -263,8 +263,8 @@ export function ShopHero() {
                   }}
                   className={`relative flex-shrink-0 rounded-[14px] sm:rounded-[18px] md:rounded-[24px] overflow-hidden bg-[#2A0016]/90 border transition-all duration-600 ease-out cursor-pointer select-none group ${
                     isCenter
-                      ? "h-[250px] sm:h-[310px] md:h-[410px] lg:h-[470px] xl:h-[510px] border-white/35 shadow-2xl z-20"
-                      : "h-[200px] sm:h-[250px] md:h-[330px] lg:h-[380px] xl:h-[400px] border-white/10 hover:border-white/25 shadow-lg opacity-85 hover:opacity-100 z-10"
+                      ? "h-[250px] sm:h-[310px] md:h-[410px] lg:h-[470px] xl:h-[510px] border-white/35 z-20"
+                      : "h-[200px] sm:h-[250px] md:h-[330px] lg:h-[380px] xl:h-[400px] border-white/10 hover:border-white/25 opacity-85 hover:opacity-100 z-10"
                   }`}
                 >
                   <Image
@@ -326,10 +326,10 @@ export function ShopHero() {
                 letterSpacing: "0.2px",
                 color: "#F9DCE8",
               }}
-              className="mt-0.5 flex flex-wrap items-center gap-x-2 sm:gap-x-2.5 text-[8.5px] sm:text-[9.5px] md:text-[10px] text-[#F9DCE8]/80 leading-normal font-sans"
+              className="mt-1 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3.5 text-[12.5px] sm:text-[13.5px] md:text-[14px] text-[#F9DCE8]/90 leading-normal font-sans"
             >
-              <span className="inline-flex items-center gap-1.5 shrink-0">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00C853] inline-block shrink-0" />
+              <span className="inline-flex items-center gap-2 shrink-0">
+                <span className="w-2 h-2 rounded-full bg-[#00C853] inline-block shrink-0" />
                 5-day delivery
               </span>
               <span className="text-[#F9DCE8]/40">/</span>

@@ -17,7 +17,7 @@ interface ProductData {
   rating: string;
   reviewsCount: string;
   description: string;
-  features: { icon?: string; svg?: string; label: string }[];
+  features: { icon?: string; image?: string; svg?: string; label: string }[];
   colors: { id: string; name: string; hex: string; mainImage: string; thumbnails: string[]; swatchImage?: string }[];
   bundlePrompt: { title: string; subtitle: string; link: string };
   headerBg: string;
@@ -43,9 +43,9 @@ const PRODUCTS: ProductData[] = [
       "A personal safety spray designed for quick access when you need it most. Clips onto your bag or keys and glows in the dark for easy visibility.",
     features: [
       { icon: "glow", label: "Glows in the dark" },
-      { icon: "spray", label: "35 to 40 bursts" },
-      { icon: "pocket", label: "Clips on, palm-sized" },
-      { icon: "stream", label: "8 to 10 ft range" },
+      { image: "/icons/35to40bursts.png", label: "35 to 40 bursts" },
+      { image: "/icons/Clipsonpalm-sized.png", label: "Clips on, palm-sized" },
+      { image: "/icons/8to10ftrange.png", label: "8 to 10 ft range" },
     ],
     colors: [
       {
@@ -71,7 +71,7 @@ const PRODUCTS: ProductData[] = [
           "/images/whitespray.svg",
           "/onme/Sip Check  (4) 1.png",
           "/onme/Frame 1073716575 white.png",
-          "/onme/image 81white.png",
+          "/onme/image 81white.svg",
         ],
       },
     ],
@@ -89,7 +89,7 @@ const PRODUCTS: ProductData[] = [
   {
     id: "sip-check",
     numberTag: "2) ANTI DRINK SPIKE STICKERS",
-    categoryTag: "02 · Drink protection seals",
+    categoryTag: "02 · Drink Protection Seals",
     title: "SIP CHECK",
     watermark: "SIP CHECK",
     price: "₹333",
@@ -102,8 +102,8 @@ const PRODUCTS: ProductData[] = [
     features: [
       { icon: "tests", label: "11 seals per pack" },
       { icon: "glow", label: "India's first" },
-      { icon: "dye", label: "Fits almost all glasses" },
-      { icon: "stream", label: "Peel, seal, sip" },
+      { image: "/icons/Fitsalmostallglasses.png", label: "Fits almost all glasses" },
+      { image: "/icons/Peelsealsip.png", label: "Peel, seal, sip" },
     ],
     colors: [
       {
@@ -128,12 +128,12 @@ const PRODUCTS: ProductData[] = [
     stageBg: "bg-[#ffdfeb]",
     defaultVariantUrl: "https://shop.nazrco.in/products/sip-check",
     ctaText: "Get yours",
-    trustGuarantees: ["5-DAY DELIVERY", "DISCREET PACKAGING", "Free shipping"],
+    trustGuarantees: ["5-day delivery", "Discreet packaging", "Free shipping"],
   },
   {
     id: "bundle-pack",
     numberTag: "NAZR 360° BUNDLE",
-    categoryTag: "03 · The complete 360° kit",
+    categoryTag: "03 · The Complete 360° Kit",
     title: "NAZR 360° BUNDLE",
     watermark: "NAZR 360°",
     price: "₹999",
@@ -144,10 +144,10 @@ const PRODUCTS: ProductData[] = [
     description:
       "A personal safety kit that brings two everyday essentials together. Includes On Me and Sip Check for confidence wherever you go.",
     features: [
-      { icon: "spray", label: "1 × On Me Spray (₹999)" },
-      { icon: "dye", label: "1 × Sip Check, 11 seals (₹555)" },
-      { icon: "pocket", label: "Colour: Pink or White" },
-      { icon: "pouch", label: "Great for gifting" },
+      { image: "/icons/1×OnMeSpray(₹999).png", label: "1 × On Me Spray (₹999)" },
+      { image: "/icons/Peelsealsip.png", label: "1 × Sip Check, 11 seals (₹555)" },
+      { icon: "swatch", label: "Colour: Pink or White" },
+      { image: "/icons/Greatforgifting.png", label: "Great for gifting" },
     ],
     colors: [
       {
@@ -172,7 +172,7 @@ const PRODUCTS: ProductData[] = [
     stageBg: "bg-[#dff0ff]",
     defaultVariantUrl: "https://shop.nazrco.in/products/bundle",
     ctaText: "Get yours",
-    trustGuarantees: ["5-Day Delivery", "Discreet Packaging", "Free shipping"],
+    trustGuarantees: ["5-day delivery", "Discreet packaging", "Free shipping"],
   },
 ];
 
@@ -323,15 +323,32 @@ function ProductCard({ product }: { product: ProductData }) {
                   key={idx}
                   className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-3 sm:py-3.5 rounded-[16px] sm:rounded-[18px] bg-[#F5F3EF] border border-black/[0.04] shadow-2xs"
                 >
-                  <span className="shrink-0 flex items-center justify-center">
-                    {feat.icon === "glow" && <Sparkles className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
-                    {feat.icon === "spray" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
-                    {feat.icon === "stream" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
-                    {feat.icon === "pocket" && <Smartphone className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
-                    {feat.icon === "tests" && <Box className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
-                    {feat.icon === "dye" && <Eye className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
-                    {feat.icon === "pouch" && <Package className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
-                    {feat.icon === "truck" && <Truck className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                  <span className="shrink-0 flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 relative">
+                    {feat.image ? (
+                      <Image
+                        src={feat.image}
+                        alt={feat.label}
+                        width={24}
+                        height={24}
+                        className="object-contain w-5 h-5 sm:w-6 sm:h-6"
+                      />
+                    ) : feat.icon === "swatch" ? (
+                      <span className="flex items-center -space-x-1.5">
+                        <span className="w-3.5 h-3.5 rounded-full bg-[#FF0E97] border border-black/10 shrink-0" />
+                        <span className="w-3.5 h-3.5 rounded-full bg-white border border-black/20 shrink-0" />
+                      </span>
+                    ) : (
+                      <>
+                        {feat.icon === "glow" && <Sparkles className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                        {feat.icon === "spray" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                        {feat.icon === "stream" && <Target className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                        {feat.icon === "pocket" && <Smartphone className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                        {feat.icon === "tests" && <Box className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                        {feat.icon === "dye" && <Eye className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                        {feat.icon === "pouch" && <Package className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                        {feat.icon === "truck" && <Truck className="w-[18px] sm:w-[20px] h-[18px] sm:h-[20px] text-[#FF0E97]" strokeWidth={2} />}
+                      </>
+                    )}
                   </span>
                   <span className="text-[13px] sm:text-[14px] font-normal sm:font-medium text-[#161616] leading-tight">
                     {feat.label}
@@ -362,12 +379,12 @@ function ProductCard({ product }: { product: ProductData }) {
                         }`}
                     >
                       {/* Product bottle swatch image - Comments #10 and #11 */}
-                      <div className="relative w-4 h-6 shrink-0 flex items-center justify-center">
+                      <div className="relative w-6 h-8 sm:w-7 sm:h-9 shrink-0 flex items-center justify-center">
                         <Image
                           src={color.swatchImage || (color.id === "pink" ? "/images/spray-pink.webp" : "/images/spray-white.webp")}
                           alt={color.name}
                           fill
-                          className="object-contain"
+                          className="object-contain scale-110"
                         />
                       </div>
                       <span>{color.name}</span>
@@ -448,18 +465,18 @@ function ProductCard({ product }: { product: ProductData }) {
 
           {/* Shipping & Trust Guarantees - Comments #14-19, #32-37, #48-52 */}
           <div
-            className="pt-4 mt-2 border-t border-black/10 flex flex-wrap items-center justify-center text-center gap-x-2.5 sm:gap-x-3 gap-y-1 select-none text-[#737373] w-full"
+            className="pt-4 mt-2 border-t border-black/10 flex flex-wrap items-center justify-center text-center gap-x-2.5 sm:gap-x-3.5 gap-y-1 select-none text-[#737373] w-full"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,
-              fontSize: "11.5px",
-              lineHeight: "16.5px",
-              letterSpacing: "0.4px",
+              fontSize: "13px",
+              lineHeight: "18px",
+              letterSpacing: "0.2px",
               color: "#737373",
             }}
           >
-            <span className="inline-flex items-center gap-1.5 shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00C853] inline-block shrink-0" />
+            <span className="inline-flex items-center gap-2 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-[#00C853] inline-block shrink-0" />
               {product.trustGuarantees[0]}
             </span>
             <span className="text-[#737373]/50">/</span>

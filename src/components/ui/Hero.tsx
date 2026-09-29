@@ -49,7 +49,7 @@ export function Hero() {
       <div className="w-full max-w-[1440px] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 lg:gap-8 relative z-10">
 
         {/* Left Photo Card */}
-        <div className="hidden md:block shrink-0 w-[240px] lg:w-[290px] xl:w-[320px] h-[480px] lg:h-[550px] xl:h-[580px] relative rounded-[28px] lg:rounded-[32px] overflow-hidden shadow-2xl border border-white/5 bg-[#1C1C1C]">
+        <div className="hidden md:block shrink-0 w-[240px] lg:w-[290px] xl:w-[320px] h-[480px] lg:h-[550px] xl:h-[580px] relative rounded-[28px] lg:rounded-[32px] overflow-hidden border border-white/5 bg-[#1C1C1C]">
           <Image
             src="/images/HOMEHERO/heroleft_sipcheck.webp"
             alt="Safety in motion"
@@ -229,7 +229,7 @@ export function Hero() {
         </div>
 
         {/* Right Photo Card */}
-        <div className="hidden md:block shrink-0 w-[240px] lg:w-[290px] xl:w-[320px] h-[480px] lg:h-[550px] xl:h-[580px] relative rounded-[28px] lg:rounded-[32px] overflow-hidden shadow-2xl border border-white/5 bg-[#1C1C1C]">
+        <div className="hidden md:block shrink-0 w-[240px] lg:w-[290px] xl:w-[320px] h-[480px] lg:h-[550px] xl:h-[580px] relative rounded-[28px] lg:rounded-[32px] overflow-hidden border border-white/5 bg-[#1C1C1C]">
           <Image
             src="/images/HOMEHERO/heroright.webp"
             alt="On Me Safety Spray"

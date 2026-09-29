@@ -79,12 +79,10 @@ export function WomenWhoStareBack() {
 
       {/* Subtitle */}
       <p
-        className="text-white text-center max-w-[640px] mb-10 sm:mb-12 px-4"
+        className="text-white text-center max-w-[640px] mb-8 sm:mb-10 md:mb-12 px-4 text-[16px] sm:text-[17px] md:text-[18px] leading-[150%] sm:leading-[155%] md:leading-[28px]"
         style={{
           fontFamily: "var(--font-inter), 'Inter', sans-serif",
           fontWeight: 400,
-          fontSize: "18px",
-          lineHeight: "28px",
           letterSpacing: "0px",
           textAlign: "center",
           verticalAlign: "middle",
