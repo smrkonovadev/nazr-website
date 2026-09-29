@@ -11,33 +11,39 @@ export function AppBackupBanner() {
         {/* Left: Phone UI & Floating Stickers */}
         <div className="w-full md:w-[48%] lg:w-[50%] flex justify-center items-center relative order-2 md:order-1 mt-6 md:mt-0">
           <div className="relative w-[300px] sm:w-[350px] md:w-[420px] lg:w-[480px] xl:w-[520px] h-[440px] sm:h-[500px] md:h-[580px] lg:h-[640px] xl:h-[680px] flex items-center justify-center">
-            {/* Floating Globe Sticker */}
-            <div className="absolute top-3 sm:top-5 md:top-7 lg:top-8 left-8 sm:left-11 md:left-14 lg:left-16 w-[70px] sm:w-[84px] md:w-[98px] lg:w-[108px] h-[70px] sm:h-[84px] md:h-[98px] lg:h-[108px] z-20 pointer-events-none transform -rotate-12">
+            {/* Floating NAZR Globe Sticker (Top Left) */}
+            <div className="absolute -top-1 sm:top-0 md:top-1 lg:top-2 -left-1 sm:left-1 md:left-2 lg:left-3 w-[88px] sm:w-[106px] md:w-[124px] lg:w-[140px] h-[93px] sm:h-[112px] md:h-[131px] lg:h-[148px] z-20 pointer-events-none transform -rotate-12">
               <Image
-                src="/images/globe.webp"
-                alt="Global Network"
+                src="/appsectionstickers/stick1.png"
+                alt="NAZR Globe Sticker"
                 fill
-                className="object-contain drop-shadow-md"
+                priority
+                sizes="(max-width: 640px) 88px, (max-width: 1024px) 124px, 140px"
+                className="object-contain drop-shadow-[0_8px_22px_rgba(0,0,0,0.28)]"
               />
             </div>
 
-            {/* Floating Pink Camera / Top Sticker */}
-            <div className="absolute top-1 sm:top-2 md:top-4 -right-2 sm:-right-4 md:-right-6 lg:-right-8 w-18 sm:w-22 md:w-26 lg:w-30 h-16 sm:h-19 md:h-22 lg:h-25 z-20 pointer-events-none transform rotate-12">
+            {/* Floating Star Eye Sticker (Top Right - Moved to top & bigger) */}
+            <div className="absolute -top-6 sm:-top-8 md:-top-10 lg:-top-12 -right-4 sm:-right-5 md:-right-6 lg:-right-8 w-[104px] sm:w-[124px] md:w-[145px] lg:w-[162px] h-[100px] sm:h-[119px] md:h-[139px] lg:h-[155px] z-20 pointer-events-none transform rotate-[15deg]">
               <Image
-                src="/images/niowef.svg"
-                alt="Camera Sticker"
+                src="/appsectionstickers/sticker2.png"
+                alt="NAZR Star Eye Sticker"
                 fill
-                className="object-contain drop-shadow-md"
+                priority
+                sizes="(max-width: 640px) 104px, (max-width: 1024px) 145px, 162px"
+                className="object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.3)]"
               />
             </div>
 
-            {/* Circular Pink Seal / Left Round Sticker */}
-            <div className="absolute top-[42%] sm:top-[44%] md:top-[45%] -left-3 sm:-left-2 md:left-0 lg:left-1 w-22 sm:w-26 md:w-32 lg:w-36 h-22 sm:h-26 md:h-32 lg:h-36 z-20 pointer-events-none transform -rotate-12">
+            {/* Circular Pink Seal Sticker - The World Stares Stare Back (Middle/Bottom Left - Bigger) */}
+            <div className="absolute top-[38%] sm:top-[39%] md:top-[40%] -left-2 sm:-left-1 md:left-1 lg:left-3 w-[118px] sm:w-[142px] md:w-[168px] lg:w-[190px] h-[118px] sm:h-[142px] md:h-[168px] lg:h-[190px] z-20 pointer-events-none transform -rotate-12">
               <Image
-                src="/images/asdf.svg"
-                alt="Established Fact Sticker"
+                src="/appsectionstickers/sticker3.png"
+                alt="The World Stares Stare Back Sticker"
                 fill
-                className="object-contain drop-shadow-lg"
+                priority
+                sizes="(max-width: 640px) 118px, (max-width: 1024px) 168px, 190px"
+                className="object-contain drop-shadow-[0_14px_30px_rgba(0,0,0,0.35)]"
               />
             </div>
 

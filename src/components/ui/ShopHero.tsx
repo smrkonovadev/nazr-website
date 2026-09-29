@@ -15,42 +15,42 @@ interface ShoppageHeroImage {
 const HERO_IMAGES: ShoppageHeroImage[] = [
   {
     id: 1,
-    src: "/shoppagehero/111.webp",
+    src: "/shoppagehero/1.webp",
     alt: "NAZR Night Out & Community",
     badge: "Always on you",
     href: "#bundle-pack",
   },
   {
     id: 2,
-    src: "/shoppagehero/222.webp",
+    src: "/shoppagehero/2.webp",
     alt: "NAZR On Me Pepper Spray",
     badge: "Discreet & Ready",
     href: "#on-me-spray",
   },
   {
     id: 3,
-    src: "/shoppagehero/333.webp",
+    src: "/shoppagehero/3.webp",
     alt: "NAZR Quick Clip Alarm",
     badge: "Instant Reach",
     href: "#bundle-pack",
   },
   {
     id: 4,
-    src: "/shoppagehero/444.webp",
+    src: "/shoppagehero/4.webp",
     alt: "NAZR Everyday Carry Kit",
     badge: "One tool, all our secrets",
     href: "#bundle-pack",
   },
   {
     id: 5,
-    src: "/shoppagehero/555.webp",
+    src: "/shoppagehero/5.webp",
     alt: "NAZR Safety Kit Box",
     badge: "Complete 360 Kit",
     href: "#bundle-pack",
   },
   {
     id: 6,
-    src: "/shoppagehero/666.webp",
+    src: "/shoppagehero/6.webp",
     alt: "NAZR Streetwear Apparel",
     badge: "Wear The Confidence",
     href: "#on-me-spray",
@@ -178,9 +178,8 @@ export function ShopHero() {
         {HERO_IMAGES.map((img, idx) => (
           <div
             key={img.src}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              idx === activeImageIndex ? "opacity-60" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activeImageIndex ? "opacity-60" : "opacity-0"
+              }`}
           >
             <Image
               src={img.src}
@@ -261,11 +260,10 @@ export function ShopHero() {
                   style={{
                     width: `${cardWidth}px`,
                   }}
-                  className={`relative flex-shrink-0 rounded-[14px] sm:rounded-[18px] md:rounded-[24px] overflow-hidden bg-[#2A0016]/90 border transition-all duration-600 ease-out cursor-pointer select-none group ${
-                    isCenter
-                      ? "h-[250px] sm:h-[310px] md:h-[410px] lg:h-[470px] xl:h-[510px] border-white/35 z-20"
-                      : "h-[200px] sm:h-[250px] md:h-[330px] lg:h-[380px] xl:h-[400px] border-white/10 hover:border-white/25 opacity-85 hover:opacity-100 z-10"
-                  }`}
+                  className={`relative flex-shrink-0 rounded-[14px] sm:rounded-[18px] md:rounded-[24px] overflow-hidden bg-[#2A0016]/90 border transition-all duration-600 ease-out cursor-pointer select-none group ${isCenter
+                    ? "h-[250px] sm:h-[310px] md:h-[410px] lg:h-[470px] xl:h-[510px] border-white/35 z-20"
+                    : "h-[200px] sm:h-[250px] md:h-[330px] lg:h-[380px] xl:h-[400px] border-white/10 hover:border-white/25 opacity-85 hover:opacity-100 z-10"
+                    }`}
                 >
                   <Image
                     src={card.src}
