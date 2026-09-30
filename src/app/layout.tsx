@@ -14,6 +14,7 @@ import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import MetaPixel from "@/components/MetaPixel";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { MobileImageZoomProvider } from "@/components/ui/MobileImageZoom";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,17 +77,19 @@ export default function RootLayout({
           <MetaPixel />
           <GlobalZoom />
           <LoadingScreen autoHide={true} />
-          <SmoothScroll>
-            <NavigationProvider>
-              <NavigationMenu />
-              <ScaleWrapper>
-                {children}
-                <DesktopScaler bgColor="#161616">
-                  <Footer />
-                </DesktopScaler>
-              </ScaleWrapper>
-            </NavigationProvider>
-          </SmoothScroll>
+          <MobileImageZoomProvider>
+            <SmoothScroll>
+              <NavigationProvider>
+                <NavigationMenu />
+                <ScaleWrapper>
+                  {children}
+                  <DesktopScaler bgColor="#161616">
+                    <Footer />
+                  </DesktopScaler>
+                </ScaleWrapper>
+              </NavigationProvider>
+            </SmoothScroll>
+          </MobileImageZoomProvider>
           <Analytics />
           <SpeedInsights />
         </PostHogProvider>

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, Sparkles, Box, Clock, Smartphone, Target, Eye, Truck, Package, ShieldCheck } from "lucide-react";
+import { Star, Sparkles, Box, Clock, Smartphone, Target, Eye, Truck, Package, ShieldCheck, ZoomIn } from "lucide-react";
 import { trackMetaViewContent } from "@/components/MetaPixel";
+import { useMobileImageZoom } from "@/components/ui/MobileImageZoom";
 
 interface ProductData {
   id: string;
@@ -187,6 +188,7 @@ export function ShopProductsSection() {
 }
 
 function ProductCard({ product }: { product: ProductData }) {
+  const { openZoom } = useMobileImageZoom();
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
@@ -233,7 +235,24 @@ function ProductCard({ product }: { product: ProductData }) {
 
           {/* Center Product Stage - fixed aspect ratio to prevent stretching/cropping */}
           <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-6 sm:py-8">
-            <div className="relative z-20 w-[260px] sm:w-[320px] md:w-[360px] aspect-square flex items-center justify-center transition-all duration-300 transform hover:scale-105">
+            <div
+              data-zoomable="true"
+              data-gallery={JSON.stringify(currentColor.thumbnails)}
+              data-index={selectedImageIndex}
+              onClick={() => {
+                if (typeof window !== "undefined" && window.innerWidth < 768) {
+                  openZoom(
+                    activeImage,
+                    product.title,
+                    1,
+                    currentColor.thumbnails,
+                    selectedImageIndex,
+                    (newIdx) => setSelectedImageIndex(newIdx)
+                  );
+                }
+              }}
+              className="relative z-20 w-[260px] sm:w-[320px] md:w-[360px] aspect-square flex items-center justify-center transition-all duration-300 transform hover:scale-105 cursor-pointer md:cursor-default"
+            >
               <div className={`relative w-full h-full transition-transform duration-300 ${product.id === "bundle-pack" && selectedImageIndex === 1 ? "scale-115 sm:scale-120" : ""}`}>
                 <Image
                   src={activeImage}
@@ -242,6 +261,7 @@ function ProductCard({ product }: { product: ProductData }) {
                   priority
                   className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.2)]"
                   sizes="(max-width: 768px) 320px, 450px"
+                  data-zoomable="true"
                 />
               </div>
             </div>
@@ -252,6 +272,7 @@ function ProductCard({ product }: { product: ProductData }) {
             {currentColor.thumbnails.map((thumb, idx) => (
               <button
                 key={idx}
+                data-no-zoom="true"
                 onClick={() => setSelectedImageIndex(idx)}
                 className={`relative w-[60px] sm:w-[72px] md:w-[80px] h-[54px] sm:h-[64px] md:h-[70px] rounded-[10px] sm:rounded-[12px] overflow-hidden bg-white/80 transition-all border-2 ${selectedImageIndex === idx
                   ? "border-black shadow-sm"
@@ -264,6 +285,7 @@ function ProductCard({ product }: { product: ProductData }) {
                   fill
                   className="object-contain p-1.5"
                   sizes="80px"
+                  data-no-zoom="true"
                 />
               </button>
             ))}
@@ -385,6 +407,7 @@ function ProductCard({ product }: { product: ProductData }) {
                           alt={color.name}
                           fill
                           className="object-contain scale-110"
+                          sizes="36px"
                         />
                       </div>
                       <span>{color.name}</span>

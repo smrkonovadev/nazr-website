@@ -85,6 +85,7 @@ export function ProductImage({
             alt={imageAlt}
             fill
             className="object-contain"
+            data-zoomable="true"
           />
         </Link>
       </div>
