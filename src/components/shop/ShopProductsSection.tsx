@@ -157,7 +157,7 @@ const PRODUCTS: ProductData[] = [
         mainImage: "/product360/Group.png",
         thumbnails: [
           "/product360/first.png",
-          "/product360/second.png",
+          "/product360/secondbundle.png",
           "/product360/fsj.png",
           "/product360/rver.png",
         ],
@@ -234,7 +234,7 @@ function ProductCard({ product }: { product: ProductData }) {
           {/* Center Product Stage - fixed aspect ratio to prevent stretching/cropping */}
           <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-6 sm:py-8">
             <div className="relative z-20 w-[260px] sm:w-[320px] md:w-[360px] aspect-square flex items-center justify-center transition-all duration-300 transform hover:scale-105">
-              <div className="relative w-full h-full">
+              <div className={`relative w-full h-full transition-transform duration-300 ${product.id === "bundle-pack" && selectedImageIndex === 1 ? "scale-115 sm:scale-120" : ""}`}>
                 <Image
                   src={activeImage}
                   alt={product.title}
