@@ -33,7 +33,7 @@ export const productsData: ProductData[] = [
   },
   {
     id: "sip-check",
-    indexText: "2] ANTI DRINK SPIKE STICKERS",
+    indexText: "2) ANTI SPIKING DRINK STICKER",
     headerBg: PINK_HEADER_GRADIENT,
     headerTextColor: "#161616",
     contentBg: "#FCE4EC",
@@ -53,7 +53,7 @@ export const productsData: ProductData[] = [
   },
   {
     id: "nazr-360",
-    indexText: "3] BUNDLE PACK",
+    indexText: "3) THE COMPLETE 360 KIT",
     headerBg: BLUE_HEADER_GRADIENT,
     headerTextColor: "#161616",
     contentBg: "#DDEFFF",

@@ -33,7 +33,7 @@ export function ShopProductThree() {
       {/* Top Blue Bar */}
       <div className="w-full bg-[#0E8DFF] py-3 px-6 md:px-12 flex items-center border-b border-black shrink-0">
         <h2 className="font-[family-name:var(--font-bebas)] text-black text-[24px] md:text-[28px] leading-none m-0">
-          3] BUNDLE PACK
+          3) THE COMPLETE 360 KIT
         </h2>
       </div>
 

@@ -57,7 +57,7 @@ export function ShopProductTwo() {
       {/* Top Pink Bar */}
       <div className="w-full bg-[#E5007D] py-3 px-6 md:px-12 flex items-center border-b border-black shrink-0">
         <h2 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[28px] font-normal leading-[1.1] tracking-[-0.03em] uppercase m-0">
-          2] ANTI DRINK SPIKE STICKERS
+          2) ANTI SPIKING DRINK STICKER
         </h2>
       </div>
 

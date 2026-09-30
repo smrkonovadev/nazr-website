@@ -88,8 +88,8 @@ const PRODUCTS: ProductData[] = [
   },
   {
     id: "sip-check",
-    numberTag: "2) ANTI DRINK SPIKE STICKERS",
-    categoryTag: "02 · Drink Protection Seals",
+    numberTag: "2) ANTI SPIKING DRINK STICKER",
+    categoryTag: "02 · Anti Spiking Drink Sticker",
     title: "SIP CHECK",
     watermark: "SIP CHECK",
     price: "₹333",
@@ -132,8 +132,8 @@ const PRODUCTS: ProductData[] = [
   },
   {
     id: "bundle-pack",
-    numberTag: "NAZR 360° BUNDLE",
-    categoryTag: "03 · The Complete 360° Kit",
+    numberTag: "3) THE COMPLETE 360 KIT",
+    categoryTag: "03 · The Complete 360 Kit",
     title: "NAZR 360° BUNDLE",
     watermark: "NAZR 360°",
     price: "₹999",
@@ -156,8 +156,8 @@ const PRODUCTS: ProductData[] = [
         hex: "#FF0E97",
         mainImage: "/product360/Group.png",
         thumbnails: [
-          "/product360/Group.png",
-          "/product360/Sip Check  2.png",
+          "/product360/first.png",
+          "/product360/second.png",
           "/product360/fsj.png",
           "/product360/rver.png",
         ],
