@@ -43,7 +43,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-[#161616] text-white flex flex-col justify-center items-center overflow-hidden relative px-4 md:px-8 lg:px-12 pt-2 md:pt-4 pb-12 md:pb-16 min-h-[calc(100vh-100px)] select-none"
+      className="w-full bg-[#161616] text-white flex flex-col justify-center items-center overflow-x-clip md:overflow-visible relative px-4 md:px-8 lg:px-12 pt-2 md:pt-4 pb-12 md:pb-16 min-h-[calc(100vh-100px)] md:min-h-0 select-none"
     >
       {/* 3-Column Layout: Left Image | Center Spotlight & Copy | Right Image */}
       <div className="w-full max-w-[1440px] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 lg:gap-8 relative z-10">
