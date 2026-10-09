@@ -10,10 +10,10 @@ The following pink CTA buttons inside each card have been hidden temporarily (no
 
 | Card # | Card Topic | Button Text | Current Status |
 | :--- | :--- | :--- | :--- |
-| **1** | Community Stories | `Read Their Stories` | `Hidden` (`SHOW_CARD_BUTTONS = false`) |
-| **2** | Events | `View All Events` | `Hidden` (`SHOW_CARD_BUTTONS = false`) |
-| **3** | Field Notes | `Explore Field Notes` | `Hidden` (`SHOW_CARD_BUTTONS = false`) |
-| **4** | Join The Community | `Join NAZR` | `Hidden` (`SHOW_CARD_BUTTONS = false`) |
+| **1** | Events | `See upcoming events` | `Visible` (`SHOW_CARD_BUTTONS = true`, `disabled = false`) |
+| **2** | Community Stories | `Read Their Stories` | `Visible` (`SHOW_CARD_BUTTONS = true`, `disabled = false`) |
+| **3** | Field Notes | `Read Field Notes` | `Visible` (`SHOW_CARD_BUTTONS = true`, `disabled = false`) |
+| **4** | Join The Community | `Join the community` | `Visible` (`SHOW_CARD_BUTTONS = true`, `disabled = false`) |
 
 ---
 

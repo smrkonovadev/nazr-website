@@ -9,7 +9,8 @@ This file contains the exact JSX code and backup instructions to restore the hid
 - **HELPLINE** (`/helpline`)
 - **BLOG** (`/blog`)
 
-> **Active Pages**: Home (`/`), Shop (`/shop`), Support (`/support`), Login (`#`).
+> **Status**: All pages have been unhidden and restored in `src/components/ui/Footer.tsx`.
+> **Active Pages**: Home (`/`), About (`/about`), Why Nazr (`/whynazrexists`), Shop (`/shop`), Nazr App (`/nazrapp`), Helpline (`/helpline`), Support (`/support`), Field Notes / Blog (`/blog`).
 
 ---
 

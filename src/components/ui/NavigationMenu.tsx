@@ -36,15 +36,15 @@ export function NavigationMenu() {
     setIsMenuOpen(false);
   }, [pathname, setIsMenuOpen]);
 
-  const links = [
+  const links: { name: string; path: string; hidden?: boolean }[] = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about", hidden: true },
-    { name: "Why Nazr", path: "/whynazrexists", hidden: true },
+    { name: "About", path: "/about" },
+    { name: "Why Nazr", path: "/whynazrexists" },
     { name: "Shop", path: "/shop" },
     { name: "Nazr App", path: "/nazrapp" },
-    { name: "Helpline", path: "/helpline", hidden: true },
+    { name: "Helpline", path: "/helpline" },
     { name: "Support", path: "/support" },
-    { name: "Blog", path: "/blog", hidden: true },
+    { name: "Blog", path: "/blog" },
   ];
 
   return (

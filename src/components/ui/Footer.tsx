@@ -119,6 +119,12 @@ export function Footer() {
               <Link href="/" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
                 Homepage
               </Link>
+              <Link href="/about" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
+                About us
+              </Link>
+              <Link href="/whynazrexists" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
+                Why NAZR
+              </Link>
               <Link href="/nazrapp" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
                 Get the NAZR App
               </Link>
@@ -135,6 +141,9 @@ export function Footer() {
               <span className="font-[family-name:var(--font-bebas)] text-[18px] sm:text-[20px] md:text-[22px] tracking-wide text-[#f4f4f4] uppercase mb-1">
                 HELP
               </span>
+              <Link href="/helpline" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
+                Helpline
+              </Link>
               <Link href="/faq" className="font-['Switzer',_sans-serif] text-[14px] sm:text-[15px] text-[#f4f4f4]/75 hover:text-[#f4f4f4] transition-colors leading-[1.6]">
                 FAQ
               </Link>

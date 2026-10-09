@@ -28,7 +28,7 @@ const cardsData = [
       "Real women on how they move through their cities, and what helps.",
     link: "/blog",
     buttonText: "Read Their Stories",
-    disabled: true,
+    disabled: false,
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const cardsData = [
       "Our notes on moving through the city: tips, conversations, and what we're learning.",
     link: "/blog",
     buttonText: "Read Field Notes",
-    disabled: true,
+    disabled: false,
   },
   {
     id: 4,
