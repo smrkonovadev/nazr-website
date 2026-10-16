@@ -22,7 +22,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "2",
     name: "AISHANI MUKHERJEE",
-    roles: ["COFOUNDER", "CHIEF BRAND OFFICER"],
+    roles: ["COFOUNDER", "CHIEF OPERATING OFFICER"],
     image: "/images/AISHANI.webp"
   }
 ];
