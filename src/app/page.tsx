@@ -29,7 +29,7 @@ const SafetyCommunitySection = dynamic(
 
 export const metadata: Metadata = {
   title: "NAZR -  Women's Safety Ecosystem ",
-  description: "NAZR is India's women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
+  description: "NAZR is India's first women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
   keywords: [
     "women's safety app India",
     "pepper spray India",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "NAZR -  Women's Safety Ecosystem ",
-    description: "NAZR is India's women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
+    description: "NAZR is India's first women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
     url: "https://www.nazrco.in/",
     siteName: "NAZR",
     locale: "en_IN",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "NAZR -  Women's Safety Ecosystem ",
-    description: "NAZR is India's women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
+    description: "NAZR is India's first women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
   },
 };
 
