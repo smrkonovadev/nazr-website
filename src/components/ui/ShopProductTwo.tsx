@@ -107,10 +107,10 @@ export function ShopProductTwo() {
           <div className="flex items-center gap-4 mb-8">
             <div className="flex items-baseline gap-2 md:gap-2.5">
               <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] md:text-[60px] leading-none">
-                ₹333
+                ₹444
               </span>
               <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[32px] md:text-[42px] line-through leading-none decoration-1 md:decoration-2">
-                ₹444
+                ₹555
               </span>
             </div>
             <div className="h-[40px] w-[1px] bg-[#161616]"></div>

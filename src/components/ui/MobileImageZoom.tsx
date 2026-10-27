@@ -26,8 +26,8 @@ interface MobileImageZoomContextType {
 }
 
 const MobileImageZoomContext = createContext<MobileImageZoomContextType>({
-  openZoom: () => {},
-  closeZoom: () => {},
+  openZoom: () => { },
+  closeZoom: () => { },
   isOpen: false,
 });
 
@@ -614,11 +614,10 @@ function MobileImageZoomModal({
         {/* Thumbnails Row below product image */}
         {images.length > 1 && (
           <div
-            className={`w-full flex items-center justify-center gap-2 px-4 transition-all duration-300 ${
-              scale > 1
+            className={`w-full flex items-center justify-center gap-2 px-4 transition-all duration-300 ${scale > 1
                 ? "opacity-0 pointer-events-none max-h-0 pb-0 overflow-hidden"
                 : "opacity-100 max-h-20 pb-2.5"
-            }`}
+              }`}
           >
             <div className="flex items-center gap-2.5 overflow-x-auto max-w-full py-1 px-2 no-scrollbar bg-black/5 rounded-2xl border border-black/10">
               {images.map((img, idx) => {
@@ -630,11 +629,10 @@ function MobileImageZoomModal({
                     onClick={() => handleSelectImage(idx)}
                     data-no-zoom="true"
                     aria-label={`View image ${idx + 1}`}
-                    className={`relative w-13 h-13 rounded-xl overflow-hidden transition-all shrink-0 p-1 flex items-center justify-center ${
-                      isSelected
+                    className={`relative w-13 h-13 rounded-xl overflow-hidden transition-all shrink-0 p-1 flex items-center justify-center ${isSelected
                         ? "border-2 border-black ring-2 ring-[#FF0E97] bg-white scale-105 shadow-md"
                         : "border border-black/15 bg-white/70 opacity-70 hover:opacity-100"
-                    }`}
+                      }`}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img

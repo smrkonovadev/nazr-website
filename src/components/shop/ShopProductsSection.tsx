@@ -93,9 +93,9 @@ const PRODUCTS: ProductData[] = [
     categoryTag: "02 · Anti Spiking Drink Sticker",
     title: "SIP CHECK",
     watermark: "SIP CHECK",
-    price: "₹333",
+    price: "₹444",
     originalPrice: "₹555",
-    discount: "40% off",
+    discount: "20% off",
     rating: "(4.5 stars)",
     reviewsCount: "32 reviews",
     description:
@@ -176,6 +176,20 @@ const PRODUCTS: ProductData[] = [
     trustGuarantees: ["5-day delivery", "Discreet packaging", "Free shipping"],
   },
 ];
+
+function getCalculatedDiscount(price: string, originalPrice: string, fallbackDiscount: string): string {
+  if (fallbackDiscount && !fallbackDiscount.toLowerCase().includes("%")) {
+    return fallbackDiscount;
+  }
+  const p = parseFloat(price.replace(/[^0-9.]/g, ""));
+  const op = parseFloat(originalPrice.replace(/[^0-9.]/g, ""));
+  if (!isNaN(p) && !isNaN(op) && op > p) {
+    const pct = ((op - p) / op) * 100;
+    const rounded = Math.round(pct * 10) / 10;
+    return `${rounded % 1 === 0 ? rounded.toFixed(0) : rounded.toFixed(1)}% off`;
+  }
+  return fallbackDiscount;
+}
 
 export function ShopProductsSection() {
   return (
@@ -314,7 +328,7 @@ function ProductCard({ product }: { product: ProductData }) {
                       {product.originalPrice}
                     </span>
                     <span className="bg-[#FF0E97] text-white font-bold text-[11px] px-1.5 py-0.5 rounded tracking-wide uppercase">
-                      {product.discount}
+                      {getCalculatedDiscount(product.price, product.originalPrice, product.discount)}
                     </span>
                   </div>
                 </div>
