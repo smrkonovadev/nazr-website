@@ -1,19 +1,35 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/ui/Header";
 import { Hero } from "@/components/ui/Hero";
 import { ProblemCardsStickyWrapper } from "@/components/ui/ProblemCardsStickyWrapper";
-import { SafetyCommunitySection } from "@/components/ui/SafetyCommunitySection";
-import { InteractiveCards } from "@/components/ui/InteractiveCards";
-import { HelpWithoutHoldUp } from "@/components/ui/HelpWithoutHoldUp";
-import { SafetyHabits } from "@/components/ui/SafetyHabits";
-import { SafetyDesigned } from "@/components/ui/SafetyDesigned";
-import { WhyNazrExists } from "@/components/ui/WhyNazrExists";
-import { WhyNazrInTheirWordsSection } from "@/components/ui/WhyNazrInTheirWordsSection";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
+
+// Below-the-fold sections dynamically loaded to keep initial bundle ultra-lean
+const HelpWithoutHoldUp = dynamic(
+  () => import("@/components/ui/HelpWithoutHoldUp").then((mod) => mod.HelpWithoutHoldUp),
+  { ssr: true }
+);
+const SafetyHabits = dynamic(
+  () => import("@/components/ui/SafetyHabits").then((mod) => mod.SafetyHabits),
+  { ssr: true }
+);
+const SafetyDesigned = dynamic(
+  () => import("@/components/ui/SafetyDesigned").then((mod) => mod.SafetyDesigned),
+  { ssr: true }
+);
+const WhatWomenAreSaying = dynamic(
+  () => import("@/components/ui/WhatWomenAreSaying").then((mod) => mod.WhatWomenAreSaying),
+  { ssr: true }
+);
+const SafetyCommunitySection = dynamic(
+  () => import("@/components/ui/SafetyCommunitySection").then((mod) => mod.SafetyCommunitySection),
+  { ssr: true }
+);
 
 export const metadata: Metadata = {
   title: "NAZR -  Women's Safety Ecosystem ",
-  description: "NAZR is India's women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
+  description: "NAZR is India's first women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
   keywords: [
     "women's safety app India",
     "pepper spray India",
@@ -28,7 +44,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "NAZR -  Women's Safety Ecosystem ",
-    description: "NAZR is India's women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
+    description: "NAZR is India's first women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
     url: "https://www.nazrco.in/",
     siteName: "NAZR",
     locale: "en_IN",
@@ -37,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "NAZR -  Women's Safety Ecosystem ",
-    description: "NAZR is India's women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
+    description: "NAZR is India's first women's safety ecosystem: On Me pepper spray, Sip Check drink covers, and an app with one-tap SOS, Shield Mode, and Trusted Circle alerts.",
   },
 };
 
@@ -53,15 +69,8 @@ export default function Home() {
           <HelpWithoutHoldUp />
           <SafetyHabits />
           <SafetyDesigned />
+          <WhatWomenAreSaying />
           <SafetyCommunitySection />
-        </DesktopScaler>
-
-        <DesktopScaler bgColor="#FFF1EB" className="overflow-hidden rounded-t-[9.71px] md:rounded-t-[26px] rounded-b-[9.71px] md:rounded-b-[26px]">
-          <div className="w-full bg-[#FFF1EB] relative z-20 pb-0 rounded-t-[9.71px] md:rounded-t-[26px] rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
-            <WhyNazrExists />
-            <InteractiveCards theme="cream" />
-            <WhyNazrInTheirWordsSection />
-          </div>
         </DesktopScaler>
       </main>
     </>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/ui/Header";
 import { AboutHero } from "@/components/ui/AboutHero";
 import { AboutStatement } from "@/components/ui/AboutStatement";
 import { AboutCollage } from "@/components/ui/AboutCollage";
@@ -45,6 +46,11 @@ export default function AboutPage() {
   return (
     <>
       <main className="flex flex-col min-h-screen bg-[#161616] w-full">
+        {/* Navigation Bar */}
+        <DesktopScaler>
+          <Header />
+        </DesktopScaler>
+
         {/* Dark Sections */}
         <DesktopScaler bgColor="transparent" className="relative z-30">
           <AboutHero />
@@ -53,14 +59,14 @@ export default function AboutPage() {
         </DesktopScaler>
 
         {/* Cream Sections */}
-        <DesktopScaler bgColor="#FFF1EB" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] md:-mt-[26px] max-md:-mt-[32px] relative z-20">
-          <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[9.71px] relative z-20 pb-0">
+        <DesktopScaler bgColor="#f4f4f4" className="md:rounded-b-[26px] max-md:rounded-b-[9.71px] md:-mt-[26px] max-md:-mt-[32px] relative z-20">
+          <div className="w-full bg-[#f4f4f4] md:rounded-b-[26px] max-md:rounded-b-[9.71px] relative z-20 pb-0">
             <AboutFeatures />
             <AboutBanners />
             <AboutTeamIntro />
             <AboutTeamList />
             <AboutTestimonial />
-            <div className="w-full bg-[#FFF1EB] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden">
+            <div className="w-full bg-[#f4f4f4] md:rounded-b-[26px] max-md:rounded-b-[9.71px] overflow-hidden">
               <AboutContactUs />
               <AutoMovingCarousel />
             </div>

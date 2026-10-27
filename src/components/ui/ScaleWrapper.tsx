@@ -30,13 +30,12 @@ export function ScaleWrapper({ children }: ScaleWrapperProps) {
     if (isMenuOpen) {
       // Lock the body scroll so the scaled page acts like a fixed card
       document.body.style.overflow = "hidden";
-    } else {
-      // Unlock the body scroll when closing
-      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      if (isMenuOpen) {
+        document.body.style.overflow = "";
+      }
     };
   }, [isMenuOpen]);
 

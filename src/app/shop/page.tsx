@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/ui/Header";
-import { ContactUsSection } from "@/components/ui/ContactUsSection";
-import { AutoMovingCarousel } from "@/components/ui/AutoMovingCarousel";
 import { ShopHero } from "@/components/ui/ShopHero";
-import { ProductScrollStack } from "@/components/shop/ProductScrollStack";
-import { ShopProblemSteps } from "@/components/ui/ShopProblemSteps";
+import { ShopProductsSection } from "@/components/shop/ShopProductsSection";
+import { WomenWhoStareBack } from "@/components/shop/WomenWhoStareBack";
+import { WhyNazrTimeline } from "@/components/shop/WhyNazrTimeline";
+import { ShopFaqSection } from "@/components/shop/ShopFaqSection";
+import { StareBackBundleBanner } from "@/components/shop/StareBackBundleBanner";
+import { AppBackupBanner } from "@/components/shop/AppBackupBanner";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 
 export const metadata: Metadata = {
   title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
-  description: "Shop NAZR's safety essentials: On Me pepper spray (₹777), Sip Check drink covers (₹444), and the NAZR 360° bundle — thoughtfully designed, always within reach.",
+  description: "Shop NAZR's safety essentials: On Me pepper spray (₹555), Sip Check drink covers (₹333), and the NAZR 360° bundle (₹999) — thoughtfully designed, always within reach.",
   keywords: [
     "buy pepper spray India",
     "On Me pepper spray price",
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
-    description: "Shop NAZR's safety essentials: On Me pepper spray (₹777), Sip Check drink covers (₹444), and the NAZR 360° bundle — thoughtfully designed, always within reach.",
+    description: "Shop NAZR's safety essentials: On Me pepper spray (₹555), Sip Check drink covers (₹333), and the NAZR 360° bundle (₹999) — thoughtfully designed, always within reach.",
     url: "https://www.nazrco.in/shop",
     siteName: "NAZR",
     locale: "en_IN",
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Shop NAZR – Pepper Spray, Sip Check & Safety Kits",
-    description: "Shop NAZR's safety essentials: On Me pepper spray (₹777), Sip Check drink covers (₹444), and the NAZR 360° bundle — thoughtfully designed, always within reach.",
+    description: "Shop NAZR's safety essentials: On Me pepper spray (₹555), Sip Check drink covers (₹333), and the NAZR 360° bundle (₹999) — thoughtfully designed, always within reach.",
   },
 };
 
@@ -39,44 +41,42 @@ export default function ShopPage() {
   return (
     <>
       <main className="flex flex-col min-h-screen bg-[#161616] w-full">
+        {/* Navigation Bar */}
         <DesktopScaler>
           <Header />
         </DesktopScaler>
 
-        {/* The Beige Canvas Section */}
-        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:mt-0 md:-mt-[48px] max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
-          <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px]">
+        {/* The Wine Magenta Canvas Hero Section */}
+        <section className="w-full flex-1 flex justify-center bg-[#161616] relative z-[70] max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
+          <DesktopScaler bgColor="#5A002F" className="max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden">
             <div
-              className="w-full bg-[#FFF1EB] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px]"
-              style={{
-                minHeight: '680px',
-              }}
+              className="w-full bg-[#5A002F] relative max-md:rounded-t-[9.71px] md:rounded-t-[26px] overflow-hidden"
             >
               <ShopHero />
             </div>
           </DesktopScaler>
         </section>
 
-        {/* Sticky Scroll Stack — outside clipped canvas so sticky works against window */}
-        <ProductScrollStack />
+        {/* 3 Product Showcase Cards */}
+        <ShopProductsSection />
 
-        {/* Problem Steps Section */}
-        <section className="w-full flex justify-center bg-[#161616]">
-          <DesktopScaler bgColor="#161616" className="w-full">
-            <div className="w-full bg-[#161616]">
-              <ShopProblemSteps />
-            </div>
-          </DesktopScaler>
-        </section>
+        {/* Women Who Stare Back Reviews Marquee Banner */}
+        <WomenWhoStareBack />
 
-        {/* Contact Us Section & Carousel */}
-        <DesktopScaler bgColor="#FFF1EB" className="max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
-          <div className="relative z-[60] -mt-[1px] bg-[#FFF1EB] w-full max-md:rounded-b-[9.71px] md:rounded-b-[26px] overflow-hidden">
-            <ContactUsSection />
-            <AutoMovingCarousel className="bg-[#FFF1EB] -mt-[1px]" />
-          </div>
-        </DesktopScaler>
+        {/* Why NAZR 24-Hour Safety Journey Timeline */}
+        <WhyNazrTimeline />
+
+        {/* Ask Us Anything FAQ Accordion */}
+        <ShopFaqSection />
+
+        {/* Stare Back Fully Equipped Bundle Banner */}
+        <StareBackBundleBanner />
+
+        {/* Your Tools Now With Backup App Banner */}
+        <AppBackupBanner />
       </main>
     </>
   );
 }
+
+

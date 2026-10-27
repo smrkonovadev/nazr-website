@@ -16,7 +16,7 @@ export function WhyNazrInTheirWordsSection() {
   }, []);
 
   return (
-    <section className="w-full bg-[#FFF1EB] h-auto md:h-[650px] flex flex-col-reverse md:flex-row items-center justify-between relative z-20 overflow-hidden">
+    <section className="w-full bg-[#f4f4f4] h-auto md:h-[650px] flex flex-col-reverse md:flex-row items-center justify-between relative z-20 overflow-hidden">
       {/* Left Column: Hand holding phone Lottie animation */}
       <div className="w-full md:w-[48%] h-[480px] sm:h-[520px] md:h-full relative flex items-end justify-center md:justify-start pl-0 sm:pl-8 md:pl-12 lg:pl-16">
         <div className="relative w-full h-full max-w-[500px] flex items-end justify-center md:justify-start pointer-events-none overflow-visible -translate-y-[3%] md:translate-y-[28%]">

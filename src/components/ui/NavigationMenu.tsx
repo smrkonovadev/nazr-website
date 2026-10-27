@@ -36,7 +36,7 @@ export function NavigationMenu() {
     setIsMenuOpen(false);
   }, [pathname, setIsMenuOpen]);
 
-  const links = [
+  const links: { name: string; path: string; hidden?: boolean }[] = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Why Nazr", path: "/whynazrexists" },
@@ -49,7 +49,7 @@ export function NavigationMenu() {
 
   return (
     <div
-      className={`fixed inset-0 w-full h-[100vh] bg-[#F1E4DE] z-0 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none transition-opacity duration-0 delay-700"}`}
+      className={`fixed inset-0 w-full h-[100dvh] bg-[#F1E4DE] z-0 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none transition-opacity duration-0 delay-700"}`}
     >
       <div
         className="absolute top-1/2 right-0 origin-right w-[1440px] max-md:w-[390px]"
@@ -60,7 +60,7 @@ export function NavigationMenu() {
       >
         {/* Single right-aligned flex container */}
         <div className="absolute top-0 bottom-0 right-6 md:right-10 flex flex-col max-md:w-[220px] md:w-[450px] z-10">
-          
+
           {/* Top right close button - fixed header at top */}
           <div className="flex justify-end w-full flex-shrink-0 pt-[12px] md:pt-[32px] pb-2 md:pb-4 z-20">
             <button
@@ -80,24 +80,26 @@ export function NavigationMenu() {
             {/* Main Navigation Links */}
             <div className="flex flex-col items-start w-full max-md:my-0 md:my-auto max-md:gap-0 md:gap-1">
 
-              {links.map((link) => {
-                const isActive = pathname === link.path;
+              {links
+                .filter((link) => !link.hidden)
+                .map((link) => {
+                  const isActive = pathname === link.path;
 
-                return (
-                  <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
-                    <div
-                      className={`w-full max-md:px-3 md:px-6 max-md:py-0.5 md:py-1.5 transition-all border rounded-[4px] ${isActive
-                        ? "bg-[#FF0E97] border-[#FF0E97] text-white"
-                        : "border-transparent text-[#161616] hover:border-[#FF0E97]"
-                        }`}
-                    >
-                      <span className="font-[family-name:var(--font-bebas)] max-md:text-[28px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">
-                        {link.name}
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
+                  return (
+                    <Link key={link.name} href={link.path} className="w-full group focus:outline-none flex-shrink-0">
+                      <div
+                        className={`w-full max-md:px-3 md:px-6 max-md:py-0.5 md:py-1.5 transition-all border rounded-[4px] ${isActive
+                          ? "bg-[#FF0E97] border-[#FF0E97] text-white"
+                          : "border-transparent text-[#161616] hover:border-[#FF0E97]"
+                          }`}
+                      >
+                        <span className="font-[family-name:var(--font-bebas)] max-md:text-[28px] md:text-[46px] leading-[0.95] tracking-[-0.01em] uppercase font-normal">
+                          {link.name}
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
 
             </div>
 
@@ -111,7 +113,7 @@ export function NavigationMenu() {
                 </span>
                 <a href="https://www.instagram.com/nazr.360/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">Instagram</a>
                 <a href="https://www.linkedin.com/company/nazrco/" target="_blank" rel="noopener noreferrer" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">LinkedIn</a>
-                <Link href="#" className="text-[#161616] hover:text-[#FF0E97] font-['Switzer',_sans-serif] text-[14px] md:text-[16px]">X/Twitter</Link>
+
               </div>
 
               {/* Quick Links */}

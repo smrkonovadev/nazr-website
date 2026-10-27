@@ -13,28 +13,28 @@ interface FaqItem {
 const faqData: FaqItem[] = [
   {
     id: "pepper-spray-legal",
-    question: "IS PEPPER SPRAY LEGAL TO CARRY IN INDIA?",
-    answer: "Yes, pepper spray is commonly permitted for personal self-defense and does not require a license under the existing law. However, it must be used strictly in case of an emergency and not be mishandled with any ill-intent."
+    question: "IS ON ME (PEPPER SPRAY) LEGAL TO CARRY IN INDIA?",
+    answer: "Yes, On Me is legal to carry in India. It cannot be carried on flights."
   },
   {
     id: "sip-check-usage",
-    question: "HOW MANY TIMES CAN I USE ONE SIP CHECK?",
-    answer: "Sip Check is designed for security and hygiene, typically as a single-use product to ensure maximum safety and reliability."
+    question: "DOES SIP CHECK DETECT IF MY DRINK HAS BEEN SPIKED?",
+    answer: "No. Sip Check is a physical barrier, it does not test for or detect substances, and it does not change color. It works by covering your drink so nothing can be added to it."
   },
   {
     id: "manual-sos-trigger",
-    question: "DO I HAVE TO MANUALLY TRIGGER AN SOS EVERY TIME?",
-    answer: "No. Nazr is designed for moments when you can't act. If you fail to check in or respond, the system escalates automatically to ensure help is notified."
+    question: "WHAT HAPPENS IF I FORGET TO TURN OFF SHIELD MODE?",
+    answer: "If you miss a check-in for 5 minutes, your Trusted Circle is immediately alerted. If they don't respond, an SOS is automatically triggered. Your Trusted Circle can also try calling you directly, and if you still don't respond, they can trigger a remote SOS themselves."
   },
   {
     id: "pepper-spray-flight-train",
-    question: "CAN I CARRY THE PEPPER SPRAY ON A FLIGHT/TRAIN?",
-    answer: "Pepper sprays are generally not permitted in cabin baggage on Indian flights. Restrictions on checked-in luggage depend on airport and security policies. It is generally allowed in trains but must be carried and used responsibly according to the guidelines"
+    question: "CAN I CARRY ON ME ON A FLIGHT / TRAIN?",
+    answer: "Pepper sprays are not permitted in cabin baggage on Indian flights. Restrictions on checked-in luggage depend on airport and airline security policies. For trains, it is generally allowed for personal self-defence when carried responsibly."
   },
   {
     id: "nazr-location-sharing",
-    question: "WILL THE NAZR APP SHARE MY LOCATION ALL THE TIME?",
-    answer: "No. Your location is only shared with your Trusted Circle during an SOS event or with your permission. We believe deeply in keeping your privacy intact."
+    question: "DOES SHIELD MODE TRACK MY LOCATION ALL THE TIME?",
+    answer: "No. Location tracking is only active while you have started a Shield Mode or SOS session. Nazr does not track your location in the background at other times."
   }
 ];
 

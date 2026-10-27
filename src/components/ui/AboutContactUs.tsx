@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function AboutContactUs() {
   return (
-    <section className="w-full bg-[#FFF1EB] max-md:pt-[20px] md:pt-[40px] pb-[48px] px-4 flex flex-col items-center justify-center text-center relative -mt-[2px] border-none outline-none z-20">
+    <section className="w-full bg-[#f4f4f4] max-md:pt-[20px] md:pt-[40px] pb-[48px] px-4 flex flex-col items-center justify-center text-center relative -mt-[2px] border-none outline-none z-20">
       {/* ======================= */}
       {/* MOBILE LAYOUT           */}
       {/* ======================= */}

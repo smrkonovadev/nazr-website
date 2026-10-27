@@ -4,6 +4,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  touch-action: pan-y;
+  pointer-events: none;
 }
 
 .clipped {
@@ -15,6 +17,8 @@
   clip-path: inset(0 0 var(--clip-bottom, 0%) 0);
   will-change: clip-path;
   contain: paint;
+  touch-action: pan-y;
+  pointer-events: auto;
 }
 
 .content {
@@ -24,6 +28,7 @@
   height: 100%;
   /* Content never moves — only the mask edge changes */
   transform: none;
+  touch-action: pan-y;
 }
 
 .divider {

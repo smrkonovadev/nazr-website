@@ -1,37 +1,37 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 
 const cards = [
   {
     id: 1,
     title: "1) ON ME SPRAY",
+    bgImage: "/images/PINKGRADPRO.svg",
     image: "/images/my-new-spray.webp",
     borderColor: "border-[#EC008C]",
+    link: "https://shop.nazrco.in/products/on-me-spray",
   },
   {
     id: 2,
-    title: "2] ANTI DRINK SPIKE STICKERS",
+    title: "2) SIP CHECK STICKERS",
+    bgImage: "/images/PURPLEGRADPRO.svg",
     image: "/images/productsip.webp",
     borderColor: "border-[#4338CA]",
+    link: "https://shop.nazrco.in/products/sip-check",
   },
   {
     id: 3,
-    title: "3] BUNDLE PACK",
+    title: "3) BUNDLE PACK",
+    bgImage: "/images/PINKGRADPRO.svg",
     image: "/images/product365.webp",
     borderColor: "border-[#EC008C]",
+    link: "https://shop.nazrco.in/products/bundle",
   }
 ];
 
 export function ProductCardsCarousel() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const rowRef = useRef<HTMLDivElement>(null);
-  const [xTranslation, setXTranslation] = useState(0);
-
   const renderTitle = (title: string) => {
-    const match = title.match(/^(\d+[)\]])(.*)$/);
+    const match = title.match(/^(\d+\))(.*)$/);
     if (match) {
       return (
         <>
@@ -43,148 +43,215 @@ export function ProductCardsCarousel() {
     return title;
   };
 
-  // Measure the total horizontal scrollable distance dynamically (accounting for padding)
-  useEffect(() => {
-    const calculateTranslation = () => {
-      if (rowRef.current && rowRef.current.parentElement) {
-        const rowWidth = rowRef.current.scrollWidth;
-        const parentWidth = rowRef.current.parentElement.offsetWidth;
-        // Add 24px right padding so the last card doesn't touch the screen edge
-        const translation = Math.max(0, rowWidth - parentWidth + 24);
-        setXTranslation(translation);
-      }
-    };
-
-    calculateTranslation();
-
-    // Polling calculations to handle dynamic rendering of media and scaling adjustments
-    const timer = setTimeout(calculateTranslation, 150);
-    const interval = setInterval(calculateTranslation, 500);
-
-    window.addEventListener("resize", calculateTranslation);
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-      window.removeEventListener("resize", calculateTranslation);
-    };
-  }, []);
-
-  const scrollYProgress = useMotionValue(0);
-
-  // Track scroll progress within this section dynamically (zoom-safe for scaling)
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-
-        // Calculate progress from top of container entering top of viewport to bottom of container leaving bottom of viewport
-        const startScroll = rect.top;
-        const scrollRange = rect.height - window.innerHeight;
-
-        if (scrollRange > 0) {
-          const progress = -startScroll / scrollRange;
-          scrollYProgress.set(Math.max(0, Math.min(1, progress)));
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
-
-    const timer = setTimeout(handleScroll, 200);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [scrollYProgress]);
-
-  // Map vertical scroll progress to negative horizontal translation, completing at 75% scroll to prevent unpinning lag under high zoom
-  const x = useTransform(scrollYProgress, [0, 0.75], [0, -xTranslation], { clamp: true });
-
-  const isSticky = xTranslation > 0;
-
   return (
-    <section ref={containerRef} className={`w-full bg-[#161616] relative z-50 ${isSticky ? 'h-[200vh]' : 'h-auto pb-[90px]'} max-md:h-auto max-md:pb-[90px]`}>
+    <section className="w-full bg-[#161616] relative z-50 py-12 md:py-16">
 
-      {/* Desktop view only: horizontal pin scroll */}
-      <div className={`hidden md:block ${isSticky ? 'sticky top-0 h-screen overflow-hidden' : 'relative h-auto overflow-visible'} pt-[60px] w-full`}>
-        {/* Horizontal scroll container */}
-        <div className="w-full px-[40px]">
-          <motion.div
-            ref={rowRef}
-            className="flex gap-6 pr-[40px]"
+      {/* Desktop view only: Normal smooth flow, side-by-side cards without sticky pin */}
+      <div className="hidden md:block w-full max-w-[1440px] mx-auto px-6 lg:px-10">
+        
+        {/* Header */}
+        <div className="w-full flex flex-col items-center text-center px-4 mb-8 md:mb-10">
+          <h2
+            className="m-0 text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[48px] md:text-[90px] lg:text-[110px] xl:text-[120px] leading-[88%] tracking-[-0.03em] uppercase text-center w-full"
             style={{
-              width: "max-content",
-              paddingBottom: "1px",
-              x: isSticky ? x : 0
+              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "88%",
+              letterSpacing: "-0.03em",
+              color: "#f4f4f4",
             }}
           >
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className={`shrink-0 w-[calc(min(556px,72vh)*0.97)] h-[min(556px,72vh)] rounded-[24px] overflow-hidden relative group bg-[#111111] border-[3.5px] ${card.borderColor}`}
-              >
-                {/* Card Header Overlay */}
-                <div className="absolute top-0 left-0 right-0 p-8 flex justify-between items-start z-20 pointer-events-none">
-                  <h3 className="m-0 text-white font-[family-name:var(--font-bebas)] text-[34px] leading-[100%] tracking-normal uppercase drop-shadow-sm max-w-[65%] mt-1">
-                    {renderTitle(card.title)}
-                  </h3>
+            OUR PRODUCTS
+          </h2>
 
-                  <button className="bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[14px] leading-[150%] px-5 py-2 rounded-[4px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Inter, sans-serif" }}>
-                    Shop now
-                  </button>
-                </div>
-
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.82] group-hover:scale-[0.87]'}`}
-                  sizes="650px"
-                />
-              </div>
-            ))}
-          </motion.div>
+          <p 
+            className="m-0 text-[#f4f4f4] font-normal text-[14px] md:text-[16px] xl:text-[20px] leading-[135%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-2 md:mt-3" 
+            style={{
+              fontFamily: "Inter, var(--font-inter), sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "135%",
+              letterSpacing: "-0.03em",
+              color: "#f4f4f4",
+            }}
+          >
+            Everything in the Nazr ecosystem is built with the one idea that protection fits into your life, not the other way around. Thoughtfully designed. Quietly powerful. Always within reach.
+          </p>
         </div>
-      </div>
 
-      {/* Mobile view only: horizontal scroll track */}
-      <div className="block md:hidden w-full pt-4 pb-8 overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-        <div className="flex flex-row gap-4 px-4 w-max">
+        {/* Normal horizontal row of product cards */}
+        <div className="w-full flex justify-center gap-6 lg:gap-8 overflow-x-auto no-scrollbar py-2">
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`shrink-0 w-[330px] min-w-[330px] h-[350px] rounded-[18px] overflow-hidden relative group bg-[#111111] border-[3px] ${card.borderColor}`}
-              style={{ opacity: 1, transform: "rotate(0deg)" }}
+              className={`shrink-0 rounded-[16px] overflow-hidden relative group border-[2px] ${card.borderColor}`}
+              style={{
+                height: "540px",
+                width: "420px",
+                maxWidth: "100%",
+                borderRadius: "16px",
+                borderWidth: "2px",
+              }}
             >
+              {/* Gradient SVG Background */}
+              <img
+                src={card.bgImage}
+                alt={card.title}
+                className="absolute inset-0 w-full h-full object-cover object-center z-0"
+              />
+
               {/* Card Header Overlay */}
-              <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start z-20 pointer-events-none">
-                <h3 className="m-0 text-white font-[family-name:var(--font-bebas)] text-[26px] leading-[100%] tracking-normal uppercase drop-shadow-sm max-w-[65%] mt-1">
+              <div className="absolute top-0 left-0 right-0 p-6 lg:p-8 flex justify-between items-start gap-[20px] z-20 pointer-events-none">
+                <h3
+                  className="m-0 text-[#f4f4f4] uppercase drop-shadow-sm max-w-[65%] mt-1"
+                  style={{
+                    fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                    fontWeight: 400,
+                    fontStyle: "normal",
+                    fontSize: "30px",
+                    lineHeight: "140%",
+                    letterSpacing: "0%",
+                    color: "#f4f4f4",
+                  }}
+                >
                   {renderTitle(card.title)}
                 </h3>
 
-                <button className="bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[13px] leading-[150%] px-4 py-2 rounded-[4px] shadow-md whitespace-nowrap pointer-events-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+                <a
+                  href={card.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[14px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer no-underline text-center"
+                  style={{
+                    width: "111px",
+                    height: "40px",
+                    fontFamily: "Inter, sans-serif",
+                  }}
+                >
                   Shop now
-                </button>
+                </a>
               </div>
 
+              {/* Product Image on Pedestal */}
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
-                className={`z-10 transition-transform duration-500 ease-out ${card.id === 1 ? 'object-contain scale-[0.92] group-hover:scale-[0.97]' : 'object-contain scale-[0.82] group-hover:scale-[0.87]'}`}
-                sizes="330px"
+                className={`z-10 transition-transform duration-500 ease-out ${
+                  card.id === 1
+                    ? 'object-contain scale-[0.92] group-hover:scale-[0.97] translate-y-2'
+                    : card.id === 2
+                    ? 'object-contain scale-[1.25] group-hover:scale-[1.30] translate-y-3'
+                    : 'object-contain scale-[1.05] group-hover:scale-[1.10] translate-y-2'
+                }`}
+                sizes="420px"
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* 90px beige transition bar at the bottom of the scroll track */}
-      <div className="absolute bottom-0 left-0 w-full h-[90px] bg-[#FFF1EB]" />
+      {/* Mobile view only: Header + horizontal swipe track */}
+      <div className="block md:hidden w-full pt-4 pb-4 overflow-hidden bg-[#161616]">
+        {/* Mobile Header */}
+        <div className="w-full flex flex-col items-center text-center px-4 mb-5">
+          <h2
+            className="m-0 text-[#f4f4f4] font-[family-name:var(--font-bebas)] font-normal text-[44px] leading-[90%] tracking-[-0.03em] uppercase text-center w-full"
+            style={{
+              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "90%",
+              letterSpacing: "-0.03em",
+              color: "#f4f4f4",
+            }}
+          >
+            OUR PRODUCTS
+          </h2>
+
+          <p 
+            className="m-0 text-[#f4f4f4] font-normal text-[15px] leading-[140%] tracking-[-0.03em] text-center max-w-[840px] w-full mt-[8px]" 
+            style={{
+              fontFamily: "Inter, var(--font-inter), sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "140%",
+              letterSpacing: "-0.03em",
+              color: "#f4f4f4",
+            }}
+          >
+            Everything in the Nazr ecosystem is built with the one idea that protection fits into your life, not the other way around. Thoughtfully designed. Quietly powerful. Always within reach.
+          </p>
+        </div>
+
+        {/* Mobile Cards Track */}
+        <div className="w-full overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div className="flex flex-row gap-4 px-4 w-max">
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className={`shrink-0 w-[320px] min-w-[320px] h-[340px] rounded-[16px] overflow-hidden relative group border-[2px] ${card.borderColor}`}
+                style={{ opacity: 1, transform: "rotate(0deg)" }}
+              >
+                {/* Gradient SVG Background */}
+                <img
+                  src={card.bgImage}
+                  alt={card.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                />
+
+                {/* Card Header Overlay */}
+                <div className="absolute top-0 left-0 right-0 p-5 flex justify-between items-start gap-[16px] z-20 pointer-events-none">
+                  <h3
+                    className="m-0 text-[#f4f4f4] uppercase drop-shadow-sm max-w-[65%] mt-1"
+                    style={{
+                      fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                      fontWeight: 400,
+                      fontStyle: "normal",
+                      fontSize: "26px",
+                      lineHeight: "140%",
+                      letterSpacing: "0%",
+                      color: "#f4f4f4",
+                    }}
+                  >
+                    {renderTitle(card.title)}
+                  </h3>
+
+                  <a
+                    href={card.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[12px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer no-underline text-center"
+                    style={{
+                      width: "95px",
+                      height: "36px",
+                      fontFamily: "Inter, sans-serif",
+                    }}
+                  >
+                    Shop now
+                  </a>
+                </div>
+
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className={`z-10 transition-transform duration-500 ease-out ${
+                    card.id === 1
+                      ? 'object-contain scale-[0.86] translate-y-6'
+                      : card.id === 2
+                      ? 'object-contain scale-[1.08] translate-y-6'
+                      : 'object-contain scale-[0.96] translate-y-6'
+                  }`}
+                  sizes="320px"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }

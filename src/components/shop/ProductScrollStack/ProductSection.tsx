@@ -20,6 +20,7 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
 
   return (
     <article
+      id={product.id}
       className={styles.panel}
       style={{ zIndex }}
       data-product={product.id}
@@ -48,25 +49,42 @@ export function ProductSection({ product, nextProduct, zIndex, isLast = false }:
               className="w-full flex-1 flex flex-col md:flex-row min-h-0"
               style={{ backgroundColor: product.contentBg }}
             >
-              <ProductImage
-                titleLines={product.titleLines}
-                imageSrc={product.imageSrc}
-                imageAlt={product.imageAlt}
-                imageTransformClass={product.imageTransformClass}
-                imageWidthHeightClass={product.imageWidthHeightClass}
-                url={product.url}
-              />
-              <ProductDetails
-                description={product.description}
-                price={product.price}
-                rating={product.rating}
-                reviews={product.reviews}
-                hasVariants={product.hasVariants}
-                variants={product.variants}
-                url={product.url}
-                selectedVariant={selectedVariant}
-                setSelectedVariant={setSelectedVariant}
-              />
+              {(() => {
+                const currentVariant = product.variants?.find((v) => v.id === selectedVariant);
+                const activeImageSrc = currentVariant?.mainImageSrc || currentVariant?.imageSrc || product.imageSrc;
+                const activeImageAlt = currentVariant ? `${product.imageAlt} - ${currentVariant.name}` : product.imageAlt;
+                const activeUrl = currentVariant?.variantUrl || product.url;
+
+                return (
+                  <>
+                    <ProductImage
+                      productId={product.id}
+                      productTitle={product.titleLines.join(" ")}
+                      price={product.price}
+                      titleLines={product.titleLines}
+                      imageSrc={activeImageSrc}
+                      imageAlt={activeImageAlt}
+                      imageTransformClass={product.imageTransformClass}
+                      imageWidthHeightClass={product.imageWidthHeightClass}
+                      url={activeUrl}
+                    />
+                    <ProductDetails
+                      productId={product.id}
+                      productTitle={product.titleLines.join(" ")}
+                      description={product.description}
+                      price={product.price}
+                      originalPrice={product.originalPrice}
+                      rating={product.rating}
+                      reviews={product.reviews}
+                      hasVariants={product.hasVariants}
+                      variants={product.variants}
+                      url={activeUrl}
+                      selectedVariant={selectedVariant}
+                      setSelectedVariant={setSelectedVariant}
+                    />
+                  </>
+                );
+              })()}
             </div>
           </section>
         </div>

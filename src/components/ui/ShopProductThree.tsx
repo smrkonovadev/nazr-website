@@ -5,6 +5,8 @@ import { useState, useRef } from "react";
 import { Star, ShoppingBag } from "lucide-react";
 import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 
+import { trackMetaViewContent } from "@/components/MetaPixel";
+
 export function ShopProductThree() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white">("pink");
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,13 +17,23 @@ export function ShopProductThree() {
   const clipBottom = useTransform(scrollYProgress, [0, 0.7], ["100%", "0%"]);
   const clipPath = useMotionTemplate`inset(0 0 ${clipBottom} 0)`;
 
+  const handleProductClick = () => {
+    trackMetaViewContent({
+      content_name: "NAZR 360° Bundle Pack",
+      content_ids: ["bundle"],
+      content_type: "product",
+      value: 999,
+      currency: "INR",
+    });
+  };
+
   return (
     <section ref={sectionRef} className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 30 }}>
 
       {/* Top Blue Bar */}
       <div className="w-full bg-[#0E8DFF] py-3 px-6 md:px-12 flex items-center border-b border-black shrink-0">
         <h2 className="font-[family-name:var(--font-bebas)] text-black text-[24px] md:text-[28px] leading-none m-0">
-          3] BUNDLE PACK
+          3) THE COMPLETE 360 KIT
         </h2>
       </div>
 
@@ -42,29 +54,41 @@ export function ShopProductThree() {
             </h3>
           </div>
 
-          {/* Product Image on Podium */}
+          {/* Product Image on Podium — clickable to PDP */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
-            <div className="relative w-[400px] h-[360px] md:w-[520px] md:h-[440px] z-20 pointer-events-none md:transform md:translate-x-12 md:translate-y-6">
+            <a
+              href="https://shop.nazrco.in/products/bundle"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleProductClick}
+              className="relative w-[400px] h-[360px] md:w-[520px] md:h-[440px] z-20 pointer-events-auto cursor-pointer md:transform md:translate-x-12 md:translate-y-6 hover:opacity-95 transition-opacity"
+            >
               <Image unoptimized quality={100} src="/images/SHOPPRO3.webp"
                 alt="Nazr 360 Bundle"
                 fill
                 className="object-contain"
               />
-            </div>
+            </a>
           </div>
         </div>
 
         {/* Right Column (Product Details) */}
         <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 pb-8 flex flex-col justify-end overflow-y-auto">
 
-          <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em]">
-            Nazr 360° pairs two essentials for everyday peace of mind. The compact On Me designed for quick access, and a pack of Sip Checks to keep your beverage protected. Different tools with one goal: feeling secure and present wherever you go.          </p>
+          <p className="font-['Inter',_sans-serif] text-[#161616] text-[16px] font-normal leading-[140%] tracking-[-0.03em] md:text-[24px] md:font-semibold md:leading-[140%] md:tracking-[-0.03em] max-w-[440px] mb-3 md:mb-5">
+            A personal safety kit that brings two everyday essentials together. Includes On Me and Sip Check for confidence wherever you go.
+          </p>
 
           {/* Price and Rating */}
           <div className="flex items-center gap-4 mb-8">
-            <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] md:text-[60px] leading-none">
-              ₹1111
-            </span>
+            <div className="flex items-baseline gap-2 md:gap-2.5">
+              <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] md:text-[60px] leading-none">
+                ₹999
+              </span>
+              <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[32px] md:text-[42px] line-through leading-none decoration-1 md:decoration-2">
+                ₹1111
+              </span>
+            </div>
             <div className="h-[40px] w-[1px] bg-[#161616]"></div>
             <div className="flex items-center gap-2">
               <div className="flex gap-[2px] text-[#161616]">
@@ -72,22 +96,25 @@ export function ShopProductThree() {
                 <Star className="w-5 h-5 fill-[#161616]" />
                 <Star className="w-5 h-5 fill-[#161616]" />
                 <Star className="w-5 h-5 fill-[#161616]" />
-                <Star className="w-5 h-5 stroke-[#161616]" />
+                <Star className="w-5 h-5 fill-[#161616]" />
               </div>
               <span className="font-['Inter',_sans-serif] text-[12px] md:text-[14px] text-black font-medium mt-1">
-                (3.5 stars) • 10 reviews
+                (5 stars) • 18 reviews
               </span>
             </div>
           </div>
 
-          {/* Variant Selector */}
-
-
           {/* Action Buttons */}
           <div className="w-full max-w-[500px] flex justify-start">
-            <button className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase">
+            <a
+              href="https://shop.nazrco.in/products/bundle"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleProductClick}
+              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#f4f4f4] text-[#f4f4f4] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
+            >
               View More
-            </button>
+            </a>
           </div>
 
         </div>

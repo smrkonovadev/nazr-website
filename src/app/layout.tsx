@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bebas_Neue, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Bebas_Neue, Inter, Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -11,6 +11,10 @@ import { GlobalZoom } from "@/components/ui/GlobalZoom";
 import { DesktopScaler } from "@/components/ui/DesktopScaler";
 import { Footer } from "@/components/ui/Footer";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import MetaPixel from "@/components/MetaPixel";
+import { PostHogProvider } from "@/components/PostHogProvider";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { MobileImageZoomProvider } from "@/components/ui/MobileImageZoom";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +35,13 @@ const bebas = Bebas_Neue({
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const roboto = Roboto({
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
   subsets: ["latin"],
   display: "swap",
 });
@@ -58,20 +69,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${signPainter.variable} antialiased bg-white`} suppressHydrationWarning>
-        <GlobalZoom />
-        <LoadingScreen duration={4000} autoHide={true} />
-        <NavigationProvider>
-          <NavigationMenu />
-          <ScaleWrapper>
-            {children}
-            <DesktopScaler bgColor="#161616">
-              <Footer />
-            </DesktopScaler>
-          </ScaleWrapper>
-        </NavigationProvider>
-        <Analytics />
-        <SpeedInsights />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${bebas.variable} ${inter.variable} ${roboto.variable} ${signPainter.variable} antialiased bg-white`}
+        suppressHydrationWarning
+      >
+        <PostHogProvider>
+          <MetaPixel />
+          <GlobalZoom />
+          <LoadingScreen autoHide={true} />
+          <MobileImageZoomProvider>
+            <SmoothScroll>
+              <NavigationProvider>
+                <NavigationMenu />
+                <ScaleWrapper>
+                  {children}
+                  <DesktopScaler bgColor="#161616">
+                    <Footer />
+                  </DesktopScaler>
+                </ScaleWrapper>
+              </NavigationProvider>
+            </SmoothScroll>
+          </MobileImageZoomProvider>
+          <Analytics />
+          <SpeedInsights />
+        </PostHogProvider>
       </body>
     </html>
   );

@@ -1,121 +1,131 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
-import { motion, useScroll } from "framer-motion";
+import { useScroll } from "framer-motion";
 import { ScrollRevealText } from "./ScrollRevealText";
 
 export function ProblemStatement() {
-  const textContainerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: textContainerRef,
-    offset: ["start 95%", "end 45%"]
+    target: containerRef,
+    offset: ["start 85%", "end 35%"],
   });
 
   return (
-    <section className="w-full bg-[#161616] flex justify-center pt-0 pb-0 md:py-0 md:-mt-2 z-[60] relative">
-      <div className="w-full max-w-[1440px] px-4 md:px-[30px] flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 relative">
+    <section className="w-full bg-[#161616] flex justify-center pt-8 pb-2 md:pt-14 md:pb-4 z-40 relative">
+      <div className="w-full max-w-[1440px] px-4 md:px-[30px] flex flex-col items-center justify-center text-center relative">
 
-        {/* Left Side: Text Column */}
-        <div ref={textContainerRef} className="w-full max-w-[640px] flex flex-col gap-4 md:gap-6 z-10">
+        {/* Centered Text Column */}
+        <div ref={containerRef} className="w-full max-w-[1040px] flex flex-col items-center gap-6 md:gap-8 z-10">
 
-          {/* Mobile Text */}
-          <div className="md:hidden flex flex-col gap-6 pt-10 pb-2 mx-auto w-full max-w-[360px] px-2 text-center">
+          {/* Mobile Text (Scroll reveal animation) */}
+          <div className="md:hidden flex flex-col gap-6 w-full text-center px-2">
             <ScrollRevealText
-              text={"FOR MANY WOMEN IN INDIA, SAFETY\nHAS BECOME A ROUTINE OF\nWORKAROUNDS. SHARED LOCATIONS.\nCHECK-INS.CALLS ON THE WAY HOME."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[36px] text-center text-[#FFF9EB]"
+              text={"FOR MANY WOMEN IN INDIA, SAFETY\nHAS BECOME A ROUTINE OF\nWORKAROUNDS. SHARED LOCATIONS.\nCHECK-INS. CALLS ON THE WAY HOME."}
+              className="m-0 font-[family-name:var(--font-bebas)] text-center text-[#f4f4f4] whitespace-pre-line"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                fontStyle: 'normal',
-                fontSize: '30px',
-                lineHeight: '120%',
-                letterSpacing: '0.01em',
+                fontSize: "32px",
+                lineHeight: "90%",
+                letterSpacing: "-0.01em",
+                textAlign: "center",
               } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
-              progressRange={[0, 0.45]}
+              progressRange={[0, 0.48]}
+              fillColor="#f4f4f4"
+              emptyColor="#3A3A3A"
             />
             <ScrollRevealText
-              text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-[30px] text-center text-[#FFF9EB]"
+              text={"WHEN SOMETHING FEELS WRONG,\nHELP SHOULD BE IMMEDIATE. NOT\nDEPENDENT ON FINDING A PHONE,\nUNLOCKING IT, AND ASKING FOR IT."}
+              className="m-0 font-[family-name:var(--font-bebas)] text-center text-[#f4f4f4] whitespace-pre-line"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                fontStyle: 'normal',
-                fontSize: '30px',
-                lineHeight: '120%',
-                letterSpacing: '0.01em',
+                fontSize: "28px",
+                lineHeight: "90%",
+                letterSpacing: "-0.01em",
+                textAlign: "center",
               } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
-              progressRange={[0.45, 0.9]}
+              progressRange={[0.48, 0.96]}
+              fillColor="#f4f4f4"
+              emptyColor="#3A3A3A"
             />
           </div>
 
-          {/* Desktop Text (Natural text flow for laptop/desktop screens) */}
-          <div className="hidden md:flex flex-col gap-6">
+          {/* Desktop Text (Scroll reveal animation) */}
+          <div className="hidden md:flex flex-col items-center gap-7 w-full text-center">
             <ScrollRevealText
-              text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A\nROUTINE OF WORKAROUNDS. SHARED LOCATIONS. CHECK-\nINS. CALLS ON THE WAY HOME."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px]"
+              text={"FOR MANY WOMEN IN INDIA, SAFETY HAS BECOME A ROUTINE\nOF WORKAROUNDS. SHARED LOCATIONS. CHECK-INS. CALLS\nON THE WAY HOME."}
+              className="m-0 font-[family-name:var(--font-bebas)] text-center text-[#f4f4f4] whitespace-pre-line"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                fontStyle: 'normal',
-                fontSize: '36px',
-                lineHeight: '120%',
-                letterSpacing: '0.01em',
+                fontStyle: "normal",
+                fontSize: "48px",
+                lineHeight: "90%",
+                letterSpacing: "-0.01em",
+                textAlign: "center",
               } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
-              progressRange={[0.05, 0.50]}
+              progressRange={[0, 0.48]}
+              fillColor="#f4f4f4"
+              emptyColor="#3A3A3A"
             />
             <ScrollRevealText
-              text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE IMMEDIATE. NOT DEPENDENT ON FINDING A PHONE, UNLOCKING IT, AND ASKING FOR IT."}
-              className="m-0 font-[family-name:var(--font-bebas)] text-left text-[#FFF9EB] text-[36px]"
+              text={"WHEN SOMETHING FEELS WRONG, HELP SHOULD BE\nIMMEDIATE. NOT DEPENDENT ON FINDING A PHONE,\nUNLOCKING IT, AND ASKING FOR IT."}
+              className="m-0 font-[family-name:var(--font-bebas)] text-center text-[#f4f4f4] whitespace-pre-line"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                 fontWeight: 400,
-                fontStyle: 'normal',
-                fontSize: '36px',
-                lineHeight: '120%',
-                letterSpacing: '0.01em',
+                fontStyle: "normal",
+                fontSize: "48px",
+                lineHeight: "90%",
+                letterSpacing: "-0.01em",
+                textAlign: "center",
               } as React.CSSProperties}
               scrollYProgress={scrollYProgress}
-              progressRange={[0.50, 0.95]}
+              progressRange={[0.48, 0.96]}
+              fillColor="#f4f4f4"
+              emptyColor="#3A3A3A"
             />
           </div>
-        </div>
 
-        {/* Right Side: Proportional Stacked Circular Badges (Hidden on mobile) */}
-        <div className="hidden md:block relative md:w-[360px] md:h-[320px] lg:w-[400px] lg:h-[360px] shrink-0 pointer-events-none z-10 my-0 md:-translate-x-[60px] md:translate-y-[0px]">
+          {/* Pink Sub-heading with Down Arrows: WHAT ASKING FOR HELP LOOKS LIKE ON YOUR PHONE RIGHT NOW */}
+          <div className="flex items-center justify-center gap-2 md:gap-3 text-[#FF0E97] mt-3 md:mt-5 mb-1 select-none">
+            {/* Left circular down arrow */}
+            <div className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] md:w-[24px] md:h-[24px] rounded-full border border-[#FF0E97] flex items-center justify-center text-[#FF0E97] shrink-0">
+              <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 fill-none stroke-current stroke-2">
+                <path d="M12 5v14M19 12l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
 
-          {/* Back Image (Pink) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 12 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 120, damping: 18, delay: 0.2 }}
-            className="absolute top-2 right-0 w-[190px] h-[190px] sm:w-[210px] sm:h-[210px] md:w-[275px] md:h-[275px] lg:w-[305px] lg:h-[305px]"
-          >
-            <Image unoptimized quality={100} src="/images/new1.webp"
-              alt="NAZR Badge Pink"
-              fill
-              className="object-contain drop-shadow-xl"
-            />
-          </motion.div>
+            {/* Underlined text */}
+            <span
+              className="text-[14px] sm:text-[18px] md:text-[24px] underline decoration-[#FF0E97] uppercase text-center"
+              style={{
+                fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                fontWeight: 400,
+                fontStyle: "normal",
+                lineHeight: "140%",
+                letterSpacing: "-0.03em",
+                textDecoration: "underline",
+                textDecorationStyle: "solid",
+                textDecorationSkipInk: "auto",
+                verticalAlign: "bottom",
+              }}
+            >
+              WHAT ASKING FOR HELP LOOKS LIKE ON YOUR PHONE RIGHT NOW
+            </span>
 
-          {/* Front Image (Purple) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -35 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 120, damping: 18, delay: 0.1 }}
-            className="absolute top-6 left-0 w-[190px] h-[190px] sm:w-[210px] sm:h-[210px] md:w-[275px] md:h-[275px] lg:w-[305px] lg:h-[305px] z-20"
-          >
-            <Image unoptimized quality={100} src="/images/new2.webp"
-              alt="NAZR Badge Purple"
-              fill
-              className="object-contain drop-shadow-2xl"
-            />
-          </motion.div>
+            {/* Right circular down arrow */}
+            <div className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] md:w-[24px] md:h-[24px] rounded-full border border-[#FF0E97] flex items-center justify-center text-[#FF0E97] shrink-0">
+              <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 fill-none stroke-current stroke-2">
+                <path d="M12 5v14M19 12l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </div>
 
         </div>
 

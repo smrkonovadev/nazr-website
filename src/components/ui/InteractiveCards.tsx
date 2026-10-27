@@ -1,8 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, useInView, MotionValue } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const darkCards = [
   {
@@ -53,89 +57,159 @@ const testimonialCards: any[] = [
     id: 1,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: "Finally, a safety product that doesn't disappear into my bag. It's always right where I need it.",
+    quote: "Finally, a safety product I actually carry. The others always ended up at the bottom of my bag.",
     name: "Priyanshi Mehta",
-    rating: 4,
+    rating: 5,
     rotation: -2
   },
-  { id: 2, type: "image", src: "/home why (1).svg", rotation: 3 },
+  { id: 2, type: "image", src: "/images/1rev.jpg", rotation: 3 },
   {
     id: 3,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "A thoughtful gift she'll actually use. She absolutely loved it.",
-    name: "Akshat Kanungo",
-    rating: 5,
-    rotation: -2
-  },
-  { id: 4, type: "image", src: "/home why (2).svg", rotation: 3 },
-  {
-    id: 5,
-    type: "testimonial",
-    bgColor: "#0A84FF",
-    quote: "It doesn't look like a safety product, and that's why I love it. People even call it cute.",
+    quote: "Love that it doesn't look like a safety product. Blends right in and is easy to grab.",
     name: "Kavya Kapoor",
     rating: 5,
     rotation: -2
   },
-  { id: 6, type: "image", src: "/home why (1).svg", rotation: 3 },
+  { id: 4, type: "image", src: "/images/2rev.png", rotation: 3 },
+  {
+    id: 5,
+    type: "testimonial",
+    bgColor: "#0A84FF",
+    quote: "Tiny product. Huge peace of mind.",
+    name: "Sakshi Gupta",
+    rating: 4,
+    rotation: -2
+  },
+  { id: 6, type: "image", src: "/images/3rev.png", rotation: 3 },
   {
     id: 7,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "The glow-in-the-dark feature seemed small until I actually used it. Such a smart detail.",
-    name: "Shikha Verma",
+    quote: "I really like the way the packaging and the arc of the product. It has a recoil and seems very potent",
+    name: "Auman Subhasish Bose",
     rating: 5,
     rotation: -2
   },
-  { id: 8, type: "image", src: "/home why (2).svg", rotation: 3 },
+  { id: 8, type: "image", src: "/images/4rev.png", rotation: 3 },
   {
     id: 9,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: "Every woman should know about NAZR. The mission, design, and products just feel incredibly well thought out.",
-    name: "Jiya Raul",
+    quote: "Used it at a concert last weekend and honestly forgot it was even there. That's what I liked most.",
+    name: "Muskaan Arora",
     rating: 5,
     rotation: -2
   },
-  { id: 10, type: "image", src: "/home why (1).svg", rotation: 3 },
+  { id: 10, type: "image", src: "/images/5rev.png", rotation: 3 },
   {
     id: 11,
     type: "testimonial",
     bgColor: "#FF0E97",
-    quote: "The kind of product you hope to never use. I liked it so much, I bought one for my sister too.",
-    name: "Shanaya Singh",
-    rating: 5,
+    quote: "Wanted to gift her something thoughtful—felt much more meaningful than flowers or chocolates.",
+    name: "Akshat S",
+    rating: 4,
     rotation: -2
   },
-  { id: 12, type: "image", src: "/home why (2).svg", rotation: 3 },
+  { id: 12, type: "image", src: "/images/6rev.png", rotation: 3 },
   {
     id: 13,
     type: "testimonial",
     bgColor: "#0A84FF",
-    quote: "Found NAZR on Instagram and ordered instantly. Everything feels so thoughtfully designed.",
-    name: "Somakshi Sen",
+    quote: "NAZR feels like it understands what women actually need. It just makes you feel more prepared.",
+    name: "Aina K",
+    rating: 4.5,
+    rotation: -2
+  },
+  { id: 14, type: "image", src: "/images/7rev.png", rotation: 3 },
+  {
+    id: 15,
+    type: "testimonial",
+    bgColor: "#FF0E97",
+    quote: "Such a clever idea. I hope every café starts keeping these.",
+    name: "Vaishnavi Iyer",
     rating: 5,
     rotation: -2
   },
+  { id: 16, type: "image", src: "/images/8rev.png", rotation: 3 },
+  {
+    id: 17,
+    type: "testimonial",
+    bgColor: "#0A84FF",
+    quote: "Everything feels premium, from the packaging to the products themselves.",
+    name: "Riya Bhatia",
+    rating: 5,
+    rotation: -2
+  },
+  { id: 18, type: "image", src: "/images/9rev.png", rotation: 3 },
+  {
+    id: 19,
+    type: "testimonial",
+    bgColor: "#FF0E97",
+    quote: "Gifted this to my cousin before she moved to another city. She absolutely loved it.",
+    name: "Isha Kapoor",
+    rating: 5,
+    rotation: -2
+  },
+  { id: 20, type: "image", src: "/images/10rev.png", rotation: 3 },
+  {
+    id: 21,
+    type: "testimonial",
+    bgColor: "#0A84FF",
+    quote: "The glow-in-the-dark feature seemed small, but it's actually so useful. Love the detailing, GG NAZR!",
+    name: "Shikha Verma",
+    rating: 5,
+    rotation: -2
+  },
+  { id: 22, type: "image", src: "/images/11rev.png", rotation: 3 },
+  {
+    id: 23,
+    type: "testimonial",
+    bgColor: "#FF0E97",
+    quote: "Found NAZR on Instagram and ended up ordering. Really love how well thought out everything is :)",
+    name: "Jiya Raul",
+    rating: 4,
+    rotation: -2
+  },
+  { id: 24, type: "image", src: "/images/12rev.png", rotation: 3 },
+  {
+    id: 25,
+    type: "testimonial",
+    bgColor: "#0A84FF",
+    quote: "Bought these before a girls' trip and everyone wanted a pack by the end.",
+    name: "Tanvi Desai",
+    rating: 5,
+    rotation: -2
+  },
+  { id: 26, type: "image", src: "/images/13rev.png", rotation: 3 },
+  {
+    id: 27,
+    type: "testimonial",
+    bgColor: "#FF0E97",
+    quote: "It's one of those products you hope you never need, but you're glad to have. Got one for my sister too!",
+    name: "Shanaya Singh",
+    rating: 4.5,
+    rotation: -2
+  },
+  { id: 28, type: "image", src: "/images/14rev.png", rotation: 3 },
 ];
 
 interface InteractiveCardsProps {
   theme?: "dark" | "cream";
-  scrollProgress?: MotionValue<number>;
 }
 
 function StarRating({ rating = 5 }: { rating?: number }) {
   const count = Math.min(Math.max(rating, 1), 5);
   return (
     <div className="flex items-center gap-1 mt-1">
-      {Array.from({ length: count }).map((_, i) => (
+      {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
           viewBox="0 0 24 24"
           className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"
-          fill="none"
-          stroke="#FFF9EB"
+          fill={i < count ? "#f4f4f4" : "none"}
+          stroke="#f4f4f4"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -152,13 +226,18 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
   const [dynamicRotations, setDynamicRotations] = useState<number[] | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const darkCardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const pinkCardRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   const handleMouseLeave = () => {
     setHoveredIndex(null);
     setDynamicRotations(testimonialCards.map(() => (Math.random() * 12) - 6));
   };
 
+
+
+  // Cream theme: drag scrolling + wheel handling
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -227,55 +306,42 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
     <section ref={sectionRef} className={`w-full ${theme === 'cream' ? 'bg-transparent max-md:mt-0 md:pb-0' : 'bg-[#161616] mt-0 pt-0 pb-4 md:py-0'} flex flex-col items-center relative z-50`}>
 
       {theme === "dark" ? (
-        // Home Page Dark Cards (5 Centered Straight Unified Cards matching Figma Screenshot)
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[30px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-6 md:pb-2 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
-          <div className="flex flex-row justify-start md:justify-start items-center gap-3 sm:gap-4 md:gap-[35px] w-full min-w-max md:min-w-0 mx-auto">
+        // Home Page Dark Cards (6 Centered Straight Unified Cards matching reference)
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-[20px] overflow-x-auto no-scrollbar pt-4 pb-4 md:pt-6 md:pb-2 overflow-y-visible" style={{ touchAction: 'pan-x pan-y' }}>
+          <div className="flex flex-row justify-start xl:justify-center items-stretch gap-3 sm:gap-3.5 md:gap-4 lg:gap-[18px] xl:gap-[20px] w-fit xl:w-full mx-auto">
             {darkCards.map((card, i) => {
-              const isHovered = hoveredIndex === i;
-
               return (
-                <motion.div
+                <div
                   key={card.id}
+                  ref={(el) => { darkCardsRef.current[i] = el; }}
                   data-card-index={i}
-                  className="relative w-[155px] h-[240px] sm:w-[195px] sm:h-[295px] md:w-[248px] md:h-[335px] md:min-w-[248px] md:min-h-[335px] rounded-[16px] overflow-hidden border-[1px] border-[#FFF9EB] bg-[#161616] flex-shrink-0 cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_10px]"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{
-                    opacity: isInView ? 1 : 0,
-                    y: isInView ? (isHovered ? -4 : 0) : 30,
-                    scale: isHovered ? 1.02 : 1
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    delay: i * 0.08
-                  }}
-                  onMouseEnter={() => setHoveredIndex(i)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border-[1px] border-[#f4f4f4]/80 bg-[#161616] cursor-pointer shadow-xl flex flex-col justify-between p-[16px_10px] md:p-[20px_12px]"
                 >
                   {/* Background Image (Counter-rotated to exact 0 degrees) */}
                   <Image
                     src={card.src}
                     alt={card.title.replace('\n', ' ')}
                     fill
-                    className="object-cover transition-transform duration-300"
+                    className="object-cover"
                     style={{
-                      transform: `rotate(${card.imgRotation}deg) scale(1.12)`,
+                      transform: card.imgRotation ? `rotate(${card.imgRotation}deg) scale(1.12)` : undefined,
                       objectPosition: (card as any).objectPosition || 'center center'
                     }}
                     priority={i < 3}
                   />
 
                   {/* Bottom Dark Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent pointer-events-none z-10" />
 
                   {/* Top Left Timestamp */}
-                  <div className="absolute top-[16px] left-[10px] md:top-[20px] md:left-[10px] z-20 flex flex-col text-[#FFF9EB] pointer-events-none">
+                  <div className="absolute top-[14px] left-[10px] md:top-[18px] md:left-[12px] z-20 flex flex-col text-[#f4f4f4] pointer-events-none">
                     <span
-                      className="font-['Inter',_sans-serif] text-[#FFF9EB]"
+                      className="font-['Inter',_sans-serif] text-[#f4f4f4]"
                       style={{
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 400,
                         fontStyle: "normal",
-                        fontSize: "24px",
+                        fontSize: "22px",
                         lineHeight: "120%",
                         letterSpacing: "-0.03em",
                       }}
@@ -283,12 +349,12 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                       {card.timeNumber}
                     </span>
                     <span
-                      className="font-['Inter',_sans-serif] text-[#FFF9EB]/80 mt-0.5"
+                      className="font-['Inter',_sans-serif] text-[#f4f4f4]/80 mt-0.5"
                       style={{
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 400,
                         fontStyle: "normal",
-                        fontSize: "12px",
+                        fontSize: "11px",
                         lineHeight: "120%",
                         letterSpacing: "-0.03em",
                       }}
@@ -298,133 +364,62 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
                   </div>
 
                   {/* Bottom Title Text */}
-                  <div className="absolute bottom-[16px] left-[10px] right-[10px] md:bottom-[20px] md:left-[10px] md:right-[10px] z-20 pointer-events-none">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#FFF9EB] text-[22px] sm:text-[26px] md:text-[30px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
+                  <div className="absolute bottom-[14px] left-[10px] right-[10px] md:bottom-[18px] md:left-[12px] md:right-[12px] z-20 pointer-events-none">
+                    <h3 className="font-[family-name:var(--font-bebas)] text-[#f4f4f4] text-[20px] sm:text-[23px] md:text-[25px] lg:text-[28px] leading-[90%] tracking-[-0.01em] uppercase whitespace-pre m-0">
                       {card.title}
                     </h3>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
+
+            {/* 6th Card: With NAZR Pink Card */}
+            <div
+              key="pink-nazr-card"
+              ref={pinkCardRef}
+              data-card-index={5}
+              className="relative w-[155px] h-[240px] sm:w-[175px] sm:h-[275px] md:w-[190px] md:h-[300px] lg:w-[205px] lg:h-[325px] xl:w-[218px] xl:h-[340px] shrink-0 rounded-[16px] overflow-hidden border border-[#FF0E97] bg-[#FF0E97] cursor-pointer shadow-xl flex flex-col justify-between p-[14px_12px] sm:p-[16px_14px] md:p-[20px_16px]"
+            >
+              {/* Top: With NAZR */}
+              <div className="flex flex-col text-left">
+                <span className="font-['Inter',_sans-serif] text-white text-[13px] sm:text-[14px] md:text-[16px] font-normal leading-tight">
+                  With
+                </span>
+                <h3 className="font-[family-name:var(--font-bebas)] text-white text-[36px] sm:text-[42px] md:text-[48px] lg:text-[52px] font-normal leading-[0.88] tracking-wide uppercase m-0 mt-0.5">
+                  NAZR
+                </h3>
+              </div>
+
+              {/* Middle: YOUR PEOPLE KNOW BEFORE YOU HAVE TO ASK */}
+              <div className="my-auto py-1 flex flex-col text-left w-full">
+                <p className="font-[family-name:var(--font-bebas)] text-white text-[19px] sm:text-[22px] md:text-[24px] lg:text-[27px] font-normal leading-[0.92] tracking-tight uppercase m-0">
+                  YOUR PEOPLE<br />
+                  KNOW BEFORE YOU<br />
+                  HAVE TO ASK
+                </p>
+              </div>
+
+              {/* Bottom: How the App Works Button */}
+              <Link
+                href="/nazrapp"
+                className="w-full bg-[#111111] hover:bg-black text-white text-center py-2 sm:py-2.5 px-1.5 sm:px-2 rounded-[4px] font-[family-name:var(--font-roboto)] text-[12px] sm:text-[13.5px] md:text-[15px] lg:text-[16px] font-normal leading-[140%] tracking-[0px] transition-colors whitespace-nowrap block"
+              >
+                How the App Works
+              </Link>
+            </div>
           </div>
         </div>
       ) : (
-        // Cream Theme Testimonial Cards (About page)
-        <div
-          ref={scrollContainerRef}
-          className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0 select-none cursor-grab active:cursor-grabbing"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-x pan-y', overscrollBehaviorX: 'contain' }}
-        >
-          <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0 select-none">
-            {testimonialCards.map((card, i) => {
-              const isHovered = hoveredIndex === i;
-              const baseRotation = (dynamicRotations && typeof dynamicRotations[i] === 'number') ? dynamicRotations[i] : (card.rotation || 0);
-
-              let xOffset = 0;
-              let targetRotation = baseRotation;
-
-              if (hoveredIndex !== null) {
-                if (isHovered) {
-                  targetRotation = 0;
-                } else {
-                  const distance = Math.abs(i - hoveredIndex);
-                  const direction = i < hoveredIndex ? -1 : 1;
-
-                  if (distance === 1) {
-                    xOffset = direction * 65;
-                    targetRotation = baseRotation + (direction * 8);
-                  } else if (distance === 2) {
-                    xOffset = direction * 30;
-                    targetRotation = baseRotation + (direction * 4);
-                  } else if (distance === 3) {
-                    xOffset = direction * 15;
-                    targetRotation = baseRotation + (direction * 2);
-                  } else {
-                    xOffset = 0;
-                  }
-                }
-              }
-
-              return (
-                <motion.div
-                  key={card.id}
-                  className="relative -mx-2 flex-shrink-0"
-                  initial={typeof window !== "undefined" && window.innerWidth < 768 ? false : { x: "100vw" }}
-                  animate={{
-                    x: (typeof window !== "undefined" && window.innerWidth < 768) ? 0 : (isInView ? 0 : "100vw"),
-                    zIndex: isHovered ? 50 : i
-                  }}
-                  transition={{
-                    x: { duration: 1.8, delay: i * 0.2, type: "spring", bounce: 0.25 }
-                  }}
-                >
-                  <motion.div
-                    data-card-index={i}
-                    className="relative w-[154px] h-[240px] rounded-[18px] md:w-[279px] md:h-[400px] md:rounded-[32px] cursor-pointer origin-bottom overflow-hidden shadow-lg"
-                    onMouseEnter={() => {
-                      if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
-                        setHoveredIndex(i);
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
-                        handleMouseLeave();
-                      }
-                    }}
-                    animate={{
-                      rotate: targetRotation,
-                      scale: isHovered ? 1.15 : 1,
-                      x: xOffset,
-                      y: isHovered ? -36 : 0,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 150,
-                      damping: 22,
-                      mass: 1.2
-                    }}
-                  >
-                    {card.type === "testimonial" ? (
-                      <div
-                        className="w-full h-full flex flex-col p-4 md:p-8 justify-between"
-                        style={{ backgroundColor: card.bgColor }}
-                      >
-                        <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#FFF9EB] flex items-center justify-center mb-2 md:mb-6 shrink-0">
-                          <span
-                            className="font-[family-name:var(--font-bebas)] text-[11px] md:text-[20px] leading-none tracking-wide"
-                            style={{ color: card.bgColor }}
-                          >
-                            {(card as any).name
-                              ? (card as any).name.split(' ').map((w: string) => w[0]).join('').toUpperCase()
-                              : '·'}
-                          </span>
-                        </div>
-                        <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#FFF9EB] leading-[140%] mb-auto">
-                          {(card as any).quote?.replace(/^["“]|["”]$/g, '')}
-                        </div>
-                        <div className="flex flex-col mt-2 md:mt-4">
-                          {(card as any).name ? (
-                            <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#FFF9EB] leading-[1.3] tracking-normal uppercase">
-                              {(card as any).name}
-                            </div>
-                          ) : null}
-                          <StarRating rating={(card as any).rating || 5} />
-                        </div>
-                      </div>
-                    ) : (
-                      <Image
-                        src={card.src!}
-                        alt={`Interactive Card ${card.id}`}
-                        fill
-                        className="object-cover scale-[1.18]"
-                      />
-                    )}
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+        // Cream Theme Testimonial Cards (About page) — uses GSAP for entrance + hover
+        <CreamTestimonialCards
+          testimonialCards={testimonialCards}
+          scrollContainerRef={scrollContainerRef}
+          hoveredIndex={hoveredIndex}
+          setHoveredIndex={setHoveredIndex}
+          handleMouseLeave={handleMouseLeave}
+          dynamicRotations={dynamicRotations}
+          isInView={isInView}
+        />
       )}
 
       <style jsx global>{`
@@ -433,5 +428,174 @@ export function InteractiveCards({ theme = "dark" }: InteractiveCardsProps = {})
         }
       `}</style>
     </section>
+  );
+}
+
+// Extracted cream theme cards to use GSAP for entrance animation
+function CreamTestimonialCards({
+  testimonialCards,
+  scrollContainerRef,
+  hoveredIndex,
+  setHoveredIndex,
+  handleMouseLeave,
+  dynamicRotations,
+  isInView,
+}: {
+  testimonialCards: any[];
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
+  hoveredIndex: number | null;
+  setHoveredIndex: (i: number | null) => void;
+  handleMouseLeave: () => void;
+  dynamicRotations: number[] | null;
+  isInView: boolean;
+}) {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const innerCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const hasAnimated = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // GSAP entrance animation (replaces framer-motion spring slide-in)
+  useEffect(() => {
+    if (!containerRef.current || hasAnimated.current) return;
+
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 85%",
+      once: true,
+      onEnter: () => {
+        hasAnimated.current = true;
+        const cards = cardRefs.current.filter(Boolean);
+        if (typeof window !== "undefined" && window.innerWidth >= 768) {
+          gsap.fromTo(cards,
+            { x: "100vw" },
+            { x: 0, duration: 1.8, stagger: 0.2, ease: "back.out(1.2)" }
+          );
+        }
+      },
+    });
+
+    return () => trigger.kill();
+  }, []);
+
+  // GSAP hover animations for testimonial cards
+  useEffect(() => {
+    innerCardRefs.current.forEach((card, i) => {
+      if (!card) return;
+      const baseRotation = (dynamicRotations && typeof dynamicRotations[i] === 'number') ? dynamicRotations[i] : (testimonialCards[i]?.rotation || 0);
+
+      let xOffset = 0;
+      let targetRotation = baseRotation;
+      let targetScale = 1;
+      let targetY = 0;
+
+      if (hoveredIndex !== null) {
+        if (hoveredIndex === i) {
+          targetRotation = 0;
+          targetScale = 1.15;
+          targetY = -36;
+        } else {
+          const distance = Math.abs(i - hoveredIndex);
+          const direction = i < hoveredIndex ? -1 : 1;
+
+          if (distance === 1) {
+            xOffset = direction * 65;
+            targetRotation = baseRotation + (direction * 8);
+          } else if (distance === 2) {
+            xOffset = direction * 30;
+            targetRotation = baseRotation + (direction * 4);
+          } else if (distance === 3) {
+            xOffset = direction * 15;
+            targetRotation = baseRotation + (direction * 2);
+          }
+        }
+      }
+
+      gsap.to(card, {
+        rotation: targetRotation,
+        scale: targetScale,
+        x: xOffset,
+        y: targetY,
+        duration: 0.5,
+        ease: "back.out(1.7)",
+      });
+    });
+  }, [hoveredIndex, dynamicRotations, testimonialCards]);
+
+  return (
+    <div
+      ref={(el) => {
+        containerRef.current = el;
+        if (scrollContainerRef && 'current' in scrollContainerRef) {
+          (scrollContainerRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+        }
+      }}
+      className="w-full overflow-x-auto no-scrollbar flex items-center relative z-50 h-[260px] mt-1 mb-2 md:h-[608px] md:-mt-[50px] md:mb-0 select-none cursor-grab active:cursor-grabbing"
+      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-x pan-y', overscrollBehaviorX: 'contain' }}
+    >
+      <div className="flex items-center min-w-max pl-3 pr-4 md:pl-24 md:pr-4 md:pt-0 select-none">
+        {testimonialCards.map((card, i) => {
+          return (
+            <div
+              key={card.id}
+              ref={(el) => { cardRefs.current[i] = el; }}
+              className="relative -mx-2 flex-shrink-0"
+              style={{ zIndex: hoveredIndex === i ? 50 : i }}
+            >
+              <div
+                ref={(el) => { innerCardRefs.current[i] = el; }}
+                data-card-index={i}
+                className="relative w-[154px] h-[240px] rounded-[18px] md:w-[279px] md:h-[400px] md:rounded-[32px] cursor-pointer origin-bottom overflow-hidden shadow-lg"
+                onMouseEnter={() => {
+                  if (typeof window !== "undefined" && window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
+                    setHoveredIndex(i);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (typeof window !== "undefined" && window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
+                    handleMouseLeave();
+                  }
+                }}
+              >
+                {card.type === "testimonial" ? (
+                  <div
+                    className="w-full h-full flex flex-col p-4 md:p-8 justify-between"
+                    style={{ backgroundColor: card.bgColor }}
+                  >
+                    <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#f4f4f4] flex items-center justify-center mb-2 md:mb-6 shrink-0">
+                      <span
+                        className="font-[family-name:var(--font-bebas)] text-[11px] md:text-[20px] leading-none tracking-wide"
+                        style={{ color: card.bgColor }}
+                      >
+                        {(card as any).name
+                          ? (card as any).name.split(' ').map((w: string) => w[0]).join('').toUpperCase()
+                          : '·'}
+                      </span>
+                    </div>
+                    <div className="font-[family-name:var(--font-inter)] text-[14px] text-[#f4f4f4] leading-[140%] mb-auto">
+                      {(card as any).quote?.replace(/^[""]|[""]$/g, '')}
+                    </div>
+                    <div className="flex flex-col mt-2 md:mt-4">
+                      {(card as any).name ? (
+                        <div className="font-[family-name:var(--font-bebas)] text-[13px] md:text-[18px] text-[#f4f4f4] leading-[1.3] tracking-normal uppercase">
+                          {(card as any).name}
+                        </div>
+                      ) : null}
+                      <StarRating rating={(card as any).rating || 5} />
+                    </div>
+                  </div>
+                ) : (
+                  <Image
+                    src={card.src!}
+                    alt={`Interactive Card ${card.id}`}
+                    fill
+                    className="object-cover scale-[1.18]"
+                  />
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

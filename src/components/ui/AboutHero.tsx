@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Header } from "./Header";
 
 export function AboutHero() {
   const [scaledViewportHeight, setScaledViewportHeight] = useState<number | string>("100vh");
@@ -30,12 +29,7 @@ export function AboutHero() {
         height: typeof scaledViewportHeight === "number" ? `${scaledViewportHeight}px` : scaledViewportHeight
       }}
     >
-      <div className="relative w-full h-full md:rounded-[16px] max-md:rounded-b-[16px] max-md:rounded-t-none overflow-hidden flex flex-col">
-
-        {/* Header - relative on mobile with dark background bar, absolute transparent on desktop */}
-        <div className="max-md:relative max-md:z-30 md:absolute md:top-0 md:left-0 md:right-0 md:z-20 w-full">
-          <Header variant="transparent" mobileVariant="dark" />
-        </div>
+      <div className="relative w-full h-full md:rounded-[16px] max-md:rounded-[16px] overflow-hidden flex flex-col">
 
         {/* Image & Content Container - relative flex-1 on mobile, absolute inset-0 on desktop */}
         <div className="max-md:relative max-md:flex-1 max-md:w-full md:absolute md:inset-0 z-0">
@@ -70,7 +64,7 @@ export function AboutHero() {
                   const el = document.getElementById("every-woman-section");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="group flex items-center bg-[#FFF9EB] text-[#161616] px-5 py-2.5 rounded-[6px] transition-colors duration-300 ease-in-out"
+                className="group flex items-center bg-[#f4f4f4] text-[#161616] px-5 py-2.5 rounded-[6px] transition-colors duration-300 ease-in-out"
                 style={{
                   fontFamily: "Roboto, sans-serif",
                   fontWeight: 400,

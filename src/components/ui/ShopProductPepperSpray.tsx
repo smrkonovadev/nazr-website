@@ -4,9 +4,20 @@ import Image from "next/image";
 import { useState } from "react";
 import { Star, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
+import { trackMetaViewContent } from "@/components/MetaPixel";
 
 export function ShopProductPepperSpray() {
   const [selectedVariant, setSelectedVariant] = useState<"pink" | "white" | null>(null);
+
+  const handleProductClick = () => {
+    trackMetaViewContent({
+      content_name: "On Me Pepper Spray",
+      content_ids: ["on-me-spray"],
+      content_type: "product",
+      value: 555,
+      currency: "INR",
+    });
+  };
 
   return (
     <section className="w-full sticky top-0 h-screen overflow-hidden flex flex-col" style={{ zIndex: 10 }}>
@@ -32,15 +43,21 @@ export function ShopProductPepperSpray() {
             </h3>
           </div>
 
-          {/* Product Image — static */}
+          {/* Product Image — dynamic based on variant, clickable to PDP */}
           <div className="relative z-20 flex flex-col items-center justify-end w-full">
-            <div className="relative w-[360px] h-[330px] md:w-[460px] md:h-[400px] z-20 pointer-events-none md:transform md:rotate-[20deg] md:translate-x-20 md:translate-y-10">
-              <Image unoptimized quality={100} src="/images/center.webp"
-                alt="Podium and Spray"
+            <a
+              href={selectedVariant === "white" ? "https://shop.nazrco.in/products/on-me-spray?variant=49831092453613" : "https://shop.nazrco.in/products/on-me-spray?variant=49831092420845"}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleProductClick}
+              className="relative w-[420px] h-[380px] md:w-[560px] md:h-[480px] z-20 pointer-events-auto cursor-pointer md:transform md:rotate-[20deg] md:translate-x-20 md:translate-y-10 hover:opacity-95 transition-opacity"
+            >
+              <Image unoptimized quality={100} src={selectedVariant === "white" ? "/images/whitesprayfinal.svg" : "/images/pinkspryfinal.svg"}
+                alt={selectedVariant === "white" ? "White Pepper Spray" : "Pink Pepper Spray"}
                 fill
                 className="object-contain"
               />
-            </div>
+            </a>
           </div>
         </div>
 
@@ -48,27 +65,33 @@ export function ShopProductPepperSpray() {
         <div className="w-full md:w-[40%] px-6 md:pl-8 md:pr-12 pb-8 flex flex-col justify-end overflow-y-auto">
 
           {/* Description Text */}
-          <p className="font-['Inter',_sans-serif] text-[#161616] text-[18px] md:text-[20px] font-bold leading-[1.3] max-w-[408px] mb-5 tracking-[-0.02em]">
-            Convenient to locate, powerful enough to protect. Nazr’s On Me Personal Safety Spray is designed to be within reach when you need it the most. With a compact design that can be clipped to your keys or bag and a silicon glow-in-the-dark cap for easy visibility, On Me is ready when you are.          </p>
+          <p className="font-['Inter',_sans-serif] text-[#161616] text-[16px] font-normal leading-[140%] tracking-[-0.03em] md:text-[24px] md:font-semibold md:leading-[140%] md:tracking-[-0.03em] max-w-[440px] mb-3 md:mb-5">
+            A personal safety spray designed for quick access when you need it most. Clips onto your bag or keys and glows in the dark for easy visibility.
+          </p>
 
           {/* Price and Rating */}
           <div className="flex items-center gap-4 mb-8">
-            <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] md:text-[60px] leading-none">
-              ₹777
-            </span>
+            <div className="flex items-baseline gap-2 md:gap-2.5">
+              <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[48px] md:text-[60px] leading-none">
+                ₹555
+              </span>
+              <span className="font-[family-name:var(--font-bebas)] text-[#161616] text-[32px] md:text-[42px] line-through leading-none decoration-1 md:decoration-2">
+                ₹777
+              </span>
+            </div>
 
             <div className="h-[36px] w-[2px] bg-black"></div>
 
             <div className="flex items-center gap-2">
               <div className="flex gap-1 text-black">
-                <Star className="w-4 h-4 fill-black" />
-                <Star className="w-4 h-4 fill-black" />
-                <Star className="w-4 h-4 fill-black" />
-                <Star className="w-4 h-4 fill-black" />
-                <Star className="w-4 h-4" />
+                <Star className="w-4 h-4 fill-black text-black" />
+                <Star className="w-4 h-4 fill-black text-black" />
+                <Star className="w-4 h-4 fill-black text-black" />
+                <Star className="w-4 h-4 fill-black text-black" />
+                <Star className="w-4 h-4 fill-black text-black" />
               </div>
               <span className="font-['Inter',_sans-serif] text-[12px] md:text-[14px] text-black font-medium mt-1">
-                (3.5 stars) • 10 reviews
+                (4.9 stars) • 47 reviews
               </span>
             </div>
           </div>
@@ -78,7 +101,29 @@ export function ShopProductPepperSpray() {
             <h4 className="font-[family-name:var(--font-bebas)] text-[#161616] text-[20px] md:text-[24px] mb-3 leading-none">
               VARIANT
             </h4>
-            <div className="flex gap-4">
+
+            {/* Mobile View: Circular Swatches */}
+            <div className="flex md:hidden items-center gap-2.5">
+              <button
+                type="button"
+                onClick={() => setSelectedVariant("pink")}
+                aria-label="Pink variant"
+                style={{ backgroundColor: "#FF0E97" }}
+                className={`w-[20px] h-[20px] rounded-full border border-black transition-all cursor-pointer ${selectedVariant === "pink" ? "ring-2 ring-black ring-offset-2 scale-110" : "opacity-100 hover:scale-105"
+                  }`}
+              />
+              <button
+                type="button"
+                onClick={() => setSelectedVariant("white")}
+                aria-label="White variant"
+                style={{ backgroundColor: "#f4f4f4" }}
+                className={`w-[20px] h-[20px] rounded-full border border-black transition-all cursor-pointer ${selectedVariant === "white" ? "ring-2 ring-black ring-offset-2 scale-110" : "opacity-100 hover:scale-105"
+                  }`}
+              />
+            </div>
+
+            {/* Desktop View: Cards */}
+            <div className="hidden md:flex gap-4">
               {/* Option 1: Pink */}
               <button
                 onClick={() => setSelectedVariant("pink")}
@@ -105,9 +150,15 @@ export function ShopProductPepperSpray() {
 
           {/* Action Buttons */}
           <div className="w-full max-w-[500px] flex justify-start">
-            <button className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#FFF9EB] text-[#FFF9EB] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase">
+            <a
+              href={selectedVariant === "white" ? "https://shop.nazrco.in/products/on-me-spray?variant=49831092453613" : "https://shop.nazrco.in/products/on-me-spray?variant=49831092420845"}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleProductClick}
+              className="w-[211px] h-[54px] px-6 py-3 gap-2 bg-[#312E2E] border border-[#f4f4f4] text-[#f4f4f4] rounded-[8px] font-[family-name:var(--font-bebas)] font-normal text-[18px] tracking-[0.05em] flex items-center justify-center hover:bg-black transition-colors uppercase"
+            >
               View More
-            </button>
+            </a>
           </div>
 
         </div>
