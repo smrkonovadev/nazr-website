@@ -253,7 +253,18 @@ export function GiveawayPage() {
 
       if (!res.ok) {
         if (data.existingTicket) {
-          setSubmitError(`Already entered! Your Ticket ID is ${data.existingTicket}.`);
+          setTicketResult({
+            ticketId: data.existingTicket,
+            name: fullName.trim(),
+            phone: mobileNumber.trim(),
+            instagram: instagramUsername.trim().replace(/^@/, ""),
+            appAccount: appAccount.trim(),
+          });
+          setLoading(false);
+          setTimeout(() => {
+            ticketRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 100);
+          return;
         } else {
           setSubmitError(data.error || "Failed to submit entry. Please try again.");
         }
@@ -705,42 +716,52 @@ export function GiveawayPage() {
           {/* Ticket Card with Perforation & Circular Cutout Notches */}
           <article
             ref={ticketRef}
-            className="w-full bg-[#F4F4F4] text-[#111827] rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.5)] relative pb-6 transition-all"
+            className="w-full bg-[#F4F4F4] text-[#111827] rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] relative transition-all"
           >
-            {/* Left Circular Notched Cutout */}
-            <div
-              className="absolute -left-[9px] top-[60px] w-[18px] h-[18px] bg-[#0D0D0D] rounded-full z-20 pointer-events-none"
-              style={{ boxShadow: "inset -2px 0 3px rgba(0,0,0,0.15)" }}
-            />
-            {/* Right Circular Notched Cutout */}
-            <div
-              className="absolute -right-[9px] top-[60px] w-[18px] h-[18px] bg-[#0D0D0D] rounded-full z-20 pointer-events-none"
-              style={{ boxShadow: "inset 2px 0 3px rgba(0,0,0,0.15)" }}
-            />
-
             {/* Ticket Header Area */}
-            <div className="w-full px-5 pt-3.5 pb-2.5 flex justify-between items-center h-[69px]">
-              <div className="flex flex-col">
-                <span className="font-sans font-bold text-[10px] leading-[15px] tracking-[0.05em] uppercase text-[#9CA3AF]">
+            <div className="w-full px-6 pt-6 pb-4 flex justify-between items-center">
+              <div className="flex flex-col gap-0.5">
+                <span className="font-sans font-bold text-[10px] leading-[15px] tracking-[0.16em] uppercase text-[#737373]">
                   ENTRY TICKET
                 </span>
-                <span className="font-[family-name:var(--font-bebas)] text-[20px] leading-[28px] text-black tracking-wider">
+                <span className="font-[family-name:var(--font-bebas)] text-[28px] leading-[28px] tracking-[0.025em] text-[#171717]">
                   {ticketResult ? ticketResult.ticketId : "NZR-•••••"}
                 </span>
               </div>
-              <span className="font-sans font-bold text-[11px] leading-[16.5px] tracking-[0.05em] uppercase text-[#E6007E]">
-                NAZR HAMPER
-              </span>
+              <div className="pt-1">
+                {ticketResult ? (
+                  <span className="font-sans font-extrabold text-[11px] leading-[16.5px] tracking-[0.18em] uppercase text-[#E6007E]">
+                    RECEIVED
+                  </span>
+                ) : (
+                  <span className="font-sans font-extrabold text-[11px] leading-[16.5px] tracking-[0.18em] uppercase text-[#E6007E]">
+                    NAZR HAMPER
+                  </span>
+                )}
+              </div>
             </div>
 
-            {/* Perforation Divider Line */}
-            <div className="w-full border-t border-dashed border-[#D1D5DB] my-0 relative z-10" />
+            {/* Perforation Divider with Circular Cutout Notches */}
+            <div className="relative w-full flex items-center justify-center my-0 z-10">
+              {/* Left Circular Notched Cutout */}
+              <div
+                className="absolute -left-[12px] top-1/2 -translate-y-1/2 w-[24px] h-[24px] bg-[#0D0D0D] rounded-full z-20 pointer-events-none"
+                style={{ boxShadow: "inset -2px 0 3px rgba(0,0,0,0.25)" }}
+              />
+              {/* Right Circular Notched Cutout */}
+              <div
+                className="absolute -right-[12px] top-1/2 -translate-y-1/2 w-[24px] h-[24px] bg-[#0D0D0D] rounded-full z-20 pointer-events-none"
+                style={{ boxShadow: "inset 2px 0 3px rgba(0,0,0,0.25)" }}
+              />
+              {/* Perforation Divider Line */}
+              <div className="w-full mx-5 border-t-[1.5px] border-dashed border-[#D8D4CE]" />
+            </div>
 
             {/* ==============================================================
                 TICKET BODY: FORM OR SUCCESS STATE
             ============================================================== */}
             {!ticketResult ? (
-              <form onSubmit={handleSubmit} className="px-5 pt-5 flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="px-5 pt-5 pb-6 flex flex-col gap-4">
                 {/* Input 1: Full name */}
                 <div className="flex flex-col gap-1.5">
                   <label className="font-sans font-bold text-[12px] leading-[16px] text-[#111827]">
@@ -927,108 +948,69 @@ export function GiveawayPage() {
               /* ==============================================================
                   OFFICIAL GENERATED TICKET PASS (SUCCESS STATE)
               ============================================================== */
-              <div className="px-5 pt-5 flex flex-col items-center">
-                <div className="w-12 h-12 bg-[#E6007E]/10 text-[#E6007E] rounded-full flex items-center justify-center mb-3">
-                  <CheckCircle2 className="w-7 h-7" />
-                </div>
-
-                <span className="font-sans font-bold text-[11px] tracking-[0.1em] uppercase text-[#E6007E]">
-                  OFFICIAL ENTRY CONFIRMED
-                </span>
-                <h3 className="font-[family-name:var(--font-bebas)] text-[32px] leading-tight text-[#111827] mt-0.5">
-                  YOU&apos;RE IN THE DRAW!
+              <div className="px-6 pt-5 pb-6 flex flex-col text-left">
+                {/* Heading 2 - Large Confirmation Headline */}
+                <h3 className="font-[family-name:var(--font-bebas)] text-[54px] leading-[49px] tracking-[0.02em] text-[#E6007E] mb-3.5">
+                  YOU&apos;RE IN!
                 </h3>
 
-                {/* Ticket ID Highlight Box */}
-                <div className="w-full bg-white border border-[#D1D5DB] rounded-[14px] p-4 my-3.5 flex flex-col items-center text-center shadow-sm">
-                  <span className="font-sans text-[11px] uppercase tracking-wider text-[#6B7280]">
-                    Your Unique Lucky Ticket ID
-                  </span>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="font-[family-name:var(--font-bebas)] text-[38px] text-[#E6007E] tracking-widest leading-none">
+                {/* Explanatory Details & Terms */}
+                <div className="flex flex-col gap-[13px]">
+                  <p className="font-sans text-[13.5px] leading-[19.6px] tracking-[-0.012em] text-[#404040]">
+                    Your NAZR Giveaway entry has been received.
+                  </p>
+                  <p className="font-sans font-bold text-[13.5px] leading-[19.6px] tracking-[-0.012em] text-[#171717]">
+                    Entries close on 31 October at 6 PM.
+                  </p>
+                  <p className="font-sans text-[13.5px] leading-[19px] tracking-[-0.012em] text-[#525252]">
+                    Three winners will be shortlisted and contacted on 31 October after entries close, subject to verification.
+                  </p>
+                  <p className="font-sans font-bold text-[13.5px] leading-[19.6px] tracking-[-0.012em] text-[#171717] pt-[3px]">
+                    Keep your phone handy!
+                  </p>
+                </div>
+
+                {/* Reference Box & Copy Trigger */}
+                <div className="mt-6 bg-[#F5F0E9] rounded-[12px] p-3 px-4 flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <span className="font-sans font-bold text-[9.5px] leading-[14.5px] tracking-[0.14em] uppercase text-[#737373]">
+                      ENTRY REFERENCE
+                    </span>
+                    <span className="font-[family-name:var(--font-bebas)] text-[26px] leading-[26px] tracking-[0.05em] text-[#171717] mt-0.5">
                       {ticketResult.ticketId}
                     </span>
-                    <button
-                      onClick={copyTicketCode}
-                      className="p-1.5 hover:bg-neutral-100 rounded-lg text-neutral-600 transition-colors"
-                      title="Copy Ticket ID"
-                    >
-                      {copiedCode ? (
-                        <Check className="w-4 h-4 text-green-600" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </button>
                   </div>
-                  {copiedCode && (
-                    <span className="text-[11px] text-green-600 font-semibold mt-1">
-                      Copied to clipboard!
-                    </span>
-                  )}
-                </div>
-
-                {/* Registered Summary */}
-                <div className="w-full bg-[#F9FAFB] rounded-[12px] p-3 text-[12px] text-[#374151] flex flex-col gap-1.5 border border-[#E5E7EB] mb-4">
-                  <div className="flex justify-between">
-                    <span className="text-[#6B7280]">Name:</span>
-                    <span className="font-semibold text-black">{ticketResult.name}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#6B7280]">Mobile:</span>
-                    <span className="font-semibold text-black">{ticketResult.phone}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#6B7280]">Instagram:</span>
-                    <span className="font-semibold text-[#E6007E]">@{ticketResult.instagram}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#6B7280]">App ID:</span>
-                    <span className="font-semibold text-black">{ticketResult.appAccount}</span>
-                  </div>
-                </div>
-
-                {/* Barcode Visual Representation */}
-                <div className="w-full py-2 flex flex-col items-center justify-center opacity-75 mb-4">
-                  <div className="flex items-center justify-center gap-[2.5px] h-9">
-                    {[3, 1, 4, 1, 5, 2, 1, 3, 2, 4, 1, 5, 2, 3, 1, 4, 2, 1, 3, 5, 2, 1, 4, 2, 3, 1, 4].map(
-                      (w, i) => (
-                        <div
-                          key={i}
-                          className="bg-black h-full"
-                          style={{ width: `${w}px` }}
-                        />
-                      )
-                    )}
-                  </div>
-                  <span className="font-mono text-[9px] tracking-[0.3em] text-[#6B7280] mt-1">
-                    * {ticketResult.ticketId} *
-                  </span>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="w-full flex flex-col gap-2">
-                  <a
-                    href={`https://wa.me/?text=${encodeURIComponent(
-                      `I just entered the NAZR Mystery Box Giveaway (worth ₹2,000)! My ticket ID is ${ticketResult.ticketId}. Enter here: https://www.nazrco.in/giveaway`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white font-sans font-bold text-[12px] py-3 rounded-[10px] flex items-center justify-center gap-2 transition-colors uppercase tracking-wider"
-                  >
-                    <Share2 className="w-4 h-4" />
-                    Share with Friends on WhatsApp
-                  </a>
-
                   <button
-                    onClick={() => {
-                      window.print();
-                    }}
-                    className="w-full bg-black hover:bg-neutral-800 text-white font-sans font-bold text-[12px] py-3 rounded-[10px] flex items-center justify-center gap-2 transition-colors uppercase tracking-wider"
+                    type="button"
+                    onClick={copyTicketCode}
+                    className="border border-[#A3A3A3]/80 rounded-[8px] px-4 py-2 font-sans font-bold text-[11px] leading-[16.5px] tracking-[0.05em] uppercase text-[#171717] hover:bg-[#EBE5DC] active:scale-95 transition-all flex items-center gap-1.5"
                   >
-                    <Download className="w-4 h-4" />
-                    Save / Print Entry Pass
+                    {copiedCode ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-[#E6007E]" />
+                        COPIED
+                      </>
+                    ) : (
+                      "COPY"
+                    )}
                   </button>
                 </div>
+
+                {/* Primary CTA Button */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById("meet-nazr");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      window.location.hash = "#meet-nazr";
+                    }
+                  }}
+                  className="mt-5 w-full bg-[#0D0D0E] hover:bg-neutral-800 active:scale-[0.99] text-white font-[family-name:var(--font-bebas)] text-[20px] leading-[30px] tracking-[0.08em] py-3.5 rounded-[12px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] transition-all flex items-center justify-center uppercase cursor-pointer"
+                >
+                  EXPLORE NAZR
+                </button>
               </div>
             )}
           </article>
@@ -1038,7 +1020,7 @@ export function GiveawayPage() {
         {/* =========================================================================
             SECTION 4: MEET NAZR PRODUCTS (#F5F0E9)
         ========================================================================= */}
-        <section className="w-full bg-[#F5F0E9] text-black px-5 py-9 flex flex-col">
+        <section id="meet-nazr" className="w-full bg-[#F5F0E9] text-black px-5 py-9 flex flex-col">
           {/* Header */}
           <div className="flex flex-col gap-2 mb-6">
             <div className="flex items-center justify-between">
