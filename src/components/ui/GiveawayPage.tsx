@@ -368,12 +368,12 @@ export function GiveawayPage() {
           <div className="w-full flex justify-center items-center relative mb-4 z-10 group">
             <div className="relative w-full max-w-[357px] h-[196px] flex items-center justify-center">
               <Image
-                src="/images/giveaway/mystery_box_hires.png"
+                src="/images/Hero image 1giveaway.png"
                 alt="NAZR Mystery Box - Worth ₹2000"
-                width={357}
-                height={196}
+                width={380}
+                height={208}
                 priority
-                className="w-full h-auto object-contain mix-blend-lighten drop-shadow-[0_12px_24px_rgba(230,0,122,0.25)] transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-auto object-contain drop-shadow-[0_12px_28px_rgba(230,0,122,0.35)] transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           </div>
@@ -1166,21 +1166,21 @@ export function GiveawayPage() {
               </div>
             </article>
 
-            {/* Product Card 3: NAZR 360° BUNDLE */}
+            {/* Product Card 3: THE NAZR APP */}
             <article
               className="min-w-[280px] w-[280px] h-[410px] rounded-[28px] p-5 flex flex-col justify-between snap-start shadow-md shrink-0 relative overflow-hidden group"
               style={{
                 background:
-                  "radial-gradient(circle at 50% 35%, rgba(68, 18, 48, 1) 0%, rgba(30, 8, 22, 1) 65%, rgba(13, 4, 10, 1) 100%)",
+                  "radial-gradient(circle at 50% 35%, rgba(50, 18, 42, 1) 0%, rgba(22, 8, 19, 1) 65%, rgba(10, 4, 9, 1) 100%)",
               }}
             >
               {/* Category & Price Pill */}
               <div className="flex items-center justify-between w-full z-10">
                 <span className="font-sans font-bold text-[10px] leading-[14px] tracking-[0.12em] uppercase text-[#FCEEF4] bg-white/10 backdrop-blur-sm px-2.5 py-1 rounded-full">
-                  03 · COMPLETE KIT
+                  03 · SMART APP
                 </span>
                 <span className="font-sans font-black text-[12px] text-white bg-[#E6007E]/30 backdrop-blur-sm px-2.5 py-1 rounded-full border border-[#E6007E]/40">
-                  ₹999
+                  FREE
                 </span>
               </div>
 
@@ -1188,11 +1188,11 @@ export function GiveawayPage() {
               <div className="w-full h-[190px] flex items-center justify-center relative my-auto">
                 <div className="absolute w-[130px] h-[130px] bg-pink-500/20 rounded-full blur-2xl pointer-events-none" />
                 <Image
-                  src="/images/NAZR360.webp"
-                  alt="NAZR 360 Complete Bundle Kit"
-                  width={240}
-                  height={240}
-                  className="max-h-[175px] w-auto object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-105"
+                  src="/images/App imagegiveawy.png"
+                  alt="NAZR Women Safety App on iOS and Android"
+                  width={220}
+                  height={220}
+                  className="max-h-[190px] w-auto object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
 
@@ -1200,21 +1200,31 @@ export function GiveawayPage() {
               <div className="flex flex-col gap-1.5 z-10">
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-[family-name:var(--font-bebas)] text-[32px] leading-[32px] tracking-[0.02em] uppercase text-white m-0">
-                    NAZR 360° BUNDLE
+                    THE NAZR APP
                   </h3>
-                  <span className="font-sans text-[11px] line-through text-white/50">₹1,554</span>
+                  <span className="font-sans text-[11px] font-bold text-[#E6007E]">iOS & Android</span>
                 </div>
                 <p className="font-sans text-[12px] leading-[16px] text-[#F9A8D4]">
-                  On Me spray + Sip Check stickers together for 24/7 safety. Save ₹555 on the set.
+                  Shield Mode, Trusted Circle SOS, and 24/7 Helpline Directory. Free forever.
                 </p>
-                <a
-                  href="https://shop.nazrco.in/products/bundle"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-1 w-full py-2.5 px-3 bg-white hover:bg-neutral-100 text-[#111111] font-sans font-bold text-[11px] leading-[14px] tracking-[0.08em] uppercase rounded-[10px] flex items-center justify-center gap-1.5 transition-all text-center shadow-sm"
-                >
-                  GET THE KIT <ExternalLink className="w-3 h-3 opacity-70" />
-                </a>
+                <div className="mt-1 flex items-center gap-1.5 w-full">
+                  <a
+                    href="https://apps.apple.com/in/app/nazr-women-safety-app/id6787188929"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2.5 px-2 bg-white hover:bg-neutral-100 text-[#111111] font-sans font-bold text-[10.5px] leading-[14px] tracking-[0.06em] uppercase rounded-[10px] flex items-center justify-center gap-1 transition-all text-center shadow-sm"
+                  >
+                    App Store <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+                  </a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.nazr.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2.5 px-2 bg-white hover:bg-neutral-100 text-[#111111] font-sans font-bold text-[10.5px] leading-[14px] tracking-[0.06em] uppercase rounded-[10px] flex items-center justify-center gap-1 transition-all text-center shadow-sm"
+                  >
+                    Google Play <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+                  </a>
+                </div>
               </div>
             </article>
 
