@@ -20,79 +20,79 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-// 12 Accordion items from the Figma specification
+// 12 Accordion items for Important Information / Giveaway Terms
 const IMPORTANT_INFO_ITEMS = [
   {
     id: 1,
     title: "What you can win",
     content:
-      "Each winner gets one NAZR mystery box of NAZR safety products and exclusive merch, worth ₹2,000 at MRP. Contents are revealed when you collect it and can't be exchanged for cash.",
+      "Each of the three winners gets one NAZR Mystery Box, filled with NAZR safety products and exclusive merch, worth ₹2,000 at MRP. The contents are revealed when you collect it. The box can’t be exchanged for cash or swapped for other items.",
   },
   {
     id: 2,
     title: "Who can enter",
     content:
-      "Open to all individuals in India aged 18 and above who follow NAZR on Instagram, follow NAZR on LinkedIn, and sign up on the NAZR mobile app. Both students and working professionals are welcome.",
+      "The giveaway is open to people attending MMASFH on 30 and 31 October 2026 who are 18 or older and live in India. Employees of NAZR and Lumina Hospitality Private Limited, and their immediate families, can’t enter.",
   },
   {
     id: 3,
     title: "One entry per person",
     content:
-      "Only one entry is allowed per person, mobile number, and Instagram account. Multiple or duplicate entries from the same individual will be automatically deduplicated.",
+      "Each person can enter once. If we find more than one entry from the same person, we keep the first one and remove the rest.",
   },
   {
     id: 4,
     title: "What you need to do",
     content:
-      "Three simple steps: 1. Follow @nazr.360 on Instagram. 2. Follow the NAZR company page on LinkedIn. 3. Download the NAZR app and sign up. Then fill out the official Entry Ticket form above.",
+      "Follow NAZR on Instagram, follow NAZR on LinkedIn, download the NAZR app and sign up, then submit the entry form. Entries that miss any step aren’t eligible to win.",
   },
   {
     id: 5,
     title: "When entries open and close",
     content:
-      "Entries open on 30 October and officially close on 31 October 2026 at 6:00 PM IST sharp. Late entries submitted after the deadline will not be eligible for the draw.",
+      "Entries open on 30 October 2026 and close at 6:00 PM IST on 31 October 2026. Entries received after the deadline won’t be accepted.",
   },
   {
     id: 6,
     title: "How winners are picked",
     content:
-      "Winners are selected completely at random from all verified entries using a certified algorithmic randomizer. The process is transparent, tamper-proof, and unbiased.",
+      "Three winners are picked by random draw from all eligible entries after entries close.",
   },
   {
     id: 7,
     title: "How we check entries",
     content:
-      "The NAZR team manually reviews every shortlisted winner to verify that they follow NAZR on Instagram and LinkedIn, and have an active registered account on the NAZR app.",
+      "The NAZR team checks every Instagram follow, LinkedIn follow and NAZR app sign-up by hand. Ticking the boxes on the form doesn’t make an entry eligible on its own.",
   },
   {
     id: 8,
     title: "If you win",
     content:
-      "Selected winners will be contacted directly on the evening of 31 October via phone call and WhatsApp on the 10-digit mobile number provided during entry.",
+      "Winners are picked after entries close at 6:00 PM and messaged on WhatsApp, on the mobile number they entered, by 7:00 PM on 31 October. Reply to our WhatsApp message and be ready to show the Instagram account and NAZR app login you entered with.",
   },
   {
     id: 9,
-    title: "Collecting your hamper",
+    title: "Collecting your mystery box",
     content:
-      "Verified winners can collect their exclusive NAZR Mystery Box hamper at the designated NAZR event / booth location, or provide a secure Indian postal address for courier delivery.",
+      "Collect your box from the NAZR booth at MMASFH by 7:30 PM on 31 October. Bring a photo ID that matches the name on your entry.",
   },
   {
     id: 10,
     title: "Alternate winners",
     content:
-      "If a drawn winner cannot be contacted within 24 hours or fails the verification requirements, an alternate winner will be randomly drawn from the remaining verified pool.",
+      "If a winner can’t be verified, doesn’t reply on WhatsApp or doesn’t collect the box by 7:30 PM, we’ll draw an alternate winner from the remaining eligible entries.",
   },
   {
     id: 11,
     title: "Your data and privacy",
     content:
-      "Your personal information is strictly protected and used exclusively for prize notification and giveaway verification. NAZR will never sell, lease, or share your data with third parties.",
+      "Your entry details are stored privately and used only to run this giveaway: checking your steps, picking winners and contacting them. We’ll only send you NAZR news and offers if you ticked the optional box. To have your entry deleted, email support@nazrco.in.",
   },
   {
     id: 12,
     title: "Instagram and LinkedIn",
     content:
-      "This giveaway is run independently by NAZR (Lumina Hospitality Pvt. Ltd.) and is in no way sponsored, endorsed, administered by, or associated with Instagram, Meta, or LinkedIn.",
+      "This giveaway is run by NAZR. It isn’t sponsored, endorsed or administered by, or associated with, Instagram, Meta, LinkedIn or Microsoft.",
   },
 ];
 
@@ -861,8 +861,22 @@ export function GiveawayPage() {
                     />
                     <span className="font-sans text-[11.5px] leading-[15.8px]">
                       I agree to the{" "}
-                      <span className="font-bold underline text-black">giveaway terms</span> and the{" "}
-                      <span className="font-bold underline text-black">privacy notice</span>.
+                      <Link
+                        href="/giveaway/terms"
+                        target="_blank"
+                        className="font-bold underline text-black hover:text-[#E6007E] transition-colors"
+                      >
+                        giveaway terms
+                      </Link>{" "}
+                      and the{" "}
+                      <Link
+                        href="/privacy-policy"
+                        target="_blank"
+                        className="font-bold underline text-black hover:text-[#E6007E] transition-colors"
+                      >
+                        privacy notice
+                      </Link>
+                      .
                     </span>
                   </label>
 
@@ -1299,9 +1313,18 @@ export function GiveawayPage() {
         ========================================================================= */}
         <section className="w-full bg-[#F4F4F4] text-[#121212] px-5 py-9 flex flex-col">
           {/* Header */}
-          <h2 className="font-[family-name:var(--font-bebas)] text-[40px] leading-[38px] tracking-[-0.025em] uppercase text-[#121212] mb-5">
-            IMPORTANT INFORMATION
-          </h2>
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="font-[family-name:var(--font-bebas)] text-[40px] leading-[38px] tracking-[-0.025em] uppercase text-[#121212] m-0">
+              IMPORTANT INFORMATION
+            </h2>
+            <Link
+              href="/giveaway/terms"
+              target="_blank"
+              className="font-sans font-bold text-[11px] tracking-[0.05em] uppercase text-[#E6007E] hover:text-black inline-flex items-center gap-1 transition-colors shrink-0"
+            >
+              Full Terms <ExternalLink className="w-3 h-3" />
+            </Link>
+          </div>
 
           {/* 12 Accordion Items */}
           <div className="flex flex-col border-b border-[#E5DFD5]">
