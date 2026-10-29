@@ -1354,27 +1354,9 @@ export function GiveawayPage() {
 
 
         {/* =========================================================================
-            SECTION 7: FOOTER - THE WORLD STARES. STARE BACK. (#070707)
+            SECTION 7: FOOTER (#070707)
         ========================================================================= */}
         <footer className="w-full bg-[#070707] text-white px-6 py-9 flex flex-col items-stretch">
-          {/* Two-line Bold Statement */}
-          <div className="flex flex-col mb-7">
-            <h2 className="font-[family-name:var(--font-bebas)] text-[42px] leading-[38.6px] tracking-[-0.025em] uppercase text-white m-0">
-              THE WORLD STARES.
-            </h2>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[42px] leading-[38.6px] tracking-[-0.025em] uppercase text-[#E6007E] m-0">
-              STARE BACK.
-            </h2>
-          </div>
-
-          {/* Vibrant Full-width Primary Action Button */}
-          <Link
-            href="/shop"
-            className="w-full h-[52px] bg-[#E6007E] hover:bg-[#d00072] text-white font-sans font-bold text-[15px] leading-[15px] tracking-[0.06em] uppercase rounded-[12px] flex items-center justify-center shadow-[0px_4px_20px_0px_rgba(230,0,122,0.35)] transition-all mb-7 cursor-pointer active:scale-[0.98]"
-          >
-            EXPLORE NAZR
-          </Link>
-
           {/* Support Contact and Legal Entity Attribution */}
           <div className="flex flex-col gap-3">
             <div className="flex items-center flex-wrap gap-1.5 font-sans text-[12px] leading-[16.5px] text-[#9E9E9E]">
