@@ -725,7 +725,7 @@ export function GiveawayPage() {
                   ENTRY TICKET
                 </span>
                 <span className="font-[family-name:var(--font-bebas)] text-[28px] leading-[28px] tracking-[0.025em] text-[#171717]">
-                  {ticketResult ? ticketResult.ticketId : "NZR-•••••"}
+                  {ticketResult ? ticketResult.ticketId : "NAZR-•••••"}
                 </span>
               </div>
               <div className="pt-1">

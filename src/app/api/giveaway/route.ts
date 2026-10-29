@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+// Google Sheets Webhook URL (hardcoded default so it works without environment variables)
+const GOOGLE_SHEETS_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbwiqN2dj65YRCjetjS6rN7deqo9ehOmO-ZgyNBokcHNM6-LH7d1rDwWgkeUqhz1OvvH_w/exec";
+
 // Path to data file in workspace
 const DATA_DIR = path.join(process.cwd(), "src", "data");
 const DATA_FILE = path.join(DATA_DIR, "giveaway_entries.json");
@@ -92,9 +96,9 @@ export async function POST(req: Request) {
       );
     }
 
-    // Generate Ticket ID e.g. NZR-5821
+    // Generate Ticket ID e.g. NAZR-5821
     const randomCode = Math.floor(1000 + Math.random() * 9000);
-    const ticketId = `NZR-${randomCode}`;
+    const ticketId = `NAZR-${randomCode}`;
 
     const newEntry = {
       id: ticketId,
@@ -129,17 +133,18 @@ export async function POST(req: Request) {
     saveEntries(currentEntries);
 
     // Optional: If an external webhook is configured (e.g. Google Sheets Apps Script)
-    // Webhook sync to Google Sheets (if configured)
-    const webhookUrl = process.env.GIVEAWAY_SHEET_WEBHOOK_URL;
+    // Webhook sync to Google Sheets (uses env variable or hardcoded fallback)
+    const webhookUrl =
+      process.env.GIVEAWAY_SHEET_WEBHOOK_URL || GOOGLE_SHEETS_WEBHOOK_URL;
     if (webhookUrl) {
       try {
-        await fetch(webhookUrl, {
+        const sheetResponse = await fetch(webhookUrl, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             ticketId: newEntry.id,
             name: newEntry.name,
-            phone: "'" + newEntry.phone,
+            phone: newEntry.phone.startsWith("'") ? newEntry.phone : "'" + newEntry.phone,
             instagramUsername: newEntry.instagramUsername ? `@${newEntry.instagramUsername}` : "",
             linkedinUrl: newEntry.linkedinUrl,
             appAccount: newEntry.appAccount,
@@ -150,6 +155,7 @@ export async function POST(req: Request) {
           }),
           redirect: "follow",
         });
+        console.log("Google Sheets sync response status:", sheetResponse.status);
       } catch (err) {
         console.warn("Google Sheet webhook ping error:", err);
       }
