@@ -570,7 +570,7 @@ export function GiveawayPage() {
                 <span className="font-[family-name:var(--font-bebas)] font-black text-[18px] leading-[28px] tracking-[0.025em] text-[#171717]">
                   STEP 2
                 </span>
-                <div className="w-[32px] h-[32px] bg-[#E6007E] rounded-[8px] flex items-center justify-center">
+                <div className="w-[32px] h-[32px] bg-black rounded-[8px] flex items-center justify-center">
                   <span className="font-sans font-extrabold text-white text-[14px] leading-none lowercase">
                     in
                   </span>
@@ -941,7 +941,7 @@ export function GiveawayPage() {
 
                 {/* Fine Print Footer */}
                 <p className="font-sans text-[10.5px] leading-[17px] text-[#6B7280] text-center px-1 mt-0.5">
-                  One entry per person. The NAZR team checks follows and app sign-ups by hand after entries close.
+                  One entry per person. Winners will be selected at random. To be eligible for the prize, participants must complete all 3 steps. Eligible winners will be announced after the entries close.
                 </p>
               </form>
             ) : (
@@ -971,7 +971,7 @@ export function GiveawayPage() {
                 </div>
 
                 {/* Reference Box & Copy Trigger */}
-                <div className="mt-6 bg-[#F5F0E9] rounded-[12px] p-3 px-4 flex items-center justify-between">
+                <div className="mt-6 bg-[#f4f4f4] rounded-[12px] p-3 px-4 flex items-center justify-between">
                   <div className="flex flex-col">
                     <span className="font-sans font-bold text-[9.5px] leading-[14.5px] tracking-[0.14em] uppercase text-[#737373]">
                       ENTRY REFERENCE
@@ -1018,9 +1018,9 @@ export function GiveawayPage() {
 
 
         {/* =========================================================================
-            SECTION 4: MEET NAZR PRODUCTS (#F5F0E9)
+            SECTION 4: MEET NAZR PRODUCTS (#f4f4f4)
         ========================================================================= */}
-        <section id="meet-nazr" className="w-full bg-[#F5F0E9] text-black px-5 py-9 flex flex-col">
+        <section id="meet-nazr" className="w-full bg-[#f4f4f4] text-black px-5 py-9 flex flex-col">
           {/* Header */}
           <div className="flex flex-col gap-2 mb-6">
             <div className="flex items-center justify-between">
@@ -1215,9 +1215,9 @@ export function GiveawayPage() {
 
 
         {/* =========================================================================
-            SECTION 5: GIVEAWAY TIMELINE (#F5F0E9)
+            SECTION 5: GIVEAWAY TIMELINE (#f4f4f4)
         ========================================================================= */}
-        <section className="w-full bg-[#F5F0E9] text-black px-6 py-9 flex flex-col border-t border-[#E5DFD5]">
+        <section className="w-full bg-[#f4f4f4] text-black px-6 py-9 flex flex-col border-t border-[#E5DFD5]">
           {/* Header */}
           <div className="flex flex-col gap-1 mb-8">
             <span className="font-sans font-extrabold text-[11px] leading-[16.5px] tracking-[0.1em] uppercase text-[#111111]">

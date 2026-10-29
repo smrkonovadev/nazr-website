@@ -138,7 +138,7 @@ export async function POST(req: Request) {
         body: JSON.stringify({
           ticketId: newEntry.id,
           name: newEntry.name,
-          phone: newEntry.phone,
+          phone: "'" + newEntry.phone,
           instagramUsername: newEntry.instagramUsername ? `@${newEntry.instagramUsername}` : "",
           linkedinUrl: newEntry.linkedinUrl,
           appAccount: newEntry.appAccount,
