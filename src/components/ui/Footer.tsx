@@ -34,7 +34,8 @@ export function Footer() {
 
   const isShopPage = pathname === "/shop" || pathname?.startsWith("/shop");
   const isNazrAppPage = pathname === "/nazrapp" || pathname?.startsWith("/nazrapp");
-  const hideNazrMilao = isShopPage || isNazrAppPage;
+  const isGiveawayPage = pathname === "/giveaway" || pathname?.startsWith("/giveaway");
+  const hideNazrMilao = isShopPage || isNazrAppPage || isGiveawayPage;
 
   return (
     <>

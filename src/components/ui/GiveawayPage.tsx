@@ -1352,8 +1352,48 @@ export function GiveawayPage() {
           </div>
         </section>
 
-
-
+        {/* Contact Links: Email, WhatsApp, Instagram */}
+        <div className="w-full bg-[#0C0B0E] text-white px-6 pt-7 pb-8 flex flex-col items-stretch border-t border-white/10">
+          <div className="w-full flex flex-col gap-3.5 text-[13px] sm:text-[14px] font-sans">
+            <div className="flex items-center justify-between">
+              <span className="text-[#E6007E] font-bold text-[11px] sm:text-[12px] uppercase tracking-wider">
+                EMAIL
+              </span>
+              <a
+                href="mailto:support@nazrco.in"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                support@nazrco.in
+              </a>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[#E6007E] font-bold text-[11px] sm:text-[12px] uppercase tracking-wider">
+                WHATSAPP
+              </span>
+              <a
+                href="https://wa.me/917208940212"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                +91-7208940212
+              </a>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[#E6007E] font-bold text-[11px] sm:text-[12px] uppercase tracking-wider">
+                INSTAGRAM
+              </span>
+              <a
+                href="https://www.instagram.com/nazr.360/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                @nazr.360
+              </a>
+            </div>
+          </div>
+        </div>
 
       </div>
 
