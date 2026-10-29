@@ -132,23 +132,27 @@ export async function POST(req: Request) {
     // Webhook sync to Google Sheets (if configured)
     const webhookUrl = process.env.GIVEAWAY_SHEET_WEBHOOK_URL;
     if (webhookUrl) {
-      fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
-          ticketId: newEntry.id,
-          name: newEntry.name,
-          phone: "'" + newEntry.phone,
-          instagramUsername: newEntry.instagramUsername ? `@${newEntry.instagramUsername}` : "",
-          linkedinUrl: newEntry.linkedinUrl,
-          appAccount: newEntry.appAccount,
-          completedSteps: newEntry.completedSteps ? "YES" : "NO",
-          marketingConsent: newEntry.marketingConsent ? "YES" : "NO",
-          createdAt: newEntry.createdAt,
-          verified: newEntry.verified ? "VERIFIED" : "PENDING",
-        }),
-        redirect: "follow",
-      }).catch((err) => console.warn("Google Sheet webhook ping error:", err));
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            ticketId: newEntry.id,
+            name: newEntry.name,
+            phone: "'" + newEntry.phone,
+            instagramUsername: newEntry.instagramUsername ? `@${newEntry.instagramUsername}` : "",
+            linkedinUrl: newEntry.linkedinUrl,
+            appAccount: newEntry.appAccount,
+            completedSteps: newEntry.completedSteps ? "YES" : "NO",
+            marketingConsent: newEntry.marketingConsent ? "YES" : "NO",
+            createdAt: newEntry.createdAt,
+            verified: newEntry.verified ? "VERIFIED" : "PENDING",
+          }),
+          redirect: "follow",
+        });
+      } catch (err) {
+        console.warn("Google Sheet webhook ping error:", err);
+      }
     }
 
     return NextResponse.json({
