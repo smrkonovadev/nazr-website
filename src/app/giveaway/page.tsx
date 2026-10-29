@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function StudentGiveawayRoute() {
   return (
-    <main className="flex flex-col min-h-screen bg-[#0C0B0E] w-full items-center justify-start">
+    <main className="flex flex-col min-h-screen bg-[#0C0B0E] w-full items-center justify-start overflow-x-hidden">
       <GiveawayPage />
     </main>
   );

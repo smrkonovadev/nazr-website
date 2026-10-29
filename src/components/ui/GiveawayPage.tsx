@@ -341,9 +341,9 @@ export function GiveawayPage() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center bg-[#0C0B0E] text-white selection:bg-[#E6007E] selection:text-white">
-      {/* Container matching mobile Figma frame (390px) on mobile and expanding elegantly on desktop */}
-      <div className="w-full max-w-[390px] md:max-w-[440px] flex flex-col relative shadow-2xl">
+    <div className="w-full flex flex-col items-center bg-[#0C0B0E] text-white selection:bg-[#E6007E] selection:text-white overflow-x-hidden">
+      {/* Full width edge-to-edge on all mobile phones, elegantly centered on tablet and desktop */}
+      <div className="w-full sm:max-w-[460px] flex flex-col relative shadow-2xl">
 
         {/* =========================================================================
             SECTION 1: HERO / LANDING (#0C0B0E)
@@ -1353,46 +1353,7 @@ export function GiveawayPage() {
         </section>
 
 
-        {/* =========================================================================
-            SECTION 7: FOOTER (#070707)
-        ========================================================================= */}
-        <footer className="w-full bg-[#070707] text-white px-6 py-9 flex flex-col items-stretch">
-          {/* Support Contact and Legal Entity Attribution */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center flex-wrap gap-1.5 font-sans text-[12px] leading-[16.5px] text-[#9E9E9E]">
-              <span>Questions?</span>
-              <a
-                href="mailto:support@nazrco.in"
-                className="text-white hover:underline hover:text-[#E6007E]"
-              >
-                support@nazrco.in
-              </a>
-              <span>·</span>
-              <a
-                href="tel:+917208940212"
-                className="text-white hover:underline hover:text-[#E6007E]"
-              >
-                +91 72089 40212
-              </a>
-            </div>
 
-            <p className="font-sans text-[11.5px] leading-[16px] text-[#A3A3A3] m-0">
-              NAZR™ is owned and operated by Lumina Hospitality Private Limited.
-            </p>
-
-            {/* Subtle Admin Trigger in Footer */}
-            <div className="pt-2 flex justify-end">
-              <button
-                onClick={() => setIsAdminOpen(true)}
-                title="Admin Control Room"
-                className="opacity-20 hover:opacity-100 text-[10px] flex items-center gap-1 text-neutral-400 hover:text-white transition-opacity"
-              >
-                <Lock className="w-3 h-3" />
-                <span>Admin</span>
-              </button>
-            </div>
-          </div>
-        </footer>
 
       </div>
 
